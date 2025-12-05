@@ -1,0 +1,48 @@
+
+kaixiang.png
+size: 1024, 1024
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+baoxiang1
+  rotate: false
+  xy: 0, 53
+  size: 283, 221
+  orig: 283, 221
+  offset: 0, 0
+  index: -1
+baoxiang1-0
+  rotate: true
+  xy: 285, 0
+  size: 274, 212
+  orig: 274, 212
+  offset: 0, 0
+  index: -1
+baoxiang2
+  rotate: false
+  xy: 580, 739
+  size: 292, 232
+  orig: 292, 232
+  offset: 0, 0
+  index: -1
+baoxiang2-0
+  rotate: false
+  xy: 580, 515
+  size: 282, 222
+  orig: 282, 222
+  offset: 0, 0
+  index: -1
+eff-B
+  rotate: false
+  xy: 0, 393
+  size: 578, 578
+  orig: 578, 578
+  offset: 0, 0
+  index: -1
+touying
+  rotate: false
+  xy: 0, 276
+  size: 465, 115
+  orig: 465, 115
+  offset: 0, 0
+  index: -1

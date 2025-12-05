@@ -1,0 +1,48 @@
+
+jingzi.png
+size: 938,576
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+di
+  rotate: true
+  xy: 2, 2
+  size: 572, 682
+  orig: 581, 691
+  offset: 5, 5
+  index: -1
+glassd/0
+  rotate: true
+  xy: 686, 116
+  size: 206, 124
+  orig: 256, 192
+  offset: 21, 24
+  index: -1
+glassd/1
+  rotate: true
+  xy: 812, 186
+  size: 136, 101
+  orig: 146, 114
+  offset: 6, 6
+  index: -1
+glassd/2
+  rotate: true
+  xy: 686, 11
+  size: 103, 117
+  orig: 108, 130
+  offset: 3, 4
+  index: -1
+glassd/3
+  rotate: true
+  xy: 805, 62
+  size: 52, 62
+  orig: 58, 74
+  offset: 4, 6
+  index: -1
+glassd/4
+  rotate: false
+  xy: 686, 324
+  size: 250, 250
+  orig: 250, 250
+  offset: 0, 0
+  index: -1

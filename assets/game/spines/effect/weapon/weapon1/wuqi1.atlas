@@ -1,0 +1,62 @@
+
+wuqi1.png
+size: 306,143
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+qiang_0000_1
+  rotate: false
+  xy: 248, 7
+  size: 52, 52
+  orig: 87, 116
+  offset: 4, 25
+  index: -1
+qiang_0001_2
+  rotate: false
+  xy: 96, 31
+  size: 83, 110
+  orig: 87, 116
+  offset: 2, 3
+  index: -1
+qiang_0002_3
+  rotate: false
+  xy: 181, 49
+  size: 65, 92
+  orig: 87, 116
+  offset: 4, 11
+  index: -1
+qiang_0003_4
+  rotate: true
+  xy: 96, 2
+  size: 27, 33
+  orig: 87, 116
+  offset: 9, 31
+  index: -1
+qianghuo
+  rotate: true
+  xy: 2, 13
+  size: 128, 92
+  orig: 128, 97
+  offset: 0, 0
+  index: -1
+shouqiang
+  rotate: true
+  xy: 248, 61
+  size: 80, 56
+  orig: 80, 58
+  offset: 0, 1
+  index: -1
+shouqiang2
+  rotate: false
+  xy: 181, 3
+  size: 49, 44
+  orig: 80, 58
+  offset: 28, 14
+  index: -1
+zidanke
+  rotate: true
+  xy: 131, 7
+  size: 22, 19
+  orig: 22, 21
+  offset: 0, 1
+  index: -1

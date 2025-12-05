@@ -1,0 +1,69 @@
+
+Enemy113.png
+size: 111,322
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+lizi
+  rotate: false
+  xy: 52, 2
+  size: 17, 17
+  orig: 17, 17
+  offset: 0, 0
+  index: -1
+nitu
+  rotate: true
+  xy: 75, 81
+  size: 133, 34
+  orig: 133, 34
+  offset: 0, 0
+  index: -1
+shenti
+  rotate: false
+  xy: 2, 216
+  size: 98, 62
+  orig: 98, 62
+  offset: 0, 0
+  index: -1
+tou
+  rotate: false
+  xy: 2, 155
+  size: 71, 59
+  orig: 71, 59
+  offset: 0, 0
+  index: -1
+weiba
+  rotate: false
+  xy: 2, 280
+  size: 106, 40
+  orig: 106, 40
+  offset: 0, 0
+  index: -1
+youhouzhua
+  rotate: true
+  xy: 2, 20
+  size: 36, 48
+  orig: 36, 48
+  offset: 0, 0
+  index: -1
+youqianzhua
+  rotate: true
+  xy: 2, 58
+  size: 47, 58
+  orig: 47, 58
+  offset: 0, 0
+  index: -1
+zuohouzhua
+  rotate: true
+  xy: 2, 107
+  size: 46, 65
+  orig: 46, 65
+  offset: 0, 0
+  index: -1
+zuoqianzhua
+  rotate: false
+  xy: 62, 21
+  size: 47, 58
+  orig: 47, 58
+  offset: 0, 0
+  index: -1

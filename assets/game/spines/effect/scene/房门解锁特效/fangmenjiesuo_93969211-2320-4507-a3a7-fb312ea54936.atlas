@@ -1,0 +1,62 @@
+
+fangmenjiesuo.png
+size: 79,474
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+men1
+  rotate: false
+  xy: 2, 268
+  size: 68, 204
+  orig: 68, 206
+  offset: 0, 1
+  index: -1
+suipian1
+  rotate: false
+  xy: 2, 75
+  size: 38, 83
+  orig: 38, 84
+  offset: 0, 0
+  index: -1
+suipian2
+  rotate: false
+  xy: 42, 66
+  size: 33, 58
+  orig: 33, 59
+  offset: 0, 0
+  index: -1
+suipian3
+  rotate: false
+  xy: 41, 8
+  size: 34, 56
+  orig: 34, 57
+  offset: 0, 0
+  index: -1
+suipian4
+  rotate: false
+  xy: 2, 160
+  size: 39, 106
+  orig: 39, 107
+  offset: 0, 0
+  index: -1
+suipian5
+  rotate: false
+  xy: 43, 185
+  size: 33, 81
+  orig: 33, 81
+  offset: 0, 0
+  index: -1
+suipian6
+  rotate: false
+  xy: 2, 2
+  size: 37, 71
+  orig: 38, 72
+  offset: 0, 1
+  index: -1
+suipian7
+  rotate: false
+  xy: 43, 126
+  size: 34, 57
+  orig: 34, 58
+  offset: 0, 1
+  index: -1

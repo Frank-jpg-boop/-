@@ -1,0 +1,20 @@
+
+xinhaodan.png
+size: 290,225
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+xing
+  rotate: false
+  xy: 2, 2
+  size: 222, 221
+  orig: 283, 281
+  offset: 30, 31
+  index: -1
+yanwu 
+  rotate: true
+  xy: 226, 154
+  size: 69, 62
+  orig: 69, 62
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,62 @@
+
+role_7.png
+size: 368, 205
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bq1
+  rotate: false
+  xy: 167, 6
+  size: 52, 40
+  orig: 106, 82
+  offset: 27, 21
+  index: -1
+shen
+  rotate: false
+  xy: 221, 87
+  size: 125, 116
+  orig: 347, 260
+  offset: 113, 72
+  index: -1
+shou1
+  rotate: true
+  xy: 282, 30
+  size: 55, 84
+  orig: 98, 176
+  offset: 26, 47
+  index: -1
+shou2
+  rotate: false
+  xy: 221, 2
+  size: 59, 83
+  orig: 135, 244
+  offset: 29, 79
+  index: -1
+tou
+  rotate: false
+  xy: 2, 48
+  size: 206, 155
+  orig: 331, 288
+  offset: 59, 83
+  index: -1
+tui
+  rotate: true
+  xy: 2, 3
+  size: 43, 82
+  orig: 88, 191
+  offset: 20, 56
+  index: -1
+tui2
+  rotate: true
+  xy: 86, 3
+  size: 43, 79
+  orig: 96, 209
+  offset: 27, 64
+  index: -1
+yingzi
+  rotate: true
+  xy: 348, 134
+  size: 69, 16
+  orig: 199, 46
+  offset: 65, 15
+  index: -1

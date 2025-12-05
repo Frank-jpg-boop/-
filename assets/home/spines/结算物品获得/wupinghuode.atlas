@@ -1,0 +1,20 @@
+
+wupinghuode.png
+size: 169,137
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+texiaokuang
+  rotate: false
+  xy: 2, 2
+  size: 133, 133
+  orig: 135, 135
+  offset: 1, 1
+  index: -1
+xing
+  rotate: true
+  xy: 137, 101
+  size: 34, 30
+  orig: 36, 30
+  offset: 1, 0
+  index: -1

@@ -1,0 +1,48 @@
+
+Enemy321.png
+size: 325,86
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+fengshan
+  rotate: false
+  xy: 2, 2
+  size: 211, 82
+  orig: 211, 82
+  offset: 0, 0
+  index: -1
+guihun
+  rotate: true
+  xy: 215, 62
+  size: 22, 80
+  orig: 29, 80
+  offset: 7, 0
+  index: -1
+shangyachi
+  rotate: false
+  xy: 215, 46
+  size: 61, 14
+  orig: 61, 14
+  offset: 0, 0
+  index: -1
+shetou
+  rotate: false
+  xy: 261, 10
+  size: 26, 34
+  orig: 26, 34
+  offset: 0, 0
+  index: -1
+suipian
+  rotate: true
+  xy: 215, 3
+  size: 41, 44
+  orig: 41, 44
+  offset: 0, 0
+  index: -1
+xiaba
+  rotate: true
+  xy: 297, 22
+  size: 62, 26
+  orig: 62, 26
+  offset: 0, 0
+  index: -1

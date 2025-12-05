@@ -1,0 +1,97 @@
+
+wuqi9.png
+size: 346,563
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+00
+  rotate: false
+  xy: 180, 475
+  size: 164, 86
+  orig: 186, 104
+  offset: 18, 9
+  index: -1
+01
+  rotate: false
+  xy: 180, 292
+  size: 162, 89
+  orig: 186, 104
+  offset: 17, 8
+  index: -1
+02
+  rotate: false
+  xy: 173, 132
+  size: 167, 77
+  orig: 186, 104
+  offset: 11, 15
+  index: -1
+03
+  rotate: false
+  xy: 2, 283
+  size: 175, 81
+  orig: 186, 104
+  offset: 7, 13
+  index: -1
+04
+  rotate: false
+  xy: 2, 463
+  size: 176, 98
+  orig: 186, 104
+  offset: 3, 6
+  index: -1
+05
+  rotate: false
+  xy: 2, 366
+  size: 176, 95
+  orig: 186, 104
+  offset: 3, 7
+  index: -1
+06
+  rotate: false
+  xy: 2, 116
+  size: 161, 90
+  orig: 186, 104
+  offset: 21, 6
+  index: -1
+07
+  rotate: false
+  xy: 180, 383
+  size: 162, 90
+  orig: 186, 104
+  offset: 19, 5
+  index: -1
+08
+  rotate: false
+  xy: 179, 211
+  size: 162, 79
+  orig: 186, 104
+  offset: 21, 11
+  index: -1
+09
+  rotate: false
+  xy: 2, 208
+  size: 169, 73
+  orig: 186, 104
+  offset: 10, 14
+  index: -1
+huo
+  rotate: true
+  xy: 100, 7
+  size: 107, 103
+  orig: 120, 113
+  offset: 3, 3
+  index: -1
+shouzhuo
+  rotate: true
+  xy: 205, 43
+  size: 87, 85
+  orig: 87, 86
+  offset: 0, 1
+  index: -1
+yanwu
+  rotate: true
+  xy: 2, 2
+  size: 112, 96
+  orig: 128, 108
+  offset: 7, 6
+  index: -1

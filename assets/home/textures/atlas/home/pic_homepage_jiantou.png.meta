@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "59c46156-e7ee-4805-a6fa-7e27149902e2",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 76,
+  "height": 102,
+  "platformSettings": {},
+  "subMetas": {
+    "pic_homepage_jiantou": {
+      "ver": "1.0.6",
+      "uuid": "1c6bee77-3436-42fd-aa99-b3485bce0b78",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "59c46156-e7ee-4805-a6fa-7e27149902e2",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 76,
+      "height": 102,
+      "rawWidth": 76,
+      "rawHeight": 102,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

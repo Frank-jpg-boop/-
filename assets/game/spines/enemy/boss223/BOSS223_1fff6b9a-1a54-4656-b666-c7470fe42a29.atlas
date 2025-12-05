@@ -1,0 +1,167 @@
+
+BOSS223.png
+size: 400,267
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+huohua1
+  rotate: true
+  xy: 334, 90
+  size: 31, 57
+  orig: 100, 100
+  offset: 34, 39
+  index: -1
+huohua10
+  rotate: false
+  xy: 300, 97
+  size: 32, 69
+  orig: 100, 100
+  offset: 33, 24
+  index: -1
+huohua11
+  rotate: true
+  xy: 226, 42
+  size: 34, 68
+  orig: 100, 100
+  offset: 31, 25
+  index: -1
+huohua12
+  rotate: true
+  xy: 2, 27
+  size: 36, 82
+  orig: 100, 100
+  offset: 29, 13
+  index: -1
+huohua2
+  rotate: true
+  xy: 188, 4
+  size: 35, 52
+  orig: 100, 100
+  offset: 32, 42
+  index: -1
+huohua3
+  rotate: true
+  xy: 332, 54
+  size: 34, 58
+  orig: 100, 100
+  offset: 34, 35
+  index: -1
+huohua4
+  rotate: true
+  xy: 328, 191
+  size: 37, 68
+  orig: 100, 100
+  offset: 32, 24
+  index: -1
+huohua5
+  rotate: false
+  xy: 86, 2
+  size: 39, 61
+  orig: 100, 100
+  offset: 31, 31
+  index: -1
+huohua6
+  rotate: true
+  xy: 127, 3
+  size: 36, 59
+  orig: 100, 100
+  offset: 30, 33
+  index: -1
+huohua7
+  rotate: true
+  xy: 328, 230
+  size: 35, 70
+  orig: 100, 100
+  offset: 32, 26
+  index: -1
+huohua8
+  rotate: true
+  xy: 242, 5
+  size: 35, 59
+  orig: 100, 100
+  offset: 33, 36
+  index: -1
+huohua9
+  rotate: false
+  xy: 334, 123
+  size: 35, 66
+  orig: 100, 100
+  offset: 35, 29
+  index: -1
+qunzi1
+  rotate: false
+  xy: 2, 65
+  size: 128, 97
+  orig: 128, 97
+  offset: 0, 0
+  index: -1
+qunzi2
+  rotate: false
+  xy: 209, 168
+  size: 117, 97
+  orig: 117, 97
+  offset: 0, 0
+  index: -1
+qunzihou
+  rotate: true
+  xy: 371, 146
+  size: 43, 19
+  orig: 43, 19
+  offset: 0, 0
+  index: -1
+shenti
+  rotate: false
+  xy: 226, 78
+  size: 72, 88
+  orig: 72, 88
+  offset: 0, 0
+  index: -1
+tou
+  rotate: false
+  xy: 132, 41
+  size: 92, 121
+  orig: 92, 121
+  offset: 0, 0
+  index: -1
+youdabi
+  rotate: false
+  xy: 303, 7
+  size: 29, 45
+  orig: 29, 45
+  offset: 0, 0
+  index: -1
+youshou
+  rotate: false
+  xy: 2, 164
+  size: 205, 101
+  orig: 205, 101
+  offset: 0, 0
+  index: -1
+youxiaobi
+  rotate: false
+  xy: 334, 17
+  size: 34, 35
+  orig: 34, 35
+  offset: 0, 0
+  index: -1
+zuodabi
+  rotate: false
+  xy: 300, 55
+  size: 30, 40
+  orig: 30, 40
+  offset: 0, 0
+  index: -1
+zuoshou
+  rotate: false
+  xy: 371, 123
+  size: 21, 21
+  orig: 21, 21
+  offset: 0, 0
+  index: -1
+zuoxiaobi
+  rotate: false
+  xy: 370, 16
+  size: 28, 36
+  orig: 28, 36
+  offset: 0, 0
+  index: -1

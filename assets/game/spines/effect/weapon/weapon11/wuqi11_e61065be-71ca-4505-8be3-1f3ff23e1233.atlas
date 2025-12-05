@@ -1,0 +1,153 @@
+
+wuqi11.png
+size: 1409,289
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0
+  rotate: false
+  xy: 848, 121
+  size: 164, 166
+  orig: 170, 170
+  offset: 4, 0
+  index: -1
+1
+  rotate: true
+  xy: 513, 117
+  size: 170, 166
+  orig: 170, 170
+  offset: 0, 0
+  index: -1
+2
+  rotate: true
+  xy: 2, 117
+  size: 170, 169
+  orig: 170, 170
+  offset: 0, 1
+  index: -1
+3
+  rotate: false
+  xy: 344, 117
+  size: 167, 170
+  orig: 170, 170
+  offset: 2, 0
+  index: -1
+4
+  rotate: false
+  xy: 173, 117
+  size: 169, 170
+  orig: 170, 170
+  offset: 1, 0
+  index: -1
+5
+  rotate: true
+  xy: 681, 119
+  size: 168, 165
+  orig: 170, 170
+  offset: 1, 0
+  index: -1
+6
+  rotate: false
+  xy: 1014, 126
+  size: 160, 161
+  orig: 170, 170
+  offset: 4, 5
+  index: -1
+du1
+  rotate: true
+  xy: 581, 36
+  size: 79, 76
+  orig: 79, 76
+  offset: 0, 0
+  index: -1
+du2
+  rotate: true
+  xy: 485, 14
+  size: 101, 94
+  orig: 101, 94
+  offset: 0, 0
+  index: -1
+du3
+  rotate: true
+  xy: 284, 3
+  size: 112, 102
+  orig: 112, 102
+  offset: 0, 0
+  index: -1
+du4
+  rotate: false
+  xy: 161, 2
+  size: 121, 113
+  orig: 121, 113
+  offset: 0, 0
+  index: -1
+du5
+  rotate: false
+  xy: 1028, 3
+  size: 128, 121
+  orig: 128, 121
+  offset: 0, 0
+  index: -1
+du6
+  rotate: false
+  xy: 1158, 4
+  size: 127, 120
+  orig: 127, 120
+  offset: 0, 0
+  index: -1
+du7
+  rotate: true
+  xy: 1287, 9
+  size: 124, 120
+  orig: 124, 120
+  offset: 0, 0
+  index: -1
+duye
+  rotate: false
+  xy: 1176, 135
+  size: 167, 152
+  orig: 167, 153
+  offset: 0, 0
+  index: -1
+gaolang1
+  rotate: false
+  xy: 2, 5
+  size: 157, 110
+  orig: 158, 110
+  offset: 1, 0
+  index: -1
+gaoliang2
+  rotate: true
+  xy: 388, 2
+  size: 113, 95
+  orig: 113, 96
+  offset: 0, 1
+  index: -1
+qiti
+  rotate: false
+  xy: 848, 2
+  size: 178, 117
+  orig: 185, 120
+  offset: 6, 1
+  index: -1
+suipian1
+  rotate: false
+  xy: 659, 32
+  size: 37, 41
+  orig: 38, 42
+  offset: 1, 1
+  index: -1
+suipian2
+  rotate: false
+  xy: 698, 32
+  size: 35, 41
+  orig: 35, 45
+  offset: 0, 0
+  index: -1
+suipian3
+  rotate: true
+  xy: 659, 75
+  size: 40, 39
+  orig: 40, 39
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,139 @@
+
+Enemy612_huopen.png
+size: 558,117
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+00
+  rotate: false
+  xy: 206, 55
+  size: 52, 60
+  orig: 64, 64
+  offset: 6, 0
+  index: -1
+01
+  rotate: false
+  xy: 100, 53
+  size: 52, 62
+  orig: 64, 64
+  offset: 6, 0
+  index: -1
+02
+  rotate: false
+  xy: 260, 57
+  size: 50, 58
+  orig: 64, 64
+  offset: 8, 6
+  index: -1
+03
+  rotate: true
+  xy: 222, 2
+  size: 51, 58
+  orig: 64, 64
+  offset: 8, 6
+  index: -1
+04
+  rotate: false
+  xy: 312, 57
+  size: 50, 58
+  orig: 64, 64
+  offset: 8, 6
+  index: -1
+05
+  rotate: true
+  xy: 164, 3
+  size: 48, 56
+  orig: 64, 64
+  offset: 8, 8
+  index: -1
+06
+  rotate: false
+  xy: 364, 59
+  size: 48, 56
+  orig: 64, 64
+  offset: 8, 8
+  index: -1
+07
+  rotate: false
+  xy: 390, 3
+  size: 46, 54
+  orig: 64, 64
+  offset: 10, 8
+  index: -1
+08
+  rotate: false
+  xy: 414, 59
+  size: 44, 56
+  orig: 64, 64
+  offset: 10, 0
+  index: -1
+09
+  rotate: false
+  xy: 460, 59
+  size: 44, 56
+  orig: 64, 64
+  offset: 10, 0
+  index: -1
+10
+  rotate: false
+  xy: 340, 3
+  size: 48, 52
+  orig: 64, 64
+  offset: 8, 0
+  index: -1
+11
+  rotate: false
+  xy: 438, 5
+  size: 48, 52
+  orig: 64, 64
+  offset: 8, 0
+  index: -1
+12
+  rotate: true
+  xy: 506, 69
+  size: 46, 50
+  orig: 64, 64
+  offset: 10, 0
+  index: -1
+13
+  rotate: true
+  xy: 100, 3
+  size: 48, 62
+  orig: 64, 64
+  offset: 8, 2
+  index: -1
+14
+  rotate: false
+  xy: 154, 53
+  size: 50, 62
+  orig: 64, 64
+  offset: 6, 2
+  index: -1
+15
+  rotate: true
+  xy: 282, 3
+  size: 52, 56
+  orig: 64, 64
+  offset: 6, 4
+  index: -1
+huopen
+  rotate: false
+  xy: 506, 42
+  size: 46, 25
+  orig: 46, 25
+  offset: 0, 0
+  index: -1
+lizi
+  rotate: false
+  xy: 488, 16
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+yanwu
+  rotate: true
+  xy: 2, 3
+  size: 112, 96
+  orig: 128, 108
+  offset: 7, 6
+  index: -1

@@ -1,0 +1,48 @@
+
+Enemy413.png
+size: 327,99
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+shenti
+  rotate: false
+  xy: 2, 7
+  size: 98, 90
+  orig: 98, 90
+  offset: 0, 0
+  index: -1
+tuo
+  rotate: false
+  xy: 102, 15
+  size: 98, 82
+  orig: 98, 82
+  offset: 0, 0
+  index: -1
+youshou
+  rotate: true
+  xy: 202, 2
+  size: 40, 67
+  orig: 40, 67
+  offset: 0, 0
+  index: -1
+youtui
+  rotate: false
+  xy: 280, 2
+  size: 42, 42
+  orig: 42, 42
+  offset: 0, 0
+  index: -1
+zuoshou
+  rotate: true
+  xy: 202, 44
+  size: 53, 76
+  orig: 53, 76
+  offset: 0, 0
+  index: -1
+zuotui
+  rotate: false
+  xy: 280, 46
+  size: 45, 51
+  orig: 45, 51
+  offset: 0, 0
+  index: -1

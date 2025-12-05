@@ -1,0 +1,20 @@
+
+faqi_qianghua_jiesuo.png
+size: 1024, 256
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bai
+  rotate: false
+  xy: 0, 55
+  size: 623, 129
+  orig: 623, 129
+  offset: 0, 0
+  index: -1
+guang
+  rotate: false
+  xy: 625, 0
+  size: 355, 184
+  orig: 355, 184
+  offset: 0, 0
+  index: -1

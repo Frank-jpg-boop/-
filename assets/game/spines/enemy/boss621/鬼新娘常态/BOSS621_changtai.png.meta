@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "8edec608-2d3f-448b-90ca-2f02c478c723",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1754,
+  "height": 159,
+  "platformSettings": {},
+  "subMetas": {
+    "BOSS621_changtai": {
+      "ver": "1.0.6",
+      "uuid": "2b344321-f424-444b-af4d-6c7df1391825",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "8edec608-2d3f-448b-90ca-2f02c478c723",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 1750,
+      "height": 155,
+      "rawWidth": 1754,
+      "rawHeight": 159,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

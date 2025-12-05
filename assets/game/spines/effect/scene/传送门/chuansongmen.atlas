@@ -1,0 +1,41 @@
+
+chuansongmen.png
+size: 336,203
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+hit
+  rotate: false
+  xy: 281, 38
+  size: 53, 53
+  orig: 53, 54
+  offset: 0, 0
+  index: -1
+lizi
+  rotate: false
+  xy: 306, 177
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+neiquan
+  rotate: true
+  xy: 192, 2
+  size: 89, 87
+  orig: 90, 89
+  offset: 1, 1
+  index: -1
+waiquan
+  rotate: true
+  xy: 2, 8
+  size: 193, 188
+  orig: 193, 188
+  offset: 0, 0
+  index: -1
+zhongquan
+  rotate: false
+  xy: 192, 93
+  size: 112, 108
+  orig: 115, 110
+  offset: 2, 1
+  index: -1

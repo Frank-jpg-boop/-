@@ -1,0 +1,20 @@
+
+operation.png
+size: 194,129
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+chukong1
+  rotate: false
+  xy: 129, 64
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+chukong2
+  rotate: false
+  xy: 2, 2
+  size: 125, 125
+  orig: 125, 125
+  offset: 0, 0
+  index: -1

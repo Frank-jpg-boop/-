@@ -1,0 +1,153 @@
+
+activated.png
+size: 1464, 1026
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+tx/tx (1)
+  rotate: false
+  xy: 324, 192
+  size: 188, 188
+  orig: 188, 188
+  offset: 0, 0
+  index: -1
+tx/tx (10)
+  rotate: false
+  xy: 514, 192
+  size: 188, 188
+  orig: 188, 188
+  offset: 0, 0
+  index: -1
+tx/tx (11)
+  rotate: false
+  xy: 704, 192
+  size: 188, 188
+  orig: 188, 188
+  offset: 0, 0
+  index: -1
+tx/tx (12)
+  rotate: false
+  xy: 894, 192
+  size: 188, 188
+  orig: 188, 188
+  offset: 0, 0
+  index: -1
+tx/tx (2)
+  rotate: false
+  xy: 1084, 192
+  size: 188, 188
+  orig: 188, 188
+  offset: 0, 0
+  index: -1
+tx/tx (3)
+  rotate: false
+  xy: 1274, 192
+  size: 188, 188
+  orig: 188, 188
+  offset: 0, 0
+  index: -1
+tx/tx (4)
+  rotate: false
+  xy: 324, 2
+  size: 188, 188
+  orig: 188, 188
+  offset: 0, 0
+  index: -1
+tx/tx (5)
+  rotate: false
+  xy: 514, 2
+  size: 188, 188
+  orig: 188, 188
+  offset: 0, 0
+  index: -1
+tx/tx (6)
+  rotate: false
+  xy: 704, 2
+  size: 188, 188
+  orig: 188, 188
+  offset: 0, 0
+  index: -1
+tx/tx (7)
+  rotate: false
+  xy: 894, 2
+  size: 188, 188
+  orig: 188, 188
+  offset: 0, 0
+  index: -1
+tx/tx (8)
+  rotate: false
+  xy: 1084, 2
+  size: 188, 188
+  orig: 188, 188
+  offset: 0, 0
+  index: -1
+tx/tx (9)
+  rotate: false
+  xy: 1274, 2
+  size: 188, 188
+  orig: 188, 188
+  offset: 0, 0
+  index: -1
+tx2/quan (1)
+  rotate: false
+  xy: 2, 704
+  size: 320, 320
+  orig: 320, 320
+  offset: 0, 0
+  index: -1
+tx2/quan (2)
+  rotate: false
+  xy: 324, 704
+  size: 320, 320
+  orig: 320, 320
+  offset: 0, 0
+  index: -1
+tx2/quan (3)
+  rotate: false
+  xy: 646, 704
+  size: 320, 320
+  orig: 320, 320
+  offset: 0, 0
+  index: -1
+tx2/quan (4)
+  rotate: false
+  xy: 968, 704
+  size: 320, 320
+  orig: 320, 320
+  offset: 0, 0
+  index: -1
+tx2/quan (5)
+  rotate: false
+  xy: 2, 382
+  size: 320, 320
+  orig: 320, 320
+  offset: 0, 0
+  index: -1
+tx2/quan (6)
+  rotate: false
+  xy: 324, 382
+  size: 320, 320
+  orig: 320, 320
+  offset: 0, 0
+  index: -1
+tx2/quan (7)
+  rotate: false
+  xy: 646, 382
+  size: 320, 320
+  orig: 320, 320
+  offset: 0, 0
+  index: -1
+tx2/quan (8)
+  rotate: false
+  xy: 968, 382
+  size: 320, 320
+  orig: 320, 320
+  offset: 0, 0
+  index: -1
+tx2/quan (9)
+  rotate: false
+  xy: 2, 60
+  size: 320, 320
+  orig: 320, 320
+  offset: 0, 0
+  index: -1

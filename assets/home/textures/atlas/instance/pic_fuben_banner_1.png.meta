@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "cfb29083-6439-4ee5-9af3-6e629b1bcd6a",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 703,
+  "height": 239,
+  "platformSettings": {},
+  "subMetas": {
+    "pic_fuben_banner_1": {
+      "ver": "1.0.6",
+      "uuid": "b9a5840b-e114-43de-8404-a831392a5563",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "cfb29083-6439-4ee5-9af3-6e629b1bcd6a",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 703,
+      "height": 239,
+      "rawWidth": 703,
+      "rawHeight": 239,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

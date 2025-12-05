@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "6c73cee5-2e9d-4c9e-95d3-65ebb6e1014f",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 228,
+  "height": 517,
+  "platformSettings": {},
+  "subMetas": {
+    "BOSS621_danmu": {
+      "ver": "1.0.6",
+      "uuid": "5931a36c-92dc-4ccf-85db-f02e17b9ec8a",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "6c73cee5-2e9d-4c9e-95d3-65ebb6e1014f",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 224,
+      "height": 513,
+      "rawWidth": 228,
+      "rawHeight": 517,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

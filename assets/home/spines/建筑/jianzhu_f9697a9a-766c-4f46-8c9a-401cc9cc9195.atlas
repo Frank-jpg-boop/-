@@ -1,0 +1,223 @@
+
+jianzhu.png
+size: 1956,2026
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bai
+  rotate: false
+  xy: 2, 1474
+  size: 548, 550
+  orig: 552, 554
+  offset: 2, 2
+  index: -1
+j (1)
+  rotate: true
+  xy: 2, 972
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (10)
+  rotate: false
+  xy: 504, 2
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (11)
+  rotate: true
+  xy: 552, 1524
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (12)
+  rotate: true
+  xy: 704, 1022
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (13)
+  rotate: true
+  xy: 786, 1524
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (14)
+  rotate: true
+  xy: 704, 520
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (15)
+  rotate: true
+  xy: 938, 1022
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (16)
+  rotate: true
+  xy: 1020, 1524
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (17)
+  rotate: true
+  xy: 938, 520
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (18)
+  rotate: true
+  xy: 1006, 18
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (19)
+  rotate: false
+  xy: 1172, 1290
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (2)
+  rotate: true
+  xy: 2, 470
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (20)
+  rotate: true
+  xy: 1254, 1524
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (21)
+  rotate: true
+  xy: 1488, 1524
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (22)
+  rotate: true
+  xy: 1674, 1022
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (23)
+  rotate: true
+  xy: 1722, 1524
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (24)
+  rotate: false
+  xy: 1172, 1056
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (25)
+  rotate: false
+  xy: 1172, 822
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (26)
+  rotate: false
+  xy: 1172, 588
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (27)
+  rotate: true
+  xy: 1674, 520
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (28)
+  rotate: true
+  xy: 1240, 86
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (29)
+  rotate: true
+  xy: 1474, 18
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (3)
+  rotate: false
+  xy: 2, 236
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (30)
+  rotate: true
+  xy: 1708, 18
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (4)
+  rotate: false
+  xy: 2, 2
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (5)
+  rotate: true
+  xy: 236, 972
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (6)
+  rotate: true
+  xy: 236, 470
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (7)
+  rotate: true
+  xy: 470, 972
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (8)
+  rotate: true
+  xy: 470, 470
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1
+j (9)
+  rotate: false
+  xy: 504, 236
+  size: 500, 232
+  orig: 500, 232
+  offset: 0, 0
+  index: -1

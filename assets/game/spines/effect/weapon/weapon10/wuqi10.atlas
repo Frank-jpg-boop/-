@@ -1,0 +1,104 @@
+
+wuqi10.png
+size: 1275,174
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+0
+  rotate: false
+  xy: 848, 6
+  size: 164, 166
+  orig: 170, 170
+  offset: 4, 0
+  index: -1
+1
+  rotate: true
+  xy: 513, 2
+  size: 170, 166
+  orig: 170, 170
+  offset: 0, 0
+  index: -1
+2
+  rotate: true
+  xy: 2, 2
+  size: 170, 169
+  orig: 170, 170
+  offset: 0, 1
+  index: -1
+3
+  rotate: false
+  xy: 344, 2
+  size: 167, 170
+  orig: 170, 170
+  offset: 2, 0
+  index: -1
+4
+  rotate: false
+  xy: 173, 2
+  size: 169, 170
+  orig: 170, 170
+  offset: 1, 0
+  index: -1
+5
+  rotate: true
+  xy: 681, 4
+  size: 168, 165
+  orig: 170, 170
+  offset: 1, 0
+  index: -1
+6
+  rotate: false
+  xy: 1014, 11
+  size: 160, 161
+  orig: 170, 170
+  offset: 4, 5
+  index: -1
+bingjing
+  rotate: false
+  xy: 1242, 134
+  size: 31, 38
+  orig: 31, 38
+  offset: 0, 0
+  index: -1
+daxuehua
+  rotate: false
+  xy: 1176, 59
+  size: 46, 46
+  orig: 46, 46
+  offset: 0, 0
+  index: -1
+suipian1
+  rotate: false
+  xy: 1213, 18
+  size: 39, 39
+  orig: 42, 39
+  offset: 0, 0
+  index: -1
+suipian2
+  rotate: true
+  xy: 1176, 11
+  size: 46, 35
+  orig: 48, 35
+  offset: 2, 0
+  index: -1
+suipian3
+  rotate: false
+  xy: 1242, 108
+  size: 27, 24
+  orig: 27, 26
+  offset: 0, 2
+  index: -1
+suipian4
+  rotate: true
+  xy: 1224, 68
+  size: 37, 33
+  orig: 42, 34
+  offset: 2, 0
+  index: -1
+xuewu
+  rotate: false
+  xy: 1176, 107
+  size: 64, 65
+  orig: 70, 73
+  offset: 2, 4
+  index: -1

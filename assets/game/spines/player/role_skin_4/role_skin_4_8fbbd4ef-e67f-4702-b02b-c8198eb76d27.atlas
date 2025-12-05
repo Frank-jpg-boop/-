@@ -1,0 +1,83 @@
+
+role_skin_4.png
+size: 660, 220
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bq1
+  rotate: false
+  xy: 335, 2
+  size: 106, 82
+  orig: 106, 82
+  offset: 0, 0
+  index: -1
+erhuan1
+  rotate: false
+  xy: 569, 11
+  size: 11, 23
+  orig: 11, 23
+  offset: 0, 0
+  index: -1
+erhuan2
+  rotate: false
+  xy: 582, 11
+  size: 11, 23
+  orig: 11, 23
+  offset: 0, 0
+  index: -1
+shen
+  rotate: false
+  xy: 335, 86
+  size: 164, 132
+  orig: 347, 260
+  offset: 94, 68
+  index: -1
+shou1
+  rotate: true
+  xy: 501, 36
+  size: 88, 100
+  orig: 98, 176
+  offset: 0, 30
+  index: -1
+shou2
+  rotate: true
+  xy: 501, 126
+  size: 92, 91
+  orig: 135, 244
+  offset: 26, 71
+  index: -1
+tou
+  rotate: false
+  xy: 2, 5
+  size: 331, 213
+  orig: 331, 288
+  offset: 0, 69
+  index: -1
+tui
+  rotate: false
+  xy: 603, 6
+  size: 53, 85
+  orig: 88, 191
+  offset: 17, 49
+  index: -1
+tui2
+  rotate: false
+  xy: 443, 4
+  size: 53, 80
+  orig: 96, 209
+  offset: 20, 63
+  index: -1
+weijing
+  rotate: true
+  xy: 603, 93
+  size: 125, 55
+  orig: 125, 55
+  offset: 0, 0
+  index: -1
+yingzi
+  rotate: false
+  xy: 498, 18
+  size: 69, 16
+  orig: 199, 46
+  offset: 65, 15
+  index: -1

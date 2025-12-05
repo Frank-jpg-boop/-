@@ -1,0 +1,153 @@
+
+huodetexiao.png
+size: 504,586
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+jieshaodi_gaoji
+  rotate: false
+  xy: 2, 488
+  size: 256, 96
+  orig: 256, 96
+  offset: 0, 0
+  index: -1
+xing
+  rotate: false
+  xy: 330, 308
+  size: 34, 30
+  orig: 36, 30
+  offset: 1, 0
+  index: -1
+xuanguang_00001
+  rotate: true
+  xy: 260, 424
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00002
+  rotate: true
+  xy: 2, 326
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00003
+  rotate: true
+  xy: 84, 326
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00004
+  rotate: true
+  xy: 166, 326
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00005
+  rotate: true
+  xy: 248, 262
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00006
+  rotate: true
+  xy: 2, 164
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00007
+  rotate: true
+  xy: 84, 164
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00008
+  rotate: true
+  xy: 166, 164
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00009
+  rotate: false
+  xy: 248, 180
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00010
+  rotate: false
+  xy: 342, 504
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00011
+  rotate: false
+  xy: 342, 422
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00012
+  rotate: false
+  xy: 330, 340
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00013
+  rotate: true
+  xy: 410, 178
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00014
+  rotate: true
+  xy: 248, 18
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00015
+  rotate: true
+  xy: 2, 2
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00016
+  rotate: true
+  xy: 84, 2
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00017
+  rotate: true
+  xy: 166, 2
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00018
+  rotate: false
+  xy: 330, 96
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+xuanguang_00019
+  rotate: false
+  xy: 330, 14
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1

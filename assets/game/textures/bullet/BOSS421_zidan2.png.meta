@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "8c8b96e1-1917-4645-973c-e96e9f0c77db",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 40,
+  "height": 28,
+  "platformSettings": {},
+  "subMetas": {
+    "BOSS421_zidan2": {
+      "ver": "1.0.6",
+      "uuid": "b268dc09-6968-482e-914f-12de810dfcff",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "8c8b96e1-1917-4645-973c-e96e9f0c77db",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 40,
+      "height": 28,
+      "rawWidth": 40,
+      "rawHeight": 28,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

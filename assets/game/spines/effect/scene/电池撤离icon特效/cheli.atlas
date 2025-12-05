@@ -1,0 +1,90 @@
+
+cheli.png
+size: 756,210
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+dianguang1
+  rotate: false
+  xy: 2, 8
+  size: 195, 200
+  orig: 196, 202
+  offset: 1, 1
+  index: -1
+dianguang2
+  rotate: false
+  xy: 199, 13
+  size: 190, 195
+  orig: 191, 195
+  offset: 1, 0
+  index: -1
+hit1
+  rotate: true
+  xy: 633, 86
+  size: 122, 121
+  orig: 122, 121
+  offset: 0, 0
+  index: -1
+hit2
+  rotate: true
+  xy: 391, 31
+  size: 177, 163
+  orig: 178, 164
+  offset: 1, 0
+  index: -1
+lightning1
+  rotate: false
+  xy: 443, 6
+  size: 23, 23
+  orig: 100, 100
+  offset: 40, 4
+  index: -1
+lightning2
+  rotate: false
+  xy: 604, 7
+  size: 45, 37
+  orig: 100, 100
+  offset: 41, 5
+  index: -1
+lightning3
+  rotate: false
+  xy: 556, 4
+  size: 46, 40
+  orig: 100, 100
+  offset: 43, 6
+  index: -1
+lightning4
+  rotate: false
+  xy: 411, 6
+  size: 30, 23
+  orig: 100, 100
+  offset: 33, 14
+  index: -1
+lightning5
+  rotate: true
+  xy: 704, 25
+  size: 59, 47
+  orig: 100, 100
+  offset: 33, 4
+  index: -1
+lightning7
+  rotate: true
+  xy: 651, 5
+  size: 79, 51
+  orig: 100, 100
+  offset: 14, 6
+  index: -1
+lightning8
+  rotate: false
+  xy: 391, 2
+  size: 18, 27
+  orig: 100, 100
+  offset: 75, 27
+  index: -1
+saoguang
+  rotate: true
+  xy: 556, 46
+  size: 162, 75
+  orig: 162, 84
+  offset: 0, 9
+  index: -1

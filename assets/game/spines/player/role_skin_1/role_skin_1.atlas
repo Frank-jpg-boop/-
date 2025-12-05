@@ -1,0 +1,111 @@
+
+role_skin_1.png
+size: 376, 269
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bao
+  rotate: false
+  xy: 227, 155
+  size: 99, 112
+  orig: 99, 112
+  offset: 0, 0
+  index: -1
+bq1
+  rotate: true
+  xy: 123, 7
+  size: 52, 40
+  orig: 106, 82
+  offset: 27, 21
+  index: -1
+fu2
+  rotate: false
+  xy: 2, 2
+  size: 33, 57
+  orig: 33, 57
+  offset: 0, 0
+  index: -1
+maozi
+  rotate: true
+  xy: 159, 153
+  size: 114, 66
+  orig: 114, 66
+  offset: 0, 0
+  index: -1
+pao
+  rotate: true
+  xy: 165, 20
+  size: 46, 98
+  orig: 46, 98
+  offset: 0, 0
+  index: -1
+pao2
+  rotate: true
+  xy: 265, 21
+  size: 46, 98
+  orig: 46, 98
+  offset: 0, 0
+  index: -1
+shen
+  rotate: true
+  xy: 220, 69
+  size: 82, 109
+  orig: 347, 260
+  offset: 133, 76
+  index: -1
+shou1
+  rotate: true
+  xy: 37, 4
+  size: 55, 84
+  orig: 98, 176
+  offset: 26, 47
+  index: -1
+shou2
+  rotate: false
+  xy: 159, 68
+  size: 59, 83
+  orig: 135, 244
+  offset: 29, 79
+  index: -1
+sidai
+  rotate: true
+  xy: 236, 10
+  size: 8, 69
+  orig: 8, 69
+  offset: 0, 0
+  index: -1
+sidai2
+  rotate: true
+  xy: 236, 10
+  size: 8, 69
+  orig: 8, 69
+  offset: 0, 0
+  index: -1
+tou
+  rotate: true
+  xy: 2, 61
+  size: 206, 155
+  orig: 331, 288
+  offset: 59, 83
+  index: -1
+tui
+  rotate: false
+  xy: 331, 185
+  size: 43, 82
+  orig: 88, 191
+  offset: 20, 56
+  index: -1
+tui2
+  rotate: false
+  xy: 331, 104
+  size: 43, 79
+  orig: 96, 209
+  offset: 27, 64
+  index: -1
+yingzi
+  rotate: false
+  xy: 165, 2
+  size: 69, 16
+  orig: 199, 46
+  offset: 65, 15
+  index: -1

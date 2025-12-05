@@ -1,0 +1,111 @@
+
+Enemy412.png
+size: 487,126
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+TX_shouji_0001
+  rotate: true
+  xy: 391, 53
+  size: 71, 74
+  orig: 127, 138
+  offset: 23, 32
+  index: -1
+TX_shouji_0003
+  rotate: true
+  xy: 245, 25
+  size: 99, 96
+  orig: 127, 138
+  offset: 8, 27
+  index: -1
+TX_shouji_0005
+  rotate: false
+  xy: 130, 4
+  size: 113, 120
+  orig: 127, 138
+  offset: 3, 13
+  index: -1
+TX_shouji_0007
+  rotate: true
+  xy: 2, 13
+  size: 111, 126
+  orig: 127, 138
+  offset: 6, 5
+  index: -1
+guaizhang
+  rotate: true
+  xy: 2, 2
+  size: 9, 63
+  orig: 9, 63
+  offset: 0, 0
+  index: -1
+shenti
+  rotate: true
+  xy: 391, 10
+  size: 41, 65
+  orig: 41, 65
+  offset: 0, 0
+  index: -1
+tou
+  rotate: false
+  xy: 343, 61
+  size: 44, 63
+  orig: 44, 63
+  offset: 0, 0
+  index: -1
+xiaba
+  rotate: true
+  xy: 467, 57
+  size: 15, 11
+  orig: 15, 11
+  offset: 0, 0
+  index: -1
+xiabai
+  rotate: false
+  xy: 343, 25
+  size: 24, 34
+  orig: 24, 34
+  offset: 0, 0
+  index: -1
+youdabi
+  rotate: false
+  xy: 467, 91
+  size: 14, 33
+  orig: 14, 33
+  offset: 0, 0
+  index: -1
+youshou
+  rotate: false
+  xy: 369, 31
+  size: 19, 28
+  orig: 19, 28
+  offset: 0, 0
+  index: -1
+youtui
+  rotate: true
+  xy: 320, 10
+  size: 13, 69
+  orig: 13, 69
+  offset: 0, 0
+  index: -1
+youxiaobi
+  rotate: true
+  xy: 467, 74
+  size: 15, 16
+  orig: 15, 16
+  offset: 0, 0
+  index: -1
+zuoshou
+  rotate: false
+  xy: 458, 4
+  size: 27, 47
+  orig: 27, 47
+  offset: 0, 0
+  index: -1
+zuotui
+  rotate: true
+  xy: 245, 8
+  size: 15, 73
+  orig: 15, 73
+  offset: 0, 0
+  index: -1
