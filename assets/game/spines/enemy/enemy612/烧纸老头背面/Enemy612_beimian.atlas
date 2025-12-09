@@ -1,0 +1,48 @@
+
+Enemy612_beimian.png
+size: 86,135
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+dabi
+  rotate: false
+  xy: 66, 104
+  size: 18, 29
+  orig: 18, 29
+  offset: 0, 0
+  index: -1
+shenti
+  rotate: true
+  xy: 2, 2
+  size: 62, 55
+  orig: 62, 55
+  offset: 0, 0
+  index: -1
+tou
+  rotate: true
+  xy: 2, 66
+  size: 67, 62
+  orig: 67, 62
+  offset: 0, 0
+  index: -1
+tui
+  rotate: false
+  xy: 59, 7
+  size: 23, 25
+  orig: 23, 25
+  offset: 0, 0
+  index: -1
+xiaobi
+  rotate: true
+  xy: 59, 34
+  size: 30, 20
+  orig: 30, 20
+  offset: 0, 0
+  index: -1
+zhiqian
+  rotate: true
+  xy: 66, 83
+  size: 19, 17
+  orig: 19, 17
+  offset: 0, 0
+  index: -1

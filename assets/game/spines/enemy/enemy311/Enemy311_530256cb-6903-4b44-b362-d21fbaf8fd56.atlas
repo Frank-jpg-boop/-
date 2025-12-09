@@ -1,0 +1,104 @@
+
+Enemy311.png
+size: 139,140
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+shenti1
+  rotate: true
+  xy: 67, 32
+  size: 36, 48
+  orig: 36, 48
+  offset: 0, 0
+  index: -1
+shenti2
+  rotate: false
+  xy: 13, 26
+  size: 37, 50
+  orig: 37, 62
+  offset: 0, 12
+  index: -1
+tou1
+  rotate: false
+  xy: 2, 78
+  size: 68, 60
+  orig: 68, 60
+  offset: 0, 0
+  index: -1
+tou2
+  rotate: true
+  xy: 72, 70
+  size: 68, 60
+  orig: 68, 60
+  offset: 0, 0
+  index: -1
+yanjing 2
+  rotate: true
+  xy: 99, 4
+  size: 26, 12
+  orig: 26, 12
+  offset: 0, 0
+  index: -1
+yanjing1
+  rotate: false
+  xy: 67, 6
+  size: 25, 12
+  orig: 25, 12
+  offset: 0, 0
+  index: -1
+yingzi
+  rotate: true
+  xy: 2, 24
+  size: 52, 9
+  orig: 52, 9
+  offset: 0, 0
+  index: -1
+youshou
+  rotate: true
+  xy: 13, 2
+  size: 22, 27
+  orig: 22, 27
+  offset: 0, 0
+  index: -1
+youtui
+  rotate: false
+  xy: 52, 45
+  size: 13, 31
+  orig: 13, 31
+  offset: 0, 0
+  index: -1
+zui1
+  rotate: true
+  xy: 2, 5
+  size: 17, 6
+  orig: 17, 6
+  offset: 0, 0
+  index: -1
+zui2
+  rotate: false
+  xy: 67, 20
+  size: 30, 10
+  orig: 30, 10
+  offset: 0, 0
+  index: -1
+zuoshou1
+  rotate: false
+  xy: 117, 39
+  size: 20, 29
+  orig: 20, 29
+  offset: 0, 0
+  index: -1
+zuoshou2
+  rotate: false
+  xy: 117, 8
+  size: 20, 29
+  orig: 20, 29
+  offset: 0, 0
+  index: -1
+zuotui
+  rotate: false
+  xy: 52, 13
+  size: 13, 30
+  orig: 13, 30
+  offset: 0, 0
+  index: -1

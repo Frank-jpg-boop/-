@@ -1,0 +1,48 @@
+
+wuqi2.png
+size: 262,260
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ark1
+  rotate: true
+  xy: 107, 103
+  size: 92, 128
+  orig: 97, 132
+  offset: 2, 1
+  index: -1
+ark2
+  rotate: true
+  xy: 132, 2
+  size: 99, 128
+  orig: 100, 130
+  offset: 1, 1
+  index: -1
+ark3
+  rotate: true
+  xy: 2, 9
+  size: 92, 128
+  orig: 95, 131
+  offset: 2, 2
+  index: -1
+guang
+  rotate: true
+  xy: 2, 104
+  size: 115, 103
+  orig: 116, 116
+  offset: 0, 12
+  index: -1
+jian
+  rotate: false
+  xy: 2, 221
+  size: 109, 37
+  orig: 111, 51
+  offset: 0, 5
+  index: -1
+jianguang
+  rotate: false
+  xy: 113, 197
+  size: 136, 61
+  orig: 138, 62
+  offset: 1, 0
+  index: -1

@@ -1,0 +1,20 @@
+{
+  "start-scene": "161f7435-6b0a-47aa-b76a-dcdae540170e",
+  "group-list": [
+    "default",
+    "game"
+  ],
+  "collision-matrix": [
+    [
+      true
+    ],
+    [
+      false,
+      false
+    ]
+  ],
+  "migrate-history": [
+    "cloud-function"
+  ],
+  "last-module-event-record-time": 1764387585741
+}

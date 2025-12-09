@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "7e4a7d43-b88c-4d3f-8189-583966c3dfc6",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 28,
+  "height": 33,
+  "platformSettings": {},
+  "subMetas": {
+    "icon_yingdi_damond_green": {
+      "ver": "1.0.6",
+      "uuid": "ee9eb752-3589-4267-a940-c28ce910f7eb",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "7e4a7d43-b88c-4d3f-8189-583966c3dfc6",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 28,
+      "height": 33,
+      "rawWidth": 28,
+      "rawHeight": 33,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

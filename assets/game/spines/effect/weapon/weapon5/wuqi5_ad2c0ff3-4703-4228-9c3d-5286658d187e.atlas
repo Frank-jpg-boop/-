@@ -1,0 +1,48 @@
+
+wuqi5.png
+size: 374,100
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+qiang
+  rotate: true
+  xy: 327, 6
+  size: 92, 45
+  orig: 93, 48
+  offset: 1, 0
+  index: -1
+qianghuo
+  rotate: true
+  xy: 246, 30
+  size: 68, 79
+  orig: 70, 82
+  offset: 1, 1
+  index: -1
+qianghuo2
+  rotate: false
+  xy: 116, 6
+  size: 128, 92
+  orig: 128, 97
+  offset: 0, 0
+  index: -1
+sandan
+  rotate: false
+  xy: 274, 17
+  size: 44, 11
+  orig: 45, 11
+  offset: 1, 0
+  index: -1
+yanwu
+  rotate: false
+  xy: 2, 2
+  size: 112, 96
+  orig: 128, 108
+  offset: 7, 6
+  index: -1
+zidanke
+  rotate: false
+  xy: 246, 9
+  size: 26, 19
+  orig: 26, 21
+  offset: 0, 1
+  index: -1

@@ -1,0 +1,1 @@
+{"__type__":"cc.AnimationClip","_name":"BossHpShow","_duration":0.5,"sample":30,"curveData":{"props":{"position":[{"frame":0,"value":[1000,-440,0],"curve":[0.18,0.89,0.31,1.21]},{"frame":0.5,"value":[0,-440,0]}]}}}

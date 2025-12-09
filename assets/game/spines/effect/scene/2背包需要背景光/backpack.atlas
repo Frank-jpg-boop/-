@@ -1,0 +1,27 @@
+
+backpack.png
+size: 190,110
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+guangquan
+  rotate: false
+  xy: 2, 4
+  size: 102, 104
+  orig: 103, 104
+  offset: 0, 0
+  index: -1
+huiguang
+  rotate: false
+  xy: 106, 30
+  size: 82, 78
+  orig: 83, 80
+  offset: 1, 1
+  index: -1
+xingxing
+  rotate: false
+  xy: 106, 2
+  size: 26, 26
+  orig: 30, 30
+  offset: 2, 2
+  index: -1

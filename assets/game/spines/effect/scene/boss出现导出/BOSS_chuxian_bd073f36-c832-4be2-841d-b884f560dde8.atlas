@@ -1,0 +1,20 @@
+
+BOSS_chuxian.png
+size: 754,428
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Txt_bosslaixi
+  rotate: false
+  xy: 2, 2
+  size: 517, 142
+  orig: 517, 142
+  offset: 0, 0
+  index: -1
+bossdi
+  rotate: false
+  xy: 2, 146
+  size: 750, 280
+  orig: 750, 280
+  offset: 0, 0
+  index: -1

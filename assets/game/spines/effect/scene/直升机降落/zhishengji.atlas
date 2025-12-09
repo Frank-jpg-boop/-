@@ -1,0 +1,41 @@
+
+zhishengji.png
+size: 764,399
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+luoxuanjiang
+  rotate: true
+  xy: 570, 179
+  size: 218, 192
+  orig: 220, 193
+  offset: 1, 0
+  index: -1
+luoxuanjiang2
+  rotate: false
+  xy: 417, 8
+  size: 257, 40
+  orig: 260, 233
+  offset: 1, 96
+  index: -1
+yanwu
+  rotate: false
+  xy: 570, 81
+  size: 112, 96
+  orig: 128, 108
+  offset: 7, 6
+  index: -1
+yingzi
+  rotate: false
+  xy: 2, 2
+  size: 413, 46
+  orig: 413, 46
+  offset: 0, 0
+  index: -1
+zhishengji
+  rotate: false
+  xy: 2, 50
+  size: 566, 347
+  orig: 568, 347
+  offset: 0, 0
+  index: -1

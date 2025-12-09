@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c202c599-3d8b-4154-baf3-79ad015fa253",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 642,
+  "height": 136,
+  "platformSettings": {},
+  "subMetas": {
+    "pic_homepage_diaoluo_di": {
+      "ver": "1.0.6",
+      "uuid": "7cc17d05-b488-4cf2-aa76-c3107a393b28",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c202c599-3d8b-4154-baf3-79ad015fa253",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 642,
+      "height": 136,
+      "rawWidth": 642,
+      "rawHeight": 136,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

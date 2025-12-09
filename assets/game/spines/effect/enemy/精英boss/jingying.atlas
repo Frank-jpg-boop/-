@@ -1,0 +1,13 @@
+
+jingying.png
+size: 71,71
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+wenzi
+  rotate: false
+  xy: 2, 32
+  size: 67, 37
+  orig: 67, 37
+  offset: 0, 0
+  index: -1

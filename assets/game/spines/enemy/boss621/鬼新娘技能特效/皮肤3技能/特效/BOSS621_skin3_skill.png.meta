@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "f302dac0-b347-4e08-aacf-468d9eff472c",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 205,
+  "height": 748,
+  "platformSettings": {},
+  "subMetas": {
+    "BOSS621_skin3_skill": {
+      "ver": "1.0.6",
+      "uuid": "038a1f16-4a97-4968-a17e-ca16e89ff24f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "f302dac0-b347-4e08-aacf-468d9eff472c",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 201,
+      "height": 744,
+      "rawWidth": 205,
+      "rawHeight": 748,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

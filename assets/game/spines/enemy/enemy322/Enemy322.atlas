@@ -1,0 +1,69 @@
+
+Enemy322.png
+size: 204,142
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+beishou
+  rotate: false
+  xy: 138, 7
+  size: 36, 53
+  orig: 36, 53
+  offset: 0, 0
+  index: -1
+daizi
+  rotate: false
+  xy: 84, 62
+  size: 57, 78
+  orig: 57, 78
+  offset: 0, 0
+  index: -1
+shenti
+  rotate: false
+  xy: 2, 51
+  size: 80, 89
+  orig: 80, 89
+  offset: 0, 0
+  index: -1
+tongkong
+  rotate: true
+  xy: 84, 56
+  size: 4, 3
+  orig: 4, 3
+  offset: 0, 0
+  index: -1
+tou
+  rotate: true
+  xy: 77, 3
+  size: 46, 59
+  orig: 46, 59
+  offset: 0, 0
+  index: -1
+xue
+  rotate: false
+  xy: 143, 80
+  size: 59, 60
+  orig: 59, 61
+  offset: 0, 1
+  index: -1
+yanqiu
+  rotate: false
+  xy: 143, 64
+  size: 13, 14
+  orig: 13, 14
+  offset: 0, 0
+  index: -1
+youshou
+  rotate: true
+  xy: 2, 2
+  size: 47, 73
+  orig: 47, 73
+  offset: 0, 0
+  index: -1
+zuoshou
+  rotate: false
+  xy: 176, 32
+  size: 23, 46
+  orig: 23, 46
+  offset: 0, 0
+  index: -1

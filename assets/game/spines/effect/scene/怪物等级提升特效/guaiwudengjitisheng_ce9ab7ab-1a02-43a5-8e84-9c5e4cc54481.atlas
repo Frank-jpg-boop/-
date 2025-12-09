@@ -1,0 +1,27 @@
+
+guaiwudengjitisheng.png
+size: 153,475
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1
+  rotate: true
+  xy: 2, 169
+  size: 160, 139
+  orig: 160, 139
+  offset: 0, 0
+  index: -1
+2
+  rotate: true
+  xy: 2, 331
+  size: 142, 145
+  orig: 146, 147
+  offset: 1, 1
+  index: -1
+3
+  rotate: false
+  xy: 2, 2
+  size: 149, 165
+  orig: 149, 165
+  offset: 0, 0
+  index: -1

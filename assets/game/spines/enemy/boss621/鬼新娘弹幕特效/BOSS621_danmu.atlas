@@ -1,0 +1,118 @@
+
+BOSS621_danmu.png
+size: 228,517
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+D0
+  rotate: false
+  xy: 165, 163
+  size: 45, 43
+  orig: 84, 83
+  offset: 21, 20
+  index: -1
+D1
+  rotate: true
+  xy: 169, 251
+  size: 58, 56
+  orig: 84, 83
+  offset: 15, 13
+  index: -1
+D2
+  rotate: false
+  xy: 82, 82
+  size: 71, 71
+  orig: 84, 83
+  offset: 9, 5
+  index: -1
+D3
+  rotate: false
+  xy: 2, 2
+  size: 77, 77
+  orig: 84, 83
+  offset: 5, 3
+  index: -1
+D4
+  rotate: false
+  xy: 2, 160
+  size: 80, 80
+  orig: 84, 83
+  offset: 4, 1
+  index: -1
+D5
+  rotate: false
+  xy: 2, 242
+  size: 82, 79
+  orig: 84, 83
+  offset: 2, 2
+  index: -1
+D6
+  rotate: false
+  xy: 84, 155
+  size: 79, 76
+  orig: 84, 83
+  offset: 3, 4
+  index: -1
+D7
+  rotate: true
+  xy: 81, 3
+  size: 76, 73
+  orig: 84, 83
+  offset: 5, 6
+  index: -1
+D8
+  rotate: false
+  xy: 156, 84
+  size: 70, 69
+  orig: 84, 83
+  offset: 9, 10
+  index: -1
+baokai1
+  rotate: true
+  xy: 2, 323
+  size: 81, 101
+  orig: 83, 106
+  offset: 1, 4
+  index: -1
+baokai2
+  rotate: false
+  xy: 116, 403
+  size: 107, 112
+  orig: 110, 114
+  offset: 2, 1
+  index: -1
+baokai3
+  rotate: false
+  xy: 2, 406
+  size: 112, 109
+  orig: 118, 115
+  offset: 3, 3
+  index: -1
+fazhen1
+  rotate: true
+  xy: 86, 233
+  size: 76, 81
+  orig: 90, 91
+  offset: 8, 6
+  index: -1
+fazhen2
+  rotate: true
+  xy: 105, 311
+  size: 90, 91
+  orig: 90, 91
+  offset: 0, 0
+  index: -1
+fazhen3
+  rotate: false
+  xy: 2, 81
+  size: 78, 77
+  orig: 90, 91
+  offset: 6, 7
+  index: -1
+guangqiu
+  rotate: true
+  xy: 169, 208
+  size: 41, 47
+  orig: 47, 48
+  offset: 3, 1
+  index: -1

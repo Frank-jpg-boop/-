@@ -1,0 +1,48 @@
+
+wuqi8.png
+size: 271,120
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+guangquan
+  rotate: false
+  xy: 2, 4
+  size: 114, 114
+  orig: 114, 114
+  offset: 0, 0
+  index: -1
+liangdangguang
+  rotate: false
+  xy: 118, 13
+  size: 75, 105
+  orig: 76, 106
+  offset: 0, 1
+  index: -1
+lingdang
+  rotate: false
+  xy: 195, 36
+  size: 53, 82
+  orig: 53, 84
+  offset: 0, 2
+  index: -1
+lizi
+  rotate: false
+  xy: 195, 21
+  size: 14, 13
+  orig: 14, 13
+  offset: 0, 0
+  index: -1
+shandian
+  rotate: true
+  xy: 250, 32
+  size: 86, 11
+  orig: 86, 11
+  offset: 0, 0
+  index: -1
+xian
+  rotate: false
+  xy: 118, 2
+  size: 151, 9
+  orig: 151, 10
+  offset: 0, 0
+  index: -1

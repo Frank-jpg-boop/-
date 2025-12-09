@@ -1,0 +1,62 @@
+
+role_1.png
+size: 371, 126
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bq1
+  rotate: false
+  xy: 310, 6
+  size: 52, 40
+  orig: 106, 82
+  offset: 27, 21
+  index: -1
+shen
+  rotate: false
+  xy: 143, 8
+  size: 87, 116
+  orig: 347, 260
+  offset: 130, 72
+  index: -1
+shou1
+  rotate: true
+  xy: 232, 2
+  size: 42, 76
+  orig: 98, 176
+  offset: 28, 50
+  index: -1
+shou2
+  rotate: false
+  xy: 308, 48
+  size: 43, 76
+  orig: 135, 244
+  offset: 46, 84
+  index: -1
+tou
+  rotate: false
+  xy: 2, 2
+  size: 139, 122
+  orig: 331, 288
+  offset: 96, 83
+  index: -1
+tui
+  rotate: false
+  xy: 232, 46
+  size: 36, 78
+  orig: 88, 191
+  offset: 26, 56
+  index: -1
+tui2
+  rotate: false
+  xy: 270, 46
+  size: 36, 78
+  orig: 96, 209
+  offset: 30, 65
+  index: -1
+yingzi
+  rotate: true
+  xy: 353, 55
+  size: 69, 16
+  orig: 199, 46
+  offset: 65, 15
+  index: -1

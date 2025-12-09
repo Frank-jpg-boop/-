@@ -1,0 +1,34 @@
+
+wuqi4_jizhong.png
+size: 116,158
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+lizi
+  rotate: false
+  xy: 90, 143
+  size: 14, 13
+  orig: 14, 13
+  offset: 0, 0
+  index: -1
+shandian
+  rotate: true
+  xy: 2, 145
+  size: 11, 86
+  orig: 11, 86
+  offset: 0, 0
+  index: -1
+sheguang
+  rotate: false
+  xy: 2, 100
+  size: 89, 41
+  orig: 91, 45
+  offset: 1, 0
+  index: -1
+yanwu
+  rotate: false
+  xy: 2, 2
+  size: 112, 96
+  orig: 128, 108
+  offset: 7, 6
+  index: -1

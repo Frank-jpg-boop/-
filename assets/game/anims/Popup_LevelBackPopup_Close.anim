@@ -1,0 +1,1 @@
+{"__type__":"cc.AnimationClip","_name":"Popup_LevelBackPopup_Close","_duration":0.25,"curveData":{"paths":{"View":{"props":{"scale":[{"frame":0,"value":{"__type__":"cc.Vec3","x":1,"y":1,"z":1}},{"frame":0.25,"value":{"__type__":"cc.Vec3","x":0,"y":0,"z":1}}]}}}}}

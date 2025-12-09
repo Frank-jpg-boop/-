@@ -1,0 +1,62 @@
+
+role_skin_6.png
+size: 161, 471
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bq1
+  rotate: false
+  xy: 2, 131
+  size: 106, 71
+  orig: 106, 82
+  offset: 0, 0
+  index: -1
+shen
+  rotate: true
+  xy: 2, 204
+  size: 57, 139
+  orig: 347, 260
+  offset: 145, 46
+  index: -1
+shou1
+  rotate: true
+  xy: 2, 63
+  size: 66, 85
+  orig: 98, 176
+  offset: 15, 47
+  index: -1
+shou2
+  rotate: false
+  xy: 89, 17
+  size: 62, 83
+  orig: 135, 244
+  offset: 29, 79
+  index: -1
+tou
+  rotate: true
+  xy: 2, 263
+  size: 206, 155
+  orig: 331, 288
+  offset: 59, 83
+  index: -1
+tui
+  rotate: false
+  xy: 110, 102
+  size: 43, 88
+  orig: 88, 191
+  offset: 20, 50
+  index: -1
+tui2
+  rotate: true
+  xy: 2, 2
+  size: 59, 74
+  orig: 96, 209
+  offset: 11, 64
+  index: -1
+yingzi
+  rotate: true
+  xy: 143, 192
+  size: 69, 16
+  orig: 199, 46
+  offset: 65, 15
+  index: -1

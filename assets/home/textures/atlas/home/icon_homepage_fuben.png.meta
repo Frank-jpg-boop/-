@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "f7594918-9d84-4744-b896-9f9e1d076e70",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 119,
+  "height": 104,
+  "platformSettings": {},
+  "subMetas": {
+    "icon_homepage_fuben": {
+      "ver": "1.0.6",
+      "uuid": "3c799c49-9c3b-4574-84e1-28411d77c0b6",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "f7594918-9d84-4744-b896-9f9e1d076e70",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 119,
+      "height": 104,
+      "rawWidth": 119,
+      "rawHeight": 104,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

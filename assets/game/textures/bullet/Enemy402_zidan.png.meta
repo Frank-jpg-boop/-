@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c4a496cf-9d62-4b74-8840-0cd8d9f73d9c",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 73,
+  "height": 24,
+  "platformSettings": {},
+  "subMetas": {
+    "Enemy402_zidan": {
+      "ver": "1.0.6",
+      "uuid": "804c22cb-9209-4c29-aa70-dbfd1a0f0731",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c4a496cf-9d62-4b74-8840-0cd8d9f73d9c",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 73,
+      "height": 24,
+      "rawWidth": 73,
+      "rawHeight": 24,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

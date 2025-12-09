@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "dfc15738-e291-406c-85eb-2d772d102c2d",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 405,
+  "height": 571,
+  "platformSettings": {},
+  "subMetas": {
+    "pic_homepage_clothing_kuang": {
+      "ver": "1.0.6",
+      "uuid": "80ecbb8b-406c-415e-ab24-b0e687810efb",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "dfc15738-e291-406c-85eb-2d772d102c2d",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0.5,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 405,
+      "height": 570,
+      "rawWidth": 405,
+      "rawHeight": 571,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

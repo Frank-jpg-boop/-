@@ -1,0 +1,69 @@
+
+role_skin_12.png
+size: 376, 522
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+beibao
+  rotate: false
+  xy: 2, 342
+  size: 266, 178
+  orig: 322, 197
+  offset: 28, 10
+  index: -1
+bq1
+  rotate: false
+  xy: 184, 20
+  size: 106, 71
+  orig: 106, 82
+  offset: 0, 0
+  index: -1
+shen
+  rotate: false
+  xy: 2, 146
+  size: 218, 194
+  orig: 347, 260
+  offset: 61, 38
+  index: -1
+shou1
+  rotate: false
+  xy: 270, 355
+  size: 98, 165
+  orig: 98, 176
+  offset: 0, 0
+  index: -1
+shou2
+  rotate: true
+  xy: 2, 17
+  size: 127, 180
+  orig: 135, 244
+  offset: 0, 39
+  index: -1
+tou
+  rotate: true
+  xy: 222, 93
+  size: 247, 149
+  orig: 331, 288
+  offset: 42, 73
+  index: -1
+tui
+  rotate: true
+  xy: 292, 48
+  size: 43, 82
+  orig: 88, 191
+  offset: 20, 56
+  index: -1
+tui2
+  rotate: true
+  xy: 292, 3
+  size: 43, 79
+  orig: 96, 209
+  offset: 27, 64
+  index: -1
+yingzi
+  rotate: false
+  xy: 184, 2
+  size: 69, 16
+  orig: 199, 46
+  offset: 65, 15
+  index: -1

@@ -1,0 +1,90 @@
+
+BOSS123.png
+size: 684,126
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+houchibang
+  rotate: true
+  xy: 352, 46
+  size: 78, 155
+  orig: 78, 155
+  offset: 0, 0
+  index: -1
+houtoufa
+  rotate: true
+  xy: 183, 6
+  size: 35, 112
+  orig: 35, 112
+  offset: 0, 0
+  index: -1
+houzhua
+  rotate: true
+  xy: 330, 20
+  size: 21, 16
+  orig: 21, 16
+  offset: 0, 0
+  index: -1
+qianchibang
+  rotate: true
+  xy: 2, 11
+  size: 113, 179
+  orig: 113, 179
+  offset: 0, 0
+  index: -1
+qianzhua
+  rotate: true
+  xy: 297, 2
+  size: 39, 31
+  orig: 39, 31
+  offset: 0, 0
+  index: -1
+shenti
+  rotate: false
+  xy: 183, 43
+  size: 167, 81
+  orig: 167, 81
+  offset: 0, 0
+  index: -1
+tou
+  rotate: false
+  xy: 509, 8
+  size: 73, 64
+  orig: 73, 64
+  offset: 0, 0
+  index: -1
+toufaqian
+  rotate: true
+  xy: 509, 74
+  size: 50, 125
+  orig: 50, 125
+  offset: 0, 0
+  index: -1
+tui
+  rotate: false
+  xy: 584, 12
+  size: 50, 60
+  orig: 51, 60
+  offset: 1, 0
+  index: -1
+weiba
+  rotate: true
+  xy: 636, 6
+  size: 118, 46
+  orig: 118, 46
+  offset: 0, 0
+  index: -1
+xiaba
+  rotate: true
+  xy: 408, 3
+  size: 41, 48
+  orig: 41, 48
+  offset: 0, 0
+  index: -1
+yumap
+  rotate: true
+  xy: 352, 2
+  size: 42, 54
+  orig: 42, 54
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "61fbf869-2343-4c41-99bd-5f25f2c39a38",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 251,
+  "height": 150,
+  "platformSettings": {},
+  "subMetas": {
+    "pic_yingdi_room3": {
+      "ver": "1.0.6",
+      "uuid": "7389e0d1-e94b-43cf-b95e-35654ed8b054",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "61fbf869-2343-4c41-99bd-5f25f2c39a38",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 251,
+      "height": 150,
+      "rawWidth": 251,
+      "rawHeight": 150,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

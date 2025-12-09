@@ -1,0 +1,41 @@
+
+wuqi4.png
+size: 225,58
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+guang
+  rotate: false
+  xy: 166, 5
+  size: 57, 51
+  orig: 61, 54
+  offset: 2, 3
+  index: -1
+haotianjing
+  rotate: false
+  xy: 93, 18
+  size: 71, 38
+  orig: 71, 38
+  offset: 0, 0
+  index: -1
+lizi
+  rotate: false
+  xy: 93, 3
+  size: 14, 13
+  orig: 14, 13
+  offset: 0, 0
+  index: -1
+shandian
+  rotate: true
+  xy: 2, 2
+  size: 11, 86
+  orig: 11, 86
+  offset: 0, 0
+  index: -1
+sheguang
+  rotate: false
+  xy: 2, 15
+  size: 89, 41
+  orig: 91, 45
+  offset: 1, 0
+  index: -1

@@ -1,0 +1,1 @@
+{"__type__":"cc.Material","_name":"ShimmerWhite","_techniqueData":{"0":{"defines":{"USE_TEXTURE":true},"props":{"u_rate":1,"u_color":{"__type__":"cc.Color","a":255,"b":255,"g":255,"r":255}}}},"_effectAsset":{"__uuid__":"9c8c110c-1791-49bd-a02a-b813fe0e95ce"}}

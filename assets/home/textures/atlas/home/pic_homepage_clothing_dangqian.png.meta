@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "387677da-433f-446b-87f6-f2967b7b582c",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 174,
+  "height": 183,
+  "platformSettings": {},
+  "subMetas": {
+    "pic_homepage_clothing_dangqian": {
+      "ver": "1.0.6",
+      "uuid": "70251772-3fbb-42c0-9d3f-b07703b5b1b1",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "387677da-433f-446b-87f6-f2967b7b582c",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 174,
+      "height": 183,
+      "rawWidth": 174,
+      "rawHeight": 183,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

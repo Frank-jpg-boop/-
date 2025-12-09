@@ -1,0 +1,62 @@
+
+Enemy312.png
+size: 190,77
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+shenti1
+  rotate: false
+  xy: 151, 26
+  size: 37, 49
+  orig: 37, 49
+  offset: 0, 0
+  index: -1
+tou1
+  rotate: true
+  xy: 63, 24
+  size: 51, 86
+  orig: 51, 86
+  offset: 0, 0
+  index: -1
+xue
+  rotate: false
+  xy: 2, 15
+  size: 59, 60
+  orig: 59, 61
+  offset: 0, 1
+  index: -1
+yingzi
+  rotate: false
+  xy: 2, 4
+  size: 52, 9
+  orig: 52, 9
+  offset: 0, 0
+  index: -1
+youshou
+  rotate: true
+  xy: 159, 2
+  size: 22, 27
+  orig: 22, 27
+  offset: 0, 0
+  index: -1
+youtui
+  rotate: true
+  xy: 94, 9
+  size: 13, 31
+  orig: 13, 31
+  offset: 0, 0
+  index: -1
+zuoshou1
+  rotate: true
+  xy: 63, 2
+  size: 20, 29
+  orig: 20, 29
+  offset: 0, 0
+  index: -1
+zuotui
+  rotate: true
+  xy: 127, 9
+  size: 13, 30
+  orig: 13, 30
+  offset: 0, 0
+  index: -1

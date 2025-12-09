@@ -1,0 +1,104 @@
+
+zhongdu.png
+size: 314,521
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+duye_10
+  rotate: false
+  xy: 106, 321
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+duye_12
+  rotate: false
+  xy: 210, 321
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+duye_14
+  rotate: false
+  xy: 2, 221
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+duye_16
+  rotate: false
+  xy: 106, 221
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+duye_18
+  rotate: false
+  xy: 210, 221
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+duye_2
+  rotate: false
+  xy: 2, 421
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+duye_20
+  rotate: false
+  xy: 2, 121
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+duye_22
+  rotate: false
+  xy: 106, 121
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+duye_24
+  rotate: false
+  xy: 210, 121
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+duye_26
+  rotate: false
+  xy: 2, 21
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+duye_4
+  rotate: false
+  xy: 106, 421
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+duye_6
+  rotate: false
+  xy: 210, 421
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+duye_8
+  rotate: false
+  xy: 2, 321
+  size: 102, 98
+  orig: 102, 98
+  offset: 0, 0
+  index: -1
+qiti
+  rotate: false
+  xy: 106, 2
+  size: 178, 117
+  orig: 185, 120
+  offset: 6, 1
+  index: -1
