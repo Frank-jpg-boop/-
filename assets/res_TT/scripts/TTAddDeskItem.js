@@ -1,23 +1,22 @@
-var n;
+import $eventManager from '../../scripts/EventManager';
+import $frameEnum from '../../scripts/FrameEnum';
+import $popupManager from '../../scripts/PopupManager';
+import $animUtils from '../../scripts/AnimUtils';
+import $gameEnum from '../../scripts/GameEnum';
+import $localDataProxy from '../../scripts/LocalDataProxy';
+let n;
 exports.ETTAddDeskItemEvent = void 0;
-var i;
-var $eventManager = require("../../scripts/EventManager");
-var $frameEnum = require("../../scripts/FrameEnum");
-var $popupManager = require("../../scripts/PopupManager");
-var $animUtils = require("../../scripts/AnimUtils");
-var $gameEnum = require("../../scripts/GameEnum");
-var $localDataProxy = require("../../scripts/LocalDataProxy");
-var f = cc._decorator;
-var m = f.ccclass;
-var y = f.property;
+let i;
+const f = cc._decorator;
+const m = f.ccclass;
+const y = f.property;
 (i = exports.ETTAddDeskItemEvent || (exports.ETTAddDeskItemEvent = {})).UPDATE_REDPOINT = "updateRedPoint";
-var v = (function (e) {
+const v = (function (e) {
     function t() {
-        var t = (null !== e && e.apply(this, arguments)) || this;
+        const t = (null !== e && e.apply(this, arguments)) || this;
         t.nRedPoint = null;
         return t;
     }
-    __extends(t, e);
     t.prototype.onLoad = function () {
         this.node.active = (yzll.gameConfig.isGM && cc.sys.isBrowser) || cc.sys.platform == cc.sys.BYTEDANCE_GAME;
         $eventManager.EventManager.instance.on(i.UPDATE_REDPOINT, this.updatRedPoint, this);
@@ -29,7 +28,7 @@ var v = (function (e) {
         this.updatRedPoint();
     };
     t.prototype.updatRedPoint = function () {
-        var e =
+        const e =
             0 ==
             $localDataProxy.localDataProxy.getDailyRefreshValue($gameEnum.Game.EDailyRefreshDataKey.ADD_DESK_REWARD);
         this.nRedPoint.active = e;
@@ -44,7 +43,5 @@ var v = (function (e) {
             keep: !0
         });
     };
-    __decorate([y(cc.Node)], t.prototype, "nRedPoint", void 0);
-    return __decorate([m], t);
 })(cc.Component);
 exports.default = v;

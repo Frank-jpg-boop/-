@@ -1,26 +1,24 @@
-exports.State = void 0;
-var i = (function () {
-    function t(t) {
-        this._context = null;
-        this._stateType = 0;
-        this._context = t;
-        this.onInitialized();
-    }
-    Object.defineProperty(t.prototype, "stateType", {
-        get: function () {
-            return this._stateType;
-        },
-        enumerable: !1,
-        configurable: !0
-    });
-    t.prototype.onInitialized = function () {};
-    t.prototype.begin = function () {
-        for (var t = [], e = 0; e < arguments.length; e++) {
-            t[e] = arguments[e];
-        }
-    };
-    t.prototype.reason = function () {};
-    t.prototype.end = function () {};
-    return t;
-})();
-exports.State = i;
+export const State = void 0;
+t.prototype.end = function () {};
+t.prototype.reason = function () {};
+t.prototype.begin = function () {
+  for (const t = [], e = 0; e < arguments.length; e++) {
+    t[e] = arguments[e];
+  }
+};
+t.prototype.onInitialized = function () {};
+Object.defineProperty(t.prototype, 'stateType', {
+  get: function () {
+    return this._stateType;
+  },
+  enumerable: !1,
+  configurable: !0,
+});
+function t(t) {
+  this._context = null;
+  this._stateType = 0;
+  this._context = t;
+  this.onInitialized();
+}
+const i = t;
+export const State = i;

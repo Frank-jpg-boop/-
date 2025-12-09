@@ -1,4 +1,4 @@
-exports.ELevelSceneType = void 0;
-(function (t) {
-    t[(t.SCHOOL = 1)] = "SCHOOL";
-})(exports.ELevelSceneType || (exports.ELevelSceneType = {}));
+export const ELevelSceneType = void 0;
+export const ELevelSceneType = {
+  SCHOOL: 1,
+};

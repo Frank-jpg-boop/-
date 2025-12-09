@@ -1,25 +1,25 @@
-exports.EBuffAttrChangeType = exports.EBuffType = exports.EBuffId = void 0;
-(function (t) {
-    t[(t.EASY = 21)] = "EASY";
-    t[(t.DIZZINESS = 51)] = "DIZZINESS";
-    t[(t.PALSY = 71)] = "PALSY";
-    t[(t.FIRE = 91)] = "FIRE";
-    t[(t.SLOW_DOWN = 101)] = "SLOW_DOWN";
-    t[(t.FROZEN = 1011)] = "FROZEN";
-    t[(t.POISON = 111)] = "POISON";
-    t[(t.SPEED_UP = 121)] = "SPEED_UP";
-})(exports.EBuffId || (exports.EBuffId = {}));
-(function (t) {
-    t[(t.EASY_HURT = 21)] = "EASY_HURT";
-    t[(t.DIZZINESS = 51)] = "DIZZINESS";
-    t[(t.PALSY = 71)] = "PALSY";
-    t[(t.FIRE = 91)] = "FIRE";
-    t[(t.SLOW_DOWN = 101)] = "SLOW_DOWN";
-    t[(t.FROZEN = 1011)] = "FROZEN";
-    t[(t.POISON = 111)] = "POISON";
-    t[(t.SPEED_UP = 121)] = "SPEED_UP";
-})(exports.EBuffType || (exports.EBuffType = {}));
-(function (t) {
-    t[(t.VALUE = 0)] = "VALUE";
-    t[(t.PERCENT = 1)] = "PERCENT";
-})(exports.EBuffAttrChangeType || (exports.EBuffAttrChangeType = {}));
+export const EBuffAttrChangeType = (exports.EBuffType = exports.EBuffId = void 0);
+export const EBuffId = {
+  EASY: 21,
+  DIZZINESS: 51,
+  PALSY: 71,
+  FIRE: 91,
+  SLOW_DOWN: 101,
+  FROZEN: 1011,
+  POISON: 111,
+  SPEED_UP: 121,
+};
+export const EBuffType = {
+  EASY_HURT: 21,
+  DIZZINESS: 51,
+  PALSY: 71,
+  FIRE: 91,
+  SLOW_DOWN: 101,
+  FROZEN: 1011,
+  POISON: 111,
+  SPEED_UP: 121,
+};
+export const EBuffAttrChangeType = {
+  VALUE: 0,
+  PERCENT: 1,
+};

@@ -1,21 +1,18 @@
-var i;
-exports.SummonDeadState = void 0;
-var $state = require("./State");
-var $actorEnum = require("./ActorEnum");
-var s = (function (t) {
-    function e(e) {
-        var n = t.call(this, e) || this;
-        n._stateType = $actorEnum.EActorStateType.DEAD;
-        return n;
-    }
-    __extends(e, t);
-    e.prototype.begin = function () {
-        var t = this;
-        this._context.playAnimDie(function () {
-            t._context.die();
-        });
-    };
-    e.prototype.update = function () {};
-    return e;
-})($state.State);
-exports.SummonDeadState = s;
+import $state from './State';
+import $actorEnum from './ActorEnum';
+let i;
+export const SummonDeadState = void 0;
+e.prototype.update = function () {};
+e.prototype.begin = function () {
+  const t = this;
+  this._context.playAnimDie(function () {
+    t._context.die();
+  });
+};
+function e(e) {
+  const n = t.call(this, e) || this;
+  n._stateType = $actorEnum.EActorStateType.DEAD;
+  return n;
+}
+const s = e;
+export const SummonDeadState = s;

@@ -1,12 +1,9 @@
-var i;
-exports.C_DataSkin = void 0;
-var r = (function (t) {
-    function e() {
-        var e = t.call(this) || this;
-        e._name = "DataSkin";
-        return e;
-    }
-    __extends(e, t);
-    return e;
-})(require("./C_Base").C_Base);
-exports.C_DataSkin = r;
+let i;
+export const C_DataSkin = void 0;
+function e() {
+  const e = t.call(this) || this;
+  e._name = 'DataSkin';
+  return e;
+}
+const r = e;
+export const C_DataSkin = r;

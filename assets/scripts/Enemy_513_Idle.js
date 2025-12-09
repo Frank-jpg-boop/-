@@ -1,18 +1,15 @@
-var i;
-exports.Enemy_513_Idle = void 0;
-var $state = require("./State");
-var $actorEnum = require("./ActorEnum");
-var s = (function (t) {
-    function e(e) {
-        var n = t.call(this, e) || this;
-        n._stateType = $actorEnum.EActorStateType.IDLE;
-        return n;
-    }
-    __extends(e, t);
-    e.prototype.begin = function () {
-        this._context.playAnimIdle();
-    };
-    e.prototype.update = function () {};
-    return e;
-})($state.State);
-exports.Enemy_513_Idle = s;
+import $state from './State';
+import $actorEnum from './ActorEnum';
+let i;
+export const Enemy_513_Idle = void 0;
+e.prototype.update = function () {};
+e.prototype.begin = function () {
+  this._context.playAnimIdle();
+};
+function e(e) {
+  const n = t.call(this, e) || this;
+  n._stateType = $actorEnum.EActorStateType.IDLE;
+  return n;
+}
+const s = e;
+export const Enemy_513_Idle = s;

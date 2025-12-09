@@ -1,1 +1,1 @@
-require('./EnemyBase')
+import './EnemyBase';
