@@ -1,1 +1,1 @@
-require('./EnemyBase')
+require("./EnemyBase");
