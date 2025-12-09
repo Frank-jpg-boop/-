@@ -29,14 +29,14 @@ const A =
       e._worldPos = null;
       return e;
     }
-    Object.defineProperty(e.prototype, "rewardNum", {
+    Object.defineProperty(e.prototype, 'rewardNum', {
       get: function () {
         return this._rewards.length;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "worldPos", {
+    Object.defineProperty(e.prototype, 'worldPos', {
       get: function () {
         return this._worldPos;
       },
@@ -53,30 +53,27 @@ const A =
       );
       this.updateRoomId(this._initParam.roomId);
       this.initReward();
-      const e = this.node.getChildByName("Icon");
+      const e = this.node.getChildByName('Icon');
       e.y = 0;
       $animUtils.AnimUtil.floatAnim(e, 0.7, 10);
-      $battleMgr.default.instance.createOtherNode(
-        "ProgressWaitItem",
-        function (e) {
-          t._progress = e.getComponent($progressWaitItem.default);
-          if (t._isRemove) {
-            t._progress.remove();
-            return void (t._progress = null);
-          }
-          t._progress.init();
-          t._progress.node.x = t.node.x;
-          t._progress.node.y = t.node.y + 100;
-        },
-      );
+      $battleMgr.default.instance.createOtherNode('ProgressWaitItem', function (e) {
+        t._progress = e.getComponent($progressWaitItem.default);
+        if (t._isRemove) {
+          t._progress.remove();
+          return void (t._progress = null);
+        }
+        t._progress.init();
+        t._progress.node.x = t.node.x;
+        t._progress.node.y = t.node.y + 100;
+      });
     };
     e.prototype.initReward = function () {
       const t = this;
       this._rewards = [];
       const e = [];
-      if ("" != this._initParam.param) {
-        this._initParam.param.split("|").forEach(function (t) {
-          const n = t.split("_").map(Number);
+      if ('' != this._initParam.param) {
+        this._initParam.param.split('|').forEach(function (t) {
+          const n = t.split('_').map(Number);
           const i = n[0];
           const o = n[1];
           e.push({
@@ -144,11 +141,11 @@ const A =
             this.createReward(t, e);
           }
         }
-        $audioUtil.AudioUtil.playLimitEffect("sounds/lmtw_yx_SearchCoins");
+        $audioUtil.AudioUtil.playLimitEffect('sounds/lmtw_yx_SearchCoins');
       } else {
         this._rewards.shift();
         this.createReward(t, e);
-        $audioUtil.AudioUtil.playLimitEffect("sounds/lmtw_yx_QiTaWuPinDiaoLuo");
+        $audioUtil.AudioUtil.playLimitEffect('sounds/lmtw_yx_QiTaWuPinDiaoLuo');
       }
       if (0 != this._rewards.length) {
         this.updateRewardData();
@@ -165,8 +162,8 @@ const A =
         areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.GOOD,
         areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
         parent: i.unitParent,
-        prefabName: "SceneGood",
-        unitClass: "SceneGood",
+        prefabName: 'SceneGood',
+        unitClass: 'SceneGood',
         initPos: o,
         initParam: {
           rewardId: e,
@@ -192,10 +189,10 @@ const A =
       return t.roomId == this._roomId && Math.abs(this.worldPos.x - e.x) < 50;
     };
     e.prototype.onPlayerCollisionEnter = function () {
-      this.node.getChildByName("Icon").active = !1;
+      this.node.getChildByName('Icon').active = !1;
       this.updateRewardData();
       $audioUtil.AudioUtil.playEffect(
-        "sounds/lmtw_yx_Search",
+        'sounds/lmtw_yx_Search',
         $frameEnum.Frame.EBundleName.RES,
         !0,
       );
@@ -212,24 +209,22 @@ const A =
         if (this._progress) {
           this._progress.hide();
         }
-        const n = $battleMgr.default.instance
-          .getCurScene()
-          .level.getRoomById(this.roomId);
+        const n = $battleMgr.default.instance.getCurScene().level.getRoomById(this.roomId);
         this.dropReward(n.getGroundY());
       }
     };
     e.prototype.onPlayerCollisionExit = function () {
-      $audioUtil.AudioUtil.stopEffect("lmtw_yx_Search");
-      this.node.getChildByName("Icon").active = !0;
+      $audioUtil.AudioUtil.stopEffect('lmtw_yx_Search');
+      this.node.getChildByName('Icon').active = !0;
       this._waitTime = 0;
       if (this._progress) {
         this._progress.hide();
       }
     };
     e.prototype.onRemove = function () {
-      const e = this.node.getChildByName("Icon");
+      const e = this.node.getChildByName('Icon');
       cc.Tween.stopAllByTarget(e);
-      $audioUtil.AudioUtil.stopEffect("lmtw_yx_Search");
+      $audioUtil.AudioUtil.stopEffect('lmtw_yx_Search');
       e.y = 0;
       if (this._progress) {
         this._progress.remove();
@@ -242,8 +237,7 @@ const A =
       );
       if (
         0 == $levelBattleData.levelBattleData.cfgStage.id &&
-        $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-          $guideDataProxy.EGuideStepId.G_3
+        $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_3
       ) {
         $eventManager.EventManager.instance.emit(
           $guideMgr.EGuideEvent.COMPLETE_GUIDE_STEP,
@@ -253,4 +247,4 @@ const A =
       t.prototype.onRemove.call(this);
     };
   })($levelObjectBase.default));
-exports.default = A;
+export default A;

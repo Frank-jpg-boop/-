@@ -1,5 +1,5 @@
 exports.EngineExUtils = exports.headImgExt = void 0;
-exports.headImgExt = ".head";
+exports.headImgExt = '.head';
 (function (t) {
   function e() {
     cc.assetManager.downloader.register(exports.headImgExt, function (t, e, n) {
@@ -28,25 +28,25 @@ exports.headImgExt = ".head";
     const i = new Image();
 
     function o() {
-      i.removeEventListener("load", o);
-      i.removeEventListener("error", r);
+      i.removeEventListener('load', o);
+      i.removeEventListener('error', r);
       if (n) {
         n(null, i);
       }
     }
 
     function r() {
-      i.removeEventListener("load", o);
-      i.removeEventListener("error", r);
+      i.removeEventListener('load', o);
+      i.removeEventListener('error', r);
       if (n) {
         n(new Error(t));
       }
     }
-    if ("file:" !== window.location.protocol) {
-      i.crossOrigin = "anonymous";
+    if ('file:' !== window.location.protocol) {
+      i.crossOrigin = 'anonymous';
     }
-    i.addEventListener("load", o);
-    i.addEventListener("error", r);
+    i.addEventListener('load', o);
+    i.addEventListener('error', r);
     i.src = t;
     return i;
   }

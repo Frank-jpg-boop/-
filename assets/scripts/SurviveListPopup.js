@@ -22,8 +22,8 @@ e.prototype.onScrollView = function () {
   this.removeDialogueItem();
 };
 e.prototype.getBoxRewardData = function (t) {
-  for (const e = t.split("_"), n = [], i = 0; i < e.length; ++i) {
-    const o = e[i].split("&");
+  for (const e = t.split('_'), n = [], i = 0; i < e.length; ++i) {
+    const o = e[i].split('&');
     n.push({
       itemId: Number(o[0]),
       itemNum: Number(o[1]),
@@ -32,61 +32,58 @@ e.prototype.getBoxRewardData = function (t) {
   return n;
 };
 e.prototype.showRewardInfo = function (t, e) {
-  const n = this.mRewardInfo.getChildByName("items");
+  const n = this.mRewardInfo.getChildByName('items');
   n.children.forEach(function (t) {
     t.active = !1;
   });
-  const i = n.getChildByName("rewardItem");
+  const i = n.getChildByName('rewardItem');
   const o = this.getBoxRewardData(t);
   this.mRewardInfo.active = o.length > 0;
   this.mHideRewardInfo.active = this.mRewardInfo.active;
-  const r = $nodeUtil.default.nodeParentChangeLocalPos(
-    e,
-    this.mRewardInfo.parent,
-  );
+  const r = $nodeUtil.default.nodeParentChangeLocalPos(e, this.mRewardInfo.parent);
   this.mRewardInfo.x = r.x;
   const s = r.y + e.height * e.scaleY + 30;
   this.mRewardInfo.y = s;
   for (
     const u = function (t) {
-              const e = n.children[t];
-              if (e) {
-                //
-              } else {
-                e = cc.instantiate(i);
-                n.addChild(e);
-              }
-              e.active = !0;
-              const r = e.getChildByName("greadImg");
-              const s = e.getChildByName("icon");
-              const u = e.getChildByName("num");
-              const p = o[t];
-              const h = $cfg.default.instance.dataItem.getById(p.itemId);
-              $resLoader.ResLoader.loadAsset({
-                path: "textures/public/pic_wuping_di_" + h.rare,
-                type: cc.SpriteFrame,
-                bundleName: $frameEnum.Frame.EBundleName.HOME,
-              })
-                .then(function (t) {
-                  r.getComponent(cc.Sprite).spriteFrame = t;
-                })
-                .catch(function (t) {
-                  console.log("error:", t);
-                });
-              $resLoader.ResLoader.loadAsset({
-                path: $itemDataProxy.itemDataProxy.getItemIconPath(h.id),
-                type: cc.SpriteFrame,
-                bundleName: $frameEnum.Frame.EBundleName.RES,
-              })
-                .then(function (t) {
-                  s.getComponent(cc.Sprite).spriteFrame = t;
-                })
-                .catch(function (t) {
-                  console.log("error:", t);
-                });
-              u.getComponent(cc.Label).string = "x" + p.itemNum;
-            },
-          p = 0;
+        const e = n.children[t];
+        if (e) {
+          //
+        } else {
+          e = cc.instantiate(i);
+          n.addChild(e);
+        }
+        e.active = !0;
+        const r = e.getChildByName('greadImg');
+        const s = e.getChildByName('icon');
+        const u = e.getChildByName('num');
+        const p = o[t];
+        const h = $cfg.default.instance.dataItem.getById(p.itemId);
+        $resLoader.ResLoader.loadAsset({
+          path: 'textures/public/pic_wuping_di_' + h.rare,
+          type: cc.SpriteFrame,
+          bundleName: $frameEnum.Frame.EBundleName.HOME,
+        })
+          .then(function (t) {
+            r.getComponent(cc.Sprite).spriteFrame = t;
+          })
+          .catch(function (t) {
+            console.log('error:', t);
+          });
+        $resLoader.ResLoader.loadAsset({
+          path: $itemDataProxy.itemDataProxy.getItemIconPath(h.id),
+          type: cc.SpriteFrame,
+          bundleName: $frameEnum.Frame.EBundleName.RES,
+        })
+          .then(function (t) {
+            s.getComponent(cc.Sprite).spriteFrame = t;
+          })
+          .catch(function (t) {
+            console.log('error:', t);
+          });
+        u.getComponent(cc.Label).string = 'x' + p.itemNum;
+      },
+      p = 0;
     p < o.length;
     ++p
   ) {
@@ -137,31 +134,24 @@ e.prototype.onShowPeopleItemRewards = function (t, e) {
   this.showRewardInfo(e.peopleData.reward, e.msg);
 };
 e.prototype.onPeopleItemMsgClick = function (t, e) {
-  $globalPopupMgr.default.instance.showSurvivePeopleDetailsPopup(
-    e.peopleData,
-  );
+  $globalPopupMgr.default.instance.showSurvivePeopleDetailsPopup(e.peopleData);
 };
 e.prototype.onReceivePeopleItemClick = function (t, e) {
   const n = this;
   $globalPopupMgr.default.instance.showOpenBoxPopup(1, function () {
-    const t = $playerDataProxy.playerDataProxy.getBoxReward(
-      e.peopleData.reward,
-    );
+    const t = $playerDataProxy.playerDataProxy.getBoxReward(e.peopleData.reward);
     $globalPopupMgr.default.instance.showAwardNotice(t);
     n.updateSurviveList();
   });
-  $playerDataProxy.playerDataProxy.receivePeopleRewardId(
-    this._stageId,
-    e.peopleData.id,
-  );
-  const i = e.item.getChildByName("unlockMask");
-  const o = e.item.getChildByName("BtnReceive");
+  $playerDataProxy.playerDataProxy.receivePeopleRewardId(this._stageId, e.peopleData.id);
+  const i = e.item.getChildByName('unlockMask');
+  const o = e.item.getChildByName('BtnReceive');
   i.active = !1;
   o.active = !1;
   $nodeUtil.default.addButtonListener(
     e.item,
-    "SurviveListPopup",
-    "onPeopleItemMsgClick",
+    'SurviveListPopup',
+    'onPeopleItemMsgClick',
     this.node,
     {
       msg: e.msg,
@@ -172,46 +162,29 @@ e.prototype.onReceivePeopleItemClick = function (t, e) {
 };
 e.prototype.onUpdateItem = function (t, e) {
   const n = this._survivePeopleDatas[e];
-  const i = t.getChildByName("name");
-  const o = t.getChildByName("BtnReceive");
-  const r = t.getChildByName("unlockMask");
-  const a = r.getChildByName("baoxiang");
-  const s = o.getChildByName("receiveBox");
+  const i = t.getChildByName('name');
+  const o = t.getChildByName('BtnReceive');
+  const r = t.getChildByName('unlockMask');
+  const a = r.getChildByName('baoxiang');
+  const s = o.getChildByName('receiveBox');
   i.getComponent(cc.Label).string = n.name;
   t.getComponent($survivePeopleItem.default).peopleId = n.id;
-  if (
-    $playerDataProxy.playerDataProxy.getPeopleRewardIsReceive(
-      this._stageId,
-      n.id,
-    )
-  ) {
+  if ($playerDataProxy.playerDataProxy.getPeopleRewardIsReceive(this._stageId, n.id)) {
     r.active = !1;
     o.active = !1;
-    $nodeUtil.default.addButtonListener(
-      t,
-      "SurviveListPopup",
-      "onPeopleItemMsgClick",
-      this.node,
-      {
-        msg: null,
-        peopleData: n,
-      },
-    );
+    $nodeUtil.default.addButtonListener(t, 'SurviveListPopup', 'onPeopleItemMsgClick', this.node, {
+      msg: null,
+      peopleData: n,
+    });
   } else {
-    r.active = !$stageDataProxy.stageDataProxy.isRescueSurvival(
-      this._stageId,
-      n.id,
-    );
-    o.active = $stageDataProxy.stageDataProxy.isRescueSurvival(
-      this._stageId,
-      n.id,
-    );
+    r.active = !$stageDataProxy.stageDataProxy.isRescueSurvival(this._stageId, n.id);
+    o.active = $stageDataProxy.stageDataProxy.isRescueSurvival(this._stageId, n.id);
   }
   if (r.active) {
     $nodeUtil.default.addButtonListener(
       a,
-      "SurviveListPopup",
-      "onShowPeopleItemRewards",
+      'SurviveListPopup',
+      'onShowPeopleItemRewards',
       this.node,
       {
         msg: a,
@@ -222,8 +195,8 @@ e.prototype.onUpdateItem = function (t, e) {
   if (o.active) {
     $nodeUtil.default.addButtonListener(
       o,
-      "SurviveListPopup",
-      "onReceivePeopleItemClick",
+      'SurviveListPopup',
+      'onReceivePeopleItemClick',
       this.node,
       {
         item: t,
@@ -248,11 +221,9 @@ e.prototype.onUpdateItem = function (t, e) {
 e.prototype.setBtnBoxState = function () {
   const t = $stageDataProxy.stageDataProxy.getStageSurvivalCount(this._stageId);
   const e = this._survivePeopleDatas.length;
-  const n = this.mBtnBox.getChildByName("redDot");
+  const n = this.mBtnBox.getChildByName('redDot');
   if (t >= e) {
-    if (
-      $playerDataProxy.playerDataProxy.getSurviveBoxIsReceive(this._stageId)
-    ) {
+    if ($playerDataProxy.playerDataProxy.getSurviveBoxIsReceive(this._stageId)) {
       (cc.Tween.stopAllByTarget(this.mBtnBox),
         (this.mBtnBox.angle = 0),
         (this._isCanReceiveBox = !1),
@@ -277,33 +248,17 @@ e.prototype.updateSurviveList = function () {
   const t = this;
   this._survivePeopleDatas.sort(function (e, n) {
     const i = 0;
-    if (
-      $playerDataProxy.playerDataProxy.getPeopleRewardIsReceive(
-        t._stageId,
-        e.id,
-      )
-    ) {
+    if ($playerDataProxy.playerDataProxy.getPeopleRewardIsReceive(t._stageId, e.id)) {
       i = 1;
     }
-    if (
-      1 != i &&
-      $stageDataProxy.stageDataProxy.isRescueSurvival(t._stageId, e.id)
-    ) {
+    if (1 != i && $stageDataProxy.stageDataProxy.isRescueSurvival(t._stageId, e.id)) {
       i = 2;
     }
     const o = 0;
-    if (
-      $playerDataProxy.playerDataProxy.getPeopleRewardIsReceive(
-        t._stageId,
-        n.id,
-      )
-    ) {
+    if ($playerDataProxy.playerDataProxy.getPeopleRewardIsReceive(t._stageId, n.id)) {
       o = 1;
     }
-    if (
-      1 != o &&
-      $stageDataProxy.stageDataProxy.isRescueSurvival(t._stageId, n.id)
-    ) {
+    if (1 != o && $stageDataProxy.stageDataProxy.isRescueSurvival(t._stageId, n.id)) {
       o = 2;
     }
     return o - i;
@@ -314,11 +269,11 @@ e.prototype.updateSurviveList = function () {
 e.prototype.initSurvivePeople = function () {
   const t = $stageDataProxy.stageDataProxy.getStageSurvivalCount(this._stageId);
   this.mRichText.string =
-    "<outline color=#000000 width=3><color=#FFFFFF>已救出</color><color=#00FF00>" +
+    '<outline color=#000000 width=3><color=#FFFFFF>已救出</color><color=#00FF00>' +
     t +
-    "</color><color=#FFFFFF>人</color></outline>";
+    '</color><color=#FFFFFF>人</color></outline>';
   const e = $cfg.default.instance.dataStage.getById(this._stageId);
-  const n = e.survivor.split("|").map(function (t) {
+  const n = e.survivor.split('|').map(function (t) {
     return Number(t) + e.checkSur;
   });
   this._survivePeopleDatas = [];
@@ -334,13 +289,12 @@ e.prototype.initSurvivePeople = function () {
   this.setBtnBoxState();
 };
 e.prototype.setSelectBtnIsShowRedPoint = function () {
-  for (const t = this.node.getChildByName("selectBtns"), e = 1; e <= 3; ++e) {
-    const n = t.getChildByName("btn" + e);
+  for (const t = this.node.getChildByName('selectBtns'), e = 1; e <= 3; ++e) {
+    const n = t.getChildByName('btn' + e);
     if (n.active) {
-      const i = n.getChildByName("selectBtn" + e).getChildByName("redDot");
+      const i = n.getChildByName('selectBtn' + e).getChildByName('redDot');
       const o = this._startStage + (e - 1);
-      i.active =
-        $playerDataProxy.playerDataProxy.getStageSurviveIsCanReward(o);
+      i.active = $playerDataProxy.playerDataProxy.getStageSurviveIsCanReward(o);
     }
   }
 };
@@ -359,7 +313,7 @@ e.prototype.initSelectBtn = function () {
   const t = $cfg.default.instance.dataStage.sheet();
   const e = Object.keys(t);
   const n = t[e[e.length - 1]].id;
-  const i = this.node.getChildByName("selectBtns");
+  const i = this.node.getChildByName('selectBtns');
   if (1 == this._stageId) {
     this._startStage = 1;
   } else {
@@ -369,23 +323,19 @@ e.prototype.initSelectBtn = function () {
       this._startStage = this._stageId - 1;
     }
   }
-  for (
-    const o = $stageDataProxy.stageDataProxy.passStageId, r = 1;
-    r <= 3;
-    ++r
-  ) {
-    const s = i.getChildByName("btn" + r);
+  for (const o = $stageDataProxy.stageDataProxy.passStageId, r = 1; r <= 3; ++r) {
+    const s = i.getChildByName('btn' + r);
     s.active = !0;
-    const c = s.getChildByName("selectBtn" + r);
-    const l = c.getChildByName("selectBg");
-    const u = c.getChildByName("lab");
+    const c = s.getChildByName('selectBtn' + r);
+    const l = c.getChildByName('selectBg');
+    const u = c.getChildByName('lab');
     const p = this._startStage + (r - 1);
     l.active = p == this._stageId;
     if (p <= o + 1) {
-      u.getComponent(cc.Label).string = "第" + p + "章";
+      u.getComponent(cc.Label).string = '第' + p + '章';
       c.getComponent(cc.Button).interactable = !0;
     } else {
-      u.getComponent(cc.Label).string = "未解锁";
+      u.getComponent(cc.Label).string = '未解锁';
       c.getComponent(cc.Button).interactable = !1;
     }
   }
@@ -404,16 +354,10 @@ e.prototype.showPeopleDialogue = function () {
   for (const n = this.mItemContent.children, i = [], o = 0; o < n.length; ++o) {
     const r = n[o];
     const s =
-      (null === (t = r.getComponent($survivePeopleItem.default)) ||
-      void 0 === t
+      (null === (t = r.getComponent($survivePeopleItem.default)) || void 0 === t
         ? void 0
         : t.peopleId) || 0;
-    if (
-      $playerDataProxy.playerDataProxy.getPeopleRewardIsReceive(
-        this._stageId,
-        s,
-      )
-    ) {
+    if ($playerDataProxy.playerDataProxy.getPeopleRewardIsReceive(this._stageId, s)) {
       i.push({
         item: r,
         peopleId: s,
@@ -431,9 +375,7 @@ e.prototype.showPeopleDialogue = function () {
     );
     const u = $cfg.default.instance.dataSurvivor.getById(i[c].peopleId);
     if (u) {
-      this._dialogueItem
-        .getComponent($survivePeopleDialogueItem.default)
-        .setDialogueMsg(u.info1);
+      this._dialogueItem.getComponent($survivePeopleDialogueItem.default).setDialogueMsg(u.info1);
     }
     this.scheduleOnce(function () {
       e.removeDialogueItem();
@@ -445,11 +387,7 @@ e.prototype.init = function (t) {
   this._isShowReward = t.isShowReward;
   this.initSelectBtn();
   this.setSelectBtnIsShowRedPoint();
-  this.mHideRewardInfo.on(
-    cc.Node.EventType.TOUCH_START,
-    this.touchBegin,
-    this,
-  );
+  this.mHideRewardInfo.on(cc.Node.EventType.TOUCH_START, this.touchBegin, this);
   this.mHideRewardInfo.active = !1;
   this.onScrollView();
   this.schedule(this.showPeopleDialogue, 10);
@@ -474,4 +412,4 @@ function e() {
   e._isShowReward = !1;
   return e;
 }
-exports.default = S;
+export default S;

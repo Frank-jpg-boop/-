@@ -12,26 +12,20 @@ const m = d.ccclass;
 const y = d.property;
 e.prototype.onClickBtnThis = function () {
   const t = this;
-  if (
-    this.node.getChildByName("lockMask").getChildByName("lockIcon").active
-  ) {
-    $globalPopupMgr.default.instance.showTips("暂未解锁");
-  } else if (
-    $stageDataProxy.stageDataProxy.passStageId >= this._unlockStageId
-  ) {
+  if (this.node.getChildByName('lockMask').getChildByName('lockIcon').active) {
+    $globalPopupMgr.default.instance.showTips('暂未解锁');
+  } else if ($stageDataProxy.stageDataProxy.passStageId >= this._unlockStageId) {
     const e = $playerDataProxy.playerDataProxy.getBuildLv(this._roomLoc);
     const n = $cfg.default.instance.dataBuild.queryOne(function (n) {
       return n.loc == t._roomLoc && n.lv == e;
     });
     $globalPopupMgr.default.instance.showCampsiteBuildDetailsPopup(n);
   } else {
-    $globalPopupMgr.default.instance.showTips(
-      "第" + (this._unlockStageId + 1) + "章解锁",
-    );
+    $globalPopupMgr.default.instance.showTips('第' + (this._unlockStageId + 1) + '章解锁');
   }
 };
 e.prototype.updatePoeple = function () {
-  const t = this.node.getChildByName("People");
+  const t = this.node.getChildByName('People');
   const e = t.childrenCount;
   const n = Math.min(this.getMaxPoeple(), 5);
   if (n > e) {
@@ -45,15 +39,15 @@ e.prototype.updatePoeple = function () {
 e.prototype.getMaxPoeple = function () {
   for (
     const t = this,
-          e = 0,
-          n = $playerDataProxy.playerDataProxy.getBuildLv(this._roomLoc),
-          i = function (n) {
-            const i = $cfg.default.instance.dataBuild.queryOne(function (e) {
-              return e.loc == t._roomLoc && e.lv == n;
-            });
-            e += i.max;
-          },
-          o = 1;
+      e = 0,
+      n = $playerDataProxy.playerDataProxy.getBuildLv(this._roomLoc),
+      i = function (n) {
+        const i = $cfg.default.instance.dataBuild.queryOne(function (e) {
+          return e.loc == t._roomLoc && e.lv == n;
+        });
+        e += i.max;
+      },
+      o = 1;
     o <= n;
     ++o
   ) {
@@ -64,25 +58,22 @@ e.prototype.getMaxPoeple = function () {
 e.prototype.updateView = function () {
   const t = this;
   const e = $stageDataProxy.stageDataProxy.passStageId >= this._unlockStageId;
-  const n = this.node.getChildByName("lv").getComponent(cc.Label);
-  const i = this.node.getChildByName("lockMask");
-  const o = this.node.getChildByName("upArrow");
+  const n = this.node.getChildByName('lv').getComponent(cc.Label);
+  const i = this.node.getChildByName('lockMask');
+  const o = this.node.getChildByName('upArrow');
   if (e) {
     n.node.active = !0;
     const r = $playerDataProxy.playerDataProxy.getBuildLv(this._roomLoc);
     if (r >= this._maxLv) {
-      n.string = "MAX";
+      n.string = 'MAX';
     } else {
-      n.string =
-        "Lv." + $playerDataProxy.playerDataProxy.getBuildLv(this._roomLoc);
+      n.string = 'Lv.' + $playerDataProxy.playerDataProxy.getBuildLv(this._roomLoc);
     }
-    if (
-      $playerDataProxy.playerDataProxy.getIsFirstUnlockBuild(this._roomLoc)
-    ) {
+    if ($playerDataProxy.playerDataProxy.getIsFirstUnlockBuild(this._roomLoc)) {
       i.active = !0;
-      i.getChildByName("unlockTips").active = !1;
-      i.getChildByName("lockIcon").active = !1;
-      $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_HomeBuild");
+      i.getChildByName('unlockTips').active = !1;
+      i.getChildByName('lockIcon').active = !1;
+      $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_HomeBuild');
       cc.tween(i)
         .to(0.5, {
           opacity: 0,
@@ -117,16 +108,15 @@ e.prototype.updateView = function () {
     }
     n.node.active = !1;
     i.active = !0;
-    const d = i.getChildByName("unlockTips");
-    const m = i.getChildByName("lockIcon");
+    const d = i.getChildByName('unlockTips');
+    const m = i.getChildByName('lockIcon');
     if (
       $stageDataProxy.stageDataProxy.passStageId >=
       $playerDataProxy.playerDataProxy.getBuildUnlockStage(this._roomLoc - 1)
     ) {
       d.active = !0;
       m.active = !1;
-      d.getComponent(cc.Label).string =
-        "第" + (this._unlockStageId + 1) + "章解锁";
+      d.getComponent(cc.Label).string = '第' + (this._unlockStageId + 1) + '章解锁';
     } else {
       m.active = !0;
       d.active = !1;
@@ -141,9 +131,7 @@ e.prototype.initData = function (t) {
   this._maxLv = $cfg.default.instance.dataBuild.queryAll(function (t) {
     return t.loc == e._roomLoc;
   }).length;
-  this._unlockStageId = $playerDataProxy.playerDataProxy.getBuildUnlockStage(
-    this._roomLoc,
-  );
+  this._unlockStageId = $playerDataProxy.playerDataProxy.getBuildUnlockStage(this._roomLoc);
 };
 function e() {
   const e = (null !== t && t.apply(this, arguments)) || this;
@@ -154,4 +142,4 @@ function e() {
   e._unlockStageId = 0;
   return e;
 }
-exports.default = _;
+export default _;

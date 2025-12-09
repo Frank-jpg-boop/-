@@ -21,47 +21,47 @@ import $skill_61 from './Skill_61';
 import $skill_71 from './Skill_71';
 import $skill_81 from './Skill_81';
 import $skill_91 from './Skill_91';
-exports.SkillMgr = void 0;
+export const SkillMgr = void 0;
 t.prototype.hasSkillEx = function () {
   for (
     const t = function (t) {
-              const n = $cfg.default.instance.dataSkill.getById(
-                $levelBattleData.levelBattleData.skillIds[t],
-              );
-              const o = null;
-              if ("" == n.chooseBase) {
-                o = [];
-              } else {
-                o = n.chooseBase.split("|").map(Number);
-              }
-              const r = [];
-              const a = $playerDataProxy.playerDataProxy.getArtifactLv(n.id);
-              if ("" != n.chooseLv) {
-                n.chooseLv.split("|").forEach(function (t) {
-                  const e = t.split("_");
-                  const n = e[0];
-                  const i = e[1];
-                  if (a >= Number(n)) {
-                    r.push.apply(r, i.split("&").map(Number));
-                  }
-                });
-              }
-              o.push.apply(o, r);
-              for (const s = 0; s < o.length; ++s) {
-                if (e.checkSkillEx(o[s])) {
-                  return {
-                    value: !0,
-                  };
-                }
-              }
-            },
-          e = this,
-          n = 0;
+        const n = $cfg.default.instance.dataSkill.getById(
+          $levelBattleData.levelBattleData.skillIds[t],
+        );
+        const o = null;
+        if ('' == n.chooseBase) {
+          o = [];
+        } else {
+          o = n.chooseBase.split('|').map(Number);
+        }
+        const r = [];
+        const a = $playerDataProxy.playerDataProxy.getArtifactLv(n.id);
+        if ('' != n.chooseLv) {
+          n.chooseLv.split('|').forEach(function (t) {
+            const e = t.split('_');
+            const n = e[0];
+            const i = e[1];
+            if (a >= Number(n)) {
+              r.push.apply(r, i.split('&').map(Number));
+            }
+          });
+        }
+        o.push.apply(o, r);
+        for (const s = 0; s < o.length; ++s) {
+          if (e.checkSkillEx(o[s])) {
+            return {
+              value: !0,
+            };
+          }
+        }
+      },
+      e = this,
+      n = 0;
     n < $levelBattleData.levelBattleData.skillIds.length;
     ++n
   ) {
     const o = t(n);
-    if ("object" == typeof o) {
+    if ('object' == typeof o) {
       return o.value;
     }
   }
@@ -70,14 +70,14 @@ t.prototype.hasSkillEx = function () {
 t.prototype.selectSkillEx = function (t) {
   $levelBattleData.levelBattleData.addSkillEx(t);
   const e = $cfg.default.instance.dataChoose.getById(t);
-  $eventManager.EventManager.instance.emit(
-    $skillEnum.ESkillEvent.SELECT_SKILL_EX + e.withSkill,
-    t,
-  );
+  $eventManager.EventManager.instance.emit($skillEnum.ESkillEvent.SELECT_SKILL_EX + e.withSkill, t);
 };
 t.prototype.checkSkillEx = function (t) {
   for (
-    const e = $cfg.default.instance.dataChoose.getById(t), n = "" == e.first ? [] : e.first.split("|").map(Number), o = !0, r = 0;
+    const e = $cfg.default.instance.dataChoose.getById(t),
+      n = '' == e.first ? [] : e.first.split('|').map(Number),
+      o = !0,
+      r = 0;
     r < n.length;
     ++r
   ) {
@@ -95,29 +95,27 @@ t.prototype.checkSkillEx = function (t) {
 t.prototype.refreshSkillExIds = function (t) {
   const e = this;
   const n = 0 == t;
-  const o = $attrMgr.AttrMgr.instance.getPlayerAttrValue(
-    $attrEnum.E_AttrType.PURPLE_ORANGE_RATE,
-  );
+  const o = $attrMgr.AttrMgr.instance.getPlayerAttrValue($attrEnum.E_AttrType.PURPLE_ORANGE_RATE);
   const c = [];
   const u = [];
   const h = [];
   $levelBattleData.levelBattleData.skillIds.forEach(function (t) {
     const n = $cfg.default.instance.dataSkill.getById(t);
     const o = null;
-    if ("" == n.chooseBase) {
+    if ('' == n.chooseBase) {
       o = [];
     } else {
-      o = n.chooseBase.split("|").map(Number);
+      o = n.chooseBase.split('|').map(Number);
     }
     const r = [];
     const a = $playerDataProxy.playerDataProxy.getArtifactLv(t);
-    if ("" != n.chooseLv) {
-      n.chooseLv.split("|").forEach(function (t) {
-        const e = t.split("_");
+    if ('' != n.chooseLv) {
+      n.chooseLv.split('|').forEach(function (t) {
+        const e = t.split('_');
         const n = e[0];
         const i = e[1];
         if (a >= Number(n)) {
-          r.push.apply(r, i.split("&").map(Number));
+          r.push.apply(r, i.split('&').map(Number));
         }
       });
     }
@@ -152,10 +150,7 @@ t.prototype.refreshSkillExIds = function (t) {
     --t;
     --d;
   }
-  for (
-    const v = n ? this.getCommonSkillExProbRate() : 1;
-    c.length > 0 && d > 0;
-  ) {
+  for (const v = n ? this.getCommonSkillExProbRate() : 1; c.length > 0 && d > 0; ) {
     m = c.map(function (t) {
       const r = $cfg.default.instance.dataChoose.getById(t);
       if (r.rare > 2) {
@@ -219,10 +214,7 @@ t.prototype.refreshSkillIds = function () {
       if ($playerDataProxy.playerDataProxy.isUnlockSkill(e.id)) {
         if (
           n.some(function (t) {
-            return (
-              $cfg.default.instance.dataSkill.getById(t).mainType ==
-              e.mainType
-            );
+            return $cfg.default.instance.dataSkill.getById(t).mainType == e.mainType;
           })
         ) {
           //
@@ -302,25 +294,13 @@ t.prototype.getCommonSkillExProbRateByQuality = function (t) {
   if (3 == t) {
     const e = Number($cfg.default.instance.dataCons.getById(103).val);
     const n = Number($cfg.default.instance.dataCons.getById(104).val);
-    return Math.min(
-      Math.pow(
-        e,
-        $levelBattleData.levelBattleData.data.commonPurpleNotShowCount,
-      ),
-      n,
-    );
+    return Math.min(Math.pow(e, $levelBattleData.levelBattleData.data.commonPurpleNotShowCount), n);
   }
   if (4 == t) {
     return (
       (e = Number($cfg.default.instance.dataCons.getById(105).val)),
       (n = Number($cfg.default.instance.dataCons.getById(106).val)),
-      Math.min(
-        Math.pow(
-          e,
-          $levelBattleData.levelBattleData.data.commonOrangeNotShowCount,
-        ),
-        n,
-      )
+      Math.min(Math.pow(e, $levelBattleData.levelBattleData.data.commonOrangeNotShowCount), n)
     );
   } else {
     return void 0;
@@ -334,16 +314,13 @@ t.prototype.getCommonSkillExProbRate = function () {
   t += $localDataProxy.localDataProxy.getDailyRefreshValue(
     $gameEnum.Game.EDailyRefreshDataKey.LOSE_ADD_HEIGHT_RATE,
   );
-  const e = $cfg.default.instance.dataCons
-    .getById(102)
-    .val.split("|")
-    .map(Number);
+  const e = $cfg.default.instance.dataCons.getById(102).val.split('|').map(Number);
   const n = e[0];
   const o = e[1];
   t = Math.max(t, n);
   return Math.min(t, o);
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (this._instance) {
       //
@@ -357,4 +334,4 @@ Object.defineProperty(t, "instance", {
 });
 function t() {}
 const C = t;
-exports.SkillMgr = C;
+export const SkillMgr = C;

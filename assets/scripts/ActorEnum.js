@@ -1,16 +1,16 @@
-exports.ETeamType =
-  exports.EPlayerEvent =
+export const ETeamType =
+  (exports.EPlayerEvent =
   exports.EActorEvent =
   exports.EActorHurtType =
   exports.EActorStateType =
   exports.EActorType =
-    void 0;
-exports.EActorType = {
+    void 0);
+export const EActorType = {
   PLAYER: 1,
   ENEMY: 0,
-  BOSS: 2
+  BOSS: 2,
 };
-exports.EActorStateType = {
+export const EActorStateType = {
   IDLE: 0,
   WALK: 1,
   ATTACK: 2,
@@ -24,13 +24,13 @@ exports.EActorStateType = {
   FROZEN: 10,
   STOP: 11,
   EXTEND_1: 12,
-  EXTEND_2: 13
+  EXTEND_2: 13,
 };
-exports.EActorHurtType = {
+export const EActorHurtType = {
   COMMON_ATTACK: 1,
-  SKILL_HURT: 2
+  SKILL_HURT: 2,
 };
-exports.EActorEvent = {
+export const EActorEvent = {
   ACTOR_DEAD: 'EActorEvent.ACTOR_DEAD',
   ACTOR_DEAD_REMOVE: 'ACTOR_DEAD_REMOVE',
   COMMON_ATTACK: 'EActorEvent.COMMON_ATTACK',
@@ -38,14 +38,14 @@ exports.EActorEvent = {
   BE_HURT: 'EActorEvent.BE_HURT',
   HP_CHANGE: 'EActorEvent.HP_CHANGE',
   SPEED_CHANGE: 'EActorEvent.SPEED_CHANGE',
-  BOSS_HP_CHANGE: 'EActorEvent.BOSS_HP_CHANGE'
+  BOSS_HP_CHANGE: 'EActorEvent.BOSS_HP_CHANGE',
 };
-exports.EPlayerEvent = {
+export const EPlayerEvent = {
   PLAYER_MOVE: 'EPlayerEvent.PLAYER_MOVE',
   PLAYER_PASS_DOOR: 'EPlayerEvent.PLAYER_PASS_DOOR',
-  PLAYER_CREATE_SKILL: 'EPlayerEvent.PLAYER_CREATE_SKILL'
+  PLAYER_CREATE_SKILL: 'EPlayerEvent.PLAYER_CREATE_SKILL',
 };
-exports.ETeamType = {
+export const ETeamType = {
   PLAYER: 0,
-  ENEMY: 1
+  ENEMY: 1,
 };

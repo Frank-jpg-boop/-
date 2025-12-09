@@ -3,7 +3,7 @@ let i;
 const s = cc._decorator;
 const c = s.ccclass;
 const l = s.property;
-Object.defineProperty(e.prototype, "worldRect", {
+Object.defineProperty(e.prototype, 'worldRect', {
   get: function () {
     const t = this.nCollisionBox.convertToWorldSpaceAR(cc.v2());
     this._worldRect.x = t.x;
@@ -13,7 +13,7 @@ Object.defineProperty(e.prototype, "worldRect", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "itemRect", {
+Object.defineProperty(e.prototype, 'itemRect', {
   get: function () {
     const t = this.worldRect;
     return {
@@ -40,4 +40,4 @@ function e() {
   e._worldRect = null;
   return e;
 }
-exports.default = u;
+export default u;

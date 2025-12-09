@@ -8,7 +8,7 @@ import $actorEnum from './ActorEnum';
 import $attrEnum from './AttrEnum';
 import $weapon11 from './Weapon11';
 let i;
-exports.Skill_11 = void 0;
+export const Skill_11 = void 0;
 e.prototype.onRemove = function () {
   this._weapon.remove();
   this._weapon = null;
@@ -17,9 +17,7 @@ e.prototype.onRemove = function () {
 e.prototype.getHurtOption = function () {
   const e = t.prototype.getHurtOption.call(this);
   e.critRate += this._critAdd;
-  e.critHurt += this.getAttribute(
-    $attrEnum.E_SkillAttrType.EXTRA_ATTR_5,
-  ).value;
+  e.critHurt += this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_5).value;
   e.rate += this._hurtAdd;
   return e;
 };
@@ -31,41 +29,41 @@ e.prototype.shootSurroundBullet = function (t) {
   const i = this._owner.node.getPosition().add(this._weaponCentrePos);
   const o = this._attackTarget.getBeHurtPos().sub(i).normalize();
   this._weaponTargetOffsetPos = o.mul(this._weaponRadio);
-  $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_ShouQiang");
+  $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_ShouQiang');
   this._weapon.playShootAnim(
     function () {
       for (
-        const t = e._owner.node.getPosition().add(cc.v2(0, 50)), n = $battleMgr.default.instance.getCurScene(), i = e.getHurtOption(), o = 0;
+        const t = e._owner.node.getPosition().add(cc.v2(0, 50)),
+          n = $battleMgr.default.instance.getCurScene(),
+          i = e.getHurtOption(),
+          o = 0;
         o < 12;
         ++o
       ) {
         for (
-          const r = cc.v2(
-                    Math.cos((30 * o * Math.PI) / 180),
-                    Math.sin((30 * o * Math.PI) / 180),
-                  ),
-                l = r.mul(50),
-                u = t.add(l),
-                p = t.add(r.mul(e._cfg.edge)),
-                f = cc.v2(-r.y, r.x),
-                d = e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_1).value,
-                m = d >> 1,
-                y = function (t) {
-                  const o = f.mul(15 * (t - m));
-                  const r = u.add(o);
-                  const a = p.add(o);
-                  $bulletMgr.default.instance.createBullet({
-                    parent: n.bulletParent,
-                    prefabName: "Bullet11",
-                    initPos: r,
-                    iconPath: "",
-                    bulletClass: $bullet11.default,
-                    onCreated: function (t) {
-                      t.shoot(e._owner, a, e, i);
-                    },
-                  });
+          const r = cc.v2(Math.cos((30 * o * Math.PI) / 180), Math.sin((30 * o * Math.PI) / 180)),
+            l = r.mul(50),
+            u = t.add(l),
+            p = t.add(r.mul(e._cfg.edge)),
+            f = cc.v2(-r.y, r.x),
+            d = e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_1).value,
+            m = d >> 1,
+            y = function (t) {
+              const o = f.mul(15 * (t - m));
+              const r = u.add(o);
+              const a = p.add(o);
+              $bulletMgr.default.instance.createBullet({
+                parent: n.bulletParent,
+                prefabName: 'Bullet11',
+                initPos: r,
+                iconPath: '',
+                bulletClass: $bullet11.default,
+                onCreated: function (t) {
+                  t.shoot(e._owner, a, e, i);
                 },
-                _ = 0;
+              });
+            },
+            _ = 0;
           _ < d;
           ++_
         ) {
@@ -107,32 +105,32 @@ e.prototype.shootCommonBullet = function (t) {
   }
   const p = o.sub(i).normalize();
   this._weaponTargetOffsetPos = p.mul(this._weaponRadio);
-  $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_ShouQiang");
+  $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_ShouQiang');
   this._weapon.playShootAnim(
     function () {
       for (
         const t = $battleMgr.default.instance.getCurScene(),
-              n = cc.v2(-p.y, p.x),
-              i = e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_1).value,
-              o = i >> 1,
-              r = e._weapon.shootPos,
-              l = e.getHurtOption(),
-              u = function (i) {
-                const a = n.mul(15 * (i - o));
-                const u = r.add(a);
-                const h = u.add(p.mul(e._cfg.edge));
-                $bulletMgr.default.instance.createBullet({
-                  parent: t.bulletParent,
-                  prefabName: "Bullet11",
-                  initPos: u,
-                  iconPath: "",
-                  bulletClass: $bullet11.default,
-                  onCreated: function (t) {
-                    t.shoot(e._owner, h, e, l);
-                  },
-                });
+          n = cc.v2(-p.y, p.x),
+          i = e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_1).value,
+          o = i >> 1,
+          r = e._weapon.shootPos,
+          l = e.getHurtOption(),
+          u = function (i) {
+            const a = n.mul(15 * (i - o));
+            const u = r.add(a);
+            const h = u.add(p.mul(e._cfg.edge));
+            $bulletMgr.default.instance.createBullet({
+              parent: t.bulletParent,
+              prefabName: 'Bullet11',
+              initPos: u,
+              iconPath: '',
+              bulletClass: $bullet11.default,
+              onCreated: function (t) {
+                t.shoot(e._owner, h, e, l);
               },
-              f = 0;
+            });
+          },
+          f = 0;
         f < i;
         ++f
       ) {
@@ -150,12 +148,8 @@ e.prototype.shootCommonBullet = function (t) {
   );
 };
 e.prototype.shootBullet = function (t) {
-  this._critAdd += this.getAttribute(
-    $attrEnum.E_SkillAttrType.EXTRA_ATTR_6,
-  ).value;
-  this._hurtAdd += this.getAttribute(
-    $attrEnum.E_SkillAttrType.EXTRA_ATTR_8,
-  ).value;
+  this._critAdd += this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_6).value;
+  this._hurtAdd += this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_8).value;
   if (
     1 == this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_7).value &&
     this.duration <= this._durationTimer - 5
@@ -168,12 +162,12 @@ e.prototype.shootBullet = function (t) {
 e.prototype.searchTarget = function () {
   for (
     const t = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(
-              this._owner.node.getPosition(),
-              this._cfg.edge,
-            ),
-          e = [],
-          n = 0,
-          i = t;
+        this._owner.node.getPosition(),
+        this._cfg.edge,
+      ),
+      e = [],
+      n = 0,
+      i = t;
     n < i.length;
     n++
   ) {
@@ -205,20 +199,13 @@ e.prototype.searchTarget = function () {
   return r;
 };
 e.prototype.enterCD = function () {
-  this._skillCDTimer = Math.max(
-    this.getAttribute($attrEnum.E_SkillAttrType.SKILL_CD).value,
-    0.1,
-  );
+  this._skillCDTimer = Math.max(this.getAttribute($attrEnum.E_SkillAttrType.SKILL_CD).value, 0.1);
   this.skillCD = this._skillCDTimer;
 };
 e.prototype.onUpdate = function (t) {
   const e = this;
   if (this._weapon) {
-    this._weaponOffsetPos.lerp(
-      this._weaponTargetOffsetPos,
-      0.25,
-      this._weaponOffsetPos,
-    );
+    this._weaponOffsetPos.lerp(this._weaponTargetOffsetPos, 0.25, this._weaponOffsetPos);
     this._weapon.node.x = this._weaponCentrePos.x + this._weaponOffsetPos.x;
     this._weapon.node.y = this._weaponCentrePos.y + this._weaponOffsetPos.y;
     this._dt = t;
@@ -226,9 +213,7 @@ e.prototype.onUpdate = function (t) {
       this.skillCD -= t;
       if (this.skillCD <= 0) {
         this.skillCD = 0;
-        this._durationTimer = this.getAttribute(
-          $attrEnum.E_SkillAttrType.EXTRA_ATTR_2,
-        ).value;
+        this._durationTimer = this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2).value;
         this.duration = this._durationTimer;
         this._attackCD =
           this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_3).value *
@@ -272,20 +257,18 @@ e.prototype.onUpdate = function (t) {
   }
 };
 e.prototype.resetWeapon = function () {
-  this._weaponOffsetInitPos.x =
-    Math.abs(this._weaponOffsetInitPos.x) * this._owner.dirX;
+  this._weaponOffsetInitPos.x = Math.abs(this._weaponOffsetInitPos.x) * this._owner.dirX;
   this._weaponTargetOffsetPos = this._weaponOffsetInitPos.clone();
   this._weapon.reset(this._owner.dirX);
 };
 e.prototype.createWeapon = function () {
   const t = this;
-  this._weaponOffsetInitPos.x =
-    Math.abs(this._weaponOffsetInitPos.x) * this._owner.dirX;
+  this._weaponOffsetInitPos.x = Math.abs(this._weaponOffsetInitPos.x) * this._owner.dirX;
   this._weaponOffsetPos = this._weaponOffsetInitPos.clone();
   this._weaponTargetOffsetPos = this._weaponOffsetPos.clone();
   $effectMgr.default.instance.createEffect({
     parent: this._owner.node,
-    prefabName: "Weapon11",
+    prefabName: 'Weapon11',
     effectClass: $weapon11.default,
     initPos: this._weaponCentrePos.add(this._weaponOffsetPos),
     onCreated: function (e) {
@@ -296,9 +279,7 @@ e.prototype.createWeapon = function () {
 };
 e.prototype.onInit = function () {
   t.prototype.onInit.call(this);
-  this._durationTimer = this.getAttribute(
-    $attrEnum.E_SkillAttrType.EXTRA_ATTR_2,
-  ).value;
+  this._durationTimer = this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2).value;
   this.duration = this._durationTimer;
   this._critAdd = 0;
   this._hurtAdd = 0;
@@ -320,4 +301,4 @@ function e() {
   return e;
 }
 const d = e;
-exports.Skill_11 = d;
+export const Skill_11 = d;

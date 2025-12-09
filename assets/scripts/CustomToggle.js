@@ -1,6 +1,6 @@
 import $componentBase from './ComponentBase';
 let i;
-exports.CustomToggle = void 0;
+export const CustomToggle = void 0;
 (function () {
   if (cc.Toggle) {
     const t = cc.Toggle.prototype._updateCheckMark;
@@ -11,7 +11,7 @@ exports.CustomToggle = void 0;
       if (null === (e = this.node) || void 0 === e) {
         n = void 0;
       } else {
-        n = e.getComponent("CustomToggle");
+        n = e.getComponent('CustomToggle');
       }
       if (n) {
         n.updateCheckMark(this);
@@ -34,4 +34,4 @@ function e() {
   e.unCheckMark = null;
   return e;
 }
-exports.CustomToggle = h;
+export const CustomToggle = h;

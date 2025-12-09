@@ -1,6 +1,6 @@
 import $actorEnum from './ActorEnum';
 let i;
-exports.ImpIdleState = void 0;
+export const ImpIdleState = void 0;
 e.prototype.update = function () {
   const t = this._context;
   const e = this._context.searchTarget();
@@ -30,4 +30,4 @@ function e() {
   return (null !== t && t.apply(this, arguments)) || this;
 }
 const a = e;
-exports.ImpIdleState = a;
+export const ImpIdleState = a;

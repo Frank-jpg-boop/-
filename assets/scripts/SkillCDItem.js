@@ -17,7 +17,7 @@ e.prototype.init = function (t) {
   $resLoader.ResLoader.setSpritFrame(
     this.spIcon,
     $frameEnum.Frame.EBundleName.GAME,
-    "textures/skill/IconM_ski" + e,
+    'textures/skill/IconM_ski' + e,
   );
   this.spCd.node.active = !1;
   this.spDuration.node.active = !1;
@@ -29,4 +29,4 @@ function e() {
   e.spDuration = null;
   return e;
 }
-exports.default = p;
+export default p;

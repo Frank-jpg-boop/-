@@ -29,7 +29,7 @@ const b =
       e._isLockConsume = !1;
       return e;
     }
-    Object.defineProperty(e.prototype, "isNullItem", {
+    Object.defineProperty(e.prototype, 'isNullItem', {
       get: function () {
         return this._isNullItem;
       },
@@ -38,19 +38,13 @@ const b =
     });
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
-      this._nItem = this.node.getChildByName("Item");
+      this._nItem = this.node.getChildByName('Item');
       this._nItem.active = !1;
     };
     e.prototype.registerState = function () {
       t.prototype.registerState.call(this);
-      this._sm.addState(
-        $actorEnum.EActorStateType.IDLE,
-        new $enemy_512_Idle.Enemy_512_Idle(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.WALK,
-        new $enemy_512_Walk.Enemy_512_Walk(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.IDLE, new $enemy_512_Idle.Enemy_512_Idle(this));
+      this._sm.addState($actorEnum.EActorStateType.WALK, new $enemy_512_Walk.Enemy_512_Walk(this));
       this._sm.addState(
         $actorEnum.EActorStateType.EXTEND_1,
         new $enemy_512_Trans.Enemy_512_Trans(this),
@@ -59,11 +53,11 @@ const b =
     e.prototype.onInit = function () {
       t.prototype.onInit.call(this);
       this._isLockConsume = !1;
-      this._itemKeys = this._cfg.val1.split("|");
+      this._itemKeys = this._cfg.val1.split('|');
       this._isNullItem = 0 == this._itemKeys.length;
       this._worldPos = this.node.convertToWorldSpaceAR(cc.v2());
       if (this._itemKeys.length > 0) {
-        this._consumeGold = this._itemKeys[0].split("_").map(Number)[0];
+        this._consumeGold = this._itemKeys[0].split('_').map(Number)[0];
       } else {
         this._consumeGold = 0;
       }
@@ -73,10 +67,8 @@ const b =
     e.prototype.updateItemView = function () {
       this._nItem.active = !this._isNullItem;
       if (this._nItem.active) {
-        this._nItem
-          .getChildByName("View")
-          .getChildByName("Value")
-          .getComponent(cc.Label).string = this._consumeGold.toString();
+        this._nItem.getChildByName('View').getChildByName('Value').getComponent(cc.Label).string =
+          this._consumeGold.toString();
       }
     };
     e.prototype.canBeHurt = function () {
@@ -109,16 +101,13 @@ const b =
       ) {
         this._consumeTime = this._consumeTimer;
         if (1 == this._itemKeys.length) {
-          $levelBattleData.levelBattleData.updateGold(
-            -this._itemKeys[0].split("_").map(Number)[0],
-          );
+          $levelBattleData.levelBattleData.updateGold(-this._itemKeys[0].split('_').map(Number)[0]);
           this._consumeGold = 0;
         } else {
           if ($levelBattleData.levelBattleData.gold <= 0) {
             return void (
               this._isShowTips ||
-              ((this._isShowTips = !0),
-              $globalPopupMgr.default.instance.showTips("元宝不足"))
+              ((this._isShowTips = !0), $globalPopupMgr.default.instance.showTips('元宝不足'))
             );
           }
           $levelBattleData.levelBattleData.updateGold(-1);
@@ -126,9 +115,7 @@ const b =
         }
         this.updateItemView();
         if (this._consumeGold <= 0) {
-          const n = $battleMgr.default.instance
-            .getCurScene()
-            .level.getRoomById(this.roomId);
+          const n = $battleMgr.default.instance.getCurScene().level.getRoomById(this.roomId);
           this.dropReward(n.getGroundY());
         }
       }
@@ -171,7 +158,7 @@ const b =
             scale: 1.5,
           },
           {
-            easing: "backOut",
+            easing: 'backOut',
           },
         )
         .to(0.1, {
@@ -189,7 +176,7 @@ const b =
     };
     e.prototype.dropReward = function (t) {
       const e = this;
-      const n = this._itemKeys[0].split("_").map(Number)[1];
+      const n = this._itemKeys[0].split('_').map(Number)[1];
       this.createReward(t, n);
       this._itemKeys.shift();
       if (0 == this._itemKeys.length) {
@@ -198,9 +185,9 @@ const b =
         }, !0);
       } else {
         if (1 == this._itemKeys.length) {
-          this._consumeGold = this._cfg.val1.split("_").map(Number)[0];
+          this._consumeGold = this._cfg.val1.split('_').map(Number)[0];
         } else {
-          this._consumeGold = this._itemKeys[0].split("_").map(Number)[0];
+          this._consumeGold = this._itemKeys[0].split('_').map(Number)[0];
         }
         this.updateItemView();
         this.showItemBubble(function () {
@@ -217,8 +204,8 @@ const b =
         areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.GOOD,
         areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
         parent: i.unitParent,
-        prefabName: "SceneGood",
-        unitClass: "SceneGood",
+        prefabName: 'SceneGood',
+        unitClass: 'SceneGood',
         initPos: o,
         initParam: {
           rewardId: e,
@@ -245,10 +232,10 @@ const b =
       if (this._isNullItem) {
         for (
           const n = $battleMgr.default.instance
-                    .getCurScene()
-                    .level.findLayerByPos(this.node.getPosition()),
-                i = $battleMgr.default.instance.getCurScene().level.getLayerPosY(n),
-                o = 0;
+              .getCurScene()
+              .level.findLayerByPos(this.node.getPosition()),
+            i = $battleMgr.default.instance.getCurScene().level.getLayerPosY(n),
+            o = 0;
           o < Number(this._cfg.val3);
           o++
         ) {
@@ -258,7 +245,7 @@ const b =
     };
     e.prototype.playAnimTrans = function (t) {
       const e = this;
-      this._spCtrl.playAnim("transform", 1, !1, function () {
+      this._spCtrl.playAnim('transform', 1, !1, function () {
         e._isNullItem = !0;
         if (t) {
           t();
@@ -266,4 +253,4 @@ const b =
       });
     };
   })($enemyBase.default));
-exports.default = b;
+export default b;

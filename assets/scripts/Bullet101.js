@@ -33,9 +33,7 @@ const m =
       const o = this._maxBounceCount - this._bounceCount;
       const r = cc.v2(
         n.x + 0.6 * (i.x - n.x),
-        n.y +
-          $randomUtil.RandomUtil.randomInt(150, 200) *
-            Math.max(0.2, 1 - 0.2 * o),
+        n.y + $randomUtil.RandomUtil.randomInt(150, 200) * Math.max(0.2, 1 - 0.2 * o),
       );
       this.bezierTo(
         n,
@@ -51,18 +49,18 @@ const m =
           }
           e.blast(0 == e._bounceCount);
         },
-        "",
+        '',
         null,
         1 == this._bounceCount,
       );
     };
     e.prototype.blast = function (t) {
       const e = this;
-      $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_MuDiaoXiang");
+      $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_MuDiaoXiang');
       const n = $battleMgr.default.instance.getCurScene();
       $effectMgr.default.instance.createEffect({
         parent: n.effectParent,
-        prefabName: "Weapon101Boom",
+        prefabName: 'Weapon101Boom',
         initPos: this.node.getPosition(),
         effectClass: $weapon101Boom.default,
         onCreated: function (n) {
@@ -71,4 +69,4 @@ const m =
       });
     };
   })($bulletBase.default));
-exports.default = m;
+export default m;

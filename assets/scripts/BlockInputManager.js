@@ -1,9 +1,9 @@
 import $appBase from './AppBase';
-exports.BlockInputManager = void 0;
+export const BlockInputManager = void 0;
 t._instance = null;
 t.prototype.init = function () {
   if (!this.blockInputInit) {
-    const t = (this._blockInputNode = new cc.Node("BlockInputNode"));
+    const t = (this._blockInputNode = new cc.Node('BlockInputNode'));
     t.width = $appBase.rootNode.width;
     t.height = $appBase.rootNode.height;
     t.addComponent(cc.BlockInputEvents);
@@ -13,7 +13,7 @@ t.prototype.init = function () {
     this.blockInputInit = !0;
   }
 };
-Object.defineProperty(t.prototype, "netBlockInputNum", {
+Object.defineProperty(t.prototype, 'netBlockInputNum', {
   get: function () {
     return this._netBlockInputNum;
   },
@@ -35,21 +35,20 @@ Object.defineProperty(t.prototype, "netBlockInputNum", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "popupBlockInputNum", {
+Object.defineProperty(t.prototype, 'popupBlockInputNum', {
   get: function () {
     return this._popupBlockInputNum;
   },
   set: function (t) {
     this._popupBlockInputNum = t;
     if (null != this._blockInputNode) {
-      this._blockInputNode.active =
-        this._popupBlockInputNum + this._netBlockInputNum > 0;
+      this._blockInputNode.active = this._popupBlockInputNum + this._netBlockInputNum > 0;
     }
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == this._instance) {
       this._instance = new t();
@@ -66,4 +65,4 @@ function t() {
   this._netBlockInputNum = 0;
 }
 const o = t;
-exports.BlockInputManager = o;
+export const BlockInputManager = o;

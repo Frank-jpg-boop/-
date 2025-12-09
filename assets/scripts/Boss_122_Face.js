@@ -1,7 +1,7 @@
 import $state from './State';
 import $actorEnum from './ActorEnum';
 let i;
-exports.Boss_122_Face = void 0;
+export const Boss_122_Face = void 0;
 e.prototype.end = function () {
   this._isEndFace = !1;
   this._context.node.opacity = 255;
@@ -30,4 +30,4 @@ function e(e) {
   return n;
 }
 const s = e;
-exports.Boss_122_Face = s;
+export const Boss_122_Face = s;

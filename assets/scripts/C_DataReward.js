@@ -1,9 +1,9 @@
 let i;
-exports.C_DataReward = void 0;
+export const C_DataReward = void 0;
 function e() {
   const e = t.call(this) || this;
-  e._name = "DataReward";
+  e._name = 'DataReward';
   return e;
 }
 const r = e;
-exports.C_DataReward = r;
+export const C_DataReward = r;

@@ -5,7 +5,7 @@ import $eBoss_521Atk from './EBoss_521Atk';
 import $effectMgr from './EffectMgr';
 import $actorEnum from './ActorEnum';
 let i;
-exports.Boss_521_Atk = void 0;
+export const Boss_521_Atk = void 0;
 e.prototype.end = function () {
   this._context.enterAttackCd();
 };
@@ -49,7 +49,7 @@ e.prototype.createAtkEffect = function (t) {
     p.forEach(function (t) {
       $effectMgr.default.instance.createEffect({
         parent: n.lowEffectParent,
-        prefabName: "EBoss_521Atk",
+        prefabName: 'EBoss_521Atk',
         initPos: t,
         effectClass: $eBoss_521Atk.default,
         onCreated: function (t) {
@@ -81,4 +81,4 @@ function e(e) {
   return n;
 }
 const p = e;
-exports.Boss_521_Atk = p;
+export const Boss_521_Atk = p;

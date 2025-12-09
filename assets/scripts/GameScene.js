@@ -8,7 +8,7 @@ import $reportMgr from './ReportMgr';
 import $stageDataProxy from './StageDataProxy';
 import $gameEnum from './GameEnum';
 let i;
-exports.GameScene = void 0;
+export const GameScene = void 0;
 const _ = cc._decorator;
 const g = _.ccclass;
 const v = _.property;
@@ -35,7 +35,7 @@ e.prototype.onDestroy = function () {
 e.prototype.initScene = function () {};
 e.prototype.onLoad = function () {
   t.prototype.onLoad.call(this);
-  cc.director.getScene().name = "game";
+  cc.director.getScene().name = 'game';
   this.initScene();
   $eventManager.EventManager.instance.on(
     $gameEnum.Game.EGameEvent.SCENE_UI_SWITCH,
@@ -47,7 +47,7 @@ e.prototype.onLoad = function () {
     $globalEnum.Global.EBgmType.GAME,
   );
 };
-Object.defineProperty(e.prototype, "curUINode", {
+Object.defineProperty(e.prototype, 'curUINode', {
   get: function () {
     return this._curNode;
   },
@@ -61,4 +61,4 @@ function e() {
   e._curGameSceneType = $gameEnum.Game.EGameSceneUIType.MAIN_UI;
   return e;
 }
-exports.GameScene = b;
+export const GameScene = b;

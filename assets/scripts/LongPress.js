@@ -1,12 +1,9 @@
-let i;
-let o;
-exports.TriggerWay = exports.LONG_PRESS = void 0;
-exports.LONG_PRESS = "longpress";
-(function (t) {
-  t[(t.Immediately = 1)] = "Immediately";
-  t[(t.AfterLoosing = 2)] = "AfterLoosing";
-  t[(t.Duration = 3)] = "Duration";
-})((o = exports.TriggerWay || (exports.TriggerWay = {})));
+export const LONG_PRESS = 'longpress';
+export const TriggerWay = {
+  Immediately: 1,
+  AfterLoosing: 2,
+  Duration: 3,
+};
 const s = cc._decorator;
 const c = s.ccclass;
 const l = s.property;
@@ -90,4 +87,4 @@ function e() {
   e.durationTime = 0;
   return e;
 }
-exports.default = p;
+export default p;;

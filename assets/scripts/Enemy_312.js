@@ -18,7 +18,7 @@ const p =
     };
     e.prototype.playAnimSkill = function (t) {
       const e = this;
-      this._spCtrl.playAnim("diaotou", 1, !1, function () {
+      this._spCtrl.playAnim('diaotou', 1, !1, function () {
         e.turnHead();
         if (t) {
           t();
@@ -27,12 +27,10 @@ const p =
     };
     e.prototype.turnHead = function () {
       this._isTurnHead = !0;
-      this._standAnimName = "stand_diaotou";
-      this._atkAnimName = "atk_diaotou";
-      this._moveAnimName = "move_diaotou";
-      this.getAttribute($attrEnum.E_AttrType.SPEED).changeAddValue(
-        Number(this._cfg.val2),
-      );
+      this._standAnimName = 'stand_diaotou';
+      this._atkAnimName = 'atk_diaotou';
+      this._moveAnimName = 'move_diaotou';
+      this.getAttribute($attrEnum.E_AttrType.SPEED).changeAddValue(Number(this._cfg.val2));
     };
     e.prototype.onBeHurt = function (e) {
       t.prototype.onBeHurt.call(this, e);
@@ -44,4 +42,4 @@ const p =
       }
     };
   })($enemyBase.default));
-exports.default = p;
+export default p;

@@ -1,5 +1,5 @@
 let i;
-exports.RadarChart = void 0;
+export const RadarChart = void 0;
 const a = cc._decorator;
 const s = a.ccclass;
 const c = a.property;
@@ -20,16 +20,10 @@ const u =
       e._innerGridLineWidth = 4;
       e._gridLineColor = cc.Color.GRAY;
       e._gridFillColor = cc.color(100, 100, 100, 100);
-      e._dataValuesStrings = [
-        "0.8,0.5,0.6,0.5,0.8,0.6",
-        "0.5,0.9,0.5,0.8,0.5,0.9",
-      ];
+      e._dataValuesStrings = ['0.8,0.5,0.6,0.5,0.8,0.6', '0.5,0.9,0.5,0.8,0.5,0.9'];
       e._dataLineWidths = [5, 5];
       e._dataLineColors = [cc.Color.BLUE, cc.Color.RED];
-      e._dataFillColors = [
-        cc.color(120, 120, 180, 100),
-        cc.color(180, 120, 120, 100),
-      ];
+      e._dataFillColors = [cc.color(120, 120, 180, 100), cc.color(180, 120, 120, 100)];
       e._dataJoinColors = [];
       e._drawDataJoin = !0;
       e.graphics = null;
@@ -39,7 +33,7 @@ const u =
       e.curTweenRes = null;
       return e;
     }
-    Object.defineProperty(e.prototype, "axisLength", {
+    Object.defineProperty(e.prototype, 'axisLength', {
       get: function () {
         return this._axisLength;
       },
@@ -50,7 +44,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "axes", {
+    Object.defineProperty(e.prototype, 'axes', {
       get: function () {
         return this._axes;
       },
@@ -61,7 +55,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "axisScales", {
+    Object.defineProperty(e.prototype, 'axisScales', {
       get: function () {
         return this._axisScales;
       },
@@ -72,7 +66,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "drawAxes", {
+    Object.defineProperty(e.prototype, 'drawAxes', {
       get: function () {
         return this._drawAxes;
       },
@@ -83,7 +77,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "gridLineWidth", {
+    Object.defineProperty(e.prototype, 'gridLineWidth', {
       get: function () {
         return this._gridLineWidth;
       },
@@ -94,7 +88,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "innerGridLineWidth", {
+    Object.defineProperty(e.prototype, 'innerGridLineWidth', {
       get: function () {
         return this._innerGridLineWidth;
       },
@@ -105,7 +99,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "gridLineColor", {
+    Object.defineProperty(e.prototype, 'gridLineColor', {
       get: function () {
         return this._gridLineColor;
       },
@@ -116,7 +110,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "gridFillColor", {
+    Object.defineProperty(e.prototype, 'gridFillColor', {
       get: function () {
         return this._gridFillColor;
       },
@@ -127,7 +121,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "dataValuesStrings", {
+    Object.defineProperty(e.prototype, 'dataValuesStrings', {
       get: function () {
         return this._dataValuesStrings;
       },
@@ -138,7 +132,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "dataLineWidths", {
+    Object.defineProperty(e.prototype, 'dataLineWidths', {
       get: function () {
         return this._dataLineWidths;
       },
@@ -149,7 +143,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "dataLineColors", {
+    Object.defineProperty(e.prototype, 'dataLineColors', {
       get: function () {
         return this._dataLineColors;
       },
@@ -160,7 +154,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "dataFillColors", {
+    Object.defineProperty(e.prototype, 'dataFillColors', {
       get: function () {
         return this._dataFillColors;
       },
@@ -171,7 +165,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "dataJoinColors", {
+    Object.defineProperty(e.prototype, 'dataJoinColors', {
       get: function () {
         return this._dataJoinColors;
       },
@@ -182,7 +176,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "drawDataJoin", {
+    Object.defineProperty(e.prototype, 'drawDataJoin', {
       get: function () {
         return this._drawDataJoin;
       },
@@ -193,7 +187,7 @@ const u =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "curDatas", {
+    Object.defineProperty(e.prototype, 'curDatas', {
       get: function () {
         return this._curDatas;
       },
@@ -216,14 +210,19 @@ const u =
         this.target = this.node;
       }
       this.graphics =
-        this.target.getComponent(cc.Graphics) ||
-        this.target.addComponent(cc.Graphics);
+        this.target.getComponent(cc.Graphics) || this.target.addComponent(cc.Graphics);
       this.graphics.lineJoin = cc.Graphics.LineJoin.ROUND;
       this.graphics.lineCap = cc.Graphics.LineCap.ROUND;
     };
     e.prototype.drawWithProperties = function () {
       for (
-        const t = [], e = this.dataValuesStrings, n = this._dataLineWidths, i = this._dataLineColors, o = this._dataFillColors, r = this._dataJoinColors, a = 0;
+        const t = [],
+          e = this.dataValuesStrings,
+          n = this._dataLineWidths,
+          i = this._dataLineColors,
+          o = this._dataFillColors,
+          r = this._dataJoinColors,
+          a = 0;
         a < e.length;
         a++
       ) {
@@ -238,7 +237,7 @@ const u =
       this.draw(t);
     };
     e.prototype.processValuesString = function (t) {
-      for (const e = t.split(","), n = [], i = 0; i < e.length; i++) {
+      for (const e = t.split(','), n = [], i = 0; i < e.length; i++) {
         const o = parseFloat(e[i]);
         n.push(isNaN(o) ? 0 : o);
       }
@@ -249,11 +248,7 @@ const u =
       t.lineWidth = this._gridLineWidth;
       t.strokeColor = this._gridLineColor;
       t.fillColor = this._gridFillColor;
-      for (
-        const e = (this.angles = []), n = 360 / this.axes, i = 0;
-        i < this.axes;
-        i++
-      ) {
+      for (const e = (this.angles = []), n = 360 / this.axes, i = 0; i < this.axes; i++) {
         e.push(n * i);
       }
       const o = [];
@@ -261,11 +256,7 @@ const u =
       const a = this._axisScales;
       const s = r / a;
       for (i = 0; i < a; i++) {
-        for (
-          const c = [], l = r - s * i, u = 0, p = this.angles.length;
-          u < p;
-          u++
-        ) {
+        for (const c = [], l = r - s * i, u = 0, p = this.angles.length; u < p; u++) {
           const h = (Math.PI / 180) * this.angles[u];
           c.push(cc.v2(l * Math.cos(h), l * Math.sin(h)));
         }
@@ -310,11 +301,7 @@ const u =
       }
       this._curDatas = n;
       this.resizeCurDatasValues(0);
-      for (
-        const i = this.axes, o = this.axisLength, r = this.angles, a = 0;
-        a < n.length;
-        a++
-      ) {
+      for (const i = this.axes, o = this.axisLength, r = this.angles, a = 0; a < n.length; a++) {
         const s = n[a];
         e.strokeColor = s.lineColor || p.lineColor;
         e.fillColor = s.fillColor || p.fillColor;
@@ -365,10 +352,7 @@ const u =
           if (s) {
             for (const c = r[a], l = 0; l < s.values.length; l++) {
               cc.tween(s.values)
-                .to(
-                  e,
-                  ((o = {}), (o[l] = c.values[l] > 1 ? 1 : c.values[l]), o),
-                )
+                .to(e, ((o = {}), (o[l] = c.values[l] > 1 ? 1 : c.values[l]), o))
                 .start();
             }
             cc.tween(s)
@@ -402,7 +386,7 @@ const u =
       }
     };
   })(cc.Component));
-exports.RadarChart = u;
+export const RadarChart = u;
 const p = {
   lineWidth: 5,
   lineColor: cc.Color.BLUE,

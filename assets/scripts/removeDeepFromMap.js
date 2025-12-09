@@ -1,14 +1,9 @@
 function n(t, e) {
-  const n =
-    ("undefined" != typeof Symbol && t[Symbol.iterator]) || t["@@iterator"];
+  const n = ('undefined' != typeof Symbol && t[Symbol.iterator]) || t['@@iterator'];
   if (n) {
     return (n = n.call(t)).next.bind(n);
   }
-  if (
-    Array.isArray(t) ||
-    (n = i(t)) ||
-    (e && t && "number" == typeof t.length)
-  ) {
+  if (Array.isArray(t) || (n = i(t)) || (e && t && 'number' == typeof t.length)) {
     if (n) {
       t = n;
     }
@@ -27,22 +22,22 @@ function n(t, e) {
     };
   }
   throw new TypeError(
-    "Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.",
+    'Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.',
   );
 }
 
 function i(t, e) {
   if (t) {
-    if ("string" == typeof t) {
+    if ('string' == typeof t) {
       return o(t, e);
     }
     const n = Object.prototype.toString.call(t).slice(8, -1);
-    if ("Object" === n && t.constructor) {
+    if ('Object' === n && t.constructor) {
       n = t.constructor.name;
     }
-    return "Map" === n || "Set" === n
+    return 'Map' === n || 'Set' === n
       ? Array.from(t)
-      : "Arguments" === n || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)
+      : 'Arguments' === n || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)
         ? o(t, e)
         : void 0;
   }
@@ -57,7 +52,7 @@ function o(t, e) {
   }
   return i;
 }
-module.exports = function t(e, i) {
+export default function t(e, i) {
   for (let o, r = new Map(), a = n(e); !(o = a()).done; ) {
     const s = o.value;
     const c = s[0];
@@ -71,4 +66,4 @@ module.exports = function t(e, i) {
     }
   }
   return r;
-};
+}

@@ -40,8 +40,7 @@ e.prototype.onPlayerCollisionExit = function () {
     }
   } else {
     this._progress && this._progress.hide();
-    this._isFixedDisplayUnlock ||
-      (this._unlockTips && this._unlockTips.hideTips());
+    this._isFixedDisplayUnlock || (this._unlockTips && this._unlockTips.hideTips());
   }
 };
 e.prototype.onPlayerCollisionStay = function (t, e) {
@@ -57,15 +56,12 @@ e.prototype.onPlayerCollisionStay = function (t, e) {
     if (this._waitTime < this._waitTimer) {
       this._waitTime += e;
       this._progress &&
-        (this._progress.show(),
-        this._progress.updateProgress(this._waitTime / this._waitTimer));
+        (this._progress.show(), this._progress.updateProgress(this._waitTime / this._waitTimer));
     } else {
       if (this._progress) {
         this._progress.hide();
       }
-      const o = $battleMgr.default.instance
-        .getCurScene()
-        .level.getRoomById(this._roomId);
+      const o = $battleMgr.default.instance.getCurScene().level.getRoomById(this._roomId);
       if (o.isUnlock && this._unlockTips && this._unlockTips.node.active) {
         this._unlockTips.hideTips(!0);
         return void (this._unlockTips = null);
@@ -76,7 +72,7 @@ e.prototype.onPlayerCollisionStay = function (t, e) {
             //
           } else {
             this._isLockCheck = !0;
-            $globalPopupMgr.default.instance.showTips("房间解锁后才可进入");
+            $globalPopupMgr.default.instance.showTips('房间解锁后才可进入');
           }
           break;
         case 2:
@@ -90,13 +86,12 @@ e.prototype.onPlayerCollisionStay = function (t, e) {
           }
           if (
             0 == $levelBattleData.levelBattleData.cfgStage.id &&
-            $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-              $guideDataProxy.EGuideStepId.G_8
+            $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_8
           ) {
             if (this._isLockCheck) {
               //
             } else {
-              $globalPopupMgr.default.instance.showTips("元宝足够后可解锁");
+              $globalPopupMgr.default.instance.showTips('元宝足够后可解锁');
               this._isLockCheck = !0;
             }
             break;
@@ -109,15 +104,12 @@ e.prototype.onPlayerCollisionStay = function (t, e) {
                 //
               } else {
                 this._isShowLockTips = !0;
-                $globalPopupMgr.default.instance.showTips("元宝不足");
+                $globalPopupMgr.default.instance.showTips('元宝不足');
               }
               break;
             }
             $levelBattleData.levelBattleData.updateGold(-1);
-            $audioUtil.AudioUtil.playLimitEffect(
-              "sounds/lmtw_yx_ConsumingMoney",
-              0.2,
-            );
+            $audioUtil.AudioUtil.playLimitEffect('sounds/lmtw_yx_ConsumingMoney', 0.2);
             o.triggerUnlock(1);
             if (this._unlockTips) {
               this._unlockTips.updateTips(o.curUnlockResidueCost);
@@ -141,19 +133,15 @@ e.prototype.onPlayerCollisionStay = function (t, e) {
                 e,
                 function () {
                   n._unlockTips.setLockClick(!1);
-                  const t = $battleMgr.default.instance
-                    .getCurScene()
-                    .level.getRoomById(n._roomId);
+                  const t = $battleMgr.default.instance.getCurScene().level.getRoomById(n._roomId);
                   if (t) {
-                    $audioUtil.AudioUtil.playEffect(
-                      "sounds/lmtw_yx_OpenKeyDoor",
-                    );
+                    $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_OpenKeyDoor');
                     t.triggerUnlock(1);
                   }
                 },
               );
             } else {
-              $globalPopupMgr.default.instance.showTips("未获得" + t.name);
+              $globalPopupMgr.default.instance.showTips('未获得' + t.name);
             }
           };
           if (!this._isFixedDisplayUnlock) {
@@ -173,16 +161,12 @@ e.prototype.onPlayerCollisionStay = function (t, e) {
           } else {
             this._isPlayAdUnlock = !0;
             $globalPopupMgr.default.instance.showLevelAdConfirmPopup(
-              "解锁房间",
-              "是否观看广告开启奖励房间",
+              '解锁房间',
+              '是否观看广告开启奖励房间',
               function () {
-                const t = $battleMgr.default.instance
-                  .getCurScene()
-                  .level.getRoomById(n._roomId);
+                const t = $battleMgr.default.instance.getCurScene().level.getRoomById(n._roomId);
                 if (t) {
-                  $audioUtil.AudioUtil.playEffect(
-                    "sounds/lmtw_yx_OpenKeyDoor",
-                  );
+                  $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_OpenKeyDoor');
                   t.triggerUnlock(1);
                 }
               },
@@ -190,7 +174,7 @@ e.prototype.onPlayerCollisionStay = function (t, e) {
                 n._waitTime = 0;
                 n._isPlayAdUnlock = !1;
               },
-              "AD_OpenRoom",
+              'AD_OpenRoom',
               $battleMgr.default.instance.getCurScene().isPlay,
             );
           }
@@ -212,17 +196,10 @@ e.prototype.initUnlockTips = function () {
     this._unlockTips = e.getComponent($commonUnlockTips.default);
     switch (t.openType) {
       case 2:
-        this._unlockTips.initTips(
-          $commonUnlockTips.EUnlockType.GOLD,
-          t.openVal,
-        );
+        this._unlockTips.initTips($commonUnlockTips.EUnlockType.GOLD, t.openVal);
         break;
       case 11:
-        this._unlockTips.initTips(
-          $commonUnlockTips.EUnlockType.ITEM,
-          1,
-          t.openVal,
-        );
+        this._unlockTips.initTips($commonUnlockTips.EUnlockType.ITEM, 1, t.openVal);
     }
     const n = this.node.getPosition();
     n.x += 20;
@@ -236,8 +213,7 @@ e.prototype.initUnlockTips = function () {
 };
 e.prototype.onInit = function () {
   const t = this;
-  this._isFixedDisplayUnlock =
-    $battleMgr.default.instance.isFixedDisplayUnlock;
+  this._isFixedDisplayUnlock = $battleMgr.default.instance.isFixedDisplayUnlock;
   this._isPlayAdUnlock = !1;
   this._isShowLockTips = !0;
   this._isLockCheck = !1;
@@ -247,7 +223,7 @@ e.prototype.onInit = function () {
     $cfg.default.instance.dataCons.getById(12 == e.openType ? 127 : 125).val,
   );
   $battleMgr.default.instance.createOtherNode(
-    12 == e.openType ? "AdProgressWaitItem" : "ProgressWaitItem",
+    12 == e.openType ? 'AdProgressWaitItem' : 'ProgressWaitItem',
     function (n) {
       t._progress = n.getComponent($progressWaitItem.default);
       t._progress.init(1, 12 != e.openType);
@@ -276,4 +252,4 @@ function e() {
   e._isLockCheck = !1;
   return e;
 }
-exports.default = w;
+export default w;

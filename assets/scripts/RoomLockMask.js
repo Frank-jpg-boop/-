@@ -9,7 +9,7 @@ const c =
       e._isPlaying = !1;
       return e;
     }
-    Object.defineProperty(e.prototype, "isPlaying", {
+    Object.defineProperty(e.prototype, 'isPlaying', {
       get: function () {
         return this._isPlaying;
       },
@@ -37,4 +37,4 @@ const c =
       }
     };
   })(cc.Component));
-exports.default = c;
+export default c;

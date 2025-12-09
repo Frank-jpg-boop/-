@@ -24,16 +24,10 @@ e.prototype.onPlayerCollisionExit = function () {
   if (11 == this._cfg.type) {
     this.hideTips();
   }
-  $eventManager.EventManager.instance.emit(
-    $battleEnum.EBattleEvent.SET_FULL_BAG_UI,
-    !1,
-  );
+  $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.SET_FULL_BAG_UI, !1);
 };
 e.prototype.onPlayerCollisionStay = function (t) {
-  if (
-    11 == this._cfg.type &&
-    t.curHp >= t.getAttribute($attrEnum.E_AttrType.HP).value
-  ) {
+  if (11 == this._cfg.type && t.curHp >= t.getAttribute($attrEnum.E_AttrType.HP).value) {
     //
   } else {
     if (this.canPickupByPlayer(t)) {
@@ -42,10 +36,7 @@ e.prototype.onPlayerCollisionStay = function (t) {
   }
 };
 e.prototype.onPlayerCollisionEnter = function (t) {
-  if (
-    11 == this._cfg.type &&
-    t.curHp >= t.getAttribute($attrEnum.E_AttrType.HP).value
-  ) {
+  if (11 == this._cfg.type && t.curHp >= t.getAttribute($attrEnum.E_AttrType.HP).value) {
     this.showTips();
   }
 };
@@ -142,15 +133,14 @@ e.prototype.pickup = function (t, e) {
     e = !0;
   }
   if (this._isDroped && !this._isPickup && !this._isRemove) {
-    const i = "";
+    const i = '';
     if (
       this.isBagItem &&
       e &&
-      "" ==
-        (i = $levelBattleData.levelBattleData.findBagPutRowCol(this._cfg.id))
+      '' == (i = $levelBattleData.levelBattleData.findBagPutRowCol(this._cfg.id))
     ) {
       this._showPutupTipsTime = 5;
-      $globalPopupMgr.default.instance.showTips("背包已满，请整理");
+      $globalPopupMgr.default.instance.showTips('背包已满，请整理');
       return void $eventManager.EventManager.instance.emit(
         $battleEnum.EBattleEvent.SET_FULL_BAG_UI,
         !0,
@@ -174,10 +164,7 @@ e.prototype.pickup = function (t, e) {
           $battleMgr.default.instance.getCurScene().playerId,
         );
         if (a && !a.isDead()) {
-          a.beRecover(
-            a.getAttribute($attrEnum.E_AttrType.HP).value *
-              Number(this._cfg.actNum),
-          );
+          a.beRecover(a.getAttribute($attrEnum.E_AttrType.HP).value * Number(this._cfg.actNum));
         }
         break;
       case 12:
@@ -203,11 +190,9 @@ e.prototype.pickup = function (t, e) {
       default:
         if (
           -1 ==
-          $levelBattleData.levelBattleData.bagData.bagEquipDatas.findIndex(
-            function (t) {
-              return t.unitId == n.unitId;
-            },
-          )
+          $levelBattleData.levelBattleData.bagData.bagEquipDatas.findIndex(function (t) {
+            return t.unitId == n.unitId;
+          })
         ) {
           $levelBattleData.levelBattleData.bagData.bagEquipDatas.push({
             unitId: this.unitId,
@@ -231,9 +216,7 @@ e.prototype.pickup = function (t, e) {
             !0,
           );
         }
-        $eventManager.EventManager.instance.emit(
-          $battleEnum.EBattleEvent.UPDATE_BAG_UI,
-        );
+        $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.UPDATE_BAG_UI);
     }
     if (t) {
       this.remove();
@@ -246,17 +229,13 @@ e.prototype.canPickupByPlayer = function (t) {
   return (
     !!$battleMgr.default.instance.getCurScene().isPlay &&
     !(this._showPutupTipsTime > 0) &&
-    (11 != this._cfg.type ||
-      t.curHp < t.getAttribute($attrEnum.E_AttrType.HP).value)
+    (11 != this._cfg.type || t.curHp < t.getAttribute($attrEnum.E_AttrType.HP).value)
   );
 };
 e.prototype.onUpdate = function (t) {
   if (this._isDroping) {
     this.nShade.y = this._finalY - this.node.y;
-    this.nShade.scale = Math.max(
-      0,
-      1 - Math.abs(this.node.y - this._finalY) / 100,
-    );
+    this.nShade.scale = Math.max(0, 1 - Math.abs(this.node.y - this._finalY) / 100);
   }
   if (this._showFullHpTipsTime > 0) {
     this._showFullHpTipsTime -= t;
@@ -276,9 +255,7 @@ e.prototype.onUpdate = function (t) {
     }
   }
   if (this._followTargetNode) {
-    const e = this._followTargetNode
-      .getPosition()
-      .add(this._followTargetOffsetPos);
+    const e = this._followTargetNode.getPosition().add(this._followTargetOffsetPos);
     const n = this.node.getPosition();
     n = n.lerp(e, 0.08);
     this.node.setPosition(n);
@@ -307,9 +284,7 @@ e.prototype.drop = function (t, e, n, i, o, r) {
   this._finalY = s;
   const c = this.node.getPosition();
   const l = c.x + e;
-  const p = $battleMgr.default.instance
-    .getCurScene()
-    .level.getRoomById(this.roomId);
+  const p = $battleMgr.default.instance.getCurScene().level.getRoomById(this.roomId);
   if (p) {
     l = Math.max(p.node.x + 150, l);
     l = Math.min(p.node.x + p.node.width - 150, l);
@@ -320,10 +295,7 @@ e.prototype.drop = function (t, e, n, i, o, r) {
   this.node.active = !0;
   const f = cc.v2(l, s);
   const m = c;
-  const y = cc.v2(
-    m.x + 0.4 * (f.x - m.x),
-    m.y + $randomUtil.RandomUtil.randomInt(100, 150),
-  );
+  const y = cc.v2(m.x + 0.4 * (f.x - m.x), m.y + $randomUtil.RandomUtil.randomInt(100, 150));
   cc.tween(this.node)
     .delay(r)
     .bezierTo(n, m, y, f)
@@ -335,7 +307,7 @@ e.prototype.drop = function (t, e, n, i, o, r) {
             y: s + i,
           },
           {
-            easing: "quadOut",
+            easing: 'quadOut',
           },
         )
         .to(
@@ -344,7 +316,7 @@ e.prototype.drop = function (t, e, n, i, o, r) {
             y: s,
           },
           {
-            easing: "quadIn",
+            easing: 'quadIn',
           },
         )
         .call(function () {
@@ -355,7 +327,7 @@ e.prototype.drop = function (t, e, n, i, o, r) {
                 y: s + 0.3 * i,
               },
               {
-                easing: "quadOut",
+                easing: 'quadOut',
               },
             )
             .to(
@@ -364,7 +336,7 @@ e.prototype.drop = function (t, e, n, i, o, r) {
                 y: s,
               },
               {
-                easing: "quadIn",
+                easing: 'quadIn',
               },
             )
             .call(function () {
@@ -372,10 +344,7 @@ e.prototype.drop = function (t, e, n, i, o, r) {
               a.updateAreaKey();
               a._isDroped = !0;
               a._isDroping = !1;
-              if (
-                1 == a._cfg.type ||
-                0 == $levelBattleData.levelBattleData.cfgStage.id
-              ) {
+              if (1 == a._cfg.type || 0 == $levelBattleData.levelBattleData.cfgStage.id) {
                 a.pickup();
               } else {
                 if (14 == a._cfg.type) {
@@ -414,11 +383,7 @@ e.prototype.showLight = function () {
     this.scheduleOnce(function () {
       t.spAnimLight.node.active = !0;
       t.spAnimLight.clearAnim();
-      t.spAnimLight.playAnim(
-        ["", "lv", "lan", "zi", "cheng"][t._cfg.light],
-        1,
-        !0,
-      );
+      t.spAnimLight.playAnim(['', 'lv', 'lan', 'zi', 'cheng'][t._cfg.light], 1, !0);
     }, 0.2);
   } else {
     this.spAnimLight.node.active = !1;
@@ -443,7 +408,7 @@ e.prototype.showTips = function () {
         scale: 1.2,
       },
       {
-        easing: "backOut",
+        easing: 'backOut',
       },
     )
     .to(0.1, {
@@ -465,15 +430,13 @@ e.prototype.onInit = function () {
   this._showFullHpTipsTime = 0;
   this._showPutupTipsTime = 0;
   this._param = this._initParam.param;
-  this._cfg = $cfg.default.instance.dataReward.getById(
-    this._initParam.rewardId,
-  );
+  this._cfg = $cfg.default.instance.dataReward.getById(this._initParam.rewardId);
   this._num = this._initParam.rewardNum;
   this.spIcon.spriteFrame = null;
   $resLoader.ResLoader.setSpritFrame(
     this.spIcon,
     $frameEnum.Frame.EBundleName.RES,
-    "textures/atlas/item_scene/" + this._cfg.spr,
+    'textures/atlas/item_scene/' + this._cfg.spr,
   );
   this._isDroped = this._initParam && this._initParam.isDroped;
   this._isDroping = !1;
@@ -486,8 +449,7 @@ e.prototype.onInit = function () {
     this.node.active = !1;
   }
   if (11 == this._cfg.type) {
-    this.node.parent =
-      $battleMgr.default.instance.getCurScene().actorTopParent;
+    this.node.parent = $battleMgr.default.instance.getCurScene().actorTopParent;
   }
   this.hideTips();
   this.showLight();
@@ -507,35 +469,33 @@ e.prototype.onInit = function () {
       this.onEventConsumeBagItem,
       this,
     );
-    $eventManager.EventManager.instance.emit(
-      $battleEnum.EBattleEvent.UPDATE_BAG_UI,
-    );
+    $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.UPDATE_BAG_UI);
   }
 };
-Object.defineProperty(e.prototype, "param", {
+Object.defineProperty(e.prototype, 'param', {
   get: function () {
     return this._param;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "rewardId", {
+Object.defineProperty(e.prototype, 'rewardId', {
   get: function () {
     return this._cfg.id;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "isPickup", {
+Object.defineProperty(e.prototype, 'isPickup', {
   get: function () {
     return this._isPickup;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "isBagItem", {
+Object.defineProperty(e.prototype, 'isBagItem', {
   get: function () {
-    return "" != this._cfg.boxObj;
+    return '' != this._cfg.boxObj;
   },
   enumerable: !1,
   configurable: !0,
@@ -561,4 +521,4 @@ function e() {
   e._followTargetOffsetPos = null;
   return e;
 }
-exports.default = M;
+export default M;

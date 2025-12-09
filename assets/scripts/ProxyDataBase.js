@@ -1,4 +1,4 @@
-exports.ProxyDataBase = void 0;
+export const ProxyDataBase = void 0;
 t.prototype.resetData = function () {
   const t = this;
   const e = this.createInitData();
@@ -17,4 +17,4 @@ function t(t) {
   }
 }
 const i = t;
-exports.ProxyDataBase = i;
+export const ProxyDataBase = i;

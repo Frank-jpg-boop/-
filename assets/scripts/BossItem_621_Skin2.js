@@ -28,21 +28,17 @@ const _ =
     };
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
-      this._nBody = this.node.getChildByName("Body");
-      this._nShootIcon = this._nBody.getChildByName("ShootIcon");
-      this._nFlyIcon = this._nBody.getChildByName("FlyIcon");
+      this._nBody = this.node.getChildByName('Body');
+      this._nShootIcon = this._nBody.getChildByName('ShootIcon');
+      this._nFlyIcon = this._nBody.getChildByName('FlyIcon');
       this._nShootIcon.active = !0;
       this._nFlyIcon.active = !1;
     };
     e.prototype.initAttribute = function () {
       t.prototype.initAttribute.call(this);
       this._actorAttribute.init($attrEnum.E_AttrType);
-      this._actorAttribute
-        .getNumeric($attrEnum.E_AttrType.ATK)
-        .setFixBase(this._initParam.atk);
-      this._actorAttribute
-        .getNumeric($attrEnum.E_AttrType.HP)
-        .setFixBase(this._initParam.maxHp);
+      this._actorAttribute.getNumeric($attrEnum.E_AttrType.ATK).setFixBase(this._initParam.atk);
+      this._actorAttribute.getNumeric($attrEnum.E_AttrType.HP).setFixBase(this._initParam.maxHp);
     };
     e.prototype.playShowAnim = function () {
       const t = this;
@@ -75,25 +71,18 @@ const _ =
             y: o.y,
           },
           {
-            easing: "sineOut",
+            easing: 'sineOut',
           },
         )
         .call(function () {
           const n = $battleMgr.default.instance.getCurScene();
-          e = $nodeUtil.default.nodeParentChangeLocalPos(
-            t.node,
-            n.bulletParent,
-          );
+          e = $nodeUtil.default.nodeParentChangeLocalPos(t.node, n.bulletParent);
           t.node.parent = n.bulletParent;
           t.node.setPosition(e);
           const i = $actorMgr.default.instance.getActor(n.playerId);
           const o = i.node.getPosition();
           if (i.moveDir) {
-            o.addSelf(
-              i.moveDir.mul(
-                (0.5 * i.getAttribute($attrEnum.E_AttrType.SPEED).value) / 60,
-              ),
-            );
+            o.addSelf(i.moveDir.mul((0.5 * i.getAttribute($attrEnum.E_AttrType.SPEED).value) / 60));
           }
           const r = o.sub(e);
           const a = r.normalize();
@@ -109,7 +98,7 @@ const _ =
                 y: u.y,
               },
               {
-                easing: "sineOut",
+                easing: 'sineOut',
                 onUpdate: function () {
                   t.updateUnifyPos();
                   t.updateAreaKey();
@@ -158,7 +147,7 @@ const _ =
             y: n,
           },
           {
-            easing: "sineOut",
+            easing: 'sineOut',
           },
         )
         .call(function () {
@@ -171,13 +160,8 @@ const _ =
       t.prototype.onUpdate.call(this, e);
       if (this._isWaitReady) {
         const n = $battleMgr.default.instance.getCurScene();
-        const i = $actorMgr.default.instance
-          .getActor(n.playerId)
-          .node.getPosition();
-        const o = $nodeUtil.default.nodeParentChangeLocalPos(
-          this.node,
-          n.bulletParent,
-        );
+        const i = $actorMgr.default.instance.getActor(n.playerId).node.getPosition();
+        const o = $nodeUtil.default.nodeParentChangeLocalPos(this.node, n.bulletParent);
         const r = i.sub(o).normalize();
         this._nBody.angle = (180 * Math.atan2(r.y, r.x)) / Math.PI;
       } else {
@@ -210,8 +194,7 @@ const _ =
                   t.hurtColliderRect,
                 )
               ) {
-                -1 == n &&
-                  (e.beHurt(t.getHurt()), t._atkCollisionIds.push(e.unitId));
+                -1 == n && (e.beHurt(t.getHurt()), t._atkCollisionIds.push(e.unitId));
               } else {
                 -1 != n && t._atkCollisionIds.splice(n, 1);
               }
@@ -221,8 +204,7 @@ const _ =
     };
     e.prototype.getHurt = function () {
       const t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
-      const e =
-        Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
+      const e = Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
       if (e) {
         t *= this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).value;
       }
@@ -240,4 +222,4 @@ const _ =
       return this._isShooted && t.prototype.canBeHurt.call(this);
     };
   })($enemyItemBase.default));
-exports.default = _;
+export default _;

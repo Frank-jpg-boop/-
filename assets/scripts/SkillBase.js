@@ -5,7 +5,7 @@ import $numericData from './NumericData';
 import $attrEnum from './AttrEnum';
 import $battleEnum from './BattleEnum';
 import $skillEnum from './SkillEnum';
-exports.SkillBase = void 0;
+export const SkillBase = void 0;
 t.prototype.getHurtOption = function () {
   return {
     attacker: this._owner,
@@ -26,19 +26,15 @@ t.prototype.addSkillEx = function (t) {
   if (
     11 ===
     (e.baseVal1 > 0 &&
-      this.getAttribute(
-        $attrEnum.E_SkillAttrType.CORE_ATTR_RATE,
-      ).changePercentAdd(100 * e.baseVal1),
-    e.baseVal2 > 0 &&
-      this.getAttribute($attrEnum.E_SkillAttrType.SKILL_CD).changePercentAdd(
-        100 * -e.baseVal2,
+      this.getAttribute($attrEnum.E_SkillAttrType.CORE_ATTR_RATE).changePercentAdd(
+        100 * e.baseVal1,
       ),
+    e.baseVal2 > 0 &&
+      this.getAttribute($attrEnum.E_SkillAttrType.SKILL_CD).changePercentAdd(100 * -e.baseVal2),
     e.type)
   ) {
     const n = 110 + Number(e.val1);
-    this.getAttribute(n).changeAddBaseValue(
-      Number(e.val2) * (1 == Number(e.val3) ? 1 : -1),
-    );
+    this.getAttribute(n).changeAddBaseValue(Number(e.val2) * (1 == Number(e.val3) ? 1 : -1));
   }
   this.onSelectSkillEx(t);
 };
@@ -62,9 +58,7 @@ t.prototype.getAttribute = function (t) {
   return this._attr.getNumeric(t);
 };
 t.prototype.enterCD = function () {
-  this._skillCDTimer = this.getAttribute(
-    $attrEnum.E_SkillAttrType.SKILL_CD,
-  ).value;
+  this._skillCDTimer = this.getAttribute($attrEnum.E_SkillAttrType.SKILL_CD).value;
   this.skillCD = this._skillCDTimer;
 };
 t.prototype.onUpdate = function () {};
@@ -82,24 +76,22 @@ t.prototype.initAttribute = function () {
   this._attr = new $numericData.NumericData();
   this._attr.init($attrEnum.E_SkillAttrType);
   for (const t = 1; t <= 2; ++t) {
-    const e = this._cfg["main" + t];
+    const e = this._cfg['main' + t];
     this.getAttribute(t).setFixBase(e);
   }
   for (t = 1; t <= 9; ++t) {
-    e = Number(this._cfg["val" + t]);
+    e = Number(this._cfg['val' + t]);
     this.getAttribute(110 + t).setFixBase(e);
   }
 };
 t.prototype.onInit = function () {
-  this._skillCDTimer = this.getAttribute(
-    $attrEnum.E_SkillAttrType.SKILL_CD,
-  ).value;
+  this._skillCDTimer = this.getAttribute($attrEnum.E_SkillAttrType.SKILL_CD).value;
 };
 t.prototype.init = function (t, e) {
   this._owner = t;
   this._cfg = $cfg.default.instance.dataSkill.getById(e);
   this._lv = $playerDataProxy.playerDataProxy.getArtifactLv(e);
-  this._extraDamage = this._cfg.dmg.split("|").map(Number)[this._lv - 1];
+  this._extraDamage = this._cfg.dmg.split('|').map(Number)[this._lv - 1];
   $eventManager.EventManager.instance.on(
     $skillEnum.ESkillEvent.SELECT_SKILL_EX + e,
     this.onEventSelectSkillEx,
@@ -109,21 +101,21 @@ t.prototype.init = function (t, e) {
   this.onInit();
   this._isInit = !0;
 };
-Object.defineProperty(t.prototype, "extraDamage", {
+Object.defineProperty(t.prototype, 'extraDamage', {
   get: function () {
     return this._extraDamage;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "skillCDTimer", {
+Object.defineProperty(t.prototype, 'skillCDTimer', {
   get: function () {
     return this._skillCDTimer;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "duration", {
+Object.defineProperty(t.prototype, 'duration', {
   get: function () {
     return this._duration;
   },
@@ -137,7 +129,7 @@ Object.defineProperty(t.prototype, "duration", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "skillCD", {
+Object.defineProperty(t.prototype, 'skillCD', {
   get: function () {
     return this._skillCD;
   },
@@ -151,14 +143,14 @@ Object.defineProperty(t.prototype, "skillCD", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "owner", {
+Object.defineProperty(t.prototype, 'owner', {
   get: function () {
     return this._owner;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "cfg", {
+Object.defineProperty(t.prototype, 'cfg', {
   get: function () {
     return this._cfg;
   },
@@ -180,4 +172,4 @@ function t() {
   this._extraDamage = 0;
 }
 const u = t;
-exports.SkillBase = u;
+export const SkillBase = u;

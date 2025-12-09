@@ -7,7 +7,7 @@ import $battleEnum from './BattleEnum';
 import $weapon81 from './Weapon81';
 import $weapon81Line from './Weapon81Line';
 let i;
-exports.Skill_81 = void 0;
+export const Skill_81 = void 0;
 e.prototype.onRemove = function () {
   $eventManager.EventManager.instance.off(
     $actorEnum.EPlayerEvent.PLAYER_MOVE,
@@ -38,15 +38,12 @@ e.prototype.onPlayerPassDoor = function (t) {
     i.x -= 60;
     i.y = this._owner.node.y;
     for (const o = 0; o < 2; ++o) {
-      const r = cc.v2(
-        120 * (o % 2 == 0 ? -1 : 1),
-        0.7 * this._owner.rightHeight,
-      );
+      const r = cc.v2(120 * (o % 2 == 0 ? -1 : 1), 0.7 * this._owner.rightHeight);
       const c = i.add(r);
       const u = $battleMgr.default.instance.getCurScene();
       $effectMgr.default.instance.createEffect({
         parent: u.effectParent,
-        prefabName: "Weapon81",
+        prefabName: 'Weapon81',
         initPos: c,
         effectClass: $weapon81.default,
         onCreated: function (t) {
@@ -90,7 +87,7 @@ e.prototype.checkLine = function (t, e) {
   if (e) {
     Array.from(this._lineMap.keys())
       .filter(function (e) {
-        return -1 != e.indexOf("" + t.weaponId);
+        return -1 != e.indexOf('' + t.weaponId);
       })
       .forEach(function (t) {
         const e = n._lineMap.get(t);
@@ -109,13 +106,13 @@ e.prototype.checkLine = function (t, e) {
         const c = cc.Vec2.squaredDistance(i, a);
         const l = cc.v2((i.x + a.x) / 2, (i.y + a.y) / 2);
         if (c <= o * o) {
-          const u = t.weaponId + "_" + e.weaponId;
+          const u = t.weaponId + '_' + e.weaponId;
           if (n._lineMap.has(u)) {
             //
           } else {
             $effectMgr.default.instance.createEffect({
               parent: r.effectParent,
-              prefabName: "Weapon81Line",
+              prefabName: 'Weapon81Line',
               initPos: l,
               effectClass: $weapon81Line.default,
               onCreated: function (t) {
@@ -137,7 +134,7 @@ e.prototype.summonWeapon = function () {
   const i = $battleMgr.default.instance.getCurScene();
   $effectMgr.default.instance.createEffect({
     parent: i.effectParent,
-    prefabName: "Weapon81",
+    prefabName: 'Weapon81',
     initPos: n,
     effectClass: $weapon81.default,
     onCreated: function (e) {
@@ -184,4 +181,4 @@ function e() {
   return e;
 }
 const f = e;
-exports.Skill_81 = f;
+export const Skill_81 = f;

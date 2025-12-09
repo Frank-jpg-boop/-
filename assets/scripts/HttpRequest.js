@@ -1,12 +1,12 @@
 import $userCenterMgr from './UserCenterMgr';
-exports.HttpRequest = void 0;
+export const HttpRequest = void 0;
 t._inst = null;
 t.prototype.decryptStr = function (t, e) {
   if (void 0 === e) {
     e = null;
   }
   if (null == t) {
-    return "";
+    return '';
   }
   try {
     e = CryptoJS.MD5(e || this.ddd);
@@ -18,14 +18,14 @@ t.prototype.decryptStr = function (t, e) {
   } catch (t) {
     cc.log(t);
   }
-  return "";
+  return '';
 };
 t.prototype.encryptStr = function (t, e) {
   if (void 0 === e) {
     e = null;
   }
   if (null == t) {
-    return "";
+    return '';
   }
   try {
     const n = CryptoJS.enc.Utf8.parse(t);
@@ -36,16 +36,16 @@ t.prototype.encryptStr = function (t, e) {
       padding: CryptoJS.pad.Iso10126,
     }).toString();
   } catch (t) {
-    console.log("encryptStr error::", t);
+    console.log('encryptStr error::', t);
   }
-  return "";
+  return '';
 };
 t.prototype.request = function (t, e, n, a, s) {
   if (void 0 === s) {
     s = null;
   }
 };
-Object.defineProperty(t, "inst", {
+Object.defineProperty(t, 'inst', {
   get: function () {
     if (this._inst) {
       //
@@ -58,7 +58,7 @@ Object.defineProperty(t, "inst", {
   configurable: !0,
 });
 function t() {
-  this.ddd = "yuanzililiang";
+  this.ddd = 'yuanzililiang';
 }
 const a = t;
-exports.HttpRequest = a;
+export const HttpRequest = a;

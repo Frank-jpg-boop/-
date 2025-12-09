@@ -2,7 +2,7 @@ import $battleMgr from './BattleMgr';
 import $state from './State';
 import $actorEnum from './ActorEnum';
 let i;
-exports.Boss_521_Idle = void 0;
+export const Boss_521_Idle = void 0;
 e.prototype.update = function () {
   if (this._context.isTrigger && $battleMgr.default.instance.getCurScene()) {
     const t = this._context.searchTarget();
@@ -20,4 +20,4 @@ function e(e) {
   return n;
 }
 const c = e;
-exports.Boss_521_Idle = c;
+export const Boss_521_Idle = c;

@@ -9,7 +9,7 @@ e.prototype.update = function (t) {
       this.time = 0;
     }
     const e = (2 * Math.abs(this.time - this.median)) / this.duration;
-    this.material.setProperty("u_rate", e);
+    this.material.setProperty('u_rate', e);
     if (this.spAnim) {
       this.spAnim._updateMaterial();
     }
@@ -23,16 +23,16 @@ e.prototype.show = function (t) {
     this.duration = t;
     this.time = this.duration;
     this.median = this.duration / 2;
-    this.material.setProperty("u_rate", 1);
+    this.material.setProperty('u_rate', 1);
   }
 };
 e.prototype.onDisable = function () {
   this.time = 0;
-  this.material.setProperty("u_rate", 1);
+  this.material.setProperty('u_rate', 1);
 };
 e.prototype.onEnable = function () {
   this.time = 0;
-  this.material.setProperty("u_rate", 1);
+  this.material.setProperty('u_rate', 1);
 };
 e.prototype.onLoad = function () {
   this.time = 0;
@@ -43,7 +43,7 @@ e.prototype.onLoad = function () {
     this.spAnim = this.node.getComponent(sp.Skeleton);
     this.material = this.spAnim.getMaterial(0);
   }
-  this.material.setProperty("u_rate", 1);
+  this.material.setProperty('u_rate', 1);
 };
 function e() {
   const e = (null !== t && t.apply(this, arguments)) || this;
@@ -54,4 +54,4 @@ function e() {
   e.spAnim = null;
   return e;
 }
-exports.default = l;
+export default l;

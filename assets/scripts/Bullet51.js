@@ -33,14 +33,11 @@ const v =
         o,
         !0,
         function () {
-          if (
-            n._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_5)
-              .value > 0
-          ) {
+          if (n._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_5).value > 0) {
             n.blast();
           }
         },
-        "sineOut",
+        'sineOut',
       );
     };
     e.prototype.onUpdate = function () {
@@ -49,13 +46,13 @@ const v =
     e.prototype.checkCollision = function () {
       for (
         const t = this.node.getPosition(),
-              e = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(t.x, t.y),
-              n = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
-                e.key,
-                $gridAreaDivisionMgr.E_AreaObjectType.ENEMY,
-              ),
-              i = this.node.convertToWorldSpaceAR(cc.v2()),
-              o = 0;
+          e = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(t.x, t.y),
+          n = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
+            e.key,
+            $gridAreaDivisionMgr.E_AreaObjectType.ENEMY,
+          ),
+          i = this.node.convertToWorldSpaceAR(cc.v2()),
+          o = 0;
         o < n.length;
         o++
       ) {
@@ -77,9 +74,7 @@ const v =
           if (
             r instanceof $enemyBase.default &&
             Math.random() <
-              this._ownerSkill.getAttribute(
-                $attrEnum.E_SkillAttrType.EXTRA_ATTR_4,
-              ).value
+              this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_4).value
           ) {
             r.buff.add({
               buffId: $buffEnum.EBuffId.DIZZINESS,
@@ -102,20 +97,23 @@ const v =
       const n = this.node.getPosition();
       $effectMgr.default.instance.createEffect({
         parent: e.effectParent,
-        prefabName: "Weapon51Boom",
+        prefabName: 'Weapon51Boom',
         effectClass: $spAnimEffect.default,
         initPos: n,
         onCreated: function (e) {
           e.scheduleOnce(function () {
             t.checkBlastHurt(n, 40);
           }, 0.1);
-          e.playDefaultAnim("baozha", 1, !1, null);
+          e.playDefaultAnim('baozha', 1, !1, null);
         },
       });
     };
     e.prototype.checkBlastHurt = function (t, e) {
       for (
-        const n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(t, e), i = [], o = 0, r = n;
+        const n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(t, e),
+          i = [],
+          o = 0,
+          r = n;
         o < r.length;
         o++
       ) {
@@ -131,10 +129,7 @@ const v =
       }
       for (const u = 0, p = i; u < p.length; u++) {
         const h = p[u];
-        if (
-          !h.isDead() &&
-          cc.Vec2.squaredDistance(t, h.node.getPosition()) <= e * e
-        ) {
+        if (!h.isDead() && cc.Vec2.squaredDistance(t, h.node.getPosition()) <= e * e) {
           const f = $battleHurtFormulaMgr.default.instance.skillHurt(
             this._ownerSkill.getHurtOption(),
             h,
@@ -144,4 +139,4 @@ const v =
       }
     };
   })($bulletBase.default));
-exports.default = v;
+export default v;

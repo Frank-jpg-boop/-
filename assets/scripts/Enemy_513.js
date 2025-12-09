@@ -42,30 +42,18 @@ const P =
     }
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
-      this._nDice = this.node.getChildByName("Body").getChildByName("Dice");
-      this._nSmallView = this.node
-        .getChildByName("Body")
-        .getChildByName("SmallView");
-      this._nBigView = this.node
-        .getChildByName("Body")
-        .getChildByName("BigView");
+      this._nDice = this.node.getChildByName('Body').getChildByName('Dice');
+      this._nSmallView = this.node.getChildByName('Body').getChildByName('SmallView');
+      this._nBigView = this.node.getChildByName('Body').getChildByName('BigView');
       this._nDice.active = !1;
     };
     e.prototype.registerState = function () {
       this._sm = new $stateMachine.StateMachine();
-      this._sm.addState(
-        $actorEnum.EActorStateType.IDLE,
-        new $enemy_513_Idle.Enemy_513_Idle(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.DEAD,
-        new $enemyDeadState.EnemyDeadState(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.IDLE, new $enemy_513_Idle.Enemy_513_Idle(this));
+      this._sm.addState($actorEnum.EActorStateType.DEAD, new $enemyDeadState.EnemyDeadState(this));
     };
     e.prototype.initPos = function () {
-      const t = $battleMgr.default.instance
-        .getCurScene()
-        .level.getRoomById(this._initParam.roomId);
+      const t = $battleMgr.default.instance.getCurScene().level.getRoomById(this._initParam.roomId);
       const e = cc.v2(t.node.x + t.node.width / 2, t.getGroundY());
       this.node.setPosition(e);
     };
@@ -87,28 +75,28 @@ const P =
     };
     e.prototype.updateItemView = function () {
       this._nSmallView
-        .getChildByName("Item")
-        .getChildByName("View")
-        .getChildByName("Value")
+        .getChildByName('Item')
+        .getChildByName('View')
+        .getChildByName('Value')
         .getComponent(cc.Label).string = this._smallGold.toString();
       this._nBigView
-        .getChildByName("Item")
-        .getChildByName("View")
-        .getChildByName("Value")
+        .getChildByName('Item')
+        .getChildByName('View')
+        .getChildByName('Value')
         .getComponent(cc.Label).string = this._bigGold.toString();
     };
     e.prototype.waitBottomPour = function () {
       this._nDice.active = !1;
       this._nSmallView
-        .getChildByName("SpAnim")
+        .getChildByName('SpAnim')
         .getComponent($spAnimCtrl.default)
-        .playAnim("xiao_stand", 1, !0);
-      this._nSmallView.getChildByName("Item").active = !0;
+        .playAnim('xiao_stand', 1, !0);
+      this._nSmallView.getChildByName('Item').active = !0;
       this._nBigView
-        .getChildByName("SpAnim")
+        .getChildByName('SpAnim')
         .getComponent($spAnimCtrl.default)
-        .playAnim("da_stand", 1, !0);
-      this._nBigView.getChildByName("Item").active = !0;
+        .playAnim('da_stand', 1, !0);
+      this._nBigView.getChildByName('Item').active = !0;
       this.updateItemView();
     };
     e.prototype.bottomPour = function (t) {
@@ -134,14 +122,14 @@ const P =
     };
     e.prototype.drawLottery = function () {
       const t = this;
-      this._nSmallView.getChildByName("Item").active = !1;
-      this._nBigView.getChildByName("Item").active = !1;
-      this._spCtrl.playAnim("rolling_start", 1, !1, function () {
-        t._spCtrl.playAnim("rolling_stand", 1, !0);
+      this._nSmallView.getChildByName('Item').active = !1;
+      this._nBigView.getChildByName('Item').active = !1;
+      this._spCtrl.playAnim('rolling_start', 1, !1, function () {
+        t._spCtrl.playAnim('rolling_stand', 1, !0);
         t._nDice.active = !0;
         t.lotteryDice(function () {
-          t._spCtrl.playAnim("rolling_over", 1, !1, function () {
-            t._spCtrl.playAnim("rolling_over_stand", 1, !0);
+          t._spCtrl.playAnim('rolling_over', 1, !1, function () {
+            t._spCtrl.playAnim('rolling_over_stand', 1, !0);
           });
           if (t._curDice > 3) {
             t._result = 1;
@@ -154,35 +142,28 @@ const P =
     };
     e.prototype.lotteryResult = function () {
       const t = this;
-      this._spCtrl.playAnim("call", 1, !1, function () {
-        t._spCtrl.playAnim("call_stand", 1, !0);
+      this._spCtrl.playAnim('call', 1, !1, function () {
+        t._spCtrl.playAnim('call_stand', 1, !0);
         const e = null;
         if (0 == t._result) {
           e = t._nSmallView;
         } else {
           e = t._nBigView;
         }
-        const n = e.getChildByName("SpAnim").getComponent($spAnimCtrl.default);
-        n.playAnim(
-          0 == t._result ? "xiao_choice" : "da_choice",
-          1,
-          !1,
-          function () {
-            n.playAnim(0 == t._result ? "xiao_stand" : "da_stand", 1, !0);
-            t._nDice.active = !1;
-            if (t._playerBetResult == t._result) {
-              t.win(e);
-            } else {
-              t.lose(e);
-            }
-          },
-        );
+        const n = e.getChildByName('SpAnim').getComponent($spAnimCtrl.default);
+        n.playAnim(0 == t._result ? 'xiao_choice' : 'da_choice', 1, !1, function () {
+          n.playAnim(0 == t._result ? 'xiao_stand' : 'da_stand', 1, !0);
+          t._nDice.active = !1;
+          if (t._playerBetResult == t._result) {
+            t.win(e);
+          } else {
+            t.lose(e);
+          }
+        });
       });
     };
     e.prototype.win = function (t) {
-      const e = $battleMgr.default.instance
-        .getCurScene()
-        .level.getRoomById(this._initParam.roomId);
+      const e = $battleMgr.default.instance.getCurScene().level.getRoomById(this._initParam.roomId);
       this.dropReward(this.node.x + this.dirX * t.x, e.getGroundY());
       const n = this.getAttribute($attrEnum.E_AttrType.HP).value;
       this._hp -= n * Number(this._cfg.val3);
@@ -192,7 +173,7 @@ const P =
       if (this._hp <= 0) {
         this.changeState($actorEnum.EActorStateType.DEAD);
       } else {
-        this._spCtrl.playAnim("stand", 1, !0);
+        this._spCtrl.playAnim('stand', 1, !0);
         this._waveGold *= 2;
         this._smallGold = this._waveGold;
         this._bigGold = this._waveGold;
@@ -203,17 +184,15 @@ const P =
       }
     };
     e.prototype.lose = function (t) {
-      const e = $battleMgr.default.instance
-        .getCurScene()
-        .level.getRoomById(this._initParam.roomId);
+      const e = $battleMgr.default.instance.getCurScene().level.getRoomById(this._initParam.roomId);
       const n = this.node.getPosition();
       n.x += this.dirX * t.x;
       n.y = e.getGroundY();
-      const i = this._cfg.val2.split("_").map(Number);
+      const i = this._cfg.val2.split('_').map(Number);
       const o = i[0];
       const r = i[1];
       this.createEnemy(r, o, n);
-      this._spCtrl.playAnim("stand", 1, !0);
+      this._spCtrl.playAnim('stand', 1, !0);
       this._waveGold *= 2;
       this._smallGold = this._waveGold;
       this._bigGold = this._waveGold;
@@ -243,11 +222,7 @@ const P =
       );
     };
     e.prototype.createEnemy = function (t, e, n) {
-      for (
-        const i = this, o = $battleMgr.default.instance.getCurScene(), r = 0;
-        r < e;
-        r++
-      ) {
+      for (const i = this, o = $battleMgr.default.instance.getCurScene(), r = 0; r < e; r++) {
         n.clone().x += $randomUtil.RandomUtil.randomInt(-20, 20);
         this.scheduleOnce(function () {
           $actorMgr.default.instance.createActor({
@@ -255,12 +230,9 @@ const P =
             cfgId: t,
             camp: $actorEnum.ETeamType.ENEMY,
             parent: o.actorParent,
-            prefabName: "Enemy_" + t,
+            prefabName: 'Enemy_' + t,
             initPos: n,
-            actorClass: $actorMgr.default.instance.getActorClassName(
-              t,
-              $actorEnum.ETeamType.ENEMY,
-            ),
+            actorClass: $actorMgr.default.instance.getActorClassName(t, $actorEnum.ETeamType.ENEMY),
             onCreated: null,
             initParam: {
               rewardMap: new Map(),
@@ -293,8 +265,8 @@ const P =
         areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.GOOD,
         areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
         parent: o.unitParent,
-        prefabName: "SceneGood",
-        unitClass: "SceneGood",
+        prefabName: 'SceneGood',
+        unitClass: 'SceneGood',
         initPos: r,
         initParam: {
           rewardId: n,
@@ -347,17 +319,12 @@ const P =
           (this._isDownSmall || this._isDownBig) &&
           ((this._consumeTime -= e), this._consumeTime < 0)
         ) {
-          this._consumeTimer = $mathUtil.MathUtil.lerp(
-            this._consumeTimer,
-            this.timerMin,
-            0.1,
-          );
+          this._consumeTimer = $mathUtil.MathUtil.lerp(this._consumeTimer, this.timerMin, 0.1);
           this._consumeTime = this._consumeTimer;
           if ($levelBattleData.levelBattleData.gold <= 0) {
             return void (
               this._isShowTips ||
-              ((this._isShowTips = !0),
-              $globalPopupMgr.default.instance.showTips("元宝不足"))
+              ((this._isShowTips = !0), $globalPopupMgr.default.instance.showTips('元宝不足'))
             );
           }
           $levelBattleData.levelBattleData.updateGold(-1);
@@ -370,21 +337,13 @@ const P =
       }
     };
     e.prototype.checkSmallRange = function (t) {
-      const e =
-        this.node.x +
-        this.dirX * this._nSmallView.x -
-        this._nSmallView.width / 2;
-      const n =
-        this.node.x +
-        this.dirX * this._nSmallView.x +
-        this._nSmallView.width / 2;
+      const e = this.node.x + this.dirX * this._nSmallView.x - this._nSmallView.width / 2;
+      const n = this.node.x + this.dirX * this._nSmallView.x + this._nSmallView.width / 2;
       return t.node.x >= e && t.node.x <= n;
     };
     e.prototype.checkBigRange = function (t) {
-      const e =
-        this.node.x + this.dirX * this._nBigView.x - this._nBigView.width / 2;
-      const n =
-        this.node.x + this.dirX * this._nBigView.x + this._nBigView.width / 2;
+      const e = this.node.x + this.dirX * this._nBigView.x - this._nBigView.width / 2;
+      const n = this.node.x + this.dirX * this._nBigView.x + this._nBigView.width / 2;
       return t.node.x >= e && t.node.x <= n;
     };
     e.prototype.playerCollisionExit = function () {
@@ -393,4 +352,4 @@ const P =
       this._isShowTips = !1;
     };
   })($enemyBase.default));
-exports.default = P;
+export default P;

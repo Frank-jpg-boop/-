@@ -2,44 +2,24 @@ import $componentBase from './ComponentBase';
 import $nodePoolManager from './NodePoolManager';
 import $commonUtil from './CommonUtil';
 let i;
-exports.CustomScrollView =
-  exports.ScrollDirection =
-  exports.ScrollViewCustomProperty =
-    void 0;
-let a;
-let s;
-const p = cc._decorator;
-const h = p.ccclass;
-const f = p.property;
-const d = p.menu;
-const m = p.requireComponent;
-(function (t) {
-  t.ItemIndex = "ItemIndex";
-})(
-  (a =
-    exports.ScrollViewCustomProperty ||
-    (exports.ScrollViewCustomProperty = {})),
-);
-(function (t) {
-  t[(t.horizontal = 0)] = "horizontal";
-  t[(t.vertical = 1)] = "vertical";
-})((s = exports.ScrollDirection || (exports.ScrollDirection = {})));
+export const CustomScrollView = exports.ScrollDirection = exports.ScrollViewCustomProperty = void 0;;
+let a = ScrollViewCustomProperty;
+export const ScrollDirection = {
+  horizontal: 0,
+  vertical: 1
+};
+let s = ScrollDirection;
 e.prototype.onScrolling = function () {
   if (this.mScrollView && this.mContent) {
     if (this.mDir == s.horizontal) {
       for (const t = 0; t < this.mContent.children.length; ++t) {
-        const e = this.mContent.children[t].convertToWorldSpaceAR(
-          cc.v3(0, 0, 0),
-        );
-        if (
-          (n = this.node.convertToNodeSpaceAR(e)).x - this._itemWidth / 2 >
-          this._checkSize / 2
-        ) {
-          this.moveItem("left");
+        const e = this.mContent.children[t].convertToWorldSpaceAR(cc.v3(0, 0, 0));
+        if ((n = this.node.convertToNodeSpaceAR(e)).x - this._itemWidth / 2 > this._checkSize / 2) {
+          this.moveItem('left');
           break;
         }
         if (n.x + this._itemWidth / 2 < -this._checkSize / 2) {
-          this.moveItem("right");
+          this.moveItem('right');
           break;
         }
       }
@@ -51,17 +31,17 @@ e.prototype.onScrolling = function () {
           (n = this.node.convertToNodeSpaceAR(e)).y - this._itemHeight / 2 >
           this._checkSize / 2
         ) {
-          this.moveItem("down");
+          this.moveItem('down');
           break;
         }
         if (n.y + this._itemHeight / 2 < -this._checkSize / 2) {
-          this.moveItem("up");
+          this.moveItem('up');
           break;
         }
       }
     }
   } else {
-    $commonUtil.CommonUtil.print("请初始化 scrollView 或 content");
+    $commonUtil.CommonUtil.print('请初始化 scrollView 或 content');
   }
 };
 e.prototype.updateItemInfo = function (t, e) {
@@ -75,18 +55,15 @@ e.prototype.moveItem = function (t) {
   const i = null;
   const o = null;
   const r = null;
-  if ("down" == t) {
-    if (
-      (e = this.mContent.children[this._initLen - 1])[a.ItemIndex] >=
-      this._itemAmount - 1
-    ) {
+  if ('down' == t) {
+    if ((e = this.mContent.children[this._initLen - 1])[a.ItemIndex] >= this._itemAmount - 1) {
       return;
     }
     n = this.mContent.children[0];
     i = cc.v3(n.position.x, e.position.y - this._itemHeight);
     o = e.getSiblingIndex() + 1;
     r = e[a.ItemIndex] + 1;
-  } else if ("up" == t) {
+  } else if ('up' == t) {
     if ((e = this.mContent.children[0])[a.ItemIndex] <= 0) {
       return;
     }
@@ -94,18 +71,15 @@ e.prototype.moveItem = function (t) {
     i = cc.v3(n.position.x, e.position.y + this._itemHeight);
     o = 0;
     r = e[a.ItemIndex] - 1;
-  } else if ("right" == t) {
-    if (
-      (e = this.mContent.children[this._initLen - 1])[a.ItemIndex] >=
-      this._itemAmount - 1
-    ) {
+  } else if ('right' == t) {
+    if ((e = this.mContent.children[this._initLen - 1])[a.ItemIndex] >= this._itemAmount - 1) {
       return;
     }
     n = this.mContent.children[0];
     i = cc.v3(e.position.x + this._itemWidth, 0);
     o = e.getSiblingIndex() + 1;
     r = e[a.ItemIndex] + 1;
-  } else if ("left" == t) {
+  } else if ('left' == t) {
     if ((e = this.mContent.children[0])[a.ItemIndex] <= 0) {
       return;
     }
@@ -130,25 +104,16 @@ e.prototype.addItem = function (t) {
       n = cc.v3(this._itemWidth / 2 + this._extra.paddingLeft, 0, 0);
     } else {
       this.mDir == s.vertical &&
-        (n = cc.v3(
-          e.position.x,
-          -this._itemHeight / 2 - this._extra.paddingTop,
-          0,
-        ));
+        (n = cc.v3(e.position.x, -this._itemHeight / 2 - this._extra.paddingTop, 0));
     }
   } else {
     if (this.mDir == s.horizontal) {
-      n = cc.v3(
-        this._itemWidth / 2 + this._itemWidth * i + this._extra.paddingLeft,
-        0,
-        0,
-      );
+      n = cc.v3(this._itemWidth / 2 + this._itemWidth * i + this._extra.paddingLeft, 0, 0);
     } else {
       this.mDir == s.vertical &&
         (n = cc.v3(
           e.position.x,
-          -(this._itemHeight / 2 + this._itemHeight * i) -
-            this._extra.paddingTop,
+          -(this._itemHeight / 2 + this._itemHeight * i) - this._extra.paddingTop,
           0,
         ));
     }
@@ -169,13 +134,11 @@ e.prototype.addNewItem = function (t, e) {
   this._itemAmount++;
   this.mScrollView.stopAutoScroll();
   if (this.mDir == s.horizontal) {
-    this.mContent.width =
-      this._itemWidth * this._itemAmount + this._extra.paddingLeft;
+    this.mContent.width = this._itemWidth * this._itemAmount + this._extra.paddingLeft;
     e && this.mScrollView.scrollToRight(0.2);
   } else {
     if (this.mDir == s.vertical) {
-      this.mContent.height =
-        this._itemHeight * this._itemAmount + this._extra.paddingTop;
+      this.mContent.height = this._itemHeight * this._itemAmount + this._extra.paddingTop;
       if (e) {
         this.mScrollView.scrollToBottom(0.2);
       }
@@ -191,14 +154,8 @@ e.prototype.setEnable = function (t) {
 e.prototype.recycle = function (t) {
   for (const e = this.mContent.children.length, n = 0; n < e; ++n) {
     if (t) {
-      for (
-        const i = this.mContent.children[0].children.length, o = 0;
-        o < i;
-        ++o
-      ) {
-        $nodePoolManager.default.instance.putNode(
-          this.mContent.children[0].children[0],
-        );
+      for (const i = this.mContent.children[0].children.length, o = 0; o < i; ++o) {
+        $nodePoolManager.default.instance.putNode(this.mContent.children[0].children[0]);
       }
     }
     $nodePoolManager.default.instance.putNode(this.mContent.children[0]);
@@ -223,14 +180,11 @@ e.prototype.initScrollView = function (t, e, n) {
   }
   this._extra.startItemIndex = i;
   const o = new cc.Component.EventHandler();
-  o.component = "CustomScrollView";
-  o.handler = "onScrolling";
+  o.component = 'CustomScrollView';
+  o.handler = 'onScrolling';
   o.target = this.node;
-  o.customEventData = "";
-  this.mScrollView.scrollEvents.splice(
-    0,
-    this.mScrollView.scrollEvents.length,
-  );
+  o.customEventData = '';
+  this.mScrollView.scrollEvents.splice(0, this.mScrollView.scrollEvents.length);
   this.mScrollView.scrollEvents.push(o);
   this.recycle(n.bPutChild);
   this._itemAmount = t;
@@ -240,19 +194,15 @@ e.prototype.initScrollView = function (t, e, n) {
   this._itemHeight = r.height;
   if (this.mDir == s.horizontal) {
     this._checkSize = this._itemWidth * this._initLen;
-    this.mContent.width =
-      this._itemWidth * this._itemAmount + this._extra.paddingLeft;
+    this.mContent.width = this._itemWidth * this._itemAmount + this._extra.paddingLeft;
     this.mContent.x =
-      this._itemWidth * this._extra.startItemIndex -
-      this.mScrollView.node.width / 2;
+      this._itemWidth * this._extra.startItemIndex - this.mScrollView.node.width / 2;
   } else {
     if (this.mDir == s.vertical) {
       this._checkSize = this._itemHeight * this._initLen;
-      this.mContent.height =
-        this._itemHeight * this._itemAmount + this._extra.paddingTop;
+      this.mContent.height = this._itemHeight * this._itemAmount + this._extra.paddingTop;
       this.mContent.y =
-        this._itemHeight * this._extra.startItemIndex +
-        this.mScrollView.node.height / 2;
+        this._itemHeight * this._extra.startItemIndex + this.mScrollView.node.height / 2;
     }
   }
   $nodePoolManager.default.instance.putNode(r);
@@ -260,7 +210,7 @@ e.prototype.initScrollView = function (t, e, n) {
     this.addItem(a);
   }
 };
-Object.defineProperty(e.prototype, "children", {
+Object.defineProperty(e.prototype, 'children', {
   get: function () {
     return this.mContent.children;
   },
@@ -280,4 +230,4 @@ function e() {
   e._extra = null;
   return e;
 }
-exports.CustomScrollView = y;
+export const CustomScrollView = y;;

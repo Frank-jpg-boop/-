@@ -42,105 +42,105 @@ const S =
       e.uiNode = null;
       return e;
     }
-    Object.defineProperty(e.prototype, "isLock", {
+    Object.defineProperty(e.prototype, 'isLock', {
       get: function () {
         return this._isLock;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "effectParent", {
+    Object.defineProperty(e.prototype, 'effectParent', {
       get: function () {
         return this._effectParent;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "lowEffectParent", {
+    Object.defineProperty(e.prototype, 'lowEffectParent', {
       get: function () {
         return this._lowEffectParent;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "unitParent", {
+    Object.defineProperty(e.prototype, 'unitParent', {
       get: function () {
         return this._unitParent;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "actorParent", {
+    Object.defineProperty(e.prototype, 'actorParent', {
       get: function () {
         return this._actorParent;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "popHurtParent", {
+    Object.defineProperty(e.prototype, 'popHurtParent', {
       get: function () {
         return this._popHurtParent;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "bulletParent", {
+    Object.defineProperty(e.prototype, 'bulletParent', {
       get: function () {
         return this._bulletParent;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "actorTopParent", {
+    Object.defineProperty(e.prototype, 'actorTopParent', {
       get: function () {
         return this._actorTopParent;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "battleType", {
+    Object.defineProperty(e.prototype, 'battleType', {
       get: function () {
         return this._stageType;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "gameCamera", {
+    Object.defineProperty(e.prototype, 'gameCamera', {
       get: function () {
         return this._gameCamera;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "isResult", {
+    Object.defineProperty(e.prototype, 'isResult', {
       get: function () {
         return this._isResult;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "isInit", {
+    Object.defineProperty(e.prototype, 'isInit', {
       get: function () {
         return this._isInit;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "isPlay", {
+    Object.defineProperty(e.prototype, 'isPlay', {
       get: function () {
         return this._isPlay;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "battleMapCtrl", {
+    Object.defineProperty(e.prototype, 'battleMapCtrl', {
       get: function () {
         return this._battleMapCtrl;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "curState", {
+    Object.defineProperty(e.prototype, 'curState', {
       get: function () {
         if (this._sm) {
           return this._sm.currentState.stateType;
@@ -151,21 +151,21 @@ const S =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "cfg", {
+    Object.defineProperty(e.prototype, 'cfg', {
       get: function () {
         return this._cfg;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "cameraCtrl", {
+    Object.defineProperty(e.prototype, 'cameraCtrl', {
       get: function () {
         return this._cameraCtrl;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "playerId", {
+    Object.defineProperty(e.prototype, 'playerId', {
       get: function () {
         return this._playerId;
       },
@@ -174,13 +174,13 @@ const S =
     });
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
-      this._effectParent = this.node.getChildByName("Effects");
-      this._popHurtParent = this.node.getChildByName("PopHurts");
-      this._bulletParent = this.node.getChildByName("Bullets");
+      this._effectParent = this.node.getChildByName('Effects');
+      this._popHurtParent = this.node.getChildByName('PopHurts');
+      this._bulletParent = this.node.getChildByName('Bullets');
       this._gameCamera = cc.director
         .getScene()
-        .getChildByName("Canvas")
-        .getChildByName("GameCamera")
+        .getChildByName('Canvas')
+        .getChildByName('GameCamera')
         .getComponent(cc.Camera);
       this.registerEvent();
     };
@@ -240,10 +240,7 @@ const S =
       } else {
         this._bulletParent.children.forEach(function (t) {
           let e;
-          if (
-            null === (e = t.getComponent($bulletBase.default)) ||
-            void 0 === e
-          ) {
+          if (null === (e = t.getComponent($bulletBase.default)) || void 0 === e) {
             //
           } else {
             e.resume();
@@ -264,10 +261,7 @@ const S =
       if (this._isPlay) {
         this._bulletParent.children.forEach(function (t) {
           let e;
-          if (
-            null === (e = t.getComponent($bulletBase.default)) ||
-            void 0 === e
-          ) {
+          if (null === (e = t.getComponent($bulletBase.default)) || void 0 === e) {
             //
           } else {
             e.pause();
@@ -397,4 +391,4 @@ const S =
     };
     e.prototype.onActorDeadRemove = function () {};
   })($componentBase.ComponentBase));
-exports.default = S;
+export default S;

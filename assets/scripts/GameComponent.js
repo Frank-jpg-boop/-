@@ -2,8 +2,8 @@ import $componentBase from './ComponentBase';
 import $timeUtil from './TimeUtil';
 import $appBase from './AppBase';
 let i;
-exports.GameComponent = void 0;
-const l = (require("./CommonUtil"), cc._decorator);
+export const GameComponent = void 0;
+const l = (require('./CommonUtil'), cc._decorator);
 const u = l.ccclass;
 const p = l.property;
 e.prototype.showDebugInfo = function () {
@@ -28,12 +28,7 @@ e.prototype.onDestroy = function () {
 };
 e.prototype.start = function () {
   t.prototype.start.call(this);
-  this.clickRect = cc.rect(
-    0,
-    cc.winSize.height - this.debugArea,
-    cc.winSize.width,
-    this.debugArea,
-  );
+  this.clickRect = cc.rect(0, cc.winSize.height - this.debugArea, cc.winSize.width, this.debugArea);
 };
 e.prototype.onLoad = function () {
   t.prototype.onLoad.call(this);
@@ -50,4 +45,4 @@ function e() {
   e.clickRect = null;
   return e;
 }
-exports.GameComponent = h;
+export const GameComponent = h;

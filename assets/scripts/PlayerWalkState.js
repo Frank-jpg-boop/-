@@ -10,21 +10,19 @@ import $attrEnum from './AttrEnum';
 import $door from './Door';
 import $unitMgr from './UnitMgr';
 let i;
-exports.PlayerWalkState = void 0;
+export const PlayerWalkState = void 0;
 e.prototype.end = function () {
   $eventManager.EventManager.instance.off(
     $actorEnum.EActorEvent.SPEED_CHANGE + this._context.unitId,
     this.onSpeedChange,
     this,
   );
-  $audioUtil.AudioUtil.stopEffect("lmtw_yx_ClimbUpLadder");
-  $audioUtil.AudioUtil.stopEffect("lmtw_yx_Footsteps");
+  $audioUtil.AudioUtil.stopEffect('lmtw_yx_ClimbUpLadder');
+  $audioUtil.AudioUtil.stopEffect('lmtw_yx_Footsteps');
   this._isPlayLadderAudio = !1;
 };
 e.prototype.checkDoorWallCollision = function (t) {
-  const e = this._context.getTempCollisionIds(
-    $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
-  );
+  const e = this._context.getTempCollisionIds($gridAreaDivisionMgr.E_AreaObjectType.DOOR);
   if (e.length <= 0) {
     return !1;
   }
@@ -49,8 +47,8 @@ e.prototype.update = function (t) {
     const o = e.add(i);
     if (1 == Math.abs(this._context.moveDir.x)) {
       this._isPlayLadderAudio = !1;
-      $audioUtil.AudioUtil.stopEffect("lmtw_yx_ClimbUpLadder");
-      if ("" != this._context.moveTargetPointId) {
+      $audioUtil.AudioUtil.stopEffect('lmtw_yx_ClimbUpLadder');
+      if ('' != this._context.moveTargetPointId) {
         const u = $battleMgr.default.instance
           .getCurScene()
           .level.path.getPoint(this._context.moveTargetPointId);
@@ -62,11 +60,11 @@ e.prototype.update = function (t) {
         (this._isPlayLadderAudio ||
           ((this._isPlayLadderAudio = !0),
           $audioUtil.AudioUtil.playEffect(
-            "sounds/lmtw_yx_ClimbUpLadder",
+            'sounds/lmtw_yx_ClimbUpLadder',
             $frameEnum.Frame.EBundleName.RES,
             !0,
           )),
-        "" != this._context.moveTargetPointId)
+        '' != this._context.moveTargetPointId)
       ) {
         u = $battleMgr.default.instance
           .getCurScene()
@@ -75,20 +73,13 @@ e.prototype.update = function (t) {
       }
     }
     if (
-      "" != this._context.moveTargetPointId &&
+      '' != this._context.moveTargetPointId &&
       (u = $battleMgr.default.instance
         .getCurScene()
         .level.path.getPoint(this._context.moveTargetPointId))
     ) {
-      const p = $battleMgr.default.instance
-        .getCurScene()
-        .level.getRoomById(u.roomId);
-      if (
-        p &&
-        p.isUnlock &&
-        !p.isOpenLight &&
-        u.pos.sub(e).magSqr() <= 22500
-      ) {
+      const p = $battleMgr.default.instance.getCurScene().level.getRoomById(u.roomId);
+      if (p && p.isUnlock && !p.isOpenLight && u.pos.sub(e).magSqr() <= 22500) {
         p.openLight();
       }
     }
@@ -113,7 +104,7 @@ e.prototype.playAnim = function () {
     this._context.getAttribute($attrEnum.E_AttrType.SPEED).value /
     this._context.getAttribute($attrEnum.E_AttrType.SPEED).baseValue;
   t = Math.min(t, 2);
-  this._context.spAnimCtrl.playAnim("run", t, !0);
+  this._context.spAnimCtrl.playAnim('run', t, !0);
 };
 e.prototype.begin = function () {
   this._isPlayLadderAudio = !1;
@@ -123,11 +114,7 @@ e.prototype.begin = function () {
     this,
   );
   this.playAnim();
-  $audioUtil.AudioUtil.playEffect(
-    "sounds/lmtw_yx_Footsteps",
-    $frameEnum.Frame.EBundleName.RES,
-    !0,
-  );
+  $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_Footsteps', $frameEnum.Frame.EBundleName.RES, !0);
 };
 function e(e) {
   const n = t.call(this, e) || this;
@@ -136,4 +123,4 @@ function e(e) {
   return n;
 }
 const y = e;
-exports.PlayerWalkState = y;
+export const PlayerWalkState = y;

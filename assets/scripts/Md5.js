@@ -1,5 +1,5 @@
-exports.md5 = void 0;
-exports.md5 = function (t) {
+export const md5 = void 0;
+export const md5 = function (t) {
   const e = function (t, e) {
     return (t << e) | (t >>> (32 - e));
   };
@@ -82,13 +82,10 @@ exports.md5 = function (t) {
   };
   const s = function (t) {
     let e;
-    const n = "";
-    const i = "";
+    const n = '';
+    const i = '';
     for (e = 0; e <= 3; e++) {
-      n += (i = "0" + ((t >>> (8 * e)) & 255).toString(16)).substr(
-        i.length - 2,
-        2,
-      );
+      n += (i = '0' + ((t >>> (8 * e)) & 255).toString(16)).substr(i.length - 2, 2);
     }
     return n;
   };
@@ -104,8 +101,8 @@ exports.md5 = function (t) {
     let m;
     const y = Array();
     t = (function (t) {
-      t = t.toString().replace(/\x0d\x0a/g, "\n");
-      for (const e = "", n = 0; n < t.length; n++) {
+      t = t.toString().replace(/\x0d\x0a/g, '\n');
+      for (const e = '', n = 0; n < t.length; n++) {
         const i = t.charCodeAt(n);
         if (i < 128) {
           e += String.fromCharCode(i);
@@ -124,12 +121,16 @@ exports.md5 = function (t) {
     })(t);
     y = (function (t) {
       for (
-        let e, n = t.length, i = n + 8, o = 16 * ((i - (i % 64)) / 64 + 1), r = Array(o - 1), a = 0, s = 0;
+        let e,
+          n = t.length,
+          i = n + 8,
+          o = 16 * ((i - (i % 64)) / 64 + 1),
+          r = Array(o - 1),
+          a = 0,
+          s = 0;
         s < n;
       )
-        ((a = (s % 4) * 8),
-          (r[(e = (s - (s % 4)) / 4)] = r[e] | (t.charCodeAt(s) << a)),
-          s++);
+        ((a = (s % 4) * 8), (r[(e = (s - (s % 4)) / 4)] = r[e] | (t.charCodeAt(s) << a)), s++);
       a = (s % 4) * 8;
       r[(e = (s - (s % 4)) / 4)] = r[e] | (128 << a);
       r[o - 2] = n << 3;

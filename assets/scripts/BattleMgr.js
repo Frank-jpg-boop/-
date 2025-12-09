@@ -26,10 +26,7 @@ t.prototype.addPoolNodePrefabName = function (t) {
 t.prototype.clear = function () {
   this._gameSpeed = 1;
   if (this._scene) {
-    const t = cc.director
-      .getScene()
-      .getChildByName("Canvas")
-      .getChildByName("GameLayer");
+    const t = cc.director.getScene().getChildByName('Canvas').getChildByName('GameLayer');
     this._scene.clear();
     this._scene.destroy();
     t.destroyAllChildren();
@@ -50,7 +47,7 @@ t.prototype.restartLevelScene = function () {
   $popupManager.PopupManager.instance.removeAll();
   this.blackIn(0.1, function () {
     t.clear();
-    $sceneManager.SceneManager.instance.runScene("game");
+    $sceneManager.SceneManager.instance.runScene('game');
   });
 };
 t.prototype.resetGame = function () {
@@ -61,10 +58,7 @@ t.prototype.resetGame = function () {
   this.blackIn(0.1, function () {
     $popupManager.PopupManager.instance.removeAll();
     t.clear();
-    $sceneManager.SceneManager.instance.runScene(
-      "home",
-      $frameEnum.Frame.EBundleName.HOME,
-    );
+    $sceneManager.SceneManager.instance.runScene('home', $frameEnum.Frame.EBundleName.HOME);
   });
 };
 t.prototype.exitLevelScene = function () {
@@ -72,10 +66,7 @@ t.prototype.exitLevelScene = function () {
   $popupManager.PopupManager.instance.removeAll();
   this.blackIn(0.1, function () {
     t.clear();
-    $sceneManager.SceneManager.instance.runScene(
-      "home",
-      $frameEnum.Frame.EBundleName.HOME,
-    );
+    $sceneManager.SceneManager.instance.runScene('home', $frameEnum.Frame.EBundleName.HOME);
   });
   mm.platform.triggerGC();
 };
@@ -96,12 +87,7 @@ t.prototype.isScreenOut = function (t, e, n) {
   }
   if (this._scene) {
     const i = this._scene.cameraCtrl.gameCamera.getWorldToScreenPoint(t);
-    return (
-      i.x < e ||
-      i.x > cc.winSize.width - e ||
-      i.y < n ||
-      i.y > cc.winSize.height - n
-    );
+    return i.x < e || i.x > cc.winSize.width - e || i.y < n || i.y > cc.winSize.height - n;
   }
 };
 t.prototype.createOtherNode = function (e, n, a) {
@@ -119,7 +105,7 @@ t.prototype.createOtherNode = function (e, n, a) {
   } else {
     $resLoader.ResLoader.loadAsset({
       bundleName: $frameEnum.Frame.EBundleName.GAME,
-      path: "prefabs/battle/other/" + e,
+      path: 'prefabs/battle/other/' + e,
       type: cc.Prefab,
       success: function (o) {
         $nodePoolManager.default.instance.addPoolPrefab(o);
@@ -141,7 +127,7 @@ t.prototype.popupNum = function (e, n, a) {
   } else {
     $resLoader.ResLoader.loadAsset({
       bundleName: $frameEnum.Frame.EBundleName.GAME,
-      path: "prefabs/battle/other/popup_num/" + c,
+      path: 'prefabs/battle/other/popup_num/' + c,
       type: cc.Prefab,
       success: function (o) {
         $nodePoolManager.default.instance.addPoolPrefab(o);
@@ -153,18 +139,18 @@ t.prototype.popupNum = function (e, n, a) {
 };
 t.prototype.popHurt = function (e, n, a, s, c) {
   const l = this;
-  const u = $nodePoolManager.default.instance.getPoolPrefab("PopHurt");
+  const u = $nodePoolManager.default.instance.getPoolPrefab('PopHurt');
   if (u) {
     const p = $nodePoolManager.default.instance.getNode(u);
     this._scene.popHurtParent.addChild(p);
     p.setPosition(a);
     const f = p.getComponent($popHurt.default);
-    const d = e + "_" + c;
+    const d = e + '_' + c;
     f.popup(e, n, s, d);
   } else {
     $resLoader.ResLoader.loadAsset({
       bundleName: $frameEnum.Frame.EBundleName.GAME,
-      path: "prefabs/battle/other/PopHurt",
+      path: 'prefabs/battle/other/PopHurt',
       type: cc.Prefab,
       success: function (o) {
         $nodePoolManager.default.instance.addPoolPrefab(o);
@@ -187,24 +173,17 @@ t.prototype.switchScene = function (t, e) {
     this._isSwitching = !0;
     this._curSceneType = t;
     this.blackIn(0.2, function () {
-      const i = cc.director
-        .getScene()
-        .getChildByName("Canvas")
-        .getChildByName("GameLayer");
+      const i = cc.director.getScene().getChildByName('Canvas').getChildByName('GameLayer');
       if (n._scene) {
         n._scene.clear();
         i.destroyAllChildren();
         n._scene = null;
       }
-      const a = "";
+      const a = '';
       if (t === $battleEnum.EBattleSceneType.LEVEL) {
-        a = "prefabs/battle/scene/LevelBattleScene";
-        $stageDataProxy.stageDataProxy.enterStage(
-          $stageDataProxy.stageDataProxy.selectedStageId,
-        );
-        $levelBattleData.levelBattleData.init(
-          $stageDataProxy.stageDataProxy.selectedStageId,
-        );
+        a = 'prefabs/battle/scene/LevelBattleScene';
+        $stageDataProxy.stageDataProxy.enterStage($stageDataProxy.stageDataProxy.selectedStageId);
+        $levelBattleData.levelBattleData.init($stageDataProxy.stageDataProxy.selectedStageId);
       }
       $resLoader.ResLoader.loadAsset({
         bundleName: $frameEnum.Frame.EBundleName.GAME,
@@ -230,10 +209,7 @@ t.prototype.switchScene = function (t, e) {
   }
 };
 t.prototype.blackOut = function (t, e) {
-  const n = cc.director
-    .getScene()
-    .getChildByName("Canvas")
-    .getChildByName("GameBattleBlack");
+  const n = cc.director.getScene().getChildByName('Canvas').getChildByName('GameBattleBlack');
   n.opacity = 255;
   n.active = !0;
   cc.Tween.stopAllByTarget(n);
@@ -251,10 +227,7 @@ t.prototype.blackOut = function (t, e) {
     .start();
 };
 t.prototype.blackIn = function (t, e) {
-  const n = cc.director
-    .getScene()
-    .getChildByName("Canvas")
-    .getChildByName("GameBattleBlack");
+  const n = cc.director.getScene().getChildByName('Canvas').getChildByName('GameBattleBlack');
   n.opacity = 0;
   n.active = !0;
   cc.Tween.stopAllByTarget(n);
@@ -272,35 +245,35 @@ t.prototype.blackIn = function (t, e) {
 t.prototype.getCurScene = function () {
   return this._scene;
 };
-Object.defineProperty(t.prototype, "isBattleing", {
+Object.defineProperty(t.prototype, 'isBattleing', {
   get: function () {
     return this._isBattleing;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "gameSpeed", {
+Object.defineProperty(t.prototype, 'gameSpeed', {
   get: function () {
     return this._gameSpeed;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "curSceneType", {
+Object.defineProperty(t.prototype, 'curSceneType', {
   get: function () {
     return this._curSceneType;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "isSwitching", {
+Object.defineProperty(t.prototype, 'isSwitching', {
   get: function () {
     return this._isSwitching;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new t();
@@ -322,13 +295,13 @@ function t() {
   this.gm_InfiniteCandy = !1;
   this.isFixedDisplayUnlock = !0;
   this._popupNumPrefabNameMap = new Map([
-    [$battleEnum.EBattlePopupNumType.COMMON_HURT, "HurtNum"],
-    [$battleEnum.EBattlePopupNumType.PLAYER_HURT, "PlayerHurtNum"],
-    [$battleEnum.EBattlePopupNumType.CRIT, "CritHurtNum"],
-    [$battleEnum.EBattlePopupNumType.HEAL, "HealNum"],
+    [$battleEnum.EBattlePopupNumType.COMMON_HURT, 'HurtNum'],
+    [$battleEnum.EBattlePopupNumType.PLAYER_HURT, 'PlayerHurtNum'],
+    [$battleEnum.EBattlePopupNumType.CRIT, 'CritHurtNum'],
+    [$battleEnum.EBattlePopupNumType.HEAL, 'HealNum'],
   ]);
   this._gameSpeed = 1;
   $effectMgr.default.instance.init();
 }
 const g = t;
-exports.default = g;
+export default g;

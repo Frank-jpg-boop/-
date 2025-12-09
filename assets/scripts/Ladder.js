@@ -74,8 +74,7 @@ e.prototype.onPlayerCollisionExit = function () {
     }
   } else {
     this._progress && this._progress.hide();
-    this._isFixedDisplayUnlock ||
-      (this._unlockTips && this._unlockTips.hideTips());
+    this._isFixedDisplayUnlock || (this._unlockTips && this._unlockTips.hideTips());
   }
 };
 e.prototype.onPlayerCollisionStay = function (t, e) {
@@ -112,16 +111,13 @@ e.prototype.onPlayerCollisionStay = function (t, e) {
             if ($levelBattleData.levelBattleData.gold < 1) {
               return void (
                 this._isShowLackTips ||
-                ((this._isShowLackTips = !0),
-                $globalPopupMgr.default.instance.showTips("元宝不足"))
+                ((this._isShowLackTips = !0), $globalPopupMgr.default.instance.showTips('元宝不足'))
               );
             }
             $levelBattleData.levelBattleData.updateGold(-1);
             this.triggerUnlock(1);
             if (this._unlockTips) {
-              this._unlockTips.updateTips(
-                this._unlockCost - this._curUnlockCost,
-              );
+              this._unlockTips.updateTips(this._unlockCost - this._curUnlockCost);
             }
           }
           break;
@@ -131,8 +127,8 @@ e.prototype.onPlayerCollisionStay = function (t, e) {
           } else {
             this._isPlayAdUnlock = !0;
             $globalPopupMgr.default.instance.showLevelAdConfirmPopup(
-              "解锁楼梯",
-              "是否观看广告开启楼梯",
+              '解锁楼梯',
+              '是否观看广告开启楼梯',
               function () {
                 n.triggerUnlock(1);
               },
@@ -140,7 +136,7 @@ e.prototype.onPlayerCollisionStay = function (t, e) {
                 n._isPlayAdUnlock = !1;
                 n._waitTime = 0;
               },
-              "AD_OpenRoom",
+              'AD_OpenRoom',
               $battleMgr.default.instance.getCurScene().isPlay,
             );
           }
@@ -174,8 +170,8 @@ e.prototype.triggerUnlock = function (t) {
   }
 };
 e.prototype.updateView = function () {
-  const t = this.node.getChildByName("Bed");
-  const e = this.node.getChildByName("Normal");
+  const t = this.node.getChildByName('Bed');
+  const e = this.node.getChildByName('Normal');
   if (this._isUnlcok) {
     t.active = !1;
     e.active = !0;
@@ -196,8 +192,8 @@ e.prototype.updateView = function () {
   } else {
     t.active = !0;
     e.active = !1;
-    t.getChildByName("Up").active = 0 == this._showType;
-    t.getChildByName("Down").active = 1 == this._showType;
+    t.getChildByName('Up').active = 0 == this._showType;
+    t.getChildByName('Down').active = 1 == this._showType;
   }
 };
 e.prototype.initUnlockTips = function () {
@@ -206,23 +202,19 @@ e.prototype.initUnlockTips = function () {
     if (
       1 ===
       ($sceneManager.SceneManager.instance.curScene.curUINode
-        .getChildByName("GameLayer")
+        .getChildByName('GameLayer')
         .addChild(t),
       (this._unlockTips = t.getComponent($commonUnlockTips.default)),
       this._unlockMethod)
     ) {
-      this._unlockTips.initTips(
-        $commonUnlockTips.EUnlockType.GOLD,
-        this._unlockCost,
-      );
+      this._unlockTips.initTips($commonUnlockTips.EUnlockType.GOLD, this._unlockCost);
     }
     this._unlockTips.node.active = this._isFixedDisplayUnlock;
   }
 };
 e.prototype.onInit = function () {
   const t = this;
-  this._isFixedDisplayUnlock =
-    $battleMgr.default.instance.isFixedDisplayUnlock;
+  this._isFixedDisplayUnlock = $battleMgr.default.instance.isFixedDisplayUnlock;
   $eventManager.EventManager.instance.on(
     $battleEnum.EBattleEvent.PLAYER_ROOM_ID_CHANGE_INFORM,
     this.onEventPlayerRoomIdChange,
@@ -253,7 +245,7 @@ e.prototype.onInit = function () {
   this._curUnlockCost = 0;
   this._waitTimer = Number($cfg.default.instance.dataCons.getById(141).val);
   $battleMgr.default.instance.createOtherNode(
-    2 == this._unlockMethod ? "AdProgressWaitItem" : "ProgressWaitItem",
+    2 == this._unlockMethod ? 'AdProgressWaitItem' : 'ProgressWaitItem',
     function (e) {
       t._progress = e.getComponent($progressWaitItem.default);
       t._progress.init(1, 2 != t._unlockMethod);
@@ -267,30 +259,30 @@ e.prototype.onInit = function () {
   this.initUnlockTips();
   this.updateView();
 };
-Object.defineProperty(e.prototype, "lineIds", {
+Object.defineProperty(e.prototype, 'lineIds', {
   get: function () {
     const t = this._bindPointIds[0];
     const e = this._bindPointIds[1];
-    return [t + "|" + e, e + "|" + t];
+    return [t + '|' + e, e + '|' + t];
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "isExitLadder", {
+Object.defineProperty(e.prototype, 'isExitLadder', {
   get: function () {
     return this._initParam.isExitLadder;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "isUnlock", {
+Object.defineProperty(e.prototype, 'isUnlock', {
   get: function () {
     return this._isUnlcok;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "bindPointIds", {
+Object.defineProperty(e.prototype, 'bindPointIds', {
   get: function () {
     return this._bindPointIds;
   },
@@ -320,4 +312,4 @@ function e() {
   e._isFixedDisplayUnlock = !0;
   return e;
 }
-exports.default = S;
+export default S;

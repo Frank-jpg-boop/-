@@ -20,15 +20,12 @@ t.prototype.registerRedPointChange = function (t, e, n) {
   }
 };
 t.prototype.findLastRedPoint = function (t) {
-  const e = $redPointPathConfig.redPointConf[t].path.split(".");
+  const e = $redPointPathConfig.redPointConf[t].path.split('.');
   if (
     1 == e.length &&
-    e[0] !=
-      $redPointPathConfig.redPointConf[
-        $redPointPathConfig.ERedPointPathName.GAME
-      ].path
+    e[0] != $redPointPathConfig.redPointConf[$redPointPathConfig.ERedPointPathName.GAME].path
   ) {
-    console.error("error root node " + e[0]);
+    console.error('error root node ' + e[0]);
     return null;
   }
   for (const n = this.rootNode, o = 1, r = e.length; o < r; o++) {
@@ -41,22 +38,15 @@ t.prototype.findLastRedPoint = function (t) {
 t.prototype.initRedPointTree = function () {
   for (let t in ((this.rootNode = new $redPointNode.default()),
   this.rootNode.init(
-    $redPointPathConfig.redPointConf[
-      $redPointPathConfig.ERedPointPathName.GAME
-    ].path,
+    $redPointPathConfig.redPointConf[$redPointPathConfig.ERedPointPathName.GAME].path,
   ),
   $redPointPathConfig.ERedPointPathName)) {
     const e = this.rootNode;
     const n =
-      $redPointPathConfig.redPointConf[
-        Number($redPointPathConfig.ERedPointPathName[t])
-      ].path.split(".");
-    if (
-      n[0] ==
-      $redPointPathConfig.redPointConf[
-        $redPointPathConfig.ERedPointPathName.GAME
-      ].path
-    ) {
+      $redPointPathConfig.redPointConf[Number($redPointPathConfig.ERedPointPathName[t])].path.split(
+        '.',
+      );
+    if (n[0] == $redPointPathConfig.redPointConf[$redPointPathConfig.ERedPointPathName.GAME].path) {
       const r = n.length;
       if (r > 1) {
         for (const a = 1; a < r; a++) {
@@ -68,7 +58,7 @@ t.prototype.initRedPointTree = function () {
     }
   }
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new t();
@@ -82,4 +72,4 @@ function t() {
   this.rootNode = null;
 }
 const r = t;
-exports.default = r;
+export default r;

@@ -1,7 +1,7 @@
 import $appBase from './AppBase';
 import $componentBase from './ComponentBase';
 let i;
-exports.CustomWidget = void 0;
+export const CustomWidget = void 0;
 const c = cc._decorator;
 const l = c.ccclass;
 const u = c.property;
@@ -71,4 +71,4 @@ function e() {
   e._borderMargin = 0;
   return e;
 }
-exports.CustomWidget = f;
+export const CustomWidget = f;

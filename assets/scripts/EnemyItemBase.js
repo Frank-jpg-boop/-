@@ -17,14 +17,8 @@ const f =
     };
     e.prototype.registerState = function () {
       this._sm = new $stateMachine.StateMachine();
-      this._sm.addState(
-        $actorEnum.EActorStateType.IDLE,
-        new $enemyItem_Idle.EnemyItem_Idle(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.DEAD,
-        new $enemyItem_Dead.EnemyItem_Dead(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.IDLE, new $enemyItem_Idle.EnemyItem_Idle(this));
+      this._sm.addState($actorEnum.EActorStateType.DEAD, new $enemyItem_Dead.EnemyItem_Dead(this));
     };
     e.prototype.playAnimIdle = function () {};
     e.prototype.fadeIn = function (t, e) {
@@ -59,4 +53,4 @@ const f =
         .start();
     };
   })($actorBase.default));
-exports.default = f;
+export default f;

@@ -1,78 +1,63 @@
 import $simplyVec2 from './SimplyVec2';
 t.prototype.contains = function (t) {
-  return (
-    this.xMin <= t.x &&
-    this.xMax >= t.x &&
-    this.yMin <= t.y &&
-    this.yMax >= t.y
-  );
+  return this.xMin <= t.x && this.xMax >= t.x && this.yMin <= t.y && this.yMax >= t.y;
 };
 t.prototype.containsRect = function (t) {
-  return (
-    this.xMin <= t.xMin &&
-    this.xMax >= t.xMax &&
-    this.yMin <= t.yMin &&
-    this.yMax >= t.yMax
-  );
+  return this.xMin <= t.xMin && this.xMax >= t.xMax && this.yMin <= t.yMin && this.yMax >= t.yMax;
 };
 t.prototype.intersects = function (t) {
-  return !(
-    this.xMax < t.xMin ||
-    t.xMax < this.xMin ||
-    this.yMax < t.yMin ||
-    t.yMax < this.yMin
-  );
+  return !(this.xMax < t.xMin || t.xMax < this.xMin || this.yMax < t.yMin || t.yMax < this.yMin);
 };
-Object.defineProperty(t.prototype, "yMax", {
+Object.defineProperty(t.prototype, 'yMax', {
   get: function () {
     return this.y + this.height / 2;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "yMin", {
+Object.defineProperty(t.prototype, 'yMin', {
   get: function () {
     return this.y - this.height / 2;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "xMax", {
+Object.defineProperty(t.prototype, 'xMax', {
   get: function () {
     return this.x + this.width / 2;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "xMin", {
+Object.defineProperty(t.prototype, 'xMin', {
   get: function () {
     return this.x - this.width / 2;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "radian", {
+Object.defineProperty(t.prototype, 'radian', {
   get: function () {
     return (this.rotation * Math.PI) / 180;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "rVertexs", {
+Object.defineProperty(t.prototype, 'rVertexs', {
   get: function () {
     return [this.rA1, this.rA2, this.rA3, this.rA4];
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "vertexs", {
+Object.defineProperty(t.prototype, 'vertexs', {
   get: function () {
     return [this.a1, this.a2, this.a3, this.a4];
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "rAxisY", {
+Object.defineProperty(t.prototype, 'rAxisY', {
   get: function () {
     if (this.rotation % 360 == 0) {
       return this.axisY;
@@ -83,7 +68,7 @@ Object.defineProperty(t.prototype, "rAxisY", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "rAxisX", {
+Object.defineProperty(t.prototype, 'rAxisX', {
   get: function () {
     if (this.rotation % 360 == 0) {
       return this.axisX;
@@ -94,7 +79,7 @@ Object.defineProperty(t.prototype, "rAxisX", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "rA4", {
+Object.defineProperty(t.prototype, 'rA4', {
   get: function () {
     if (this.rotation % 360 == 0) {
       return this.a4;
@@ -105,7 +90,7 @@ Object.defineProperty(t.prototype, "rA4", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "rA3", {
+Object.defineProperty(t.prototype, 'rA3', {
   get: function () {
     if (this.rotation % 360 == 0) {
       return this.a3;
@@ -116,7 +101,7 @@ Object.defineProperty(t.prototype, "rA3", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "rA2", {
+Object.defineProperty(t.prototype, 'rA2', {
   get: function () {
     if (this.rotation % 360 == 0) {
       return this.a2;
@@ -127,7 +112,7 @@ Object.defineProperty(t.prototype, "rA2", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "rA1", {
+Object.defineProperty(t.prototype, 'rA1', {
   get: function () {
     if (this.rotation % 360 == 0) {
       return this.a1;
@@ -138,61 +123,49 @@ Object.defineProperty(t.prototype, "rA1", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "axisY", {
+Object.defineProperty(t.prototype, 'axisY', {
   get: function () {
     return new $simplyVec2.default(0, 1);
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "axisX", {
+Object.defineProperty(t.prototype, 'axisX', {
   get: function () {
     return new $simplyVec2.default(1, 0);
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "a4", {
+Object.defineProperty(t.prototype, 'a4', {
   get: function () {
-    return new $simplyVec2.default(
-      this.x - this.width / 2,
-      this.y + this.height / 2,
-    );
+    return new $simplyVec2.default(this.x - this.width / 2, this.y + this.height / 2);
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "a3", {
+Object.defineProperty(t.prototype, 'a3', {
   get: function () {
-    return new $simplyVec2.default(
-      this.x + this.width / 2,
-      this.y + this.height / 2,
-    );
+    return new $simplyVec2.default(this.x + this.width / 2, this.y + this.height / 2);
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "a2", {
+Object.defineProperty(t.prototype, 'a2', {
   get: function () {
-    return new $simplyVec2.default(
-      this.x + this.width / 2,
-      this.y - this.height / 2,
-    );
+    return new $simplyVec2.default(this.x + this.width / 2, this.y - this.height / 2);
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "a1", {
+Object.defineProperty(t.prototype, 'a1', {
   get: function () {
-    return new $simplyVec2.default(
-      this.x - this.width / 2,
-      this.y - this.height / 2,
-    );
+    return new $simplyVec2.default(this.x - this.width / 2, this.y - this.height / 2);
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "center", {
+Object.defineProperty(t.prototype, 'center', {
   get: function () {
     return new $simplyVec2.default(this.x, this.y);
   },
@@ -215,4 +188,4 @@ function t(t, e, n, i, o) {
   this.rotation = o;
 }
 const o = t;
-exports.default = o;
+export default o;

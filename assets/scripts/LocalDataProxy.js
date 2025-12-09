@@ -5,13 +5,11 @@ import $timeUtil from './TimeUtil';
 import $userCenterMgr from './UserCenterMgr';
 import $userDataProxy from './UserDataProxy';
 let i;
-exports.localDataProxy =
-  exports.LocalDataProxy =
-  exports.LocalData =
-  exports.ELocalDataEvent =
-    void 0;
-(exports.ELocalDataEvent || (exports.ELocalDataEvent = {})).ON_STAGE_UPDATE =
-  "on_stage_update";
+export const localDataProxy = exports.LocalDataProxy =
+exports.LocalData =
+exports.ELocalDataEvent =
+  void 0;;
+(exports.ELocalDataEvent || export const ELocalDataEvent = {};).ON_STAGE_UPDATE = 'on_stage_update';
 const p = function () {
   this.code = 0;
   this.permanentNumberData = {};
@@ -26,9 +24,9 @@ const p = function () {
   this.createTime = 0;
   this.signData = null;
 };
-exports.LocalData = p;
+export const LocalData = p;;
 e.prototype.clearData = function () {
-  $sqlUtil.SqlUtil.setLocalUserData(exports.localDataProxy.localKey, "");
+  $sqlUtil.SqlUtil.setLocalUserData(exports.localDataProxy.localKey, '');
 };
 e.prototype.updateRedPoint = function () {};
 e.prototype.writeLocalCustomData = function (t, e) {
@@ -71,25 +69,16 @@ e.prototype.updateSecond = function () {
   // }
 };
 e.prototype.saveDataToSvr = function () {
-  console.log("保存服务器数据");
-  $userCenterMgr.UserCenterMgr.instance.saveData(
-    "localData",
-    JSON.stringify(this._data),
-  );
+  console.log('保存服务器数据');
+  $userCenterMgr.UserCenterMgr.instance.saveData('localData', JSON.stringify(this._data));
 };
 e.prototype.getPlayGameDay = function () {
-  return $timeUtil.TimeUtil.getDiffDayNum(
-    this._data.createTime,
-    $timeUtil.TimeUtil.getTime(),
-  );
+  return $timeUtil.TimeUtil.getDiffDayNum(this._data.createTime, $timeUtil.TimeUtil.getTime());
 };
 e.prototype.saveData = function () {
   if (this._isInit) {
     this._data.code++;
-    $sqlUtil.SqlUtil.setLocalUserData(
-      this.localKey,
-      JSON.stringify(this._data),
-    );
+    $sqlUtil.SqlUtil.setLocalUserData(this.localKey, JSON.stringify(this._data));
     this._isNeedSaveSvr = !0;
   }
 };
@@ -103,20 +92,20 @@ e.prototype.initData = function () {
     this._data.createTime = $timeUtil.TimeUtil.getTime();
   }
 };
-Object.defineProperty(e.prototype, "localKey", {
+Object.defineProperty(e.prototype, 'localKey', {
   get: function () {
     return (
       $globalEnum.Global.ELocalDataKey.LOCAL_DATA +
-      "_" +
+      '_' +
       yzll.gameConfig.name +
-      "_" +
+      '_' +
       $userDataProxy.userDataProxy.data.uid
     );
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "data", {
+Object.defineProperty(e.prototype, 'data', {
   get: function () {
     return this._data;
   },
@@ -132,5 +121,5 @@ function e() {
   return e;
 }
 const h = e;
-exports.LocalDataProxy = h;
-exports.localDataProxy = new h(p);
+export const LocalDataProxy = h;;
+export const localDataProxy = new h(p);;

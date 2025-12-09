@@ -6,32 +6,28 @@ import $door from './Door';
 import $actorBase from './ActorBase';
 import $actorMgr from './ActorMgr';
 let i;
-exports.Boss_421_Atk = void 0;
+export const Boss_421_Atk = void 0;
 e.prototype.checkHurt = function () {
   const t = this;
-  $actorMgr.default.instance
-    .queryActorByCamp($actorEnum.ETeamType.PLAYER)
-    .forEach(function (e) {
-      const n = t._atkCollisionIds.indexOf(e.unitId);
-      if (e.isDead()) {
-        if (-1 != n) {
-          t._atkCollisionIds.splice(n, 1);
-        }
-      } else {
-        if (
-          $simplyCollisionDetector.default.isCollisionRectToRect(
-            t._context.hurtColliderRect,
-            e.hurtColliderRect,
-          )
-        ) {
-          -1 == n &&
-            (e.beHurt(t._context.getHurt()),
-            t._atkCollisionIds.push(e.unitId));
-        } else {
-          -1 != n && t._atkCollisionIds.splice(n, 1);
-        }
+  $actorMgr.default.instance.queryActorByCamp($actorEnum.ETeamType.PLAYER).forEach(function (e) {
+    const n = t._atkCollisionIds.indexOf(e.unitId);
+    if (e.isDead()) {
+      if (-1 != n) {
+        t._atkCollisionIds.splice(n, 1);
       }
-    });
+    } else {
+      if (
+        $simplyCollisionDetector.default.isCollisionRectToRect(
+          t._context.hurtColliderRect,
+          e.hurtColliderRect,
+        )
+      ) {
+        -1 == n && (e.beHurt(t._context.getHurt()), t._atkCollisionIds.push(e.unitId));
+      } else {
+        -1 != n && t._atkCollisionIds.splice(n, 1);
+      }
+    }
+  });
 };
 e.prototype.end = function () {
   cc.Tween.stopAllByTarget(this._context.node);
@@ -65,8 +61,8 @@ e.prototype.begin = function (t) {
     this._context.canReleaseSkillTarget(t.getComponent($actorBase.default))
   ) {
     this._isSprint = !0;
-    this._context.spAnimCtrl.playAnim("skill_start", 1, !1, function () {
-      e._context.spAnimCtrl.playAnim("skill_stand", 1, !0);
+    this._context.spAnimCtrl.playAnim('skill_start', 1, !1, function () {
+      e._context.spAnimCtrl.playAnim('skill_stand', 1, !0);
     });
     const i = this._context.attackMovePos;
     const o = cc.Vec2.distance(i, this._context.node.getPosition()) / 1e3;
@@ -81,7 +77,7 @@ e.prototype.begin = function (t) {
           e._context.setPos(i);
           e._context.updatePathData();
           e._context.attackMovePos = null;
-          e._context.spAnimCtrl.playAnim("skill_over", 1, !1, function () {
+          e._context.spAnimCtrl.playAnim('skill_over', 1, !1, function () {
             e._context.buff.add({
               buffId: $buffEnum.EBuffId.DIZZINESS,
               buffType: $buffEnum.EBuffType.DIZZINESS,
@@ -123,4 +119,4 @@ function e(e) {
   return n;
 }
 const h = e;
-exports.Boss_421_Atk = h;
+export const Boss_421_Atk = h;

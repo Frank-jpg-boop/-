@@ -3,16 +3,13 @@ import $proxyBase from './ProxyBase';
 import $basicsProxy from './BasicsProxy';
 import $localDataProxy from './LocalDataProxy';
 let i;
-exports.userSetDataProxy =
-  exports.UserSetDataProxy =
-  exports.UserSetData =
-    void 0;
+export const userSetDataProxy = (exports.UserSetDataProxy = exports.UserSetData = void 0);
 const l = function () {
   this.isVibration = !0;
   this.musicVolume = 1;
   this.effectVolume = 1;
 };
-exports.UserSetData = l;
+export const UserSetData = l;
 e.prototype.saveData = function () {
   $localDataProxy.localDataProxy.writeLocalCustomData(
     $globalEnum.Global.ELocalCustomDataKey.USER_SET,
@@ -35,7 +32,7 @@ e.prototype.initData = function () {
   $basicsProxy.basicsProxy.bgmVolume = this._data.musicVolume;
   $basicsProxy.basicsProxy.effectVolume = this._data.effectVolume;
 };
-Object.defineProperty(e.prototype, "isVibration", {
+Object.defineProperty(e.prototype, 'isVibration', {
   get: function () {
     return this._data.isVibration;
   },
@@ -46,5 +43,5 @@ function e() {
   return (null !== t && t.apply(this, arguments)) || this;
 }
 const u = e;
-exports.UserSetDataProxy = u;
-exports.userSetDataProxy = new u(l);
+export const UserSetDataProxy = u;
+export const userSetDataProxy = new u(l);

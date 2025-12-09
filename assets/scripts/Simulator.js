@@ -1,7 +1,7 @@
 import $agent from './Agent';
 import $common from './Common';
 import $kdtree from './Kdtree';
-exports.Simulator = void 0;
+export const Simulator = void 0;
 t.prototype.clear = function () {
   this.agentIdLst.length = 0;
   this.agentId = 0;
@@ -34,9 +34,7 @@ t.prototype.addObstacle = function (t) {
       i.next = this.obstacles[e];
       i.next.previous = i;
     }
-    i.direction = $common.RVOMath.normalize(
-      t[n == t.length - 1 ? 0 : n + 1].minus(t[n]),
-    );
+    i.direction = $common.RVOMath.normalize(t[n == t.length - 1 ? 0 : n + 1].minus(t[n]));
     if (2 == t.length) {
       i.convex = !0;
     } else {
@@ -113,7 +111,7 @@ t.prototype.addAgent = function (t, e, n, o, r) {
     r = null;
   }
   if (!this.defaultAgent) {
-    throw new Error("no default agent");
+    throw new Error('no default agent');
   }
   const a = new $agent.Agent();
   a.position_.copy(t);
@@ -169,7 +167,7 @@ t.prototype.getAgentByAid = function (t) {
 t.prototype.getAgent = function (t) {
   return this.aid2agent[this.agentIdLst[t]];
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (t._inst) {
       //
@@ -190,4 +188,4 @@ function t() {
   this.time = 0;
 }
 const a = t;
-exports.Simulator = a;
+export const Simulator = a;

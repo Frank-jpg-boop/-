@@ -58,12 +58,9 @@ e.prototype.createEvacuationExit = function () {
     areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.EVACUATION_EXIT,
     areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
     parent: $battleMgr.default.instance.getCurScene().unitParent,
-    prefabName: "EvacuationExit",
-    unitClass: "EvacuationExit",
-    initPos: cc.v2(
-      this._exLevelData.playerExitPos.x,
-      this._exLevelData.playerExitPos.y,
-    ),
+    prefabName: 'EvacuationExit',
+    unitClass: 'EvacuationExit',
+    initPos: cc.v2(this._exLevelData.playerExitPos.x, this._exLevelData.playerExitPos.y),
     onCreated: null,
   });
 };
@@ -78,9 +75,7 @@ e.prototype.allotSurvivor = function () {
     this._exLevelData.rooms.forEach(function (e) {
       e.survivorDatas.forEach(function (e) {
         t._survivorTotalCount++;
-        const i = (
-          e.weight + $levelBattleData.levelBattleData.cfgStage.checkSur
-        ).toString();
+        const i = (e.weight + $levelBattleData.levelBattleData.cfgStage.checkSur).toString();
         if (n.survivalKeys.includes(i)) {
           //
         } else {
@@ -105,8 +100,8 @@ e.prototype.allotSurvivor = function () {
         areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.SURVIVOR,
         areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
         parent: $battleMgr.default.instance.getCurScene().unitParent,
-        prefabName: "Survival",
-        unitClass: "Survival",
+        prefabName: 'Survival',
+        unitClass: 'Survival',
         initPos: cc.v2(s.pos.x, s.pos.y),
         initParam: {
           roomId: s.roomId,
@@ -119,20 +114,18 @@ e.prototype.allotSurvivor = function () {
 };
 e.prototype.allotReward = function () {
   const t = $battleMgr.default.instance.getCurScene().cfg;
-  const e = $unitMgr.UnitMgr.instance.queryUnit(
-    $gridAreaDivisionMgr.E_AreaObjectType.SEARCH_POINT,
-  );
+  const e = $unitMgr.UnitMgr.instance.queryUnit($gridAreaDivisionMgr.E_AreaObjectType.SEARCH_POINT);
   const n = e.filter(function (t) {
     return 12 != $cfg.default.instance.dataRoom.getById(t.roomId).openType;
   });
   const i = [];
-  if ("" != t.rewardBase) {
-    t.rewardBase.split("|").forEach(function (t) {
-      const e = t.split("_");
+  if ('' != t.rewardBase) {
+    t.rewardBase.split('|').forEach(function (t) {
+      const e = t.split('_');
       const n = e[0];
       const o = e[1];
       const r = Number(n);
-      const a = o.split("&").map(Number);
+      const a = o.split('&').map(Number);
       const s = a[0];
       const l = a[1];
       const u = $randomUtil.RandomUtil.randomInt(s, l + 1);
@@ -149,13 +142,13 @@ e.prototype.allotReward = function () {
     }
   });
   const o = [];
-  if ("" != t.rewardADBase) {
-    t.rewardADBase.split("|").forEach(function (t) {
-      const e = t.split("_");
+  if ('' != t.rewardADBase) {
+    t.rewardADBase.split('|').forEach(function (t) {
+      const e = t.split('_');
       const n = e[0];
       const i = e[1];
       const r = Number(n);
-      const a = i.split("&").map(Number);
+      const a = i.split('&').map(Number);
       const s = a[0];
       const l = a[1];
       const u = $randomUtil.RandomUtil.randomInt(s, l + 1);
@@ -175,16 +168,16 @@ e.prototype.allotReward = function () {
     }
   });
   const s = [];
-  if ("" != t.rewardRoom) {
-    t.rewardRoom.split("|").forEach(function (t) {
-      if ("" != t) {
-        const e = t.split("_");
+  if ('' != t.rewardRoom) {
+    t.rewardRoom.split('|').forEach(function (t) {
+      if ('' != t) {
+        const e = t.split('_');
         const n = e[0];
         const i = e[1];
         const o = e[2];
         const r = Number(n);
         const a = Number(i);
-        const c = o.split("&").map(Number);
+        const c = o.split('&').map(Number);
         s.push({
           id: r,
           prob: a,
@@ -193,16 +186,16 @@ e.prototype.allotReward = function () {
       }
     });
   }
-  if ("" != t.baseRoom) {
-    t.baseRoom.split("|").forEach(function (t) {
-      if ("" != t) {
-        const e = t.split("_");
+  if ('' != t.baseRoom) {
+    t.baseRoom.split('|').forEach(function (t) {
+      if ('' != t) {
+        const e = t.split('_');
         const n = e[0];
         const i = e[1];
         const o = e[2];
         const r = Number(n);
         const a = Number(i);
-        const c = o.split("&").map(Number);
+        const c = o.split('&').map(Number);
         s.push({
           id: r,
           prob: a,
@@ -214,10 +207,7 @@ e.prototype.allotReward = function () {
   s.forEach(function (t) {
     const n = e.filter(function (e) {
       const n = $cfg.default.instance.dataRoom.getById(e.roomId);
-      return (
-        (t.roomIds.includes(999) && 12 != n.openType) ||
-        t.roomIds.includes(e.roomId)
-      );
+      return (t.roomIds.includes(999) && 12 != n.openType) || t.roomIds.includes(e.roomId);
     });
     const i = n[$randomUtil.RandomUtil.randomInt(0, n.length)];
     if (i) {
@@ -228,7 +218,7 @@ e.prototype.allotReward = function () {
         i.addReward(t.id);
       }
     } else {
-      console.error("没有奖励找到房间：", t.roomIds);
+      console.error('没有奖励找到房间：', t.roomIds);
     }
   });
   e.forEach(function (t) {
@@ -282,34 +272,28 @@ e.prototype.onLoad = function () {
     this,
   );
 };
-Object.defineProperty(e.prototype, "survivorTotalCount", {
+Object.defineProperty(e.prototype, 'survivorTotalCount', {
   get: function () {
     return this._survivorTotalCount;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "playerExitPos", {
+Object.defineProperty(e.prototype, 'playerExitPos', {
   get: function () {
-    return cc.v2(
-      this._exLevelData.playerExitPos.x,
-      this._exLevelData.playerExitPos.y,
-    );
+    return cc.v2(this._exLevelData.playerExitPos.x, this._exLevelData.playerExitPos.y);
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "playerCreatePos", {
+Object.defineProperty(e.prototype, 'playerCreatePos', {
   get: function () {
-    return cc.v2(
-      this._exLevelData.playerCreatePos.x,
-      this._exLevelData.playerCreatePos.y,
-    );
+    return cc.v2(this._exLevelData.playerCreatePos.x, this._exLevelData.playerCreatePos.y);
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "path", {
+Object.defineProperty(e.prototype, 'path', {
   get: function () {
     return this._path;
   },
@@ -333,4 +317,4 @@ function e() {
   e._survivorTotalCount = 0;
   return e;
 }
-exports.default = E;
+export default E;

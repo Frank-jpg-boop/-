@@ -1,7 +1,7 @@
 import $state from './State';
 import $actorEnum from './ActorEnum';
 let i;
-exports.SummonIdleState = void 0;
+export const SummonIdleState = void 0;
 e.prototype.update = function () {
   const t = this._context.searchTarget();
   if (t) {
@@ -9,10 +9,7 @@ e.prototype.update = function () {
       if (!this._context.canAttack()) {
         return;
       }
-      return void this._context.changeState(
-        $actorEnum.EActorStateType.ATTACK,
-        t,
-      );
+      return void this._context.changeState($actorEnum.EActorStateType.ATTACK, t);
     }
     this._context.changeState($actorEnum.EActorStateType.WALK);
   }
@@ -26,4 +23,4 @@ function e(e) {
   return n;
 }
 const s = e;
-exports.SummonIdleState = s;
+export const SummonIdleState = s;

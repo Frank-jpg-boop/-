@@ -4,32 +4,28 @@ import $actorEnum from './ActorEnum';
 import $door from './Door';
 import $actorMgr from './ActorMgr';
 let i;
-exports.Enemy_212_Atk = void 0;
+export const Enemy_212_Atk = void 0;
 e.prototype.checkHurt = function () {
   const t = this;
-  $actorMgr.default.instance
-    .queryActorByCamp($actorEnum.ETeamType.PLAYER)
-    .forEach(function (e) {
-      const n = t._atkCollisionIds.indexOf(e.unitId);
-      if (e.isDead()) {
-        if (-1 != n) {
-          t._atkCollisionIds.splice(n, 1);
-        }
-      } else {
-        if (
-          $simplyCollisionDetector.default.isCollisionRectToRect(
-            t._context.hurtColliderRect,
-            e.hurtColliderRect,
-          )
-        ) {
-          -1 == n &&
-            (e.beHurt(t._context.getHurt()),
-            t._atkCollisionIds.push(e.unitId));
-        } else {
-          -1 != n && t._atkCollisionIds.splice(n, 1);
-        }
+  $actorMgr.default.instance.queryActorByCamp($actorEnum.ETeamType.PLAYER).forEach(function (e) {
+    const n = t._atkCollisionIds.indexOf(e.unitId);
+    if (e.isDead()) {
+      if (-1 != n) {
+        t._atkCollisionIds.splice(n, 1);
       }
-    });
+    } else {
+      if (
+        $simplyCollisionDetector.default.isCollisionRectToRect(
+          t._context.hurtColliderRect,
+          e.hurtColliderRect,
+        )
+      ) {
+        -1 == n && (e.beHurt(t._context.getHurt()), t._atkCollisionIds.push(e.unitId));
+      } else {
+        -1 != n && t._atkCollisionIds.splice(n, 1);
+      }
+    }
+  });
 };
 e.prototype.end = function () {
   cc.Tween.stopAllByTarget(this._context.node);
@@ -89,4 +85,4 @@ function e(e) {
   return n;
 }
 const u = e;
-exports.Enemy_212_Atk = u;
+export const Enemy_212_Atk = u;

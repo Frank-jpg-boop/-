@@ -10,7 +10,7 @@ const c =
       return e;
     }
     e.prototype.onLoad = function () {
-      this._spBg = this.node.getChildByName("Bg").getComponent(cc.Sprite);
+      this._spBg = this.node.getChildByName('Bg').getComponent(cc.Sprite);
     };
     e.prototype.init = function () {};
     e.prototype.update = function (t) {
@@ -18,4 +18,4 @@ const c =
     };
     e.prototype.updateMove = function () {};
   })(cc.Component));
-exports.default = c;
+export default c;

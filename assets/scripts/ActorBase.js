@@ -45,72 +45,72 @@ const D =
       e.attackTarget = null;
       return e;
     }
-    Object.defineProperty(e.prototype, "camp", {
+    Object.defineProperty(e.prototype, 'camp', {
       get: function () {
         return this._camp;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "actorType", {
+    Object.defineProperty(e.prototype, 'actorType', {
       get: function () {
         return this._actorType;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "curState", {
+    Object.defineProperty(e.prototype, 'curState', {
       get: function () {
         return this._sm.currentState.stateType;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "hurtColliderRect", {
+    Object.defineProperty(e.prototype, 'hurtColliderRect', {
       get: function () {
         return this._hurtCollider.rect;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "curHp", {
+    Object.defineProperty(e.prototype, 'curHp', {
       get: function () {
         return this._hp;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "head", {
+    Object.defineProperty(e.prototype, 'head', {
       get: function () {
         return this._head;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "rightHeight", {
+    Object.defineProperty(e.prototype, 'rightHeight', {
       get: function () {
-        return this.node.getChildByName("Body").height;
+        return this.node.getChildByName('Body').height;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "isRepeling", {
+    Object.defineProperty(e.prototype, 'isRepeling', {
       get: function () {
         return this._isRepeling;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "buff", {
+    Object.defineProperty(e.prototype, 'buff', {
       get: function () {
         return this._buff;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "dirX", {
+    Object.defineProperty(e.prototype, 'dirX', {
       get: function () {
-        if (this.node.getChildByName("Body").scaleX > 0) {
+        if (this.node.getChildByName('Body').scaleX > 0) {
           return 1;
         } else {
           return -1;
@@ -119,21 +119,21 @@ const D =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "pathPos", {
+    Object.defineProperty(e.prototype, 'pathPos', {
       get: function () {
         return this._pathPos.clone();
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "isRealBoss", {
+    Object.defineProperty(e.prototype, 'isRealBoss', {
       get: function () {
         return this._isRealBoss;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "isGroundMove", {
+    Object.defineProperty(e.prototype, 'isGroundMove', {
       get: function () {
         return this._isGroundMove;
       },
@@ -142,7 +142,7 @@ const D =
     });
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
-      const e = this.node.getChildByName("HurtCollisider");
+      const e = this.node.getChildByName('HurtCollisider');
       if (e) {
         this._hurtCollider = e.getComponent($simplyRectCollider.default);
       }
@@ -166,17 +166,12 @@ const D =
       const t = this;
       if (this.actorType != $actorEnum.EActorType.BOSS) {
         $battleMgr.default.instance.createOtherNode(
-          this._actorType == $actorEnum.EActorType.PLAYER
-            ? "PlayerHead"
-            : "EnemyHead",
+          this._actorType == $actorEnum.EActorType.PLAYER ? 'PlayerHead' : 'EnemyHead',
           function (e) {
             t._head = e.getComponent($actorHead.default);
             if (t._head) {
               t._head.init(t.rightHeight + 10, !1);
-              t._head.updateHP(
-                t._hp,
-                t._actorAttribute.getNumeric($attrEnum.E_AttrType.HP).value,
-              );
+              t._head.updateHP(t._hp, t._actorAttribute.getNumeric($attrEnum.E_AttrType.HP).value);
             }
           },
         );
@@ -243,7 +238,7 @@ const D =
       }
     };
     e.prototype.setDirX = function (t) {
-      const e = this.node.getChildByName("Body");
+      const e = this.node.getChildByName('Body');
       e.scaleX = Math.abs(e.scaleX) * (t ? 1 : -1);
     };
     e.prototype.setHp = function (t) {
@@ -313,11 +308,7 @@ const D =
       if (t.isCrit) {
         i = $battleEnum.EBattlePopupNumType.CRIT;
       }
-      $battleMgr.default.instance.popupNum(
-        n,
-        $mathUtil.MathUtil.formatValue(t.damage),
-        i,
-      );
+      $battleMgr.default.instance.popupNum(n, $mathUtil.MathUtil.formatValue(t.damage), i);
       return this._hp;
     };
     e.prototype.onBeforeHurt = function (t) {
@@ -355,17 +346,17 @@ const D =
           n.y += this.rightHeight;
           $battleMgr.default.instance.popupNum(
             n,
-            "+" + $mathUtil.MathUtil.formatValue(t),
+            '+' + $mathUtil.MathUtil.formatValue(t),
             $battleEnum.EBattlePopupNumType.HEAL,
           );
           $effectMgr.default.instance.createEffect({
             parent: this.node,
-            prefabName: "EHeal",
+            prefabName: 'EHeal',
             initPos: cc.v2(0, 0.3 * this.rightHeight),
             effectClass: $spAnimEffect.default,
             onCreated: function (t) {
               t.node.setSiblingIndex(0);
-              t.playDefaultAnim("animation", 2, !1);
+              t.playDefaultAnim('animation', 2, !1);
             },
           });
         }
@@ -373,18 +364,13 @@ const D =
     };
     e.prototype.canBeRepel = function () {
       return (
-        !this.isDead() &&
-        !this._isRepeling &&
-        "" == this._pathPointId &&
-        "" != this._pathLineId
+        !this.isDead() && !this._isRepeling && '' == this._pathPointId && '' != this._pathLineId
       );
     };
     e.prototype.beRepel = function (t, e) {
       const n = this;
       if (this.canBeRepel()) {
-        const i = $battleMgr.default.instance
-          .getCurScene()
-          .level.path.getLine(this._pathLineId);
+        const i = $battleMgr.default.instance.getCurScene().level.path.getLine(this._pathLineId);
         if (i) {
           if (1 == Math.abs(i.dir.x)) {
             const o = e;
@@ -405,8 +391,7 @@ const D =
               } else {
                 r = i.startPos;
               }
-              Math.abs(r.x - this.node.x) < e &&
-                (o = Math.abs(r.x - this.node.x));
+              Math.abs(r.x - this.node.x) < e && (o = Math.abs(r.x - this.node.x));
             }
             this._isRepeling = !0;
             cc.tween(this.node)
@@ -416,7 +401,7 @@ const D =
                   x: o,
                 },
                 {
-                  easing: "quintOut",
+                  easing: 'quintOut',
                 },
               )
               .call(function () {
@@ -432,8 +417,7 @@ const D =
               } else {
                 r = i.startPos;
               }
-              Math.abs(r.y - this.node.y) < e &&
-                (a = Math.abs(r.y - this.node.y));
+              Math.abs(r.y - this.node.y) < e && (a = Math.abs(r.y - this.node.y));
               a *= -1;
             } else {
               if (i.endPos.y > i.startPos.y) {
@@ -441,8 +425,7 @@ const D =
               } else {
                 r = i.startPos;
               }
-              Math.abs(r.y - this.node.y) < e &&
-                (a = Math.abs(r.y - this.node.y));
+              Math.abs(r.y - this.node.y) < e && (a = Math.abs(r.y - this.node.y));
             }
             this._isRepeling = !0;
             cc.tween(this.node)
@@ -452,7 +435,7 @@ const D =
                   y: a,
                 },
                 {
-                  easing: "quintOut",
+                  easing: 'quintOut',
                 },
               )
               .call(function () {
@@ -468,8 +451,7 @@ const D =
       return (
         !cc.isValid(this) ||
         this._hp <= 0 ||
-        (this._sm &&
-          this._sm.currentState.stateType == $actorEnum.EActorStateType.DEAD)
+        (this._sm && this._sm.currentState.stateType == $actorEnum.EActorStateType.DEAD)
       );
     };
     e.prototype.canBeSearch = function () {
@@ -490,16 +472,10 @@ const D =
     e.prototype.die = function () {
       this.onDie();
       this.remove();
-      $eventManager.EventManager.instance.emit(
-        $actorEnum.EActorEvent.ACTOR_DEAD_REMOVE,
-        this,
-      );
+      $eventManager.EventManager.instance.emit($actorEnum.EActorEvent.ACTOR_DEAD_REMOVE, this);
     };
     e.prototype.onDie = function () {
-      $eventManager.EventManager.instance.emit(
-        $actorEnum.EActorEvent.ACTOR_DEAD,
-        this,
-      );
+      $eventManager.EventManager.instance.emit($actorEnum.EActorEvent.ACTOR_DEAD, this);
     };
     e.prototype.remove = function () {
       if (this._isRemove) {
@@ -536,9 +512,7 @@ const D =
     };
     e.prototype.commonAttackHitEffect = function () {};
     e.prototype.attack = function (t) {
-      $eventManager.EventManager.instance.emit(
-        $actorEnum.EActorEvent.COMMON_ATTACK + this._unitId,
-      );
+      $eventManager.EventManager.instance.emit($actorEnum.EActorEvent.COMMON_ATTACK + this._unitId);
       this.onAttack(t);
     };
     e.prototype.onAttack = function () {};
@@ -546,7 +520,7 @@ const D =
       return null;
     };
     e.prototype.getBeHurtPos = function () {
-      const t = this.node.getChildByName("Body").height;
+      const t = this.node.getChildByName('Body').height;
       return this.node.getPosition().add(cc.v2(0, 0.5 * t));
     };
     e.prototype.pause = function () {
@@ -556,4 +530,4 @@ const D =
       this.node.resumeAllActions();
     };
   })($unitBase.default));
-exports.default = D;
+export default D;

@@ -25,14 +25,14 @@ const _ =
       e._ballCollider = null;
       return e;
     }
-    Object.defineProperty(e.prototype, "isInScreen", {
+    Object.defineProperty(e.prototype, 'isInScreen', {
       get: function () {
         return this._isInScreen;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "ballCollider", {
+    Object.defineProperty(e.prototype, 'ballCollider', {
       get: function () {
         return this._ballCollider;
       },
@@ -42,18 +42,14 @@ const _ =
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
       this._ballCollider = this.node
-        .getChildByName("BallCollsider")
+        .getChildByName('BallCollsider')
         .getComponent($simplyCircleCollider.default);
     };
     e.prototype.initAttribute = function () {
       t.prototype.initAttribute.call(this);
       this._actorAttribute.init($attrEnum.E_AttrType);
-      this._actorAttribute
-        .getNumeric($attrEnum.E_AttrType.ATK)
-        .setFixBase(this._initParam.atk);
-      this._actorAttribute
-        .getNumeric($attrEnum.E_AttrType.HP)
-        .setFixBase(this._initParam.maxHp);
+      this._actorAttribute.getNumeric($attrEnum.E_AttrType.ATK).setFixBase(this._initParam.atk);
+      this._actorAttribute.getNumeric($attrEnum.E_AttrType.HP).setFixBase(this._initParam.maxHp);
     };
     e.prototype.onEnable = function () {
       this.node.opacity = 255;
@@ -92,8 +88,7 @@ const _ =
           if (1 == t.y) {
             this._bounceMoveDir.y = -Math.abs(this._bounceMoveDir.y);
           } else {
-            -1 == t.y &&
-              (this._bounceMoveDir.y = Math.abs(this._bounceMoveDir.y));
+            -1 == t.y && (this._bounceMoveDir.y = Math.abs(this._bounceMoveDir.y));
           }
         }
       }
@@ -102,9 +97,7 @@ const _ =
     e.prototype.onUpdate = function (e) {
       t.prototype.onUpdate.call(this, e);
       const n = this.node.convertToWorldSpaceAR(cc.v2());
-      const i = $battleMgr.default.instance
-        .getCurScene()
-        .gameCamera.getWorldToScreenPoint(n);
+      const i = $battleMgr.default.instance.getCurScene().gameCamera.getWorldToScreenPoint(n);
       const o = !1;
       const r = !1;
       const c = !1;
@@ -165,8 +158,7 @@ const _ =
     };
     e.prototype.getHurt = function () {
       const t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
-      const e =
-        Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
+      const e = Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
       if (e) {
         t *= this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).value;
       }
@@ -197,8 +189,7 @@ const _ =
                   t.hurtColliderRect,
                 )
               ) {
-                -1 == n &&
-                  (e.beHurt(t.getHurt()), t._atkCollisionIds.push(e.unitId));
+                -1 == n && (e.beHurt(t.getHurt()), t._atkCollisionIds.push(e.unitId));
               } else {
                 -1 != n && t._atkCollisionIds.splice(n, 1);
               }
@@ -207,4 +198,4 @@ const _ =
       }
     };
   })($enemyItemBase.default));
-exports.default = _;
+export default _;

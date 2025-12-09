@@ -11,7 +11,7 @@ import $stageDataProxy from './StageDataProxy';
 import $userDataProxy from './UserDataProxy';
 import $zBActiveView from './ZBActiveView';
 let i;
-exports.LoadUI = void 0;
+export const LoadUI = void 0;
 const b = cc._decorator;
 const E = b.ccclass;
 const S = b.property;
@@ -42,4 +42,4 @@ function e() {
   e.zbActiveView = null;
   return e;
 }
-exports.LoadUI = P;
+export const LoadUI = P;

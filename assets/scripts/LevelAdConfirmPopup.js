@@ -18,7 +18,7 @@ e.prototype.onClickBtnAd = function () {
     id: 1,
     eventId: this._adEventId,
     eventData: {
-      userA: "" + $levelBattleData.levelBattleData.cfgStage.id,
+      userA: '' + $levelBattleData.levelBattleData.cfgStage.id,
     },
     success: function () {
       if (t._onAdComplete) {
@@ -49,8 +49,8 @@ function e() {
   e.lDesc = null;
   e._onAdComplete = null;
   e._onAdCancel = null;
-  e._adEventId = "";
+  e._adEventId = '';
   e._battlePlayState = !1;
   return e;
 }
-exports.default = f;
+export default f;

@@ -67,13 +67,10 @@ e.prototype.show = function () {
 e.prototype.searchTarget = function (t) {
   for (
     const e = this._ownerWeapon.ownerSkill.cfg.edge,
-          n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(
-            this.node.getPosition(),
-            e,
-          ),
-          i = [],
-          o = 0,
-          r = n;
+      n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(this.node.getPosition(), e),
+      i = [],
+      o = 0,
+      r = n;
     o < r.length;
     o++
   ) {
@@ -87,11 +84,7 @@ e.prototype.searchTarget = function (t) {
       i.push.apply(i, s);
     }
   }
-  for (
-    const c = null, u = 0, p = this._owner.node.position, h = 0, f = i;
-    h < f.length;
-    h++
-  ) {
+  for (const c = null, u = 0, p = this._owner.node.position, h = 0, f = i; h < f.length; h++) {
     const d = f[h];
     if (d.canBeSearch() && !d.isDead() && t != d) {
       const m = cc.Vec3.squaredDistance(p, d.node.position);
@@ -112,9 +105,7 @@ e.prototype.updateTarget = function () {
     const t = this.node.getPosition();
     const e = cc.Vec2.squaredDistance(t, this._attackTargetPos);
     if (
-      e <
-        this._ownerWeapon.ownerSkill.cfg.edge *
-          this._ownerWeapon.ownerSkill.cfg.edge &&
+      e < this._ownerWeapon.ownerSkill.cfg.edge * this._ownerWeapon.ownerSkill.cfg.edge &&
       e > 100
     ) {
       return;
@@ -139,8 +130,7 @@ e.prototype.setPos = function (t) {
       const s = (180 * cc.Vec2.RIGHT_R.signAngle(i)) / Math.PI;
       this.nView.angle = s;
       this.nView.scaleX = a;
-      this.nView.getChildByName("Hit").scaleY =
-        (1 * this._initHitAnimScaleY) / a;
+      this.nView.getChildByName('Hit').scaleY = (1 * this._initHitAnimScaleY) / a;
       if (this._parentBullet) {
         //
       } else {
@@ -174,9 +164,7 @@ e.prototype.targetBeHurt = function (t, e) {
     n.hurtTime += e;
     n.hurtAdd =
       Math.floor(n.hurtTime) *
-      this._ownerWeapon.ownerSkill.getAttribute(
-        $attrEnum.E_SkillAttrType.EXTRA_ATTR_3,
-      ).value;
+      this._ownerWeapon.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_3).value;
     if (n.hurtCd <= 0) {
       n.hurtCd = this._hurtDirCdTime;
       const i = $battleHurtFormulaMgr.default.instance.skillHurt(
@@ -190,7 +178,13 @@ e.prototype.targetBeHurt = function (t, e) {
 };
 e.prototype.checkCollision = function (t) {
   for (
-    const e = this, n = this._ownerWeapon.ownerSkill.cfg.edge, i = this.node.getPosition(), o = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(i, n), r = [], a = 0, s = o;
+    const e = this,
+      n = this._ownerWeapon.ownerSkill.cfg.edge,
+      i = this.node.getPosition(),
+      o = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(i, n),
+      r = [],
+      a = 0,
+      s = o;
     a < s.length;
     a++
   ) {
@@ -239,20 +233,13 @@ e.prototype.checkHurt = function (t) {
   if (this._attackTarget) {
     this.targetBeHurt(this._attackTarget, t);
   }
-  if (
-    this._ownerWeapon.ownerSkill.getAttribute(
-      $attrEnum.E_SkillAttrType.EXTRA_ATTR_6,
-    ).value > 0
-  ) {
+  if (this._ownerWeapon.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_6).value > 0) {
     this.checkCollision(t);
   }
 };
 e.prototype.onUpdate = function (t) {
   if (this._parentBullet) {
-    if (
-      !this._parentBullet.attackTarget ||
-      this._parentBullet.attackTarget.isDead()
-    ) {
+    if (!this._parentBullet.attackTarget || this._parentBullet.attackTarget.isDead()) {
       return void this.hide();
     }
     const e = this._parentBullet.attackTargetPos;
@@ -262,10 +249,7 @@ e.prototype.onUpdate = function (t) {
     this.setPos(e);
   } else {
     this.setPos(
-      $nodeUtil.default.nodeParentChangeLocalPos(
-        this._ownerWeapon.nShootPos,
-        this.node.parent,
-      ),
+      $nodeUtil.default.nodeParentChangeLocalPos(this._ownerWeapon.nShootPos, this.node.parent),
     );
   }
   if (this._isShow) {
@@ -277,10 +261,7 @@ e.prototype.onShoot = function (t, e) {
   this._parentBullet = e;
   this._hurtTargetDataMap = new Map();
   this._hurtDirCdTime =
-    1 /
-    this._ownerWeapon.ownerSkill.getAttribute(
-      $attrEnum.E_SkillAttrType.EXTRA_ATTR_5,
-    ).value;
+    1 / this._ownerWeapon.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_5).value;
 };
 e.prototype.onInit = function () {
   t.prototype.onInit.call(this);
@@ -288,14 +269,14 @@ e.prototype.onInit = function () {
   this.nView.opacity = 0;
   this._initHitAnimScaleY = 0.5;
 };
-Object.defineProperty(e.prototype, "attackTargetPos", {
+Object.defineProperty(e.prototype, 'attackTargetPos', {
   get: function () {
     return this._attackTargetPos;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "attackTarget", {
+Object.defineProperty(e.prototype, 'attackTarget', {
   get: function () {
     return this._attackTarget;
   },
@@ -318,4 +299,4 @@ function e() {
   e._hurtTargetDataMap = null;
   return e;
 }
-exports.default = g;
+export default g;

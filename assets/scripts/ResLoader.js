@@ -1,6 +1,6 @@
 import $logger from './Logger';
 import $stringUtil from './StringUtil';
-exports.ResLoader = void 0;
+export const ResLoader = void 0;
 t.setSpritFrame = function (t, e, n, i) {
   this.loadAsset({
     bundleName: e,
@@ -185,23 +185,11 @@ t.loadAsset = function (t) {
       e._loadAsset(t.path, t.type, t.bundle, t.bundleName, n, i);
     });
   }
-  this._loadAsset(
-    t.path,
-    t.type,
-    t.bundle,
-    t.bundleName,
-    t.success,
-    t.fail,
-    t.complete,
-  );
+  this._loadAsset(t.path, t.type, t.bundle, t.bundleName, t.success, t.fail, t.complete);
 };
 t.loadAssetSync = function (t, e, n) {
   let i;
-  if (
-    (i = $stringUtil.StringUtil.isEmpty(n)
-      ? cc.resources
-      : cc.assetManager.getBundle(n))
-  ) {
+  if ((i = $stringUtil.StringUtil.isEmpty(n) ? cc.resources : cc.assetManager.getBundle(n))) {
     return i.get(t, e);
   } else {
     return null;
@@ -261,4 +249,4 @@ t.loadRemote = function (t) {
 };
 function t() {}
 const r = t;
-exports.ResLoader = r;
+export const ResLoader = r;

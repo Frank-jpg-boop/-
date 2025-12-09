@@ -3,7 +3,7 @@ import $eventManager from './EventManager';
 import $sceneManager from './SceneManager';
 import $appProxy from './AppProxy';
 let i;
-exports.SceneBase = void 0;
+export const SceneBase = void 0;
 const u = cc._decorator;
 const p = u.ccclass;
 const h =
@@ -18,9 +18,7 @@ const h =
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
       $sceneManager.SceneManager.instance.setCurScene(this);
-      $eventManager.EventManager.instance.emit(
-        $appProxy.AppEvent.SCENE_CHANGED,
-      );
+      $eventManager.EventManager.instance.emit($appProxy.AppEvent.SCENE_CHANGED);
       const e = cc.view.getDesignResolutionSize();
       const n = this.node.getComponent(cc.Canvas);
       if (cc.winSize.width / cc.winSize.height < e.width / e.height) {
@@ -40,4 +38,4 @@ const h =
       }
     };
   })($componentBase.ComponentBase));
-exports.SceneBase = h;
+export const SceneBase = h;

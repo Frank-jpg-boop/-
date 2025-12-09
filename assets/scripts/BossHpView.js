@@ -18,7 +18,7 @@ e.prototype.hideBossHp = function () {
     },
     this,
   );
-  this.anim.play("BossHpHide", 0);
+  this.anim.play('BossHpHide', 0);
 };
 e.prototype.onEventBossEnd = function () {
   this.hideBossHp();
@@ -30,13 +30,12 @@ e.prototype.onEventBossHpChange = function (t, e) {
   if (-1 != i) {
     this.nHpView.children.forEach(function (e, o) {
       let r;
-      const a = e.children[0].getChildByName("Bar").getComponent(cc.Sprite);
+      const a = e.children[0].getChildByName('Bar').getComponent(cc.Sprite);
       if (
         a.fillRange !=
         (r =
           o == i
-            ? (t - n._hpLineDatas[o].min) /
-              (n._hpLineDatas[o].max - n._hpLineDatas[o].min)
+            ? (t - n._hpLineDatas[o].min) / (n._hpLineDatas[o].max - n._hpLineDatas[o].min)
             : o > i
               ? 1
               : 0)
@@ -84,11 +83,11 @@ e.prototype.onEventEnterBoss = function () {
   this.anim.once(
     cc.Animation.EventType.FINISHED,
     function () {
-      t.anim.play("BossHpLoop");
+      t.anim.play('BossHpLoop');
     },
     this,
   );
-  this.anim.play("BossHpShow", 0);
+  this.anim.play('BossHpShow', 0);
 };
 e.prototype.initView = function () {
   const t = $levelBattleData.levelBattleData.data.stageBossCfg;
@@ -98,11 +97,10 @@ e.prototype.initView = function () {
     $resLoader.ResLoader.setSpritFrame(
       this.spIcon,
       $frameEnum.Frame.EBundleName.GAME,
-      "textures/enemy_head/" + e.bossFace,
+      'textures/enemy_head/' + e.bossFace,
     );
     this.nHpView.children.forEach(function (t) {
-      t.children[0].getChildByName("Bar").getComponent(cc.Sprite).fillRange =
-        1;
+      t.children[0].getChildByName('Bar').getComponent(cc.Sprite).fillRange = 1;
     });
     this.node.active = !1;
   } else {
@@ -152,4 +150,4 @@ function e() {
   e._hpLineDatas = [];
   return e;
 }
-exports.default = y;
+export default y;

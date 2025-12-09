@@ -18,7 +18,7 @@ const E = cc._decorator;
 const S = E.ccclass;
 const P = E.property;
 e.prototype.getGoldReward = function (t) {
-  const e = t.split("_").map(Number);
+  const e = t.split('_').map(Number);
   $globalPopupMgr.default.instance.showAwardNotice([
     {
       itemId: e[0],
@@ -39,7 +39,7 @@ e.prototype.onBuyGoldItem = function (t, e) {
     }
     $adMgr.AdMgr.instance.showVideoAd({
       id: 1,
-      eventId: "AD_FreeCoin",
+      eventId: 'AD_FreeCoin',
       success: function () {
         i += 1;
         $playerDataProxy.playerDataProxy.goldVideoNum = i;
@@ -52,47 +52,40 @@ e.prototype.onBuyGoldItem = function (t, e) {
       },
     });
   } else {
-    const o = $itemDataProxy.itemDataProxy.getItemValue(
-      $itemEnum.E_ItemId.DIAMOND,
-    );
+    const o = $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.DIAMOND);
     const r = $attrMgr.AttrMgr.instance.getShopRightPrice(e.goldData.coinSpe);
     if (o < r) {
-      return void $globalPopupMgr.default.instance.showTips("钻石不足");
+      return void $globalPopupMgr.default.instance.showTips('钻石不足');
     }
-    $itemDataProxy.itemDataProxy.updateItemValue(
-      $itemEnum.E_ItemId.DIAMOND,
-      -r,
-    );
+    $itemDataProxy.itemDataProxy.updateItemValue($itemEnum.E_ItemId.DIAMOND, -r);
     this.getGoldReward(e.goldData.reward);
   }
 };
 e.prototype.setGoldItemData = function (t, e) {
-  const n = t.getChildByName("num");
-  const i = t.getChildByName("BtnBuy");
+  const n = t.getChildByName('num');
+  const i = t.getChildByName('BtnBuy');
   n.getComponent(cc.Label).string =
-    "x" + $mathUtil.MathUtil.formatValue(e.reward.split("_").map(Number)[1]);
+    'x' + $mathUtil.MathUtil.formatValue(e.reward.split('_').map(Number)[1]);
   if (1 == e.buyType) {
-    const o = i.getChildByName("layout").getChildByName("num");
-    const r = i.getChildByName("layout").getChildByName("videoIcon");
-    const a = i.getChildByName("redPoint");
+    const o = i.getChildByName('layout').getChildByName('num');
+    const r = i.getChildByName('layout').getChildByName('videoIcon');
+    const a = i.getChildByName('redPoint');
     const c = $playerDataProxy.playerDataProxy.goldVideoNum;
     r.active = c >= e.freeNum;
     o.active = r.active;
     a.active = !r.active;
     if (o.active) {
       const l = e.freeNum + e.buyNum - c;
-      o.getComponent(cc.Label).string = "(" + l + ")";
+      o.getComponent(cc.Label).string = '(' + l + ')';
       if (l <= 0) {
         i.getComponent(cc.Button).interactable = !1;
       }
     }
   } else {
-    const u = i.getChildByName("layout").getChildByName("num");
+    const u = i.getChildByName('layout').getChildByName('num');
     const h = $attrMgr.AttrMgr.instance.getShopRightPrice(e.coinSpe);
-    u.getComponent(cc.Label).string = "x" + h;
-    const f = $itemDataProxy.itemDataProxy.getItemValue(
-      $itemEnum.E_ItemId.DIAMOND,
-    );
+    u.getComponent(cc.Label).string = 'x' + h;
+    const f = $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.DIAMOND);
     if (f >= h) {
       u.color = cc.color(255, 255, 255);
     } else {
@@ -104,19 +97,13 @@ e.prototype.initGoldItem = function () {
   for (const t = this.mGoldShopItems.children, e = 0; e < t.length; ++e) {
     const n = t[e];
     const i = $cfg.default.instance.dataShopDaily.getById(e + 11);
-    const o = n.getChildByName("BtnBuy");
+    const o = n.getChildByName('BtnBuy');
     this.setGoldItemData(n, i);
-    $nodeUtil.default.addButtonListener(
-      o,
-      "ShopView",
-      "onBuyGoldItem",
-      this.node,
-      {
-        item: n,
-        idx: e,
-        goldData: i,
-      },
-    );
+    $nodeUtil.default.addButtonListener(o, 'ShopView', 'onBuyGoldItem', this.node, {
+      item: n,
+      idx: e,
+      goldData: i,
+    });
   }
 };
 e.prototype.getBoxReward = function (t, e) {
@@ -127,34 +114,27 @@ e.prototype.getBoxReward = function (t, e) {
     n += e.gainExp;
   }
   $playerDataProxy.playerDataProxy.openBoxExp = n;
-  for (
-    const i = (t ? e.bigReward : e.reward).split("|"), o = [], r = 0;
-    r < i.length;
-    ++r
-  ) {
+  for (const i = (t ? e.bigReward : e.reward).split('|'), o = [], r = 0; r < i.length; ++r) {
     for (
-      const s = i[r].split("_").map(Number),
-            l = $cfg.default.instance.dataItem
-              .getById(s[0])
-              .val.split("|")
-              .map(Number),
-            u = $playerDataProxy.playerDataProxy.getCanRefreshDscountShop(l),
-            p = function () {
-              const t = Math.floor(1e4 * Math.random()) % u.length;
-              const e = u[t];
-              const n = o.findIndex(function (t) {
-                return t.itemId == e;
-              });
-              if (n < 0) {
-                o.push({
-                  itemId: e,
-                  itemNum: 1,
-                });
-              } else {
-                o[n].itemNum += 1;
-              }
-            },
-            h = 0;
+      const s = i[r].split('_').map(Number),
+        l = $cfg.default.instance.dataItem.getById(s[0]).val.split('|').map(Number),
+        u = $playerDataProxy.playerDataProxy.getCanRefreshDscountShop(l),
+        p = function () {
+          const t = Math.floor(1e4 * Math.random()) % u.length;
+          const e = u[t];
+          const n = o.findIndex(function (t) {
+            return t.itemId == e;
+          });
+          if (n < 0) {
+            o.push({
+              itemId: e,
+              itemNum: 1,
+            });
+          } else {
+            o[n].itemNum += 1;
+          }
+        },
+        h = 0;
       h < s[1];
       ++h
     ) {
@@ -162,19 +142,17 @@ e.prototype.getBoxReward = function (t, e) {
     }
   }
   $globalPopupMgr.default.instance.showAwardNotice(o);
-  $playerActionMgr.PlayerActionMgr.instance.triggerAction(
-    $taskEnum.EPlayerActionType.OPEN_BOX,
-  );
+  $playerActionMgr.PlayerActionMgr.instance.triggerAction($taskEnum.EPlayerActionType.OPEN_BOX);
   this.setBoxExpBar();
   this.updateBoxView();
 };
 e.prototype.boxSchedule = function () {
   const t = this.mBoxShopItems.children;
   const e = t[0];
-  const n = e.getChildByName("BtnVideo");
+  const n = e.getChildByName('BtnVideo');
   const i = $timeUtil.TimeUtil.getDate();
   const o = $playerDataProxy.playerDataProxy.openBoxTime;
-  const r = e.getChildByName("countDown");
+  const r = e.getChildByName('countDown');
   if (o > 0) {
     const a = o - i.getTime();
     if (a <= 0) {
@@ -192,8 +170,8 @@ e.prototype.boxSchedule = function () {
   }
   const s = t[1];
   const c = $timeUtil.TimeUtil.getTomorrowZeroDate().getTime() - i.getTime();
-  const l = s.getChildByName("BtnVideo");
-  const u = s.getChildByName("countDown");
+  const l = s.getChildByName('BtnVideo');
+  const u = s.getChildByName('countDown');
   if ($playerDataProxy.playerDataProxy.isOpenBigBox) {
     if (c <= 0) {
       (($playerDataProxy.playerDataProxy.isOpenBigBox = !1),
@@ -203,8 +181,7 @@ e.prototype.boxSchedule = function () {
     } else {
       ((l.getComponent(cc.Button).interactable = !1),
         (u.active = !0),
-        (u.getComponent(cc.Label).string =
-          $timeUtil.TimeUtil.format_HHMMSS(c)));
+        (u.getComponent(cc.Label).string = $timeUtil.TimeUtil.format_HHMMSS(c)));
     }
   } else {
     l.getComponent(cc.Button).interactable = !0;
@@ -216,9 +193,9 @@ e.prototype.onBoxBtnVideoClick = function (t, e) {
   const n = this;
   $adMgr.AdMgr.instance.showVideoAd({
     id: 1,
-    eventId: "AD_FreeBox",
+    eventId: 'AD_FreeBox',
     eventData: {
-      userA: "" + (e.idx + 1),
+      userA: '' + (e.idx + 1),
     },
     success: function () {
       if (0 == e.idx) {
@@ -229,12 +206,9 @@ e.prototype.onBoxBtnVideoClick = function (t, e) {
         $playerDataProxy.playerDataProxy.isOpenBigBox = !0;
         n.boxSchedule();
       }
-      $globalPopupMgr.default.instance.showOpenBoxPopup(
-        e.idx + 1,
-        function () {
-          n.getBoxReward(0 != e.idx, e.boxData);
-        },
-      );
+      $globalPopupMgr.default.instance.showOpenBoxPopup(e.idx + 1, function () {
+        n.getBoxReward(0 != e.idx, e.boxData);
+      });
     },
     fail: function () {},
     error: function (t) {
@@ -251,15 +225,10 @@ e.prototype.onBoxBtnBuyClick = function (t, e) {
     i = Number(e.boxData.bigCost);
   }
   i = $attrMgr.AttrMgr.instance.getShopRightPrice(i);
-  if (
-    $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.DIAMOND) < i
-  ) {
-    $globalPopupMgr.default.instance.showTips("钻石不足");
+  if ($itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.DIAMOND) < i) {
+    $globalPopupMgr.default.instance.showTips('钻石不足');
   } else {
-    $itemDataProxy.itemDataProxy.updateItemValue(
-      $itemEnum.E_ItemId.DIAMOND,
-      -i,
-    );
+    $itemDataProxy.itemDataProxy.updateItemValue($itemEnum.E_ItemId.DIAMOND, -i);
     $globalPopupMgr.default.instance.showOpenBoxPopup(e.idx + 1, function () {
       n.getBoxReward(0 != e.idx, e.boxData);
     });
@@ -267,10 +236,9 @@ e.prototype.onBoxBtnBuyClick = function (t, e) {
 };
 e.prototype.setBoxExpBar = function () {
   const t = $playerDataProxy.playerDataProxy.getBoxLevel();
-  this.mBoxLvLab.string = "Lv." + t;
+  this.mBoxLvLab.string = 'Lv.' + t;
   const e = $cfg.default.instance.dataShopBox.getById(t);
-  this.mExpBar.fillRange =
-    $playerDataProxy.playerDataProxy.openBoxExp / e.exp;
+  this.mExpBar.fillRange = $playerDataProxy.playerDataProxy.openBoxExp / e.exp;
 };
 e.prototype.updateBoxView = function () {
   const t = $playerDataProxy.playerDataProxy.getBoxLevel();
@@ -279,51 +247,37 @@ e.prototype.updateBoxView = function () {
     this.setBoxExpBar();
     for (
       const n = this.mBoxShopItems.children,
-            i = $itemDataProxy.itemDataProxy.getItemValue(
-              $itemEnum.E_ItemId.DIAMOND,
-            ),
-            o = 0;
+        i = $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.DIAMOND),
+        o = 0;
       o < n.length;
       ++o
     ) {
       const r = n[o];
-      const c = r.getChildByName("BtnBuy");
-      const l = c.getChildByName("layout").getChildByName("priceLab");
-      const u = r.getChildByName("BtnVideo");
+      const c = r.getChildByName('BtnBuy');
+      const l = c.getChildByName('layout').getChildByName('priceLab');
+      const u = r.getChildByName('BtnVideo');
       const p = 0;
       p = Number(0 == o ? e.cost : e.bigCost);
       p = $attrMgr.AttrMgr.instance.getShopRightPrice(p);
-      l.getComponent(cc.Label).string = "x" + p;
+      l.getComponent(cc.Label).string = 'x' + p;
       if (i >= p) {
         l.color = cc.color(255, 255, 255);
       } else {
         l.color = cc.color(255, 75, 75);
       }
-      $nodeUtil.default.addButtonListener(
-        c,
-        "ShopView",
-        "onBoxBtnBuyClick",
-        this.node,
-        {
-          item: r,
-          idx: o,
-          boxData: e,
-        },
-      );
-      $nodeUtil.default.addButtonListener(
-        u,
-        "ShopView",
-        "onBoxBtnVideoClick",
-        this.node,
-        {
-          item: r,
-          idx: o,
-          boxData: e,
-        },
-      );
+      $nodeUtil.default.addButtonListener(c, 'ShopView', 'onBoxBtnBuyClick', this.node, {
+        item: r,
+        idx: o,
+        boxData: e,
+      });
+      $nodeUtil.default.addButtonListener(u, 'ShopView', 'onBoxBtnVideoClick', this.node, {
+        item: r,
+        idx: o,
+        boxData: e,
+      });
     }
   } else {
-    console.log("出问题了，宝箱等级:", t);
+    console.log('出问题了，宝箱等级:', t);
   }
 };
 e.prototype.initBoxItem = function () {
@@ -333,53 +287,39 @@ e.prototype.initBoxItem = function () {
     this.setBoxExpBar();
     for (
       const n = this.mBoxShopItems.children,
-            i = $itemDataProxy.itemDataProxy.getItemValue(
-              $itemEnum.E_ItemId.DIAMOND,
-            ),
-            o = 0;
+        i = $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.DIAMOND),
+        o = 0;
       o < n.length;
       ++o
     ) {
       const r = n[o];
-      const c = r.getChildByName("BtnBuy");
-      const l = c.getChildByName("layout").getChildByName("priceLab");
-      const u = r.getChildByName("BtnVideo");
+      const c = r.getChildByName('BtnBuy');
+      const l = c.getChildByName('layout').getChildByName('priceLab');
+      const u = r.getChildByName('BtnVideo');
       const p = 0;
       p = Number(0 == o ? e.cost : e.bigCost);
       p = $attrMgr.AttrMgr.instance.getShopRightPrice(p);
-      l.getComponent(cc.Label).string = "x" + p;
+      l.getComponent(cc.Label).string = 'x' + p;
       if (i >= p) {
         l.color = cc.color(255, 255, 255);
       } else {
         l.color = cc.color(255, 75, 75);
       }
-      $nodeUtil.default.addButtonListener(
-        c,
-        "ShopView",
-        "onBoxBtnBuyClick",
-        this.node,
-        {
-          item: r,
-          idx: o,
-          boxData: e,
-        },
-      );
-      $nodeUtil.default.addButtonListener(
-        u,
-        "ShopView",
-        "onBoxBtnVideoClick",
-        this.node,
-        {
-          item: r,
-          idx: o,
-          boxData: e,
-        },
-      );
+      $nodeUtil.default.addButtonListener(c, 'ShopView', 'onBoxBtnBuyClick', this.node, {
+        item: r,
+        idx: o,
+        boxData: e,
+      });
+      $nodeUtil.default.addButtonListener(u, 'ShopView', 'onBoxBtnVideoClick', this.node, {
+        item: r,
+        idx: o,
+        boxData: e,
+      });
     }
     this.unschedule(this.boxSchedule);
     this.schedule(this.boxSchedule, 1);
   } else {
-    console.log("出问题了，宝箱等级:", t);
+    console.log('出问题了，宝箱等级:', t);
   }
 };
 e.prototype.getDscountReward = function (t) {
@@ -392,36 +332,19 @@ e.prototype.getDscountReward = function (t) {
 };
 e.prototype.onDscountShopBtnBuy = function (t, e) {
   if (2 == e.buyType) {
-    if (
-      $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.GOLD) <
-      e.priceNum
-    ) {
-      return void $globalPopupMgr.default.instance.showTips("金币不足");
+    if ($itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.GOLD) < e.priceNum) {
+      return void $globalPopupMgr.default.instance.showTips('金币不足');
     }
-    $itemDataProxy.itemDataProxy.updateItemValue(
-      $itemEnum.E_ItemId.GOLD,
-      -e.priceNum,
-    );
+    $itemDataProxy.itemDataProxy.updateItemValue($itemEnum.E_ItemId.GOLD, -e.priceNum);
   } else if (3 == e.buyType) {
-    if (
-      $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.DIAMOND) <
-      e.priceNum
-    ) {
-      return void $globalPopupMgr.default.instance.showTips("钻石不足");
+    if ($itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.DIAMOND) < e.priceNum) {
+      return void $globalPopupMgr.default.instance.showTips('钻石不足');
     }
-    $itemDataProxy.itemDataProxy.updateItemValue(
-      $itemEnum.E_ItemId.DIAMOND,
-      -e.priceNum,
-    );
+    $itemDataProxy.itemDataProxy.updateItemValue($itemEnum.E_ItemId.DIAMOND, -e.priceNum);
   }
-  const n = $playerDataProxy.playerDataProxy.getDscountGoodsBuyNum(
-    e.goodsData.cfgId,
-  );
+  const n = $playerDataProxy.playerDataProxy.getDscountGoodsBuyNum(e.goodsData.cfgId);
   n += 1;
-  $playerDataProxy.playerDataProxy.setDscountGoodsBuyNum(
-    e.goodsData.cfgId,
-    n,
-  );
+  $playerDataProxy.playerDataProxy.setDscountGoodsBuyNum(e.goodsData.cfgId, n);
   $globalPopupMgr.default.instance.showAwardNotice([
     {
       itemId: e.goodsData.id,
@@ -442,7 +365,7 @@ e.prototype.onDscountShopBtnVideo = function (t, e) {
   }
   $adMgr.AdMgr.instance.showVideoAd({
     id: 1,
-    eventId: "AD_FreeDiam",
+    eventId: 'AD_FreeDiam',
     success: function () {
       i += 1;
       $playerDataProxy.playerDataProxy.dscountVideoNum = i;
@@ -473,83 +396,63 @@ e.prototype.getDscountShopPriceNum = function (t) {
 };
 e.prototype.setDscountShopItem = function (t, e) {
   const n = $cfg.default.instance.dataShopDaily.getById(e.cfgId);
-  const i = t.getChildByName("BtnBuy");
-  const o = t.getChildByName("BtnVideo");
-  const r = t.getChildByName("videoBg");
-  const c = t.getChildByName("buyBg");
+  const i = t.getChildByName('BtnBuy');
+  const o = t.getChildByName('BtnVideo');
+  const r = t.getChildByName('videoBg');
+  const c = t.getChildByName('buyBg');
   r.active = o.active = 1 == n.buyType;
   c.active = i.active = 1 != n.buyType;
-  const l = t.getChildByName("discount");
+  const l = t.getChildByName('discount');
   l.active = e.dscount < 10;
   const p = $cfg.default.instance.dataItem.getById(e.id);
   if (1 == n.buyType) {
-    const h = o.getChildByName("layout").getChildByName("num");
-    const m = o.getChildByName("layout").getChildByName("videoIcon");
-    const y = o.getChildByName("redPoint");
+    const h = o.getChildByName('layout').getChildByName('num');
+    const m = o.getChildByName('layout').getChildByName('videoIcon');
+    const y = o.getChildByName('redPoint');
     const _ = $playerDataProxy.playerDataProxy.dscountVideoNum;
     m.active = _ >= n.freeNum;
     h.active = m.active;
     y.active = !m.active;
     if (h.active) {
       const g = n.freeNum + n.buyNum - _;
-      h.getComponent(cc.Label).string = "(" + g + ")";
+      h.getComponent(cc.Label).string = '(' + g + ')';
       if (g <= 0) {
         o.getComponent(cc.Button).interactable = !1;
       } else {
-        $nodeUtil.default.addButtonListener(
-          o,
-          "ShopView",
-          "onDscountShopBtnVideo",
-          this.node,
-          {
-            item: t,
-            goodsData: e,
-          },
-        );
-      }
-    } else {
-      $nodeUtil.default.addButtonListener(
-        o,
-        "ShopView",
-        "onDscountShopBtnVideo",
-        this.node,
-        {
+        $nodeUtil.default.addButtonListener(o, 'ShopView', 'onDscountShopBtnVideo', this.node, {
           item: t,
           goodsData: e,
-        },
-      );
+        });
+      }
+    } else {
+      $nodeUtil.default.addButtonListener(o, 'ShopView', 'onDscountShopBtnVideo', this.node, {
+        item: t,
+        goodsData: e,
+      });
     }
   } else {
-    const E = i.getChildByName("layout").getChildByName("icon2");
-    const S = i.getChildByName("layout").getChildByName("icon1");
-    const P = i.getChildByName("layout").getChildByName("priceLab");
+    const E = i.getChildByName('layout').getChildByName('icon2');
+    const S = i.getChildByName('layout').getChildByName('icon1');
+    const P = i.getChildByName('layout').getChildByName('priceLab');
     E.active = 3 == n.buyType;
     S.active = 2 == n.buyType;
     const A = this.getDscountShopPriceNum(e);
     if (l.active) {
-      l.getChildByName("discountNum").getComponent(cc.Label).string =
-        e.dscount + "折";
+      l.getChildByName('discountNum').getComponent(cc.Label).string = e.dscount + '折';
     }
-    if (
-      $playerDataProxy.playerDataProxy.getDscountGoodsBuyNum(e.cfgId) >=
-      n.buyNum
-    ) {
+    if ($playerDataProxy.playerDataProxy.getDscountGoodsBuyNum(e.cfgId) >= n.buyNum) {
       i.getComponent(cc.Button).interactable = !1;
       E.active = !1;
       S.active = !1;
-      P.getComponent(cc.Label).string = "已售罄";
+      P.getComponent(cc.Label).string = '已售罄';
       P.getComponent(cc.Label).fontSize = 28;
       P.color = cc.color(255, 255, 255);
     } else {
       const w = null;
       if (3 == n.buyType) {
-        w = $itemDataProxy.itemDataProxy.getItemValue(
-          $itemEnum.E_ItemId.DIAMOND,
-        );
+        w = $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.DIAMOND);
       } else {
-        w = $itemDataProxy.itemDataProxy.getItemValue(
-          $itemEnum.E_ItemId.GOLD,
-        );
+        w = $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.GOLD);
       }
       if (w >= A) {
         P.color = cc.color(255, 255, 255);
@@ -557,30 +460,24 @@ e.prototype.setDscountShopItem = function (t, e) {
         P.color = cc.color(255, 75, 75);
       }
       i.getComponent(cc.Button).interactable = !0;
-      P.getComponent(cc.Label).string = "x" + A;
+      P.getComponent(cc.Label).string = 'x' + A;
       P.getComponent(cc.Label).fontSize = 34;
-      $nodeUtil.default.addButtonListener(
-        i,
-        "ShopView",
-        "onDscountShopBtnBuy",
-        this.node,
-        {
-          item: t,
-          goodsData: e,
-          priceNum: A,
-          buyType: n.buyType,
-        },
-      );
+      $nodeUtil.default.addButtonListener(i, 'ShopView', 'onDscountShopBtnBuy', this.node, {
+        item: t,
+        goodsData: e,
+        priceNum: A,
+        buyType: n.buyType,
+      });
     }
   }
-  const C = t.getChildByName("greadImg");
-  const M = t.getChildByName("icon");
-  const I = t.getChildByName("num");
-  const R = t.getChildByName("name");
-  I.getComponent(cc.Label).string = "x" + e.num;
+  const C = t.getChildByName('greadImg');
+  const M = t.getChildByName('icon');
+  const I = t.getChildByName('num');
+  const R = t.getChildByName('name');
+  I.getComponent(cc.Label).string = 'x' + e.num;
   R.getComponent(cc.Label).string = p.name;
   $resLoader.ResLoader.loadAsset({
-    path: "textures/public/pic_wuping_di_" + p.rare,
+    path: 'textures/public/pic_wuping_di_' + p.rare,
     type: cc.SpriteFrame,
     bundleName: $frameEnum.Frame.EBundleName.HOME,
   })
@@ -588,10 +485,10 @@ e.prototype.setDscountShopItem = function (t, e) {
       C.getComponent(cc.Sprite).spriteFrame = t;
     })
     .catch(function (t) {
-      console.log("error:", t);
+      console.log('error:', t);
     });
   $resLoader.ResLoader.loadAsset({
-    path: "textures/atlas/item/" + p.icon,
+    path: 'textures/atlas/item/' + p.icon,
     type: cc.SpriteFrame,
     bundleName: $frameEnum.Frame.EBundleName.RES,
   })
@@ -599,12 +496,14 @@ e.prototype.setDscountShopItem = function (t, e) {
       M.getComponent(cc.Sprite).spriteFrame = t;
     })
     .catch(function (t) {
-      console.log("error:", t);
+      console.log('error:', t);
     });
 };
 e.prototype.refreshDscountShopItem = function () {
   for (
-    const t = $playerDataProxy.playerDataProxy.dscountGoodsDatas, e = this.mDscountShopItems.children[0], n = 0;
+    const t = $playerDataProxy.playerDataProxy.dscountGoodsDatas,
+      e = this.mDscountShopItems.children[0],
+      n = 0;
     n < t.length;
     ++n
   ) {
@@ -645,7 +544,7 @@ e.prototype.refreshGoodsDatas = function (t) {
         break;
       }
       if (1 == c.buyType) {
-        const l = c.reward.split("_").map(Number);
+        const l = c.reward.split('_').map(Number);
         n.push({
           id: l[0],
           num: l[1],
@@ -654,16 +553,16 @@ e.prototype.refreshGoodsDatas = function (t) {
           cfgId: c.id,
         });
       } else {
-        for (const u = c.reward.split("|"), h = [], f = 0; f < u.length; ++f) {
-          const d = u[f].split("_");
+        for (const u = c.reward.split('|'), h = [], f = 0; f < u.length; ++f) {
+          const d = u[f].split('_');
           h.push(Number(d[0]));
         }
         const m = $mathUtil.MathUtil.weightedRandom(h);
         if (m < 0) {
           m = 0;
         }
-        const y = u[m].split("_");
-        const _ = y[2].split("&").map(Number);
+        const y = u[m].split('_');
+        const _ = y[2].split('&').map(Number);
         const g = _[0];
         if (_[1] != _[0]) {
           g = (Math.floor(1e3 * Math.random()) % (_[1] - _[0])) + _[0];
@@ -673,10 +572,7 @@ e.prototype.refreshGoodsDatas = function (t) {
           const E = Math.floor(10 * c.charge);
           v = (Math.floor(1e3 * Math.random()) % Math.floor(10 - E)) + E;
         }
-        const S = $cfg.default.instance.dataItem
-          .getById(Number(y[1]))
-          .val.split("|")
-          .map(Number);
+        const S = $cfg.default.instance.dataItem.getById(Number(y[1])).val.split('|').map(Number);
         const P = $playerDataProxy.playerDataProxy.getCanRefreshDscountShop(S);
         const A = P[Math.floor(1e4 * Math.random()) % P.length];
         n.push({
@@ -702,7 +598,7 @@ e.prototype.onBtnRefresh = function () {
   const t = this;
   $adMgr.AdMgr.instance.showVideoAd({
     id: 1,
-    eventId: "AD_ShopRefresh",
+    eventId: 'AD_ShopRefresh',
     success: function () {
       t.refreshGoodsDatas();
     },
@@ -714,34 +610,27 @@ e.prototype.onBtnRefresh = function () {
 };
 e.prototype.updateDscountPriceColor = function (t) {
   for (
-    const e = this.mDscountShopItems.children, n = $playerDataProxy.playerDataProxy.dscountGoodsDatas, i = t ? 2 : 3, o = 0;
+    const e = this.mDscountShopItems.children,
+      n = $playerDataProxy.playerDataProxy.dscountGoodsDatas,
+      i = t ? 2 : 3,
+      o = 0;
     o < n.length;
     ++o
   ) {
     const r = n[o];
     const c = $cfg.default.instance.dataShopDaily.getById(r.cfgId);
     if (c.buyType == i) {
-      const l = e[o]
-        .getChildByName("BtnBuy")
-        .getChildByName("layout")
-        .getChildByName("priceLab");
-      if (
-        $playerDataProxy.playerDataProxy.getDscountGoodsBuyNum(r.cfgId) >=
-        c.buyNum
-      ) {
+      const l = e[o].getChildByName('BtnBuy').getChildByName('layout').getChildByName('priceLab');
+      if ($playerDataProxy.playerDataProxy.getDscountGoodsBuyNum(r.cfgId) >= c.buyNum) {
         l.color = cc.color(255, 255, 255);
       } else {
         const u = null;
         if (t) {
-          u = $itemDataProxy.itemDataProxy.getItemValue(
-            $itemEnum.E_ItemId.GOLD,
-          );
+          u = $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.GOLD);
         } else {
-          u = $itemDataProxy.itemDataProxy.getItemValue(
-            $itemEnum.E_ItemId.DIAMOND,
-          );
+          u = $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.DIAMOND);
         }
-        const p = l.getComponent(cc.Label).string.split("x")[1];
+        const p = l.getComponent(cc.Label).string.split('x')[1];
         if (u >= Number(p)) {
           l.color = cc.color(255, 255, 255);
         } else {
@@ -754,15 +643,10 @@ e.prototype.updateDscountPriceColor = function (t) {
 e.prototype.updateDiamondNum = function () {
   const t = $playerDataProxy.playerDataProxy.getBoxLevel();
   const e = $cfg.default.instance.dataShopBox.getById(t);
-  const n = $itemDataProxy.itemDataProxy.getItemValue(
-    $itemEnum.E_ItemId.DIAMOND,
-  );
+  const n = $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.DIAMOND);
   if (e) {
     for (const i = this.mBoxShopItems.children, o = 0; o < i.length; ++o) {
-      const r = i[o]
-        .getChildByName("BtnBuy")
-        .getChildByName("layout")
-        .getChildByName("priceLab");
+      const r = i[o].getChildByName('BtnBuy').getChildByName('layout').getChildByName('priceLab');
       const c = Number(0 == o ? e.cost : e.bigCost);
       if (n >= c) {
         r.color = cc.color(255, 255, 255);
@@ -776,15 +660,11 @@ e.prototype.updateDiamondNum = function () {
     const u = l[o];
     const p = $cfg.default.instance.dataShopDaily.getById(o + 11);
     if (n >= p.coinSpe) {
-      (r = u
-        .getChildByName("BtnBuy")
-        .getChildByName("layout")
-        .getChildByName("num")).color = cc.color(255, 255, 255);
+      (r = u.getChildByName('BtnBuy').getChildByName('layout').getChildByName('num')).color =
+        cc.color(255, 255, 255);
     } else {
-      (r = u
-        .getChildByName("BtnBuy")
-        .getChildByName("layout")
-        .getChildByName("num")).color = cc.color(255, 75, 75);
+      (r = u.getChildByName('BtnBuy').getChildByName('layout').getChildByName('num')).color =
+        cc.color(255, 75, 75);
     }
   }
   this.updateDscountPriceColor(!1);
@@ -799,23 +679,14 @@ e.prototype.updateBuildlevel = function (t) {
       const n = i[o];
       const r = $cfg.default.instance.dataShopDaily.getById(n.cfgId);
       const s = e.getDscountShopPriceNum(n);
-      const c = t.getChildByName("BtnBuy");
-      c
-        .getChildByName("layout")
-        .getChildByName("priceLab")
-        .getComponent(cc.Label).string = "x" + s;
-      $nodeUtil.default.addButtonListener(
-        c,
-        "ShopView",
-        "onDscountShopBtnBuy",
-        e.node,
-        {
-          item: t,
-          goodsData: n,
-          priceNum: s,
-          buyType: r.buyType,
-        },
-      );
+      const c = t.getChildByName('BtnBuy');
+      c.getChildByName('layout').getChildByName('priceLab').getComponent(cc.Label).string = 'x' + s;
+      $nodeUtil.default.addButtonListener(c, 'ShopView', 'onDscountShopBtnBuy', e.node, {
+        item: t,
+        goodsData: n,
+        priceNum: s,
+        buyType: r.buyType,
+      });
       o++;
     });
     this.updateDscountPriceColor(!0);
@@ -827,8 +698,7 @@ e.prototype.updateGold = function () {
 };
 e.prototype.onDestroy = function () {
   $eventManager.EventManager.instance.off(
-    $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE +
-      $itemEnum.E_ItemId.DIAMOND,
+    $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE + $itemEnum.E_ItemId.DIAMOND,
     this.updateDiamondNum,
     this,
   );
@@ -851,8 +721,7 @@ e.prototype.onEnable = function () {
 };
 e.prototype.onLoad = function () {
   $eventManager.EventManager.instance.on(
-    $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE +
-      $itemEnum.E_ItemId.DIAMOND,
+    $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE + $itemEnum.E_ItemId.DIAMOND,
     this.updateDiamondNum,
     this,
   );
@@ -878,4 +747,4 @@ function e() {
   e._canGetDebrisRewards = [];
   return e;
 }
-exports.default = A;
+export default A;

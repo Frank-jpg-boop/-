@@ -3,7 +3,7 @@ import $componentBase from './ComponentBase';
 import $eventManager from './EventManager';
 import $appProxy from './AppProxy';
 let i;
-exports.CustomButton = void 0;
+export const CustomButton = void 0;
 const u = cc._decorator;
 const p = u.ccclass;
 const h = u.property;
@@ -14,15 +14,13 @@ e.prototype.onClick = function () {
     if (null != this.clip) {
       $audioManager.AudioManager.instance.playEffect(this.clip);
     } else {
-      $eventManager.EventManager.instance.emit(
-        $appProxy.AppEvent.AUDIO_CLICK,
-      );
+      $eventManager.EventManager.instance.emit($appProxy.AppEvent.AUDIO_CLICK);
     }
   }
 };
 e.prototype.onLoad = function () {
   t.prototype.onLoad.call(this);
-  this.node.on("click", this.onClick, this);
+  this.node.on('click', this.onClick, this);
 };
 function e() {
   const e = (null !== t && t.apply(this, arguments)) || this;
@@ -31,4 +29,4 @@ function e() {
   e.clip = null;
   return e;
 }
-exports.CustomButton = m;
+export const CustomButton = m;

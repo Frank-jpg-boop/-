@@ -56,8 +56,7 @@ e.prototype.unlock = function () {
     this._unlockRangeIds = [];
     if (
       0 == $levelBattleData.levelBattleData.cfgStage.id &&
-      $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-        $guideDataProxy.EGuideStepId.G_4
+      $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_4
     ) {
       $eventManager.EventManager.instance.emit(
         $guideMgr.EGuideEvent.COMPLETE_GUIDE_STEP,
@@ -83,12 +82,7 @@ e.prototype.unlock = function () {
 };
 e.prototype.openLight = function () {
   const t = this;
-  if (
-    this._isUnlock &&
-    !this._isOpenLight &&
-    this._lockMask &&
-    !this._lockMask.isPlaying
-  ) {
+  if (this._isUnlock && !this._isOpenLight && this._lockMask && !this._lockMask.isPlaying) {
     this._lockMask.playUnlockAnim(function () {
       t._lockMask.node.active = !1;
       t._lockMask.node.destroy();
@@ -104,7 +98,7 @@ e.prototype.triggerUnlock = function (t) {
       this.updateLockCost();
       if (this._curUnlockCost >= this._cfgRoom.openVal) {
         this.unlock();
-        $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_OpenKeyDoor");
+        $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_OpenKeyDoor');
       }
       break;
     case 11:
@@ -128,10 +122,7 @@ e.prototype.initLockState = function () {
 e.prototype.gmCreateEnemy = function (t, e, n) {
   const i = $battleMgr.default.instance.getCurScene();
   if (i) {
-    for (
-      const o = cc.v2(this.node.x + this.node.width / 2, this.getGroundY()), r = e;
-      r > 0;
-    ) {
+    for (const o = cc.v2(this.node.x + this.node.width / 2, this.getGroundY()), r = e; r > 0; ) {
       r--;
       const s = o.clone();
       s.x += $randomUtil.RandomUtil.randomInt(-200, 200);
@@ -141,12 +132,9 @@ e.prototype.gmCreateEnemy = function (t, e, n) {
         cfgId: t,
         camp: $actorEnum.ETeamType.ENEMY,
         parent: 2 == c.moveType ? i.effectParent : i.actorParent,
-        prefabName: "Enemy_" + t,
+        prefabName: 'Enemy_' + t,
         initPos: s,
-        actorClass: $actorMgr.default.instance.getActorClassName(
-          t,
-          $actorEnum.ETeamType.ENEMY,
-        ),
+        actorClass: $actorMgr.default.instance.getActorClassName(t, $actorEnum.ETeamType.ENEMY),
         onCreated: null,
         initParam: {
           rewardMap: new Map(),
@@ -183,9 +171,9 @@ e.prototype.initCreateEnemy = function () {
     } else {
       o = this._cfgRoom.enemyStart;
     }
-    if ("" != o) {
-      o.split("|").forEach(function (o) {
-        const r = o.split("_").map(Number);
+    if ('' != o) {
+      o.split('|').forEach(function (o) {
+        const r = o.split('_').map(Number);
         const s = r[0];
         const c = r[1];
         const u = r[2];
@@ -195,12 +183,7 @@ e.prototype.initCreateEnemy = function () {
         } else {
           i = !0;
         }
-        for (
-          u = Math.floor(
-            u * $levelBattleData.levelBattleData.stageEnemyLvScale,
-          );
-          p > 0;
-        ) {
+        for (u = Math.floor(u * $levelBattleData.levelBattleData.stageEnemyLvScale); p > 0; ) {
           p--;
           const h = n.clone();
           if (102 == t._cfgRoom.id) {
@@ -214,12 +197,9 @@ e.prototype.initCreateEnemy = function () {
             cfgId: s,
             camp: $actorEnum.ETeamType.ENEMY,
             parent: 2 == f.moveType ? e.effectParent : e.actorParent,
-            prefabName: "Enemy_" + s,
+            prefabName: 'Enemy_' + s,
             initPos: h,
-            actorClass: $actorMgr.default.instance.getActorClassName(
-              s,
-              $actorEnum.ETeamType.ENEMY,
-            ),
+            actorClass: $actorMgr.default.instance.getActorClassName(s, $actorEnum.ETeamType.ENEMY),
             onCreated: null,
             initParam: {
               rewardMap: new Map(),
@@ -237,7 +217,7 @@ e.prototype.initCreateEnemy = function () {
       r.y += 30;
       $effectMgr.default.instance.createEffect({
         parent: this.node,
-        prefabName: "ECobwebDi",
+        prefabName: 'ECobwebDi',
         initPos: r,
         effectClass: $frameAnimEffect.default,
         onCreated: function (e) {
@@ -246,7 +226,7 @@ e.prototype.initCreateEnemy = function () {
       });
       $effectMgr.default.instance.createEffect({
         parent: e.actorTopParent,
-        prefabName: "ECobwebTop",
+        prefabName: 'ECobwebTop',
         initPos: this.node.getPosition().add(r),
         effectClass: $frameAnimEffect.default,
         onCreated: function (e) {
@@ -266,8 +246,8 @@ e.prototype.initSearchPoint = function () {
       areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
       parent: $battleMgr.default.instance.getCurScene().unitParent,
       initPos: cc.v2(e.pos.x, e.pos.y),
-      prefabName: "SearchPoint",
-      unitClass: "SearchPoint",
+      prefabName: 'SearchPoint',
+      unitClass: 'SearchPoint',
       onCreated: function (e) {
         t._searchPointIds.push(e.unitId);
       },
@@ -294,8 +274,8 @@ e.prototype.initRoomUnlockRange = function () {
       areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
       parent: $battleMgr.default.instance.getCurScene().unitParent,
       initPos: cc.v2(n.pos.x, n.pos.y),
-      prefabName: "RoomUnlockRange",
-      unitClass: "RoomUnlockRange",
+      prefabName: 'RoomUnlockRange',
+      unitClass: 'RoomUnlockRange',
       onCreated: function (e) {
         t._unlockRangeIds.push(e.unitId);
       },
@@ -312,8 +292,8 @@ e.prototype.initBaseItem = function () {
       areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.GOOD,
       areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
       parent: $battleMgr.default.instance.getCurScene().unitParent,
-      prefabName: "SceneGood",
-      unitClass: "SceneGood",
+      prefabName: 'SceneGood',
+      unitClass: 'SceneGood',
       initPos: cc.v2(e.pos.x, e.pos.y),
       initParam: {
         rewardId: e.param,
@@ -335,8 +315,8 @@ e.prototype.initLadder = function () {
       areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
       parent: $battleMgr.default.instance.getCurScene().unitParent,
       initPos: cc.v2(e.pos.x, e.pos.y),
-      prefabName: "Ladder",
-      unitClass: "Ladder",
+      prefabName: 'Ladder',
+      unitClass: 'Ladder',
       onCreated: function (e) {
         t._ladderIds.push(e.unitId);
       },
@@ -360,8 +340,8 @@ e.prototype.initDoor = function () {
       areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
       parent: $battleMgr.default.instance.getCurScene().unitParent,
       initPos: cc.v2(e.pos.x, e.pos.y),
-      prefabName: "Door",
-      unitClass: "Door",
+      prefabName: 'Door',
+      unitClass: 'Door',
       onCreated: function (e) {
         t._doorIds.push(e.unitId);
       },
@@ -388,8 +368,7 @@ e.prototype.playerArrive = function () {
     if (
       0 == $levelBattleData.levelBattleData.cfgStage.id &&
       12 == this._cfgRoom.id &&
-      $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-        $guideDataProxy.EGuideStepId.G_2
+      $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_2
     ) {
       $eventManager.EventManager.instance.emit(
         $guideMgr.EGuideEvent.COMPLETE_GUIDE_STEP,
@@ -398,10 +377,10 @@ e.prototype.playerArrive = function () {
       this._searchPointIds.forEach(function (e) {
         const n = $unitMgr.UnitMgr.instance.getUnit(e).node.getPosition();
         $battleMgr.default.instance.createOtherNode(
-          "GuideArrow",
+          'GuideArrow',
           function (e) {
             const i = e.getComponent($guideArrow.default);
-            i.show("搜索一下这里");
+            i.show('搜索一下这里');
             n.y += 50;
             i.node.setPosition(n);
             t._guideArrows.push(i);
@@ -413,8 +392,7 @@ e.prototype.playerArrive = function () {
     if (
       0 == $levelBattleData.levelBattleData.cfgStage.id &&
       21 == this._cfgRoom.id &&
-      $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-        $guideDataProxy.EGuideStepId.G_5
+      $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_5
     ) {
       const e = $battleMgr.default.instance.getCurScene();
       const n = $actorMgr.default.instance.getActor(e.playerId);
@@ -430,8 +408,7 @@ e.prototype.playerArrive = function () {
     if (
       0 == $levelBattleData.levelBattleData.cfgStage.id &&
       22 == this._cfgRoom.id &&
-      $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-        $guideDataProxy.EGuideStepId.G_7
+      $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_7
     ) {
       $eventManager.EventManager.instance.emit(
         $guideMgr.EGuideEvent.COMPLETE_GUIDE_STEP,
@@ -440,10 +417,10 @@ e.prototype.playerArrive = function () {
       this._doorIds.forEach(function (e) {
         const n = $unitMgr.UnitMgr.instance.getUnit(e).node.getPosition();
         $battleMgr.default.instance.createOtherNode(
-          "GuideArrow",
+          'GuideArrow',
           function (e) {
             const i = e.getComponent($guideArrow.default);
-            i.show("门可以阻挡怪物");
+            i.show('门可以阻挡怪物');
             n.y += 250;
             i.node.setPosition(n);
             t._guideArrows.push(i);
@@ -455,12 +432,9 @@ e.prototype.playerArrive = function () {
     if (
       0 == $levelBattleData.levelBattleData.cfgStage.id &&
       23 == this._cfgRoom.id &&
-      $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-        $guideDataProxy.EGuideStepId.G_9
+      $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_9
     ) {
-      $globalPopupMgr.default.instance.showTips(
-        "【前面有人在求救，快去看看吧】",
-      );
+      $globalPopupMgr.default.instance.showTips('【前面有人在求救，快去看看吧】');
       $eventManager.EventManager.instance.emit(
         $guideMgr.EGuideEvent.COMPLETE_GUIDE_STEP,
         $guideDataProxy.EGuideStepId.G_9,
@@ -469,10 +443,9 @@ e.prototype.playerArrive = function () {
     if (
       0 == $levelBattleData.levelBattleData.cfgStage.id &&
       31 == this._cfgRoom.id &&
-      $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-        $guideDataProxy.EGuideStepId.G_11
+      $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_11
     ) {
-      $globalPopupMgr.default.instance.showTips("【快点找到撤离点】");
+      $globalPopupMgr.default.instance.showTips('【快点找到撤离点】');
       $eventManager.EventManager.instance.emit(
         $guideMgr.EGuideEvent.COMPLETE_GUIDE_STEP,
         $guideDataProxy.EGuideStepId.G_11,
@@ -530,12 +503,7 @@ e.prototype.init = function (t) {
   this.node.width = t.size.width;
   this.node.height = t.size.height;
   this.node.setPosition(t.pos.x, t.pos.y);
-  this._rangeRect = new cc.Rect(
-    t.pos.x,
-    t.pos.y,
-    t.size.width,
-    t.size.height,
-  );
+  this._rangeRect = new cc.Rect(t.pos.x, t.pos.y, t.size.width, t.size.height);
   this._cfgRoom = $cfg.default.instance.dataRoom.getById(this._exData.cfgId);
   if (1 == this._cfgRoom.openType) {
     $eventManager.EventManager.instance.on(
@@ -572,56 +540,56 @@ e.prototype.init = function (t) {
   }
 };
 e.prototype.onLoad = function () {};
-Object.defineProperty(e.prototype, "rangeRect", {
+Object.defineProperty(e.prototype, 'rangeRect', {
   get: function () {
     return this._rangeRect;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "isArriveed", {
+Object.defineProperty(e.prototype, 'isArriveed', {
   get: function () {
     return this._isArriveed;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "curUnlockResidueCost", {
+Object.defineProperty(e.prototype, 'curUnlockResidueCost', {
   get: function () {
     return this._cfgRoom.openVal - this._curUnlockCost;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "exData", {
+Object.defineProperty(e.prototype, 'exData', {
   get: function () {
     return this._exData;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "cfg", {
+Object.defineProperty(e.prototype, 'cfg', {
   get: function () {
     return this._cfgRoom;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "isOpenLight", {
+Object.defineProperty(e.prototype, 'isOpenLight', {
   get: function () {
     return this._isOpenLight;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "isUnlock", {
+Object.defineProperty(e.prototype, 'isUnlock', {
   get: function () {
     return this._isUnlock;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "layer", {
+Object.defineProperty(e.prototype, 'layer', {
   get: function () {
     return this._exData.layer;
   },
@@ -649,4 +617,4 @@ function e() {
   e._guideArrows = [];
   return e;
 }
-exports.default = I;
+export default I;

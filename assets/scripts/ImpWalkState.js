@@ -1,6 +1,6 @@
 import $actorEnum from './ActorEnum';
 let i;
-exports.ImpWalkState = void 0;
+export const ImpWalkState = void 0;
 e.prototype.update = function (e) {
   const n = this._context;
   const i = this._context.searchTarget();
@@ -13,10 +13,7 @@ e.prototype.update = function (e) {
     ) {
       return void this._context.changeState($actorEnum.EActorStateType.IDLE);
     } else {
-      return (
-        (this._curFindTarget = o),
-        void t.prototype.update.call(this, e)
-      );
+      return ((this._curFindTarget = o), void t.prototype.update.call(this, e));
     }
   }
   if (this._context.canAttack()) {
@@ -33,4 +30,4 @@ function e() {
   return (null !== t && t.apply(this, arguments)) || this;
 }
 const a = e;
-exports.ImpWalkState = a;
+export const ImpWalkState = a;

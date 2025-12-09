@@ -32,10 +32,7 @@ exports.QuadTree = void 0;
       for (i = (o = e.getIndex(t)).length; n < i; ++n) {
         e.nodes[o[n]].insert(t);
       }
-    } else if (
-      (e.objects.push(t),
-      e.objects.length > e.max_objects && e.level < e.max_levels)
-    ) {
+    } else if ((e.objects.push(t), e.objects.length > e.max_objects && e.level < e.max_levels)) {
       if (0 == e.nodes.length) {
         e.split();
       }

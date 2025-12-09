@@ -21,12 +21,12 @@ exports.playerDataProxy =
     void 0;
 let r;
 !(function (t) {
-  t.UPDATE_SKIN = "update_skin";
-  t.UPDATE_ARTIFACT_LEVEL = "UPDATE_ARTIFACT_LEVEL";
-  t.UPDATE_BUILD_LEVEL = "UPDATE_BUILD_LEVEL";
-  t.UPDATE_BUILD_TIME = "UPDATE_BUILD_TIME";
-  t.GM_PASS_STAGE = "GM_PASS_STAGE";
-  t.UPDATE_ONLINE_REWARD = "UPDATE_ONLINE_REWARD";
+  t.UPDATE_SKIN = 'update_skin';
+  t.UPDATE_ARTIFACT_LEVEL = 'UPDATE_ARTIFACT_LEVEL';
+  t.UPDATE_BUILD_LEVEL = 'UPDATE_BUILD_LEVEL';
+  t.UPDATE_BUILD_TIME = 'UPDATE_BUILD_TIME';
+  t.GM_PASS_STAGE = 'GM_PASS_STAGE';
+  t.UPDATE_ONLINE_REWARD = 'UPDATE_ONLINE_REWARD';
 })((r = exports.EPlayDataEvent || (exports.EPlayDataEvent = {})));
 e.prototype.createInitData = function () {
   return {
@@ -59,8 +59,7 @@ const E = e;
 exports.PlayerData = E;
 e.prototype.isUnlockOfflineReward = function () {
   return (
-    $stageDataProxy.stageDataProxy.passStageId >=
-      this.getBuildUnlockStage(2) &&
+    $stageDataProxy.stageDataProxy.passStageId >= this.getBuildUnlockStage(2) &&
     this._data.localData.buildDatas.some(function (t) {
       return 2 == t.loc;
     })
@@ -75,11 +74,7 @@ e.prototype.updateSkinRedPoint = function () {
     t = !0;
   }
   if (!t && e) {
-    for (
-      const n = $cfg.default.instance.dataSkin.sheet(), i = 0;
-      i < n.length;
-      ++i
-    ) {
+    for (const n = $cfg.default.instance.dataSkin.sheet(), i = 0; i < n.length; ++i) {
       if (this.checkGetSkin(n[i].id)) {
         t = !0;
         break;
@@ -107,7 +102,11 @@ e.prototype.hasStageExploreReward = function (t) {
     return !1;
   }
   for (
-    const n = $stageDataProxy.stageDataProxy.stageData.stageInfos[t], i = e.boxReward.split("|"), o = n.exploreValue || 0, r = e.maxRoom, s = 0;
+    const n = $stageDataProxy.stageDataProxy.stageData.stageInfos[t],
+      i = e.boxReward.split('|'),
+      o = n.exploreValue || 0,
+      r = e.maxRoom,
+      s = 0;
     s < i.length;
     ++s
   ) {
@@ -117,7 +116,7 @@ e.prototype.hasStageExploreReward = function (t) {
     } else {
       c = 0;
     }
-    const l = i[s].split("_");
+    const l = i[s].split('_');
     if ((!c || 0 == c) && o >= Math.floor(Number(l[0]) * r)) {
       return !0;
     }
@@ -125,11 +124,7 @@ e.prototype.hasStageExploreReward = function (t) {
   return !1;
 };
 e.prototype.updateStageExploreRedPoint = function () {
-  for (
-    const t = !1, e = $stageDataProxy.stageDataProxy.passStageId, n = 1;
-    n <= e + 1;
-    ++n
-  ) {
+  for (const t = !1, e = $stageDataProxy.stageDataProxy.passStageId, n = 1; n <= e + 1; ++n) {
     if (this.hasStageExploreReward(n)) {
       t = !0;
       break;
@@ -167,47 +162,45 @@ e.prototype.updateBuildRedPoint = function () {
   if (e && !t) {
     for (
       const i = function (e) {
-                const i = $cfg.default.instance.dataBuild.queryOne(function (t) {
-                  return t.loc == e && 1 == t.lv;
-                }).unlock;
-                if ($stageDataProxy.stageDataProxy.passStageId >= i) {
-                  if (o.checkBuildLvUp(e)) {
-                    t = !0;
-                    return "break";
-                  }
-                  if (2 != e && 5 != e && 10 != e) {
-                    return "continue";
-                  }
-                  const r = exports.playerDataProxy.getBuildLv(e);
-                  const s = $cfg.default.instance.dataBuild.queryOne(function (t) {
-                    return t.loc == e && r == t.lv;
-                  });
-                  const c = exports.playerDataProxy.getBuildStartTime(e);
-                  const l = null;
-                  if (2 == e) {
-                    l = 6e4 * Number(s.ImpVal2);
-                  } else {
-                    l = 36e5 * Number(s.ImpVal2);
-                  }
-                  const u = $timeUtil.TimeUtil.getTime() - c;
-                  if (u > l) {
-                    u = l;
-                  }
-                  if (
-                    (2 == e
-                      ? Math.floor(u / 1e3 / 60)
-                      : Math.floor(u / 1e3 / 60 / 60)) *
-                      Number(s.ImpVal) >
-                    0
-                  ) {
-                    t = !0;
-                    return "break";
-                  }
-                }
-              },
-            o = this,
-            r = 1;
-      r <= 10 && "break" !== i(r);
+          const i = $cfg.default.instance.dataBuild.queryOne(function (t) {
+            return t.loc == e && 1 == t.lv;
+          }).unlock;
+          if ($stageDataProxy.stageDataProxy.passStageId >= i) {
+            if (o.checkBuildLvUp(e)) {
+              t = !0;
+              return 'break';
+            }
+            if (2 != e && 5 != e && 10 != e) {
+              return 'continue';
+            }
+            const r = exports.playerDataProxy.getBuildLv(e);
+            const s = $cfg.default.instance.dataBuild.queryOne(function (t) {
+              return t.loc == e && r == t.lv;
+            });
+            const c = exports.playerDataProxy.getBuildStartTime(e);
+            const l = null;
+            if (2 == e) {
+              l = 6e4 * Number(s.ImpVal2);
+            } else {
+              l = 36e5 * Number(s.ImpVal2);
+            }
+            const u = $timeUtil.TimeUtil.getTime() - c;
+            if (u > l) {
+              u = l;
+            }
+            if (
+              (2 == e ? Math.floor(u / 1e3 / 60) : Math.floor(u / 1e3 / 60 / 60)) *
+                Number(s.ImpVal) >
+              0
+            ) {
+              t = !0;
+              return 'break';
+            }
+          }
+        },
+        o = this,
+        r = 1;
+      r <= 10 && 'break' !== i(r);
       ++r
     ) {}
   }
@@ -219,10 +212,10 @@ e.prototype.updateBuildRedPoint = function () {
 e.prototype.updateSkillRedPoint = function () {
   for (
     const t = !1,
-          e = $cfg.default.instance.dataSkill.queryAll(function (t) {
-            return !t.isInfo && exports.playerDataProxy.isUnlockSkill(t.id);
-          }),
-          i = 0;
+      e = $cfg.default.instance.dataSkill.queryAll(function (t) {
+        return !t.isInfo && exports.playerDataProxy.isUnlockSkill(t.id);
+      }),
+      i = 0;
     i < e.length;
     ++i
   ) {
@@ -241,29 +234,29 @@ e.prototype.updateSkillRedPoint = function () {
   );
 };
 e.prototype.getBoxReward = function (t) {
-  for (const e = t.split("_"), i = [], o = 0; o < e.length; ++o) {
-    const r = e[o].split("&").map(Number);
+  for (const e = t.split('_'), i = [], o = 0; o < e.length; ++o) {
+    const r = e[o].split('&').map(Number);
     const s = $cfg.default.instance.dataItem.getById(r[0]);
     if (3 == s.type) {
       for (
-        const c = s.val.split("|").map(Number),
-              l = exports.playerDataProxy.getCanRefreshDscountShop(c),
-              u = function () {
-                const t = Math.floor(1e4 * Math.random()) % l.length;
-                const e = l[t];
-                const n = i.findIndex(function (t) {
-                  return t.itemId == e;
-                });
-                if (n < 0) {
-                  i.push({
-                    itemId: e,
-                    itemNum: 1,
-                  });
-                } else {
-                  i[n].itemNum += 1;
-                }
-              },
-              p = 0;
+        const c = s.val.split('|').map(Number),
+          l = exports.playerDataProxy.getCanRefreshDscountShop(c),
+          u = function () {
+            const t = Math.floor(1e4 * Math.random()) % l.length;
+            const e = l[t];
+            const n = i.findIndex(function (t) {
+              return t.itemId == e;
+            });
+            if (n < 0) {
+              i.push({
+                itemId: e,
+                itemNum: 1,
+              });
+            } else {
+              i[n].itemNum += 1;
+            }
+          },
+          p = 0;
         p < r[1];
         ++p
       ) {
@@ -284,29 +277,29 @@ e.prototype.getStageSurviveIsCanReward = function (t) {
     return !1;
   }
   for (
-    const i = e.survivor.split("|").map(function (t) {
-              return Number(t) + e.checkSur;
-            }),
-          o = function (e) {
-            const n = $cfg.default.instance.dataSurvivor.queryOne(function (t) {
-              return t.id == i[e];
-            });
-            if (
-              $stageDataProxy.stageDataProxy.isRescueSurvival(t, n.id) &&
-              !r.getPeopleRewardIsReceive(t, n.id)
-            ) {
-              return {
-                value: !0,
-              };
-            }
-          },
-          r = this,
-          s = 0;
+    const i = e.survivor.split('|').map(function (t) {
+        return Number(t) + e.checkSur;
+      }),
+      o = function (e) {
+        const n = $cfg.default.instance.dataSurvivor.queryOne(function (t) {
+          return t.id == i[e];
+        });
+        if (
+          $stageDataProxy.stageDataProxy.isRescueSurvival(t, n.id) &&
+          !r.getPeopleRewardIsReceive(t, n.id)
+        ) {
+          return {
+            value: !0,
+          };
+        }
+      },
+      r = this,
+      s = 0;
     s < i.length;
     ++s
   ) {
     const c = o(s);
-    if ("object" == typeof c) {
+    if ('object' == typeof c) {
       return c.value;
     }
   }
@@ -316,11 +309,7 @@ e.prototype.getStageSurviveIsCanReward = function (t) {
   );
 };
 e.prototype.updateSurviveRewardRedPoint = function () {
-  for (
-    const t = $stageDataProxy.stageDataProxy.passStageId, e = !1, n = 1;
-    n <= t + 1;
-    ++n
-  ) {
+  for (const t = $stageDataProxy.stageDataProxy.passStageId, e = !1, n = 1; n <= t + 1; ++n) {
     if (this.getStageSurviveIsCanReward(n)) {
       e = !0;
       break;
@@ -337,10 +326,7 @@ e.prototype.getCanRefreshDscountShop = function (t) {
   const o = [];
   const r = [];
   for (let s in e)
-    if (
-      "" != (l = e[s]).icon &&
-      (0 == l.unlockType || (1 == l.unlockType && i >= l.unlockVal))
-    ) {
+    if ('' != (l = e[s]).icon && (0 == l.unlockType || (1 == l.unlockType && i >= l.unlockVal))) {
       r.push(l);
     }
   for (const c = 0; c < r.length; ++c) {
@@ -424,18 +410,12 @@ e.prototype.getPeopleRewardIsReceive = function (t, e) {
   return !1;
 };
 e.prototype.getArtifactUpGreadNeeItemId = function (t) {
-  return $cfg.default.instance.dataSkill
-    .getById(t)
-    .cost.split("|")[0]
-    .split("_")
-    .map(Number)[0];
+  return $cfg.default.instance.dataSkill.getById(t).cost.split('|')[0].split('_').map(Number)[0];
 };
 e.prototype.getArtifactUpGreadNeedNum = function (t) {
-  const e = $cfg.default.instance.dataSkill.getById(t).cost.split("|")[
-    this.getArtifactLv(t) - 1
-  ];
+  const e = $cfg.default.instance.dataSkill.getById(t).cost.split('|')[this.getArtifactLv(t) - 1];
   if (e) {
-    return e.split("_").map(Number)[1];
+    return e.split('_').map(Number)[1];
   } else {
     return -1;
   }
@@ -522,11 +502,9 @@ e.prototype.setSkinId = function (t) {
   $eventManager.EventManager.instance.emit(r.UPDATE_SKIN);
 };
 e.prototype.getDscountGoodsBuyNum = function (t) {
-  const e = this._data.localData.dscountShopData.goodsDatas.findIndex(
-    function (e) {
-      return e.cfgId == t;
-    },
-  );
+  const e = this._data.localData.dscountShopData.goodsDatas.findIndex(function (e) {
+    return e.cfgId == t;
+  });
   if (e >= 0) {
     return this._data.localData.dscountShopData.goodsDatas[e].buyNum;
   } else {
@@ -534,11 +512,9 @@ e.prototype.getDscountGoodsBuyNum = function (t) {
   }
 };
 e.prototype.setDscountGoodsBuyNum = function (t, e) {
-  const n = this._data.localData.dscountShopData.goodsDatas.findIndex(
-    function (e) {
-      return e.cfgId == t;
-    },
-  );
+  const n = this._data.localData.dscountShopData.goodsDatas.findIndex(function (e) {
+    return e.cfgId == t;
+  });
   if (n >= 0) {
     this._data.localData.dscountShopData.goodsDatas[n].buyNum = e;
     $localDataProxy.localDataProxy.saveData();
@@ -573,9 +549,7 @@ e.prototype.setArtifactLv = function (t, e) {
 e.prototype.isUnlockSkill = function (t) {
   const e = $cfg.default.instance.dataSkill.getById(t);
   return (
-    null != e &&
-    (0 == e.unlockType ||
-      $stageDataProxy.stageDataProxy.passStageId >= e.unlockVal)
+    null != e && (0 == e.unlockType || $stageDataProxy.stageDataProxy.passStageId >= e.unlockVal)
   );
 };
 e.prototype.getBuildData = function (t) {
@@ -631,10 +605,8 @@ e.prototype.checkBuildLvUp = function (t) {
   return (
     !!i &&
     !($stageDataProxy.stageDataProxy.passStageId + 1 < i.unlock) &&
-    $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.SURVIVOR) >=
-      n.max &&
-    $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.GOLD) >=
-      n.need
+    $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.SURVIVOR) >= n.max &&
+    $itemDataProxy.itemDataProxy.getItemValue($itemEnum.E_ItemId.GOLD) >= n.need
   );
 };
 e.prototype.getIsFirstUnlockBuild = function (t) {
@@ -716,9 +688,7 @@ e.prototype.setBuildLv = function (t, e) {
     });
   }
   $eventManager.EventManager.instance.emit(r.UPDATE_BUILD_LEVEL, t);
-  $playerActionMgr.PlayerActionMgr.instance.triggerAction(
-    $taskEnum.EPlayerActionType.BUILD_UP_LV,
-  );
+  $playerActionMgr.PlayerActionMgr.instance.triggerAction($taskEnum.EPlayerActionType.BUILD_UP_LV);
   this.updateBuildRedPoint();
   $localDataProxy.localDataProxy.saveData();
 };
@@ -731,23 +701,19 @@ e.prototype.pushBagAddGridPos = function (t) {
   }
 };
 e.prototype.getOnlineReward = function (t) {
-  const e = $cfg.default.instance.dataMerchant.getById(
-    this._data.localData.onlineRewardId + 1,
-  );
-  const n = e.reward.split("_").map(Number);
+  const e = $cfg.default.instance.dataMerchant.getById(this._data.localData.onlineRewardId + 1);
+  const n = e.reward.split('_').map(Number);
   const i = n[0];
   const o = n[1];
   const s = [];
   const c = $cfg.default.instance.dataItem.getById(i);
   if (3 == c.type) {
-    $itemDataProxy.itemDataProxy
-      .randomChip(c.rare, o)
-      .forEach(function (t, e) {
-        s.push({
-          itemId: e,
-          itemNum: t,
-        });
+    $itemDataProxy.itemDataProxy.randomChip(c.rare, o).forEach(function (t, e) {
+      s.push({
+        itemId: e,
+        itemNum: t,
       });
+    });
   } else {
     s = [
       {
@@ -768,16 +734,14 @@ e.prototype.getOnlineReward = function (t) {
   $eventManager.EventManager.instance.emit(r.UPDATE_ONLINE_REWARD);
 };
 e.prototype.canGetOnlineReward = function () {
-  const t = $cfg.default.instance.dataMerchant.getById(
-    this._data.localData.onlineRewardId + 1,
-  );
+  const t = $cfg.default.instance.dataMerchant.getById(this._data.localData.onlineRewardId + 1);
   return t && 60 * t.time <= this._data.localData.onlineTime;
 };
 e.prototype.updateSecond = function () {
   if ($stageDataProxy.stageDataProxy.passStageId >= 1) {
     this._data.localData.onlineTime += 1;
   }
-  if ("home" == cc.director.getScene().name) {
+  if ('home' == cc.director.getScene().name) {
     this._updateRedPointTime += 1;
     if (this._updateRedPointTime >= 20) {
       this._updateRedPointTime = 0;
@@ -810,42 +774,42 @@ e.prototype.initData = function () {
   this.updateStageExploreRedPoint();
   this.updateSkinRedPoint();
 };
-Object.defineProperty(e.prototype, "onlineRewardId", {
+Object.defineProperty(e.prototype, 'onlineRewardId', {
   get: function () {
     return this._data.localData.onlineRewardId;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "onlineTime", {
+Object.defineProperty(e.prototype, 'onlineTime', {
   get: function () {
     return this._data.localData.onlineTime;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "canExBag", {
+Object.defineProperty(e.prototype, 'canExBag', {
   get: function () {
     return this._data.localData.bagAddGridPoss.length < 7;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "bagAddGridPoss", {
+Object.defineProperty(e.prototype, 'bagAddGridPoss', {
   get: function () {
     return this._data.localData.bagAddGridPoss.slice();
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "buildDatas", {
+Object.defineProperty(e.prototype, 'buildDatas', {
   get: function () {
     return this._data.localData.buildDatas;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "dscountGoodsDatas", {
+Object.defineProperty(e.prototype, 'dscountGoodsDatas', {
   get: function () {
     return this._data.localData.dscountShopData.goodsDatas;
   },
@@ -856,7 +820,7 @@ Object.defineProperty(e.prototype, "dscountGoodsDatas", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "dscountVideoNum", {
+Object.defineProperty(e.prototype, 'dscountVideoNum', {
   get: function () {
     return this._data.localData.dscountShopData.videoNum;
   },
@@ -867,7 +831,7 @@ Object.defineProperty(e.prototype, "dscountVideoNum", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "openBoxExp", {
+Object.defineProperty(e.prototype, 'openBoxExp', {
   get: function () {
     return this._data.localData.shopData.openBoxExp;
   },
@@ -878,7 +842,7 @@ Object.defineProperty(e.prototype, "openBoxExp", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "isOpenBigBox", {
+Object.defineProperty(e.prototype, 'isOpenBigBox', {
   get: function () {
     return this._data.localData.shopData.isOpenBigBox;
   },
@@ -889,7 +853,7 @@ Object.defineProperty(e.prototype, "isOpenBigBox", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "openBoxTime", {
+Object.defineProperty(e.prototype, 'openBoxTime', {
   get: function () {
     return this._data.localData.shopData.openBoxTime;
   },
@@ -900,7 +864,7 @@ Object.defineProperty(e.prototype, "openBoxTime", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "goldVideoNum", {
+Object.defineProperty(e.prototype, 'goldVideoNum', {
   get: function () {
     return this._data.localData.shopData.goldVideoNum || 0;
   },
@@ -911,21 +875,21 @@ Object.defineProperty(e.prototype, "goldVideoNum", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "videoNum", {
+Object.defineProperty(e.prototype, 'videoNum', {
   get: function () {
     return this._data.localData.videoNum;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "skinId", {
+Object.defineProperty(e.prototype, 'skinId', {
   get: function () {
     return this._data.localData.skinId;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "data", {
+Object.defineProperty(e.prototype, 'data', {
   get: function () {
     return this._data;
   },

@@ -10,12 +10,12 @@ import $spAnimEffect from './SpAnimEffect';
 import $actorEnum from './ActorEnum';
 import $attrEnum from './AttrEnum';
 let i;
-exports.Boss_621_Walk = void 0;
+export const Boss_621_Walk = void 0;
 e.prototype.disappearCommonAtk = function (t) {
   const e = this;
   this._isDisAppearing = !0;
   this._context.spAnimCommonAtk.playAnim(
-    "skin" + this._context.skinId + "_disappear",
+    'skin' + this._context.skinId + '_disappear',
     1,
     !1,
     function () {
@@ -32,16 +32,12 @@ e.prototype.appearCommonAtk = function () {
   const t = this;
   this._context.spAnimCommonAtk.node.active = !0;
   this._context.spAnimCommonAtk.playAnim(
-    "skin" + this._context.skinId + "_appear",
+    'skin' + this._context.skinId + '_appear',
     1,
     !1,
     function () {
       t._isAppear = !0;
-      t._context.spAnimCommonAtk.playAnim(
-        "skin" + t._context.skinId + "_stand",
-        1,
-        !0,
-      );
+      t._context.spAnimCommonAtk.playAnim('skin' + t._context.skinId + '_stand', 1, !0);
     },
   );
 };
@@ -51,53 +47,48 @@ e.prototype.end = function () {
 };
 e.prototype.shootBullet = function () {
   const t = this;
-  const e = this._context.spAnimCommonAtk.node.getChildByName("FireAnim");
+  const e = this._context.spAnimCommonAtk.node.getChildByName('FireAnim');
   e.active = !0;
   const n = e.getComponent($spAnimCtrl.default);
   n.clearAnim();
-  n.playAnim("skin" + this._context.skinId + "_atk", 1, !1, function () {
+  n.playAnim('skin' + this._context.skinId + '_atk', 1, !1, function () {
     n.node.active = !1;
   });
   for (
     const i = $nodeUtil.default.nodeParentChangeLocalPos(
-              e,
-              $battleMgr.default.instance.getCurScene().bulletParent,
-            ),
-          o = function (e) {
-            const n = (36 * e * Math.PI) / 180;
-            const o = i.add(cc.v2(Math.cos(n), Math.sin(n)).mul(500));
-            $bulletMgr.default.instance.createBullet({
-              parent: $battleMgr.default.instance.getCurScene().bulletParent,
-              prefabName: "CommonEnemyBullet",
-              initPos: i,
-              iconPath: "textures/bullet/BOSS621_zaidan" + r._context.skinId,
-              bulletClass: $commonEnemyBullet.default,
-              onCreated: function (e) {
-                e.shoot(t._context, o, {
-                  bulletType: 2,
-                  bezierHeight: 0,
-                  onRemove: function (e) {
-                    $effectMgr.default.instance.createEffect({
-                      parent:
-                        $battleMgr.default.instance.getCurScene().effectParent,
-                      prefabName: "EBoss_621Hurt",
-                      initPos: e,
-                      effectClass: $spAnimEffect.default,
-                      onCreated: function (e) {
-                        e.playDefaultAnim(
-                          "skin" + t._context.skinId + "_hit",
-                          1,
-                          !1,
-                        );
-                      },
-                    });
+        e,
+        $battleMgr.default.instance.getCurScene().bulletParent,
+      ),
+      o = function (e) {
+        const n = (36 * e * Math.PI) / 180;
+        const o = i.add(cc.v2(Math.cos(n), Math.sin(n)).mul(500));
+        $bulletMgr.default.instance.createBullet({
+          parent: $battleMgr.default.instance.getCurScene().bulletParent,
+          prefabName: 'CommonEnemyBullet',
+          initPos: i,
+          iconPath: 'textures/bullet/BOSS621_zaidan' + r._context.skinId,
+          bulletClass: $commonEnemyBullet.default,
+          onCreated: function (e) {
+            e.shoot(t._context, o, {
+              bulletType: 2,
+              bezierHeight: 0,
+              onRemove: function (e) {
+                $effectMgr.default.instance.createEffect({
+                  parent: $battleMgr.default.instance.getCurScene().effectParent,
+                  prefabName: 'EBoss_621Hurt',
+                  initPos: e,
+                  effectClass: $spAnimEffect.default,
+                  onCreated: function (e) {
+                    e.playDefaultAnim('skin' + t._context.skinId + '_hit', 1, !1);
                   },
                 });
               },
             });
           },
-          r = this,
-          u = 0;
+        });
+      },
+      r = this,
+      u = 0;
     u < 10;
     u++
   ) {
@@ -148,10 +139,7 @@ e.prototype.update = function (t) {
 e.prototype.updateTargetPos = function () {
   const t = this._context.searchTarget();
   if (t) {
-    const e = $randomUtil.RandomUtil.randomInt(
-      this._context.minRange,
-      this._context.maxRange,
-    );
+    const e = $randomUtil.RandomUtil.randomInt(this._context.minRange, this._context.maxRange);
     const n =
       ($randomUtil.RandomUtil.randomInt(
         this._context.rangeAngles[0],
@@ -183,4 +171,4 @@ function e(e) {
   return n;
 }
 const y = e;
-exports.Boss_621_Walk = y;
+export const Boss_621_Walk = y;

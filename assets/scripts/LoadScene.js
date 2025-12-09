@@ -11,19 +11,19 @@ import $appProxy from './AppProxy';
 import $frameEnum from './FrameEnum';
 import $audioUtil from './AudioUtil';
 let i;
-exports.LoadScene = void 0;
+export const LoadScene = void 0;
 const b = cc._decorator;
 const E = b.ccclass;
 const S = b.property;
 cc.internal.inputManager._maxTouches = 1;
 e.prototype.compatibilityTT = function () {
   tt.navigateToScene({
-    scene: "sidebar",
+    scene: 'sidebar',
     success: function () {
-      console.log("navigate to scene success");
+      console.log('navigate to scene success');
     },
     fail: function (t) {
-      console.log("navigate to scene fail: ", t);
+      console.log('navigate to scene fail: ', t);
     },
   });
 };
@@ -46,22 +46,19 @@ e.prototype.start = function () {
   $audioUtil.AudioUtil.init();
 };
 e.prototype.onLoad = function () {
-  cc.director.getScene().name = "load";
+  cc.director.getScene().name = 'load';
   $eventManager.EventManager.instance.clear();
   $resLoader.ResLoader.preload({
-    paths: "prefabs/LoadUI",
+    paths: 'prefabs/LoadUI',
     type: cc.Prefab,
     bundleName: $frameEnum.Frame.EBundleName.LOAD,
   });
   t.prototype.onLoad.call(this);
   $engineExUtils.EngineExUtils.all();
   const e = new Date();
-  $commonUtil.CommonUtil.print("nowData-----:", e.getTime());
+  $commonUtil.CommonUtil.print('nowData-----:', e.getTime());
   $audioManager.AudioManager.instance.stopBgm();
-  $eventManager.EventManager.instance.emit(
-    $appProxy.AppEvent.BGM_CHANGED,
-    $appProxy.BgmTypes.load,
-  );
+  $eventManager.EventManager.instance.emit($appProxy.AppEvent.BGM_CHANGED, $appProxy.BgmTypes.load);
 };
 function e() {
   const e = (null !== t && t.apply(this, arguments)) || this;
@@ -70,4 +67,4 @@ function e() {
   e.md5 = !0;
   return e;
 }
-exports.LoadScene = P;
+export const LoadScene = P;

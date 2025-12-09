@@ -1,16 +1,14 @@
 import $componentBase from './ComponentBase';
-let i;
-exports.BgFit = exports.ZSFullFitType = void 0;
-let a;
+export const ZSFullFitType = {
+  ALL: 0,
+  WIDTH: 1,
+  HEIGHT: 2
+};
+let a = ZSFullFitType;
 const c = cc._decorator;
 const l = c.ccclass;
 const u = c.property;
 const p = c.menu;
-!(function (t) {
-  t[(t.ALL = 0)] = "ALL";
-  t[(t.WIDTH = 1)] = "WIDTH";
-  t[(t.HEIGHT = 2)] = "HEIGHT";
-})((a = exports.ZSFullFitType || (exports.ZSFullFitType = {})));
 e.prototype.onLoad = function () {
   const t = cc.winSize;
   const e = 1;
@@ -38,4 +36,4 @@ function e() {
   e.fit = !0;
   return e;
 }
-exports.BgFit = h;
+export const BgFit = h;;

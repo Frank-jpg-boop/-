@@ -1,15 +1,13 @@
 import $eventManager from './EventManager';
 import $campsiteRoomItem from './CampsiteRoomItem';
 import $supportRewadItem from './SupportRewadItem';
-let i;
-exports.ECampsiteEvent = void 0;
-let a;
+export const ECampsiteEvent = {
+  UPDATE_ROOM: 'UPDATE_ROOM'
+};
+let a = ECampsiteEvent;
 const u = cc._decorator;
 const p = u.ccclass;
 const h = u.property;
-!(function (t) {
-  t.UPDATE_ROOM = "UPDATE_ROOM";
-})((a = exports.ECampsiteEvent || (exports.ECampsiteEvent = {})));
 e.prototype.updateRoomView = function () {
   this.nRoomView.children.forEach(function (t) {
     t.getComponent($campsiteRoomItem.default).updateView();
@@ -28,18 +26,10 @@ e.prototype.onEnable = function () {
   this.supportRewadItem.updateView();
 };
 e.prototype.onDestroy = function () {
-  $eventManager.EventManager.instance.off(
-    a.UPDATE_ROOM,
-    this.updateRoomView,
-    this,
-  );
+  $eventManager.EventManager.instance.off(a.UPDATE_ROOM, this.updateRoomView, this);
 };
 e.prototype.onLoad = function () {
-  $eventManager.EventManager.instance.on(
-    a.UPDATE_ROOM,
-    this.updateRoomView,
-    this,
-  );
+  $eventManager.EventManager.instance.on(a.UPDATE_ROOM, this.updateRoomView, this);
   this.initView();
 };
 function e() {
@@ -48,4 +38,4 @@ function e() {
   e.supportRewadItem = null;
   return e;
 }
-exports.default = f;
+export default f;;

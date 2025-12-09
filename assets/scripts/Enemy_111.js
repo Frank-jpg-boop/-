@@ -25,7 +25,7 @@ const S =
       e._moveCD = 0;
       return e;
     }
-    Object.defineProperty(e.prototype, "rangeRect", {
+    Object.defineProperty(e.prototype, 'rangeRect', {
       get: function () {
         return this._rangeRect;
       },
@@ -33,29 +33,15 @@ const S =
       configurable: !0,
     });
     e.prototype.registerState = function () {
-      this._sm = new $stateMachine.StateMachine(
-        new $enemy_111_Idle.Enemy_111_Idle(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.ATTACK,
-        new $enemy_111_Atk.Enemy_111_Atk(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.DEAD,
-        new $enemy_111_Die.Enemy_111_Die(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.WALK,
-        new $enemy_111_Walk.Enemy_111_Walk(this),
-      );
+      this._sm = new $stateMachine.StateMachine(new $enemy_111_Idle.Enemy_111_Idle(this));
+      this._sm.addState($actorEnum.EActorStateType.ATTACK, new $enemy_111_Atk.Enemy_111_Atk(this));
+      this._sm.addState($actorEnum.EActorStateType.DEAD, new $enemy_111_Die.Enemy_111_Die(this));
+      this._sm.addState($actorEnum.EActorStateType.WALK, new $enemy_111_Walk.Enemy_111_Walk(this));
       this._sm.addState(
         $actorEnum.EActorStateType.EXTEND_1,
         new $enemy_111_Summon.Enemy_111_Summon(this),
       );
-      this._sm.addState(
-        $actorEnum.EActorStateType.STOP,
-        new $enemyStopState.EnemyStopState(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.STOP, new $enemyStopState.EnemyStopState(this));
     };
     e.prototype.initPos = function () {
       const t = this._initParam.roomId;
@@ -68,14 +54,8 @@ const S =
           e.node.height - 200,
         );
         const n = cc.v2(
-          $randomUtil.RandomUtil.randomInt(
-            this._rangeRect.xMin,
-            this._rangeRect.xMax,
-          ),
-          $randomUtil.RandomUtil.randomInt(
-            this._rangeRect.yMin,
-            this._rangeRect.yMax,
-          ),
+          $randomUtil.RandomUtil.randomInt(this._rangeRect.xMin, this._rangeRect.xMax),
+          $randomUtil.RandomUtil.randomInt(this._rangeRect.yMin, this._rangeRect.yMax),
         );
         this.node.setPosition(n);
       }
@@ -114,7 +94,7 @@ const S =
               cfgId: 102,
               camp: $actorEnum.ETeamType.ENEMY,
               parent: i.actorParent,
-              prefabName: "Enemy_102",
+              prefabName: 'Enemy_102',
               initPos: e,
               actorClass: $actorMgr.default.instance.getActorClassName(
                 102,
@@ -135,7 +115,7 @@ const S =
                         x: s,
                       },
                       {
-                        easing: "sineIn",
+                        easing: 'sineIn',
                       },
                     )
                     .call(function () {
@@ -163,7 +143,7 @@ const S =
           }
         },
         function (e, i) {
-          if (e == n._atkAnimName && "atk" == i && t) {
+          if (e == n._atkAnimName && 'atk' == i && t) {
             t();
           }
         },
@@ -175,7 +155,7 @@ const S =
           const e = $battleMgr.default.instance.getCurScene();
           $effectMgr.default.instance.createEffect({
             parent: e.effectParent,
-            prefabName: "EEnemyHit_1",
+            prefabName: 'EEnemyHit_1',
             initPos: t,
             effectClass: $spAnimEffect.default,
             onCreated: function (t) {
@@ -193,20 +173,12 @@ const S =
     };
     e.prototype.randomPos = function () {
       return cc.v2(
-        $randomUtil.RandomUtil.randomInt(
-          this._rangeRect.xMin,
-          this._rangeRect.xMax,
-        ),
-        $randomUtil.RandomUtil.randomInt(
-          this._rangeRect.yMin,
-          this._rangeRect.yMax,
-        ),
+        $randomUtil.RandomUtil.randomInt(this._rangeRect.xMin, this._rangeRect.xMax),
+        $randomUtil.RandomUtil.randomInt(this._rangeRect.yMin, this._rangeRect.yMax),
       );
     };
     e.prototype.searchTarget = function () {
-      const t = $actorMgr.default.instance.queryActorByCamp(
-        $actorEnum.ETeamType.PLAYER,
-      );
+      const t = $actorMgr.default.instance.queryActorByCamp($actorEnum.ETeamType.PLAYER);
       if (0 == t.length) {
         return null;
       }
@@ -229,4 +201,4 @@ const S =
       }
     };
   })($enemyBase.default));
-exports.default = S;
+export default S;

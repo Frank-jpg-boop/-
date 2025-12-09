@@ -15,16 +15,16 @@ const l =
     };
     e.prototype.play = function (t, e) {
       this._onEvent = t;
-      this.playDefaultAnim("atk", 1, !1, function () {
+      this.playDefaultAnim('atk', 1, !1, function () {
         if (e) {
           e();
         }
       });
     };
     e.prototype.onDefaultAnimFrameEvent = function (t, e) {
-      if ("atk" == e && this._onEvent) {
+      if ('atk' == e && this._onEvent) {
         this._onEvent();
       }
     };
   })($spAnimEffect.default));
-exports.default = l;
+export default l;

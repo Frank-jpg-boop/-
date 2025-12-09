@@ -41,12 +41,8 @@ e.prototype.lookAtBoss = function (t) {
     1,
     function () {
       e.cameraCtrl.tweenChangeRatio(1.4, 0.5, function () {
-        $eventManager.EventManager.instance.emit(
-          $enterBossView.EEnterBossViewEvent.SHOW,
-        );
-        $eventManager.EventManager.instance.emit(
-          $battleEnum.EBattleEvent.SHOW_BOSS_HP,
-        );
+        $eventManager.EventManager.instance.emit($enterBossView.EEnterBossViewEvent.SHOW);
+        $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.SHOW_BOSS_HP);
         e.level.scheduleOnce(function () {
           e.cameraCtrl.tweenChangeRatio(1.2, 0.2, function () {
             const t = $actorMgr.default.instance.getActor(e.playerId);
@@ -83,11 +79,11 @@ e.prototype.onGuideChange = function (t) {
         const t = null;
         const n = i.node.convertToWorldSpaceAR(cc.v2(0, 150));
         $battleMgr.default.instance.createOtherNode(
-          "GuideArrow",
+          'GuideArrow',
           function (n) {
             t = n;
             n.setPosition(e._level.playerExitPos.add(cc.v2(0, 100)));
-            n.getComponent($guideArrow.default).show("抵达此处撤离");
+            n.getComponent($guideArrow.default).show('抵达此处撤离');
           },
           e.lowEffectParent,
         );
@@ -125,38 +121,38 @@ e.prototype.scheduleWin = function () {
   t.head.hide();
   const e = t.dirX;
   const n = t.node
-    .getChildByName("Body")
-    .getChildByName("SpAnim")
+    .getChildByName('Body')
+    .getChildByName('SpAnim')
     .getComponent($spAnimCtrl.default);
   const i = t.node.getPosition().add(cc.v2(100 * e, 50));
   t.exitInvincible();
   $effectMgr.default.instance.createEffect({
     parent: this._lowEffectParent,
-    prefabName: "ETransfer",
+    prefabName: 'ETransfer',
     initPos: i,
     effectClass: $spAnimEffect.default,
     onCreated: function (o) {
       t.resume();
       o.node.scaleX = Math.abs(o.node.scaleX) * e;
       o.playDefaultAnim(
-        "start",
+        'start',
         1,
         !1,
         function () {
-          o.playDefaultAnim("stand", 1, !0);
-          n.playAnim("run", 1, !0);
+          o.playDefaultAnim('stand', 1, !0);
+          n.playAnim('run', 1, !0);
           cc.tween(t.node)
             .to(0.4, {
               x: i.x,
             })
             .call(function () {
-              n.playAnim("bide", 1, !0);
+              n.playAnim('bide', 1, !0);
             })
             .to(0.1, {
               opacity: 0,
             })
             .call(function () {
-              o.playDefaultAnim("over", 1, !1, function () {
+              o.playDefaultAnim('over', 1, !1, function () {
                 $globalPopupMgr.default.instance.showLevelWin(!1);
               });
             })
@@ -173,8 +169,7 @@ e.prototype.rescue = function () {
   this.pause(!0);
   if (
     0 == $levelBattleData.levelBattleData.cfgStage.id &&
-    $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-      $guideDataProxy.EGuideStepId.G_13
+    $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_13
   ) {
     $eventManager.EventManager.instance.emit(
       $guideMgr.EGuideEvent.COMPLETE_GUIDE_STEP,
@@ -195,52 +190,50 @@ e.prototype.rescue = function () {
   });
   for (
     const o = function (o) {
-              const a = n + o * i;
-              const s = cc.v2(a, e.node.y + 10);
-              $util.default.delay(
-                0.2 * o,
-                function () {
-                  $effectMgr.default.instance.createEffect({
-                    parent: t._effectParent,
-                    prefabName: "ECopterBoom",
-                    initPos: s,
-                    effectClass: $eCopterBoom.default,
-                    onCreated: function (n) {
-                      n.play(function () {
-                        if (9 == o) {
-                          const n = e.node.getPosition();
-                          n.x -= 50;
-                          $effectMgr.default.instance.createEffect({
-                            parent: t._lowEffectParent,
-                            prefabName: "ECopter",
-                            initPos: n,
-                            effectClass: $spAnimEffect.default,
-                            onCreated: function (t) {
-                              t.node.zIndex = cc.macro.MIN_ZINDEX;
-                              $audioUtil.AudioUtil.playEffect(
-                                "sounds/lmtw_yx_Helicopter",
-                              );
-                              t.playDefaultAnim(
-                                "touch down",
-                                1,
-                                !1,
-                                function () {
-                                  $globalPopupMgr.default.instance.showLevelWin(!0);
-                                },
-                                !1,
-                              );
-                            },
-                          });
-                        }
-                      });
-                    },
-                  });
-                },
-                r,
-              );
-            },
-          r = this,
-          a = 0;
+        const a = n + o * i;
+        const s = cc.v2(a, e.node.y + 10);
+        $util.default.delay(
+          0.2 * o,
+          function () {
+            $effectMgr.default.instance.createEffect({
+              parent: t._effectParent,
+              prefabName: 'ECopterBoom',
+              initPos: s,
+              effectClass: $eCopterBoom.default,
+              onCreated: function (n) {
+                n.play(function () {
+                  if (9 == o) {
+                    const n = e.node.getPosition();
+                    n.x -= 50;
+                    $effectMgr.default.instance.createEffect({
+                      parent: t._lowEffectParent,
+                      prefabName: 'ECopter',
+                      initPos: n,
+                      effectClass: $spAnimEffect.default,
+                      onCreated: function (t) {
+                        t.node.zIndex = cc.macro.MIN_ZINDEX;
+                        $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_Helicopter');
+                        t.playDefaultAnim(
+                          'touch down',
+                          1,
+                          !1,
+                          function () {
+                            $globalPopupMgr.default.instance.showLevelWin(!0);
+                          },
+                          !1,
+                        );
+                      },
+                    });
+                  }
+                });
+              },
+            });
+          },
+          r,
+        );
+      },
+      r = this,
+      a = 0;
     a < 10;
     a++
   ) {
@@ -261,16 +254,12 @@ e.prototype.waitRescue = function () {
 };
 e.prototype.exitBossWave = function () {
   this._isTriggerBoss = !1;
-  $eventManager.EventManager.instance.emit(
-    $battleEnum.EBattleEvent.TRIGGER_BOSS_END_INFORM,
-  );
+  $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.TRIGGER_BOSS_END_INFORM);
 };
 e.prototype.triggerBoss = function () {
   if (0 != $levelBattleData.levelBattleData.data.stageBossCfg.id) {
     this._isTriggerBoss = !0;
-    $eventManager.EventManager.instance.emit(
-      $battleEnum.EBattleEvent.TRIGGER_BOSS_INFORM,
-    );
+    $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.TRIGGER_BOSS_INFORM);
   }
 };
 e.prototype.createBoss = function () {
@@ -285,14 +274,8 @@ e.prototype.gmEnterBossWave = function () {
   const e = $cfg.default.instance.dataWave.getById(t.waveId);
   this._waveTimer = e.totalTime;
   this._waveTime = this._waveTimer;
-  $enemyRefreshMgr.EnemyRefreshMgr.instance.updateWaveRefreshData(
-    t.waveId,
-    t.enemyLv,
-  );
-  $eventManager.EventManager.instance.emit(
-    $battleEnum.EBattleEvent.SET_NEXT_WAVE_ENEMY_UI,
-    !1,
-  );
+  $enemyRefreshMgr.EnemyRefreshMgr.instance.updateWaveRefreshData(t.waveId, t.enemyLv);
+  $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.SET_NEXT_WAVE_ENEMY_UI, !1);
   this.resume();
   if (1 != e.spe || this._isTriggerBoss) {
     //
@@ -307,14 +290,8 @@ e.prototype.enterNextWave = function () {
     const e = $cfg.default.instance.dataWave.getById(t.waveId);
     this._waveTimer = e.totalTime;
     this._waveTime = this._waveTimer;
-    $enemyRefreshMgr.EnemyRefreshMgr.instance.updateWaveRefreshData(
-      t.waveId,
-      t.enemyLv,
-    );
-    $eventManager.EventManager.instance.emit(
-      $battleEnum.EBattleEvent.SET_NEXT_WAVE_ENEMY_UI,
-      !1,
-    );
+    $enemyRefreshMgr.EnemyRefreshMgr.instance.updateWaveRefreshData(t.waveId, t.enemyLv);
+    $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.SET_NEXT_WAVE_ENEMY_UI, !1);
     const n = $levelBattleData.levelBattleData.data.stageBossCfg;
     if (1 != e.spe || this._isTriggerBoss || 621 == n.id) {
       //
@@ -360,11 +337,8 @@ e.prototype.createPlayer = function () {
     cfgId: 1,
     camp: $actorEnum.ETeamType.PLAYER,
     parent: this.actorParent,
-    prefabName: "Player",
-    actorClass: $actorMgr.default.instance.getActorClassName(
-      1,
-      $actorEnum.ETeamType.PLAYER,
-    ),
+    prefabName: 'Player',
+    actorClass: $actorMgr.default.instance.getActorClassName(1, $actorEnum.ETeamType.PLAYER),
     initPos: this._level.playerCreatePos,
     initParam: {
       initHpRate: 0 == $levelBattleData.levelBattleData.cfgStage.id ? 0.5 : 1,
@@ -387,12 +361,9 @@ e.prototype.createPlayer = function () {
               1,
             );
             $globalPopupMgr.default.instance.showGentleTipsPopup(function () {
-              $globalPopupMgr.default.instance.showTips(
-                "【探索一下古宅吧】",
-                1,
-              );
+              $globalPopupMgr.default.instance.showTips('【探索一下古宅吧】', 1);
               t.scheduleOnce(function () {
-                $globalPopupMgr.default.instance.showTips("【去左边看看】");
+                $globalPopupMgr.default.instance.showTips('【去左边看看】');
               }, 2);
               $eventManager.EventManager.instance.emit(
                 $guideMgr.EGuideEvent.COMPLETE_GUIDE_STEP,
@@ -405,9 +376,7 @@ e.prototype.createPlayer = function () {
     },
   });
   this._cameraCtrl.initData(
-    this._level.node
-      .convertToWorldSpaceAR(this._level.playerCreatePos)
-      .add(cc.v2(0, 150)),
+    this._level.node.convertToWorldSpaceAR(this._level.playerCreatePos).add(cc.v2(0, 150)),
   );
 };
 e.prototype.createLevel = function () {
@@ -426,7 +395,7 @@ e.prototype.createLevel = function () {
   }
   this._cameraCtrl = cc.director
     .getScene()
-    .getChildByName("Canvas")
+    .getChildByName('Canvas')
     .getComponent($battleCamera.default);
   this._cameraCtrl.setVisibleRegion(this._level.node);
 };
@@ -452,57 +421,55 @@ e.prototype.getLoadPrefabResOption = function () {
   const e = $levelBattleData.levelBattleData.cfgStage.pic1;
   t.push({
     bundleName: $frameEnum.Frame.EBundleName.GAME,
-    path: "prefabs/room/units/Door",
+    path: 'prefabs/room/units/Door',
     type: cc.Prefab,
     isPrefabAddNodePool: !0,
   });
   t.push({
     bundleName: $frameEnum.Frame.EBundleName.GAME,
-    path: "prefabs/room/units/Ladder",
+    path: 'prefabs/room/units/Ladder',
     type: cc.Prefab,
     isPrefabAddNodePool: !0,
   });
-  const n = $cfg.default.instance.dataSkin.getById(
-    $playerDataProxy.playerDataProxy.skinId,
-  );
+  const n = $cfg.default.instance.dataSkin.getById($playerDataProxy.playerDataProxy.skinId);
   t.push({
     bundleName: $frameEnum.Frame.EBundleName.GAME,
-    path: "spines/player/" + n.skin + "/" + n.skin,
+    path: 'spines/player/' + n.skin + '/' + n.skin,
     type: sp.SkeletonData,
     isPrefabAddNodePool: !1,
   });
   t.push({
     bundleName: $frameEnum.Frame.EBundleName.GAME,
-    path: "prefabs/level/" + e,
+    path: 'prefabs/level/' + e,
     type: cc.Prefab,
     isPrefabAddNodePool: !1,
   });
   t.push({
     bundleName: $frameEnum.Frame.EBundleName.GAME,
-    path: "config/" + e,
+    path: 'config/' + e,
     type: cc.JsonAsset,
     isPrefabAddNodePool: !1,
   });
   t.push({
     bundleName: $frameEnum.Frame.EBundleName.GAME,
-    path: "prefabs/battle/other/PlayerHead",
+    path: 'prefabs/battle/other/PlayerHead',
     type: cc.Prefab,
     isPrefabAddNodePool: !0,
   });
   t.push({
     bundleName: $frameEnum.Frame.EBundleName.GAME,
-    path: "prefabs/room/units/SearchPoint",
+    path: 'prefabs/room/units/SearchPoint',
     type: cc.Prefab,
     isPrefabAddNodePool: !0,
   });
   t.push({
     bundleName: $frameEnum.Frame.EBundleName.GAME,
-    path: "prefabs/battle/other/GuideArrow",
+    path: 'prefabs/battle/other/GuideArrow',
     type: cc.Prefab,
   });
   t.push({
     bundleName: $frameEnum.Frame.EBundleName.GAME,
-    path: "prefabs/battle/effect/EEnemyFlag",
+    path: 'prefabs/battle/effect/EEnemyFlag',
     type: cc.Prefab,
   });
   return t;
@@ -558,64 +525,62 @@ e.prototype.registerEvent = function () {
   }
 };
 e.prototype.initCfg = function () {
-  this._cfg = $cfg.default.instance.dataStage.getById(
-    $levelBattleData.levelBattleData.stageId,
-  );
+  this._cfg = $cfg.default.instance.dataStage.getById($levelBattleData.levelBattleData.stageId);
 };
 e.prototype.onLoad = function () {
   this._stageType = $battleEnum.EBattleSceneType.LEVEL;
   t.prototype.onLoad.call(this);
 };
-Object.defineProperty(e.prototype, "isTriggerBoss", {
+Object.defineProperty(e.prototype, 'isTriggerBoss', {
   get: function () {
     return this._isTriggerBoss;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "gameReadyTime", {
+Object.defineProperty(e.prototype, 'gameReadyTime', {
   get: function () {
     return this._gameReadyTime;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "isRescue", {
+Object.defineProperty(e.prototype, 'isRescue', {
   get: function () {
     return this._isRescue;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "rescueWaitTime", {
+Object.defineProperty(e.prototype, 'rescueWaitTime', {
   get: function () {
     return this._rescueWaitTime;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "isWaitRescue", {
+Object.defineProperty(e.prototype, 'isWaitRescue', {
   get: function () {
     return this._isWaitRescue;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "curWaveTimer", {
+Object.defineProperty(e.prototype, 'curWaveTimer', {
   get: function () {
     return this._waveTimer;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "curWaveTime", {
+Object.defineProperty(e.prototype, 'curWaveTime', {
   get: function () {
     return this._waveTime;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "level", {
+Object.defineProperty(e.prototype, 'level', {
   get: function () {
     return this._level;
   },
@@ -636,4 +601,4 @@ function e() {
   e._isTriggerBoss = !1;
   return e;
 }
-exports.default = F;
+export default F;

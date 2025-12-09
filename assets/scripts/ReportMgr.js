@@ -1,4 +1,4 @@
-exports.ReportMgr = void 0;
+export const ReportMgr = void 0;
 t._instance = null;
 t.prototype.reportEvent = function (t, e) {
   if (void 0 === e) {
@@ -7,11 +7,11 @@ t.prototype.reportEvent = function (t, e) {
   if (e.userA) {
     //
   } else {
-    e.userA = "";
+    e.userA = '';
   }
   mm.platform.umaTrackEvent(t, e);
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == this._instance) {
       this._instance = new t();
@@ -23,4 +23,4 @@ Object.defineProperty(t, "instance", {
 });
 function t() {}
 const i = t;
-exports.ReportMgr = i;
+export const ReportMgr = i;

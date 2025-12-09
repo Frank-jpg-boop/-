@@ -1,5 +1,5 @@
 import $appBase from './AppBase';
-exports.Toast = void 0;
+export const Toast = void 0;
 t.parentNode = null;
 t.LENGTH_LONG = 3.5;
 t.LENGTH_SHORT = 2;
@@ -95,7 +95,7 @@ t.prototype.setFontSize = function (t) {
 t.makeText = function (e, n, o) {
   if (null == e) {
     if (null == this.parentNode) {
-      this.parentNode = new cc.Node("Toast");
+      this.parentNode = new cc.Node('Toast');
       this.parentNode.width = $appBase.rootNode.width;
       this.parentNode.height = $appBase.rootNode.height;
       $appBase.rootNode.addChild(this.parentNode, 999);
@@ -116,4 +116,4 @@ function t() {
   this.textNode = null;
 }
 const o = t;
-exports.Toast = o;
+export const Toast = o;

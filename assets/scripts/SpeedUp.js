@@ -2,7 +2,7 @@ import $eventManager from './EventManager';
 import $actorEnum from './ActorEnum';
 import $attrEnum from './AttrEnum';
 let i;
-exports.SpeedUp = void 0;
+export const SpeedUp = void 0;
 e.prototype.onRemove = function () {
   t.prototype.onRemove.call(this);
   this._buffData.parentActor
@@ -20,9 +20,7 @@ e.prototype.onUpdate = function () {
 };
 e.prototype.onTrigger = function (t) {
   this._addSpeed = t;
-  this._buffData.parentActor
-    .getAttribute($attrEnum.E_AttrType.SPEED)
-    .changeAddValue(t);
+  this._buffData.parentActor.getAttribute($attrEnum.E_AttrType.SPEED).changeAddValue(t);
   $eventManager.EventManager.instance.emit(
     $actorEnum.EActorEvent.SPEED_CHANGE + this._buffData.parentActor.unitId,
   );
@@ -33,4 +31,4 @@ function e() {
   return e;
 }
 const c = e;
-exports.SpeedUp = c;
+export const SpeedUp = c;

@@ -39,8 +39,7 @@ e.prototype.onTouchEvent = function (t) {
         t.type == cc.Node.EventType.TOUCH_END &&
         e.clickEvent &&
         e.clickEvent.call(e.clickEventCaller),
-      this._clickScreenEvent &&
-        this._clickScreenEvent.call(this._clickScreenEventCaller),
+      this._clickScreenEvent && this._clickScreenEvent.call(this._clickScreenEventCaller),
       (this._clickScreenEvent = null),
       void (this._clickScreenEventCaller = null)
     );
@@ -49,10 +48,7 @@ e.prototype.onTouchEvent = function (t) {
       if (null == this.target && t.type == cc.Node.EventType.TOUCH_END) {
         return (
           e.clickEvent && e.clickEvent.call(e.clickEventCaller),
-          void (
-            this._clickScreenEvent &&
-            this._clickScreenEvent.call(this._clickScreenEventCaller)
-          )
+          void (this._clickScreenEvent && this._clickScreenEvent.call(this._clickScreenEventCaller))
         );
       } else {
         return void t.stopPropagationImmediate();
@@ -64,8 +60,7 @@ e.prototype.onTouchEvent = function (t) {
               e.clickEvent &&
               e.clickEvent.call(e.clickEventCaller)
             : t.stopPropagationImmediate(),
-          this._clickScreenEvent &&
-            this._clickScreenEvent.call(this._clickScreenEventCaller),
+          this._clickScreenEvent && this._clickScreenEvent.call(this._clickScreenEventCaller),
           (this._clickScreenEvent = null),
           (this._clickScreenEventCaller = null))
         : (this.node.active = !1));
@@ -103,4 +98,4 @@ function e() {
   e._clickScreenEventCaller = null;
   return e;
 }
-exports.default = l;
+export default l;

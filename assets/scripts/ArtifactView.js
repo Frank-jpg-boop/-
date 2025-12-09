@@ -16,8 +16,7 @@ const v = g.ccclass;
 const b = g.property;
 e.prototype.onArtifactItemClick = function (t, e) {
   if (
-    $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-      $guideDataProxy.EGuideStepId.G_24 &&
+    $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_24 &&
     11 == e.artifactData.id
   ) {
     $eventManager.EventManager.instance.emit(
@@ -36,7 +35,7 @@ e.prototype.initArtifactData = function () {
   const e = $stageDataProxy.stageDataProxy.passStageId;
   for (let n in t) {
     const i = t[n];
-    if ("" != i.icon) {
+    if ('' != i.icon) {
       if (0 == i.unlockType || (1 == i.unlockType && e >= i.unlockVal)) {
         this._possessArtifacts.push(i);
       } else {
@@ -49,15 +48,15 @@ e.prototype.initArtifactData = function () {
   });
 };
 e.prototype.setArtifactItem = function (t, e) {
-  t.name = "item" + e.id;
-  const n = t.getChildByName("greadBg");
-  const i = t.getChildByName("name");
-  const o = t.getChildByName("icon");
-  const r = t.getChildByName("bar");
-  const a = t.getChildByName("num");
+  t.name = 'item' + e.id;
+  const n = t.getChildByName('greadBg');
+  const i = t.getChildByName('name');
+  const o = t.getChildByName('icon');
+  const r = t.getChildByName('bar');
+  const a = t.getChildByName('num');
   i.getComponent(cc.Label).string = e.name;
   $resLoader.ResLoader.loadAsset({
-    path: "textures/skill/" + e.icon,
+    path: 'textures/skill/' + e.icon,
     type: cc.SpriteFrame,
     bundleName: $frameEnum.Frame.EBundleName.GAME,
   })
@@ -65,10 +64,10 @@ e.prototype.setArtifactItem = function (t, e) {
       o.getComponent(cc.Sprite).spriteFrame = t;
     })
     .catch(function (t) {
-      console.log("error:", t);
+      console.log('error:', t);
     });
   $resLoader.ResLoader.loadAsset({
-    path: "textures/artifact/pic_faqi_gread_" + e.rare,
+    path: 'textures/artifact/pic_faqi_gread_' + e.rare,
     type: cc.SpriteFrame,
     bundleName: $frameEnum.Frame.EBundleName.HOME,
   })
@@ -76,35 +75,31 @@ e.prototype.setArtifactItem = function (t, e) {
       n.getComponent(cc.Sprite).spriteFrame = t;
     })
     .catch(function (t) {
-      console.log("error:", t);
+      console.log('error:', t);
     });
-  const s = t.getChildByName("lv");
+  const s = t.getChildByName('lv');
   if (s) {
-    const u = t
-      .getChildByName("CommonRedPoint")
-      .getComponent($commonRedPoint.default);
+    const u = t.getChildByName('CommonRedPoint').getComponent($commonRedPoint.default);
     const h = $playerDataProxy.playerDataProxy.getArtifactUpGreadNeedNum(e.id);
-    const f = e.dmg.split("|").map(Number);
+    const f = e.dmg.split('|').map(Number);
     const d = $playerDataProxy.playerDataProxy.getArtifactLv(e.id);
-    t.getChildByName("New")
+    t.getChildByName('New')
       .getComponent($commonRedPoint.default)
       .setRedPointState(
         0 != $stageDataProxy.stageDataProxy.unlockSkillId &&
           $stageDataProxy.stageDataProxy.unlockSkillId == e.id,
       );
     if (d < f.length) {
-      s.getComponent(cc.Label).string = "Lv." + d;
-      const g = $playerDataProxy.playerDataProxy.getArtifactUpGreadNeeItemId(
-        e.id,
-      );
+      s.getComponent(cc.Label).string = 'Lv.' + d;
+      const g = $playerDataProxy.playerDataProxy.getArtifactUpGreadNeeItemId(e.id);
       const v = $itemDataProxy.itemDataProxy.getItemValue(g);
       r.getComponent(cc.Sprite).fillRange = v / h;
-      a.getComponent(cc.Label).string = v + "/" + h;
+      a.getComponent(cc.Label).string = v + '/' + h;
       u.setRedPointState(v >= h);
     } else {
-      s.getComponent(cc.Label).string = "Lv.Max";
+      s.getComponent(cc.Label).string = 'Lv.Max';
       r.getComponent(cc.Sprite).fillRange = 1;
-      a.getComponent(cc.Label).string = "Max";
+      a.getComponent(cc.Label).string = 'Max';
       u.setRedPointState(!1);
     }
   }
@@ -122,16 +117,10 @@ e.prototype.initArtifactItem = function () {
     }
     o.active = !0;
     this.setArtifactItem(o, n);
-    $nodeUtil.default.addButtonListener(
-      o,
-      "ArtifactView",
-      "onArtifactItemClick",
-      this.node,
-      {
-        item: o,
-        artifactData: n,
-      },
-    );
+    $nodeUtil.default.addButtonListener(o, 'ArtifactView', 'onArtifactItemClick', this.node, {
+      item: o,
+      artifactData: n,
+    });
   }
   const i = this.mLockItems.children[0];
   i.active = !1;
@@ -146,10 +135,8 @@ e.prototype.initArtifactItem = function () {
     }
     o.active = !0;
     this.setArtifactItem(o, n);
-    o
-      .getChildByName("lockMask")
-      .getChildByName("tips")
-      .getComponent(cc.Label).string = "第" + (n.unlockVal + 1) + "章解锁";
+    o.getChildByName('lockMask').getChildByName('tips').getComponent(cc.Label).string =
+      '第' + (n.unlockVal + 1) + '章解锁';
   }
 };
 e.prototype.updateArtifactLevel = function () {
@@ -203,4 +190,4 @@ function e() {
   e._lockArtifacts = [];
   return e;
 }
-exports.default = E;
+export default E;

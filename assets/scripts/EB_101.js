@@ -21,16 +21,14 @@ const y =
     e.prototype.play = function (t, e) {
       this._ownerEnemyId = e;
       this._ownerSkill = t;
-      this.playDefaultAnim("stand", 1, !0);
+      this.playDefaultAnim('stand', 1, !0);
     };
     e.prototype.onRemove = function () {
       const e = this;
-      const n = this._ownerSkill.getAttribute(
-        $attrEnum.E_SkillAttrType.EXTRA_ATTR_7,
-      ).value;
+      const n = this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_7).value;
       if (n > 0) {
         this.playDefaultAnim(
-          "break",
+          'break',
           1,
           !1,
           function () {
@@ -50,15 +48,15 @@ const y =
     e.prototype.searchTargets = function () {
       for (
         const t = this,
-              e = this._ownerSkill.cfg.edge,
-              n = $nodeUtil.default.nodeParentChangeLocalPos(
-                this.node,
-                this._ownerSkill.owner.node.parent,
-              ),
-              i = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(n, e),
-              o = [],
-              r = 0,
-              a = i;
+          e = this._ownerSkill.cfg.edge,
+          n = $nodeUtil.default.nodeParentChangeLocalPos(
+            this.node,
+            this._ownerSkill.owner.node.parent,
+          ),
+          i = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(n, e),
+          o = [],
+          r = 0,
+          a = i;
         r < a.length;
         r++
       ) {
@@ -102,37 +100,28 @@ const y =
       i.y += 60;
       for (
         const o = function (t) {
-                  const o = null;
-                  if (n.length > t) {
-                    o = n[t].node
-                      .getPosition()
-                      .add(
-                        cc.v2(
-                          0,
-                          $randomUtil.RandomUtil.random(0.2, 0.7) * n[t].rightHeight,
-                        ),
-                      );
-                  } else {
-                    const s =
-                      ($randomUtil.RandomUtil.randomInt(0, 360) * Math.PI) / 180;
-                    o = cc
-                      .v2(Math.cos(s), Math.sin(s))
-                      .mul(r._ownerSkill.cfg.edge)
-                      .add(i);
-                  }
-                  $bulletMgr.default.instance.createBullet({
-                    parent: $battleMgr.default.instance.getCurScene().bulletParent,
-                    prefabName: "Bullet101_Frozen",
-                    initPos: i,
-                    iconPath: "",
-                    bulletClass: $bullet101_Frozen.default,
-                    onCreated: function (t) {
-                      t.shoot(e._ownerSkill.owner, o, e._ownerSkill, e._ownerEnemyId);
-                    },
-                  });
-                },
-              r = this,
-              p = 0;
+            const o = null;
+            if (n.length > t) {
+              o = n[t].node
+                .getPosition()
+                .add(cc.v2(0, $randomUtil.RandomUtil.random(0.2, 0.7) * n[t].rightHeight));
+            } else {
+              const s = ($randomUtil.RandomUtil.randomInt(0, 360) * Math.PI) / 180;
+              o = cc.v2(Math.cos(s), Math.sin(s)).mul(r._ownerSkill.cfg.edge).add(i);
+            }
+            $bulletMgr.default.instance.createBullet({
+              parent: $battleMgr.default.instance.getCurScene().bulletParent,
+              prefabName: 'Bullet101_Frozen',
+              initPos: i,
+              iconPath: '',
+              bulletClass: $bullet101_Frozen.default,
+              onCreated: function (t) {
+                t.shoot(e._ownerSkill.owner, o, e._ownerSkill, e._ownerEnemyId);
+              },
+            });
+          },
+          r = this,
+          p = 0;
         p < t;
         ++p
       ) {
@@ -140,4 +129,4 @@ const y =
       }
     };
   })($spAnimEffect.default));
-exports.default = y;
+export default y;

@@ -1,2 +1,2 @@
-exports.Frame = void 0;
-exports.Frame = {};
+export const Frame = void 0;
+export const Frame = {};

@@ -13,4 +13,4 @@ const u =
       $battleMgr.default.instance.resetGame();
     };
   })($popupBase.PopupBase));
-exports.default = u;
+export default u;

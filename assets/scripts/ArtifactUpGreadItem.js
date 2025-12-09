@@ -4,7 +4,7 @@ const s = a.ccclass;
 const c = a.property;
 e.prototype.play = function (t) {
   this._callback = t;
-  this.mUpGreadSp.setAnimation(0, "animation", !1);
+  this.mUpGreadSp.setAnimation(0, 'animation', !1);
 };
 e.prototype.start = function () {
   const t = this;
@@ -22,4 +22,4 @@ function e() {
   e._callback = null;
   return e;
 }
-exports.default = l;
+export default l;

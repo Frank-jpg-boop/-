@@ -20,4 +20,4 @@ const l =
       }
     };
   })($popupBase.PopupBase));
-exports.default = l;
+export default l;

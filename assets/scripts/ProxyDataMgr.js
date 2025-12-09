@@ -1,12 +1,9 @@
 import $globalEnum from './GlobalEnum';
 import $userSetDataProxy from './UserSetDataProxy';
-exports.ProxyDataMgr = void 0;
+export const ProxyDataMgr = void 0;
 t._instance = null;
 t.prototype.formatData = function (t, e) {
-  for (let n in e)
-    "object" == typeof e[n] && t[n]
-      ? this.formatData(t[n], e[n])
-      : (t[n] = e[n]);
+  for (let n in e) 'object' == typeof e[n] && t[n] ? this.formatData(t[n], e[n]) : (t[n] = e[n]);
 };
 t.prototype.initCustomDataProxy = function (t, e) {
   if (t === $globalEnum.Global.ELocalCustomDataKey.USER_SET) {
@@ -15,7 +12,7 @@ t.prototype.initCustomDataProxy = function (t, e) {
     $userSetDataProxy.userSetDataProxy.init(n);
   }
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == this._instance) {
       this._instance = new t();
@@ -27,4 +24,4 @@ Object.defineProperty(t, "instance", {
 });
 function t() {}
 const r = t;
-exports.ProxyDataMgr = r;
+export const ProxyDataMgr = r;

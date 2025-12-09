@@ -18,11 +18,11 @@ const h =
       this._skillData = t;
       this._artifactData = e;
       const n = $cfg.default.instance.dataChoose.getById(t.chooseId);
-      const i = this.node.getChildByName("greadImg");
-      const o = this.node.getChildByName("icon");
-      const r = this.node.getChildByName("des");
+      const i = this.node.getChildByName('greadImg');
+      const o = this.node.getChildByName('icon');
+      const r = this.node.getChildByName('des');
       $resLoader.ResLoader.loadAsset({
-        path: "textures/public/pic_wuping_di_" + n.rare,
+        path: 'textures/public/pic_wuping_di_' + n.rare,
         type: cc.SpriteFrame,
         bundleName: $frameEnum.Frame.EBundleName.HOME,
       })
@@ -30,10 +30,10 @@ const h =
           i.getComponent(cc.Sprite).spriteFrame = t;
         })
         .catch(function (t) {
-          console.log("error:", t);
+          console.log('error:', t);
         });
       $resLoader.ResLoader.loadAsset({
-        path: "textures/skill/" + this._artifactData.icon,
+        path: 'textures/skill/' + this._artifactData.icon,
         type: cc.SpriteFrame,
         bundleName: $frameEnum.Frame.EBundleName.GAME,
       })
@@ -41,7 +41,7 @@ const h =
           o.getComponent(cc.Sprite).spriteFrame = t;
         })
         .catch(function (t) {
-          console.log("error:", t);
+          console.log('error:', t);
         });
       r.getComponent(cc.Label).string = this.getEffectDes(n);
       return this.updateArtifactLv();
@@ -52,11 +52,8 @@ const h =
       }
       const o = t.info;
       n.forEach(function (e) {
-        const n = e.replace("%", "");
-        o = o.replace(
-          "|" + e + "|",
-          e.includes("%") ? 100 * Number(t[n]) + "%" : "" + t[n],
-        );
+        const n = e.replace('%', '');
+        o = o.replace('|' + e + '|', e.includes('%') ? 100 * Number(t[n]) + '%' : '' + t[n]);
       });
       return o;
     };
@@ -65,7 +62,7 @@ const h =
         return !0;
       }
       const t = !1;
-      const e = this.node.getChildByName("lockMask");
+      const e = this.node.getChildByName('lockMask');
       if (
         $playerDataProxy.playerDataProxy.getArtifactLv(this._artifactData.id) >=
         this._skillData.unlockLv
@@ -74,8 +71,8 @@ const h =
         t = !0;
       } else {
         e.active = !0;
-        e.getChildByName("unlockTips").getComponent(cc.Label).string =
-          "等级" + this._skillData.unlockLv + "解锁";
+        e.getChildByName('unlockTips').getComponent(cc.Label).string =
+          '等级' + this._skillData.unlockLv + '解锁';
       }
       return t;
     };
@@ -86,4 +83,4 @@ const h =
       );
     };
   })(cc.Component));
-exports.default = h;
+export default h;

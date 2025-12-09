@@ -33,4 +33,4 @@ const p =
     };
     e.prototype.onUpdate = function () {};
   })($frameAnimEffect.default));
-exports.default = p;
+export default p;

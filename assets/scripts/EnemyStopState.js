@@ -1,7 +1,7 @@
 import $state from './State';
 import $actorEnum from './ActorEnum';
 let i;
-exports.EnemyStopState = void 0;
+export const EnemyStopState = void 0;
 e.prototype.end = function () {};
 e.prototype.update = function (t) {
   if (this._context.isTrigger) {
@@ -25,4 +25,4 @@ function e(e) {
   return n;
 }
 const s = e;
-exports.EnemyStopState = s;
+export const EnemyStopState = s;

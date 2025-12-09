@@ -6,7 +6,7 @@ import $attrEnum from './AttrEnum';
 import $door from './Door';
 import $unitMgr from './UnitMgr';
 let i;
-exports.EnemyWalkState = void 0;
+export const EnemyWalkState = void 0;
 e.prototype.end = function () {
   this._context.moveDir = null;
   this._curFindTarget = null;
@@ -88,8 +88,7 @@ e.prototype.updateFinderPos = function (t) {
     } else {
       this._collisionWallPos = null;
       if (s.x == n.x) {
-        this._curFindTarget &&
-          this._context.setDirX(this._curFindTarget.node.x > n.x);
+        this._curFindTarget && this._context.setDirX(this._curFindTarget.node.x > n.x);
       } else {
         this._context.setDirX(this._context.moveDir.x > 0);
       }
@@ -100,10 +99,7 @@ e.prototype.updateFinderPos = function (t) {
 e.prototype.updateFinderMove = function (t) {
   if (this._path && !this._context.isRepeling) {
     const e = this._context.getAttribute($attrEnum.E_AttrType.SPEED).value * t;
-    if (
-      this._pathTargetPos &&
-      this._pathTargetPos.fuzzyEquals(this._context.pathPos, e + 0.5)
-    ) {
+    if (this._pathTargetPos && this._pathTargetPos.fuzzyEquals(this._context.pathPos, e + 0.5)) {
       this._context.setPos(this._pathTargetPos, !0);
       this._context.updatePathData();
       this._pathTargetPos = null;
@@ -128,12 +124,10 @@ e.prototype.updateFinder = function (t, e, n) {
     lineId: e,
     pointId: n,
   };
-  if ("" == o.lineId && "" == o.pointId) {
+  if ('' == o.lineId && '' == o.pointId) {
     //
   } else {
-    this._path = $battleMgr.default.instance
-      .getCurScene()
-      .level.path.findPathPoss(i, o);
+    this._path = $battleMgr.default.instance.getCurScene().level.path.findPathPoss(i, o);
   }
 };
 e.prototype.updateFindTarget = function () {
@@ -148,10 +142,7 @@ e.prototype.update = function (t) {
       const e = this._context.searchTarget();
       if (this._context.canAttackTarget(e)) {
         if (this._context.canAttack()) {
-          return void this._context.changeState(
-            $actorEnum.EActorStateType.ATTACK,
-            e.node,
-          );
+          return void this._context.changeState($actorEnum.EActorStateType.ATTACK, e.node);
         } else {
           return void this._context.playAnimIdle();
         }
@@ -161,8 +152,7 @@ e.prototype.update = function (t) {
       if (this._curFindTarget && !this._curFindTarget.isDead()) {
         this._autoFindPathTime -= t;
         this._autoFindPathTime <= 0 &&
-          ((this._autoFindPathTime = this._autoFindPathTimer),
-          this.updateFindTarget());
+          ((this._autoFindPathTime = this._autoFindPathTimer), this.updateFindTarget());
         this.updateFinderMove(t);
       } else {
         this._context.changeState($actorEnum.EActorStateType.IDLE);
@@ -190,4 +180,4 @@ function e(e) {
   return n;
 }
 const h = e;
-exports.EnemyWalkState = h;
+export const EnemyWalkState = h;

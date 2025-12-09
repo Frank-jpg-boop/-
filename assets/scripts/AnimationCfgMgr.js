@@ -1,13 +1,13 @@
 import $frameEnum from './FrameEnum';
-exports.AnimationCfgMgr = void 0;
+export const AnimationCfgMgr = void 0;
 t._instance = null;
 t.prototype.getEnemyDieCfg = function (t) {
   const e = {
-    actionName: "die",
+    actionName: 'die',
     frameNum: 3,
     bundleName: $frameEnum.Frame.EBundleName.GAME,
-    spriteFrameNameHead: "Enemy" + t + "_die_",
-    path: "",
+    spriteFrameNameHead: 'Enemy' + t + '_die_',
+    path: '',
     frameEventIndexs: [],
     repairNum: !0,
   };
@@ -47,11 +47,11 @@ t.prototype.getEnemyDieCfg = function (t) {
 };
 t.prototype.getEnemyMovecfg = function (t) {
   const e = {
-    actionName: "move",
+    actionName: 'move',
     frameNum: 5,
     bundleName: $frameEnum.Frame.EBundleName.GAME,
-    spriteFrameNameHead: "Enemy" + t + "_move_",
-    path: "",
+    spriteFrameNameHead: 'Enemy' + t + '_move_',
+    path: '',
     frameEventIndexs: [],
     repairNum: !0,
   };
@@ -85,11 +85,11 @@ t.prototype.getEnemyMovecfg = function (t) {
 };
 t.prototype.getEnemyAtkCfg = function (t) {
   const e = {
-    actionName: "atk",
+    actionName: 'atk',
     frameNum: 17,
     bundleName: $frameEnum.Frame.EBundleName.GAME,
-    spriteFrameNameHead: "Enemy" + t + "_atk_",
-    path: "",
+    spriteFrameNameHead: 'Enemy' + t + '_atk_',
+    path: '',
     frameEventIndexs: [8],
     repairNum: !0,
   };
@@ -162,11 +162,11 @@ t.prototype.getEnemyAtkCfg = function (t) {
 };
 t.prototype.getEnemyStandCfg = function (t) {
   const e = {
-    actionName: "stand",
+    actionName: 'stand',
     frameNum: 9,
     bundleName: $frameEnum.Frame.EBundleName.GAME,
-    spriteFrameNameHead: "Enemy" + t + "_stand_",
-    path: "",
+    spriteFrameNameHead: 'Enemy' + t + '_stand_',
+    path: '',
     frameEventIndexs: [],
     repairNum: !0,
   };
@@ -206,7 +206,7 @@ t.prototype.getEnemyAnimCfg = function (t) {
   e.push(this.getEnemyDieCfg(t));
   return e;
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == this._instance) {
       this._instance = new t();
@@ -218,4 +218,4 @@ Object.defineProperty(t, "instance", {
 });
 function t() {}
 const o = t;
-exports.AnimationCfgMgr = o;
+export const AnimationCfgMgr = o;

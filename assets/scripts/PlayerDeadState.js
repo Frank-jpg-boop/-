@@ -3,7 +3,7 @@ import $battleMgr from './BattleMgr';
 import $state from './State';
 import $actorEnum from './ActorEnum';
 let i;
-exports.PlayerDeadState = void 0;
+export const PlayerDeadState = void 0;
 e.prototype.end = function () {
   this._context.spAnimCtrl.clearAnim();
 };
@@ -13,7 +13,7 @@ e.prototype.begin = function () {
   if ($battleMgr.default.instance.getCurScene().isResult) {
     //
   } else {
-    this._context.spAnimCtrl.playAnim("die", 1, !1, function () {
+    this._context.spAnimCtrl.playAnim('die', 1, !1, function () {
       $globalPopupMgr.default.instance.showLevelFail(
         $battleMgr.default.instance.getCurScene().isPlay,
       );
@@ -26,4 +26,4 @@ function e(e) {
   return n;
 }
 const l = e;
-exports.PlayerDeadState = l;
+export const PlayerDeadState = l;

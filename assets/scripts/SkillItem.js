@@ -38,7 +38,7 @@ e.prototype.openAnim = function (t) {
   cc.tween(this.node)
     .delay(0.15 * e)
     .call(function () {
-      $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_ChooseSkills");
+      $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_ChooseSkills');
     })
     .to(
       0.2,
@@ -47,7 +47,7 @@ e.prototype.openAnim = function (t) {
         opacity: 255,
       },
       {
-        easing: "backOut",
+        easing: 'backOut',
       },
     )
     .call(function () {
@@ -62,7 +62,7 @@ e.prototype.updateData = function (t, e, n) {
   $resLoader.ResLoader.setSpritFrame(
     this.spIcon,
     $frameEnum.Frame.EBundleName.GAME,
-    "textures/skill/" + this._cfgSkill.icon,
+    'textures/skill/' + this._cfgSkill.icon,
   );
   this.lName.string = this._cfgSkill.name;
   this.lDesc.string = this._cfgSkill.info;
@@ -79,4 +79,4 @@ function e() {
   e._onClickComplete = null;
   return e;
 }
-exports.default = d;
+export default d;

@@ -10,7 +10,7 @@ e.prototype.update = function () {
 };
 e.prototype.start = function () {
   if (this.isDrawCollider) {
-    const t = new cc.Node("DrawNode");
+    const t = new cc.Node('DrawNode');
     t.zIndex = cc.macro.MAX_ZINDEX;
     this.node.addChild(t);
     this.graphics = t.addComponent(cc.Graphics);
@@ -25,4 +25,4 @@ function e() {
   e.graphics = null;
   return e;
 }
-exports.default = l;
+export default l;

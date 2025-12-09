@@ -17,10 +17,7 @@ const y =
     }
     e.prototype.registerState = function () {
       t.prototype.registerState.call(this);
-      this._sm.addState(
-        $actorEnum.EActorStateType.ATTACK,
-        new $enemy_611_Atk.Enemy_611_Atk(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.ATTACK, new $enemy_611_Atk.Enemy_611_Atk(this));
     };
     e.prototype.onEnable = function () {
       this.node.opacity = 0;
@@ -47,10 +44,7 @@ const y =
           const n = t.getComponent($actorBase.default);
           if (n) {
             const i =
-              cc.Vec2.squaredDistance(
-                n.node.getPosition(),
-                this.node.getPosition(),
-              ) <=
+              cc.Vec2.squaredDistance(n.node.getPosition(), this.node.getPosition()) <=
               this._attackRange * this._attackRange;
             if (
               ((this.dirX > 0 && n.node.x >= this.node.x) ||
@@ -78,23 +72,22 @@ const y =
         const n = this.pathPos;
         const i = n.clone();
         this.updatePathData();
-        if ("" == this._pathPointId) {
+        if ('' == this._pathPointId) {
           const o = e.level.path.getLine(this._pathLineId);
           if (o) {
             if (0 != o.dir.x) {
               i.x += this.dirX * Math.abs(n.x - t.x) * 2;
             } else {
-              0 != o.dir.y &&
-                (i.y += (n.y > t.y ? -1 : 1) * Math.abs(n.y - t.y) * 2);
+              0 != o.dir.y && (i.y += (n.y > t.y ? -1 : 1) * Math.abs(n.y - t.y) * 2);
             }
-            if ("" != e.level.path.findPathLineByPos(i)) {
+            if ('' != e.level.path.findPathLineByPos(i)) {
               this.setHp(Math.floor(this._hp / 2));
               $actorMgr.default.instance.createActor({
                 id: e.getCreateActorId(),
                 cfgId: this._cfgId,
                 camp: $actorEnum.ETeamType.ENEMY,
                 parent: e.actorParent,
-                prefabName: "Enemy_" + this._cfgId,
+                prefabName: 'Enemy_' + this._cfgId,
                 initPos: i,
                 actorClass: $actorMgr.default.instance.getActorClassName(
                   this._cfgId,
@@ -117,4 +110,4 @@ const y =
       }
     };
   })($enemyBase.default));
-exports.default = y;
+export default y;

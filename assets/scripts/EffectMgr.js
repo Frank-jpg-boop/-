@@ -15,7 +15,7 @@ t.prototype.addBuffEffect = function (e, n, i) {
       if (e.parentActor.head) {
         this.createEffect({
           parent: e.parentActor.head.nBuffView,
-          prefabName: "EB_21",
+          prefabName: 'EB_21',
           initPos: cc.v2(0, 0),
           effectClass: $frameAnimEffect.default,
           onCreated: function (t) {
@@ -28,31 +28,31 @@ t.prototype.addBuffEffect = function (e, n, i) {
     case $buffEnum.EBuffType.DIZZINESS:
       t.instance.createEffect({
         parent: e.parentActor.node,
-        prefabName: "EB_51",
+        prefabName: 'EB_51',
         effectClass: $spAnimEffect.default,
         initPos: cc.v2(0, e.parentActor.rightHeight),
         onCreated: function (t) {
           n.bindEffect(t);
-          t.playDefaultAnim("stand", 1, !0, null, !1);
+          t.playDefaultAnim('stand', 1, !0, null, !1);
         },
       });
       break;
     case $buffEnum.EBuffType.PALSY:
       this.createEffect({
         parent: e.parentActor.node,
-        prefabName: "EB_71",
+        prefabName: 'EB_71',
         initPos: cc.v2(0, 0.5 * e.parentActor.rightHeight),
         effectClass: $spAnimEffect.default,
         onCreated: function (t) {
           n.bindEffect(t);
-          t.playDefaultAnim("stand", 1, !0);
+          t.playDefaultAnim('stand', 1, !0);
         },
       });
       break;
     case $buffEnum.EBuffType.FIRE:
       this.createEffect({
         parent: e.parentActor.node,
-        prefabName: "EB_91",
+        prefabName: 'EB_91',
         initPos: cc.v2(0, 0.5 * e.parentActor.rightHeight),
         effectClass: $frameAnimEffect.default,
         onCreated: function (t) {
@@ -65,7 +65,7 @@ t.prototype.addBuffEffect = function (e, n, i) {
       if (e.parentActor.head) {
         this.createEffect({
           parent: e.parentActor.head.nBuffView,
-          prefabName: "EB_101_Speed",
+          prefabName: 'EB_101_Speed',
           initPos: cc.v2(0, 0),
           effectClass: $frameAnimEffect.default,
           onCreated: function (t) {
@@ -78,7 +78,7 @@ t.prototype.addBuffEffect = function (e, n, i) {
     case $buffEnum.EBuffType.FROZEN:
       this.createEffect({
         parent: e.parentActor.node,
-        prefabName: "EB_101",
+        prefabName: 'EB_101',
         initPos: cc.v2(0, 0),
         effectClass: $eB_101.default,
         onCreated: function (t) {
@@ -90,19 +90,19 @@ t.prototype.addBuffEffect = function (e, n, i) {
     case $buffEnum.EBuffType.POISON:
       this.createEffect({
         parent: e.parentActor.node,
-        prefabName: "EB_111",
+        prefabName: 'EB_111',
         initPos: cc.v2(0, 50),
         effectClass: $spAnimEffect.default,
         onCreated: function (t) {
           n.bindEffect(t);
-          t.playDefaultAnim("animation", 1, !0);
+          t.playDefaultAnim('animation', 1, !0);
         },
       });
       break;
     case $buffEnum.EBuffType.SPEED_UP:
       this.createEffect({
-        parent: e.parentActor.node.getChildByName("Body"),
-        prefabName: "EB_121",
+        parent: e.parentActor.node.getChildByName('Body'),
+        prefabName: 'EB_121',
         initPos: cc.v2(0, 25),
         effectClass: $frameAnimEffect.default,
         onCreated: function (t) {
@@ -128,7 +128,7 @@ t.prototype.createEffect = function (t) {
   } else {
     $resLoader.ResLoader.loadAsset({
       bundleName: $frameEnum.Frame.EBundleName.GAME,
-      path: "prefabs/battle/effect/" + t.prefabName,
+      path: 'prefabs/battle/effect/' + t.prefabName,
       type: cc.Prefab,
       success: function (n) {
         $nodePoolManager.default.instance.addPoolPrefab(n);
@@ -145,7 +145,7 @@ t.prototype.init = function () {
     this,
   );
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new t();
@@ -157,4 +157,4 @@ Object.defineProperty(t, "instance", {
 });
 function t() {}
 const f = t;
-exports.default = f;
+export default f;

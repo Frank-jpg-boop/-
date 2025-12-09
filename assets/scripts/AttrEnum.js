@@ -1,5 +1,5 @@
-exports.E_SkillAttrType = exports.E_AttrType = void 0;
-exports.E_AttrType = {
+export const E_SkillAttrType = (exports.E_AttrType = void 0);
+export const E_AttrType = {
   ATK: 1,
   SKILL_CD: 2,
   HP: 3,
@@ -12,9 +12,9 @@ exports.E_AttrType = {
   GATE_HP: 12,
   DOOR_HP_LIMIT: 13,
   SHOP_RATE: 31,
-  SMALL_GAME_RATE: 32
+  SMALL_GAME_RATE: 32,
 };
-exports.E_SkillAttrType = {
+export const E_SkillAttrType = {
   CORE_ATTR_RATE: 1,
   SKILL_CD: 2,
   EXTRA_ATTR_1: 111,
@@ -25,5 +25,5 @@ exports.E_SkillAttrType = {
   EXTRA_ATTR_6: 116,
   EXTRA_ATTR_7: 117,
   EXTRA_ATTR_8: 118,
-  EXTRA_ATTR_9: 119
+  EXTRA_ATTR_9: 119,
 };

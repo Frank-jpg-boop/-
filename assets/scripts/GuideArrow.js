@@ -26,7 +26,7 @@ e.prototype.show = function (t) {
       opacity: 255,
     })
     .start();
-  const e = this.node.getChildByName("View");
+  const e = this.node.getChildByName('View');
   e.y = 0;
   $animUtils.AnimUtil.floatAnim(e, 1, 15);
 };
@@ -35,4 +35,4 @@ function e() {
   e.lDesc = null;
   return e;
 }
-exports.default = p;
+export default p;

@@ -1,15 +1,15 @@
 let i;
 exports.Logger = exports.LoggerLevel = void 0;
 (function (t) {
-  t[(t.OFF = 0)] = "OFF";
-  t[(t.ERROR = 1)] = "ERROR";
-  t[(t.WARN = 2)] = "WARN";
-  t[(t.INFO = 3)] = "INFO";
-  t[(t.DEBUG = 4)] = "DEBUG";
-  t[(t.ALL = 5)] = "ALL";
+  t[(t.OFF = 0)] = 'OFF';
+  t[(t.ERROR = 1)] = 'ERROR';
+  t[(t.WARN = 2)] = 'WARN';
+  t[(t.INFO = 3)] = 'INFO';
+  t[(t.DEBUG = 4)] = 'DEBUG';
+  t[(t.ALL = 5)] = 'ALL';
 })((i = exports.LoggerLevel || (exports.LoggerLevel = {})));
 (function (t) {
-  const e = "[ZS]";
+  const e = '[ZS]';
   const n = 0;
 
   function r() {

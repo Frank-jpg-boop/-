@@ -9,14 +9,10 @@ import $itemDataProxy from './ItemDataProxy';
 import $localDataProxy from './LocalDataProxy';
 import $playerDataProxy from './PlayerDataProxy';
 let i;
-exports.signDataProxy =
-  exports.SignDataProxy =
-  exports.SignData =
-  exports.ESignDataEvent =
-    void 0;
+exports.signDataProxy = exports.SignDataProxy = exports.SignData = exports.ESignDataEvent = void 0;
 let r;
 !(function (t) {
-  t.UPDATE_SIGN_DATA = "UPDATE_SIGN_DATA";
+  t.UPDATE_SIGN_DATA = 'UPDATE_SIGN_DATA';
 })((r = exports.ESignDataEvent || (exports.ESignDataEvent = {})));
 e.prototype.createInitData = function () {
   return {
@@ -41,23 +37,18 @@ e.prototype.getSevenSignRewarad = function (t) {
   if (!(e > 7)) {
     this._data.localData.sevenSignDay = e;
     this._data.localData.lastSevenSignTime = $timeUtil.TimeUtil.getTime();
-    const n = $cfg.default.instance.dataSign
-      .getById(e)
-      .reward.split("_")
-      .map(Number);
+    const n = $cfg.default.instance.dataSign.getById(e).reward.split('_').map(Number);
     const i = n[0];
     const o = n[1];
     const s = [];
     const c = $cfg.default.instance.dataItem.getById(i);
     if (3 == c.type) {
-      $itemDataProxy.itemDataProxy
-        .randomChip(c.rare, o * (t ? 2 : 1))
-        .forEach(function (t, e) {
-          s.push({
-            itemId: e,
-            itemNum: t,
-          });
+      $itemDataProxy.itemDataProxy.randomChip(c.rare, o * (t ? 2 : 1)).forEach(function (t, e) {
+        s.push({
+          itemId: e,
+          itemNum: t,
         });
+      });
     } else {
       if (4 == c.type) {
         ($playerDataProxy.playerDataProxy.updateSkinRedPoint(),
@@ -88,7 +79,7 @@ e.prototype.canSevenSign = function () {
     )
   );
 };
-Object.defineProperty(e.prototype, "curSevenSignDay", {
+Object.defineProperty(e.prototype, 'curSevenSignDay', {
   get: function () {
     return this._data.localData.sevenSignDay + 1;
   },

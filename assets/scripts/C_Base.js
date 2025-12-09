@@ -1,4 +1,4 @@
-exports.C_Base = void 0;
+export const C_Base = void 0;
 t.prototype.queryOne = function (t) {
   for (let e, n = this._dict.values(); !(e = n.next()).done; ) {
     const i = e.value;
@@ -9,10 +9,7 @@ t.prototype.queryOne = function (t) {
   return null;
 };
 t.prototype.queryAll = function (t, e) {
-  for (
-    let n, i = new Array(), o = this._dict.values();
-    !(n = o.next()).done;
-  ) {
+  for (let n, i = new Array(), o = this._dict.values(); !(n = o.next()).done; ) {
     const r = n.value;
     if (t(r) && (i.push(r), e && i.length >= e)) {
       break;
@@ -36,7 +33,7 @@ t.prototype.initByMap = function (t) {
     this._dict.set(n.id, n);
   }
 };
-Object.defineProperty(t.prototype, "size", {
+Object.defineProperty(t.prototype, 'size', {
   get: function () {
     return this._dict.size;
   },
@@ -48,4 +45,4 @@ function t() {
   this._dict = null;
 }
 const i = t;
-exports.C_Base = i;
+export const C_Base = i;

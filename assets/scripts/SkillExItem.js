@@ -39,7 +39,7 @@ e.prototype.openAnim = function (t) {
   cc.tween(this.node)
     .delay(0.15 * e)
     .call(function () {
-      $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_ChooseSkills");
+      $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_ChooseSkills');
     })
     .to(0.3, {
       x: 0,
@@ -60,34 +60,27 @@ e.prototype.updateData = function (t, e, n) {
   $resLoader.ResLoader.setSpritFrame(
     this.spIcon,
     $frameEnum.Frame.EBundleName.GAME,
-    "textures/skill/" + o.icon,
+    'textures/skill/' + o.icon,
   );
   $resLoader.ResLoader.setSpritFrame(
     this.spQuality,
     $frameEnum.Frame.EBundleName.GAME,
-    "textures/quality/quality_skill_ex_" + this._cfgEx.rare,
+    'textures/quality/quality_skill_ex_' + this._cfgEx.rare,
   );
-  for (
-    let r, s = [], u = /\|([^|]+)\|/g;
-    null != (r = u.exec(this._cfgEx.info));
-  ) {
+  for (let r, s = [], u = /\|([^|]+)\|/g; null != (r = u.exec(this._cfgEx.info)); ) {
     s.push(r[1]);
   }
   const p = this._cfgEx.info;
   s.forEach(function (t) {
-    const e = t.replace("%", "");
+    const e = t.replace('%', '');
     p = p.replace(
-      "|" + t + "|",
-      t.includes("%") ? 100 * Number(i._cfgEx[e]) + "%" : "" + i._cfgEx[e],
+      '|' + t + '|',
+      t.includes('%') ? 100 * Number(i._cfgEx[e]) + '%' : '' + i._cfgEx[e],
     );
   });
   this.spAnimHeight.node.active = this._cfgEx.rare > 2;
   if (this.spAnimHeight.node.active) {
-    this.spAnimHeight.playAnim(
-      3 == this._cfgEx.rare ? "loop_Purple" : "loop_red",
-      1,
-      !0,
-    );
+    this.spAnimHeight.playAnim(3 == this._cfgEx.rare ? 'loop_Purple' : 'loop_red', 1, !0);
   }
   this.lDesc.string = p;
   this.node.getComponent(cc.Button).interactable = !1;
@@ -104,4 +97,4 @@ function e() {
   e._cfgEx = null;
   return e;
 }
-exports.default = m;
+export default m;

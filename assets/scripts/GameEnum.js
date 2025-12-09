@@ -1,2 +1,2 @@
-exports.Game = void 0;
-exports.Game = {};
+export const Game = void 0;
+export const Game = {};

@@ -4,7 +4,7 @@ import $bullet21 from './Bullet21';
 import $bulletMgr from './BulletMgr';
 import $attrEnum from './AttrEnum';
 let i;
-exports.Skill_21 = void 0;
+export const Skill_21 = void 0;
 e.prototype.onRemove = function () {
   this._bullets.forEach(function (t) {
     t.remove();
@@ -17,10 +17,8 @@ e.prototype.onSelectSkillEx = function (t) {
   if (11 == e.type) {
     switch (Number(e.val1)) {
       case 1:
-        const n = this.getAttribute(
-                  $attrEnum.E_SkillAttrType.EXTRA_ATTR_1,
-                ).value,
-              i = n - this._curBulletCount;
+        const n = this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_1).value,
+          i = n - this._curBulletCount;
         this._curBulletCount = n;
         for (const o = 0; o < i; o++) {
           this.addBullet();
@@ -35,25 +33,21 @@ e.prototype.onSelectSkillEx = function (t) {
 };
 e.prototype.getHurtOption = function () {
   const e = t.prototype.getHurtOption.call(this);
-  e.critRate += this.getAttribute(
-    $attrEnum.E_SkillAttrType.EXTRA_ATTR_4,
-  ).value;
+  e.critRate += this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_4).value;
   return e;
 };
 e.prototype.addRotationSpeedBuff = function () {
   this._addRotationSpeedBuffTime = 3;
-  this._addRotationSpeedBuffVal = this.getAttribute(
-    $attrEnum.E_SkillAttrType.EXTRA_ATTR_6,
-  ).value;
+  this._addRotationSpeedBuffVal = this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_6).value;
 };
 e.prototype.addBullet = function () {
   const t = this;
   const e = $battleMgr.default.instance.getCurScene();
   $bulletMgr.default.instance.createBullet({
     parent: e.lowEffectParent,
-    prefabName: "Bullet21",
+    prefabName: 'Bullet21',
     bulletClass: $bullet21.default,
-    iconPath: "",
+    iconPath: '',
     initPos: this._owner.node.getPosition().add(cc.v2(this._radius, 50)),
     onCreated: function (e) {
       e.shoot(t._owner, t, t._radius);
@@ -74,8 +68,7 @@ e.prototype.onUpdate = function (t) {
     }
   }
   const e =
-    (360 /
-      (this.getAttribute($attrEnum.E_SkillAttrType.SKILL_CD).value / t)) *
+    (360 / (this.getAttribute($attrEnum.E_SkillAttrType.SKILL_CD).value / t)) *
     (1 + this._addRotationSpeedBuffVal / 100);
   this._bullets.forEach(function (n) {
     n.updateRotation(e, t);
@@ -102,4 +95,4 @@ function e() {
   return e;
 }
 const u = e;
-exports.Skill_21 = u;
+export const Skill_21 = u;

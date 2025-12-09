@@ -17,7 +17,7 @@ const h =
       const n = this;
       this._isAtk2 = Math.random() < Number(this._cfg.val1);
       this._spCtrl.playAnim(
-        this._isAtk2 ? "atk2" : this._atkAnimName,
+        this._isAtk2 ? 'atk2' : this._atkAnimName,
         1,
         !1,
         function () {
@@ -27,7 +27,7 @@ const h =
           }
         },
         function (e, n) {
-          if ("atk" == n && t) {
+          if ('atk' == n && t) {
             t();
           }
         },
@@ -50,10 +50,7 @@ const h =
         const o = this.node.getPosition();
         o.x += 150 * this.dirX;
         for (
-          const r = $actorMgr.default.instance.queryActorByCamp(
-                    $actorEnum.ETeamType.PLAYER,
-                  ),
-                l = 0;
+          const r = $actorMgr.default.instance.queryActorByCamp($actorEnum.ETeamType.PLAYER), l = 0;
           l < r.length;
           l++
         ) {
@@ -77,4 +74,4 @@ const h =
       }
     };
   })($enemyBase.default));
-exports.default = h;
+export default h;

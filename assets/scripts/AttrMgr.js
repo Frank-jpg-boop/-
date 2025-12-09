@@ -1,7 +1,7 @@
 import $cfg from './Cfg';
 import $attrEnum from './AttrEnum';
 import $playerDataProxy from './PlayerDataProxy';
-exports.AttrMgr = void 0;
+export const AttrMgr = void 0;
 t._instance = null;
 t.prototype.getShopRightPrice = function (t) {
   const e = this.getPlayerAttrValue($attrEnum.E_AttrType.SHOP_RATE);
@@ -31,7 +31,7 @@ t.prototype.getPlayerAttrMap = function () {
     const n = $cfg.default.instance.dataBuild.queryOne(function (e) {
       return e.loc == t.loc && e.lv == t.lv;
     });
-    const o = n.ImpVal3.split("|").map(Number);
+    const o = n.ImpVal3.split('|').map(Number);
     const r = Number(n.ImpVal);
     o.forEach(function (t) {
       if (0 != t) {
@@ -40,11 +40,8 @@ t.prototype.getPlayerAttrMap = function () {
     });
   });
   $cfg.default.instance.dataSkin.sheet().forEach(function (t) {
-    if (
-      "" != t.unlockReward &&
-      $playerDataProxy.playerDataProxy.isUnlockSkin(t.id)
-    ) {
-      const n = t.unlockReward.split("_").map(Number);
+    if ('' != t.unlockReward && $playerDataProxy.playerDataProxy.isUnlockSkin(t.id)) {
+      const n = t.unlockReward.split('_').map(Number);
       const i = n[0];
       const o = n[1];
       e(i, o, !1);
@@ -52,7 +49,7 @@ t.prototype.getPlayerAttrMap = function () {
   });
   return t;
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == this._instance) {
       this._instance = new t();
@@ -64,4 +61,4 @@ Object.defineProperty(t, "instance", {
 });
 function t() {}
 const a = t;
-exports.AttrMgr = a;
+export const AttrMgr = a;

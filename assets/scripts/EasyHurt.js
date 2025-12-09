@@ -1,5 +1,5 @@
 let i;
-exports.EasyHurt = void 0;
+export const EasyHurt = void 0;
 e.prototype.onAgain = function (t) {
   this._addHurtValue += t;
   this._effects.forEach(function (t) {
@@ -9,7 +9,7 @@ e.prototype.onAgain = function (t) {
 e.prototype.onTrigger = function (t) {
   this._addHurtValue += t;
 };
-Object.defineProperty(e.prototype, "addHurtValue", {
+Object.defineProperty(e.prototype, 'addHurtValue', {
   get: function () {
     return this._addHurtValue;
   },
@@ -22,4 +22,4 @@ function e() {
   return e;
 }
 const r = e;
-exports.EasyHurt = r;
+export const EasyHurt = r;

@@ -3,25 +3,19 @@ import $proxyBase from './ProxyBase';
 import $eventManager from './EventManager';
 import $sqlUtil from './SqlUtil';
 let i;
-exports.userDataProxy =
-  exports.UserDataProxy =
-  exports.UserData =
-  exports.EUserDataEvent =
-    void 0;
-let r;
-!(function (t) {
-  t.UPDATE_HEAD_PATH = "update_head_path";
-})((r = exports.EUserDataEvent || (exports.EUserDataEvent = {})));
+export const EUserDataEvent = {
+  UPDATE_HEAD_PATH: 'update_head_path',
+};
 const u = function (t) {
   if (void 0 === t) {
-    t = "";
+    t = '';
   }
-  this.uid = "";
-  this.nickName = "我";
-  this.headPath = "";
+  this.uid = '';
+  this.nickName = '我';
+  this.headPath = '';
   this.uid = t;
 };
-exports.UserData = u;
+export const UserData = u;;
 e.prototype.activeZBGame = function () {
   $sqlUtil.SqlUtil.setLocalUserData(
     $globalEnum.Global.ELocalDataKey.ZB_ACTIVE_GAME + this._data.uid,
@@ -49,27 +43,23 @@ e.prototype.setNickName = function (t) {
   this._data.nickName = t;
 };
 e.prototype.initData = function () {};
-Object.defineProperty(e.prototype, "data", {
+Object.defineProperty(e.prototype, 'data', {
   get: function () {
     return this._data;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "codeKey", {
+Object.defineProperty(e.prototype, 'codeKey', {
   get: function () {
-    return (
-      $globalEnum.Global.ELocalDataKey.USER_CODE + "_" + yzll.gameConfig.name
-    );
+    return $globalEnum.Global.ELocalDataKey.USER_CODE + '_' + yzll.gameConfig.name;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "uidKey", {
+Object.defineProperty(e.prototype, 'uidKey', {
   get: function () {
-    return (
-      $globalEnum.Global.ELocalDataKey.USER_UID + "_" + yzll.gameConfig.name
-    );
+    return $globalEnum.Global.ELocalDataKey.USER_UID + '_' + yzll.gameConfig.name;
   },
   enumerable: !1,
   configurable: !0,
@@ -78,5 +68,5 @@ function e() {
   return (null !== t && t.apply(this, arguments)) || this;
 }
 const p = e;
-exports.UserDataProxy = p;
-exports.userDataProxy = new p(u);
+export const UserDataProxy = p;;
+export const userDataProxy = new p(u);;

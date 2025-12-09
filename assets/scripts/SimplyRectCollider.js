@@ -15,17 +15,13 @@ e.prototype.drawCollider = function () {
   );
   this.graphics.stroke();
 };
-Object.defineProperty(e.prototype, "rect", {
+Object.defineProperty(e.prototype, 'rect', {
   get: function () {
     const t = this.node.convertToWorldSpaceAR(cc.v2(0, 0));
     const e = (this.node.angle * Math.PI) / 180;
     const n = this.node.width * this.node.scaleX;
     const i = this.node.height * this.node.scaleY;
-    const o = t
-      .clone()
-      .add(
-        cc.v2((0.5 - this.node.anchorX) * n, (0.5 - this.node.anchorY) * i),
-      );
+    const o = t.clone().add(cc.v2((0.5 - this.node.anchorX) * n, (0.5 - this.node.anchorY) * i));
     t = t.clone().addSelf(o.sub(t).rotate(e));
     return new $simplyRect.default(t.x, t.y, n, i, this.node.angle);
   },
@@ -35,4 +31,4 @@ Object.defineProperty(e.prototype, "rect", {
 function e() {
   return (null !== t && t.apply(this, arguments)) || this;
 }
-exports.default = p;
+export default p;

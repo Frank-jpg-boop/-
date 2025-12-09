@@ -16,8 +16,7 @@ e.prototype.update = function () {
       if (e) {
         if (
           0 == $levelBattleData.levelBattleData.cfgStage.id &&
-          $guideMgr.GuideMgr.instance.cfgGuideStepId <
-            $guideDataProxy.EGuideStepId.G_12
+          $guideMgr.GuideMgr.instance.cfgGuideStepId < $guideDataProxy.EGuideStepId.G_12
         ) {
           this.nView.active = !1;
         } else {
@@ -26,29 +25,22 @@ e.prototype.update = function () {
           const o = this.node.parent.convertToNodeSpaceAR(i);
           const r = this.node.parent.height - 200;
           if (
-            new cc.Rect(
-              -this.node.parent.width / 2,
-              -r / 2,
-              this.node.parent.width,
-              r,
-            ).contains(o)
+            new cc.Rect(-this.node.parent.width / 2, -r / 2, this.node.parent.width, r).contains(o)
           ) {
             this.nView.active = !0;
             this.nView.angle = 0;
-            this.nView.getChildByName("Arrow").angle = 180;
+            this.nView.getChildByName('Arrow').angle = 180;
             o.y += 230;
             this.node.setPosition(o);
             return void (
-              this._isInView ||
-              ((this._isInView = !0),
-              $animUtils.AnimUtil.floatAnim(this.nView))
+              this._isInView || ((this._isInView = !0), $animUtils.AnimUtil.floatAnim(this.nView))
             );
           }
           if (this._isInView) {
             this._isInView = !1;
             cc.Tween.stopAllByTarget(this.nView);
             this.nView.angle = 0;
-            this.nView.getChildByName("Arrow").angle = 0;
+            this.nView.getChildByName('Arrow').angle = 0;
             this.nView.setPosition(0, 0);
           }
           const h = t.cameraCtrl.gameWorldPosToUiWorldPos(
@@ -62,7 +54,7 @@ e.prototype.update = function () {
             this.nView.active = !1;
           } else {
             y = Math.min(y, 350);
-            this.nView.getChildByName("Arrow").angle = 0;
+            this.nView.getChildByName('Arrow').angle = 0;
             const _ = m.add(d.mul(y));
             this.node.setPosition(_);
             this.nView.active = !0;
@@ -92,4 +84,4 @@ function e() {
   e._isInView = !1;
   return e;
 }
-exports.default = m;
+export default m;

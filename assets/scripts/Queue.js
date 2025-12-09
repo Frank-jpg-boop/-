@@ -1,13 +1,13 @@
 t.prototype.toString = function () {
   if (this.isEmpty()) {
-    return "";
+    return '';
   }
   for (
-    const t = "" + this.itemMap.get(this.lowestCount), e = this.lowestCount + 1;
+    const t = '' + this.itemMap.get(this.lowestCount), e = this.lowestCount + 1;
     e < this.count;
     e++
   ) {
-    t = t + "," + this.itemMap.get(e);
+    t = t + ',' + this.itemMap.get(e);
   }
   return t;
 };
@@ -48,4 +48,4 @@ function t() {
   this.itemMap = new Map();
 }
 const i = t;
-exports.default = i;
+export default i;

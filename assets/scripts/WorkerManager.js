@@ -1,4 +1,4 @@
-exports.WorkerManager = void 0;
+export const WorkerManager = void 0;
 t._instance = null;
 t.prototype.postMessage = function (t, e) {
   const n = this;
@@ -6,20 +6,20 @@ t.prototype.postMessage = function (t, e) {
     if (null == e) {
       return Promise.reject({
         errCode: -1,
-        errMsg: "不支持的平台",
+        errMsg: '不支持的平台',
       });
     } else {
       return void (
         null == e ||
         e({
           errCode: -1,
-          errMsg: "不支持的平台",
+          errMsg: '不支持的平台',
         })
       );
     }
   }
   if (t.type) {
-    const i = t.type + "_" + this._msgId;
+    const i = t.type + '_' + this._msgId;
     this._msgId++;
     if (null == e) {
       return new Promise(function (e, o) {
@@ -38,7 +38,7 @@ t.prototype.postMessage = function (t, e) {
     t.msgId = i;
     this._worker.postMessage(t);
   } else {
-    console.error("请先定义type字段");
+    console.error('请先定义type字段');
   }
 };
 t.prototype._createWorker = function () {
@@ -46,7 +46,7 @@ t.prototype._createWorker = function () {
   if (null != this._worker) {
     this._worker.terminate();
   }
-  this._worker = yzll.createWorker("workers/index.js", {
+  this._worker = yzll.createWorker('workers/index.js', {
     useExperimentalWorker: !0,
   });
   if (null != this._worker) {
@@ -68,14 +68,14 @@ t.prototype._createWorker = function () {
     });
   }
 };
-Object.defineProperty(t.prototype, "isSupport", {
+Object.defineProperty(t.prototype, 'isSupport', {
   get: function () {
     return null != this._worker;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new t();
@@ -92,4 +92,4 @@ function t() {
   this._createWorker();
 }
 const i = t;
-exports.WorkerManager = i;
+export const WorkerManager = i;

@@ -7,14 +7,11 @@ const u = cc._decorator;
 const p = u.ccclass;
 const h = u.property;
 !(function (t) {
-  t[(t.BREATHE = 0)] = "BREATHE";
-  t[(t.FLOAT = 1)] = "FLOAT";
+  t[(t.BREATHE = 0)] = 'BREATHE';
+  t[(t.FLOAT = 1)] = 'FLOAT';
 })(a || (a = {}));
 e.prototype.onDestroy = function () {
-  $redPointMgr.default.instance.unRegisterRedPointChange(
-    this.redPointType,
-    this,
-  );
+  $redPointMgr.default.instance.unRegisterRedPointChange(this.redPointType, this);
 };
 e.prototype.onEnable = function () {
   const t = this;
@@ -37,10 +34,10 @@ e.prototype.onLoad = function () {
     t.redPointType,
     function (e) {
       t.node.active = e.redPointNum > 0;
-      const n = t.node.getChildByName("Num");
+      const n = t.node.getChildByName('Num');
       if (n && n.active) {
         n.active = !0;
-        n.getComponent(cc.Label).string = "" + e.redPointNum;
+        n.getComponent(cc.Label).string = '' + e.redPointNum;
       }
     },
     this,
@@ -54,4 +51,4 @@ function e() {
   e._initY = 0;
   return e;
 }
-exports.default = f;
+export default f;

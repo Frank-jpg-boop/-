@@ -1,20 +1,20 @@
 import o from 'crypto';
 (function (i) {
-  exports.CryptoUtil = void 0;
-  t.cryptoiv = "0123456789abcdef";
-  t.cryptoKey = "0123456789abcdef0123456789abcdef";
-  t.Md5key = "";
+  export const CryptoUtil = void 0;
+  t.cryptoiv = '0123456789abcdef';
+  t.cryptoKey = '0123456789abcdef0123456789abcdef';
+  t.Md5key = '';
   t._encrypt = null;
-  t.UserCenterKey = "yuanzililiang";
+  t.UserCenterKey = 'yuanzililiang';
   t.decrypt = function (t) {
     t = i.from(t);
-    const e = o.createDecipheriv("aes-256-cbc", this.cryptoKey, this.cryptoiv);
+    const e = o.createDecipheriv('aes-256-cbc', this.cryptoKey, this.cryptoiv);
     const n = e.update(t);
     return i.concat([n, e.final()]);
   };
   t.encrypt = function (t) {
     t = i.from(t);
-    const e = o.createCipheriv("aes-256-cbc", this.cryptoKey, this.cryptoiv);
+    const e = o.createCipheriv('aes-256-cbc', this.cryptoKey, this.cryptoiv);
     const n = e.update(t);
     return i.concat([n, e.final()]);
   };
@@ -71,5 +71,5 @@ import o from 'crypto';
   };
   function t() {}
   const r = t;
-  exports.CryptoUtil = r;
-}).call(this, require("buffer").Buffer);
+  export const CryptoUtil = r;
+}).call(this, require('buffer').Buffer);

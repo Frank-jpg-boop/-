@@ -11,9 +11,7 @@ e.prototype.flyTargetPos = function () {
   const t = this;
   const e = $battleMgr.default.instance.getCurScene();
   const n = e.uiNode.getComponent($gameUI.default).nGameUILayer;
-  const i = e.cameraCtrl.gameWorldPosToUiWorldPos(
-    this.node.convertToWorldSpaceAR(cc.v2()),
-  );
+  const i = e.cameraCtrl.gameWorldPosToUiWorldPos(this.node.convertToWorldSpaceAR(cc.v2()));
   const o = n.convertToNodeSpaceAR(i);
   this.node.parent = n;
   this.node.setPosition(o);
@@ -23,24 +21,16 @@ e.prototype.flyTargetPos = function () {
     this._targetPos.x + $randomUtil.RandomUtil.randomInt(-100, 100),
     this._targetPos.y - 100,
   );
-  $mathUtil.MathUtil.bezierTo(
-    this.node,
-    1,
-    r,
-    u,
-    this._targetPos,
-    function (e) {
-      const n = e.x - t.node.x;
-      const i = e.y - t.node.y;
-      const o = cc.v2(n, i).normalizeSelf();
-      if (0 == o.x && 0 == o.y) {
-        //
-      } else {
-        t.node.angle =
-          $mathUtil.MathUtil.radians2Angle(cc.v2(1, 0).signAngle(o)) - 90;
-      }
-    },
-  )
+  $mathUtil.MathUtil.bezierTo(this.node, 1, r, u, this._targetPos, function (e) {
+    const n = e.x - t.node.x;
+    const i = e.y - t.node.y;
+    const o = cc.v2(n, i).normalizeSelf();
+    if (0 == o.x && 0 == o.y) {
+      //
+    } else {
+      t.node.angle = $mathUtil.MathUtil.radians2Angle(cc.v2(1, 0).signAngle(o)) - 90;
+    }
+  })
     .call(function () {
       if (t._onComplete) {
         t._onComplete();
@@ -69,4 +59,4 @@ function e() {
   e._onComplete = null;
   return e;
 }
-exports.default = d;
+export default d;

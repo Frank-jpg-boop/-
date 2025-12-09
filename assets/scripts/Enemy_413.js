@@ -19,21 +19,21 @@ const _ =
       e._skillHurtCollider = null;
       return e;
     }
-    Object.defineProperty(e.prototype, "roomCentrePos", {
+    Object.defineProperty(e.prototype, 'roomCentrePos', {
       get: function () {
         return this._roomCentrePos;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "spAnimCtrl", {
+    Object.defineProperty(e.prototype, 'spAnimCtrl', {
       get: function () {
         return this._spCtrl;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "skillHurtCollider", {
+    Object.defineProperty(e.prototype, 'skillHurtCollider', {
       get: function () {
         return this._skillHurtCollider;
       },
@@ -43,23 +43,14 @@ const _ =
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
       this._skillHurtCollider = this.node
-        .getChildByName("SkillHurtCollider")
+        .getChildByName('SkillHurtCollider')
         .getComponent($simplyCircleCollider.default);
     };
     e.prototype.registerState = function () {
       t.prototype.registerState.call(this);
-      this._sm.addState(
-        $actorEnum.EActorStateType.IDLE,
-        new $enemy_413_Idle.Enemy_413_Idle(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.WALK,
-        new $enemy_413_Walk.Enemy_413_Walk(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.ATTACK,
-        new $enemy_413_Atk.Enemy_413_Atk(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.IDLE, new $enemy_413_Idle.Enemy_413_Idle(this));
+      this._sm.addState($actorEnum.EActorStateType.WALK, new $enemy_413_Walk.Enemy_413_Walk(this));
+      this._sm.addState($actorEnum.EActorStateType.ATTACK, new $enemy_413_Atk.Enemy_413_Atk(this));
       this._sm.addState(
         $actorEnum.EActorStateType.SKILL,
         new $enemy_413_Skill.Enemy_413_Skill(this),
@@ -67,10 +58,8 @@ const _ =
     };
     e.prototype.onInit = function () {
       t.prototype.onInit.call(this);
-      this.node.getChildByName("Body").getChildByName("Shade").active = !0;
-      const e = $battleMgr.default.instance
-        .getCurScene()
-        .level.getRoomById(this.roomId);
+      this.node.getChildByName('Body').getChildByName('Shade').active = !0;
+      const e = $battleMgr.default.instance.getCurScene().level.getRoomById(this.roomId);
       this._roomCentrePos = cc.v2(e.node.x + e.node.width / 2, e.getGroundY());
     };
     e.prototype.enterAttackCd = function () {
@@ -78,13 +67,11 @@ const _ =
     };
     e.prototype.searchTarget = function () {
       for (
-        const t = $actorMgr.default.instance.queryActorByCamp(
-                  $actorEnum.ETeamType.PLAYER,
-                ),
-              e = this.node.getPosition(),
-              n = ($battleMgr.default.instance.getCurScene(), Number.MAX_VALUE),
-              i = null,
-              o = 0;
+        const t = $actorMgr.default.instance.queryActorByCamp($actorEnum.ETeamType.PLAYER),
+          e = this.node.getPosition(),
+          n = ($battleMgr.default.instance.getCurScene(), Number.MAX_VALUE),
+          i = null,
+          o = 0;
         o < t.length;
         o++
       ) {
@@ -104,4 +91,4 @@ const _ =
       this.updateAreaKey();
     };
   })($enemyBase.default));
-exports.default = _;
+export default _;

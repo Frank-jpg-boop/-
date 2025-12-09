@@ -9,7 +9,7 @@ import $actorEnum from './ActorEnum';
 import $attrEnum from './AttrEnum';
 import $weapon51 from './Weapon51';
 let i;
-exports.Skill_51 = void 0;
+export const Skill_51 = void 0;
 e.prototype.shootBullet = function (t) {
   const e = this;
   const n =
@@ -31,44 +31,37 @@ e.prototype.shootBullet = function (t) {
   const d = u.sub(o).normalize();
   this._weaponTargetOffsetPos = d.mul(this._weaponRadio);
   const m = (180 * cc.Vec2.RIGHT_R.signAngle(d)) / Math.PI;
-  $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_SanDanQiang");
+  $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_SanDanQiang');
   this._weapon.playShootAnim(
     function () {
       for (
         const t = e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_1).value,
-              n =
-                (180 *
-                  Math.atan2(
-                    200,
-                    e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_3).value,
-                  )) /
-                Math.PI /
-                t,
-              o = e._weapon.shootPos,
-              r = t >> 1,
-              s = function (t) {
-                const s = m + n * (t - r);
-                const u = cc.v2(
-                  Math.cos((s * Math.PI) / 180),
-                  Math.sin((s * Math.PI) / 180),
-                );
-                const p = $randomUtil.RandomUtil.randomInt(
-                  50,
-                  e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_3).value,
-                );
-                const h = o.add(u.mul(p));
-                $bulletMgr.default.instance.createBullet({
-                  parent: i.bulletParent,
-                  prefabName: "Bullet51",
-                  initPos: o,
-                  iconPath: "",
-                  bulletClass: $bullet51.default,
-                  onCreated: function (t) {
-                    t.shoot(e._owner, h, e);
-                  },
-                });
+          n =
+            (180 * Math.atan2(200, e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_3).value)) /
+            Math.PI /
+            t,
+          o = e._weapon.shootPos,
+          r = t >> 1,
+          s = function (t) {
+            const s = m + n * (t - r);
+            const u = cc.v2(Math.cos((s * Math.PI) / 180), Math.sin((s * Math.PI) / 180));
+            const p = $randomUtil.RandomUtil.randomInt(
+              50,
+              e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_3).value,
+            );
+            const h = o.add(u.mul(p));
+            $bulletMgr.default.instance.createBullet({
+              parent: i.bulletParent,
+              prefabName: 'Bullet51',
+              initPos: o,
+              iconPath: '',
+              bulletClass: $bullet51.default,
+              onCreated: function (t) {
+                t.shoot(e._owner, h, e);
               },
-              u = 0;
+            });
+          },
+          u = 0;
         u < t;
         ++u
       ) {
@@ -88,13 +81,13 @@ e.prototype.shootBullet = function (t) {
 e.prototype.searchTarget = function () {
   for (
     const t = this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_3).value,
-          e = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(
-            this._owner.node.getPosition(),
-            t,
-          ),
-          n = [],
-          i = 0,
-          o = e;
+      e = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(
+        this._owner.node.getPosition(),
+        t,
+      ),
+      n = [],
+      i = 0,
+      o = e;
     i < o.length;
     i++
   ) {
@@ -125,30 +118,20 @@ e.prototype.searchTarget = function () {
   return s;
 };
 e.prototype.enterCD = function () {
-  this._skillCDTimer = Math.max(
-    this.getAttribute($attrEnum.E_SkillAttrType.SKILL_CD).value,
-    0.1,
-  );
+  this._skillCDTimer = Math.max(this.getAttribute($attrEnum.E_SkillAttrType.SKILL_CD).value, 0.1);
   this.skillCD = this._skillCDTimer;
 };
 e.prototype.onUpdate = function (t) {
   const e = this;
   if (this._weapon) {
-    this._weaponOffsetPos = this._weaponOffsetPos.lerp(
-      this._weaponTargetOffsetPos,
-      0.3,
-    );
-    this._weapon.node.setPosition(
-      this._weaponCentrePos.add(this._weaponOffsetPos),
-    );
+    this._weaponOffsetPos = this._weaponOffsetPos.lerp(this._weaponTargetOffsetPos, 0.3);
+    this._weapon.node.setPosition(this._weaponCentrePos.add(this._weaponOffsetPos));
     this._dt = t;
     if (this.skillCD > 0) {
       this.skillCD -= t;
       if (this.skillCD <= 0) {
         this.skillCD = 0;
-        this._durationTimer = this.getAttribute(
-          $attrEnum.E_SkillAttrType.EXTRA_ATTR_2,
-        ).value;
+        this._durationTimer = this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2).value;
         this.duration = this._durationTimer;
         this._attackCD =
           this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_7).value *
@@ -192,20 +175,18 @@ e.prototype.onUpdate = function (t) {
   }
 };
 e.prototype.resetWeapon = function () {
-  this._weaponOffsetInitPos.x =
-    Math.abs(this._weaponOffsetInitPos.x) * this._owner.dirX;
+  this._weaponOffsetInitPos.x = Math.abs(this._weaponOffsetInitPos.x) * this._owner.dirX;
   this._weaponTargetOffsetPos = this._weaponOffsetInitPos.clone();
   this._weapon.reset(this._owner.dirX);
 };
 e.prototype.createWeapon = function () {
   const t = this;
-  this._weaponOffsetInitPos.x =
-    Math.abs(this._weaponOffsetInitPos.x) * this._owner.dirX;
+  this._weaponOffsetInitPos.x = Math.abs(this._weaponOffsetInitPos.x) * this._owner.dirX;
   this._weaponOffsetPos = this._weaponOffsetInitPos.clone();
   this._weaponTargetOffsetPos = this._weaponOffsetPos.clone();
   $effectMgr.default.instance.createEffect({
     parent: this._owner.node,
-    prefabName: "Weapon51",
+    prefabName: 'Weapon51',
     effectClass: $weapon51.default,
     initPos: this._weaponCentrePos.add(this._weaponOffsetPos),
     onCreated: function (e) {
@@ -216,9 +197,7 @@ e.prototype.createWeapon = function () {
 };
 e.prototype.onInit = function () {
   t.prototype.onInit.call(this);
-  this._durationTimer = this.getAttribute(
-    $attrEnum.E_SkillAttrType.EXTRA_ATTR_2,
-  ).value;
+  this._durationTimer = this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2).value;
   this.duration = this._durationTimer;
   this.createWeapon();
 };
@@ -236,4 +215,4 @@ function e() {
   return e;
 }
 const m = e;
-exports.Skill_51 = m;
+export const Skill_51 = m;

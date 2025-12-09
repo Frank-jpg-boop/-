@@ -20,7 +20,7 @@ t.prototype.createBullet = function (t) {
   } else {
     $resLoader.ResLoader.loadAsset({
       bundleName: $frameEnum.Frame.EBundleName.GAME,
-      path: "prefabs/battle/bullet/" + t.prefabName,
+      path: 'prefabs/battle/bullet/' + t.prefabName,
       type: cc.Prefab,
       success: function (n) {
         $nodePoolManager.default.instance.addPoolPrefab(n);
@@ -30,7 +30,7 @@ t.prototype.createBullet = function (t) {
     });
   }
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new t();
@@ -42,4 +42,4 @@ Object.defineProperty(t, "instance", {
 });
 function t() {}
 const s = t;
-exports.default = s;
+export default s;

@@ -1,5 +1,5 @@
-exports.NetEvent = exports.CMD_GameServer_Command = void 0;
-exports.CMD_GameServer_Command = {
+export const NetEvent = exports.CMD_GameServer_Command = void 0;;
+export const CMD_GameServer_Command = {
   server_tickout_command: 99996,
   heartBeat_command: 99997,
   tickout_command: 99999,
@@ -72,7 +72,6 @@ exports.CMD_GameServer_Command = {
   get_abyss_info_command: 10570,
   diamond_buy_ticket_command: 10571,
   get_wave_reward_command: 10572,
-  get_abyss_rank_info_command: 10573
-};
-(exports.NetEvent || (exports.NetEvent = {})).MESSAGE_DISTRIBUTE =
-  "MESSAGE_DISTRIBUTE";
+  get_abyss_rank_info_command: 10573,
+};;
+(exports.NetEvent || export const NetEvent = {};).MESSAGE_DISTRIBUTE = 'MESSAGE_DISTRIBUTE';

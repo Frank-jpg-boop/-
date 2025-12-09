@@ -30,10 +30,10 @@ e.path = function (t, e, i) {
     u = [].concat(i.avoid);
   }
   if (u.includes(t)) {
-    throw new Error("Starting node (" + t + ") cannot be avoided");
+    throw new Error('Starting node (' + t + ') cannot be avoided');
   }
   if (u.includes(e)) {
-    throw new Error("Ending node (" + e + ") cannot be avoided");
+    throw new Error('Ending node (' + e + ') cannot be avoided');
   }
   a.set(t, 0);
   for (
@@ -45,7 +45,7 @@ e.path = function (t, e, i) {
           c.push(n);
           n = s.get(n);
         }
-        return "break";
+        return 'break';
       }
       r.add(t.key);
       (o.graph.get(t.key) || new Map()).forEach(function (e, n) {
@@ -65,7 +65,7 @@ e.path = function (t, e, i) {
         }
       });
     };
-    !a.isEmpty() && "break" !== p();
+    !a.isEmpty() && 'break' !== p();
   ) {}
   if (c.length) {
     return (
@@ -121,4 +121,4 @@ function t(t) {
   }
 }
 const a = t;
-module.exports = a;
+export default a;

@@ -16,7 +16,7 @@ t.setSpriteGrayMaterial = function (t) {
   if (null === (e = t.getComponent(cc.Sprite)) || void 0 === e) {
     //
   } else {
-    e.setMaterial(0, cc.Material.getBuiltinMaterial("2d-gray-sprite"));
+    e.setMaterial(0, cc.Material.getBuiltinMaterial('2d-gray-sprite'));
   }
 };
 t.setSpriteNormalMaterial = function (t) {
@@ -24,7 +24,7 @@ t.setSpriteNormalMaterial = function (t) {
   if (null === (e = t.getComponent(cc.Sprite)) || void 0 === e) {
     //
   } else {
-    e.setMaterial(0, cc.Material.getBuiltinMaterial("2d-sprite"));
+    e.setMaterial(0, cc.Material.getBuiltinMaterial('2d-sprite'));
   }
 };
 t.addToggleListener = function (t, e, n, i, o) {
@@ -68,4 +68,4 @@ t.nodeWorldPos = function (t) {
 };
 function t() {}
 const i = t;
-exports.default = i;
+export default i;

@@ -1,6 +1,6 @@
 import $myWScoket from './MyWScoket';
 const o =
-  (require("./base64").Base64,
+  (require('./base64').Base64,
   (function () {
     function t(t) {
       this._socket = new $myWScoket.default(t);
@@ -12,7 +12,7 @@ const o =
     };
     t.prototype.connect = function (t, e) {
       this.initValue();
-      return 0 === this._socket.connect("ws://" + t + ":" + e);
+      return 0 === this._socket.connect('ws://' + t + ':' + e);
     };
     t.prototype.connectUrl = function (t) {
       this.initValue();
@@ -47,4 +47,4 @@ const o =
     };
     return t;
   })());
-exports.default = o;
+export default o;

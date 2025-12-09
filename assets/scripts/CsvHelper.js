@@ -38,13 +38,9 @@ t.prototype.setHeader = function () {
 };
 t.prototype.contentToJson = function (t) {
   for (const e = [], n = 1; n < t.length; ++n) {
-    for (
-      const i = {}, o = t[n].m_header, r = t[n].m_values, a = 0;
-      a < o.length;
-      ++a
-    ) {
-      for (const s = r[a]; s.indexOf("\\n") >= 0; ) {
-        s = s.replace("\\n", "\n");
+    for (const i = {}, o = t[n].m_header, r = t[n].m_values, a = 0; a < o.length; ++a) {
+      for (const s = r[a]; s.indexOf('\\n') >= 0; ) {
+        s = s.replace('\\n', '\n');
       }
       i[o[a]] = s;
     }
@@ -60,18 +56,16 @@ t.prototype.loadCsv = function (t, e, n) {
   h.m_content.length = 0;
   h.m_header.length = 0;
   h.Fields = new p();
-  h.strField = "";
+  h.strField = '';
   h.mStateType = o;
   cc.assetManager.loadBundle(n, function (n, i) {
     i.load(t, function (t, n) {
       if (t) {
-        console.log(
-          " ----------------- 加载csv文件失败，请检查路径是否正确!",
-        );
+        console.log(' ----------------- 加载csv文件失败，请检查路径是否正确!');
         return void cc.error(t.message, t);
       }
-      if (-1 === (n = n.text).indexOf("\r\n")) {
-        n = n.replace(/\n/g, "\r\n");
+      if (-1 === (n = n.text).indexOf('\r\n')) {
+        n = n.replace(/\n/g, '\r\n');
       }
       for (const i = 0, f = n.length; i < f; ++i) {
         const d = n[i];
@@ -80,11 +74,11 @@ t.prototype.loadCsv = function (t, e, n) {
             if ('"' == d) {
               h.mStateType = a;
             } else {
-              if ("," == d) {
-                (h.Fields.push_back(""), (h.mStateType = s));
+              if (',' == d) {
+                (h.Fields.push_back(''), (h.mStateType = s));
               } else {
-                if ("\r" == d || "\n" == d) {
-                  (console.log("语法错误：有空行"), (h.mStateType = u));
+                if ('\r' == d || '\n' == d) {
+                  (console.log('语法错误：有空行'), (h.mStateType = u));
                 } else {
                   ((h.strField += d), (h.mStateType = r));
                 }
@@ -92,12 +86,12 @@ t.prototype.loadCsv = function (t, e, n) {
             }
             break;
           case r:
-            if ("," == d) {
+            if (',' == d) {
               h.Fields.push_back(h.strField);
-              h.strField = "";
+              h.strField = '';
               h.mStateType = s;
             } else {
-              if ("\r" == d) {
+              if ('\r' == d) {
                 (h.Fields.push_back(h.strField), (h.mStateType = l));
               } else {
                 h.strField += d;
@@ -112,14 +106,14 @@ t.prototype.loadCsv = function (t, e, n) {
             }
             break;
           case s:
-            if ("," == d) {
-              h.Fields.push_back("");
+            if (',' == d) {
+              h.Fields.push_back('');
             } else {
               if ('"' == d) {
-                ((h.strField = ""), (h.mStateType = a));
+                ((h.strField = ''), (h.mStateType = a));
               } else {
-                if ("\r" == d) {
-                  (h.Fields.push_back(""), (h.mStateType = l));
+                if ('\r' == d) {
+                  (h.Fields.push_back(''), (h.mStateType = l));
                 } else {
                   ((h.strField += d), (h.mStateType = r));
                 }
@@ -127,12 +121,12 @@ t.prototype.loadCsv = function (t, e, n) {
             }
             break;
           case c:
-            if ("," == d) {
+            if (',' == d) {
               h.Fields.push_back(h.strField);
-              h.strField = "";
+              h.strField = '';
               h.mStateType = s;
             } else {
-              if ("\r" == d) {
+              if ('\r' == d) {
                 (h.Fields.push_back(h.strField), (h.mStateType = l));
               } else {
                 if ('"' == d) {
@@ -147,15 +141,13 @@ t.prototype.loadCsv = function (t, e, n) {
             }
             break;
           case l:
-            if ("\n" == d) {
+            if ('\n' == d) {
               h.m_content.push(h.Fields);
               h.Fields = new p();
-              h.strField = "";
+              h.strField = '';
               h.mStateType = o;
             } else {
-              console.log(
-                "语法错误： 行分隔用了回车 \\r。但未使用回车换行 \\r\\n ",
-              );
+              console.log('语法错误： 行分隔用了回车 \\r。但未使用回车换行 \\r\\n ');
               h.mStateType = u;
             }
         }
@@ -168,10 +160,10 @@ t.prototype.loadCsv = function (t, e, n) {
           h.m_content.push(h.Fields);
           break;
         case a:
-          console.log("语法错误： 引号字段未闭合");
+          console.log('语法错误： 引号字段未闭合');
           break;
         case s:
-          h.Fields.push_back("");
+          h.Fields.push_back('');
           h.m_content.push(h.Fields);
           break;
         case c:
@@ -188,8 +180,8 @@ function t() {
   this.m_content = [];
   this.m_header = [];
   this.Fields = null;
-  this.strField = "";
+  this.strField = '';
   this.mStateType = o;
 }
 const h = t;
-exports.default = h;
+export default h;

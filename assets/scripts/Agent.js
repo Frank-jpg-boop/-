@@ -1,5 +1,5 @@
 import $common from './Common';
-exports.Agent = void 0;
+export const Agent = void 0;
 t.prototype.linearProgram3 = function (t, e, n, o, r) {
   for (const a = 0, s = n; s < t.length; ++s) {
     if ($common.RVOMath.det(t[s].direction, t[s].point.minus(r)) > a) {
@@ -17,27 +17,17 @@ t.prototype.linearProgram3 = function (t, e, n, o, r) {
         } else {
           p.point = t[s].point.plus(
             t[s].direction.scale(
-              $common.RVOMath.det(
-                t[u].direction,
-                t[s].point.minus(t[u].point),
-              ) / h,
+              $common.RVOMath.det(t[u].direction, t[s].point.minus(t[u].point)) / h,
             ),
           );
         }
-        p.direction = $common.RVOMath.normalize(
-          t[u].direction.minus(t[s].direction),
-        );
+        p.direction = $common.RVOMath.normalize(t[u].direction.minus(t[s].direction));
         c.push(p);
       }
       const f = r.clone();
       if (
-        this.linearProgram2(
-          c,
-          o,
-          new $common.Vector2(-t[s].direction.y, t[s].direction.x),
-          !0,
-          r,
-        ) < c.length
+        this.linearProgram2(c, o, new $common.Vector2(-t[s].direction.y, t[s].direction.x), !0, r) <
+        c.length
       ) {
         r.copy(f);
       }
@@ -68,10 +58,7 @@ t.prototype.linearProgram2 = function (t, e, n, o, r) {
 };
 t.prototype.linearProgram1 = function (t, e, n, o, r, a) {
   const s = t[e].point.multiply(t[e].direction);
-  const c =
-    $common.RVOMath.sqr(s) +
-    $common.RVOMath.sqr(n) -
-    $common.RVOMath.absSq(t[e].point);
+  const c = $common.RVOMath.sqr(s) + $common.RVOMath.sqr(n) - $common.RVOMath.absSq(t[e].point);
   if (c < 0) {
     return !1;
   }
@@ -119,11 +106,7 @@ t.prototype.update = function (t) {
 };
 t.prototype.insertObstacleNeighbor = function (t, e) {
   const n = t.next;
-  const o = $common.RVOMath.distSqPointLineSegment(
-    t.point,
-    n.point,
-    this.position_,
-  );
+  const o = $common.RVOMath.distSqPointLineSegment(t.point, n.point, this.position_);
   if (o < e) {
     this.obstaclNeighbors_.push(new $common.KeyValuePair(o, t));
     for (
@@ -166,16 +149,19 @@ t.prototype.computeNewVelocity = function (t) {
     ++o
   ) {
     for (
-      const r = this.obstaclNeighbors_[o].value, a = r.next, s = r.point.minus(this.position_), c = a.point.minus(this.position_), l = !1, u = 0;
+      const r = this.obstaclNeighbors_[o].value,
+        a = r.next,
+        s = r.point.minus(this.position_),
+        c = a.point.minus(this.position_),
+        l = !1,
+        u = 0;
       u < e.length;
       ++u
     ) {
       if (
-        $common.RVOMath.det(s.scale(n).minus(e[u].point), e[u].direction) -
-          n * this.radius_ >=
+        $common.RVOMath.det(s.scale(n).minus(e[u].point), e[u].direction) - n * this.radius_ >=
           -$common.RVOMath.RVO_EPSILON &&
-        $common.RVOMath.det(c.scale(n).minus(e[u].point), e[u].direction) -
-          n * this.radius_ >=
+        $common.RVOMath.det(c.scale(n).minus(e[u].point), e[u].direction) - n * this.radius_ >=
           -$common.RVOMath.RVO_EPSILON
       ) {
         l = !0;
@@ -193,17 +179,13 @@ t.prototype.computeNewVelocity = function (t) {
       if (m < 0 && p <= f) {
         if (r.convex) {
           _.point = new $common.Vector2(0, 0);
-          _.direction = $common.RVOMath.normalize(
-            new $common.Vector2(-s.y, s.x),
-          );
+          _.direction = $common.RVOMath.normalize(new $common.Vector2(-s.y, s.x));
           e.push(_);
         }
       } else if (m > 1 && h <= f) {
         if (a.convex && $common.RVOMath.det(c, a.direction) >= 0) {
           _.point = new $common.Vector2(0, 0);
-          _.direction = $common.RVOMath.normalize(
-            new $common.Vector2(-c.y, c.x),
-          );
+          _.direction = $common.RVOMath.normalize(new $common.Vector2(-c.y, c.x));
           e.push(_);
         }
       } else if (m >= 0 && m <= 1 && y <= f) {
@@ -211,18 +193,15 @@ t.prototype.computeNewVelocity = function (t) {
         _.direction = r.direction.scale(-1);
         e.push(_);
       } else {
-        const g = void 0;
-        const v = void 0;
         if (m < 0 && y <= f) {
           if (!r.convex) {
             continue;
           }
           a = r;
           const b = Math.sqrt(p - f);
-          g = new $common.Vector2(
-            s.x * b - s.y * this.radius_,
-            s.x * this.radius_ + s.y * b,
-          ).scale(1 / p);
+          g = new $common.Vector2(s.x * b - s.y * this.radius_, s.x * this.radius_ + s.y * b).scale(
+            1 / p,
+          );
           v = new $common.Vector2(
             s.x * b + s.y * this.radius_,
             -s.x * this.radius_ + s.y * b,
@@ -233,10 +212,9 @@ t.prototype.computeNewVelocity = function (t) {
           }
           r = a;
           const E = Math.sqrt(h - f);
-          g = new $common.Vector2(
-            c.x * E - c.y * this.radius_,
-            c.x * this.radius_ + c.y * E,
-          ).scale(1 / h);
+          g = new $common.Vector2(c.x * E - c.y * this.radius_, c.x * this.radius_ + c.y * E).scale(
+            1 / h,
+          );
           v = new $common.Vector2(
             c.x * E + c.y * this.radius_,
             -c.x * this.radius_ + c.y * E,
@@ -298,25 +276,19 @@ t.prototype.computeNewVelocity = function (t) {
           if (I < 0 || I > 1 || r == a) {
             B = 1 / 0;
           } else {
-            B = $common.RVOMath.absSq(
-              this.velocity_.minus(M.scale(I).plus(w)),
-            );
+            B = $common.RVOMath.absSq(this.velocity_.minus(M.scale(I).plus(w)));
           }
           const O = null;
           if (R < 0) {
             O = 1 / 0;
           } else {
-            O = $common.RVOMath.absSq(
-              this.velocity_.minus(g.scale(R).plus(w)),
-            );
+            O = $common.RVOMath.absSq(this.velocity_.minus(g.scale(R).plus(w)));
           }
           const x = null;
           if (D < 0) {
             x = 1 / 0;
           } else {
-            x = $common.RVOMath.absSq(
-              this.velocity_.minus(v.scale(D).plus(C)),
-            );
+            x = $common.RVOMath.absSq(this.velocity_.minus(v.scale(D).plus(C)));
           }
           if (B <= O && B <= x) {
             _.direction = r.direction.scale(-1);
@@ -356,17 +328,13 @@ t.prototype.computeNewVelocity = function (t) {
     if (F >= 0.5) {
       V = this.velocity_.minus(this.velocity_.scale(F)).scale(2);
     } else {
-      V = this.prefVelocity_.plus(
-        this.velocity_.minus(this.prefVelocity_).scale(2 * F),
-      );
+      V = this.prefVelocity_.plus(this.velocity_.minus(this.prefVelocity_).scale(2 * F));
     }
     const H = null;
     if (G >= 0.5) {
       H = j.velocity_.scale(2).scale(1 - G);
     } else {
-      H = j.prefVelocity_.plus(
-        j.velocity_.minus(j.prefVelocity_).scale(2 * G),
-      );
+      H = j.prefVelocity_.plus(j.velocity_.minus(j.prefVelocity_).scale(2 * G));
     }
     const W = V.minus(H);
     const q = $common.RVOMath.absSq(U);
@@ -405,13 +373,7 @@ t.prototype.computeNewVelocity = function (t) {
     _.point = V.plus(Y.scale(F));
     e.push(_);
   }
-  const nt = this.linearProgram2(
-    e,
-    this.maxSpeed_,
-    this.prefVelocity_,
-    !1,
-    this.newVelocity_,
-  );
+  const nt = this.linearProgram2(e, this.maxSpeed_, this.prefVelocity_, !1, this.newVelocity_);
   if (nt < e.length) {
     this.linearProgram3(e, N, nt, this.maxSpeed_, this.newVelocity_);
   }
@@ -426,7 +388,7 @@ t.prototype.computeNeighbors = function (t) {
     e = t.kdTree.computeAgentNeighbors(this, e);
   }
 };
-Object.defineProperty(t.prototype, "neighborDist", {
+Object.defineProperty(t.prototype, 'neighborDist', {
   get: function () {
     return this._neighborDist;
   },
@@ -454,4 +416,4 @@ function t() {
   this.mass = 1;
 }
 const o = t;
-exports.Agent = o;
+export const Agent = o;

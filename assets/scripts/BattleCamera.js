@@ -31,9 +31,7 @@ e.prototype.updateBorder = function () {
     (t.gameCamera.node.height / 2) * (1 / e);
 };
 e.prototype.changeMapScale = function (t) {
-  const e =
-    this.minGameCameraZoom +
-    (this.maxGameCameraZoom - this.minGameCameraZoom) * t;
+  const e = this.minGameCameraZoom + (this.maxGameCameraZoom - this.minGameCameraZoom) * t;
   this.gameCamera.zoomRatio = e;
   this.updateBorder();
   this.setPos(this.targetPos);
@@ -49,7 +47,7 @@ e.prototype.tweenChangeRatio = function (t, e, n) {
         zoomRatio: t,
       },
       {
-        easing: "sineOut",
+        easing: 'sineOut',
       },
     )
     .call(function () {
@@ -77,7 +75,7 @@ e.prototype.shakeCamera = function (t) {
           y: a,
         },
         {
-          easing: "bounceOut",
+          easing: 'bounceOut',
         },
       )
       .call(function () {
@@ -122,7 +120,7 @@ e.prototype.lookAtPos = function (t, e, n, i) {
             position: cc.v3(r.x, r.y, 0),
           },
           {
-            easing: "sineOut",
+            easing: 'sineOut',
           },
         )
         .call(function () {
@@ -157,11 +155,7 @@ e.prototype.setPos = function (t) {
 e.prototype.update = function () {
   const t = this;
   if (t._isInit && !this._isLookAting && !this._isShaking) {
-    if (
-      this.nTarget &&
-      cc.isValid(this.nTarget) &&
-      cc.isValid(this.nTarget.parent)
-    ) {
+    if (this.nTarget && cc.isValid(this.nTarget) && cc.isValid(this.nTarget.parent)) {
       const e = t.nTarget.parent.convertToWorldSpaceAR(t.nTarget.getPosition());
       const n = t.gameCamera.node.parent.convertToNodeSpaceAR(e);
       n.addSelf(t._targetOffsetPos);
@@ -241,4 +235,4 @@ function e() {
   e._isShaking = !1;
   return e;
 }
-exports.default = p;
+export default p;

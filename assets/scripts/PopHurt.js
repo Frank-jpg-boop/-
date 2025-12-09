@@ -43,7 +43,7 @@ e.prototype.playAnim = function (t) {
             scale: 1.6,
           },
           {
-            easing: "backOut",
+            easing: 'backOut',
           },
         )
         .to(0.05, {
@@ -74,7 +74,7 @@ e.prototype.playAnim = function (t) {
           scale: 1.4,
         },
         {
-          easing: "backOut",
+          easing: 'backOut',
         },
       )
       .to(0.05, {
@@ -103,15 +103,15 @@ e.prototype.update = function (t) {
     this.time += t;
     if (this.time > 1) {
       this.isBattleRemove = !0;
-      $battleMgr.default.instance
-        .getCurScene()
-        .removePopHurt(this.popId, this);
+      $battleMgr.default.instance.getCurScene().removePopHurt(this.popId, this);
     }
   }
 };
 e.prototype.crush = function () {
   for (
-    const t = $battleMgr.default.instance.getCurScene().getPopHurts(this.popId), e = 0, n = t.length - 1;
+    const t = $battleMgr.default.instance.getCurScene().getPopHurts(this.popId),
+      e = 0,
+      n = t.length - 1;
     e < n;
     ++e
   ) {
@@ -150,7 +150,7 @@ e.prototype.popup = function (t, e, n, i) {
       this.lCirt.node.active = !1;
       this.lHurt.node.active = !0;
       this.lHurt.node.color = cc.Color.GREEN;
-      this.lHurt.string = "+" + $mathUtil.MathUtil.formatValue(e);
+      this.lHurt.string = '+' + $mathUtil.MathUtil.formatValue(e);
     } else {
       this.lCirt.node.active = !1;
       this.lHurt.node.active = !0;
@@ -163,10 +163,10 @@ function e() {
   e.lHurt = null;
   e.lCirt = null;
   e.nPop = null;
-  e.popId = "";
+  e.popId = '';
   e.isNeedCrush = !1;
   e.isBattleRemove = !1;
   e.time = 0;
   return e;
 }
-exports.default = d;
+export default d;

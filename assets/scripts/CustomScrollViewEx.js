@@ -2,36 +2,32 @@ import $componentBase from './ComponentBase';
 import $nodePoolManager from './NodePoolManager';
 import $commonUtil from './CommonUtil';
 let i;
-exports.CustomScrollViewEx = exports.ScrollViewCustomProperty = void 0;
-let a;
+export const CustomScrollViewEx = exports.ScrollViewCustomProperty = void 0;;
+export const ScrollViewCustomProperty = {
+  ItemIndex: 'ItemIndex'
+};
+let a = ScrollViewCustomProperty;
 const u = cc._decorator;
 const p = u.ccclass;
 const h = u.property;
 const f = u.menu;
 const d = u.requireComponent;
-!(function (t) {
-  t.ItemIndex = "ItemIndex";
-})(
-  (a =
-    exports.ScrollViewCustomProperty ||
-    (exports.ScrollViewCustomProperty = {})),
-);
 e.prototype.onScrolling = function () {
   if (this.mScrollView && this.mContent) {
     for (const t = 0; t < this._usefulList.length; ++t) {
       const e = this._usefulList[t].convertToWorldSpaceAR(cc.v3(0, 0, 0));
       const n = this.node.convertToNodeSpaceAR(e);
       if (n.y - this._itemHeight / 2 > this._checkSize / 2) {
-        this.moveItem("down");
+        this.moveItem('down');
         break;
       }
       if (n.y + this._itemHeight / 2 < -this._checkSize / 2) {
-        this.moveItem("up");
+        this.moveItem('up');
         break;
       }
     }
   } else {
-    $commonUtil.CommonUtil.print("请初始化 scrollView 或 content");
+    $commonUtil.CommonUtil.print('请初始化 scrollView 或 content');
   }
 };
 e.prototype.updateItemInfo = function (t, e, n) {
@@ -44,11 +40,8 @@ e.prototype.moveItem = function (t) {
   const n = null;
   const i = null;
   const o = null;
-  if ("down" == t) {
-    if (
-      (c = (e = this._usefulList[this._initLen - 1])[a.ItemIndex]) >=
-      this._itemAmount - 1
-    ) {
+  if ('down' == t) {
+    if ((c = (e = this._usefulList[this._initLen - 1])[a.ItemIndex]) >= this._itemAmount - 1) {
       return;
     }
     n = this._usefulList[0];
@@ -58,15 +51,12 @@ e.prototype.moveItem = function (t) {
         break;
       }
     }
-    i = cc.v3(
-      n.position.x,
-      e.position.y - this._itemHeight - (r ? this._titleHeight : 0),
-    );
+    i = cc.v3(n.position.x, e.position.y - this._itemHeight - (r ? this._titleHeight : 0));
     o = e[a.ItemIndex] + 1;
     this._usefulList.splice(0, 1);
     this._usefulList.push(n);
     n[a.ItemIndex] = o;
-  } else if ("up" == t) {
+  } else if ('up' == t) {
     let c;
     if ((c = (e = this._usefulList[0])[a.ItemIndex]) <= 0) {
       return;
@@ -79,10 +69,7 @@ e.prototype.moveItem = function (t) {
         break;
       }
     }
-    i = cc.v3(
-      n.position.x,
-      e.position.y + this._itemHeight + (r ? this._titleHeight : 0),
-    );
+    i = cc.v3(n.position.x, e.position.y + this._itemHeight + (r ? this._titleHeight : 0));
     o = e[a.ItemIndex] - 1;
     this._usefulList.splice(this._initLen - 1, 1);
     this._usefulList.splice(0, 0, n);
@@ -103,7 +90,11 @@ e.prototype.moveItem = function (t) {
 };
 e.prototype.addItem = function (t) {
   for (
-    const e = $nodePoolManager.default.instance.getNode(this._extra.prefab), n = cc.v3(0, 0, 0), i = this._extra.startItemIndex + t, o = 0, r = this._extra.titleIdx.length - 1;
+    const e = $nodePoolManager.default.instance.getNode(this._extra.prefab),
+      n = cc.v3(0, 0, 0),
+      i = this._extra.startItemIndex + t,
+      o = 0,
+      r = this._extra.titleIdx.length - 1;
     r >= 0;
     --r
   ) {
@@ -148,14 +139,8 @@ e.prototype.getChildren = function () {
 e.prototype.recycle = function () {
   for (const t = this.mContent.children.length, e = 0; e < t; ++e) {
     if (this.mContent.children[0].name == this._extra.prefab.name) {
-      for (
-        const n = this.mContent.children[0].children.length, i = 0;
-        i < n;
-        ++i
-      ) {
-        $nodePoolManager.default.instance.putNode(
-          this.mContent.children[0].children[0],
-        );
+      for (const n = this.mContent.children[0].children.length, i = 0; i < n; ++i) {
+        $nodePoolManager.default.instance.putNode(this.mContent.children[0].children[0]);
       }
     }
     $nodePoolManager.default.instance.putNode(this.mContent.children[0]);
@@ -172,14 +157,11 @@ e.prototype.initScrollView = function (t, e, n) {
   }
   this._extra.startItemIndex = i;
   const o = new cc.Component.EventHandler();
-  o.component = "CustomScrollViewEx";
-  o.handler = "onScrolling";
+  o.component = 'CustomScrollViewEx';
+  o.handler = 'onScrolling';
   o.target = this.node;
-  o.customEventData = "";
-  this.mScrollView.scrollEvents.splice(
-    0,
-    this.mScrollView.scrollEvents.length,
-  );
+  o.customEventData = '';
+  this.mScrollView.scrollEvents.splice(0, this.mScrollView.scrollEvents.length);
   this.mScrollView.scrollEvents.push(o);
   this.recycle();
   this._usefulList = [];
@@ -191,11 +173,9 @@ e.prototype.initScrollView = function (t, e, n) {
   this._titleHeight = a.height;
   this._checkSize = this._itemHeight * this._initLen;
   this.mContent.height =
-    this._itemHeight * this._itemAmount +
-    this._titleHeight * this._extra.titleIdx.length;
+    this._itemHeight * this._itemAmount + this._titleHeight * this._extra.titleIdx.length;
   this.mContent.y =
-    this._itemHeight * this._extra.startItemIndex +
-    this.mScrollView.node.height / 2;
+    this._itemHeight * this._extra.startItemIndex + this.mScrollView.node.height / 2;
   $nodePoolManager.default.instance.putNode(r);
   $nodePoolManager.default.instance.putNode(a);
   for (const s = 0; s < this._extra.titleIdx.length; ++s) {
@@ -205,7 +185,7 @@ e.prototype.initScrollView = function (t, e, n) {
     this.addItem(s);
   }
 };
-Object.defineProperty(e.prototype, "children", {
+Object.defineProperty(e.prototype, 'children', {
   get: function () {
     return this.mContent.children;
   },
@@ -225,4 +205,4 @@ function e() {
   e._titleHeight = 0;
   return e;
 }
-exports.CustomScrollViewEx = m;
+export const CustomScrollViewEx = m;;

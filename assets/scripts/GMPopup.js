@@ -10,4 +10,4 @@ const l =
     }
     e.prototype.init = function () {};
   })($popupBase.PopupBase));
-exports.default = l;
+export default l;

@@ -1,7 +1,7 @@
 exports.StringBuffer = exports.StringUtil = void 0;
 (function (t) {
   function e(t) {
-    return null == t || "" === t;
+    return null == t || '' === t;
   }
 
   function n() {
@@ -24,7 +24,7 @@ exports.StringBuffer = exports.StringUtil = void 0;
     return t.replace(i, function (t, i) {
       const o = !1;
       const r = i;
-      if (i.includes("%")) {
+      if (i.includes('%')) {
         o = !0;
         r = i.slice(0, i.length - 1);
       }
@@ -32,17 +32,12 @@ exports.StringBuffer = exports.StringUtil = void 0;
         const a = e[r];
         if (o) {
           return (
-            "string" == typeof a && (a = a.split("|").map(Number)[n - 1]),
+            'string' == typeof a && (a = a.split('|').map(Number)[n - 1]),
             (a *= 100),
-            (a = Math.round(100 * a) / 100) % 1 == 0
-              ? Math.floor(a) + "%"
-              : a + "%"
+            (a = Math.round(100 * a) / 100) % 1 == 0 ? Math.floor(a) + '%' : a + '%'
           );
         } else {
-          return (
-            "string" == typeof a && (a = a.split("|").map(Number)[n - 1]),
-            a
-          );
+          return ('string' == typeof a && (a = a.split('|').map(Number)[n - 1]), a);
         }
       }
       return t;
@@ -50,14 +45,14 @@ exports.StringBuffer = exports.StringUtil = void 0;
   };
   t.transRichText = function (t, e) {
     if (void 0 === e) {
-      e = "#69FF3A";
+      e = '#69FF3A';
     }
     return (
-      "<outline color=black width=1>" +
+      '<outline color=black width=1>' +
       t.replace(/(\d+%)|(\d+\u79d2)|(\d+)/g, function (t) {
-        return "<color=" + e + ">" + t + "</color>";
+        return '<color=' + e + '>' + t + '</color>';
       }) +
-      "</color>"
+      '</color>'
     );
   };
   t.isEmpty = e;
@@ -72,7 +67,7 @@ exports.StringBuffer = exports.StringUtil = void 0;
     return !n.apply(void 0, t);
   };
   t.versionCompare = function (t, e) {
-    for (const n = t.split("."), i = e.split("."), o = 0; o < n.length; o++) {
+    for (const n = t.split('.'), i = e.split('.'), o = 0; o < n.length; o++) {
       if (null == i[o]) {
         return 1;
       }
@@ -84,14 +79,8 @@ exports.StringBuffer = exports.StringUtil = void 0;
   };
   t.copyObj = function t(e) {
     let n;
-    for (let i in ((n =
-      "[object Array]" === Object.prototype.toString.call(e) ? [] : {}),
-    e))
-      null == e[i]
-        ? (n[i] = e[i])
-        : "object" == typeof e[i]
-          ? (n[i] = t(e[i]))
-          : (n[i] = e[i]);
+    for (let i in ((n = '[object Array]' === Object.prototype.toString.call(e) ? [] : {}), e))
+      null == e[i] ? (n[i] = e[i]) : 'object' == typeof e[i] ? (n[i] = t(e[i])) : (n[i] = e[i]);
     return n;
   };
   t.strLenLimit = function (t, e, n) {
@@ -99,7 +88,7 @@ exports.StringBuffer = exports.StringUtil = void 0;
       e = 8;
     }
     if (void 0 === n) {
-      n = "...";
+      n = '...';
     }
     const i = t;
     if (t.length > e) {
@@ -110,7 +99,7 @@ exports.StringBuffer = exports.StringUtil = void 0;
   };
 })(exports.StringUtil || (exports.StringUtil = {}));
 t.prototype.toString = function () {
-  return this._strings.join("");
+  return this._strings.join('');
 };
 t.prototype.append = function (t) {
   this._strings.push(t);

@@ -4,7 +4,7 @@ import $md5 from './Md5';
 import $stringUtil from './StringUtil';
 import $typeUtil from './TypeUtil';
 import $workerManager from './WorkerManager';
-exports.SqlUtil = void 0;
+export const SqlUtil = void 0;
 t._tempData = {};
 t._tempKeys = [];
 t._userKeys = null;
@@ -21,11 +21,11 @@ t.addUserKey = function (t) {
   if (this._userKeys) {
     //
   } else {
-    this._userKeys = this.get("user_save_keys", []);
+    this._userKeys = this.get('user_save_keys', []);
   }
   if (-1 == this._userKeys.indexOf(t)) {
     this._userKeys.push(t);
-    this.set("user_save_keys", this._userKeys);
+    this.set('user_save_keys', this._userKeys);
   }
 };
 t.getString = function (t) {
@@ -52,7 +52,7 @@ t.remove = function (t) {
     t = $md5.md5(t);
     cc.sys.localStorage.removeItem(t);
   } else {
-    $logger.Logger.error("存储的key不能为空");
+    $logger.Logger.error('存储的key不能为空');
   }
 };
 t.get = function (t, e) {
@@ -67,7 +67,7 @@ t.get = function (t, e) {
         n = null;
       }
     }
-    if (n && -1 !== n.indexOf("yzllVal")) {
+    if (n && -1 !== n.indexOf('yzllVal')) {
       return JSON.parse(n).yzllVal;
     }
     if (null == e) {
@@ -83,19 +83,19 @@ t.get = function (t, e) {
       return Number(n);
     }
     if ($typeUtil.TypeUtil.isBoolean(e)) {
-      return "true" == n;
+      return 'true' == n;
     }
     if ($typeUtil.TypeUtil.isObject(e)) {
       try {
         return JSON.parse(n);
       } catch (t) {
-        $logger.Logger.error("解析数据失败,str=" + n);
+        $logger.Logger.error('解析数据失败,str=' + n);
         return e;
       }
     }
     return n;
   }
-  $logger.Logger.error("存储的key不能为空");
+  $logger.Logger.error('存储的key不能为空');
 };
 t.set = function (t, e) {};
 t.clearUserData = function () {
@@ -103,7 +103,7 @@ t.clearUserData = function () {
     if (this._userKeys) {
       //
     } else {
-      this._userKeys = this.get("user_save_keys", []);
+      this._userKeys = this.get('user_save_keys', []);
     }
     for (const t = 0; t < this._userKeys.length; t++) {
       this.remove(this._userId + this._userKeys[t]);
@@ -133,7 +133,7 @@ t.setUserData = function (t, e) {
 t.init = function (t) {
   this._userId = t;
 };
-Object.defineProperty(t, "iv", {
+Object.defineProperty(t, 'iv', {
   get: function () {
     if (null == this._iv) {
       this._iv = $md5.md5(yzll.gameConfig.gid);
@@ -143,7 +143,7 @@ Object.defineProperty(t, "iv", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t, "key", {
+Object.defineProperty(t, 'key', {
   get: function () {
     if (null == this._key) {
       this._key = $md5.md5(yzll.gameConfig.name);
@@ -155,4 +155,4 @@ Object.defineProperty(t, "key", {
 });
 function t() {}
 const p = t;
-exports.SqlUtil = p;
+export const SqlUtil = p;

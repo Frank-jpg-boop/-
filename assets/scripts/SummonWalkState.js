@@ -4,7 +4,7 @@ import $state from './State';
 import $actorEnum from './ActorEnum';
 import $attrEnum from './AttrEnum';
 let i;
-exports.SummonWalkState = void 0;
+export const SummonWalkState = void 0;
 e.prototype.end = function () {
   this._context.moveDir = null;
   this._curFindTarget = null;
@@ -45,10 +45,7 @@ e.prototype.updateFinderPos = function (t) {
 };
 e.prototype.updateFinderMove = function (t) {
   if (this._path && !this._context.isRepeling) {
-    if (
-      this._pathTargetPos &&
-      this._pathTargetPos.fuzzyEquals(this._context.pathPos, 0.1)
-    ) {
+    if (this._pathTargetPos && this._pathTargetPos.fuzzyEquals(this._context.pathPos, 0.1)) {
       this._context.setPos(this._pathTargetPos, !0);
       this._context.updatePathData();
       this._pathTargetPos = null;
@@ -73,12 +70,10 @@ e.prototype.updateFinder = function (t, e, n) {
     lineId: e,
     pointId: n,
   };
-  if ("" == o.lineId && "" == o.pointId) {
+  if ('' == o.lineId && '' == o.pointId) {
     //
   } else {
-    this._path = $battleMgr.default.instance
-      .getCurScene()
-      .level.path.findPathPoss(i, o);
+    this._path = $battleMgr.default.instance.getCurScene().level.path.findPathPoss(i, o);
   }
 };
 e.prototype.updateFindTarget = function () {
@@ -91,8 +86,7 @@ e.prototype.update = function (t) {
   if (this._curFindTarget && !this._curFindTarget.isDead()) {
     this._autoFindPathTime -= t;
     this._autoFindPathTime <= 0 &&
-      ((this._autoFindPathTime = this._autoFindPathTimer),
-      this.updateFindTarget());
+      ((this._autoFindPathTime = this._autoFindPathTimer), this.updateFindTarget());
     this.updateFinderMove(t);
   } else {
     this._context.changeState($actorEnum.EActorStateType.IDLE);
@@ -115,4 +109,4 @@ function e(e) {
   return n;
 }
 const u = e;
-exports.SummonWalkState = u;
+export const SummonWalkState = u;

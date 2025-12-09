@@ -26,24 +26,24 @@ const P = new cc.Vec3();
 const A = new cc.Rect();
 const w = new cc.Rect();
 (function (t) {
-  t[(t.HORIZONTAL = 0)] = "HORIZONTAL";
-  t[(t.VERTICAL = 1)] = "VERTICAL";
+  t[(t.HORIZONTAL = 0)] = 'HORIZONTAL';
+  t[(t.VERTICAL = 1)] = 'VERTICAL';
 })(a || (a = {}));
 d(a);
 (function (t) {
-  t[(t.RECYCLE = 0)] = "RECYCLE";
-  t[(t.PRELOAD = 1)] = "PRELOAD";
+  t[(t.RECYCLE = 0)] = 'RECYCLE';
+  t[(t.PRELOAD = 1)] = 'PRELOAD';
 })(s || (s = {}));
 d(s);
 function t() {
   this.prefab = null;
-  this.identifier = "";
-  this.comp = "";
+  this.identifier = '';
+  this.comp = '';
 }
-const C = __decorate([l("_yx_editor_register_cell_info")], t);
+const C = __decorate([l('_yx_editor_register_cell_info')], t);
 e.ZERO = new e(0, 0);
 e.prototype.toString = function () {
-  return this.section + " - " + this.item;
+  return this.section + ' - ' + this.item;
 };
 e.prototype.set = function (t) {
   this.section = t.section;
@@ -55,7 +55,7 @@ e.prototype.equals = function (t) {
 e.prototype.clone = function () {
   return new e(this.section, this.item);
 };
-Object.defineProperty(e.prototype, "row", {
+Object.defineProperty(e.prototype, 'row', {
   get: function () {
     return this.item;
   },
@@ -77,17 +77,7 @@ const M = e;
 exports.YXIndexPath = M;
 e.ZERO = new e(0, 0, 0, 0);
 e.prototype.toString = function () {
-  return (
-    "[ " +
-    this.top +
-    ", " +
-    this.left +
-    ", " +
-    this.bottom +
-    ", " +
-    this.right +
-    " ]"
-  );
+  return '[ ' + this.top + ', ' + this.left + ', ' + this.bottom + ', ' + this.right + ' ]';
 };
 e.prototype.set = function (t) {
   this.top = t.top;
@@ -97,10 +87,7 @@ e.prototype.set = function (t) {
 };
 e.prototype.equals = function (t) {
   return (
-    this.top == t.top &&
-    this.left == t.left &&
-    this.bottom == t.bottom &&
-    this.right == t.right
+    this.top == t.top && this.left == t.left && this.bottom == t.bottom && this.right == t.right
   );
 };
 e.prototype.clone = function () {
@@ -277,7 +264,7 @@ e.prototype.getVisibleNodeIndexPath = function (t) {
     return null;
   }
 };
-Object.defineProperty(e.prototype, "visibleIndexPaths", {
+Object.defineProperty(e.prototype, 'visibleIndexPaths', {
   get: function () {
     const t = [];
     this.visibleNodesMap.forEach(function (e) {
@@ -290,11 +277,7 @@ Object.defineProperty(e.prototype, "visibleIndexPaths", {
   configurable: !0,
 });
 e.prototype.onStartInertiaScroll = function (t) {
-  const e = this.layout.targetOffset(
-    this,
-    t,
-    this._scroll_offset_on_touch_start,
-  );
+  const e = this.layout.targetOffset(this, t, this._scroll_offset_on_touch_start);
   if (e) {
     this.scrollView.scrollToOffset(e.offset, e.time);
     this.markForUpdateVisibleData();
@@ -309,9 +292,7 @@ e.prototype.onScrollTouchUp = function () {
   this.recycleInvisibleNodes();
 };
 e.prototype.onScrolling = function () {
-  this.markForUpdateVisibleData(
-    this.layout.shouldUpdateAttributesForBoundsChange(),
-  );
+  this.markForUpdateVisibleData(this.layout.shouldUpdateAttributesForBoundsChange());
   this._late_recycle_invisible_node = !0;
 };
 e.prototype.onScrollBegan = function () {};
@@ -319,10 +300,7 @@ e.prototype.update_preloadNodeIfNeeds = function () {
   if (
     this.mode === s.PRELOAD &&
     null != this.preloadIdx &&
-    !(
-      this.preloadIdx >= this.layout.attributes.length ||
-      this.preloadNodesLimitPerFrame <= 0
-    )
+    !(this.preloadIdx >= this.layout.attributes.length || this.preloadNodesLimitPerFrame <= 0)
   ) {
     for (const t = 0, e = !1; !e && t < this.preloadNodesLimitPerFrame; ) {
       const n = this.layout.attributes[this.preloadIdx];
@@ -390,10 +368,10 @@ e.prototype.update = function (t) {
   this.update_preloadNodeIfNeeds(t);
 };
 e.prototype.onDestroy = function () {
-  this.node.off("scroll-began", this.onScrollBegan, this);
-  this.node.off("scrolling", this.onScrolling, this);
-  this.node.off("touch-up", this.onScrollTouchUp, this);
-  this.node.off("scroll-ended", this.onScrollEnded, this);
+  this.node.off('scroll-began', this.onScrollBegan, this);
+  this.node.off('scrolling', this.onScrolling, this);
+  this.node.off('touch-up', this.onScrollTouchUp, this);
+  this.node.off('scroll-ended', this.onScrollEnded, this);
   this.visibleNodesMap.forEach(function (t) {
     if (t && t.isValid) {
       t.removeFromParent();
@@ -424,28 +402,27 @@ e.prototype.onDestroy = function () {
 e.prototype.onLoad = function () {
   for (
     const t = function (t) {
-              const n = e.registerCellForEditor[t];
-              e.register(
-                n.identifier,
-                function () {
-                  return cc.instantiate(n.prefab);
-                },
-                n.comp,
-              );
-            },
-          e = this,
-          n = 0;
+        const n = e.registerCellForEditor[t];
+        e.register(
+          n.identifier,
+          function () {
+            return cc.instantiate(n.prefab);
+          },
+          n.comp,
+        );
+      },
+      e = this,
+      n = 0;
     n < this.registerCellForEditor.length;
     n++
   ) {
     t(n);
   }
-  this.node.on("scroll-began", this.onScrollBegan, this);
-  this.node.on("scrolling", this.onScrolling, this);
-  this.node.on("touch-up", this.onScrollTouchUp, this);
-  this.node.on("scroll-ended", this.onScrollEnded, this);
-  this._scrollView._yxOnStartInertiaScroll =
-    this.onStartInertiaScroll.bind(this);
+  this.node.on('scroll-began', this.onScrollBegan, this);
+  this.node.on('scrolling', this.onScrolling, this);
+  this.node.on('touch-up', this.onScrollTouchUp, this);
+  this.node.on('scroll-ended', this.onScrollEnded, this);
+  this._scrollView._yxOnStartInertiaScroll = this.onStartInertiaScroll.bind(this);
 };
 e.prototype.scrollTo = function (t, e, n) {
   let i;
@@ -457,11 +434,7 @@ e.prototype.scrollTo = function (t, e, n) {
   }
   const o = this.layout.scrollTo(t, this);
   if (null == o) {
-    if (
-      null ===
-        (i = this.layout.layoutAttributesForItemAtIndexPath(t, this)) ||
-      void 0 === i
-    ) {
+    if (null === (i = this.layout.layoutAttributesForItemAtIndexPath(t, this)) || void 0 === i) {
       o = void 0;
     } else {
       o = i.frame.origin;
@@ -513,8 +486,7 @@ e.prototype.recycleInvisibleNodes = function (t) {
     n.y = 0.5 * (i.height - n.height) - o.position.y;
     if (0 == t.intersects(n)) {
       if (e.mode == s.PRELOAD) {
-        ((o.opacity = 0),
-          e.preloadNodesMap.set(a.attributes.indexPath.toString(), o));
+        ((o.opacity = 0), e.preloadNodesMap.set(a.attributes.indexPath.toString(), o));
       } else {
         e.pools.get(a.identifier).put(o);
       }
@@ -569,7 +541,7 @@ e.prototype.reloadVisibleCells = function (t) {
       r = this.cellForItemAt(o.indexPath, this);
     }
     if (null == r) {
-      throw new Error("需要实现 cellForItemAt 方法并确保正确的返回了节点");
+      throw new Error('需要实现 cellForItemAt 方法并确保正确的返回了节点');
     }
     const a = this.restoreCellNodeIfNeeds(r);
     this.applyLayoutAttributes(r, o);
@@ -587,9 +559,7 @@ e.prototype._reloadData = function () {
   const t = this;
   this._late_reload_data = !1;
   if (null == this.layout) {
-    throw new Error(
-      "YXCollectionView: 参数错误，请正确配置 layout 以确定布局方案",
-    );
+    throw new Error('YXCollectionView: 参数错误，请正确配置 layout 以确定布局方案');
   }
   this.scrollView.stopAutoScroll();
   this.pools.forEach(function (t) {
@@ -667,7 +637,7 @@ e.prototype.getVisibleCell = function (t) {
 e.prototype.getVisibleNode = function (t) {
   return this.visibleNodesMap.get(t.toString());
 };
-Object.defineProperty(e.prototype, "visibleCells", {
+Object.defineProperty(e.prototype, 'visibleCells', {
   get: function () {
     const t = [];
     this.visibleNodesMap.forEach(function (e) {
@@ -678,7 +648,7 @@ Object.defineProperty(e.prototype, "visibleCells", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "visibleNodes", {
+Object.defineProperty(e.prototype, 'visibleNodes', {
   get: function () {
     const t = [];
     this.visibleNodesMap.forEach(function (e) {
@@ -689,7 +659,7 @@ Object.defineProperty(e.prototype, "visibleNodes", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "visibleRect", {
+Object.defineProperty(e.prototype, 'visibleRect', {
   get: function () {
     const t = A;
     t.origin = this.scrollView.getScrollOffset();
@@ -710,9 +680,9 @@ e.prototype.dequeueReusableCell = function (t) {
   const e = this.pools.get(t);
   if (null == e) {
     throw new Error(
-      "YXCollectionView: 未注册标识符为 `" +
+      'YXCollectionView: 未注册标识符为 `' +
         t +
-        "` 的 cell，请先调用 YXCollectionView 的 register() 方法注册 cell 节点",
+        '` 的 cell，请先调用 YXCollectionView 的 register() 方法注册 cell 节点',
     );
   }
   const n = null;
@@ -720,9 +690,7 @@ e.prototype.dequeueReusableCell = function (t) {
     n = e.get();
   }
   if (null == n) {
-    (
-      (n = this.makers.get(t)()).getComponent(R) || n.addComponent(R)
-    ).identifier = t;
+    ((n = this.makers.get(t)()).getComponent(R) || n.addComponent(R)).identifier = t;
     n.on(S.TOUCH_END, this.onTouchItem, this);
   }
   return n;
@@ -735,21 +703,21 @@ e.prototype.register = function (t, e, n) {
   this.pools.set(t, i);
   this.makers.set(t, e);
 };
-Object.defineProperty(e.prototype, "_scrollView", {
+Object.defineProperty(e.prototype, '_scrollView', {
   get: function () {
     return this.scrollView;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "scrollView", {
+Object.defineProperty(e.prototype, 'scrollView', {
   get: function () {
     const t = this.node.getComponent(D);
     if (null == t) {
       t = this.node.addComponent(D);
     }
     if (null == t.content) {
-      const e = new m("com.yx.scroll.content");
+      const e = new m('com.yx.scroll.content');
       e.parent = t.node;
       e.setContentSize(this.node.getContentSize());
       t.content = e;
@@ -799,7 +767,7 @@ function e() {
   return e;
 }
 const B = (n = __decorate(
-  [l, h, p(-1), f("https://gitee.com/568071718/creator-collection-view-doc")],
+  [l, h, p(-1), f('https://gitee.com/568071718/creator-collection-view-doc')],
   e,
 ));
 exports.YXCollectionView = B;

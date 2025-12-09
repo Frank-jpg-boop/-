@@ -5,19 +5,20 @@ import $componentBase from './ComponentBase';
 import $resLoader from './ResLoader';
 import $frameEnum from './FrameEnum';
 let i;
-exports.PopupBase = exports.AnimType = void 0;
+export const PopupBase = exports.AnimType = void 0;;
 let c;
 const m = cc._decorator;
 const y = m.ccclass;
 const _ = m.property;
-!(function (t) {
-  t[(t.NONE = 0)] = "NONE";
-  t[(t.SCALE = 1)] = "SCALE";
-  t[(t.FADE = 2)] = "FADE";
-  t[(t.CUSTOM = 3)] = "CUSTOM";
-  t[(t.SCALE_EASING = 4)] = "SCALE_EASING";
-  t[(t.ANIMATION_CLIP = 5)] = "ANIMATION_CLIP";
-})((c = exports.AnimType || (exports.AnimType = {})));
+export const AnimType = {
+  NONE: 0,
+  SCALE: 1,
+  FADE: 2,
+  CUSTOM: 3,
+  SCALE_EASING: 4,
+  ANIMATION_CLIP: 5
+};
+let c = AnimType;
 e.prototype.updateAlignment = function () {
   if (this.align) {
     //
@@ -112,10 +113,7 @@ e.prototype._hide = function (t) {
   if (void 0 === t) {
     t = !0;
   }
-  $eventManager.EventManager.instance.emit(
-    $appProxy.AppEvent.POPUP_HIDE,
-    this._popupName,
-  );
+  $eventManager.EventManager.instance.emit($appProxy.AppEvent.POPUP_HIDE, this._popupName);
   return this.hideAnim && t
     ? new Promise(function (t) {
         e.onHideAnim()
@@ -153,7 +151,7 @@ e.prototype._scaleAnim = function () {
           scale: 1,
         },
         {
-          easing: "backOut",
+          easing: 'backOut',
           onUpdate: function (e) {
             if (t._bgNode) {
               t._bgNode.scale = 1 / e.scale;
@@ -178,7 +176,7 @@ e.prototype._scaleEasingAnim = function () {
           scale: 1,
         },
         {
-          easing: "backOut",
+          easing: 'backOut',
         },
       )
       .call(function () {
@@ -208,10 +206,10 @@ e.prototype.onLoad = function () {
   t.prototype.onLoad.call(this);
   const n = cc.view.getVisibleSize();
   if (this.transBack) {
-    this._bgNode = new cc.Node("BgNode");
+    this._bgNode = new cc.Node('BgNode');
     const i = this._bgNode.addComponent(cc.Sprite);
     $resLoader.ResLoader.loadAsset({
-      path: "textures/transback",
+      path: 'textures/transback',
       type: cc.SpriteFrame,
       bundleName: $frameEnum.Frame.EBundleName.RES,
     })
@@ -236,14 +234,14 @@ e.prototype.onLoad = function () {
     this.node.addComponent(cc.BlockInputEvents);
   }
 };
-Object.defineProperty(e.prototype, "popupName", {
+Object.defineProperty(e.prototype, 'popupName', {
   get: function () {
     return this._popupName;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "fullScreen", {
+Object.defineProperty(e.prototype, 'fullScreen', {
   get: function () {
     return this._fullScreen;
   },
@@ -265,7 +263,7 @@ function e() {
   e.closeAnimChip = null;
   e.closeTime = 0.1;
   e._fullScreen = !1;
-  e._popupName = "";
+  e._popupName = '';
   e.nWidgerts = [];
   e.bannerPosition = null;
   e.nativePosition = null;
@@ -276,4 +274,4 @@ function e() {
   e._showComplete = !1;
   return e;
 }
-exports.PopupBase = g;
+export const PopupBase = g;;

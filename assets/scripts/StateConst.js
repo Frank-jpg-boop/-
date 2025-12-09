@@ -1,5 +1,5 @@
-exports.EStateConst = void 0;
-exports.EStateConst = {
+export const EStateConst = void 0;
+export const EStateConst = {
   Idle: 0,
   Stand: 1,
   Skill: 3,
@@ -9,5 +9,5 @@ exports.EStateConst = {
   Boss1Skill2: 7,
   Boss2Skill2: 8,
   Boss2Skill3: 9,
-  Boss2Skill4: 10
+  Boss2Skill4: 10,
 };

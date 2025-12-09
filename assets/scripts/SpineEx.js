@@ -7,10 +7,10 @@ sp &&
     const e = new sp.SkeletonData();
     cc.js.mixin(e, t);
     const n = Date.now();
-    e._uuid = t._uuid + "_" + n + "_copy";
+    e._uuid = t._uuid + '_' + n + '_copy';
     for (const i = e.textureNames, o = [], r = 0; r < i.length; r++) {
-      e.atlasText = e.atlasText.replace(i[r], "copy_" + i[r]);
-      o.push("copy_" + i[r]);
+      e.atlasText = e.atlasText.replace(i[r], 'copy_' + i[r]);
+      o.push('copy_' + i[r]);
     }
     e.textureNames = o;
     if (e.init) {

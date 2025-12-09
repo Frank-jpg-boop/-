@@ -2,7 +2,7 @@ import $randomUtil from './RandomUtil';
 import $state from './State';
 import $actorEnum from './ActorEnum';
 let i;
-exports.Enemy_112_Atk = void 0;
+export const Enemy_112_Atk = void 0;
 e.prototype.update = function () {};
 e.prototype.attack = function (t) {
   const e = this;
@@ -12,7 +12,7 @@ e.prototype.attack = function (t) {
   n.x += $randomUtil.RandomUtil.randomInt(-50, 50);
   this._context.playAnimAttack(
     function (i) {
-      if ("chong" == i) {
+      if ('chong' == i) {
         cc.tween(e._context.node)
           .to(
             0.3,
@@ -21,7 +21,7 @@ e.prototype.attack = function (t) {
               y: n.y,
             },
             {
-              easing: "sineIn",
+              easing: 'sineIn',
               onUpdate: function () {
                 e._context.setPos(e._context.node.getPosition());
               },
@@ -29,7 +29,7 @@ e.prototype.attack = function (t) {
           )
           .start();
       }
-      if ("atk" == i) {
+      if ('atk' == i) {
         e._context.attackHit(t);
       }
     },
@@ -47,4 +47,4 @@ function e(e) {
   return n;
 }
 const c = e;
-exports.Enemy_112_Atk = c;
+export const Enemy_112_Atk = c;

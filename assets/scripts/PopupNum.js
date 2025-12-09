@@ -22,4 +22,4 @@ function e() {
   e.anim = null;
   return e;
 }
-exports.default = u;
+export default u;

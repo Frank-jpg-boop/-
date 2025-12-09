@@ -22,7 +22,7 @@ e.prototype.init = function (t) {
   this._headOffsetY = t;
   this.node.active = !1;
 };
-Object.defineProperty(e.prototype, "headOffsetY", {
+Object.defineProperty(e.prototype, 'headOffsetY', {
   get: function () {
     return this._headOffsetY;
   },
@@ -35,4 +35,4 @@ function e() {
   e._headOffsetY = 0;
   return e;
 }
-exports.default = l;
+export default l;

@@ -13,16 +13,16 @@ e.prototype.onClickBtnClickTouch = function () {
     this._isTypewriter = !1;
     this.unscheduleAllCallbacks();
     this.lDialog.string = this._typewriterDesc;
-    const t = this.nDialog.getChildByName("Down");
+    const t = this.nDialog.getChildByName('Down');
     t.active = !0;
-    $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_Click");
+    $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_Click');
     $animUtils.AnimUtil.floatAnim(t, 0.3, -5);
     if (this._descs.length <= 0) {
       this.nTouchLock.active = !1;
     }
   } else {
     if (this._descs.length > 0) {
-      $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_Click");
+      $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_Click');
       this.showDialog(this._descs.shift(), !1);
     }
   }
@@ -32,13 +32,13 @@ e.prototype.showDialog = function (t, e) {
   if (void 0 === e) {
     e = !0;
   }
-  this.lDialog.string = "";
+  this.lDialog.string = '';
   this.nDialog.active = !0;
-  const i = this.nDialog.getChildByName("Down");
+  const i = this.nDialog.getChildByName('Down');
   const o = function () {
     const e = 0;
     const o = t.length;
-    const r = "";
+    const r = '';
     if (o > 0) {
       n._isTypewriter = !0;
     }
@@ -121,8 +121,8 @@ e.prototype.initView = function () {
     this._data.onClickTarget,
     this._data.eventCaller,
   ).then(function () {
-    if ("" != t._data.cfg.text) {
-      t._descs = t._data.cfg.text.split("|next|");
+    if ('' != t._data.cfg.text) {
+      t._descs = t._data.cfg.text.split('|next|');
       t.showDialog(t._descs.shift());
     } else {
       t.nTouchLock.active = !1;
@@ -175,9 +175,9 @@ function e() {
   e.lDialog = null;
   e.nTouchLock = null;
   e._isTypewriter = !1;
-  e._typewriterDesc = "";
+  e._typewriterDesc = '';
   e._descs = [];
   e._data = null;
   return e;
 }
-exports.default = _;
+export default _;

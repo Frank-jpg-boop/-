@@ -16,7 +16,7 @@ const p =
       const n = this;
       this._isAttackSkill = Math.random() < Number(this._cfg.val1);
       this._spCtrl.playAnim(
-        this._isAttackSkill ? "skill" : "atk",
+        this._isAttackSkill ? 'skill' : 'atk',
         1,
         !1,
         function () {
@@ -35,8 +35,7 @@ const p =
     };
     e.prototype.getHurt = function () {
       const t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
-      const e =
-        Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
+      const e = Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
       if (e) {
         t *= this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).value;
       }
@@ -52,4 +51,4 @@ const p =
       };
     };
   })($enemyBase.default));
-exports.default = p;
+export default p;

@@ -9,7 +9,7 @@ const c =
       e._peopleId = 0;
       return e;
     }
-    Object.defineProperty(e.prototype, "peopleId", {
+    Object.defineProperty(e.prototype, 'peopleId', {
       get: function () {
         return this._peopleId;
       },
@@ -20,4 +20,4 @@ const c =
       configurable: !0,
     });
   })(cc.Component));
-exports.default = c;
+export default c;

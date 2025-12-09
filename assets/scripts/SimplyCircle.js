@@ -1,5 +1,5 @@
 import $simplyVec2 from './SimplyVec2';
-Object.defineProperty(t.prototype, "center", {
+Object.defineProperty(t.prototype, 'center', {
   get: function () {
     return new $simplyVec2.default(this.x, this.y);
   },
@@ -15,4 +15,4 @@ function t(t, e, n) {
   this.radius = n;
 }
 const o = t;
-exports.default = o;
+export default o;

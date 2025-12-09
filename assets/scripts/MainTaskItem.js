@@ -24,9 +24,7 @@ e.prototype.onClickBtnThis = function () {
           itemNum: n,
           layerType: 1,
           isTop: !0,
-          startWorldPos: $nodeUtil.default.nodeWorldPos(
-            t.nReward.getChildByName("Icon"),
-          ),
+          startWorldPos: $nodeUtil.default.nodeWorldPos(t.nReward.getChildByName('Icon')),
           onComplete: null,
         };
         $eventManager.EventManager.instance.emit(
@@ -38,28 +36,16 @@ e.prototype.onClickBtnThis = function () {
   } else {
     const n = $cfg.default.instance.dataTask.getById(e.curTaskId);
     if (1 == n.goto) {
-      $eventManager.EventManager.instance.emit(
-        $homeEnum.EHomeEvent.GOTO_PAGE,
-        2,
-      );
+      $eventManager.EventManager.instance.emit($homeEnum.EHomeEvent.GOTO_PAGE, 2);
     } else {
       if (2 == n.goto) {
-        $eventManager.EventManager.instance.emit(
-          $homeEnum.EHomeEvent.GOTO_PAGE,
-          3,
-        );
+        $eventManager.EventManager.instance.emit($homeEnum.EHomeEvent.GOTO_PAGE, 3);
       } else {
         if (3 == n.goto) {
-          $eventManager.EventManager.instance.emit(
-            $homeEnum.EHomeEvent.GOTO_PAGE,
-            1,
-          );
+          $eventManager.EventManager.instance.emit($homeEnum.EHomeEvent.GOTO_PAGE, 1);
         } else {
           4 == n.goto &&
-            $eventManager.EventManager.instance.emit(
-              $homeEnum.EHomeEvent.GOTO_PAGE,
-              0,
-            );
+            $eventManager.EventManager.instance.emit($homeEnum.EHomeEvent.GOTO_PAGE, 0);
         }
       }
     }
@@ -75,24 +61,23 @@ e.prototype.updateView = function () {
     const n = t.curTaskCount;
     const i = t.curTaskMaxCount;
     const o =
-      "<b><outline  color = black width = 2>" +
+      '<b><outline  color = black width = 2>' +
       e.des +
-      "\n(<color = " +
-      (n >= i ? "#00ff00" : "#ff0000") +
-      ">" +
+      '\n(<color = ' +
+      (n >= i ? '#00ff00' : '#ff0000') +
+      '>' +
       Math.min(n, i) +
-      "</c>/" +
+      '</c>/' +
       i +
-      ")</outline></b>";
+      ')</outline></b>';
     this.lDesc.string = o;
     this.nComplete.active = n >= i;
-    const r = e.reward.split("_").map(Number);
+    const r = e.reward.split('_').map(Number);
     const s = r[0];
     const c = r[1];
-    this.nReward.getChildByName("Num").getComponent(cc.Label).string =
-      c.toString();
+    this.nReward.getChildByName('Num').getComponent(cc.Label).string = c.toString();
     $resLoader.ResLoader.setSpritFrame(
-      this.nReward.getChildByName("Icon").getComponent(cc.Sprite),
+      this.nReward.getChildByName('Icon').getComponent(cc.Sprite),
       $frameEnum.Frame.EBundleName.RES,
       $itemDataProxy.itemDataProxy.getItemIconPath(s),
     );
@@ -108,7 +93,7 @@ e.prototype.onEnable = function () {
           x: 145,
         },
         {
-          easing: "sineIn",
+          easing: 'sineIn',
         },
       )
       .start();
@@ -138,4 +123,4 @@ function e() {
   e.nView = null;
   return e;
 }
-exports.default = g;
+export default g;

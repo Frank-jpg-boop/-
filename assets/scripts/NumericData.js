@@ -1,5 +1,5 @@
 import $numeric from './Numeric';
-exports.NumericData = void 0;
+export const NumericData = void 0;
 t.prototype.clear = function () {
   this.propertyMap.forEach(function (t) {
     t.clear();
@@ -25,4 +25,4 @@ function t() {
   this.propertyMap = new Map();
 }
 const o = t;
-exports.NumericData = o;
+export const NumericData = o;

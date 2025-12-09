@@ -32,22 +32,22 @@ e.prototype.checkCollision = function () {
   }
   for (
     let h,
-        f = function (t) {
-          const e = d._collisionIds[t];
-          if (
-            n.some(function (t) {
-              return t.unitId == e;
-            })
-          ) {
-            //
-          } else {
-            d._collisionIds.splice(t, 1);
-            t--;
-          }
-          h = t;
-        },
-        d = this,
-        m = 0;
+      f = function (t) {
+        const e = d._collisionIds[t];
+        if (
+          n.some(function (t) {
+            return t.unitId == e;
+          })
+        ) {
+          //
+        } else {
+          d._collisionIds.splice(t, 1);
+          t--;
+        }
+        h = t;
+      },
+      d = this,
+      m = 0;
     m < this._collisionIds.length;
     ++m
   ) {
@@ -73,16 +73,12 @@ e.prototype.checkCollision = function () {
             this._ownerSkill.addRotationSpeedBuff();
           }
           y.beHurt(_);
-          const g = this._ownerSkill.getAttribute(
-            $attrEnum.E_SkillAttrType.EXTRA_ATTR_3,
-          ).value;
+          const g = this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_3).value;
           if (g > 0) {
             y.beRepel(this._owner.node.getPosition(), g);
           }
           if (
-            this._ownerSkill.getAttribute(
-              $attrEnum.E_SkillAttrType.EXTRA_ATTR_7,
-            ).value > 0 &&
+            this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_7).value > 0 &&
             !y.isDead()
           ) {
             y.buff.add(
@@ -96,9 +92,7 @@ e.prototype.checkCollision = function () {
                 onRemove: null,
                 isDebuff: !0,
               },
-              this._ownerSkill.getAttribute(
-                $attrEnum.E_SkillAttrType.EXTRA_ATTR_5,
-              ).value,
+              this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_5).value,
             );
           }
         }
@@ -114,9 +108,7 @@ e.prototype.onUpdate = function () {
   this.checkCollision();
 };
 e.prototype.updateSize = function () {
-  const t = this._ownerSkill.getAttribute(
-    $attrEnum.E_SkillAttrType.EXTRA_ATTR_2,
-  ).value;
+  const t = this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2).value;
   this.recktCollider.node.scale = t;
   this.nView.scale = t;
 };
@@ -129,10 +121,7 @@ e.prototype.setAngle = function (t) {
     this._angle = t;
     const e = (this._angle * Math.PI) / 180;
     const n = cc.v2(Math.cos(e), Math.sin(e));
-    const i = this._owner.node
-      .getPosition()
-      .add(cc.v2(0, 50))
-      .add(n.mul(this._radius));
+    const i = this._owner.node.getPosition().add(cc.v2(0, 50)).add(n.mul(this._radius));
     this.node.setPosition(i);
     this.nView.angle = this._angle;
     this.recktCollider.node.angle = this._angle;
@@ -155,4 +144,4 @@ function e() {
   e._collisionIds = [];
   return e;
 }
-exports.default = y;
+export default y;

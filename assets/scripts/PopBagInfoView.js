@@ -16,7 +16,7 @@ e.prototype.playHideAnim = function () {
         x: 210,
       },
       {
-        easing: "sineOut",
+        easing: 'sineOut',
       },
     )
     .delay(0.2)
@@ -38,11 +38,11 @@ e.prototype.playShowAnim = function () {
   const e = this._queueReward.dequeue();
   const n = $cfg.default.instance.dataReward.getById(e);
   this.lName.string = n.name;
-  this.lDesc.string = n.info.replace("|val|", n.changeID.toString());
+  this.lDesc.string = n.info.replace('|val|', n.changeID.toString());
   $resLoader.ResLoader.setSpritFrame(
     this.spIcon,
     $frameEnum.Frame.EBundleName.RES,
-    "textures/atlas/item_scene/" + n.spr,
+    'textures/atlas/item_scene/' + n.spr,
   );
   this.nBgView.children[0].active = 111 != n.type;
   this.nBgView.children[1].active = 111 == n.type;
@@ -53,14 +53,14 @@ e.prototype.playShowAnim = function () {
         x: -210,
       },
       {
-        easing: "sineIn",
+        easing: 'sineIn',
       },
     )
     .call(function () {
       if (111 == n.type) {
         t.spAnimCtrl.node.active = !0;
         t.spAnimCtrl.clearAnim();
-        t.spAnimCtrl.playAnim("appear", 1, !1, function () {
+        t.spAnimCtrl.playAnim('appear', 1, !1, function () {
           t.spAnimCtrl.node.active = !1;
         });
       }
@@ -89,4 +89,4 @@ function e() {
   e._isPlaying = !1;
   return e;
 }
-exports.default = d;
+export default d;

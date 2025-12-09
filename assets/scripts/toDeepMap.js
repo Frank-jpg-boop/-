@@ -1,8 +1,8 @@
-module.exports = function t(e) {
+export default function t(e) {
   const n = new Map();
   Object.keys(e).forEach(function (i) {
     const o = e[i];
-    if (null !== o && "object" == typeof o && !Array.isArray(o)) {
+    if (null !== o && 'object' == typeof o && !Array.isArray(o)) {
       return n.set(i, t(o));
     }
     if (
@@ -11,12 +11,9 @@ module.exports = function t(e) {
         return !(isNaN(e) || e <= 0);
       })(o)
     ) {
-      throw new Error(
-        'Could not add node at key "' + i + "\", make sure it's a valid node",
-        o,
-      );
+      throw new Error('Could not add node at key "' + i + '", make sure it\'s a valid node', o);
     }
     return n.set(i, Number(o));
   });
   return n;
-};
+}

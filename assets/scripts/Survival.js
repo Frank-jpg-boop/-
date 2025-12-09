@@ -28,7 +28,7 @@ e.prototype.onRemove = function () {
   t.prototype.onRemove.call(this);
 };
 e.prototype.onPlayerCollisionExit = function () {
-  $audioUtil.AudioUtil.stopEffect("lmtw_yx_SavePeople");
+  $audioUtil.AudioUtil.stopEffect('lmtw_yx_SavePeople');
   this._waitTime = 0;
   if (this._progress) {
     this._progress.hide();
@@ -46,16 +46,13 @@ e.prototype.onPlayerCollisionStay = function (t, e) {
     if (this._progress) {
       this._progress.hide();
     }
-    const n = $battleMgr.default.instance
-      .getCurScene()
-      .level.getRoomById(this.roomId)
-      .getGroundY();
+    const n = $battleMgr.default.instance.getCurScene().level.getRoomById(this.roomId).getGroundY();
     this.dropReward(n);
     this.rescueSurvival(n);
   }
 };
 e.prototype.onPlayerCollisionEnter = function () {
-  $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_SavePeople");
+  $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_SavePeople');
 };
 e.prototype.checkPlayerCollision = function (t, e) {
   return (
@@ -70,11 +67,11 @@ e.prototype.dropReward = function (t) {
   const e = this;
   const n = $cfg.default.instance.dataCons.getById(151).val;
   const i = [];
-  if ("" != n) {
-    n.split("|").forEach(function (t) {
-      const e = t.split("_");
+  if ('' != n) {
+    n.split('|').forEach(function (t) {
+      const e = t.split('_');
       const n = e[0];
-      const o = e[1].split("&").map(Number);
+      const o = e[1].split('&').map(Number);
       const r = o[0];
       const a = o[1];
       i.push({
@@ -98,8 +95,8 @@ e.prototype.dropReward = function (t) {
       areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.GOOD,
       areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
       parent: p.unitParent,
-      prefabName: "SceneGood",
-      unitClass: "SceneGood",
+      prefabName: 'SceneGood',
+      unitClass: 'SceneGood',
       initPos: h,
       initParam: {
         rewardId: s,
@@ -122,8 +119,8 @@ e.prototype.rescueSurvival = function (t) {
   this.nName.parent = this.nRescue;
   this.nName.setSiblingIndex(0);
   this.nWaitRescue.active = !1;
-  this.rescueSpAnimCtrl.playAnim("bide", 1, !0);
-  this.nRescue.getChildByName("RescueDialog").active = !0;
+  this.rescueSpAnimCtrl.playAnim('bide', 1, !0);
+  this.nRescue.getChildByName('RescueDialog').active = !0;
   const n = null;
   if (this.node.x > 0) {
     n = -1;
@@ -132,24 +129,21 @@ e.prototype.rescueSurvival = function (t) {
   }
   const i = this.node.x + 500 * n;
   const o = $battleMgr.default.instance.getCurScene().level;
-  $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_BeRescued");
+  $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_BeRescued');
   if (
     0 == $levelBattleData.levelBattleData.cfgStage.id &&
-    $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-      $guideDataProxy.EGuideStepId.G_10
+    $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_10
   ) {
     $eventManager.EventManager.instance.emit(
       $guideMgr.EGuideEvent.COMPLETE_GUIDE_STEP,
       $guideDataProxy.EGuideStepId.G_10,
     );
-    $globalPopupMgr.default.instance.showTips(
-      "【她在天台等你，快前往天台撤离点吧】",
-    );
+    $globalPopupMgr.default.instance.showTips('【她在天台等你，快前往天台撤离点吧】');
   }
   cc.tween(this.node)
     .delay(2)
     .call(function () {
-      e.rescueSpAnimCtrl.playAnim("run", 1, !0);
+      e.rescueSpAnimCtrl.playAnim('run', 1, !0);
     })
     .parallel(
       cc.tween().to(
@@ -158,7 +152,7 @@ e.prototype.rescueSurvival = function (t) {
           x: i,
         },
         {
-          easing: "sineIn",
+          easing: 'sineIn',
         },
       ),
       cc.tween().delay(2).to(1, {
@@ -171,8 +165,8 @@ e.prototype.rescueSurvival = function (t) {
       t.x += $randomUtil.RandomUtil.randomInt(-100, 100);
       e.node.setPosition(t);
       e.node.opacity = 255;
-      e.rescueSpAnimCtrl.playAnim("bide", 1, !0);
-      e.nRescue.getChildByName("RescueDialog").active = !1;
+      e.rescueSpAnimCtrl.playAnim('bide', 1, !0);
+      e.nRescue.getChildByName('RescueDialog').active = !1;
     })
     .start();
 };
@@ -181,20 +175,17 @@ e.prototype.onInit = function () {
   this.updateRoomId(this._initParam.roomId);
   this._waitTime = 0;
   this._waitTimer = $cfg.default.instance.dataReward.getById(999).checkTime;
-  $battleMgr.default.instance.createOtherNode(
-    "ProgressWaitItem",
-    function (e) {
-      t._progress = e.getComponent($progressWaitItem.default);
-      if (t._isRemove) {
-        t._progress.remove();
-        return void (t._progress = null);
-      }
-      t._progress.init();
-      t._progress.node.x = t.node.x;
-      t._progress.node.y = t.node.y + 100;
-    },
-  );
-  this.nName.parent = this.nWaitRescue.getChildByName("View");
+  $battleMgr.default.instance.createOtherNode('ProgressWaitItem', function (e) {
+    t._progress = e.getComponent($progressWaitItem.default);
+    if (t._isRemove) {
+      t._progress.remove();
+      return void (t._progress = null);
+    }
+    t._progress.init();
+    t._progress.node.x = t.node.x;
+    t._progress.node.y = t.node.y + 100;
+  });
+  this.nName.parent = this.nWaitRescue.getChildByName('View');
   this.nName.setSiblingIndex(0);
   const e = $cfg.default.instance.dataSurvivor.getById(Number(this.key));
   this.lName.string = e.name;
@@ -203,14 +194,14 @@ e.prototype.onInit = function () {
   this.nWaitRescue.active = !0;
   this.rescueSpAnimCtrl.init();
 };
-Object.defineProperty(e.prototype, "key", {
+Object.defineProperty(e.prototype, 'key', {
   get: function () {
     return this._initParam.key;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "isRescue", {
+Object.defineProperty(e.prototype, 'isRescue', {
   get: function () {
     return this._isRescue;
   },
@@ -231,4 +222,4 @@ function e() {
   e._isRescue = !1;
   return e;
 }
-exports.default = M;
+export default M;

@@ -3,15 +3,12 @@ import $state from './State';
 import $actorEnum from './ActorEnum';
 import $attrEnum from './AttrEnum';
 let i;
-exports.Enemy_112_Walk = void 0;
+export const Enemy_112_Walk = void 0;
 e.prototype.update = function (t) {
   const e = this._context.searchTarget();
   if (e && this._context.canAttackTarget(e)) {
     if (this._context.canAttack()) {
-      return void this._context.changeState(
-        $actorEnum.EActorStateType.ATTACK,
-        e.node,
-      );
+      return void this._context.changeState($actorEnum.EActorStateType.ATTACK, e.node);
     } else {
       return void this._context.changeState($actorEnum.EActorStateType.IDLE);
     }
@@ -65,4 +62,4 @@ function e(e) {
   return n;
 }
 const l = e;
-exports.Enemy_112_Walk = l;
+export const Enemy_112_Walk = l;

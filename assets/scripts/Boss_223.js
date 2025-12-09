@@ -37,7 +37,7 @@ const v =
         }
       }
       this._spCtrl.playAnim(
-        i ? "atk2" : "atk1",
+        i ? 'atk2' : 'atk1',
         1,
         !1,
         function () {
@@ -53,7 +53,7 @@ const v =
       );
     };
     e.prototype.attackHit = function (t) {
-      $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_TriangleHeadAtk");
+      $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_TriangleHeadAtk');
       if (t && t.isValid) {
         const e = t.getComponent($door.default);
         if (e && e.state != $door.EDoorState.DESTROY) {
@@ -71,16 +71,8 @@ const v =
       const n = $actorMgr.default.instance.getActor(
         $battleMgr.default.instance.getCurScene().playerId,
       );
-      if (
-        0 != $basicsProxy.basicsProxy.effectVolume &&
-        this._isTrigger &&
-        n &&
-        !n.isDead()
-      ) {
-        const i = Math.max(
-          0,
-          1 - this.node.position.sub(n.node.position).mag() / 1e3,
-        );
+      if (0 != $basicsProxy.basicsProxy.effectVolume && this._isTrigger && n && !n.isDead()) {
+        const i = Math.max(0, 1 - this.node.position.sub(n.node.position).mag() / 1e3);
         i = Math.min(1, i);
         this._sound.volume = i;
       } else {
@@ -92,10 +84,7 @@ const v =
           //
         } else {
           this._isShowBossTag = !0;
-          $eventManager.EventManager.instance.emit(
-            $battleEnum.EBattleEvent.LOOKAT_BOSS,
-            o,
-          );
+          $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.LOOKAT_BOSS, o);
         }
       }
     };
@@ -112,4 +101,4 @@ const v =
       t.prototype.onBossTrigger.call(this);
     };
   })($enemyBase.default));
-exports.default = v;
+export default v;

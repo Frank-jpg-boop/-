@@ -1,6 +1,6 @@
 import $util from './Util';
 let i;
-exports.ComponentBase = void 0;
+export const ComponentBase = void 0;
 const s = cc._decorator;
 const c = s.ccclass;
 const l =
@@ -11,7 +11,7 @@ const l =
       e._assets = [];
       return e;
     }
-    Object.defineProperty(e.prototype, "assets", {
+    Object.defineProperty(e.prototype, 'assets', {
       get: function () {
         return this._assets;
       },
@@ -54,8 +54,7 @@ const l =
       for (const n = 0; n < this._assets.length; ++n) {
         if (
           this._assets[n].name == t &&
-          $util.default.getClassName(e) ===
-            $util.default.getClassName(this._assets[n])
+          $util.default.getClassName(e) === $util.default.getClassName(this._assets[n])
         ) {
           return this._assets[n];
         }
@@ -63,4 +62,4 @@ const l =
       return null;
     };
   })(cc.Component));
-exports.ComponentBase = l;
+export const ComponentBase = l;

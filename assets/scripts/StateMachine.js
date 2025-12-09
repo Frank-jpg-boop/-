@@ -1,4 +1,4 @@
-exports.StateMachine = void 0;
+export const StateMachine = void 0;
 t.prototype.changeState = function (t) {
   for (let e, n = [], i = 1; i < arguments.length; i++) {
     n[i - 1] = arguments[i];
@@ -11,9 +11,7 @@ t.prototype.changeState = function (t) {
     o._currentState.end();
   }
   if (!o._states.has(t)) {
-    console.error(
-      "状态" + t + "不存在。你是不是在调用addState的时候忘记添加了?",
-    );
+    console.error('状态' + t + '不存在。你是不是在调用addState的时候忘记添加了?');
     return null;
   }
   o._elapsedTimeInState = 0;
@@ -32,12 +30,7 @@ t.prototype.getState = function (t) {
   if (this._states.has(t)) {
     return this._states.get(t);
   } else {
-    return (
-      console.error(
-        "状态" + t + "不存在。你是不是在调用addState的时候忘记添加了?",
-      ),
-      null
-    );
+    return (console.error('状态' + t + '不存在。你是不是在调用addState的时候忘记添加了?'), null);
   }
 };
 t.prototype.update = function (t) {
@@ -48,21 +41,21 @@ t.prototype.update = function (t) {
 t.prototype.addState = function (t, e) {
   this._states.set(t, e);
 };
-Object.defineProperty(t.prototype, "previousState", {
+Object.defineProperty(t.prototype, 'previousState', {
   get: function () {
     return this._previousState;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "elapsedTimeInState", {
+Object.defineProperty(t.prototype, 'elapsedTimeInState', {
   get: function () {
     return this._elapsedTimeInState;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "currentState", {
+Object.defineProperty(t.prototype, 'currentState', {
   get: function () {
     return this._currentState;
   },
@@ -79,4 +72,4 @@ function t(t) {
   }
 }
 const i = t;
-exports.StateMachine = i;
+export const StateMachine = i;

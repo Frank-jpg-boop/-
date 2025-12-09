@@ -5,18 +5,15 @@ import $gridAreaDivisionMgr from './GridAreaDivisionMgr';
 import $actorEnum from './ActorEnum';
 import $attrEnum from './AttrEnum';
 let i;
-exports.Skill_111 = void 0;
+export const Skill_111 = void 0;
 e.prototype.searchTarget = function () {
   for (
     const t = this,
-          e = this._owner.node.getPosition(),
-          n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(
-            e,
-            this._cfg.edge,
-          ),
-          i = [],
-          o = 0,
-          r = n;
+      e = this._owner.node.getPosition(),
+      n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(e, this._cfg.edge),
+      i = [],
+      o = 0,
+      r = n;
     o < r.length;
     o++
   ) {
@@ -73,9 +70,9 @@ e.prototype.shootBullet = function (t, e) {
   c.y = i.level.getLayerPosY(i.level.findLayerByPos(c));
   $bulletMgr.default.instance.createBullet({
     parent: i.bulletParent,
-    prefabName: "Bullet111",
+    prefabName: 'Bullet111',
     initPos: o,
-    iconPath: "",
+    iconPath: '',
     bulletClass: $bullet111.default,
     onCreated: function (t) {
       t.shoot(n._owner, n, c);
@@ -112,4 +109,4 @@ function e() {
   return (null !== t && t.apply(this, arguments)) || this;
 }
 const p = e;
-exports.Skill_111 = p;
+export const Skill_111 = p;

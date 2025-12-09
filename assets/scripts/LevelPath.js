@@ -26,16 +26,15 @@ e.prototype.findPathPoss = function (t, e) {
     return i;
   }
   if (
-    "" != t.lineId &&
-    "" != e.lineId &&
-    (t.lineId === e.lineId ||
-      t.lineId.split("|").reverse().join("|") === e.lineId)
+    '' != t.lineId &&
+    '' != e.lineId &&
+    (t.lineId === e.lineId || t.lineId.split('|').reverse().join('|') === e.lineId)
   ) {
     i.push(e.pos);
     return i;
   }
-  if ("" != t.pointId && "" != e.pointId) {
-    if (this._lineMap.has(t.pointId + "|" + e.pointId)) {
+  if ('' != t.pointId && '' != e.pointId) {
+    if (this._lineMap.has(t.pointId + '|' + e.pointId)) {
       i.push(e.pos);
       return i;
     }
@@ -53,22 +52,16 @@ e.prototype.findPathPoss = function (t, e) {
     i.shift();
     return i;
   }
-  if ("" != t.pointId) {
+  if ('' != t.pointId) {
     const r = this._lineMap.get(e.lineId);
-    if (
-      r &&
-      (r.startPoint.pointId === t.pointId || r.endPoint.pointId === t.pointId)
-    ) {
+    if (r && (r.startPoint.pointId === t.pointId || r.endPoint.pointId === t.pointId)) {
       i.push(e.pos);
       return i;
     }
   }
-  if ("" != e.pointId) {
+  if ('' != e.pointId) {
     const a = this._lineMap.get(t.lineId);
-    if (
-      a &&
-      (a.startPoint.pointId === e.pointId || a.endPoint.pointId === e.pointId)
-    ) {
+    if (a && (a.startPoint.pointId === e.pointId || a.endPoint.pointId === e.pointId)) {
       i.push(e.pos);
       return i;
     }
@@ -90,11 +83,11 @@ e.prototype.findPathPoss = function (t, e) {
     h = l;
   }
   if (!p) {
-    console.error("point1 is null");
+    console.error('point1 is null');
     return i;
   }
   if (!h) {
-    console.error("point2 is null");
+    console.error('point2 is null');
     return i;
   }
   const f = null;
@@ -122,11 +115,11 @@ e.prototype.findPathPoss = function (t, e) {
     y = u;
   }
   if (!m) {
-    console.error("point3 is null");
+    console.error('point3 is null');
     return i;
   }
   if (!y) {
-    console.error("point4 is null");
+    console.error('point4 is null');
     return i;
   }
   const _ = null;
@@ -177,11 +170,7 @@ e.prototype.findPathPoss = function (t, e) {
       i.push(n._pointMap.get(t).pos);
     });
   }
-  if (
-    E &&
-    E.length > 0 &&
-    !this._pointMap.get(E[E.length - 1]).isInPoint(e.pos)
-  ) {
+  if (E && E.length > 0 && !this._pointMap.get(E[E.length - 1]).isInPoint(e.pos)) {
     i.push(e.pos);
   }
   return i.slice();
@@ -238,11 +227,7 @@ e.prototype.findPathLineByPos = function (t, e) {
   if (void 0 === e) {
     e = 8;
   }
-  for (
-    const n = Array.from(this._lineMap.keys()), i = [], o = 0;
-    o < n.length;
-    o++
-  ) {
+  for (const n = Array.from(this._lineMap.keys()), i = [], o = 0; o < n.length; o++) {
     const r = n[o];
     const a = this._lineMap.get(r);
     if (!i.includes(a.reverseLineId)) {
@@ -252,7 +237,7 @@ e.prototype.findPathLineByPos = function (t, e) {
       i.push(r);
     }
   }
-  return "";
+  return '';
 };
 e.prototype.findPathPointByPos = function (t, e) {
   if (void 0 === e) {
@@ -265,7 +250,7 @@ e.prototype.findPathPointByPos = function (t, e) {
       return r.pointId;
     }
   }
-  return "";
+  return '';
 };
 e.prototype.queryLine = function () {
   return Array.from(this._lineMap.values());
@@ -284,7 +269,7 @@ e.prototype.drawPath = function () {
     const n = cc.instantiate(t.pDrawPoint);
     n.setPosition(e.pos);
     n.parent = t.nDrawPoint;
-    n.getChildByName("EditNum").getComponent(cc.Label).string = e.pointId;
+    n.getChildByName('EditNum').getComponent(cc.Label).string = e.pointId;
   });
   this._lineMap.forEach(function (e) {
     const n = cc.instantiate(t.pDrawLine);
@@ -308,10 +293,8 @@ e.prototype.createLine = function (t, e, n) {
 };
 e.prototype.findLadderByPoint = function (t) {
   for (
-    const e = $unitMgr.UnitMgr.instance.queryUnit(
-              $gridAreaDivisionMgr.E_AreaObjectType.LADDER,
-            ),
-          n = 0;
+    const e = $unitMgr.UnitMgr.instance.queryUnit($gridAreaDivisionMgr.E_AreaObjectType.LADDER),
+      n = 0;
     n < e.length;
     ++n
   ) {
@@ -330,7 +313,7 @@ e.prototype.unlockPoint = function (t) {
   i.linkIds.forEach(function (t) {
     const r = e._pointMap.get(t);
     const a = Math.min(i.roomId, r.roomId);
-    const s = i.pointId + "|" + r.pointId;
+    const s = i.pointId + '|' + r.pointId;
     if (
       !e._lineMap.has(s) &&
       n.getRoomById(a).isUnlock &&
@@ -340,7 +323,7 @@ e.prototype.unlockPoint = function (t) {
       e._lineMap.set(s, c);
       i.addLine(s);
       i.addDijstraObj(r.pointId, c.len);
-      const l = r.pointId + "|" + i.pointId;
+      const l = r.pointId + '|' + i.pointId;
       const u = e.createLine(l, r, i);
       e._lineMap.set(l, u);
       r.addLine(l);
@@ -381,10 +364,9 @@ e.prototype.init = function (t) {
       if (
         n.getRoomById(a).isUnlock &&
         i &&
-        (t.roomId == r.roomId ||
-          e.isUnlockLadder(o, n.getRoomById(r.roomId).exData))
+        (t.roomId == r.roomId || e.isUnlockLadder(o, n.getRoomById(r.roomId).exData))
       ) {
-        const s = t.pointId + "|" + r.pointId;
+        const s = t.pointId + '|' + r.pointId;
         const c = e.createLine(s, t, r);
         e._lineMap.set(s, c);
         t.addLine(s);
@@ -409,4 +391,4 @@ function e() {
   e._dijstra = null;
   return e;
 }
-exports.default = m;
+export default m;

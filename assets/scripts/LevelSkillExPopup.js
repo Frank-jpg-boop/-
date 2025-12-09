@@ -19,9 +19,9 @@ e.prototype.onClickRefresh = function () {
   } else {
     $adMgr.AdMgr.instance.showVideoAd({
       id: 1,
-      eventId: "AD_Random1",
+      eventId: 'AD_Random1',
       eventData: {
-        userA: "" + $levelBattleData.levelBattleData.cfgStage.id,
+        userA: '' + $levelBattleData.levelBattleData.cfgStage.id,
       },
       success: function () {
         $levelBattleData.levelBattleData.data.skillExRefreshCount++;
@@ -39,9 +39,9 @@ e.prototype.onClickAllSelect = function () {
   const t = this;
   $adMgr.AdMgr.instance.showVideoAd({
     id: 1,
-    eventId: "AD_All",
+    eventId: 'AD_All',
     eventData: {
-      userA: "" + $levelBattleData.levelBattleData.cfgStage.id,
+      userA: '' + $levelBattleData.levelBattleData.cfgStage.id,
     },
     success: function () {
       $levelBattleData.levelBattleData.data.skillExAllSelectCount++;
@@ -61,10 +61,7 @@ e.prototype.refreshSkillEx = function (t) {
   this.nBtnView.active = !1;
   this._skillExs = $skillMgr.SkillMgr.instance.refreshSkillExIds(t);
   this.nNull.active = 0 == this._skillExs.length;
-  for (
-    const n = this._skillExs.length - this.nSkillExView.childrenCount;
-    n > 0;
-  ) {
+  for (const n = this._skillExs.length - this.nSkillExView.childrenCount; n > 0; ) {
     this.nSkillExView.addChild(cc.instantiate(this.nSkillExView.children[0]));
     n--;
   }
@@ -80,14 +77,11 @@ e.prototype.refreshSkillEx = function (t) {
           const n = e._skillExs.length - 1;
           e.nSkillExView.children.forEach(function (i) {
             if (i.active) {
-              i.getComponent($skillExItem.default).closeAnim(
-                t == i,
-                function () {
-                  if (--n < 0) {
-                    e.removeUI();
-                  }
-                },
-              );
+              i.getComponent($skillExItem.default).closeAnim(t == i, function () {
+                if (--n < 0) {
+                  e.removeUI();
+                }
+              });
             }
           });
         },
@@ -113,13 +107,11 @@ e.prototype.updateBtnView = function () {
     $levelBattleData.levelBattleData.data.skillExAllSelectCount;
   this.nBtnAll.active = e > 0;
   if (this.nBtnAll.active) {
-    this.nBtnAll.getChildByName("Count").getComponent(cc.Label).string =
-      "剩余次数：" + e;
+    this.nBtnAll.getChildByName('Count').getComponent(cc.Label).string = '剩余次数：' + e;
   }
   this.nBtnRefresh.active = t > 0;
   if (this.nBtnRefresh.active) {
-    this.nBtnRefresh.getChildByName("Count").getComponent(cc.Label).string =
-      "剩余次数：" + t;
+    this.nBtnRefresh.getChildByName('Count').getComponent(cc.Label).string = '剩余次数：' + t;
   }
 };
 e.prototype.onHide = function () {
@@ -154,4 +146,4 @@ function e() {
   e._battlePlayState = !1;
   return e;
 }
-exports.default = y;
+export default y;

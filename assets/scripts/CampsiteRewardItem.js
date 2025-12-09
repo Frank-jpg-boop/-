@@ -21,10 +21,7 @@ e.prototype.getDebrisReward = function (t) {
   const o = $stageDataProxy.stageDataProxy.passStageId;
   for (let r in i) {
     const s = i[r];
-    if (
-      "" != s.icon &&
-      (0 == s.unlockType || (1 == s.unlockType && o >= s.unlockVal))
-    ) {
+    if ('' != s.icon && (0 == s.unlockType || (1 == s.unlockType && o >= s.unlockVal))) {
       e.push({
         id: s.id,
         weight: s.weight,
@@ -34,27 +31,25 @@ e.prototype.getDebrisReward = function (t) {
   }
   for (
     const c = [],
-          l = function () {
-            const t = $mathUtil.MathUtil.weightedRandom(n);
-            if (t < 0) {
-              t = 0;
-            }
-            const i = $playerDataProxy.playerDataProxy.getArtifactUpGreadNeeItemId(
-              e[t].id,
-            );
-            const o = c.findIndex(function (t) {
-              return t.itemId == i;
-            });
-            if (o >= 0) {
-              c[o].itemNum += 1;
-            } else {
-              c.push({
-                itemId: i,
-                itemNum: 1,
-              });
-            }
-          },
-          p = 0;
+      l = function () {
+        const t = $mathUtil.MathUtil.weightedRandom(n);
+        if (t < 0) {
+          t = 0;
+        }
+        const i = $playerDataProxy.playerDataProxy.getArtifactUpGreadNeeItemId(e[t].id);
+        const o = c.findIndex(function (t) {
+          return t.itemId == i;
+        });
+        if (o >= 0) {
+          c[o].itemNum += 1;
+        } else {
+          c.push({
+            itemId: i,
+            itemNum: 1,
+          });
+        }
+      },
+      p = 0;
     p < t;
     ++p
   ) {
@@ -68,13 +63,12 @@ e.prototype.onItemClick = function () {
     t = this._maxTime;
   }
   const e =
-    (2 == this._buildData.loc
-      ? Math.floor(t / 1e3 / 60)
-      : Math.floor(t / 1e3 / 60 / 60)) * Number(this.buildData.ImpVal);
+    (2 == this._buildData.loc ? Math.floor(t / 1e3 / 60) : Math.floor(t / 1e3 / 60 / 60)) *
+    Number(this.buildData.ImpVal);
   if (e <= 0) {
-    $globalPopupMgr.default.instance.showTips("暂无奖励");
+    $globalPopupMgr.default.instance.showTips('暂无奖励');
   } else {
-    $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_CollectRewards");
+    $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_CollectRewards');
     if (2 == this._buildData.loc) {
       $globalPopupMgr.default.instance.showAwardNotice([
         {
@@ -96,10 +90,7 @@ e.prototype.onItemClick = function () {
     }
     this._startTime = $timeUtil.TimeUtil.getTime();
     this.scheduleTimer();
-    $playerDataProxy.playerDataProxy.setBuildStartTime(
-      this._buildData.loc,
-      this._startTime,
-    );
+    $playerDataProxy.playerDataProxy.setBuildStartTime(this._buildData.loc, this._startTime);
     $dataMgr.DataMgr.instance.checkSubscriptionReward();
   }
 };
@@ -114,7 +105,7 @@ e.prototype.setRewardIconFrame = function (t) {
       e.mIcon.spriteFrame = t;
     })
     .catch(function (t) {
-      console.log("error:", t);
+      console.log('error:', t);
     });
 };
 e.prototype.setRewardData = function () {
@@ -128,15 +119,14 @@ e.prototype.setRewardData = function () {
     this.setRewardIconFrame($itemEnum.E_ItemId.GOLD);
   } else {
     if (10 == this._buildData.loc) {
-      ((e = Math.floor(t / 1e3 / 60 / 60)),
-        this.setRewardIconFrame($itemEnum.E_ItemId.DIAMOND));
+      ((e = Math.floor(t / 1e3 / 60 / 60)), this.setRewardIconFrame($itemEnum.E_ItemId.DIAMOND));
     } else {
       5 == this._buildData.loc &&
         ((e = Math.floor(t / 1e3 / 60 / 60)), this.setRewardIconFrame(201));
     }
   }
   const n = e * Number(this.buildData.ImpVal);
-  this.mNumLab.string = "x" + $mathUtil.MathUtil.formatValue(n);
+  this.mNumLab.string = 'x' + $mathUtil.MathUtil.formatValue(n);
   this.mRoot.active = n > 0;
   this.node.getComponent(cc.Button).enabled = n > 0;
 };
@@ -153,9 +143,7 @@ e.prototype.scheduleTimer = function () {
   this.setRewardData();
 };
 e.prototype.initCampsiteRewardItem = function () {
-  this._startTime = $playerDataProxy.playerDataProxy.getBuildStartTime(
-    this.buildData.loc,
-  );
+  this._startTime = $playerDataProxy.playerDataProxy.getBuildStartTime(this.buildData.loc);
   if (2 == this.buildData.loc) {
     this._maxTime = 6e4 * Number(this.buildData.ImpVal2);
   } else {
@@ -165,7 +153,7 @@ e.prototype.initCampsiteRewardItem = function () {
   this.unschedule(this.scheduleTimer);
   this.schedule(this.scheduleTimer, 1);
 };
-Object.defineProperty(e.prototype, "buildData", {
+Object.defineProperty(e.prototype, 'buildData', {
   get: function () {
     return this._buildData;
   },
@@ -188,4 +176,4 @@ function e() {
   e._maxTime = 0;
   return e;
 }
-exports.default = E;
+export default E;

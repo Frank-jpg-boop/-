@@ -16,10 +16,7 @@ e.prototype.onRemove = function () {
   const e = this;
   this._ownerSkill.owner
     .getAttribute($attrEnum.E_AttrType.CRIT_RATE)
-    .changeAddValue(
-      -this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_5)
-        .value,
-    );
+    .changeAddValue(-this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_5).value);
   this.spAnimCtrls[0].clearAnim();
   this.spAnimCtrls[0].spAnim.setToSetupPose();
   this.spAnimCtrls[2].clearAnim();
@@ -31,9 +28,7 @@ e.prototype.onRemove = function () {
   );
   this.node.parent = n.actorTopParent;
   this.node.setPosition(i);
-  const o = this._ownerSkill.getAttribute(
-    $attrEnum.E_SkillAttrType.EXTRA_ATTR_6,
-  ).value;
+  const o = this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_6).value;
   if (o > 0) {
     this._ownerSkill.owner.buff.add(
       {
@@ -41,9 +36,7 @@ e.prototype.onRemove = function () {
         buffType: $buffEnum.EBuffType.SPEED_UP,
         isDebuff: !1,
         isSuperposition: !1,
-        duration: this._ownerSkill.getAttribute(
-          $attrEnum.E_SkillAttrType.EXTRA_ATTR_7,
-        ).value,
+        duration: this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_7).value,
         agentActor: this._ownerSkill.owner,
         parentActor: this._ownerSkill.owner,
         onRemove: null,
@@ -51,26 +44,23 @@ e.prototype.onRemove = function () {
       o,
     );
   }
-  this.spAnimCtrls[1].playAnim("over", 1, !1, function () {
+  this.spAnimCtrls[1].playAnim('over', 1, !1, function () {
     e.fideOut(function () {
       t.prototype.onRemove.call(e);
     });
   });
 };
 e.prototype.onDefaultAnimFrameEvent = function (t, e) {
-  if ("atk" == t && "atk" == e) {
+  if ('atk' == t && 'atk' == e) {
     for (
       const n = $nodeUtil.default.nodeParentChangeLocalPos(
-                this.node,
-                this._ownerSkill.owner.node.parent,
-              ),
-            i = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(
-              n,
-              this.collider.radius,
-            ),
-            o = [],
-            r = 0,
-            a = i;
+          this.node,
+          this._ownerSkill.owner.node.parent,
+        ),
+        i = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(n, this.collider.radius),
+        o = [],
+        r = 0,
+        a = i;
       r < a.length;
       r++
     ) {
@@ -105,8 +95,8 @@ e.prototype.onDefaultAnimFrameEvent = function (t, e) {
 };
 e.prototype.playShieldAnim = function (t) {
   this.spAnimCtrls[2].clearAnim();
-  $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_MianZhao");
-  this.spAnimCtrls[2].playAnim("start", 1, !1, function () {
+  $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_MianZhao');
+  this.spAnimCtrls[2].playAnim('start', 1, !1, function () {
     if (t) {
       t();
     }
@@ -117,16 +107,14 @@ e.prototype.play = function (t) {
   this._ownerSkill = t;
   const n = t.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_4).value;
   this.collider.node.scale = n;
-  this.node.getChildByName("View").scale = n;
+  this.node.getChildByName('View').scale = n;
   this.playShieldAnim(function () {
-    e.spAnimCtrls[1].playAnim("stand", 1, !0);
-    e.playDefaultAnim("atk", 1, !0);
+    e.spAnimCtrls[1].playAnim('stand', 1, !0);
+    e.playDefaultAnim('atk', 1, !0);
   });
   this._ownerSkill.owner
     .getAttribute($attrEnum.E_AttrType.CRIT_RATE)
-    .changeAddValue(
-      t.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_5).value,
-    );
+    .changeAddValue(t.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_5).value);
 };
 function e() {
   const e = (null !== t && t.apply(this, arguments)) || this;
@@ -134,4 +122,4 @@ function e() {
   e._ownerSkill = null;
   return e;
 }
-exports.default = v;
+export default v;

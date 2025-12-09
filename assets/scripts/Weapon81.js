@@ -13,15 +13,15 @@ e.prototype.playAtk = function () {
   this._collisionIds = [];
   this.collider.radius = 0;
   this.spAnimCtrls[1].clearAnim();
-  this.spAnimCtrls[1].playAnim("atk", 1, !1);
-  $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_ShenLeLin");
+  this.spAnimCtrls[1].playAnim('atk', 1, !1);
+  $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_ShenLeLin');
 };
 e.prototype.onEffectAnimCompleteEvent = function (t) {
   if (this._onAnimComplete) {
     this._onAnimComplete();
   }
-  if ("stand" == t.animation.name) {
-    this.playDefaultAnim("stand", 1, !1);
+  if ('stand' == t.animation.name) {
+    this.playDefaultAnim('stand', 1, !1);
     if (!this._isPlay) {
       return;
     }
@@ -38,14 +38,11 @@ e.prototype.onRemove = function () {
 e.prototype.checkHurt = function () {
   for (
     const t = this,
-          e = this.node.getPosition(),
-          n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(
-            e,
-            this.collider.radius,
-          ),
-          i = [],
-          o = 0,
-          r = n;
+      e = this.node.getPosition(),
+      n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(e, this.collider.radius),
+      i = [],
+      o = 0,
+      r = n;
     o < r.length;
     o++
   ) {
@@ -68,10 +65,7 @@ e.prototype.checkHurt = function () {
         t.collider.circle,
       )
     ) {
-      const n = $battleHurtFormulaMgr.default.instance.skillHurt(
-        t._ownerSkill.getHurtOption(),
-        e,
-      );
+      const n = $battleHurtFormulaMgr.default.instance.skillHurt(t._ownerSkill.getHurtOption(), e);
       e.beHurt(n);
       t._collisionIds.push(e.unitId);
     }
@@ -92,21 +86,18 @@ e.prototype.onUpdate = function (t) {
   }
 };
 e.prototype.updateRange = function () {
-  const t = this._ownerSkill.getAttribute(
-    $attrEnum.E_SkillAttrType.EXTRA_ATTR_1,
-  ).value;
+  const t = this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_1).value;
   this._radiusMax = t * this._initMaxRadius;
-  this.node.getChildByName("View").scale = t;
+  this.node.getChildByName('View').scale = t;
   this._radiusAddSpeed = (this._radiusMax / this._animDuration) * 1.2;
 };
 e.prototype.play = function (t, e) {
   const n = this;
   this._weaponId = e;
   this._ownerSkill = t;
-  this._animDuration =
-    this.spAnimCtrls[1].spAnim.findAnimation("atk").duration;
+  this._animDuration = this.spAnimCtrls[1].spAnim.findAnimation('atk').duration;
   this.updateRange();
-  this.playDefaultAnim("stand", 1, !1);
+  this.playDefaultAnim('stand', 1, !1);
   cc.tween(this.spAnimCtrls[1].node)
     .to(
       0.2,
@@ -114,18 +105,16 @@ e.prototype.play = function (t, e) {
         scale: 1,
       },
       {
-        easing: "backOut",
+        easing: 'backOut',
       },
     )
     .call(function () {
-      n.playDefaultAnim("stand", 1, !1, function () {
+      n.playDefaultAnim('stand', 1, !1, function () {
         n._isPlay = !0;
       });
     })
     .start();
-  this._durationTime = this._ownerSkill.getAttribute(
-    $attrEnum.E_SkillAttrType.EXTRA_ATTR_2,
-  ).value;
+  this._durationTime = this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2).value;
 };
 e.prototype.onInit = function () {
   t.prototype.onInit.call(this);
@@ -134,7 +123,7 @@ e.prototype.onInit = function () {
   this.collider.radius = 0;
   this.spAnimCtrls[1].node.scale = 0;
 };
-Object.defineProperty(e.prototype, "weaponId", {
+Object.defineProperty(e.prototype, 'weaponId', {
   get: function () {
     return this._weaponId;
   },
@@ -155,4 +144,4 @@ function e() {
   e._animDuration = 0;
   return e;
 }
-exports.default = y;
+export default y;

@@ -11,27 +11,27 @@ const f = l.menu;
 const d = l.executionOrder;
 const m = l.requireComponent;
 (function (t) {
-  t[(t.NODE = 1)] = "NODE";
-  t[(t.PREFAB = 2)] = "PREFAB";
+  t[(t.NODE = 1)] = 'NODE';
+  t[(t.PREFAB = 2)] = 'PREFAB';
 })(a || (a = {}));
 (function (t) {
-  t[(t.NORMAL = 1)] = "NORMAL";
-  t[(t.ADHERING = 2)] = "ADHERING";
-  t[(t.PAGE = 3)] = "PAGE";
+  t[(t.NORMAL = 1)] = 'NORMAL';
+  t[(t.ADHERING = 2)] = 'ADHERING';
+  t[(t.PAGE = 3)] = 'PAGE';
 })(s || (s = {}));
 (function (t) {
-  t[(t.NONE = 0)] = "NONE";
-  t[(t.SINGLE = 1)] = "SINGLE";
-  t[(t.MULT = 2)] = "MULT";
+  t[(t.NONE = 0)] = 'NONE';
+  t[(t.SINGLE = 1)] = 'SINGLE';
+  t[(t.MULT = 2)] = 'MULT';
 })(c || (c = {}));
 e.prototype.calcCustomSize = function (t) {
   const e = this;
   if (e.checkInited()) {
     if (!e._itemTmp) {
-      return cc.error("Unset template item!");
+      return cc.error('Unset template item!');
     }
     if (!e.renderEvent) {
-      return cc.error("Unset Render-Event!");
+      return cc.error('Unset Render-Event!');
     }
     e._customSize = {};
     const n = cc.instantiate(e._itemTmp);
@@ -57,17 +57,14 @@ e.prototype.skipPage = function (t, e) {
   const n = this;
   if (n.checkInited()) {
     if (n._slideMode != s.PAGE) {
-      return cc.error(
-        "This function is not allowed to be called, Must SlideMode = PAGE!",
-      );
+      return cc.error('This function is not allowed to be called, Must SlideMode = PAGE!');
     } else {
       return void (
         t < 0 ||
         t * n.pageItemNum >= n._numItems ||
         (n.curPageNum != t &&
           ((n.curPageNum = t),
-          n.pageChangeEvent &&
-            cc.Component.EventHandler.emitEvents([n.pageChangeEvent], t),
+          n.pageChangeEvent && cc.Component.EventHandler.emitEvents([n.pageChangeEvent], t),
           n.scrollTo(t * this.pageItemNum, e)))
       );
     }
@@ -105,11 +102,7 @@ e.prototype._calcNearestItem = function () {
   i = a.viewRight;
   o = a.viewBottom;
   r = a.viewLeft;
-  for (
-    const s = !1, c = 0;
-    c < a.content.childrenCount && !s;
-    c += a._colLineNum
-  ) {
+  for (const s = !1, c = 0; c < a.content.childrenCount && !s; c += a._colLineNum) {
     if ((t = a._virtual ? a.displayData[c] : a._calcExistItemPos(c))) {
       if (a._sizeType) {
         e = (t.top + t.bottom) / 2;
@@ -156,9 +149,7 @@ e.prototype._calcNearestItem = function () {
     }
   }
   if (
-    (t = a._virtual
-      ? a.displayData[a.displayItemNum - 1]
-      : a._calcExistItemPos(a._numItems - 1)) &&
+    (t = a._virtual ? a.displayData[a.displayItemNum - 1] : a._calcExistItemPos(a._numItems - 1)) &&
     t.id == a._numItems - 1
   ) {
     if (a._sizeType) {
@@ -263,11 +254,7 @@ e.prototype.scrollTo = function (t, e, n, i) {
         } else {
           o.adhering = o._adheringBarrier = !1;
         }
-        o._scrollPos =
-          o._scrollToListId =
-          o._scrollToEndTime =
-          o._scrollToSo =
-            null;
+        o._scrollPos = o._scrollToListId = o._scrollToEndTime = o._scrollToSo = null;
         if (i) {
           const e = o.getItemByListId(t);
           if (e) {
@@ -291,15 +278,15 @@ e.prototype.scrollTo = function (t, e, n, i) {
 e.prototype.aniDelItem = function (t, e, n) {
   const i = this;
   if (!i.checkInited() || i.cyclic || !i._virtual) {
-    return cc.error("This function is not allowed to be called!");
+    return cc.error('This function is not allowed to be called!');
   }
   if (!e) {
     return cc.error(
-      "CallFunc are not allowed to be NULL, You need to delete the corresponding index in the data array in the CallFunc!",
+      'CallFunc are not allowed to be NULL, You need to delete the corresponding index in the data array in the CallFunc!',
     );
   }
   if (i._aniDelRuning) {
-    return cc.warn("Please wait for the current deletion to finish!");
+    return cc.warn('Please wait for the current deletion to finish!');
   }
   let o;
   const r = i.getItemByListId(t);
@@ -356,7 +343,6 @@ e.prototype.aniDelItem = function (t, e, n) {
             delete i._customSize[t];
           }
           const f = {};
-          const d = void 0;
           for (let m in i._customSize) {
             d = i._customSize[m];
             const y = parseInt(m);
@@ -407,9 +393,7 @@ e.prototype._delRedundantItem = function () {
     }
   } else {
     for (; this.content.childrenCount > this._numItems; ) {
-      this._delSingleItem(
-        this.content.children[this.content.childrenCount - 1],
-      );
+      this._delSingleItem(this.content.children[this.content.childrenCount - 1]);
     }
   }
 };
@@ -449,11 +433,7 @@ e.prototype.updateItem = function (t) {
       const i = t[e];
       const o = this.getItemByListId(i);
       if (o) {
-        cc.Component.EventHandler.emitEvents(
-          [this.renderEvent],
-          o,
-          i % this._actualNumItems,
-        );
+        cc.Component.EventHandler.emitEvents([this.renderEvent], o, i % this._actualNumItems);
       }
     }
   }
@@ -475,8 +455,6 @@ e.prototype.setMultSelected = function (t, e) {
     if (null == e) {
       n.multSelected = t;
     } else {
-      const i = void 0;
-      const o = void 0;
       if (e) {
         for (const r = t.length - 1; r >= 0; r--) {
           i = t[r];
@@ -526,11 +504,7 @@ e.prototype._createOrUpdateItem2 = function (t) {
         e.listId = t;
       }
       if (this.renderEvent) {
-        cc.Component.EventHandler.emitEvents(
-          [this.renderEvent],
-          n,
-          t % this._actualNumItems,
-        );
+        cc.Component.EventHandler.emitEvents([this.renderEvent], n, t % this._actualNumItems);
       }
     }
   } else {
@@ -540,11 +514,7 @@ e.prototype._createOrUpdateItem2 = function (t) {
     n.listItem = e;
     e && ((e.listId = t), (e.list = this), e._registerEvent());
     this.renderEvent &&
-      cc.Component.EventHandler.emitEvents(
-        [this.renderEvent],
-        n,
-        t % this._actualNumItems,
-      );
+      cc.Component.EventHandler.emitEvents([this.renderEvent], n, t % this._actualNumItems);
   }
   this._updateListItem(e);
   if (this._lastDisplayData.indexOf(t) < 0) {
@@ -558,11 +528,7 @@ e.prototype._createOrUpdateItem = function (t) {
       e.setPosition(cc.v2(t.x, t.y));
       this._resetItemSize(e);
       if (this.renderEvent) {
-        cc.Component.EventHandler.emitEvents(
-          [this.renderEvent],
-          e,
-          t.id % this._actualNumItems,
-        );
+        cc.Component.EventHandler.emitEvents([this.renderEvent], e, t.id % this._actualNumItems);
       }
     }
   } else {
@@ -600,11 +566,7 @@ e.prototype._createOrUpdateItem = function (t) {
       o._registerEvent();
     }
     if (this.renderEvent) {
-      cc.Component.EventHandler.emitEvents(
-        [this.renderEvent],
-        e,
-        t.id % this._actualNumItems,
-      );
+      cc.Component.EventHandler.emitEvents([this.renderEvent], e, t.id % this._actualNumItems);
     }
   }
   this._resetItemSize(e);
@@ -618,11 +580,10 @@ e.prototype.update = function () {
     if (this._virtual) {
       for (
         const t =
-                  this._updateCounter + this.frameByFrameRenderNum >
-                  this.displayItemNum
-                    ? this.displayItemNum
-                    : this._updateCounter + this.frameByFrameRenderNum,
-              e = this._updateCounter;
+            this._updateCounter + this.frameByFrameRenderNum > this.displayItemNum
+              ? this.displayItemNum
+              : this._updateCounter + this.frameByFrameRenderNum,
+          e = this._updateCounter;
         e < t;
         e++
       ) {
@@ -633,18 +594,14 @@ e.prototype.update = function () {
       }
       if (this._updateCounter >= this.displayItemNum - 1) {
         if (this._doneAfterUpdate) {
-          ((this._updateCounter = 0),
-            (this._updateDone = !1),
-            (this._doneAfterUpdate = !1));
+          ((this._updateCounter = 0), (this._updateDone = !1), (this._doneAfterUpdate = !1));
         } else {
           ((this._updateDone = !0),
             this._delRedundantItem(),
             (this._forceUpdate = !1),
             this._calcNearestItem(),
             this.slideMode == s.PAGE &&
-              (this.curPageNum = Math.floor(
-                this.nearestListId / this.pageItemNum,
-              )));
+              (this.curPageNum = Math.floor(this.nearestListId / this.pageItemNum)));
         }
       } else {
         this._updateCounter += this.frameByFrameRenderNum;
@@ -671,18 +628,11 @@ e.prototype.adhere = function () {
   const t = this;
   if (
     t.checkInited() &&
-    !(
-      t.elasticTop > 0 ||
-      t.elasticRight > 0 ||
-      t.elasticBottom > 0 ||
-      t.elasticLeft > 0
-    )
+    !(t.elasticTop > 0 || t.elasticRight > 0 || t.elasticBottom > 0 || t.elasticLeft > 0)
   ) {
     t.adhering = !0;
     t._calcNearestItem();
-    const e =
-      (t._sizeType ? t._topGap : t._leftGap) /
-      (t._sizeType ? t.node.height : t.node.width);
+    const e = (t._sizeType ? t._topGap : t._leftGap) / (t._sizeType ? t.node.height : t.node.width);
     t.scrollTo(t.nearestListId, 0.7, e);
   }
 };
@@ -690,12 +640,7 @@ e.prototype._pageAdhere = function () {
   const t = this;
   if (
     t.cyclic ||
-    !(
-      t.elasticTop > 0 ||
-      t.elasticRight > 0 ||
-      t.elasticBottom > 0 ||
-      t.elasticLeft > 0
-    )
+    !(t.elasticTop > 0 || t.elasticRight > 0 || t.elasticBottom > 0 || t.elasticLeft > 0)
   ) {
     const e = null;
     if (t._sizeType) {
@@ -723,12 +668,7 @@ e.prototype._pageAdhere = function () {
           }
       }
     } else {
-      if (
-        t.elasticTop <= 0 &&
-        t.elasticRight <= 0 &&
-        t.elasticBottom <= 0 &&
-        t.elasticLeft <= 0
-      ) {
+      if (t.elasticTop <= 0 && t.elasticRight <= 0 && t.elasticBottom <= 0 && t.elasticLeft <= 0) {
         t.adhere();
       }
     }
@@ -780,8 +720,7 @@ e.prototype._onTouchCancelled = function (t, e) {
     if (n._slideMode == s.ADHERING) {
       (n.adhering && (n._adheringBarrier = !0), n.adhere());
     } else {
-      n._slideMode == s.PAGE &&
-        (null != n._beganPos ? n._pageAdhere() : n.adhere());
+      n._slideMode == s.PAGE && (null != n._beganPos ? n._pageAdhere() : n.adhere());
     }
     this._scrollItem = null;
   }
@@ -806,8 +745,7 @@ e.prototype._onTouchUp = function () {
 e.prototype._onTouchStart = function (t, e) {
   if (
     !this._scrollView.hasNestedViewGroup(t, e) &&
-    ((this.curScrollIsTouch = !0),
-    t.eventPhase !== cc.Event.AT_TARGET || t.target !== this.node)
+    ((this.curScrollIsTouch = !0), t.eventPhase !== cc.Event.AT_TARGET || t.target !== this.node)
   ) {
     for (const n = t.target; null == n._listId && n.parent; ) {
       n = n.parent;
@@ -953,8 +891,7 @@ e.prototype._calcItemPos = function (t) {
               e = this._itemSize.width;
             }
           } else {
-            a =
-              -this._rightGap - (this._itemSize.width + this._columnGap) * t;
+            a = -this._rightGap - (this._itemSize.width + this._columnGap) * t;
             e = this._itemSize.width;
           }
           if (this.lackCenter) {
@@ -1036,25 +973,19 @@ e.prototype._calcItemPos = function (t) {
             case cc.Layout.VerticalDirection.TOP_TO_BOTTOM:
               c =
                 (o =
-                  (i =
-                    -this._topGap -
-                    (this._itemSize.height + this._lineGap) * p) -
+                  (i = -this._topGap - (this._itemSize.height + this._lineGap) * p) -
                   this._itemSize.height) +
                 this._itemTmp.anchorY * this._itemSize.height;
               break;
             case cc.Layout.VerticalDirection.BOTTOM_TO_TOP:
               i =
-                (o =
-                  this._bottomGap +
-                  (this._itemSize.height + this._lineGap) * p) +
+                (o = this._bottomGap + (this._itemSize.height + this._lineGap) * p) +
                 this._itemSize.height;
               c = o + this._itemTmp.anchorY * this._itemSize.height;
           }
           switch (
             ((s =
-              this._leftGap +
-              (t % this._colLineNum) *
-                (this._itemSize.width + this._columnGap)),
+              this._leftGap + (t % this._colLineNum) * (this._itemSize.width + this._columnGap)),
             this._horizontalDir)
           ) {
             case cc.Layout.HorizontalDirection.LEFT_TO_RIGHT:
@@ -1077,9 +1008,7 @@ e.prototype._calcItemPos = function (t) {
           switch (this._horizontalDir) {
             case cc.Layout.HorizontalDirection.LEFT_TO_RIGHT:
               a =
-                (r =
-                  this._leftGap +
-                  (this._itemSize.width + this._columnGap) * p) +
+                (r = this._leftGap + (this._itemSize.width + this._columnGap) * p) +
                 this._itemSize.width;
               s = r + this._itemTmp.anchorX * this._itemSize.width;
               s -= this.content.anchorX * this.content.width;
@@ -1087,18 +1016,13 @@ e.prototype._calcItemPos = function (t) {
             case cc.Layout.HorizontalDirection.RIGHT_TO_LEFT:
               s =
                 (r =
-                  (a =
-                    -this._rightGap -
-                    (this._itemSize.width + this._columnGap) * p) -
+                  (a = -this._rightGap - (this._itemSize.width + this._columnGap) * p) -
                   this._itemSize.width) +
                 this._itemTmp.anchorX * this._itemSize.width;
               s += (1 - this.content.anchorX) * this.content.width;
           }
           switch (
-            ((c =
-              -this._topGap -
-              (t % this._colLineNum) *
-                (this._itemSize.height + this._lineGap)),
+            ((c = -this._topGap - (t % this._colLineNum) * (this._itemSize.height + this._lineGap)),
             this._verticalDir)
           ) {
             case cc.Layout.VerticalDirection.TOP_TO_BOTTOM:
@@ -1128,9 +1052,7 @@ e.prototype._calcViewPos = function () {
       this.viewLeft = (t.x < 0 ? -t.x : 0) - this.elasticLeft;
       this.viewRight = this.viewLeft + this.node.width;
       this.elasticRight =
-        this.viewRight > this.content.width
-          ? Math.abs(this.viewRight - this.content.width)
-          : 0;
+        this.viewRight > this.content.width ? Math.abs(this.viewRight - this.content.width) : 0;
       this.viewRight += this.elasticRight;
       break;
     case 2:
@@ -1138,9 +1060,7 @@ e.prototype._calcViewPos = function () {
       this.viewRight = (t.x > 0 ? -t.x : 0) + this.elasticRight;
       this.viewLeft = this.viewRight - this.node.width;
       this.elasticLeft =
-        this.viewLeft < -this.content.width
-          ? Math.abs(this.viewLeft + this.content.width)
-          : 0;
+        this.viewLeft < -this.content.width ? Math.abs(this.viewLeft + this.content.width) : 0;
       this.viewLeft -= this.elasticLeft;
       break;
     case 3:
@@ -1158,9 +1078,7 @@ e.prototype._calcViewPos = function () {
       this.viewBottom = (t.y < 0 ? -t.y : 0) - this.elasticBottom;
       this.viewTop = this.viewBottom + this.node.height;
       this.elasticTop =
-        this.viewTop > this.content.height
-          ? Math.abs(this.viewTop - this.content.height)
-          : 0;
+        this.viewTop > this.content.height ? Math.abs(this.viewTop - this.content.height) : 0;
       this.viewTop -= this.elasticTop;
   }
 };
@@ -1171,12 +1089,7 @@ e.prototype._onScrolling = function (t) {
   if (null == this.frameCount) {
     this.frameCount = this._updateRate;
   }
-  if (
-    !this._forceUpdate &&
-    t &&
-    "scroll-ended" != t.type &&
-    this.frameCount > 0
-  ) {
+  if (!this._forceUpdate && t && 'scroll-ended' != t.type && this.frameCount > 0) {
     this.frameCount--;
   } else if (((this.frameCount = this._updateRate), !this._aniDelRuning)) {
     if (this.cyclic) {
@@ -1186,9 +1099,7 @@ e.prototype._onScrolling = function (t) {
       } else {
         e = e.x;
       }
-      const n =
-        this._allItemSizeNoEdge +
-        (this._sizeType ? this._lineGap : this._columnGap);
+      const n = this._allItemSizeNoEdge + (this._sizeType ? this._lineGap : this._columnGap);
       const i = null;
       if (this._sizeType) {
         i = cc.v2(0, n);
@@ -1275,7 +1186,6 @@ e.prototype._onScrolling = function (t) {
     }
     if (this._virtual) {
       this.displayData = [];
-      const c = void 0;
       const l = 0;
       const u = this._numItems - 1;
       if (this._customSize) {
@@ -1367,8 +1277,7 @@ e.prototype._onScrolling = function (t) {
         }
         m =
           this.firstListId != this._lastDisplayData[0] ||
-          this.displayData[this.displayItemNum - 1].id !=
-            this._lastDisplayData[d - 1];
+          this.displayData[this.displayItemNum - 1].id != this._lastDisplayData[d - 1];
       }
       if (this._forceUpdate || m) {
         if (this.frameByFrameRenderNum > 0) {
@@ -1437,19 +1346,11 @@ e.prototype._resizeContent = function () {
       switch ((e.lackCenter && (e.lackCenter = !1), e._startAxis)) {
         case cc.Layout.AxisDirection.HORIZONTAL:
           const i = Math.ceil(e._numItems / e._colLineNum);
-          t =
-            e._topGap +
-            e._itemSize.height * i +
-            e._lineGap * (i - 1) +
-            e._bottomGap;
+          t = e._topGap + e._itemSize.height * i + e._lineGap * (i - 1) + e._bottomGap;
           break;
         case cc.Layout.AxisDirection.VERTICAL:
           const o = Math.ceil(e._numItems / e._colLineNum);
-          t =
-            e._leftGap +
-            e._itemSize.width * o +
-            e._columnGap * (o - 1) +
-            e._rightGap;
+          t = e._leftGap + e._itemSize.width * o + e._columnGap * (o - 1) + e._rightGap;
       }
   }
   const r = e.content.getComponent(cc.Layout);
@@ -1458,8 +1359,7 @@ e.prototype._resizeContent = function () {
   }
   e._allItemSize = t;
   e._allItemSizeNoEdge =
-    e._allItemSize -
-    (e._sizeType ? e._topGap + e._bottomGap : e._leftGap + e._rightGap);
+    e._allItemSize - (e._sizeType ? e._topGap + e._bottomGap : e._leftGap + e._rightGap);
   if (e.cyclic) {
     const a = null;
     if (e._sizeType) {
@@ -1478,15 +1378,11 @@ e.prototype._resizeContent = function () {
     }
     e._cyclicPos2 = e._cyclicPos1 + e._allItemSizeNoEdge + s;
     e._cyclicAllItemSize =
-      e._allItemSize +
-      e._allItemSizeNoEdge * (e._cyclicNum - 1) +
-      s * (e._cyclicNum - 1);
+      e._allItemSize + e._allItemSizeNoEdge * (e._cyclicNum - 1) + s * (e._cyclicNum - 1);
     e._cycilcAllItemSizeNoEdge = e._allItemSizeNoEdge * e._cyclicNum;
     e._cycilcAllItemSizeNoEdge += s * (e._cyclicNum - 1);
   }
-  e._lack =
-    !e.cyclic &&
-    e._allItemSize < (e._sizeType ? e.node.height : e.node.width);
+  e._lack = !e.cyclic && e._allItemSize < (e._sizeType ? e.node.height : e.node.width);
   const c = null;
   if ((e._lack && e.lackCenter) || !e.lackSlide) {
     c = 0.1;
@@ -1516,10 +1412,7 @@ e.prototype.checkInited = function (t) {
   if (void 0 === t) {
     t = !0;
   }
-  return (
-    !!this._inited ||
-    (t && cc.error("List initialization not completed!"), !1)
-  );
+  return !!this._inited || (t && cc.error('List initialization not completed!'), !1);
 };
 e.prototype.setTemplateItem = function (t) {
   if (t) {
@@ -1559,16 +1452,12 @@ e.prototype.setTemplateItem = function (t) {
         switch (e._startAxis) {
           case cc.Layout.AxisDirection.HORIZONTAL:
             const o = e.content.width - e._leftGap - e._rightGap;
-            e._colLineNum = Math.floor(
-              (o + e._columnGap) / (e._itemSize.width + e._columnGap),
-            );
+            e._colLineNum = Math.floor((o + e._columnGap) / (e._itemSize.width + e._columnGap));
             e._sizeType = !0;
             break;
           case cc.Layout.AxisDirection.VERTICAL:
             const r = e.content.height - e._topGap - e._bottomGap;
-            e._colLineNum = Math.floor(
-              (r + e._lineGap) / (e._itemSize.height + e._lineGap),
-            );
+            e._colLineNum = Math.floor((r + e._lineGap) / (e._itemSize.height + e._lineGap));
             e._sizeType = !1;
         }
     }
@@ -1578,8 +1467,7 @@ e.prototype._processAutoScrolling = function (t) {
   this._scrollView._autoScrollAccumulatedTime += 1 * t;
   const e = Math.min(
     1,
-    this._scrollView._autoScrollAccumulatedTime /
-      this._scrollView._autoScrollTotalTime,
+    this._scrollView._autoScrollAccumulatedTime / this._scrollView._autoScrollTotalTime,
   );
   if (this._scrollView._autoScrollAttenuate) {
     const n = e - 1;
@@ -1594,7 +1482,7 @@ e.prototype._processAutoScrolling = function (t) {
     Math.abs(e - 1) <= this._scrollView.getScrollEndedEventTiming() &&
     !this._scrollView._isScrollEndedWithThresholdEventFired
   ) {
-    this._scrollView._dispatchEvent("scroll-ended-with-threshold");
+    this._scrollView._dispatchEvent('scroll-ended-with-threshold');
     this._scrollView._isScrollEndedWithThresholdEventFired = !0;
   }
   if (r) {
@@ -1602,13 +1490,13 @@ e.prototype._processAutoScrolling = function (t) {
   }
   const a = i.sub(this._scrollView.getContentPosition());
   this._scrollView._moveContent(this._scrollView._clampDelta(a), r);
-  this._scrollView._dispatchEvent("scrolling");
+  this._scrollView._dispatchEvent('scrolling');
   if (this._scrollView._autoScrolling) {
     //
   } else {
     this._scrollView._isBouncing = !1;
     this._scrollView._scrolling = !1;
-    this._scrollView._dispatchEvent("scroll-ended");
+    this._scrollView._dispatchEvent('scroll-ended');
   }
 };
 e.prototype._init = function () {
@@ -1630,9 +1518,7 @@ e.prototype._init = function () {
       t._colLineNum;
       t._verticalDir = t._layout.verticalDirection;
       t._horizontalDir = t._layout.horizontalDirection;
-      t.setTemplateItem(
-        cc.instantiate(t.templateType == a.PREFAB ? t.tmpPrefab : t.tmpNode),
-      );
+      t.setTemplateItem(cc.instantiate(t.templateType == a.PREFAB ? t.tmpPrefab : t.tmpNode));
       if (t._slideMode != s.ADHERING && t._slideMode != s.PAGE) {
         //
       } else {
@@ -1652,8 +1538,7 @@ e.prototype._init = function () {
       t._updateDone = !0;
       t.curPageNum = 0;
       if (t.cyclic) {
-        t._scrollView._processAutoScrolling =
-          this._processAutoScrolling.bind(t);
+        t._scrollView._processAutoScrolling = this._processAutoScrolling.bind(t);
         t._scrollView._startBounceBackIfNeeded = function () {
           return !1;
         };
@@ -1713,21 +1598,21 @@ e.prototype._init = function () {
 e.prototype._unregisterEvent = function () {
   const t = this;
   t.node.off(cc.Node.EventType.TOUCH_START, t._onTouchStart, t, !0);
-  t.node.off("touch-up", t._onTouchUp, t);
+  t.node.off('touch-up', t._onTouchUp, t);
   t.node.off(cc.Node.EventType.TOUCH_CANCEL, t._onTouchCancelled, t, !0);
-  t.node.off("scroll-began", t._onScrollBegan, t, !0);
-  t.node.off("scroll-ended", t._onScrollEnded, t, !0);
-  t.node.off("scrolling", t._onScrolling, t, !0);
+  t.node.off('scroll-began', t._onScrollBegan, t, !0);
+  t.node.off('scroll-ended', t._onScrollEnded, t, !0);
+  t.node.off('scrolling', t._onScrolling, t, !0);
   t.node.off(cc.Node.EventType.SIZE_CHANGED, t._onSizeChanged, t);
 };
 e.prototype._registerEvent = function () {
   const t = this;
   t.node.on(cc.Node.EventType.TOUCH_START, t._onTouchStart, t, !0);
-  t.node.on("touch-up", t._onTouchUp, t);
+  t.node.on('touch-up', t._onTouchUp, t);
   t.node.on(cc.Node.EventType.TOUCH_CANCEL, t._onTouchCancelled, t, !0);
-  t.node.on("scroll-began", t._onScrollBegan, t, !0);
-  t.node.on("scroll-ended", t._onScrollEnded, t, !0);
-  t.node.on("scrolling", t._onScrolling, t, !0);
+  t.node.on('scroll-began', t._onScrollBegan, t, !0);
+  t.node.on('scroll-ended', t._onScrollEnded, t, !0);
+  t.node.on('scrolling', t._onScrolling, t, !0);
   t.node.on(cc.Node.EventType.SIZE_CHANGED, t._onSizeChanged, t);
 };
 e.prototype.onDisable = function () {
@@ -1770,14 +1655,14 @@ e.prototype.onDestroy = function () {
 e.prototype.onLoad = function () {
   this._init();
 };
-Object.defineProperty(e.prototype, "scrollView", {
+Object.defineProperty(e.prototype, 'scrollView', {
   get: function () {
     return this._scrollView;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "numItems", {
+Object.defineProperty(e.prototype, 'numItems', {
   get: function () {
     return this._actualNumItems;
   },
@@ -1785,12 +1670,8 @@ Object.defineProperty(e.prototype, "numItems", {
     const e = this;
     if (e.checkInited(!1)) {
       if (null == t || t < 0) {
-        cc.error("numItems set the wrong::", t);
-      } else if (
-        ((e._actualNumItems = e._numItems = t),
-        (e._forceUpdate = !0),
-        e._virtual)
-      ) {
+        cc.error('numItems set the wrong::', t);
+      } else if (((e._actualNumItems = e._numItems = t), (e._forceUpdate = !0), e._virtual)) {
         e._resizeContent();
         e.cyclic && (e._numItems = e._cyclicNum * e._numItems);
         e._onScrolling();
@@ -1810,11 +1691,8 @@ Object.defineProperty(e.prototype, "numItems", {
         e.firstListId = 0;
         if (e.frameByFrameRenderNum > 0) {
           for (
-            const i =
-                      e.frameByFrameRenderNum > e._numItems
-                        ? e._numItems
-                        : e.frameByFrameRenderNum,
-                  o = 0;
+            const i = e.frameByFrameRenderNum > e._numItems ? e._numItems : e.frameByFrameRenderNum,
+              o = 0;
             o < i;
             o++
           ) {
@@ -1836,7 +1714,7 @@ Object.defineProperty(e.prototype, "numItems", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "selectedId", {
+Object.defineProperty(e.prototype, 'selectedId', {
   get: function () {
     return this._selectedId;
   },
@@ -1849,7 +1727,6 @@ Object.defineProperty(e.prototype, "selectedId", {
           return;
         }
         e = n.getItemByListId(t);
-        const i = void 0;
         if (n._selectedId >= 0) {
           n._lastSelectedId = n._selectedId;
         } else {
@@ -1870,9 +1747,7 @@ Object.defineProperty(e.prototype, "selectedId", {
             [n.selectedEvent],
             e,
             t % this._actualNumItems,
-            null == n._lastSelectedId
-              ? null
-              : n._lastSelectedId % this._actualNumItems,
+            null == n._lastSelectedId ? null : n._lastSelectedId % this._actualNumItems,
           );
         }
         break;
@@ -1900,9 +1775,7 @@ Object.defineProperty(e.prototype, "selectedId", {
             [n.selectedEvent],
             e,
             t % this._actualNumItems,
-            null == n._lastSelectedId
-              ? null
-              : n._lastSelectedId % this._actualNumItems,
+            null == n._lastSelectedId ? null : n._lastSelectedId % this._actualNumItems,
             r,
           );
         }
@@ -1911,7 +1784,7 @@ Object.defineProperty(e.prototype, "selectedId", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "updateRate", {
+Object.defineProperty(e.prototype, 'updateRate', {
   get: function () {
     return this._updateRate;
   },
@@ -1923,7 +1796,7 @@ Object.defineProperty(e.prototype, "updateRate", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "virtual", {
+Object.defineProperty(e.prototype, 'virtual', {
   get: function () {
     return this._virtual;
   },
@@ -1938,7 +1811,7 @@ Object.defineProperty(e.prototype, "virtual", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "slideMode", {
+Object.defineProperty(e.prototype, 'slideMode', {
   get: function () {
     return this._slideMode;
   },
@@ -1980,4 +1853,4 @@ function e() {
   e.curPageNum = 0;
   return e;
 }
-exports.default = _;
+export default _;

@@ -1,2 +1,2 @@
-exports.Global = void 0;
-exports.Global = {};
+export const Global = void 0;
+export const Global = {};

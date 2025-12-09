@@ -10,7 +10,7 @@ const p =
     function e() {
       const e = (null !== t && t.apply(this, arguments)) || this;
       e.popupQueue = new $queue.default();
-      e.curPopupName = "";
+      e.curPopupName = '';
       e.curPopupOption = null;
       e.isOpening = !1;
       return e;
@@ -47,7 +47,7 @@ const p =
         if ($popupManager.PopupManager.instance.has(this.curPopupName)) {
           this.isOpening = !1;
         }
-      } else if ("" != this.curPopupName) {
+      } else if ('' != this.curPopupName) {
         if ($popupManager.PopupManager.instance.has(this.curPopupName)) {
           //
         } else {
@@ -56,7 +56,7 @@ const p =
           } else {
             n.keys.splice(n.keys.indexOf(this.curPopupName), 1);
           }
-          this.curPopupName = "";
+          this.curPopupName = '';
           this.curPopupOption = null;
         }
       } else if (this.popupQueue.size() > 0) {
@@ -77,4 +77,4 @@ const p =
     e.keys = [];
     return;
   })(cc.Component));
-exports.default = p;
+export default p;

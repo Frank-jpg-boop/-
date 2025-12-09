@@ -20,7 +20,7 @@ const h =
       const n = $battleMgr.default.instance.getCurScene();
       $effectMgr.default.instance.createEffect({
         parent: n.lowEffectParent,
-        prefabName: "Weapon71Hurt",
+        prefabName: 'Weapon71Hurt',
         initPos: this.node.getPosition(),
         effectClass: $weapon71Hurt.default,
         onCreated: function (e) {
@@ -29,4 +29,4 @@ const h =
       });
     };
   })($spAnimEffect.default));
-exports.default = h;
+export default h;

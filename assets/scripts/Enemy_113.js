@@ -69,17 +69,17 @@ const m =
     e.prototype.playAnimAppear = function (t) {
       if (this._flagEffect) {
         if (2 == this._cfg.isBoss) {
-          (this._flagEffect.spAnimCtrls[0].spAnim.setSkin("boss"),
+          (this._flagEffect.spAnimCtrls[0].spAnim.setSkin('boss'),
             (this._flagEffect.spAnimCtrls[0].node.active = !0),
             (this._flagEffect.spAnimCtrls[1].node.active = !1),
-            this._flagEffect.playDefaultAnim("loop", 1, !0));
+            this._flagEffect.playDefaultAnim('loop', 1, !0));
         } else {
           ((this._flagEffect.spAnimCtrls[0].node.active = !1),
             (this._flagEffect.spAnimCtrls[1].node.active = !0),
-            this._flagEffect.spAnimCtrls[1].playAnim("stand", 1, !0));
+            this._flagEffect.spAnimCtrls[1].playAnim('stand', 1, !0));
         }
       }
-      this._spCtrl.playAnim("drill", 1, !1, function () {
+      this._spCtrl.playAnim('drill', 1, !1, function () {
         if (t) {
           t();
         }
@@ -105,4 +105,4 @@ const m =
       this._roomId;
     };
   })($enemyBase.default));
-exports.default = m;
+export default m;

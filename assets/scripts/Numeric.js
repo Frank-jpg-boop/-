@@ -3,9 +3,7 @@ t.prototype.clear = function () {
 };
 t.prototype.update = function () {
   const t = this;
-  const e =
-    t.rightBaseValue * (1 + t.percentAdd / 100) * this._multiplyValue +
-    t._addValue;
+  const e = t.rightBaseValue * (1 + t.percentAdd / 100) * this._multiplyValue + t._addValue;
   if (t.isFloor) {
     t._value = Math.floor(e);
   } else {
@@ -61,14 +59,14 @@ t.prototype.setBaseGetValueFunc = function (t) {
     this.update();
   }
 };
-Object.defineProperty(t.prototype, "addValue", {
+Object.defineProperty(t.prototype, 'addValue', {
   get: function () {
     return this._addValue;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "percentAdd", {
+Object.defineProperty(t.prototype, 'percentAdd', {
   get: function () {
     if (this._getPercentAddFunc) {
       return this._getPercentAddFunc();
@@ -79,21 +77,21 @@ Object.defineProperty(t.prototype, "percentAdd", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "rightBaseValue", {
+Object.defineProperty(t.prototype, 'rightBaseValue', {
   get: function () {
     return this.baseValue + this.addBaseValue;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "addBaseValue", {
+Object.defineProperty(t.prototype, 'addBaseValue', {
   get: function () {
     return this._addBaseValue;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "baseValue", {
+Object.defineProperty(t.prototype, 'baseValue', {
   get: function () {
     if (this._getBaseValueFunc) {
       return this._getBaseValueFunc();
@@ -104,7 +102,7 @@ Object.defineProperty(t.prototype, "baseValue", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "value", {
+Object.defineProperty(t.prototype, 'value', {
   get: function () {
     if (this._getBaseValueFunc || this._getPercentAddFunc) {
       this.update();
@@ -129,4 +127,4 @@ function t() {
   t._value = t._baseValue = t._addBaseValue = t._percentAdd = t._addValue = 0;
 }
 const i = t;
-exports.default = i;
+export default i;

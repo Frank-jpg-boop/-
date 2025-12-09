@@ -1,6 +1,6 @@
 import $mathUtil from './MathUtil';
 let i;
-exports.ArcProgressBar = void 0;
+export const ArcProgressBar = void 0;
 const s = cc._decorator;
 const c = s.ccclass;
 const l = s.property;
@@ -29,7 +29,7 @@ const h =
       e.curTweenRes = null;
       return e;
     }
-    Object.defineProperty(e.prototype, "radius", {
+    Object.defineProperty(e.prototype, 'radius', {
       get: function () {
         return this._radius;
       },
@@ -40,7 +40,7 @@ const h =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "clockwise", {
+    Object.defineProperty(e.prototype, 'clockwise', {
       get: function () {
         return this._clockwise;
       },
@@ -51,7 +51,7 @@ const h =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "startAngle", {
+    Object.defineProperty(e.prototype, 'startAngle', {
       get: function () {
         return this._startAngle;
       },
@@ -62,7 +62,7 @@ const h =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "range", {
+    Object.defineProperty(e.prototype, 'range', {
       get: function () {
         return this._range;
       },
@@ -73,7 +73,7 @@ const h =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "lineWidth", {
+    Object.defineProperty(e.prototype, 'lineWidth', {
       get: function () {
         return this._lineWidth;
       },
@@ -84,7 +84,7 @@ const h =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "progress", {
+    Object.defineProperty(e.prototype, 'progress', {
       get: function () {
         return this._progress;
       },
@@ -94,7 +94,7 @@ const h =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "lineCap", {
+    Object.defineProperty(e.prototype, 'lineCap', {
       get: function () {
         return this._lineCap;
       },
@@ -105,7 +105,7 @@ const h =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "backgroundColor", {
+    Object.defineProperty(e.prototype, 'backgroundColor', {
       get: function () {
         return this._backgroundColor;
       },
@@ -116,7 +116,7 @@ const h =
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "progressColor", {
+    Object.defineProperty(e.prototype, 'progressColor', {
       get: function () {
         return this._progressColor;
       },
@@ -175,11 +175,8 @@ const h =
       t.lineWidth = this._lineWidth;
       t.lineCap = this._lineCap;
       this.curStartAngle = this._startAngle + 90;
-      this.curStartRadians = $mathUtil.MathUtil.angle2Radians(
-        this.curStartAngle,
-      );
-      const e =
-        this.curStartAngle + (this._clockwise ? -this._range : this._range);
+      this.curStartRadians = $mathUtil.MathUtil.angle2Radians(this.curStartAngle);
+      const e = this.curStartAngle + (this._clockwise ? -this._range : this._range);
       this.curEndRadians = $mathUtil.MathUtil.angle2Radians(e);
       this.updateProgress(this._progress);
     };
@@ -195,14 +192,7 @@ const h =
       const e = this.graphics;
       e.clear();
       e.strokeColor = this._backgroundColor;
-      e.arc(
-        0,
-        0,
-        this._radius,
-        this.curStartRadians,
-        this.curEndRadians,
-        !this._clockwise,
-      );
+      e.arc(0, 0, this._radius, this.curStartRadians, this.curEndRadians, !this._clockwise);
       e.stroke();
       const n = null;
       if (this._clockwise) {
@@ -245,4 +235,4 @@ const h =
       }
     };
   })(cc.Component));
-exports.ArcProgressBar = h;
+export const ArcProgressBar = h;

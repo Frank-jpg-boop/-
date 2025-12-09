@@ -5,18 +5,15 @@ import $effectMgr from './EffectMgr';
 import $attrEnum from './AttrEnum';
 import $weapon71Atk from './Weapon71Atk';
 let i;
-exports.Skill_71 = void 0;
+export const Skill_71 = void 0;
 e.prototype.searchTargets = function () {
   for (
     const t = this,
-          e = this._owner.node.getPosition(),
-          n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(
-            e,
-            this._cfg.edge,
-          ),
-          i = [],
-          o = 0,
-          r = n;
+      e = this._owner.node.getPosition(),
+      n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(e, this._cfg.edge),
+      i = [],
+      o = 0,
+      r = n;
     o < r.length;
     o++
   ) {
@@ -55,15 +52,12 @@ e.prototype.playAttack = function (t) {
   const n = $battleMgr.default.instance.getCurScene();
   $effectMgr.default.instance.createEffect({
     parent: n.actorTopParent,
-    prefabName: "Weapon71Atk",
+    prefabName: 'Weapon71Atk',
     initPos: t,
     effectClass: $weapon71Atk.default,
     onCreated: function (n) {
       n.play(e, function () {
-        if (
-          Math.random() <
-          e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_6).value
-        ) {
+        if (Math.random() < e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_6).value) {
           e.playAttack(t);
         }
       });
@@ -71,7 +65,7 @@ e.prototype.playAttack = function (t) {
   });
 };
 e.prototype.attack = function (t) {
-  $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_ShiZiJia");
+  $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_ShiZiJia');
   for (
     const e = this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_1).value, n = 0;
     n < e;
@@ -105,4 +99,4 @@ function e() {
   return (null !== t && t.apply(this, arguments)) || this;
 }
 const p = e;
-exports.Skill_71 = p;
+export const Skill_71 = p;

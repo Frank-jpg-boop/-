@@ -1,6 +1,6 @@
 import $battleHurtFormulaMgr from './BattleHurtFormulaMgr';
 let i;
-exports.Fire = void 0;
+export const Fire = void 0;
 e.prototype.onUpdate = function (t) {
   this._hurtDis -= t;
   if (this._hurtDis <= 0) {
@@ -25,4 +25,4 @@ function e() {
   return e;
 }
 const a = e;
-exports.Fire = a;
+export const Fire = a;

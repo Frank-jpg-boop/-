@@ -1,5 +1,5 @@
-exports.PlayerActionMgr = void 0;
-t.token = "";
+export const PlayerActionMgr = void 0;
+t.token = '';
 t._instance = null;
 t.prototype.triggerAction = function (t) {
   for (const e = [], n = 1; n < arguments.length; n++) {
@@ -21,7 +21,7 @@ t.prototype.registerEvent = function (t, e, n) {
     caller: n,
   });
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == this._instance) {
       this._instance = new t();
@@ -35,4 +35,4 @@ function t() {
   this._msg = new Map();
 }
 const o = t;
-exports.PlayerActionMgr = o;
+export const PlayerActionMgr = o;

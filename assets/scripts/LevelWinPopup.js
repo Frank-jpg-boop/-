@@ -20,15 +20,14 @@ import $guideDataProxy from './GuideDataProxy';
 import $reportMgr from './ReportMgr';
 import $mathUtil from './MathUtil';
 let i;
-exports.ELevelWinPopupEvent = void 0;
-let a;
+export const ELevelWinPopupEvent = {
+  SWITCH_BAG_ITEM_REWARD: 'switch_bag_item_reward',
+  ON_REWARD_SWITCH_COMPLETED: 'on_reward_switch_completed',
+};
+let a = ELevelWinPopupEvent;
 const I = cc._decorator;
 const R = I.ccclass;
 const D = I.property;
-!(function (t) {
-  t.SWITCH_BAG_ITEM_REWARD = "switch_bag_item_reward";
-  t.ON_REWARD_SWITCH_COMPLETED = "on_reward_switch_completed";
-})((a = exports.ELevelWinPopupEvent || (exports.ELevelWinPopupEvent = {})));
 e.prototype.onClickBtnBack = function () {
   this.backHome();
 };
@@ -55,10 +54,10 @@ e.prototype.onEventSwitchBagItemReward = function (t, e, n, i) {
     }
     for (
       const l = $nodeUtil.default.nodeParentChangeLocalPos(
-                i.children[0].getChildByName("Icon"),
-                o.node,
-              ),
-            u = 0;
+          i.children[0].getChildByName('Icon'),
+          o.node,
+        ),
+        u = 0;
       u < n;
       u++
     ) {
@@ -67,14 +66,14 @@ e.prototype.onEventSwitchBagItemReward = function (t, e, n, i) {
       d.setPosition(r);
       const _ = $cfg.default.instance.dataItem.getById(e);
       if (2 == _.type) {
-        d.getChildByName("Icon").scale = 0.6;
+        d.getChildByName('Icon').scale = 0.6;
       } else {
-        d.getChildByName("Icon").scale = 1;
+        d.getChildByName('Icon').scale = 1;
       }
       $resLoader.ResLoader.setSpritFrame(
-        d.getChildByName("Icon").getComponent(cc.Sprite),
+        d.getChildByName('Icon').getComponent(cc.Sprite),
         $frameEnum.Frame.EBundleName.RES,
-        "textures/atlas/item/" + _.icon,
+        'textures/atlas/item/' + _.icon,
       );
       s.push(d);
     }
@@ -150,9 +149,9 @@ e.prototype.winComplete = function () {
       $levelBattleData.levelBattleData.data.exploreValue,
       this._isFinish,
     );
-    const e = "";
+    const e = '';
     if (t != $stageDataProxy.stageDataProxy.passStageId) {
-      e = "<color=#65CF7C>已解锁新的章节</c>";
+      e = '<color=#65CF7C>已解锁新的章节</c>';
     } else if (
       $levelBattleData.levelBattleData.cfgStage.id == t + 1 &&
       t != $stageDataProxy.stageDataProxy.maxStageId
@@ -162,16 +161,15 @@ e.prototype.winComplete = function () {
       );
       if (n) {
         e =
-          "还需救出<color=#EC382E>" +
+          '还需救出<color=#EC382E>' +
           (n.need -
             $stageDataProxy.stageDataProxy.getStageSurvivalCount(
               $levelBattleData.levelBattleData.cfgStage.id,
             )) +
-          "名幸存者</c>可解锁下一章节";
+          '名幸存者</c>可解锁下一章节';
       }
     }
-    this.lSurvival.string =
-      "<b><outline color=#000000 width=3>" + e + "</outline></b>";
+    this.lSurvival.string = '<b><outline color=#000000 width=3>' + e + '</outline></b>';
     this.unscheduleAllCallbacks();
     this.updateRewardNum();
     const i = [];
@@ -215,11 +213,8 @@ e.prototype.onHide = function () {
 e.prototype.updateRewardNum = function () {
   const t = this;
   this.nRewardView.children.forEach(function (e, n) {
-    e
-      .getChildByName("View")
-      .getChildByName("Value")
-      .getComponent(cc.Label).string =
-      "+" + $mathUtil.MathUtil.formatValue(t._typeNums[n]);
+    e.getChildByName('View').getChildByName('Value').getComponent(cc.Label).string =
+      '+' + $mathUtil.MathUtil.formatValue(t._typeNums[n]);
   });
 };
 e.prototype.playRewardNum = function (t) {
@@ -234,10 +229,9 @@ e.prototype.playRewardNum = function (t) {
       }
       n++;
       e.nRewardView.children[t]
-        .getChildByName("View")
-        .getChildByName("Value")
-        .getComponent(cc.Label).string =
-        "+" + $mathUtil.MathUtil.formatValue(n);
+        .getChildByName('View')
+        .getChildByName('Value')
+        .getComponent(cc.Label).string = '+' + $mathUtil.MathUtil.formatValue(n);
     };
     this.schedule(o, 0.1);
   }
@@ -277,46 +271,42 @@ e.prototype.prevReward = function () {
       !1,
     );
   }
-  $levelBattleData.levelBattleData.bagData.bagEquipDatas.forEach(
-    function (e) {
-      const n = $cfg.default.instance.dataReward.getById(e.rewardId);
-      const i = new Map();
-      t._bagCreateRewardMaps.push(i);
-      if ([200, 201, 81, 82, 83, 111].includes(n.type)) {
-        const o = function (t, e) {
-          if (i.has(t)) {
-            i.set(t, i.get(t) + e);
-          } else {
-            i.set(t, e);
-          }
-        };
-        switch (n.type) {
-          case 111:
-            const r = n.changeID;
-            o(r, (a = 1));
-            break;
-          case 200:
-            r = $itemEnum.E_ItemId.GOLD;
-            const a = n.changeID;
-            o(r, a);
-            break;
-          case 201:
-            r = $itemEnum.E_ItemId.DIAMOND;
-            a = n.changeID;
-            o(r, a);
-            break;
-          case 81:
-          case 82:
-          case 83:
-            $itemDataProxy.itemDataProxy
-              .randomChip(n.type % 80, n.changeID)
-              .forEach(function (t, e) {
-                o(e, t);
-              });
+  $levelBattleData.levelBattleData.bagData.bagEquipDatas.forEach(function (e) {
+    const n = $cfg.default.instance.dataReward.getById(e.rewardId);
+    const i = new Map();
+    t._bagCreateRewardMaps.push(i);
+    if ([200, 201, 81, 82, 83, 111].includes(n.type)) {
+      const o = function (t, e) {
+        if (i.has(t)) {
+          i.set(t, i.get(t) + e);
+        } else {
+          i.set(t, e);
         }
+      };
+      switch (n.type) {
+        case 111:
+          const r = n.changeID;
+          o(r, (a = 1));
+          break;
+        case 200:
+          r = $itemEnum.E_ItemId.GOLD;
+          const a = n.changeID;
+          o(r, a);
+          break;
+        case 201:
+          r = $itemEnum.E_ItemId.DIAMOND;
+          a = n.changeID;
+          o(r, a);
+          break;
+        case 81:
+        case 82:
+        case 83:
+          $itemDataProxy.itemDataProxy.randomChip(n.type % 80, n.changeID).forEach(function (t, e) {
+            o(e, t);
+          });
       }
-    },
-  );
+    }
+  });
   this._bagCreateRewardMaps.forEach(function (e) {
     e.forEach(function (e, n) {
       if (t._rewardItemMap.has(n)) {
@@ -326,10 +316,7 @@ e.prototype.prevReward = function () {
       }
     });
   });
-  if (
-    0 != $levelBattleData.levelBattleData.cfgStage.id ||
-    this._rewardItemMap.has(101)
-  ) {
+  if (0 != $levelBattleData.levelBattleData.cfgStage.id || this._rewardItemMap.has(101)) {
     //
   } else {
     this._rewardItemMap.set(101, 10);
@@ -353,8 +340,8 @@ e.prototype.init = function (t) {
   );
   this.nBottom.active = !1;
   this._isFinish = t.isFinish;
-  this.nWinTitle.getChildByName("Type1").active = t.isFinish;
-  this.nWinTitle.getChildByName("Type2").active = !t.isFinish;
+  this.nWinTitle.getChildByName('Type1').active = t.isFinish;
+  this.nWinTitle.getChildByName('Type2').active = !t.isFinish;
   this._rewardItemMap = new Map();
   this._isComplete = !1;
   if (t.isFinish) {
@@ -363,8 +350,7 @@ e.prototype.init = function (t) {
   }
   if (
     0 == $levelBattleData.levelBattleData.cfgStage.id &&
-    $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-      $guideDataProxy.EGuideStepId.G_14
+    $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_14
   ) {
     $eventManager.EventManager.instance.emit(
       $guideMgr.EGuideEvent.COMPLETE_GUIDE_STEP,
@@ -373,12 +359,9 @@ e.prototype.init = function (t) {
   }
   this.prevReward();
   this.initRewardNum();
-  $reportMgr.ReportMgr.instance.reportEvent(
-    t.isFinish ? "BA_StageWin" : "BA_StageEnd",
-    {
-      userA: "" + $levelBattleData.levelBattleData.cfgStage.id,
-    },
-  );
+  $reportMgr.ReportMgr.instance.reportEvent(t.isFinish ? 'BA_StageWin' : 'BA_StageEnd', {
+    userA: '' + $levelBattleData.levelBattleData.cfgStage.id,
+  });
   this.scheduleOnce(function () {
     e.autoComplete();
   }, 8);
@@ -401,4 +384,4 @@ function e() {
   e._bagCreateRewardMaps = null;
   return e;
 }
-exports.default = T;
+export default T;;

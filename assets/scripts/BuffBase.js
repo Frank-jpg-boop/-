@@ -12,8 +12,8 @@ t.prototype.remove = function (t, e) {
     if (this._effects.length > 0) {
       if (t) {
         this._effects.forEach(function (t) {
-          if (t.hasAnimInDefault && t.hasAnimInDefault("end")) {
-            t.playDefaultAnim("end", 1, !1, function () {
+          if (t.hasAnimInDefault && t.hasAnimInDefault('end')) {
+            t.playDefaultAnim('end', 1, !1, function () {
               t.remove();
             });
           } else {
@@ -31,11 +31,7 @@ t.prototype.remove = function (t, e) {
     this._buffData.parentActor.buff.deleteBuffMap(this._buffData.buffId);
     this.onRemove();
     if (this._buffData.onRemove) {
-      this._buffData.onRemove(
-        this._buffData.agentActor,
-        this._buffData.parentActor,
-        e,
-      );
+      this._buffData.onRemove(this._buffData.agentActor, this._buffData.parentActor, e);
     }
   }
 };
@@ -117,28 +113,28 @@ t.prototype.init = function (t) {
   this.isInit = !0;
   this._effects = [];
 };
-Object.defineProperty(t.prototype, "buffCount", {
+Object.defineProperty(t.prototype, 'buffCount', {
   get: function () {
     return this.singleDatas.length;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "isDebuff", {
+Object.defineProperty(t.prototype, 'isDebuff', {
   get: function () {
     return this._buffData.isDebuff;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "buffType", {
+Object.defineProperty(t.prototype, 'buffType', {
   get: function () {
     return this._buffData.buffType;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "data", {
+Object.defineProperty(t.prototype, 'data', {
   get: function () {
     return this._buffData;
   },
@@ -153,4 +149,4 @@ function t() {
   this._effects = null;
 }
 const i = t;
-exports.default = i;
+export default i;

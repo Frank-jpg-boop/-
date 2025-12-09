@@ -16,7 +16,7 @@ import $levelBattleData from './LevelBattleData';
 import $actorMgr from './ActorMgr';
 import $enemyBase from './EnemyBase';
 import $enemyRefreshPoint from './EnemyRefreshPoint';
-exports.EnemyRefreshMgr = void 0;
+export const EnemyRefreshMgr = void 0;
 t.prototype.createBoss = function (t, e) {
   const n = $battleMgr.default.instance.getCurScene();
   if (n) {
@@ -26,12 +26,9 @@ t.prototype.createBoss = function (t, e) {
       cfgId: t,
       camp: $actorEnum.ETeamType.ENEMY,
       parent: 2 == o.moveType ? n.effectParent : n.actorParent,
-      prefabName: "Boss_" + t,
+      prefabName: 'Boss_' + t,
       initPos: cc.v2(-9999, -9999),
-      actorClass: $actorMgr.default.instance.getActorClassName(
-        t,
-        $actorEnum.ETeamType.ENEMY,
-      ),
+      actorClass: $actorMgr.default.instance.getActorClassName(t, $actorEnum.ETeamType.ENEMY),
       onCreated: null,
       initParam: {
         rewardMap: new Map(),
@@ -58,7 +55,7 @@ t.prototype.createEnemy = function (t, e, n, o, r) {
         s.node.getPosition().add(cc.v2(0, 40));
         $effectMgr.default.instance.createEffect({
           parent: a.uiNode.getComponent($gameUI.default).nGameUILayer,
-          prefabName: "ERefreshEnemyTips",
+          prefabName: 'ERefreshEnemyTips',
           initPos: cc.v2(),
           effectClass: $eRefreshEnemyTips.default,
           onCreated: function (t) {
@@ -72,7 +69,7 @@ t.prototype.createEnemy = function (t, e, n, o, r) {
         cfgId: t.enemyId,
         camp: $actorEnum.ETeamType.ENEMY,
         parent: 2 == c.moveType ? a.effectParent : a.actorParent,
-        prefabName: "Enemy_" + t.enemyId,
+        prefabName: 'Enemy_' + t.enemyId,
         initPos: e,
         actorClass: $actorMgr.default.instance.getActorClassName(
           t.enemyId,
@@ -89,7 +86,7 @@ t.prototype.createEnemy = function (t, e, n, o, r) {
       });
     }
   } else {
-    console.error("配置错误,出现了错误怪物id" + t.enemyId);
+    console.error('配置错误,出现了错误怪物id' + t.enemyId);
   }
 };
 t.prototype.allotPos = function (t, e) {
@@ -105,7 +102,7 @@ t.prototype.allotPos = function (t, e) {
   if (t) {
     const n = $cfg.default.instance.dataStage
       .getById($levelBattleData.levelBattleData.stageId)
-      .endRefresh.split("|")
+      .endRefresh.split('|')
       .map(Number);
     const o = this._refreshPoints.filter(function (t) {
       return n.includes(t.refreshId);
@@ -121,18 +118,13 @@ t.prototype.allotPos = function (t, e) {
       const c = s.clone();
       const l = 0 == $randomUtil.RandomUtil.randomInt(0, 2);
       c.x = s.x + (l ? -e : e);
-      const u = $battleMgr.default.instance
-        .getCurScene()
-        .level.path.findPathLineByPos(c);
-      if ("" != u) {
+      const u = $battleMgr.default.instance.getCurScene().level.path.findPathLineByPos(c);
+      if ('' != u) {
         return c;
       } else {
         return (
           (c.x = s.x + (l ? e : -e)),
-          "" !=
-          (u = $battleMgr.default.instance
-            .getCurScene()
-            .level.path.findPathLineByPos(c))
+          '' != (u = $battleMgr.default.instance.getCurScene().level.path.findPathLineByPos(c))
             ? c
             : o[$randomUtil.RandomUtil.randomInt(0, o.length)].pos
         );
@@ -152,39 +144,28 @@ t.prototype.allotReward = function (t) {
   }
   if (this._curWaveResidueRewardNum > 0) {
     for (
-      const n = Math.floor(
-                this._curWaveResidueRewardNum / this._curWaveResidueCreateEnemyNum,
-              ),
-            i = $randomUtil.RandomUtil.randomInt(Math.max(0, n - 2), n + 3),
-            o = 0;
+      const n = Math.floor(this._curWaveResidueRewardNum / this._curWaveResidueCreateEnemyNum),
+        i = $randomUtil.RandomUtil.randomInt(Math.max(0, n - 2), n + 3),
+        o = 0;
       o < i && 0 != this._curWaveRewardAllots.length;
       ++o
     ) {
       const a =
         this._curWaveRewardAllots[
-          $randomUtil.RandomUtil.randomInt(
-            0,
-            this._curWaveRewardAllots.length,
-          )
+          $randomUtil.RandomUtil.randomInt(0, this._curWaveRewardAllots.length)
         ];
       const s = e.get(a.rewardId) || 0;
       e.set(a.rewardId, s + 1);
       a.num--;
       if (a.num <= 0) {
-        this._curWaveRewardAllots.splice(
-          this._curWaveRewardAllots.indexOf(a),
-          1,
-        );
+        this._curWaveRewardAllots.splice(this._curWaveRewardAllots.indexOf(a), 1);
       }
     }
     this._curWaveResidueRewardNum -= i;
   }
   if (this._curWaveProbRewardAllots.length > 0) {
     for (o = 0; o < this._curWaveProbRewardAllots.length; ++o) {
-      if (
-        $randomUtil.RandomUtil.randomInt(0, 100) <
-        this._curWaveProbRewardAllots[o].prob
-      ) {
+      if ($randomUtil.RandomUtil.randomInt(0, 100) < this._curWaveProbRewardAllots[o].prob) {
         a = this._curWaveProbRewardAllots[o];
         s = e.get(a.rewardId) || 0;
         e.set(a.rewardId, s + 1);
@@ -213,10 +194,7 @@ t.prototype.update = function (t) {
   }
   for (e = 0; e < this._waitRescueRefreshDatas.length; ++e) {
     let n;
-    if (
-      (n = this._waitRescueRefreshDatas[e]).startTime &&
-      this._waitRescueTime < n.startTime
-    ) {
+    if ((n = this._waitRescueRefreshDatas[e]).startTime && this._waitRescueTime < n.startTime) {
       //
     } else {
       n.cd -= t;
@@ -263,11 +241,9 @@ t.prototype.enterWaitRescueRefreshData = function () {
   this._curWaveResidueEnemyNum = 0;
   this._waitRescueTime = 0;
   this._waitRescueRefreshDatas = [];
-  const e = $cfg.default.instance.dataStage.getById(
-    $levelBattleData.levelBattleData.stageId,
-  );
-  e.endWave.split("|").forEach(function (n) {
-    const i = n.split("_").map(Number);
+  const e = $cfg.default.instance.dataStage.getById($levelBattleData.levelBattleData.stageId);
+  e.endWave.split('|').forEach(function (n) {
+    const i = n.split('_').map(Number);
     const o = i[0];
     const r = i[1];
     const a = {
@@ -281,22 +257,22 @@ t.prototype.enterWaitRescueRefreshData = function () {
     };
     t._waitRescueRefreshDatas.push(a);
   });
-  if ("" != e.endWave2) {
-    const n = e.endWave2.split("|");
+  if ('' != e.endWave2) {
+    const n = e.endWave2.split('|');
     const o = n[0];
-    const r = n[1].split("_").map(Number);
+    const r = n[1].split('_').map(Number);
     const a = r[0];
     const s = r[1];
     const c = r[2];
     const l = s - a;
     const u = 0;
-    o.split("&").forEach(function (t) {
-      const e = t.split("_").map(Number);
+    o.split('&').forEach(function (t) {
+      const e = t.split('_').map(Number);
       const n = (e[0], e[1]);
       u += n;
     });
-    o.split("&").forEach(function (e) {
-      const n = e.split("_").map(Number);
+    o.split('&').forEach(function (e) {
+      const n = e.split('_').map(Number);
       const i = n[0];
       const o = {
         num: n[1],
@@ -316,7 +292,7 @@ t.prototype.enterWaitRescueRefreshData = function () {
 t.prototype.getWaitRescueEnemyLv = function () {
   const t = $cfg.default.instance.dataStage
     .getById($levelBattleData.levelBattleData.stageId)
-    .endLv.split("|")
+    .endLv.split('|')
     .map(Number);
   const e = t[0];
   const n = t[1];
@@ -342,9 +318,9 @@ t.prototype.updateWaveRefreshData = function (t, e) {
   } else {
     r = o.val;
   }
-  if ("" != r) {
-    r.split("|").forEach(function (t) {
-      const i = t.split("_").map(Number);
+  if ('' != r) {
+    r.split('|').forEach(function (t) {
+      const i = t.split('_').map(Number);
       const r = i[0];
       const a = i[1];
       const s = {
@@ -353,9 +329,7 @@ t.prototype.updateWaveRefreshData = function (t, e) {
         cd: 0,
         createData: {
           enemyId: r,
-          enemyLv: Math.floor(
-            e * $levelBattleData.levelBattleData.stageEnemyLvScale,
-          ),
+          enemyLv: Math.floor(e * $levelBattleData.levelBattleData.stageEnemyLvScale),
         },
       };
       n._curWaveResidueCreateEnemyNum += a;
@@ -364,8 +338,8 @@ t.prototype.updateWaveRefreshData = function (t, e) {
   }
   this._curWaveResidueRewardNum = 0;
   this._curWaveRewardAllots = [];
-  o.reward1.split("|").forEach(function (t) {
-    const e = t.split("_").map(Number);
+  o.reward1.split('|').forEach(function (t) {
+    const e = t.split('_').map(Number);
     const i = e[0];
     const o = e[1];
     if ($itemDataProxy.itemDataProxy.checkCanDropReward(i)) {
@@ -378,8 +352,8 @@ t.prototype.updateWaveRefreshData = function (t, e) {
     }
   });
   this._curWaveProbRewardAllots = [];
-  o.reward2.split("|").forEach(function (t) {
-    const e = t.split("_").map(Number);
+  o.reward2.split('|').forEach(function (t) {
+    const e = t.split('_').map(Number);
     const i = e[0];
     const o = e[1];
     if ($itemDataProxy.itemDataProxy.checkCanDropReward(i)) {
@@ -412,7 +386,7 @@ t.prototype.onGuideChange = function (t) {
       n.actorParent.convertToWorldSpaceAR(i.pos),
       2,
       function () {
-        $globalPopupMgr.default.instance.showTips("【怪物出现了】");
+        $globalPopupMgr.default.instance.showTips('【怪物出现了】');
         e._guideRefreshEnemyData = {
           interval: 1,
           cd: 0,
@@ -452,13 +426,8 @@ t.prototype.onEventActorDeadRemove = function (t) {
     }
     this._curWaveResidueEnemyNum--;
     if (this._curWaveResidueEnemyNum <= 0) {
-      $eventManager.EventManager.instance.emit(
-        $battleEnum.EBattleEvent.WAVE_REFRESH_ENEMY_FINISH,
-      );
-      $eventManager.EventManager.instance.emit(
-        $battleEnum.EBattleEvent.SET_NEXT_WAVE_ENEMY_UI,
-        !0,
-      );
+      $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.WAVE_REFRESH_ENEMY_FINISH);
+      $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.SET_NEXT_WAVE_ENEMY_UI, !0);
     }
   }
 };
@@ -499,7 +468,7 @@ t.prototype.init = function () {
     this,
   );
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (this._instance) {
       //
@@ -527,4 +496,4 @@ function t() {
   this._guideRefreshEnemyData = null;
 }
 const E = t;
-exports.EnemyRefreshMgr = E;
+export const EnemyRefreshMgr = E;

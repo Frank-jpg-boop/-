@@ -14,13 +14,13 @@ const _ = cc._decorator;
 const g = _.ccclass;
 const v = _.property;
 e.prototype.onClickBtnRole = function () {
-  $globalPopupMgr.default.instance.showTips("累积在线时长可领取奖励");
+  $globalPopupMgr.default.instance.showTips('累积在线时长可领取奖励');
 };
 e.prototype.onClickBtnGet = function () {
   if ($playerDataProxy.playerDataProxy.canGetOnlineReward()) {
     $playerDataProxy.playerDataProxy.getOnlineReward(!1);
   } else {
-    $globalPopupMgr.default.instance.showTips("累积在线时长可领取奖励");
+    $globalPopupMgr.default.instance.showTips('累积在线时长可领取奖励');
   }
 };
 e.prototype.onClickBtnAd = function () {
@@ -31,7 +31,7 @@ e.prototype.onClickBtnAd = function () {
     if (6 != t.id) {
       $adMgr.AdMgr.instance.showVideoAd({
         id: 1,
-        eventId: "AD_OnlineReward",
+        eventId: 'AD_OnlineReward',
         success: function () {
           $playerDataProxy.playerDataProxy.getOnlineReward(!0);
         },
@@ -50,7 +50,7 @@ e.prototype.update = function () {
     const t = this._time - $playerDataProxy.playerDataProxy.onlineTime;
     if (t <= 0) {
       this.updateView();
-      this.lTime.string = "00:00";
+      this.lTime.string = '00:00';
     } else {
       this.lTime.string = $timeUtil.TimeUtil.format_HHMMSS(1e3 * t);
     }
@@ -63,7 +63,7 @@ e.prototype.updateView = function () {
   this.node.active = null != t;
   if (t) {
     this._time = 60 * t.time;
-    const e = t.reward.split("_").map(Number);
+    const e = t.reward.split('_').map(Number);
     const n = e[0];
     const i = e[1];
     $resLoader.ResLoader.setSpritFrame(
@@ -74,24 +74,23 @@ e.prototype.updateView = function () {
     $resLoader.ResLoader.setSpritFrame(
       this.spQuality,
       $frameEnum.Frame.EBundleName.RES,
-      "textures/atlas/quality/pic_wuping_di_" +
-        $cfg.default.instance.dataItem.getById(n).rare,
+      'textures/atlas/quality/pic_wuping_di_' + $cfg.default.instance.dataItem.getById(n).rare,
     );
-    this.lNum.string = "x" + i;
+    this.lNum.string = 'x' + i;
     if ($playerDataProxy.playerDataProxy.canGetOnlineReward()) {
       this.lTime.node.active = !1;
       this.nAd.active = !1;
-      this.lDesc.string = "点击领取";
+      this.lDesc.string = '点击领取';
       this.redPoint.setRedPointState(!0);
     } else {
       this.lTime.node.active = !0;
       this.nAd.active = 1 == t.adGet;
       if (this.nAd.active) {
         const o = 6 == t.id;
-        this.nAd.getChildByName("Layout").getChildByName("Ad").active = !o;
-        this.nAd.getChildByName("Layout").getChildByName("Share").active = o;
+        this.nAd.getChildByName('Layout').getChildByName('Ad').active = !o;
+        this.nAd.getChildByName('Layout').getChildByName('Share').active = o;
       }
-      this.lDesc.string = "后可领取";
+      this.lDesc.string = '后可领取';
       this.redPoint.setRedPointState(!1);
     }
   }
@@ -125,4 +124,4 @@ function e() {
   e._time = 0;
   return e;
 }
-exports.default = b;
+export default b;

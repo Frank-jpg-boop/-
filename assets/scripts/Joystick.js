@@ -2,16 +2,16 @@ import $eventManager from './EventManager';
 import $inputUtil from './InputUtil';
 import $battleMgr from './BattleMgr';
 let i;
-exports.EJoystickEvent = void 0;
+export const EJoystickEvent = void 0;
 let a;
 const u = cc._decorator;
 const p = u.ccclass;
 const h = u.property;
 u.menu;
 (function (t) {
-  t.TOUCH_START = "JoystickTouchStart";
-  t.TOUCH_MOVE = "JoystickTouchMove";
-  t.TOUCH_END = "JoystickTouchEnd";
+  t.TOUCH_START = 'JoystickTouchStart';
+  t.TOUCH_MOVE = 'JoystickTouchMove';
+  t.TOUCH_END = 'JoystickTouchEnd';
 })((a = exports.EJoystickEvent || (exports.EJoystickEvent = {})));
 e.prototype.stopTouch = function () {
   const t = this;
@@ -21,75 +21,23 @@ e.prototype.stopTouch = function () {
   t.isTouchJoystick = !1;
   this._power = 1;
   t.node.pauseSystemEvents(!0);
-};
-e.prototype.updateKeyCode = function (t) {
-  if (!this.isTouchJoystick) {
-    if (this._isMovable) {
-      $eventManager.EventManager.instance.emit(
-        a.TOUCH_MOVE,
-        this._vec2,
-        1,
-        t,
-      );
-    }
-    const e = cc.v2(0, 0);
-    if (
-      $inputUtil.default.instance.isKeyJustPressed(cc.macro.KEY.w) ||
-      $inputUtil.default.instance.isKeyJustPressed(cc.macro.KEY.a) ||
-      $inputUtil.default.instance.isKeyJustPressed(cc.macro.KEY.s) ||
-      $inputUtil.default.instance.isKeyJustPressed(cc.macro.KEY.d)
-    ) {
-      if (this._isMovable) {
-        //
-      } else {
-        $eventManager.EventManager.instance.emit(a.TOUCH_START);
-      }
-    }
-    if ($inputUtil.default.instance.isKeyPressed(cc.macro.KEY.w)) {
-      e.y = 2;
-    }
-    if ($inputUtil.default.instance.isKeyPressed(cc.macro.KEY.a)) {
-      e.x = -1;
-    }
-    if ($inputUtil.default.instance.isKeyPressed(cc.macro.KEY.s)) {
-      e.y = -2;
-    }
-    if ($inputUtil.default.instance.isKeyPressed(cc.macro.KEY.d)) {
-      e.x = 1;
-    }
-    e.normalizeSelf();
-    if (
-      $inputUtil.default.instance.isKeyJustReleased(cc.macro.KEY.w) ||
-      $inputUtil.default.instance.isKeyJustReleased(cc.macro.KEY.s)
-    ) {
-      e.y = 0;
-    }
-    if (
-      $inputUtil.default.instance.isKeyJustReleased(cc.macro.KEY.a) ||
-      $inputUtil.default.instance.isKeyJustReleased(cc.macro.KEY.d)
-    ) {
-      e.x = 0;
-    }
-    const n = 0 != e.x || 0 != e.y;
-    if (n) {
-      this._radian = cc.v2(1, 0).signAngle(e);
-      this._vec2 = e;
-      this._isMovable = !0;
-    } else {
-      this._isMovable != n &&
-        $eventManager.EventManager.instance.emit(a.TOUCH_END);
-      this._isMovable = !1;
-    }
-  }
-};
+let i;
+let a;
+export const EJoystickEvent = void 0;
+const u = cc._decorator;
+const p = u.ccclass;
+const h = u.property;
+u.menu;
+(function (t) {
+  t.TOUCH_START = 'JoystickTouchStart';
+  t.TOUCH_MOVE = 'JoystickTouchMove';
+  t.TOUCH_END = 'JoystickTouchEnd';
+})((a = exports.EJoystickEvent || (exports.EJoystickEvent = {})));
+// ...existing code...
+}
 e.prototype.update = function (t) {
   if (this._isMovable && this.isTouchJoystick) {
-    $eventManager.EventManager.instance.emit(
-      a.TOUCH_MOVE,
-      this._vec2,
-      this._power,
-      t,
-    );
+    $eventManager.EventManager.instance.emit(a.TOUCH_MOVE, this._vec2, this._power, t);
   }
 };
 e.prototype.setSafePos = function (t) {
@@ -166,11 +114,7 @@ e.prototype.onTouchStart = function (t) {
     e.nControlDot.setPosition(u > r ? o : cc.v2(p, h));
     this._power = Math.min(r, u) / u;
     e._isMovable = !0;
-    $eventManager.EventManager.instance.emit(
-      a.TOUCH_START,
-      this._vec2,
-      this._power,
-    );
+    $eventManager.EventManager.instance.emit(a.TOUCH_START, this._vec2, this._power);
   }
 };
 e.prototype.onDestroy = function () {
@@ -200,28 +144,28 @@ e.prototype.onLoad = function () {
   this.node.getComponent(cc.Widget).enabled = !1;
   e._initPos = e.node.getPosition();
 };
-Object.defineProperty(e.prototype, "isMovable", {
+Object.defineProperty(e.prototype, 'isMovable', {
   get: function () {
     return this._isMovable;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "power", {
+Object.defineProperty(e.prototype, 'power', {
   get: function () {
     return this._power;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "dir", {
+Object.defineProperty(e.prototype, 'dir', {
   get: function () {
     return this._vec2.clone();
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "radian", {
+Object.defineProperty(e.prototype, 'radian', {
   get: function () {
     return this._radian;
   },
@@ -239,4 +183,4 @@ function e() {
   e.isTouchJoystick = !1;
   return e;
 }
-exports.default = f;
+export default f;;

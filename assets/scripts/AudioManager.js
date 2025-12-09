@@ -1,11 +1,11 @@
 import $resLoader from './ResLoader';
 import $frameEnum from './FrameEnum';
 import $basicsProxy from './BasicsProxy';
-exports.AudioManager = void 0;
+export const AudioManager = void 0;
 t._instance = null;
 t.prototype.stopAllEffect = function () {
   for (let t in this._clips)
-    if ("draw" != t) {
+    if ('draw' != t) {
       const e = this._clips[t];
       if (e) {
         cc.audioEngine.stopEffect(e);
@@ -15,7 +15,7 @@ t.prototype.stopAllEffect = function () {
 };
 t.prototype.stopEffect = function (t, e) {
   if (void 0 === e) {
-    e = "";
+    e = '';
   }
   const n = this._loading.indexOf(t);
   if (-1 !== n) {
@@ -29,7 +29,7 @@ t.prototype.stopEffect = function (t, e) {
 };
 t.prototype.resumeEffect = function (t, e) {
   if (void 0 === e) {
-    e = "";
+    e = '';
   }
   const n = this._clips[t + e];
   if (n) {
@@ -38,7 +38,7 @@ t.prototype.resumeEffect = function (t, e) {
 };
 t.prototype.pauseEffect = function (t, e) {
   if (void 0 === e) {
-    e = "";
+    e = '';
   }
   const n = this._clips[t + e];
   if (n) {
@@ -56,7 +56,7 @@ t.prototype.playLimitTimeEffect = function (t, e, n, i) {
   if (void 0 === i) {
     i = !1;
   }
-  const a = (e || "") + t;
+  const a = (e || '') + t;
   if (!this._limitTimeEffectNames.includes(a)) {
     this._limitTimeEffectNames.push(a);
     const s = setTimeout(function () {
@@ -78,9 +78,9 @@ t.prototype.playEffectPath = function (t, e, n, r, a) {
     r = !1;
   }
   if (void 0 === a) {
-    a = "";
+    a = '';
   }
-  const c = t.split("/").pop();
+  const c = t.split('/').pop();
   this._loading.push(c);
   $resLoader.ResLoader.loadAsset({
     path: t,
@@ -118,7 +118,7 @@ t.prototype.playBattleEffect = function (t, e, n, i, r) {
     i = !1;
   }
   if (void 0 === r) {
-    r = "";
+    r = '';
   }
   if (this._battleEffectSwitch) {
     this.playEffectPath(t, e, n, i, r);
@@ -129,7 +129,7 @@ t.prototype.playEffect = function (t, e, n) {
     e = !1;
   }
   if (void 0 === n) {
-    n = "";
+    n = '';
   }
   if (0 === $basicsProxy.basicsProxy.effectVolume) {
     return -1;
@@ -166,7 +166,7 @@ t.prototype.playBgmPath = function (t, e, n) {
   if (void 0 === n) {
     n = !0;
   }
-  const r = (e || "") + t;
+  const r = (e || '') + t;
   this._loading.push(r);
   $resLoader.ResLoader.loadAsset({
     bundleName: e,
@@ -203,7 +203,7 @@ t.prototype.setBgmVolume = function (t) {
     }
   }
 };
-Object.defineProperty(t.prototype, "battleEffectSwitch", {
+Object.defineProperty(t.prototype, 'battleEffectSwitch', {
   get: function () {
     return this._battleEffectSwitch;
   },
@@ -213,7 +213,7 @@ Object.defineProperty(t.prototype, "battleEffectSwitch", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new t();
@@ -233,4 +233,4 @@ function t() {
   cc.audioEngine.setMusicVolume($basicsProxy.basicsProxy.bgmVolume);
 }
 const a = t;
-exports.AudioManager = a;
+export const AudioManager = a;

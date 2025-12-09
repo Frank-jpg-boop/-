@@ -1,7 +1,7 @@
 import $battleHurtFormulaMgr from './BattleHurtFormulaMgr';
 import $attrEnum from './AttrEnum';
 let i;
-exports.Poison = void 0;
+export const Poison = void 0;
 e.prototype.onUpdate = function (t) {
   this._hurtDis -= t;
   if (this._hurtDis <= 0) {
@@ -16,8 +16,7 @@ e.prototype.onUpdate = function (t) {
     );
     if (this._buffData.parentActor.isDead()) {
       this._buffData.agentActor.beRecover(
-        this._buffData.agentActor.getAttribute($attrEnum.E_AttrType.HP)
-          .value * this._healPercent,
+        this._buffData.agentActor.getAttribute($attrEnum.E_AttrType.HP).value * this._healPercent,
       );
     }
   }
@@ -35,4 +34,4 @@ function e() {
   return e;
 }
 const s = e;
-exports.Poison = s;
+export const Poison = s;

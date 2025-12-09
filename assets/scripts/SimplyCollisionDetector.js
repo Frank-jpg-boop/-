@@ -8,9 +8,7 @@ t.isCollisionPointToRect = function (t, e) {
   return e.contains(t);
 };
 t.isCollisionPointToCircle = function (t, e) {
-  return (
-    $simplyVec2.default.squaredDistance(t, e.center) <= e.radius * e.radius
-  );
+  return $simplyVec2.default.squaredDistance(t, e.center) <= e.radius * e.radius;
 };
 t.rectCross = function (t, e, n) {
   const o = t.rVertexs
@@ -68,18 +66,12 @@ t.isCollisionRectToCircle = function (t, e) {
   const l = o.sub(n);
   const u = new $simplyVec2.default(Math.abs(s.x - n.x), Math.abs(s.y - n.y));
   return (
-    new $simplyVec2.default(
-      Math.max(u.x - l.x, 0),
-      Math.max(u.y - l.y, 0),
-    ).lengthSqr() <=
-    a * a
+    new $simplyVec2.default(Math.max(u.x - l.x, 0), Math.max(u.y - l.y, 0)).lengthSqr() <= a * a
   );
 };
 t.isCollisionCircleToCircle = function (t, e) {
-  return (
-    $simplyVec2.default.distance(t.center, e.center) <= t.radius + e.radius
-  );
+  return $simplyVec2.default.distance(t.center, e.center) <= t.radius + e.radius;
 };
 function t() {}
 const o = t;
-exports.default = o;
+export default o;

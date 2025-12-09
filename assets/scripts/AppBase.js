@@ -1,6 +1,6 @@
 import $frameEnum from './FrameEnum';
 import $eventManager from './EventManager';
-exports.AppBase = exports.topNode = exports.rootNode = void 0;
+export const AppBase = (exports.topNode = exports.rootNode = void 0);
 const r = {};
 t.offHide = function (t) {
   cc.game.off(cc.game.EVENT_HIDE, t);
@@ -35,14 +35,14 @@ t.getRoot = function () {
 t.init = function () {
   if (!this.appBaseInit) {
     const t = cc.view.getVisibleSize();
-    exports.rootNode = new cc.Node("Root");
+    export const rootNode = new cc.Node('Root');
     exports.rootNode.width = t.width;
     exports.rootNode.height = t.height;
     exports.rootNode.x = t.width / 2;
     exports.rootNode.y = t.height / 2;
     cc.director.getScene().addChild(exports.rootNode);
     cc.game.addPersistRootNode(exports.rootNode);
-    exports.topNode = new cc.Node("Top");
+    export const topNode = new cc.Node('Top');
     exports.topNode.width = t.width;
     exports.topNode.height = t.height;
     exports.topNode.x = t.width / 2;
@@ -71,4 +71,4 @@ t.getSystemInfoSync = function () {
 };
 function t() {}
 const a = t;
-exports.AppBase = a;
+export const AppBase = a;

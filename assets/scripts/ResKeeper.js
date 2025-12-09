@@ -1,5 +1,5 @@
 let i;
-exports.ResKeeper = void 0;
+export const ResKeeper = void 0;
 const a = cc._decorator;
 const s = a.ccclass;
 const c =
@@ -28,4 +28,4 @@ const c =
       this.releaseAssets();
     };
   })(cc.Component));
-exports.ResKeeper = c;
+export const ResKeeper = c;

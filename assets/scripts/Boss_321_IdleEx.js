@@ -1,14 +1,10 @@
 import $state from './State';
 import $actorEnum from './ActorEnum';
 let i;
-exports.Boss_321_IdleEx = void 0;
+export const Boss_321_IdleEx = void 0;
 e.prototype.update = function () {
   const t = this;
-  if (
-    this._context.isTrigger &&
-    !this._isAppeared &&
-    this._context.waitTime <= 0
-  ) {
+  if (this._context.isTrigger && !this._isAppeared && this._context.waitTime <= 0) {
     this._isAppeared = !0;
     this._context.fadeOut(function () {
       t._context.changeState($actorEnum.EActorStateType.IDLE);
@@ -27,4 +23,4 @@ function e(e) {
   return n;
 }
 const s = e;
-exports.Boss_321_IdleEx = s;
+export const Boss_321_IdleEx = s;

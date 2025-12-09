@@ -20,10 +20,7 @@ const _ =
     }
     e.prototype.registerState = function () {
       t.prototype.registerState.call(this);
-      this._sm.addState(
-        $actorEnum.EActorStateType.ATTACK,
-        new $enemy_411_Atk.Enemy_411_Atk(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.ATTACK, new $enemy_411_Atk.Enemy_411_Atk(this));
     };
     e.prototype.canSkill = function (t) {
       const e = Math.random() < Number(this._cfg.val1);
@@ -37,10 +34,10 @@ const _ =
         if (n.pathPos.y == this.pathPos.y) {
           const o = cc.v2(n.pathPos.x > this.pathPos.x ? 1 : -1, 0);
           const r = null;
-          if ("" != this._pathPointId) {
+          if ('' != this._pathPointId) {
             r = i.level.path.getPoint(this._pathPointId).getDirLine(o);
           } else {
-            if ("" != this._pathLineId) {
+            if ('' != this._pathLineId) {
               r = this._pathLineId;
             }
           }
@@ -79,8 +76,8 @@ const _ =
     };
     e.prototype.playAnimSkill = function (t, e, n) {
       const i = this;
-      this._spCtrl.playAnim("salute_start", 1, !1, function () {
-        i._spCtrl.playAnim("salute_stand", 1, !0);
+      this._spCtrl.playAnim('salute_start', 1, !1, function () {
+        i._spCtrl.playAnim('salute_stand', 1, !0);
         cc.tween(i.node)
           .delay(Number(i._cfg.val3))
           .call(function () {
@@ -100,7 +97,7 @@ const _ =
                   })
                   .start();
               i._spCtrl.playAnim(
-                "skill",
+                'skill',
                 1,
                 !1,
                 function () {
@@ -115,7 +112,7 @@ const _ =
                 },
               );
             } else {
-              i._spCtrl.playAnim("salute_over", 1, !1, function () {
+              i._spCtrl.playAnim('salute_over', 1, !1, function () {
                 if (t) {
                   t();
                 }
@@ -148,9 +145,7 @@ const _ =
     e.prototype.findMoveDoor = function (t, e, n, i) {
       for (
         const o = 0,
-              r = $unitMgr.UnitMgr.instance.queryUnit(
-                $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
-              );
+          r = $unitMgr.UnitMgr.instance.queryUnit($gridAreaDivisionMgr.E_AreaObjectType.DOOR);
         o < r.length;
         o++
       ) {
@@ -167,4 +162,4 @@ const _ =
       return null;
     };
   })($enemyBase.default));
-exports.default = _;
+export default _;

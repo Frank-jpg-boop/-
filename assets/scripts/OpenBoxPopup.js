@@ -4,8 +4,8 @@ const s = cc._decorator;
 const c = s.ccclass;
 const l = s.property;
 e.prototype.onShow = function () {
-  this.mBoxSp.setSkin("skin" + this._skinId);
-  this.mBoxSp.setAnimation(0, "animation", !1);
+  this.mBoxSp.setSkin('skin' + this._skinId);
+  this.mBoxSp.setAnimation(0, 'animation', !1);
 };
 e.prototype.init = function (t) {
   const e = this;
@@ -25,4 +25,4 @@ function e() {
   e._skinId = 0;
   return e;
 }
-exports.default = u;
+export default u;

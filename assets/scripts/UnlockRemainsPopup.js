@@ -22,27 +22,24 @@ e.prototype.onClickBtnHideRemain = function () {
 e.prototype.onClickBtnRemain = function (t, e) {
   this.mRemainsDetails.active = !0;
   const n = e.skillExId;
-  const i = this.mRemainsDetails.getChildByName("desBg");
-  const o = i.getChildByName("des");
-  const r = i.getChildByName("getTips");
-  const s = $nodeUtil.default.nodeParentChangeLocalPos(
-    e.item,
-    this.mRemainsDetails,
-  );
+  const i = this.mRemainsDetails.getChildByName('desBg');
+  const o = i.getChildByName('des');
+  const r = i.getChildByName('getTips');
+  const s = $nodeUtil.default.nodeParentChangeLocalPos(e.item, this.mRemainsDetails);
   if (s.x < 0) {
-    i.getChildByName("Bg").scaleX = 1;
+    i.getChildByName('Bg').scaleX = 1;
     i.x = s.x + i.width / 2 - 50;
   } else {
-    i.getChildByName("Bg").scaleX = -1;
+    i.getChildByName('Bg').scaleX = -1;
     i.x = s.x - i.width / 2 + 50;
   }
-  r.getComponent(cc.Label).string = "第" + e.cfgData.getStage + "章";
+  r.getComponent(cc.Label).string = '第' + e.cfgData.getStage + '章';
   const c = $cfg.default.instance.dataChoose.getById(n);
   o.getComponent(cc.Label).string = this.getEffectDes(c);
 };
 e.prototype.scrollToItem = function (t, e, n, i) {
   if (void 0 === n) {
-    n = "center";
+    n = 'center';
   }
   if (void 0 === i) {
     i = 0.3;
@@ -57,14 +54,14 @@ e.prototype.scrollToItem = function (t, e, n, i) {
       const l = s - e.height;
       const u = 0;
       switch (n) {
-        case "top":
+        case 'top':
           u = s;
           break;
-        case "center":
+        case 'center':
         default:
           u = c - (r / 2 - e.height / 2);
           break;
-        case "bottom":
+        case 'bottom':
           u = l - r + e.height;
       }
       u = Math.max(0, Math.min(u, a - r));
@@ -74,20 +71,20 @@ e.prototype.scrollToItem = function (t, e, n, i) {
 };
 e.prototype.playItemUnlockAnim = function (t, e, n, i) {
   const o = n.speReward
-    .split("|")
+    .split('|')
     .map(function (t) {
-      return Number(t.split("_")[0]);
+      return Number(t.split('_')[0]);
     })
     .findIndex(function (t) {
       return t == e;
     });
   const r = this.nRemains.children[o];
-  const a = r.getChildByName("SpAnim");
+  const a = r.getChildByName('SpAnim');
   a.active = !0;
   const s = a.getComponent($spAnimCtrl.default);
   s.clearAnim();
-  const c = r.getChildByName("Quality");
-  const l = r.getChildByName("icon");
+  const c = r.getChildByName('Quality');
+  const l = r.getChildByName('icon');
   $nodeUtil.default.setSpriteNormalMaterial(c);
   $nodeUtil.default.setSpriteNormalMaterial(l);
   const h = this.nRemainsInfo.children[t];
@@ -106,11 +103,11 @@ e.prototype.playItemUnlockAnim = function (t, e, n, i) {
     this.scrollToItem(
       this.nRemainsInfo.parent.parent.getComponent(cc.ScrollView),
       h,
-      "center",
+      'center',
       0.4,
     );
   }
-  s.playAnim("animation", 1, !1, function () {
+  s.playAnim('animation', 1, !1, function () {
     s.node.active = !1;
   });
 };
@@ -127,10 +124,7 @@ e.prototype.playUnlockAnim = function (t) {
   }
 };
 e.prototype.initRemainsInfo = function (t) {
-  for (
-    const e = this, n = this._remainIds.length - this.nRemainsInfo.childrenCount;
-    n > 0;
-  ) {
+  for (const e = this, n = this._remainIds.length - this.nRemainsInfo.childrenCount; n > 0; ) {
     const i = cc.instantiate(this.nRemainsInfo.children[0]);
     this.nRemainsInfo.addChild(i);
     n--;
@@ -138,47 +132,41 @@ e.prototype.initRemainsInfo = function (t) {
   this.nRemainsInfo.children.forEach(function (n, i) {
     for (
       let o,
-          r = e._remainIds[i],
-          l = Number(
-            t.speReward
-              .split("|")
-              .find(function (t) {
-                return Number(t.split("_")[0]) == r;
-              })
-              .split("_")[1],
-          ),
-          u = $cfg.default.instance.dataChoose.getById(l),
-          p = [],
-          f = /\|([^|]+)\|/g;
+        r = e._remainIds[i],
+        l = Number(
+          t.speReward
+            .split('|')
+            .find(function (t) {
+              return Number(t.split('_')[0]) == r;
+            })
+            .split('_')[1],
+        ),
+        u = $cfg.default.instance.dataChoose.getById(l),
+        p = [],
+        f = /\|([^|]+)\|/g;
       null != (o = f.exec(u.info));
     ) {
       p.push(o[1]);
     }
     const d = u.info;
     p.forEach(function (t) {
-      const e = t.replace("%", "");
-      d = d.replace(
-        "|" + t + "|",
-        t.includes("%") ? 100 * Number(u[e]) + "%" : "" + u[e],
-      );
+      const e = t.replace('%', '');
+      d = d.replace('|' + t + '|', t.includes('%') ? 100 * Number(u[e]) + '%' : '' + u[e]);
     });
-    n.getChildByName("des").getComponent(cc.Label).string = d;
+    n.getChildByName('des').getComponent(cc.Label).string = d;
     const m = $cfg.default.instance.dataItem.getById(r);
     $resLoader.ResLoader.setSpritFrame(
-      n.getChildByName("Quality").getComponent(cc.Sprite),
+      n.getChildByName('Quality').getComponent(cc.Sprite),
       $frameEnum.Frame.EBundleName.RES,
-      "textures/atlas/quality/quality_remain_" + u.rare,
+      'textures/atlas/quality/quality_remain_' + u.rare,
     );
     $resLoader.ResLoader.setSpritFrame(
-      n
-        .getChildByName("item")
-        .getChildByName("Quality")
-        .getComponent(cc.Sprite),
+      n.getChildByName('item').getChildByName('Quality').getComponent(cc.Sprite),
       $frameEnum.Frame.EBundleName.HOME,
-      "textures/public/pic_wuping_di_" + m.rare,
+      'textures/public/pic_wuping_di_' + m.rare,
     );
     $resLoader.ResLoader.setSpritFrame(
-      n.getChildByName("item").getChildByName("icon").getComponent(cc.Sprite),
+      n.getChildByName('item').getChildByName('icon').getComponent(cc.Sprite),
       $frameEnum.Frame.EBundleName.RES,
       $itemDataProxy.itemDataProxy.getItemIconPath(r),
     );
@@ -188,13 +176,13 @@ e.prototype.initRemainsInfo = function (t) {
 e.prototype.initRemains = function (t) {
   for (
     const e = this,
-          n = t.speReward.split("|").map(function (t) {
-            return Number(t.split("_")[0]);
-          }),
-          i = t.speReward.split("|").map(function (t) {
-            return Number(t.split("_")[1]);
-          }),
-          o = n.length - this.nRemains.childrenCount;
+      n = t.speReward.split('|').map(function (t) {
+        return Number(t.split('_')[0]);
+      }),
+      i = t.speReward.split('|').map(function (t) {
+        return Number(t.split('_')[1]);
+      }),
+      o = n.length - this.nRemains.childrenCount;
     o > 0;
   ) {
     const r = cc.instantiate(this.nRemains.children[0]);
@@ -204,40 +192,31 @@ e.prototype.initRemains = function (t) {
   this.nRemains.children.forEach(function (t, o) {
     const r = n[o];
     const l = $cfg.default.instance.dataReward.getById(r);
-    const p = t.getChildByName("Quality");
+    const p = t.getChildByName('Quality');
     $resLoader.ResLoader.setSpritFrame(
       p.getComponent(cc.Sprite),
       $frameEnum.Frame.EBundleName.HOME,
-      "textures/public/pic_wuping_di_" + l.rare,
+      'textures/public/pic_wuping_di_' + l.rare,
     );
-    const f = t.getChildByName("icon");
+    const f = t.getChildByName('icon');
     $resLoader.ResLoader.setSpritFrame(
       f.getComponent(cc.Sprite),
       $frameEnum.Frame.EBundleName.RES,
       $itemDataProxy.itemDataProxy.getItemIconPath(r),
     );
-    t.getChildByName("SpAnim").active = !1;
-    if (
-      e._remainIds.includes(r) ||
-      $itemDataProxy.itemDataProxy.getItemValue(r) <= 0
-    ) {
+    t.getChildByName('SpAnim').active = !1;
+    if (e._remainIds.includes(r) || $itemDataProxy.itemDataProxy.getItemValue(r) <= 0) {
       $nodeUtil.default.setSpriteGrayMaterial(p);
       $nodeUtil.default.setSpriteGrayMaterial(f);
     } else {
       $nodeUtil.default.setSpriteNormalMaterial(p);
       $nodeUtil.default.setSpriteNormalMaterial(f);
     }
-    $nodeUtil.default.addButtonListener(
-      t,
-      "UnlockRemainsPopup",
-      "onClickBtnRemain",
-      e.node,
-      {
-        item: t,
-        cfgData: $cfg.default.instance.dataReward.getById(r),
-        skillExId: i[o],
-      },
-    );
+    $nodeUtil.default.addButtonListener(t, 'UnlockRemainsPopup', 'onClickBtnRemain', e.node, {
+      item: t,
+      cfgData: $cfg.default.instance.dataReward.getById(r),
+      skillExId: i[o],
+    });
   });
 };
 e.prototype.initSkillInfo = function (t) {
@@ -245,39 +224,33 @@ e.prototype.initSkillInfo = function (t) {
   const n = $playerDataProxy.playerDataProxy.getArtifactUpGreadNeedNum(t.id);
   const i = $playerDataProxy.playerDataProxy.getArtifactUpGreadNeeItemId(t.id);
   const o = $itemDataProxy.itemDataProxy.getItemValue(i);
-  const r = this.nSkillInfo.getChildByName("Quality");
+  const r = this.nSkillInfo.getChildByName('Quality');
   $resLoader.ResLoader.setSpritFrame(
     r.getComponent(cc.Sprite),
     $frameEnum.Frame.EBundleName.HOME,
-    "textures/public/pic_wuping_di_" + t.rare,
+    'textures/public/pic_wuping_di_' + t.rare,
   );
-  this.nSkillInfo.getChildByName("debrisNum").getComponent(cc.Label).string =
-    o + "/" + n;
-  this.nSkillInfo.getChildByName("bar").getComponent(cc.Sprite).fillRange =
-    o / n;
-  this.nSkillInfo.getChildByName("lv").getComponent(cc.Label).string =
-    "Lv." + e;
+  this.nSkillInfo.getChildByName('debrisNum').getComponent(cc.Label).string = o + '/' + n;
+  this.nSkillInfo.getChildByName('bar').getComponent(cc.Sprite).fillRange = o / n;
+  this.nSkillInfo.getChildByName('lv').getComponent(cc.Label).string = 'Lv.' + e;
   $resLoader.ResLoader.setSpritFrame(
-    this.nSkillInfo.getChildByName("icon").getComponent(cc.Sprite),
+    this.nSkillInfo.getChildByName('icon').getComponent(cc.Sprite),
     $frameEnum.Frame.EBundleName.GAME,
-    "textures/skill/" + t.icon,
+    'textures/skill/' + t.icon,
   );
 };
 e.prototype.initAttr = function (t) {
   const e = $playerDataProxy.playerDataProxy.getArtifactLv(t.id);
-  const n = t.dmg.split("|").map(Number);
+  const n = t.dmg.split('|').map(Number);
   const i = [
-    "" + (n[e - 1] ? n[e - 1] : n[n.length - 1]),
-    t.main2 + "s",
-    "" + (t.edge >= 9999 ? "无限" : t.edge),
+    '' + (n[e - 1] ? n[e - 1] : n[n.length - 1]),
+    t.main2 + 's',
+    '' + (t.edge >= 9999 ? '无限' : t.edge),
   ];
   this.nAttr.children.forEach(function (t, e) {
     (0 == e
-      ? t
-          .getChildByName("layout")
-          .getChildByName("num")
-          .getComponent(cc.Label)
-      : t.getChildByName("num").getComponent(cc.Label)
+      ? t.getChildByName('layout').getChildByName('num').getComponent(cc.Label)
+      : t.getChildByName('num').getComponent(cc.Label)
     ).string = i[e];
   });
 };
@@ -287,11 +260,8 @@ e.prototype.getEffectDes = function (t) {
   }
   const o = t.info;
   n.forEach(function (e) {
-    const n = e.replace("%", "");
-    o = o.replace(
-      "|" + e + "|",
-      e.includes("%") ? 100 * Number(t[n]) + "%" : "" + t[n],
-    );
+    const n = e.replace('%', '');
+    o = o.replace('|' + e + '|', e.includes('%') ? 100 * Number(t[n]) + '%' : '' + t[n]);
   });
   return o;
 };
@@ -305,8 +275,8 @@ e.prototype.init = function (t) {
   const n = $cfg.default.instance.dataSkill.queryOne(function (t) {
     return (
       -1 !=
-      t.speReward.split("|").findIndex(function (t) {
-        return Number(t.split("_")[0]) == e._remainIds[0];
+      t.speReward.split('|').findIndex(function (t) {
+        return Number(t.split('_')[0]) == e._remainIds[0];
       })
     );
   });
@@ -332,4 +302,4 @@ function e() {
   e._onComplete = null;
   return e;
 }
-exports.default = _;
+export default _;

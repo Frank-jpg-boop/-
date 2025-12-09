@@ -28,4 +28,4 @@ const c =
         .start();
     };
   })(cc.Component));
-exports.default = c;
+export default c;

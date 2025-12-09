@@ -30,13 +30,13 @@ const f =
     e.prototype.checkCollision = function () {
       for (
         const t = this.node.getPosition(),
-              e = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(t.x, t.y),
-              n = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
-                e.key,
-                $gridAreaDivisionMgr.E_AreaObjectType.ENEMY,
-              ),
-              i = this.node.convertToWorldSpaceAR(cc.v2()),
-              o = 0;
+          e = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(t.x, t.y),
+          n = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
+            e.key,
+            $gridAreaDivisionMgr.E_AreaObjectType.ENEMY,
+          ),
+          i = this.node.convertToWorldSpaceAR(cc.v2()),
+          o = 0;
         o < n.length;
         o++
       ) {
@@ -62,4 +62,4 @@ const f =
       }
     };
   })($bulletBase.default));
-exports.default = f;
+export default f;

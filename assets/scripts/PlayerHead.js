@@ -24,4 +24,4 @@ function e() {
   e.spShield = null;
   return e;
 }
-exports.default = u;
+export default u;

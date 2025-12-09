@@ -14,34 +14,34 @@ const m =
       e._isInit = !1;
       e._isRemove = !1;
       e._unitId = 0;
-      e._pathPointId = "";
-      e._pathLineId = "";
+      e._pathPointId = '';
+      e._pathLineId = '';
       e._initParam = null;
       e._roomId = 0;
       return e;
     }
-    Object.defineProperty(e.prototype, "pathPointId", {
+    Object.defineProperty(e.prototype, 'pathPointId', {
       get: function () {
         return this._pathPointId;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "pathLineId", {
+    Object.defineProperty(e.prototype, 'pathLineId', {
       get: function () {
         return this._pathLineId;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "roomId", {
+    Object.defineProperty(e.prototype, 'roomId', {
       get: function () {
         return this._roomId;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "unitId", {
+    Object.defineProperty(e.prototype, 'unitId', {
       get: function () {
         return this._unitId;
       },
@@ -78,19 +78,20 @@ const m =
         t = !0;
       }
       for (
-        const e = $mathUtil.MathUtil.vec2Fixed(this.node.getPosition()), n = $battleMgr.default.instance.getCurScene().level.path;
+        const e = $mathUtil.MathUtil.vec2Fixed(this.node.getPosition()),
+          n = $battleMgr.default.instance.getCurScene().level.path;
         ;
       ) {
         const i = n.findPathPointByPos(e);
-        if ("" != i) {
+        if ('' != i) {
           this._pathPointId = i;
-          this._pathLineId = "";
+          this._pathLineId = '';
           break;
         }
         const o = n.findPathLineByPos(e);
-        if ("" != o) {
+        if ('' != o) {
           this._pathLineId = o;
-          this._pathPointId = "";
+          this._pathPointId = '';
         }
         break;
       }
@@ -103,10 +104,10 @@ const m =
         this._roomId = t;
       } else {
         const e = $battleMgr.default.instance.getCurScene().level.path;
-        if ("" != this._pathPointId) {
+        if ('' != this._pathPointId) {
           this._roomId = e.getPoint(this._pathPointId).roomId;
         }
-        if ("" != this._pathLineId) {
+        if ('' != this._pathLineId) {
           this._roomId = e.getLine(this._pathLineId).roomId;
         }
       }
@@ -129,4 +130,4 @@ const m =
       $unitMgr.UnitMgr.instance.removeUnit(this._unitId);
     };
   })($areaObject.default));
-exports.default = m;
+export default m;

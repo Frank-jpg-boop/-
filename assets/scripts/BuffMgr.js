@@ -36,13 +36,13 @@ t.prototype.createBuff = function (t) {
       e = new $speedUp.SpeedUp();
       break;
     default:
-      console.error("BuffMgr --> buffType error buffType = " + t.buffType);
+      console.error('BuffMgr --> buffType error buffType = ' + t.buffType);
       return null;
   }
   e.init(t);
   return e;
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new t();
@@ -54,4 +54,4 @@ Object.defineProperty(t, "instance", {
 });
 function t() {}
 const h = t;
-exports.default = h;
+export default h;

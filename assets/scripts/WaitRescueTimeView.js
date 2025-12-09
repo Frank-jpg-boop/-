@@ -51,4 +51,4 @@ function e() {
   e._lTime = null;
   return e;
 }
-exports.default = u;
+export default u;

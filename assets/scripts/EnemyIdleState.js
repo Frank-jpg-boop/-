@@ -4,19 +4,16 @@ import $actorEnum from './ActorEnum';
 import $door from './Door';
 import $unitMgr from './UnitMgr';
 let i;
-exports.EnemyIdleState = void 0;
+export const EnemyIdleState = void 0;
 e.prototype.update = function () {
   if (this._context.isTrigger) {
     const t = $battleMgr.default.instance.getCurScene();
     if (
       t &&
-      (!this._context.isFixCreate ||
-        t.level.getRoomById(this._context.roomId).isArriveed) &&
+      (!this._context.isFixCreate || t.level.getRoomById(this._context.roomId).isArriveed) &&
       this._context.checkGuide() &&
       (!this._context.tempCollisionDoorIds.some(function (t) {
-        return (
-          $unitMgr.UnitMgr.instance.getUnit(t).state == $door.EDoorState.CLOSE
-        );
+        return $unitMgr.UnitMgr.instance.getUnit(t).state == $door.EDoorState.CLOSE;
       }) ||
         this._context.canAttack())
     ) {
@@ -24,14 +21,9 @@ e.prototype.update = function () {
       if (e) {
         if (this._context.canAttackTarget(e)) {
           if (this._context.canAttack()) {
-            return void this._context.changeState(
-              $actorEnum.EActorStateType.ATTACK,
-              e.node,
-            );
+            return void this._context.changeState($actorEnum.EActorStateType.ATTACK, e.node);
           } else {
-            return void this._context.setDirX(
-              e.node.x > this._context.node.x,
-            );
+            return void this._context.setDirX(e.node.x > this._context.node.x);
           }
         }
         this._context.setDirX(e.node.x > this._context.node.x);
@@ -49,4 +41,4 @@ function e(e) {
   return n;
 }
 const u = e;
-exports.EnemyIdleState = u;
+export const EnemyIdleState = u;

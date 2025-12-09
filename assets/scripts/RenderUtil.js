@@ -1,10 +1,6 @@
-exports.RenderUtil = void 0;
+export const RenderUtil = void 0;
 t.flipY = function (t, e) {
-  for (
-    const n = t.length, i = new Uint8Array(n), o = 0, r = n - e;
-    o < n;
-    o += e, r -= e
-  ) {
+  for (const n = t.length, i = new Uint8Array(n), o = 0, r = n - e; o < n; o += e, r -= e) {
     for (const a = 0; a < e; a++) {
       i[o + a] = t[r + a];
     }
@@ -101,4 +97,4 @@ t.getRenderTexture = function (t, e) {
 };
 function t() {}
 const i = t;
-exports.RenderUtil = i;
+export const RenderUtil = i;

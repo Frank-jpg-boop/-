@@ -110,4 +110,4 @@ const p =
         .start();
     };
   })($componentBase.ComponentBase));
-exports.default = p;
+export default p;

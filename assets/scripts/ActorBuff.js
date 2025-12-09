@@ -45,12 +45,7 @@ t.prototype.add = function (t) {
   } else {
     a = $buffMgr.default.instance.createBuff(t);
     this.buffMap.set(t.buffId, a);
-    $eventManager.EventManager.instance.emit(
-      $battleEnum.EBattleEvent.ADD_BUFF_EFFECT,
-      t,
-      a,
-      e,
-    );
+    $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.ADD_BUFF_EFFECT, t, a, e);
     a.trigger.apply(a, e);
   }
   return a;
@@ -69,4 +64,4 @@ function t() {
   this.buffMap = new Map();
 }
 const a = t;
-exports.default = a;
+export default a;

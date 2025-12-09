@@ -12,15 +12,11 @@ import $playerActionMgr from './PlayerActionMgr';
 import $localDataProxy from './LocalDataProxy';
 import $playerDataProxy from './PlayerDataProxy';
 let i;
-exports.itemDataProxy =
-  exports.ItemDataProxy =
-  exports.ItemData =
-  exports.EItemDataEvent =
-    void 0;
+exports.itemDataProxy = exports.ItemDataProxy = exports.ItemData = exports.EItemDataEvent = void 0;
 let r;
 !(function (t) {
-  t.ITEM_ONCE_UPDATE = "item_once_update";
-  t.ITEM_ADD_COMMMON_UI_NOTICE = "item_add_common_ui_notice";
+  t.ITEM_ONCE_UPDATE = 'item_once_update';
+  t.ITEM_ADD_COMMMON_UI_NOTICE = 'item_add_common_ui_notice';
 })((r = exports.EItemDataEvent || (exports.EItemDataEvent = {})));
 e.prototype.createInitData = function () {
   return {
@@ -38,19 +34,13 @@ e.prototype.updateRedPoint = function () {
 e.prototype.randomChip = function (t, e) {
   for (
     const n = new Map(),
-          i = $cfg.default.instance.dataSkill
-            .queryAll(function (e) {
-              return (
-                $playerDataProxy.playerDataProxy.isUnlockSkill(e.id) &&
-                e.rare == t &&
-                !e.isInfo
-              );
-            })
-            .map(function (t) {
-              return $playerDataProxy.playerDataProxy.getArtifactUpGreadNeeItemId(
-                t.id,
-              );
-            });
+      i = $cfg.default.instance.dataSkill
+        .queryAll(function (e) {
+          return $playerDataProxy.playerDataProxy.isUnlockSkill(e.id) && e.rare == t && !e.isInfo;
+        })
+        .map(function (t) {
+          return $playerDataProxy.playerDataProxy.getArtifactUpGreadNeeItemId(t.id);
+        });
     e > 0;
   ) {
     const o = i[$randomUtil.RandomUtil.randomInt(0, i.length)];
@@ -74,14 +64,13 @@ e.prototype.getItemIconBundleName = function () {
 e.prototype.getItemIconPath = function (t) {
   const e = $cfg.default.instance.dataItem.getById(t);
   if (111 == e.type) {
-    return "textures/atlas/item_scene/" + e.icon;
+    return 'textures/atlas/item_scene/' + e.icon;
   } else {
-    return "textures/atlas/item/" + e.icon;
+    return 'textures/atlas/item/' + e.icon;
   }
 };
 e.prototype.setItemValue = function (t, e) {
-  const n =
-    e - (this._data.localData.dict[t] ? this._data.localData.dict[t] : 0);
+  const n = e - (this._data.localData.dict[t] ? this._data.localData.dict[t] : 0);
   this._data.localData.dict[t] = e;
   if (t == $itemEnum.E_ItemId.SURVIVOR) {
     $playerActionMgr.PlayerActionMgr.instance.triggerAction(
@@ -118,7 +107,7 @@ e.prototype.updateItemValue = function (t, e, n) {
     }
     this._data.localData.dict[t] = i;
     if (t == $itemEnum.E_ItemId.GOLD && e < 0) {
-      $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_ConsumingMoney");
+      $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_ConsumingMoney');
     }
     if (t == $itemEnum.E_ItemId.SURVIVOR) {
       if (e > 0) {
@@ -131,16 +120,12 @@ e.prototype.updateItemValue = function (t, e, n) {
       }
       $playerDataProxy.playerDataProxy.updateBuildRedPoint();
       if (e > 0) {
-        $eventManager.EventManager.instance.emit(
-          $campsiteView.ECampsiteEvent.UPDATE_ROOM,
-        );
+        $eventManager.EventManager.instance.emit($campsiteView.ECampsiteEvent.UPDATE_ROOM);
       }
     }
     if (t == $itemEnum.E_ItemId.GOLD) {
       $playerDataProxy.playerDataProxy.updateBuildRedPoint();
-      $eventManager.EventManager.instance.emit(
-        $campsiteView.ECampsiteEvent.UPDATE_ROOM,
-      );
+      $eventManager.EventManager.instance.emit($campsiteView.ECampsiteEvent.UPDATE_ROOM);
     }
     if (n) {
       $localDataProxy.localDataProxy.saveData();

@@ -1,6 +1,6 @@
 import $yx_collection_view from './yx-collection-view';
 let i;
-exports.YXFlowLayout = void 0;
+export const YXFlowLayout = void 0;
 const a = cc._decorator;
 const s =
   (a.ccclass,
@@ -21,7 +21,7 @@ const s =
         return this.itemSize;
       }
       throw new Error(
-        "YXFlowLayout: 动态配置的布局参数不支持直接获取，请检查自己的布局逻辑并谨慎的通过动态配置自己获取，注意避免死循环",
+        'YXFlowLayout: 动态配置的布局参数不支持直接获取，请检查自己的布局逻辑并谨慎的通过动态配置自己获取，注意避免死循环',
       );
     };
     e.prototype.getVerticalSpacing = function () {
@@ -29,7 +29,7 @@ const s =
         return this.verticalSpacing;
       }
       throw new Error(
-        "YXFlowLayout: 动态配置的布局参数不支持直接获取，请检查自己的布局逻辑并谨慎的通过动态配置自己获取，注意避免死循环",
+        'YXFlowLayout: 动态配置的布局参数不支持直接获取，请检查自己的布局逻辑并谨慎的通过动态配置自己获取，注意避免死循环',
       );
     };
     e.prototype.getHorizontalSpacing = function () {
@@ -37,7 +37,7 @@ const s =
         return this.horizontalSpacing;
       }
       throw new Error(
-        "YXFlowLayout: 动态配置的布局参数不支持直接获取，请检查自己的布局逻辑并谨慎的通过动态配置自己获取，注意避免死循环",
+        'YXFlowLayout: 动态配置的布局参数不支持直接获取，请检查自己的布局逻辑并谨慎的通过动态配置自己获取，注意避免死循环',
       );
     };
     e.prototype.getSectionInset = function () {
@@ -45,18 +45,12 @@ const s =
         return this.sectionInset;
       }
       throw new Error(
-        "YXFlowLayout: 动态配置的布局参数不支持直接获取，请检查自己的布局逻辑并谨慎的通过动态配置自己获取，注意避免死循环",
+        'YXFlowLayout: 动态配置的布局参数不支持直接获取，请检查自己的布局逻辑并谨慎的通过动态配置自己获取，注意避免死循环',
       );
     };
     e.prototype.prepare = function (t) {
-      if (
-        t.scrollDirection !=
-        $yx_collection_view.YXCollectionView.ScrollDirection.HORIZONTAL
-      ) {
-        if (
-          t.scrollDirection !=
-          $yx_collection_view.YXCollectionView.ScrollDirection.VERTICAL
-        ) {
+      if (t.scrollDirection != $yx_collection_view.YXCollectionView.ScrollDirection.HORIZONTAL) {
+        if (t.scrollDirection != $yx_collection_view.YXCollectionView.ScrollDirection.VERTICAL) {
           //
         } else {
           this._vertical(t);
@@ -66,14 +60,8 @@ const s =
       }
     };
     e.prototype.initOffset = function (t) {
-      if (
-        t.scrollDirection !=
-        $yx_collection_view.YXCollectionView.ScrollDirection.HORIZONTAL
-      ) {
-        if (
-          t.scrollDirection !=
-          $yx_collection_view.YXCollectionView.ScrollDirection.VERTICAL
-        ) {
+      if (t.scrollDirection != $yx_collection_view.YXCollectionView.ScrollDirection.HORIZONTAL) {
+        if (t.scrollDirection != $yx_collection_view.YXCollectionView.ScrollDirection.VERTICAL) {
           //
         } else {
           t.scrollView.scrollToTop(0);
@@ -88,10 +76,7 @@ const s =
       }
       const i = t.scrollView.getScrollOffset();
       i.x = -i.x;
-      if (
-        t.scrollDirection ==
-        $yx_collection_view.YXCollectionView.ScrollDirection.HORIZONTAL
-      ) {
+      if (t.scrollDirection == $yx_collection_view.YXCollectionView.ScrollDirection.HORIZONTAL) {
         const o = Math.round(i.x / t.scrollView.node.width);
         const a = e.x / t.scrollView.node.width;
         if (n && Math.abs(a) >= 0.2) {
@@ -99,10 +84,7 @@ const s =
         }
         i.x = o * t.scrollView.node.width;
       }
-      if (
-        t.scrollDirection ==
-        $yx_collection_view.YXCollectionView.ScrollDirection.VERTICAL
-      ) {
+      if (t.scrollDirection == $yx_collection_view.YXCollectionView.ScrollDirection.VERTICAL) {
         o = Math.round(i.y / t.scrollView.node.height);
         a = e.y / t.scrollView.node.height;
         if (n && Math.abs(a) >= 0.2) {
@@ -119,10 +101,7 @@ const s =
       if (this.extraVisibleCount < 0) {
         return t.prototype.layoutAttributesForElementsInRect.call(this, e, n);
       }
-      for (
-        const i = -1, o = 0, r = this.attributes.length - 1;
-        o <= r && r >= 0;
-      ) {
+      for (const i = -1, o = 0, r = this.attributes.length - 1; o <= r && r >= 0; ) {
         const a = o + (r - o) / 2;
         a = Math.floor(a);
         const s = this.attributes[a];
@@ -164,10 +143,7 @@ const s =
         c.push(s);
         h = u;
       }
-      for (
-        const f = this.extraVisibleCount;
-        f > 0 && !((u = h + 1) >= this.attributes.length);
-      ) {
+      for (const f = this.extraVisibleCount; f > 0 && !((u = h + 1) >= this.attributes.length); ) {
         s = this.attributes[u];
         e.intersects(s.frame) && c.push(s);
         h = u;
@@ -199,13 +175,10 @@ const s =
       t.scrollView.vertical = !1;
       for (
         const e = t.node.getContentSize().clone(),
-              n = [],
-              i =
-                t.numberOfSections instanceof Function
-                  ? t.numberOfSections(t)
-                  : t.numberOfSections,
-              o = 0,
-              a = 0;
+          n = [],
+          i = t.numberOfSections instanceof Function ? t.numberOfSections(t) : t.numberOfSections,
+          o = 0,
+          a = 0;
         a < i;
         a++
       ) {
@@ -273,13 +246,10 @@ const s =
       t.scrollView.vertical = !0;
       for (
         const e = t.node.getContentSize().clone(),
-              n = [],
-              i =
-                t.numberOfSections instanceof Function
-                  ? t.numberOfSections(t)
-                  : t.numberOfSections,
-              o = 0,
-              a = 0;
+          n = [],
+          i = t.numberOfSections instanceof Function ? t.numberOfSections(t) : t.numberOfSections,
+          o = 0,
+          a = 0;
         a < i;
         a++
       ) {
@@ -344,16 +314,11 @@ const s =
     };
     return e;
   })($yx_collection_view.YXLayout));
-exports.YXFlowLayout = s;
+export const YXFlowLayout = s;
 t.prototype.layout_horizontal_item = function (t, e) {
   if (this.attrs.length <= 0) {
     (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
-    a.frame = new cc.Rect(
-      this.offset,
-      this.sectionInset.top,
-      e.width,
-      e.height,
-    );
+    a.frame = new cc.Rect(this.offset, this.sectionInset.top, e.width, e.height);
     this.attrs.push(a);
     this.containerWidth = Math.max(this.containerWidth, a.frame.width);
     return a;
@@ -364,17 +329,11 @@ t.prototype.layout_horizontal_item = function (t, e) {
     const o = this.attrs[i];
     n.x = o.frame.x;
     n.y = o.frame.yMax + this.verticalSpacing;
-    if (
-      n.yMax <= this.containerHeight - this.sectionInset.bottom &&
-      0 == this.intersects(n)
-    ) {
+    if (n.yMax <= this.containerHeight - this.sectionInset.bottom && 0 == this.intersects(n)) {
       (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
       a.frame = n;
       this.attrs.push(a);
-      this.containerWidth = Math.max(
-        this.containerWidth,
-        a.frame.xMax - this.offset,
-      );
+      this.containerWidth = Math.max(this.containerWidth, a.frame.xMax - this.offset);
       return a;
     }
   }
@@ -383,10 +342,7 @@ t.prototype.layout_horizontal_item = function (t, e) {
     o = this.attrs[i];
     n.x = o.frame.xMax + this.horizontalSpacing;
     n.y = o.frame.y;
-    if (
-      n.xMax <= this.offset + this.containerWidth &&
-      0 == this.intersects(n)
-    ) {
+    if (n.xMax <= this.offset + this.containerWidth && 0 == this.intersects(n)) {
       (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
       a.frame = n;
       this.attrs.push(a);
@@ -399,12 +355,7 @@ t.prototype.layout_horizontal_item = function (t, e) {
 t.prototype.layout_vertical_item = function (t, e) {
   if (this.attrs.length <= 0) {
     (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
-    a.frame = new cc.Rect(
-      this.sectionInset.left,
-      this.offset,
-      e.width,
-      e.height,
-    );
+    a.frame = new cc.Rect(this.sectionInset.left, this.offset, e.width, e.height);
     this.attrs.push(a);
     this.containerHeight = Math.max(this.containerHeight, a.frame.height);
     return a;
@@ -415,17 +366,11 @@ t.prototype.layout_vertical_item = function (t, e) {
     const o = this.attrs[i];
     n.x = o.frame.xMax + this.horizontalSpacing;
     n.y = o.frame.y;
-    if (
-      n.xMax <= this.containerWidth - this.sectionInset.right &&
-      0 == this.intersects(n)
-    ) {
+    if (n.xMax <= this.containerWidth - this.sectionInset.right && 0 == this.intersects(n)) {
       (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
       a.frame = n;
       this.attrs.push(a);
-      this.containerHeight = Math.max(
-        this.containerHeight,
-        a.frame.yMax - this.offset,
-      );
+      this.containerHeight = Math.max(this.containerHeight, a.frame.yMax - this.offset);
       return a;
     }
   }
@@ -434,10 +379,7 @@ t.prototype.layout_vertical_item = function (t, e) {
     o = this.attrs[i];
     n.x = o.frame.x;
     n.y = o.frame.yMax + this.verticalSpacing;
-    if (
-      n.yMax <= this.offset + this.containerHeight &&
-      0 == this.intersects(n)
-    ) {
+    if (n.yMax <= this.offset + this.containerHeight && 0 == this.intersects(n)) {
       (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
       a.frame = n;
       this.attrs.push(a);

@@ -1,14 +1,13 @@
 let i;
-exports.EBagEquipItemState = void 0;
-let a;
+export const EBagEquipItemState = {
+  UNLOCK: 1,
+  WAIT_UNLOCK: 2,
+  LOCK: 3
+};
+let a = EBagEquipItemState;
 const s = cc._decorator;
 const c = s.ccclass;
 const l = s.property;
-!(function (t) {
-  t[(t.UNLOCK = 1)] = "UNLOCK";
-  t[(t.WAIT_UNLOCK = 2)] = "WAIT_UNLOCK";
-  t[(t.LOCK = 3)] = "LOCK";
-})((a = exports.EBagEquipItemState || (exports.EBagEquipItemState = {})));
 e.prototype.setHeightQualityActive = function (t, e) {
   this.nQuality.active = t;
   if (t) {
@@ -36,14 +35,14 @@ e.prototype.setState = function (t) {
 e.prototype.setValid = function (t) {
   this._bIsValid = t;
 };
-Object.defineProperty(e.prototype, "isShow", {
+Object.defineProperty(e.prototype, 'isShow', {
   get: function () {
     return this.nView.active;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "bIsValid", {
+Object.defineProperty(e.prototype, 'bIsValid', {
   get: function () {
     return this._bIsValid;
   },
@@ -59,4 +58,4 @@ function e() {
   e._quality = 0;
   return e;
 }
-exports.default = u;
+export default u;;

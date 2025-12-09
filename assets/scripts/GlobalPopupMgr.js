@@ -19,7 +19,7 @@ const g =
     }
     let n;
     n = e;
-    Object.defineProperty(e, "instance", {
+    Object.defineProperty(e, 'instance', {
       get: function () {
         return n._instance;
       },
@@ -34,7 +34,7 @@ const g =
       if (void 0 === e) {
         e = 1;
       }
-      const n = $appBase.topNode.getChildByName("Tips");
+      const n = $appBase.topNode.getChildByName('Tips');
       if (n) {
         const i = n.getComponent($tips.default);
         if (i) {
@@ -43,7 +43,7 @@ const g =
       }
       $resLoader.ResLoader.loadAsset({
         bundleName: $frameEnum.Frame.EBundleName.RES,
-        path: "prefabs/Tips",
+        path: 'prefabs/Tips',
         type: cc.Prefab,
         success: function (n) {
           n.addRef();
@@ -59,7 +59,7 @@ const g =
     e.prototype.showCopyright = function () {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.RES,
-        path: "popups/CopyrightPopup",
+        path: 'popups/CopyrightPopup',
         keep: !0,
       });
     };
@@ -70,7 +70,7 @@ const g =
       $itemDataProxy.itemDataProxy.addItems(t);
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.RES,
-        path: "popups/AwardNoticePopup",
+        path: 'popups/AwardNoticePopup',
         keep: !0,
         params: {
           rewards: t,
@@ -81,21 +81,21 @@ const g =
     e.prototype.showGM = function () {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.GAME,
-        path: "popups/GMPopup",
+        path: 'popups/GMPopup',
         keep: !0,
       });
     };
     e.prototype.showBattleGM = function () {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.RES,
-        path: "popups/BattleGMPopup",
+        path: 'popups/BattleGMPopup',
         keep: !0,
       });
     };
     e.prototype.showGMInput = function (t, e, n) {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.RES,
-        path: "popups/GMInputPopup",
+        path: 'popups/GMInputPopup',
         keep: !0,
         params: {
           title: t,
@@ -107,14 +107,14 @@ const g =
     e.prototype.showLevelOver = function () {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.GAME,
-        path: "popups/LevelOverPopup",
+        path: 'popups/LevelOverPopup',
         keep: !0,
       });
     };
     e.prototype.showLevelWin = function (t) {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.GAME,
-        path: "popups/LevelWinPopup",
+        path: 'popups/LevelWinPopup',
         keep: !0,
         params: {
           isFinish: t,
@@ -128,7 +128,7 @@ const g =
       $battleMgr.default.instance.getCurScene().pause();
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.GAME,
-        path: "popups/LevelFailPopup",
+        path: 'popups/LevelFailPopup',
         keep: !0,
         params: {
           battlePlayState: t,
@@ -142,7 +142,7 @@ const g =
       $battleMgr.default.instance.getCurScene().pause();
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.GAME,
-        path: "popups/LevelSkillPopup",
+        path: 'popups/LevelSkillPopup',
         keep: !0,
         params: {
           battlePlayState: t,
@@ -162,7 +162,7 @@ const g =
       $battleMgr.default.instance.getCurScene().pause();
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.GAME,
-        path: "popups/LevelSkillExPopup",
+        path: 'popups/LevelSkillExPopup',
         keep: !0,
         params: {
           golden: t,
@@ -178,7 +178,7 @@ const g =
       $battleMgr.default.instance.getCurScene().pause();
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.GAME,
-        path: "popups/LevelSettingPopup",
+        path: 'popups/LevelSettingPopup',
         keep: !0,
         params: {
           battlePlayState: t,
@@ -188,7 +188,7 @@ const g =
     e.prototype.showLevelBagInfo = function (t) {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.GAME,
-        path: "popups/LevelBagInfoPopup",
+        path: 'popups/LevelBagInfoPopup',
         keep: !0,
         params: {
           rewardId: t,
@@ -202,7 +202,7 @@ const g =
       $battleMgr.default.instance.getCurScene().pause();
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.GAME,
-        path: "popups/LevelAdConfirmPopup",
+        path: 'popups/LevelAdConfirmPopup',
         keep: !0,
         params: {
           name: t,
@@ -217,14 +217,14 @@ const g =
     e.prototype.showShopBoxLevelDetailsPopup = function () {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.HOME,
-        path: "popups/ShopBoxLevelDetailsPopup",
+        path: 'popups/ShopBoxLevelDetailsPopup',
         keep: !0,
       });
     };
     e.prototype.showStageDropOutPopup = function (t) {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.HOME,
-        path: "popups/StageDropOutPopup",
+        path: 'popups/StageDropOutPopup',
         keep: !0,
         params: {
           stage: t,
@@ -234,14 +234,14 @@ const g =
     e.prototype.showClothingPopup = function () {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.HOME,
-        path: "popups/ClothingPopup",
+        path: 'popups/ClothingPopup',
         keep: !0,
       });
     };
     e.prototype.showArtifactDetailsPopup = function (t) {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.HOME,
-        path: "popups/ArtifactDetailsPopup",
+        path: 'popups/ArtifactDetailsPopup',
         keep: !0,
         params: {
           artifactData: t,
@@ -251,7 +251,7 @@ const g =
     e.prototype.showCampsiteBuildDetailsPopup = function (t) {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.HOME,
-        path: "popups/CampsiteBuildDetailsPopup",
+        path: 'popups/CampsiteBuildDetailsPopup',
         keep: !0,
         params: {
           buildData: t,
@@ -261,21 +261,21 @@ const g =
     e.prototype.showHomeSetingPopup = function () {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.HOME,
-        path: "popups/HomeSetingPopup",
+        path: 'popups/HomeSetingPopup',
         keep: !0,
       });
     };
     e.prototype.showHomeTestPopup = function () {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.HOME,
-        path: "test/HomeTestPopup",
+        path: 'test/HomeTestPopup',
         keep: !0,
       });
     };
     e.prototype.showUnlockSkinPopup = function (t) {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.HOME,
-        path: "popups/UnlockSkinPopup",
+        path: 'popups/UnlockSkinPopup',
         keep: !0,
         params: {
           skinId: t,
@@ -288,7 +288,7 @@ const g =
       }
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.HOME,
-        path: "popups/SurviveListPopup",
+        path: 'popups/SurviveListPopup',
         keep: !0,
         params: {
           stageId: t,
@@ -299,7 +299,7 @@ const g =
     e.prototype.showOpenBoxPopup = function (t, e) {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.HOME,
-        path: "popups/OpenBoxPopup",
+        path: 'popups/OpenBoxPopup',
         keep: !0,
         params: {
           skinId: t,
@@ -310,7 +310,7 @@ const g =
     e.prototype.showSurvivePeopleDetailsPopup = function (t) {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.HOME,
-        path: "popups/SurvivePeopleDetailsPopup",
+        path: 'popups/SurvivePeopleDetailsPopup',
         keep: !0,
         params: {
           surviveData: t,
@@ -320,7 +320,7 @@ const g =
     e.prototype.showSevenSignPopup = function () {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.HOME,
-        path: "popups/SevenSignPopup",
+        path: 'popups/SevenSignPopup',
         keep: !0,
       });
     };
@@ -330,7 +330,7 @@ const g =
       }
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.RES,
-        path: "popups/GentleTipsPopup",
+        path: 'popups/GentleTipsPopup',
         keep: !0,
         params: {
           onClose: t,
@@ -340,7 +340,7 @@ const g =
     e.prototype.showUnlockArtifactPopup = function (t) {
       $popupManager.PopupManager.instance.show({
         bundleName: $frameEnum.Frame.EBundleName.HOME,
-        path: "popups/UnlockArtifactPopup",
+        path: 'popups/UnlockArtifactPopup',
         keep: !0,
         params: {
           skillId: t,
@@ -358,25 +358,25 @@ const g =
       } else {
         for (
           const n = new Map(),
-                i = function (e) {
-                  const i = t[e];
-                  const o = $cfg.default.instance.dataSkill.queryOne(function (t) {
-                    return (
-                      -1 !=
-                      t.speReward.split("|").findIndex(function (t) {
-                        return Number(t.split("_")[0]) == i;
-                      })
-                    );
-                  });
-                  if (n.has(o.id)) {
-                    n.get(o.id).remainIds.push(i);
-                  } else {
-                    n.set(o.id, {
-                      remainIds: [i],
-                    });
-                  }
-                },
-                o = 0;
+            i = function (e) {
+              const i = t[e];
+              const o = $cfg.default.instance.dataSkill.queryOne(function (t) {
+                return (
+                  -1 !=
+                  t.speReward.split('|').findIndex(function (t) {
+                    return Number(t.split('_')[0]) == i;
+                  })
+                );
+              });
+              if (n.has(o.id)) {
+                n.get(o.id).remainIds.push(i);
+              } else {
+                n.set(o.id, {
+                  remainIds: [i],
+                });
+              }
+            },
+            o = 0;
           o < t.length;
           o++
         ) {
@@ -396,7 +396,7 @@ const g =
         const i = t.shift().remainIds;
         $popupManager.PopupManager.instance.show({
           bundleName: $frameEnum.Frame.EBundleName.RES,
-          path: "popups/UnlockRemainsPopup",
+          path: 'popups/UnlockRemainsPopup',
           keep: !0,
           params: {
             remainIds: i,
@@ -405,8 +405,7 @@ const g =
               $util.default.delay(
                 0.3,
                 function () {
-                  $blockInputManager.BlockInputManager.instance
-                    .netBlockInputNum--;
+                  $blockInputManager.BlockInputManager.instance.netBlockInputNum--;
                   n.showUnlockSomeRemainsPopup(t, e);
                 },
                 n,
@@ -419,4 +418,4 @@ const g =
     e._instance = null;
     return;
   })(cc.Component));
-exports.default = g;
+export default g;

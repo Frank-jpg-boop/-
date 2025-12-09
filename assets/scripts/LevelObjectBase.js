@@ -27,4 +27,4 @@ const l =
     e.prototype.onPlayerCollisionStay = function () {};
     e.prototype.onPlayerCollisionExit = function () {};
   })($unitBase.default));
-exports.default = l;
+export default l;

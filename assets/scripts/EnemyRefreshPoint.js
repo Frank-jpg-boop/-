@@ -1,12 +1,12 @@
-exports.EnemyRefreshPoint = void 0;
-Object.defineProperty(t.prototype, "pos", {
+export const EnemyRefreshPoint = void 0;
+Object.defineProperty(t.prototype, 'pos', {
   get: function () {
     return cc.v2(this._exData.pos.x, this._exData.pos.y);
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "refreshId", {
+Object.defineProperty(t.prototype, 'refreshId', {
   get: function () {
     return this._exData.refreshId;
   },
@@ -18,4 +18,4 @@ function t(t) {
   this._exData = t;
 }
 const i = t;
-exports.EnemyRefreshPoint = i;
+export const EnemyRefreshPoint = i;

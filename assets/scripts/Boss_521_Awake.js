@@ -1,7 +1,7 @@
 import $state from './State';
 import $actorEnum from './ActorEnum';
 let i;
-exports.Boss_521_Awake = void 0;
+export const Boss_521_Awake = void 0;
 e.prototype.update = function () {};
 e.prototype.begin = function (t) {
   const e = this;
@@ -18,4 +18,4 @@ function e(e) {
   return n;
 }
 const s = e;
-exports.Boss_521_Awake = s;
+export const Boss_521_Awake = s;

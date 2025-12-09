@@ -64,4 +64,4 @@ function t(t, e) {
   this.y = e;
 }
 const i = t;
-exports.default = i;
+export default i;

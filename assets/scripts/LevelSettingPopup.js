@@ -56,8 +56,8 @@ e.prototype.updateView = function () {
   this.sliderEffectVolume.progress = $basicsProxy.basicsProxy.effectVolume;
   this.effectVolumePro.fillRange = $basicsProxy.basicsProxy.effectVolume;
   const t = $userSetDataProxy.userSetDataProxy.isVibration;
-  this.nShake.getChildByName("BtnSwitch").getChildByName("Open").active = t;
-  this.nShake.getChildByName("BtnSwitch").getChildByName("Close").active = !t;
+  this.nShake.getChildByName('BtnSwitch').getChildByName('Open').active = t;
+  this.nShake.getChildByName('BtnSwitch').getChildByName('Close').active = !t;
 };
 e.prototype.init = function (t) {
   this.nGm.active = yzll.gameConfig.isGM || yzll.gameConfig.isGameTest;
@@ -76,4 +76,4 @@ function e() {
   e._battlePlayState = !1;
   return e;
 }
-exports.default = y;
+export default y;

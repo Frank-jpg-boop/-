@@ -18,7 +18,7 @@ const g =
       const e = (null !== t && t.apply(this, arguments)) || this;
       e._cfgEquip = null;
       e._equipId = 0;
-      e._rowCol = "";
+      e._rowCol = '';
       e._occupyRowCols = [];
       e._formGrids = null;
       e._data = null;
@@ -29,35 +29,35 @@ const g =
       e._bagConversionItem = null;
       return e;
     }
-    Object.defineProperty(e.prototype, "anchorPos", {
+    Object.defineProperty(e.prototype, 'anchorPos', {
       get: function () {
         return this.node.getPosition().add(this._nAnchor.getPosition());
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "rowCol", {
+    Object.defineProperty(e.prototype, 'rowCol', {
       get: function () {
         return this._rowCol;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "occupyRowCols", {
+    Object.defineProperty(e.prototype, 'occupyRowCols', {
       get: function () {
         return this._occupyRowCols.slice();
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "rewardId", {
+    Object.defineProperty(e.prototype, 'rewardId', {
       get: function () {
         return this._equipId;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "cfgEquip", {
+    Object.defineProperty(e.prototype, 'cfgEquip', {
       get: function () {
         return this._cfgEquip;
       },
@@ -69,9 +69,7 @@ const g =
       this.node.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
       this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
       this.node.on(cc.Node.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
-      this._nAnchor = this.node
-        .getChildByName("Grids")
-        .getChildByName("Anchor");
+      this._nAnchor = this.node.getChildByName('Grids').getChildByName('Anchor');
     };
     e.prototype.onDestroy = function () {
       this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
@@ -86,35 +84,31 @@ const g =
       this._bindUnitId = i;
       this._bagView = t;
       this._cfgEquip = $cfg.default.instance.dataReward.getById(e);
-      this._formGrids =
-        $bagConst.BAG_EQUIP_FORM[this._cfgEquip.boxSet].grids.slice();
+      this._formGrids = $bagConst.BAG_EQUIP_FORM[this._cfgEquip.boxSet].grids.slice();
       this._occupyRowCols = [];
       this._canTouch = !0;
-      this.node.getChildByName("Grids").children.forEach(function (t) {
+      this.node.getChildByName('Grids').children.forEach(function (t) {
         $resLoader.ResLoader.setSpritFrame(
-          t.getChildByName("Icon").getComponent(cc.Sprite),
+          t.getChildByName('Icon').getComponent(cc.Sprite),
           $frameEnum.Frame.EBundleName.RES,
-          "textures/atlas/item_scene/bag_quality_" + o._cfgEquip.rare,
+          'textures/atlas/item_scene/bag_quality_' + o._cfgEquip.rare,
         );
       });
       $resLoader.ResLoader.setSpritFrame(
-        this.node.getChildByName("Icon").getComponent(cc.Sprite),
+        this.node.getChildByName('Icon').getComponent(cc.Sprite),
         $frameEnum.Frame.EBundleName.GAME,
-        "textures/icon_bag/" + this.cfgEquip.boxObj,
+        'textures/icon_bag/' + this.cfgEquip.boxObj,
       );
       $resLoader.ResLoader.loadAsset({
         bundleName: $frameEnum.Frame.EBundleName.GAME,
-        path: "prefabs/bag/BagConversionItem",
+        path: 'prefabs/bag/BagConversionItem',
         type: cc.Prefab,
       })
         .then(function (t) {
           const e = cc.instantiate(t);
           o.node.addChild(e);
           o._bagConversionItem = e.getComponent($bagConversionItem.default);
-          o._bagConversionItem.updateView(
-            o._cfgEquip.type,
-            o._cfgEquip.changeID,
-          );
+          o._bagConversionItem.updateView(o._cfgEquip.type, o._cfgEquip.changeID);
           o._bagConversionItem.show();
         })
         .catch(function () {});
@@ -127,10 +121,7 @@ const g =
       if (void 0 === e) {
         e = !1;
       }
-      const i = $nodeUtil.default.nodeParentChangeLocalPos(
-        this._nAnchor,
-        this.node,
-      );
+      const i = $nodeUtil.default.nodeParentChangeLocalPos(this._nAnchor, this.node);
       const o = t.sub(i);
       if (e) {
         const r = this.node.getPosition();
@@ -143,7 +134,7 @@ const g =
           })
           .call(function () {
             n.node.angle = 0;
-            $animUtils.AnimUtil.shakeAngle(n.node.getChildByName("Icon"), 10);
+            $animUtils.AnimUtil.shakeAngle(n.node.getChildByName('Icon'), 10);
             n.setPos(o);
             n._canTouch = !0;
           })
@@ -163,11 +154,9 @@ const g =
       this._data.rowCol = this._rowCol;
       if (
         -1 ==
-        $levelBattleData.levelBattleData.bagData.bagEquipDatas.findIndex(
-          function (e) {
-            return e.unitId == t._bindUnitId;
-          },
-        )
+        $levelBattleData.levelBattleData.bagData.bagEquipDatas.findIndex(function (e) {
+          return e.unitId == t._bindUnitId;
+        })
       ) {
         $levelBattleData.levelBattleData.bagData.bagEquipDatas.push(this._data);
         $eventManager.EventManager.instance.emit(
@@ -183,18 +172,14 @@ const g =
       $eventManager.EventManager.instance.emit(
         $battleEnum.EBattleEvent.REWARD_PUT_IN_BAG_INFORM + this._bindUnitId,
       );
-      $eventManager.EventManager.instance.emit(
-        $battleEnum.EBattleEvent.UPDATE_BAG_UI,
-      );
+      $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.UPDATE_BAG_UI);
     };
     e.prototype.leaveBag = function () {
       const t = this;
-      this._data.rowCol = "";
-      const e = $levelBattleData.levelBattleData.bagData.bagEquipDatas.findIndex(
-        function (e) {
-          return e.unitId == t._bindUnitId;
-        },
-      );
+      this._data.rowCol = '';
+      const e = $levelBattleData.levelBattleData.bagData.bagEquipDatas.findIndex(function (e) {
+        return e.unitId == t._bindUnitId;
+      });
       if (-1 != e) {
         $levelBattleData.levelBattleData.bagData.bagEquipDatas.splice(e, 1);
         $eventManager.EventManager.instance.emit(
@@ -210,32 +195,28 @@ const g =
       $eventManager.EventManager.instance.emit(
         $battleEnum.EBattleEvent.REWARD_LEAVE_BAG_INFORM + this._bindUnitId,
       );
-      $eventManager.EventManager.instance.emit(
-        $battleEnum.EBattleEvent.UPDATE_BAG_UI,
-      );
+      $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.UPDATE_BAG_UI);
     };
     e.prototype.updateRowCol = function () {
       const t = this.node.convertToWorldSpaceAR(this._nAnchor.getPosition());
-      this._rowCol = this._bagView.getRowColByPos(
-        this._bagView.node.convertToNodeSpaceAR(t),
-      );
-      const e = this._rowCol.split("&").map(Number);
+      this._rowCol = this._bagView.getRowColByPos(this._bagView.node.convertToNodeSpaceAR(t));
+      const e = this._rowCol.split('&').map(Number);
       const n = e[0];
       const i = e[1];
       if (n < 0 || n >= $bagConst.BAG_ROW || i < 0 || i >= $bagConst.BAG_COL) {
-        this._rowCol = "";
+        this._rowCol = '';
       }
     };
     e.prototype.updateOccupyGrids = function () {
       this._occupyRowCols = [];
-      if ("" != this._rowCol) {
+      if ('' != this._rowCol) {
         for (
-          const t = this._rowCol.split("&").map(Number), e = 0;
+          const t = this._rowCol.split('&').map(Number), e = 0;
           e < this._formGrids.length;
           e++
         ) {
           const n = this._formGrids[e];
-          this._occupyRowCols.push(t[0] + n[0] + "&" + (t[1] + n[1]));
+          this._occupyRowCols.push(t[0] + n[0] + '&' + (t[1] + n[1]));
         }
       }
     };
@@ -258,4 +239,4 @@ const g =
     e.prototype.showConversionItem = function () {};
     e.prototype.hideConversionItem = function () {};
   })(cc.Component));
-exports.default = g;
+export default g;

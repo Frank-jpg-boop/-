@@ -19,12 +19,12 @@ t.prototype.copyToClipboard = function (t, e, n) {
           }
         });
     } else {
-      const i = document.createElement("textarea");
+      const i = document.createElement('textarea');
       i.value = t;
       document.body.appendChild(i);
       i.select();
       try {
-        if (document.execCommand("copy")) {
+        if (document.execCommand('copy')) {
           if (e) {
             e();
           }
@@ -34,7 +34,7 @@ t.prototype.copyToClipboard = function (t, e, n) {
           }
         }
       } catch (t) {
-        console.error("复制失败:", t);
+        console.error('复制失败:', t);
       }
       document.body.removeChild(i);
     }
@@ -66,7 +66,7 @@ t.prototype.startVibrate = function (t) {
   }
 };
 t.prototype.getPlatform = function () {
-  return "dev";
+  return 'dev';
 };
 t.prototype.getUserInfo = function (t) {
   if (t) {
@@ -87,7 +87,7 @@ function t() {
   this.launchInfo = null;
   this.adUintId = {};
   this.tmplIds = [];
-  console.log("Runtime：dev");
+  console.log('Runtime：dev');
 }
 const s = t;
 window.mm = {};
@@ -108,10 +108,9 @@ cc.game.once(cc.game.EVENT_GAME_INITED, function () {
     mm.screen = 2;
   }
   mm.lang =
-    ((t =
-      cc.sys.localStorage.getItem("SysLanguage") ||
-      cc.sys.languageCode).includes("zh") && (t = "zh"),
-    console.log("Lang:", t, " LanguageCode:", cc.sys.languageCode),
+    ((t = cc.sys.localStorage.getItem('SysLanguage') || cc.sys.languageCode).includes('zh') &&
+      (t = 'zh'),
+    console.log('Lang:', t, ' LanguageCode:', cc.sys.languageCode),
     t);
   mm.platform = (function () {
     switch (cc.sys.platform) {

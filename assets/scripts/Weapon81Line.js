@@ -16,7 +16,13 @@ e.prototype.onRemove = function () {
 };
 e.prototype.checkCollision = function (t) {
   for (
-    const e = this, n = this._ownerSkill.cfg.edge, i = this.node.getPosition(), o = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(i, n), r = [], c = 0, u = o;
+    const e = this,
+      n = this._ownerSkill.cfg.edge,
+      i = this.node.getPosition(),
+      o = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(i, n),
+      r = [],
+      c = 0,
+      u = o;
     c < u.length;
     c++
   ) {
@@ -46,10 +52,7 @@ e.prototype.checkCollision = function (t) {
   for (const f = 0; f < r.length; f++) {
     const d = r[f];
     if (
-      $simplyCollisionDetector.default.isCollisionRectToRect(
-        this.collider.rect,
-        d.hurtColliderRect,
-      )
+      $simplyCollisionDetector.default.isCollisionRectToRect(this.collider.rect, d.hurtColliderRect)
     ) {
       const m = this._hurtTargetDataMap.get(d.unitId);
       if (m) {
@@ -80,8 +83,7 @@ e.prototype.onUpdate = function (t) {
 };
 e.prototype.createLine = function (t, e, n) {
   const i = this;
-  this._hurtDirCdTime =
-    1 / n.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_8).value;
+  this._hurtDirCdTime = 1 / n.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_8).value;
   this._ownerSkill = n;
   const o = e.sub(t);
   const r = o.mag() / this.nView.width;
@@ -89,7 +91,7 @@ e.prototype.createLine = function (t, e, n) {
   const a = (180 * cc.Vec2.RIGHT_R.signAngle(o.normalize())) / Math.PI;
   this.nView.angle = a;
   this.collider.node.width = r * this.nView.width;
-  this.playDefaultAnim("guangxian", 1, !0);
+  this.playDefaultAnim('guangxian', 1, !0);
   this.fideIn(function () {
     i._isCheck = !0;
   });
@@ -112,4 +114,4 @@ function e() {
   e._isCheck = !1;
   return e;
 }
-exports.default = m;
+export default m;

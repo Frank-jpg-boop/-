@@ -2,7 +2,7 @@ import $state from './State';
 import $actorEnum from './ActorEnum';
 import $attrEnum from './AttrEnum';
 let i;
-exports.Enemy_111_Walk = void 0;
+export const Enemy_111_Walk = void 0;
 e.prototype.update = function (t) {
   const e = this._context.searchTarget();
   if (e) {
@@ -38,4 +38,4 @@ function e(e) {
   return n;
 }
 const c = e;
-exports.Enemy_111_Walk = c;
+export const Enemy_111_Walk = c;

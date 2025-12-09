@@ -10,7 +10,7 @@ e.prototype.onClickBtnDoubleSign = function () {
   const t = this;
   $adMgr.AdMgr.instance.showVideoAd({
     id: 1,
-    eventId: "AD_SevenSign",
+    eventId: 'AD_SevenSign',
     success: function () {
       $signDataProxy.signDataProxy.getSevenSignRewarad(!0);
       t.updateDayView();
@@ -38,7 +38,7 @@ e.prototype.updateDayView = function (t) {
   });
   this.nButton.active = e;
   this.nComplete.active = !e;
-  this.nButton.getChildByName("BtnDoubleSign").active =
+  this.nButton.getChildByName('BtnDoubleSign').active =
     2 != $signDataProxy.signDataProxy.curSevenSignDay &&
     6 != $signDataProxy.signDataProxy.curSevenSignDay;
 };
@@ -52,4 +52,4 @@ function e() {
   e.nComplete = null;
   return e;
 }
-exports.default = f;
+export default f;

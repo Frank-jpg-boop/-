@@ -15,11 +15,7 @@ e.prototype.onEffectAnimCompleteEvent = function () {
   }
 };
 e.prototype.onRemove = function () {
-  this.frameAnim.off(
-    cc.Animation.EventType.FINISHED,
-    this.onEffectAnimCompleteEvent,
-    this,
-  );
+  this.frameAnim.off(cc.Animation.EventType.FINISHED, this.onEffectAnimCompleteEvent, this);
   t.prototype.onRemove.call(this);
 };
 e.prototype.playOnceAllAnim = function (t, e) {
@@ -31,11 +27,7 @@ e.prototype.playOnceAllAnim = function (t, e) {
   this.frameAnim.play(this.frameAnim.defaultClip.name, 0);
 };
 e.prototype.onInit = function () {
-  this.frameAnim.on(
-    cc.Animation.EventType.FINISHED,
-    this.onEffectAnimCompleteEvent,
-    this,
-  );
+  this.frameAnim.on(cc.Animation.EventType.FINISHED, this.onEffectAnimCompleteEvent, this);
 };
 function e() {
   const e = (null !== t && t.apply(this, arguments)) || this;
@@ -43,4 +35,4 @@ function e() {
   e._isCompleteRemove = !1;
   return e;
 }
-exports.default = u;
+export default u;

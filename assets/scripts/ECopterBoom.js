@@ -15,18 +15,15 @@ const d =
     }
     e.prototype.play = function (t) {
       const e = this;
-      $audioUtil.AudioUtil.playLimitEffect("sounds/lmtw_yx_Boom", 0.3);
-      this.playDefaultAnim("atk", 1, !1, function () {
+      $audioUtil.AudioUtil.playLimitEffect('sounds/lmtw_yx_Boom', 0.3);
+      this.playDefaultAnim('atk', 1, !1, function () {
         if (t) {
           t();
         }
       });
       this.scheduleOnce(function () {
         let t;
-        if (
-          null === (t = $battleMgr.default.instance.getCurScene()) ||
-          void 0 === t
-        ) {
+        if (null === (t = $battleMgr.default.instance.getCurScene()) || void 0 === t) {
           //
         } else {
           t.cameraCtrl.shakeCamera(0.1);
@@ -44,17 +41,17 @@ const d =
           if (n.isDead()) {
             //
           } else {
-            if (
-              Math.abs(n.node.y - t.y) < 500 &&
-              Math.abs(n.node.x - t.x) <= e
-            ) {
+            if (Math.abs(n.node.y - t.y) < 500 && Math.abs(n.node.x - t.x) <= e) {
               n.setAnimPauseState(!1);
               n.changeState($actorEnum.EActorStateType.DEAD);
             }
           }
         });
       for (
-        const n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(t, e), i = [], o = 0, r = n;
+        const n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(t, e),
+          i = [],
+          o = 0,
+          r = n;
         o < r.length;
         o++
       ) {
@@ -81,4 +78,4 @@ const d =
       }
     };
   })($spAnimEffect.default));
-exports.default = d;
+export default d;

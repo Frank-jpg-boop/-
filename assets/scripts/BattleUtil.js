@@ -1,4 +1,4 @@
-exports.BattleUtil = void 0;
+export const BattleUtil = void 0;
 t.getPerpendicularVector = function (t, e) {
   return cc.v2(-t.y, t.x).add(e);
 };
@@ -14,4 +14,4 @@ t.lerp = function (t, e, n) {
 };
 function t() {}
 const i = t;
-exports.BattleUtil = i;
+export const BattleUtil = i;

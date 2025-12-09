@@ -13,12 +13,7 @@ const c =
       this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchHandle, this, !0);
       this.node.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchHandle, this, !0);
       this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchHandle, this, !0);
-      this.node.on(
-        cc.Node.EventType.TOUCH_CANCEL,
-        this.onTouchHandle,
-        this,
-        !0,
-      );
+      this.node.on(cc.Node.EventType.TOUCH_CANCEL, this.onTouchHandle, this, !0);
     };
     e.prototype.onTouchHandle = function (t) {
       if (!t.sham && !t.simulate && t.target !== this.node) {
@@ -38,4 +33,4 @@ const c =
       }
     };
   })(cc.Component));
-exports.default = c;
+export default c;

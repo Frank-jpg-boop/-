@@ -7,9 +7,9 @@ const u = s.disallowMultiple;
 const p = s.menu;
 const h = s.executionOrder;
 !(function (t) {
-  t[(t.NONE = 0)] = "NONE";
-  t[(t.TOGGLE = 1)] = "TOGGLE";
-  t[(t.SWITCH = 2)] = "SWITCH";
+  t[(t.NONE = 0)] = 'NONE';
+  t[(t.TOGGLE = 1)] = 'TOGGLE';
+  t[(t.SWITCH = 2)] = 'SWITCH';
 })(a || (a = {}));
 e.prototype.onClickThis = function () {
   this.list.selectedId = this.listId;
@@ -89,7 +89,7 @@ e.prototype.createEvt = function (t, e, n) {
       t.name
         .match(/\<(.*?)\>/g)
         .pop()
-        .replace(/\<|>/g, "");
+        .replace(/\<|>/g, '');
     const i = new cc.Component.EventHandler();
     i.target = n || t.node;
     i.component = t.comName;
@@ -105,7 +105,7 @@ e.prototype._registerEvent = function () {
     //
   } else {
     if (this.btnCom && this.list.selectedMode > 0) {
-      this.btnCom.clickEvents.unshift(this.createEvt(this, "onClickThis"));
+      this.btnCom.clickEvents.unshift(this.createEvt(this, 'onClickThis'));
     }
     if (this.adaptiveSize) {
       this.node.on(cc.Node.EventType.SIZE_CHANGED, this._onSizeChange, this);
@@ -122,7 +122,7 @@ e.prototype.onLoad = function () {
     this._unselectedSpriteFrame = t.spriteFrame;
   }
 };
-Object.defineProperty(e.prototype, "btnCom", {
+Object.defineProperty(e.prototype, 'btnCom', {
   get: function () {
     if (this._btnCom) {
       //
@@ -134,7 +134,7 @@ Object.defineProperty(e.prototype, "btnCom", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "selected", {
+Object.defineProperty(e.prototype, 'selected', {
   get: function () {
     return this._selected;
   },
@@ -171,4 +171,4 @@ function e() {
   e._eventReg = !1;
   return e;
 }
-exports.default = f;
+export default f;

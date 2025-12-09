@@ -33,17 +33,17 @@ t.prototype.getActor = function (t) {
 };
 t.prototype.getActorClassName = function (t, e) {
   if (e == $actorEnum.ETeamType.PLAYER) {
-    return "PlayerBase";
+    return 'PlayerBase';
   }
   if (e == $actorEnum.ETeamType.ENEMY) {
     const n = $cfg.default.instance.dataEnemy.getById(t);
     if (1 == n.enemyType || 2 == n.enemyType || 3 == n.enemyType) {
-      return "EnemyBase";
+      return 'EnemyBase';
     } else {
       if (2 == n.isBoss) {
-        return "Boss_" + t;
+        return 'Boss_' + t;
       } else {
-        return "Enemy_" + t;
+        return 'Enemy_' + t;
       }
     }
   }
@@ -80,9 +80,9 @@ t.prototype.createActor = function (t) {
     $resLoader.ResLoader.loadAsset({
       bundleName: $frameEnum.Frame.EBundleName.GAME,
       path:
-        "prefabs/battle/" +
-        (t.camp == $actorEnum.ETeamType.PLAYER ? "player" : "enemy") +
-        "/" +
+        'prefabs/battle/' +
+        (t.camp == $actorEnum.ETeamType.PLAYER ? 'player' : 'enemy') +
+        '/' +
         t.prefabName,
       type: cc.Prefab,
       success: function (n) {
@@ -93,7 +93,7 @@ t.prototype.createActor = function (t) {
     });
   }
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new t();
@@ -107,4 +107,4 @@ function t() {
   this.actorMap = new Map();
 }
 const u = t;
-exports.default = u;
+export default u;

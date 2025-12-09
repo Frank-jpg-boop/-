@@ -180,8 +180,7 @@ e.prototype.init = function (t) {
   if (
     null == t ||
     !t.skeletonData ||
-    (this.spAnim.skeletonData &&
-      this.spAnim.skeletonData.name == t.skeletonData.name)
+    (this.spAnim.skeletonData && this.spAnim.skeletonData.name == t.skeletonData.name)
   ) {
     this.clearTracks();
     this.spAnim.setToSetupPose();
@@ -221,4 +220,4 @@ function e() {
   e._onceFremeEvent = null;
   return e;
 }
-exports.default = u;
+export default u;

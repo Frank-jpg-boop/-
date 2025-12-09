@@ -1,5 +1,5 @@
 let i;
-exports.Frozen = void 0;
+export const Frozen = void 0;
 e.prototype.onTrigger = function () {
   for (const t = [], e = 0; e < arguments.length; e++) {
     t[e] = arguments[e];
@@ -10,4 +10,4 @@ function e() {
   return (null !== t && t.apply(this, arguments)) || this;
 }
 const r = e;
-exports.Frozen = r;
+export const Frozen = r;

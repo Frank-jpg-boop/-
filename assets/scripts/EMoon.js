@@ -23,24 +23,18 @@ e.prototype.updateIcon = function () {
   $resLoader.ResLoader.setSpritFrame(
     this.spIcon,
     $frameEnum.Frame.EBundleName.GAME,
-    "textures/scene/common/moon_" + t,
+    'textures/scene/common/moon_' + t,
   );
 };
 e.prototype.onUpdate = function () {
   if (this._owner) {
-    const t = cc.v2(
-      this._owner.node.x + this._offsetPos.x,
-      this._owner.node.y + this._offsetPos.y,
-    );
+    const t = cc.v2(this._owner.node.x + this._offsetPos.x, this._owner.node.y + this._offsetPos.y);
     this.node.setPosition(t);
   }
 };
 e.prototype.play = function (t) {
   this._owner = t;
-  const e = cc.v2(
-    this._owner.node.x + this._offsetPos.x,
-    this._owner.node.y + this._offsetPos.y,
-  );
+  const e = cc.v2(this._owner.node.x + this._offsetPos.x, this._owner.node.y + this._offsetPos.y);
   this.node.setPosition(e);
   this.updateIcon();
 };
@@ -59,4 +53,4 @@ function e() {
   e._offsetPos = cc.v2(-100, 150);
   return e;
 }
-exports.default = d;
+export default d;

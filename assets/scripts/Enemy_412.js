@@ -15,23 +15,17 @@ const d =
     }
     e.prototype.registerState = function () {
       t.prototype.registerState.call(this);
-      this._sm.addState(
-        $actorEnum.EActorStateType.WALK,
-        new $enemy_412_Walk.Enemy_412_Walk(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.WALK, new $enemy_412_Walk.Enemy_412_Walk(this));
     };
     e.prototype.initAnim = function () {
-      this._atkAnimName = "call";
+      this._atkAnimName = 'call';
       return t.prototype.initAnim.call(this);
     };
     e.prototype.canAttackTarget = function (t) {
       if (!t || t.isDead()) {
         return !1;
       }
-      const e = cc.Vec2.squaredDistance(
-        t.node.getPosition(),
-        this.node.getPosition(),
-      );
+      const e = cc.Vec2.squaredDistance(t.node.getPosition(), this.node.getPosition());
       const n = Number(this._cfg.val1) * Number(this._cfg.val1);
       const i = Number(this._cfg.val2) * Number(this._cfg.val2);
       return e >= n && e <= i;
@@ -45,11 +39,11 @@ const d =
     e.prototype.summon = function () {
       const t = $battleMgr.default.instance.getCurScene();
       if (t) {
-        const e = this._cfg.val3.split("|").map(Number);
+        const e = this._cfg.val3.split('|').map(Number);
         const n = e[$randomUtil.RandomUtil.randomInt(0, e.length)];
         const i = this.pathPos;
         this.updatePathData();
-        if ("" != this._pathLineId) {
+        if ('' != this._pathLineId) {
           const o = t.level.path.getLine(this.pathLineId);
           if (0 != o.dir.x) {
             const r = $randomUtil.RandomUtil.randomInt(-50, 50);
@@ -67,12 +61,9 @@ const d =
           cfgId: n,
           camp: $actorEnum.ETeamType.ENEMY,
           parent: t.actorParent,
-          prefabName: "Enemy_" + n,
+          prefabName: 'Enemy_' + n,
           initPos: i,
-          actorClass: $actorMgr.default.instance.getActorClassName(
-            n,
-            $actorEnum.ETeamType.ENEMY,
-          ),
+          actorClass: $actorMgr.default.instance.getActorClassName(n, $actorEnum.ETeamType.ENEMY),
           onCreated: null,
           initParam: {
             rewardMap: new Map(),
@@ -86,7 +77,7 @@ const d =
                     opacity: 255,
                   },
                   {
-                    easing: "sineIn",
+                    easing: 'sineIn',
                   },
                 )
                 .call(function () {
@@ -101,4 +92,4 @@ const d =
       }
     };
   })($enemyBase.default));
-exports.default = d;
+export default d;

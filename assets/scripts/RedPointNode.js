@@ -10,10 +10,7 @@ t.prototype.notyfyRedPointNumChange = function () {
 t.prototype.changeParentRedPointNum = function () {
   const t = this;
   if (
-    t._nodeName !=
-    $redPointPathConfig.redPointConf[
-      $redPointPathConfig.ERedPointPathName.GAME
-    ].path
+    t._nodeName != $redPointPathConfig.redPointConf[$redPointPathConfig.ERedPointPathName.GAME].path
   ) {
     const e = 0;
     t.dictChilds.forEach(function (t) {
@@ -68,14 +65,14 @@ t.prototype.addChild = function (e) {
   this.dictChilds.set(e, n);
   return n;
 };
-Object.defineProperty(t.prototype, "redPointNum", {
+Object.defineProperty(t.prototype, 'redPointNum', {
   get: function () {
     return this._redPointNum;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "nodeName", {
+Object.defineProperty(t.prototype, 'nodeName', {
   get: function () {
     return this._nodeName;
   },
@@ -87,11 +84,11 @@ t.prototype.init = function (t) {
   this.numChangeFuncMap.clear();
 };
 function t() {
-  this._nodeName = "";
+  this._nodeName = '';
   this._redPointNum = 0;
   this.parent = null;
   this.dictChilds = new Map();
   this.numChangeFuncMap = new Map();
 }
 const o = t;
-exports.default = o;
+export default o;

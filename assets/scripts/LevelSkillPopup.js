@@ -16,9 +16,9 @@ e.prototype.onClickRefresh = function () {
   const t = this;
   $adMgr.AdMgr.instance.showVideoAd({
     id: 1,
-    eventId: "AD_Random2",
+    eventId: 'AD_Random2',
     eventData: {
-      userA: "" + $levelBattleData.levelBattleData.cfgStage.id,
+      userA: '' + $levelBattleData.levelBattleData.cfgStage.id,
     },
     success: function () {
       $levelBattleData.levelBattleData.data.skillRefreshCount++;
@@ -52,14 +52,11 @@ e.prototype.refreshSkill = function () {
           const n = t._skills.length - 1;
           t.nSkillView.children.forEach(function (i) {
             if (i.active) {
-              i.getComponent($skillItem.default).closeAnim(
-                e == i,
-                function () {
-                  if (--n < 0) {
-                    t.removeUI();
-                  }
-                },
-              );
+              i.getComponent($skillItem.default).closeAnim(e == i, function () {
+                if (--n < 0) {
+                  t.removeUI();
+                }
+              });
             }
           });
         },
@@ -82,8 +79,7 @@ e.prototype.updateBtnView = function () {
     $levelBattleData.levelBattleData.data.skillRefreshCount;
   this.nBtnRefresh.active = t > 0;
   if (this.nBtnRefresh.active) {
-    this.nBtnRefresh.getChildByName("Count").getComponent(cc.Label).string =
-      "剩余次数：" + t;
+    this.nBtnRefresh.getChildByName('Count').getComponent(cc.Label).string = '剩余次数：' + t;
   }
 };
 e.prototype.onHide = function () {
@@ -111,4 +107,4 @@ function e() {
   e._battlePlayState = !1;
   return e;
 }
-exports.default = y;
+export default y;

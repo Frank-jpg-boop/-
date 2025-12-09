@@ -39,7 +39,7 @@ const U =
       const e = (null !== t && t.apply(this, arguments)) || this;
       e._isSlide = !1;
       e._spAnimCtrl = null;
-      e._moveTargetPointId = "";
+      e._moveTargetPointId = '';
       e._beHurtDisTime = 0;
       e._skills = [];
       e._prevMoveDir = cc.Vec2.ZERO;
@@ -61,28 +61,28 @@ const U =
       e._isShowGuideTips = !1;
       return e;
     }
-    Object.defineProperty(e.prototype, "spAnimCtrl", {
+    Object.defineProperty(e.prototype, 'spAnimCtrl', {
       get: function () {
         return this._spAnimCtrl;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "prevMoveDir", {
+    Object.defineProperty(e.prototype, 'prevMoveDir', {
       get: function () {
         return this._prevMoveDir;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "moveTargetPointId", {
+    Object.defineProperty(e.prototype, 'moveTargetPointId', {
       get: function () {
         return this._moveTargetPointId;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "isSlide", {
+    Object.defineProperty(e.prototype, 'isSlide', {
       get: function () {
         return this._isSlide;
       },
@@ -91,8 +91,8 @@ const U =
     });
     e.prototype.onLoad = function () {
       this._spAnimCtrl = this.node
-        .getChildByName("Body")
-        .getChildByName("SpAnim")
+        .getChildByName('Body')
+        .getChildByName('SpAnim')
         .getComponent($spAnimCtrl.default);
       t.prototype.onLoad.call(this);
     };
@@ -107,15 +107,11 @@ const U =
           return 0;
         }
       };
-      const i = Math.floor(
-        n($attrEnum.E_AttrType.ATK) * n($attrEnum.E_AttrType.ATK_RATE),
-      );
+      const i = Math.floor(n($attrEnum.E_AttrType.ATK) * n($attrEnum.E_AttrType.ATK_RATE));
       this.getAttribute($attrEnum.E_AttrType.ATK).setFixBase(i);
       const o = n($attrEnum.E_AttrType.SKILL_CD);
       this.getAttribute($attrEnum.E_AttrType.SKILL_CD).setFixBase(o);
-      const r = Math.floor(
-        n($attrEnum.E_AttrType.HP) * n($attrEnum.E_AttrType.HP_RATE),
-      );
+      const r = Math.floor(n($attrEnum.E_AttrType.HP) * n($attrEnum.E_AttrType.HP_RATE));
       this.getAttribute($attrEnum.E_AttrType.HP).setFixBase(r);
       const a = n($attrEnum.E_AttrType.CRIT_RATE);
       this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).setFixBase(a);
@@ -125,13 +121,9 @@ const U =
       this.getAttribute($attrEnum.E_AttrType.SPEED).setFixBase(c);
     };
     e.prototype.initAnim = function () {
-      const e = $cfg.default.instance.dataSkin.getById(
-        $playerDataProxy.playerDataProxy.skinId,
-      );
+      const e = $cfg.default.instance.dataSkin.getById($playerDataProxy.playerDataProxy.skinId);
       this.spAnimCtrl.init({
-        skeletonData: $battleMgr.default.instance
-          .getCurScene()
-          .getAsset(e.skin, sp.SkeletonData),
+        skeletonData: $battleMgr.default.instance.getCurScene().getAsset(e.skin, sp.SkeletonData),
       });
       return t.prototype.initAnim.call(this);
     };
@@ -139,9 +131,7 @@ const U =
       this._actorType = $actorEnum.EActorType.PLAYER;
     };
     e.prototype.registerState = function () {
-      this._sm = new $stateMachine.StateMachine(
-        new $playerIdleState.PlayerIdleState(this),
-      );
+      this._sm = new $stateMachine.StateMachine(new $playerIdleState.PlayerIdleState(this));
       this._sm.addState(
         $actorEnum.EActorStateType.WALK,
         new $playerWalkState.PlayerWalkState(this),
@@ -238,14 +228,10 @@ const U =
         if (this.curState != $actorEnum.EActorStateType.EXTEND_1) {
           this.isDead() ||
             this._isSlide ||
-            (0 != t.x || 0 != t.y
-              ? this.moveToDir(t.clone(), n)
-              : (this.moveDir = null));
+            (0 != t.x || 0 != t.y ? this.moveToDir(t.clone(), n) : (this.moveDir = null));
         } else {
           ((this._isSlide = !1),
-            this._prevjoystickTower != e &&
-              1 == e &&
-              this._sm.currentState.subDrag(),
+            this._prevjoystickTower != e && 1 == e && this._sm.currentState.subDrag(),
             (this._prevjoystickTower = e));
         }
       }
@@ -257,25 +243,23 @@ const U =
         this.curState != $actorEnum.EActorStateType.EXTEND_1 && !this.isDead())
       ) {
         this.moveDir = null;
-        if ("" != this._moveTargetPointId) {
+        if ('' != this._moveTargetPointId) {
           const t = $battleMgr.default.instance
             .getCurScene()
             .level.path.getPoint(this._moveTargetPointId);
-          const e =
-            (1 * this.getAttribute($attrEnum.E_AttrType.SPEED).value) / 60 -
-            0.1;
+          const e = (1 * this.getAttribute($attrEnum.E_AttrType.SPEED).value) / 60 - 0.1;
           if (t.isInPoint(this.node.getPosition(), e)) {
             this.setPos(t.pos);
           }
         }
-        this._moveTargetPointId = "";
+        this._moveTargetPointId = '';
         this.updatePathData(!1);
         this.changeState($actorEnum.EActorStateType.IDLE);
       }
     };
     e.prototype.moveToDir = function (t, e) {
-      if ("" == this._pathPointId) {
-        if ("" == this._pathLineId) {
+      if ('' == this._pathPointId) {
+        if ('' == this._pathLineId) {
           //
         } else {
           this.moveInLine(t, e);
@@ -293,8 +277,7 @@ const U =
       const s = o.findPointValidMinLine(t, r, i.isWaitRescue);
       if (
         0 == $levelBattleData.levelBattleData.cfgStage.id &&
-        $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-          $guideDataProxy.EGuideStepId.G_5 &&
+        $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_5 &&
         s &&
         1 == Math.abs(s.dir.y) &&
         11 == this.roomId &&
@@ -308,7 +291,7 @@ const U =
         if (this._isShowGuideTips) {
           //
         } else {
-          $globalPopupMgr.default.instance.showTips("【还有地方没搜索完】");
+          $globalPopupMgr.default.instance.showTips('【还有地方没搜索完】');
           this._isShowGuideTips = !0;
           this.scheduleOnce(function () {
             n._isShowGuideTips = !1;
@@ -317,8 +300,7 @@ const U =
       }
       if (
         0 == $levelBattleData.levelBattleData.cfgStage.id &&
-        $guideMgr.GuideMgr.instance.cfgGuideStepId >=
-          $guideDataProxy.EGuideStepId.G_7 &&
+        $guideMgr.GuideMgr.instance.cfgGuideStepId >= $guideDataProxy.EGuideStepId.G_7 &&
         s &&
         1 == Math.abs(s.dir.y) &&
         21 == this.roomId
@@ -327,9 +309,7 @@ const U =
         if (this._isShowGuideTips) {
           //
         } else {
-          $globalPopupMgr.default.instance.showTips(
-            "【怪物过来了，别下去，躲避到右边房间去吧！】",
-          );
+          $globalPopupMgr.default.instance.showTips('【怪物过来了，别下去，躲避到右边房间去吧！】');
           this._isShowGuideTips = !0;
           this.scheduleOnce(function () {
             n._isShowGuideTips = !1;
@@ -338,8 +318,7 @@ const U =
       }
       if (
         0 == $levelBattleData.levelBattleData.cfgStage.id &&
-        $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-          $guideDataProxy.EGuideStepId.G_10 &&
+        $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_10 &&
         s &&
         1 == Math.abs(s.dir.y) &&
         23 == this.roomId
@@ -348,7 +327,7 @@ const U =
         if (this._isShowGuideTips) {
           //
         } else {
-          $globalPopupMgr.default.instance.showTips("【救救那个人吧！】");
+          $globalPopupMgr.default.instance.showTips('【救救那个人吧！】');
           this._isShowGuideTips = !0;
           this.scheduleOnce(function () {
             n._isShowGuideTips = !1;
@@ -387,14 +366,14 @@ const U =
             1 == Math.abs(s.dir.y) && ((a.x = r.pos.x), this.setPos(a));
           }
         }
-        this._pathPointId = "";
+        this._pathPointId = '';
         this._pathLineId = s.lineId;
         this.moveDir = $mathUtil.MathUtil.vec2Fixed(s.dir);
         this._prevMoveDir = this.moveDir.clone();
         this._moveTargetPointId = s.endPoint.pointId;
         this.updateRoomId();
         this.changeState($actorEnum.EActorStateType.WALK);
-      } else if ("" != this._moveTargetPointId) {
+      } else if ('' != this._moveTargetPointId) {
         const m = o.getPoint(this._moveTargetPointId);
         if (
           m.isInPoint(
@@ -403,25 +382,22 @@ const U =
           )
         ) {
           this.moveDir = null;
-          this._moveTargetPointId = "";
+          this._moveTargetPointId = '';
           this.setPos(m.pos);
         }
       } else {
         this.moveDir = null;
-        this._moveTargetPointId = "";
+        this._moveTargetPointId = '';
       }
     };
     e.prototype.moveInLine = function (t, e) {
       if (
         0 == $levelBattleData.levelBattleData.cfgStage.id &&
         22 == this.roomId &&
-        $guideMgr.GuideMgr.instance.cfgGuideStepId >=
-          $guideDataProxy.EGuideStepId.G_8
+        $guideMgr.GuideMgr.instance.cfgGuideStepId >= $guideDataProxy.EGuideStepId.G_8
       ) {
         const n = Array.from(
-          this._tempCollisionIdsMap
-            .get($gridAreaDivisionMgr.E_AreaObjectType.DOOR)
-            .values(),
+          this._tempCollisionIdsMap.get($gridAreaDivisionMgr.E_AreaObjectType.DOOR).values(),
         );
         if (
           n &&
@@ -436,7 +412,7 @@ const U =
       }
       if (0 == t.x && 0 == t.y) {
         this.moveDir = null;
-        this._moveTargetPointId = "";
+        this._moveTargetPointId = '';
         return void this.changeState($actorEnum.EActorStateType.IDLE);
       }
       const i = $battleMgr.default.instance.getCurScene().level.path;
@@ -444,11 +420,11 @@ const U =
       const r = i.getLine(this._pathLineId);
       const a = this.node.getPosition();
       if (r.startPoint.isInPoint(a, o)) {
-        this._pathLineId = "";
+        this._pathLineId = '';
         this._pathPointId = r.startPoint.pointId;
         this.moveInPoint(t, e);
       } else if (r.endPoint.isInPoint(a, o)) {
-        this._pathLineId = "";
+        this._pathLineId = '';
         this._pathPointId = r.endPoint.pointId;
         this.moveInPoint(t, e);
       } else {
@@ -466,11 +442,11 @@ const U =
             this._pathLineId = c.lineId;
           } else {
             this.moveDir = null;
-            this._moveTargetPointId = "";
+            this._moveTargetPointId = '';
           }
         } else {
           this.moveDir = null;
-          this._moveTargetPointId = "";
+          this._moveTargetPointId = '';
         }
         this.updateRoomId();
       }
@@ -525,10 +501,7 @@ const U =
         }
       }
       const n = this.node.convertToWorldSpaceAR(cc.Vec2.ZERO);
-      const i = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(
-        this.node.x,
-        this.node.y,
-      );
+      const i = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(this.node.x, this.node.y);
       this.checkLevelObjectCollision(i.key, n, e);
       this.checkEnemyCollision(i.key, n, e);
       if (this._guideMoveDir) {
@@ -575,8 +548,7 @@ const U =
                   (a.set(o.unitId, o.unitId), o.playerCollisionEnter(i));
                 }
               } else {
-                a.has(o.unitId) &&
-                  (a.delete(o.unitId), o.playerCollisionExit(i));
+                a.has(o.unitId) && (a.delete(o.unitId), o.playerCollisionExit(i));
               }
             }
           });
@@ -592,10 +564,7 @@ const U =
           $gridAreaDivisionMgr.E_AreaObjectType.ENEMY,
         );
         for (a = 0; a < o.length; a++) {
-          if (
-            (s = $actorMgr.default.instance.getActor(o[a])) &&
-            r.includes(s)
-          ) {
+          if ((s = $actorMgr.default.instance.getActor(o[a])) && r.includes(s)) {
             //
           } else {
             if (s) {
@@ -644,7 +613,7 @@ const U =
     };
     e.prototype.onBeHurt = function (e) {
       t.prototype.onBeHurt.call(this, e);
-      const n = this.node.getChildByName("Body").getChildByName("SpAnim");
+      const n = this.node.getChildByName('Body').getChildByName('SpAnim');
       n.color = cc.Color.RED;
       cc.Tween.stopAllByTarget(n);
       cc.tween(n)
@@ -652,30 +621,26 @@ const U =
           color: cc.Color.WHITE,
         })
         .start();
-      const i = this.node.getChildByName("Body").getComponent(cc.Animation);
+      const i = this.node.getChildByName('Body').getComponent(cc.Animation);
       if (i) {
-        i.play("PlayerHurt", 0);
+        i.play('PlayerHurt', 0);
       }
       if (e.isNotInvincible) {
         //
       } else {
-        this._beHurtDisTime = Number(
-          $cfg.default.instance.dataCons.getById(131).val,
-        );
+        this._beHurtDisTime = Number($cfg.default.instance.dataCons.getById(131).val);
         this.enterInvincible();
       }
       if ($userSetDataProxy.userSetDataProxy.isVibration) {
         mm.platform.startVibrate(0);
       }
-      $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_PlayerHit");
+      $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_PlayerHit');
     };
     e.prototype.updateRoomId = function (e) {
       const n = this.roomId;
       t.prototype.updateRoomId.call(this, e);
       if (n != this.roomId) {
-        const i = $battleMgr.default.instance
-          .getCurScene()
-          .level.getRoomById(this.roomId);
+        const i = $battleMgr.default.instance.getCurScene().level.getRoomById(this.roomId);
         if (i) {
           i.playerArrive();
         }
@@ -683,18 +648,11 @@ const U =
           $battleEnum.EBattleEvent.PLAYER_ROOM_ID_CHANGE_INFORM,
           this.roomId,
         );
-        $eventManager.EventManager.instance.emit(
-          $battleEnum.EBattleEvent.UPDATE_BAG_UI,
-        );
+        $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.UPDATE_BAG_UI);
       }
     };
     e.prototype.isInRoomPos = function (t) {
-      return new cc.Rect(
-        this.node.x,
-        this.node.y,
-        this.node.width,
-        this.node.height,
-      ).contains(t);
+      return new cc.Rect(this.node.x, this.node.y, this.node.width, this.node.height).contains(t);
     };
     e.prototype.onRemove = function () {
       const e = this;
@@ -723,9 +681,7 @@ const U =
       this._head.updateHP(this._hp, n);
       this.changeState($actorEnum.EActorStateType.IDLE);
       if (!t) {
-        this._beHurtDisTime = Number(
-          $cfg.default.instance.dataCons.getById(132).val,
-        );
+        this._beHurtDisTime = Number($cfg.default.instance.dataCons.getById(132).val);
         this.enterInvincible();
         const i = $battleMgr.default.instance.getCurScene();
         if (!i.isResult) {
@@ -742,10 +698,10 @@ const U =
               r = i.level.getLayerPosY(c);
               break;
             }
-            if ("" != this._pathLineId) {
+            if ('' != this._pathLineId) {
               const l = i.level.path.getLine(this._pathLineId);
               r = l.startPos.y;
-            } else if ("" != this._pathPointId) {
+            } else if ('' != this._pathPointId) {
               const p = i.level.path.getPoint(this._pathPointId);
               r = p.pos.y;
             }
@@ -756,8 +712,8 @@ const U =
             areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.GOOD,
             areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
             parent: i.unitParent,
-            prefabName: "SceneGood",
-            unitClass: "SceneGood",
+            prefabName: 'SceneGood',
+            unitClass: 'SceneGood',
             initPos: o,
             initParam: {
               rewardId: 900,
@@ -765,13 +721,7 @@ const U =
             },
             onCreated: function (t) {
               t.updateRoomId(e.roomId);
-              t.drop(
-                r,
-                $randomUtil.RandomUtil.randomInt(-50, 50),
-                0.3,
-                40,
-                0.2,
-              );
+              t.drop(r, $randomUtil.RandomUtil.randomInt(-50, 50), 0.3, 40, 0.2);
             },
           });
         }
@@ -831,10 +781,10 @@ const U =
     };
     e.prototype.clearMove = function () {
       this.moveDir = null;
-      this._moveTargetPointId = "";
+      this._moveTargetPointId = '';
       this.unscheduleAllCallbacks();
       this.changeState($actorEnum.EActorStateType.IDLE);
     };
     e.prototype.onGuideChange = function () {};
   })($actorBase.default));
-exports.default = U;
+export default U;

@@ -36,18 +36,9 @@ const v =
     };
     e.prototype.registerState = function () {
       t.prototype.registerState.call(this);
-      this._sm.addState(
-        $actorEnum.EActorStateType.IDLE,
-        new $boss_122_Idle.Boss_122_Idle(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.WALK,
-        new $boss_122_Walk.Boss_122_Walk(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.ATTACK,
-        new $boss_122_Atk.Boss_122_Atk(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.IDLE, new $boss_122_Idle.Boss_122_Idle(this));
+      this._sm.addState($actorEnum.EActorStateType.WALK, new $boss_122_Walk.Boss_122_Walk(this));
+      this._sm.addState($actorEnum.EActorStateType.ATTACK, new $boss_122_Atk.Boss_122_Atk(this));
       this._sm.addState(
         $actorEnum.EActorStateType.EXTEND_1,
         new $boss_122_Face.Boss_122_Face(this),
@@ -71,15 +62,12 @@ const v =
           50,
           300,
         ) &&
-        (e.node.x > this.node.x
-          ? e.dirX < 0
-          : e.node.x < this.node.x && e.dirX > 0)
+        (e.node.x > this.node.x ? e.dirX < 0 : e.node.x < this.node.x && e.dirX > 0)
       );
     };
     e.prototype.canBeHurt = function () {
       return (
-        t.prototype.canBeHurt.call(this) &&
-        this.curState != $actorEnum.EActorStateType.EXTEND_1
+        t.prototype.canBeHurt.call(this) && this.curState != $actorEnum.EActorStateType.EXTEND_1
       );
     };
     e.prototype.onUpdate = function (e) {
@@ -90,21 +78,18 @@ const v =
           //
         } else {
           this._isShowBossTag = !0;
-          $eventManager.EventManager.instance.emit(
-            $battleEnum.EBattleEvent.LOOKAT_BOSS,
-            n,
-          );
+          $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.LOOKAT_BOSS, n);
         }
       }
     };
     e.prototype.playAnimShowFace = function () {
       const t = this;
-      this._spCtrl.playAnim("hide_start", 1, !1, function () {
-        t._spCtrl.playAnim("hide_stand", 1, !0);
+      this._spCtrl.playAnim('hide_start', 1, !1, function () {
+        t._spCtrl.playAnim('hide_stand', 1, !0);
       });
     };
     e.prototype.playAnimHideFace = function (t) {
-      this._spCtrl.playAnim("hide_over", 1, !1, function () {
+      this._spCtrl.playAnim('hide_over', 1, !1, function () {
         if (t) {
           t();
         }
@@ -137,8 +122,8 @@ const v =
     };
     e.prototype.onBossTrigger = function () {
       this.node.setPosition(cc.v2(0, 0));
-      $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_GhostEnters");
+      $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_GhostEnters');
       t.prototype.onBossTrigger.call(this);
     };
   })($enemyBase.default));
-exports.default = v;
+export default v;

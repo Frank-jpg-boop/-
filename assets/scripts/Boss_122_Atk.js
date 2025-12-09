@@ -1,7 +1,7 @@
 import $state from './State';
 import $actorEnum from './ActorEnum';
 let i;
-exports.Boss_122_Atk = void 0;
+export const Boss_122_Atk = void 0;
 e.prototype.end = function () {};
 e.prototype.update = function () {
   if (this._context.isTrigger && this._context.isFace()) {
@@ -26,4 +26,4 @@ function e(e) {
   return n;
 }
 const s = e;
-exports.Boss_122_Atk = s;
+export const Boss_122_Atk = s;

@@ -5,14 +5,13 @@ import $frameEnum from './FrameEnum';
 import $spAnimCtrl from './SpAnimCtrl';
 import $levelBattleData from './LevelBattleData';
 let i;
-exports.EEnterBossViewEvent = void 0;
-let a;
+export const EEnterBossViewEvent = {
+  SHOW: 'EEnterBossViewEvent.show'
+};
+let a = EEnterBossViewEvent;
 const f = cc._decorator;
 const d = f.ccclass;
 const m = f.property;
-!(function (t) {
-  t.SHOW = "EEnterBossViewEvent.show";
-})((a = exports.EEnterBossViewEvent || (exports.EEnterBossViewEvent = {})));
 e.prototype.playAnim = function (t) {
   const e = this;
   if (void 0 === t) {
@@ -24,20 +23,20 @@ e.prototype.playAnim = function (t) {
     $resLoader.ResLoader.setSpritFrame(
       this.spIcon,
       $frameEnum.Frame.EBundleName.GAME,
-      "textures/enemy_pic/" + i.bossFace,
+      'textures/enemy_pic/' + i.bossFace,
     );
     this.lBossDesc.string = i.info;
     this.node.active = !0;
     this.spAnimBg.node.active = !0;
     this.spAnimBoss.node.active = !0;
     const o = Math.max(
-      this.spAnimBg.spAnim.findAnimation("BG").duration,
-      this.spAnimBoss.spAnim.findAnimation("wenzi").duration,
+      this.spAnimBg.spAnim.findAnimation('BG').duration,
+      this.spAnimBoss.spAnim.findAnimation('wenzi').duration,
     );
     this.spAnimBg.clearAnim();
     this.spAnimBoss.clearAnim();
-    this.spAnimBg.playAnim("BG", 0.6, !1);
-    this.spAnimBoss.playAnim("wenzi", 0.6, !1);
+    this.spAnimBg.playAnim('BG', 0.6, !1);
+    this.spAnimBoss.playAnim('wenzi', 0.6, !1);
     this.scheduleOnce(function () {
       e.node.active = !1;
       if (t) {
@@ -52,19 +51,11 @@ e.prototype.onEventTriggerBossInform = function () {
   this.playAnim();
 };
 e.prototype.onDestroy = function () {
-  $eventManager.EventManager.instance.off(
-    a.SHOW,
-    this.onEventTriggerBossInform,
-    this,
-  );
+  $eventManager.EventManager.instance.off(a.SHOW, this.onEventTriggerBossInform, this);
 };
 e.prototype.onLoad = function () {
   this.node.active = !1;
-  $eventManager.EventManager.instance.on(
-    a.SHOW,
-    this.onEventTriggerBossInform,
-    this,
-  );
+  $eventManager.EventManager.instance.on(a.SHOW, this.onEventTriggerBossInform, this);
 };
 function e() {
   const e = (null !== t && t.apply(this, arguments)) || this;
@@ -74,4 +65,4 @@ function e() {
   e.lBossDesc = null;
   return e;
 }
-exports.default = y;
+export default y;;

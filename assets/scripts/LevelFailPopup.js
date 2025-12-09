@@ -17,10 +17,7 @@ const b = cc._decorator;
 const E = b.ccclass;
 const S = b.property;
 e.prototype.getCurResurgenceType = function () {
-  for (
-    const t = $levelBattleData.levelBattleData.data.resurgenceCount, e = [];
-    ;
-  ) {
+  for (const t = $levelBattleData.levelBattleData.data.resurgenceCount, e = []; ; ) {
     if (1 == $levelBattleData.levelBattleData.cfgStage.id) {
       e = [0, 1, 1];
       break;
@@ -53,9 +50,9 @@ e.prototype.onClickBtnResurgence = function () {
         case 1:
           $adMgr.AdMgr.instance.showVideoAd({
             id: 1,
-            eventId: "AD_Rebirth",
+            eventId: 'AD_Rebirth',
             eventData: {
-              userA: "" + $levelBattleData.levelBattleData.cfgStage.id,
+              userA: '' + $levelBattleData.levelBattleData.cfgStage.id,
             },
             success: function () {
               t.resurgence();
@@ -97,21 +94,17 @@ e.prototype.onClickBtnBack = function () {
     $gameEnum.Game.EDailyRefreshDataKey.LOSE_ADD_HEIGHT_RATE,
     t + $levelBattleData.levelBattleData.cfgStage.getLose,
   );
-  $reportMgr.ReportMgr.instance.reportEvent("BA_StageLose", {
-    userA: "" + $levelBattleData.levelBattleData.cfgStage.id,
+  $reportMgr.ReportMgr.instance.reportEvent('BA_StageLose', {
+    userA: '' + $levelBattleData.levelBattleData.cfgStage.id,
   });
   return $levelBattleData.levelBattleData.electric >=
     $levelBattleData.levelBattleData.electricPowerCount
     ? (this.removeUI(),
-      $eventManager.EventManager.instance.emit(
-        $battleEnum.EBattleEvent.REVIVE_PLAYER,
-        !0,
-      ),
+      $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.REVIVE_PLAYER, !0),
       void $battleMgr.default.instance.getCurScene().scheduleWin())
     : (($stageDataProxy.stageDataProxy.isBackBattleFail = !0),
       $stageDataProxy.stageDataProxy.checkOver()
-        ? (this.removeUI(),
-          void $globalPopupMgr.default.instance.showLevelOver())
+        ? (this.removeUI(), void $globalPopupMgr.default.instance.showLevelOver())
         : void $battleMgr.default.instance.exitLevelScene());
 };
 e.prototype.resurgence = function (t) {
@@ -126,24 +119,16 @@ e.prototype.resurgence = function (t) {
   }
   this.removeUI();
   if (this._battlePlayState) {
-    if (
-      null === (e = $battleMgr.default.instance.getCurScene()) ||
-      void 0 === e
-    ) {
+    if (null === (e = $battleMgr.default.instance.getCurScene()) || void 0 === e) {
       //
     } else {
       e.resume();
     }
   }
-  $eventManager.EventManager.instance.emit(
-    $battleEnum.EBattleEvent.REVIVE_PLAYER,
-  );
+  $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.REVIVE_PLAYER);
 };
 e.prototype.onShow = function () {
-  this.resultBagView.init(
-    $levelBattleData.levelBattleData.bagData.bagEquipDatas,
-    !1,
-  );
+  this.resultBagView.init($levelBattleData.levelBattleData.bagData.bagEquipDatas, !1);
 };
 e.prototype.init = function (t) {
   this.electric.init(!0);
@@ -154,41 +139,35 @@ e.prototype.init = function (t) {
     $levelBattleData.levelBattleData.data.resurgenceCount <
     $levelBattleData.levelBattleData.maxResurgenceCount;
   if (this.nBtnResurgence.active) {
-    const e = this.nBtnResurgence
-      .getChildByName("Layout")
-      .getChildByName("Share");
-    const n = this.nBtnResurgence.getChildByName("Layout").getChildByName("Ad");
+    const e = this.nBtnResurgence.getChildByName('Layout').getChildByName('Share');
+    const n = this.nBtnResurgence.getChildByName('Layout').getChildByName('Ad');
     const i = this.getCurResurgenceType();
     e.active = 2 == i;
     n.active = 1 == i;
     this.nBtnResurgence
-      .getChildByName("Layout")
-      .getChildByName("Count")
+      .getChildByName('Layout')
+      .getChildByName('Count')
       .getComponent(cc.Label).string =
-      "(" +
+      '(' +
       ($levelBattleData.levelBattleData.maxResurgenceCount -
         $levelBattleData.levelBattleData.data.resurgenceCount) +
-      "/" +
+      '/' +
       $levelBattleData.levelBattleData.maxResurgenceCount +
-      ")";
+      ')';
   }
   const o =
     $levelBattleData.levelBattleData.electric >=
     $levelBattleData.levelBattleData.electricPowerCount;
   this.nTips.active = !1;
   if (o) {
-    this.nBtnBack.getChildByName("Desc").getComponent(cc.Label).string =
-      "紧急撤离";
+    this.nBtnBack.getChildByName('Desc').getComponent(cc.Label).string = '紧急撤离';
   } else {
-    this.nBtnBack.getChildByName("Desc").getComponent(cc.Label).string =
-      "放弃";
+    this.nBtnBack.getChildByName('Desc').getComponent(cc.Label).string = '放弃';
   }
   if (o) {
-    this.nBtnBack.getChildByName("Tips").getComponent(cc.Label).string =
-      "电池已足够";
+    this.nBtnBack.getChildByName('Tips').getComponent(cc.Label).string = '电池已足够';
   } else {
-    this.nBtnBack.getChildByName("Tips").getComponent(cc.Label).string =
-      "电池不足以紧急撤离";
+    this.nBtnBack.getChildByName('Tips').getComponent(cc.Label).string = '电池不足以紧急撤离';
   }
   $stageDataProxy.stageDataProxy.updateExploreValue(
     $levelBattleData.levelBattleData.cfgStage.id,
@@ -206,4 +185,4 @@ function e() {
   e._isLockClick = !1;
   return e;
 }
-exports.default = P;
+export default P;

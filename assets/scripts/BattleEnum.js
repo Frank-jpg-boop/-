@@ -1,34 +1,35 @@
-exports.EBattleEvent =
-  exports.EHurtSourceType =
-  exports.EHurtType =
-  exports.EBattlePopHurtType =
-  exports.EBattlePopupNumType =
-  exports.EBattleSceneType =
-    void 0;
-(exports.EBattleSceneType || (exports.EBattleSceneType = {})).LEVEL = "LEVEL";
-exports.EBattlePopupNumType = {
+export const EBattleEvent = exports.EHurtSourceType =
+exports.EHurtType =
+exports.EBattlePopHurtType =
+exports.EBattlePopupNumType =
+exports.EBattleSceneType =
+  void 0;;
+export const EBattleSceneType = {
+  LEVEL: 'LEVEL'
+};
+export const EBattlePopupNumType = {
   COMMON_HURT: 1,
   PLAYER_HURT: 2,
   CRIT: 3,
-  HEAL: 4
-};
-exports.EBattlePopHurtType = {
+  HEAL: 4,
+};;
+export const EBattlePopHurtType = {
   COMMON: 1,
   CRIT: 2,
   RECOVER: 3,
-  EVASION: 4
-};
-exports.EHurtType = {
+  EVASION: 4,
+};;
+export const EHurtType = {
   PHYSICS: 1,
   MAGIC: 2,
-  REAL: 3
-};
-exports.EHurtSourceType = {
+  REAL: 3,
+};;
+export const EHurtSourceType = {
   COMMON_ATTACK: 1,
   SKILL_HURT: 2,
-  OTHER: 3
-};
-exports.EBattleEvent = {
+  OTHER: 3,
+};;
+export const EBattleEvent = {
   ADD_BUFF_EFFECT: 'ADD_BUFF_EFFECT',
   PICKUP_FLY_ITEM: 'PICKUP_FLY_ITEM',
   CONSUME_FLY_ITEM: 'CONSUME_FLY_ITEM',
@@ -51,5 +52,5 @@ exports.EBattleEvent = {
   TRIGGER_BOSS: 'TRIGGER_BOSS',
   TRIGGER_BOSS_INFORM: 'TRIGGER_BOSS_INFORM',
   TRIGGER_BOSS_END_INFORM: 'TRIGGER_BOSS_End_INFORM',
-  LOOKAT_BOSS: 'LOOKAT_BOSS'
+  LOOKAT_BOSS: 'LOOKAT_BOSS',
 };

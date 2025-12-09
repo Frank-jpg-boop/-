@@ -29,21 +29,21 @@ const P =
       e._isShow = !1;
       return e;
     }
-    Object.defineProperty(e.prototype, "isFake", {
+    Object.defineProperty(e.prototype, 'isFake', {
       get: function () {
         return this._isFake;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "waitTime", {
+    Object.defineProperty(e.prototype, 'waitTime', {
       get: function () {
         return this._waitTime;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "cfg", {
+    Object.defineProperty(e.prototype, 'cfg', {
       get: function () {
         return this._cfg;
       },
@@ -53,28 +53,20 @@ const P =
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
       this._nTagParent = cc.find(
-        "Body/Anim/ATTACHED_NODE_TREE/ATTACHED_NODE:root/ATTACHED_NODE:bone/Tag",
+        'Body/Anim/ATTACHED_NODE_TREE/ATTACHED_NODE:root/ATTACHED_NODE:bone/Tag',
         this.node,
       );
       this._atkCollider = cc
         .find(
-          "Body/Anim/ATTACHED_NODE_TREE/ATTACHED_NODE:root/ATTACHED_NODE:bone/AtkCollider",
+          'Body/Anim/ATTACHED_NODE_TREE/ATTACHED_NODE:root/ATTACHED_NODE:bone/AtkCollider',
           this.node,
         )
         .getComponent($simplyRectCollider.default);
     };
     e.prototype.registerState = function () {
-      this._sm = new $stateMachine.StateMachine(
-        new $boss_321_Idle.Boss_321_Idle(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.ATTACK,
-        new $boss_321_Atk.Boss_321_Atk(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.DEAD,
-        new $boss_321_die.Boss_321_Die(this),
-      );
+      this._sm = new $stateMachine.StateMachine(new $boss_321_Idle.Boss_321_Idle(this));
+      this._sm.addState($actorEnum.EActorStateType.ATTACK, new $boss_321_Atk.Boss_321_Atk(this));
+      this._sm.addState($actorEnum.EActorStateType.DEAD, new $boss_321_die.Boss_321_Die(this));
       this._sm.addState(
         $actorEnum.EActorStateType.EXTEND_1,
         new $boss_321_IdleEx.Boss_321_IdleEx(this),
@@ -138,12 +130,11 @@ const P =
         .start();
     };
     e.prototype.playAnimIdleEx = function () {
-      this._spCtrl.playAnim("stand_fall", 1, !0);
+      this._spCtrl.playAnim('stand_fall', 1, !0);
     };
     e.prototype.canBeSearch = function () {
       return (
-        t.prototype.canBeSearch.call(this) &&
-        this.curState == $actorEnum.EActorStateType.EXTEND_1
+        t.prototype.canBeSearch.call(this) && this.curState == $actorEnum.EActorStateType.EXTEND_1
       );
     };
     e.prototype.canBeHurt = function () {
@@ -154,12 +145,12 @@ const P =
       );
     };
     e.prototype.playAnimAttackReady = function () {
-      this._spCtrl.playAnim("ready", 1, !0);
+      this._spCtrl.playAnim('ready', 1, !0);
     };
     e.prototype.plyerAnimSummom = function (t, e) {
-      $audioUtil.AudioUtil.playLimitEffect("sounds/lmtw_yx_FanAtk");
+      $audioUtil.AudioUtil.playLimitEffect('sounds/lmtw_yx_FanAtk');
       this._spCtrl.playAnim(
-        this._isFake ? "atk" : "atk2",
+        this._isFake ? 'atk' : 'atk2',
         1,
         !1,
         function () {
@@ -231,7 +222,7 @@ const P =
         cfgId: this._cfg.id,
         camp: $actorEnum.ETeamType.ENEMY,
         parent: e.actorParent,
-        prefabName: "Boss_" + this._cfg.id,
+        prefabName: 'Boss_' + this._cfg.id,
         initPos: t,
         actorClass: $actorMgr.default.instance.getActorClassName(
           this._cfg.id,
@@ -249,8 +240,7 @@ const P =
       t.prototype.onUpdate.call(this, e);
       if (this._isTrigger) {
         if (
-          (this._waitTime > 0 &&
-            this.curState == $actorEnum.EActorStateType.IDLE) ||
+          (this._waitTime > 0 && this.curState == $actorEnum.EActorStateType.IDLE) ||
           this.curState == $actorEnum.EActorStateType.EXTEND_1
         ) {
           this._waitTime -= e;
@@ -282,8 +272,7 @@ const P =
                     e.hurtColliderRect,
                   )
                 ) {
-                  -1 == n &&
-                    (e.beHurt(t.getHurt()), t._atkCollisionIds.push(e.unitId));
+                  -1 == n && (e.beHurt(t.getHurt()), t._atkCollisionIds.push(e.unitId));
                 } else {
                   -1 != n && t._atkCollisionIds.splice(n, 1);
                 }
@@ -304,7 +293,7 @@ const P =
         );
       }, 0.2);
       if (this._flagEffect) {
-        this._flagEffect.playDefaultAnim("loop", 1, !0);
+        this._flagEffect.playDefaultAnim('loop', 1, !0);
       }
       this.updateAreaKey();
       t.prototype.onBossTrigger.call(this);
@@ -329,4 +318,4 @@ const P =
       }
     };
   })($enemyBase.default));
-exports.default = P;
+export default P;

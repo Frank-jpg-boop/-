@@ -5,7 +5,7 @@ const c = s.ccclass;
 const l = s.property;
 e.prototype.onClickBtnOk = function () {
   const t = this.nInputView.children.map(function (t) {
-    return t.getChildByName("EditBox").getComponent(cc.EditBox).string;
+    return t.getChildByName('EditBox').getComponent(cc.EditBox).string;
   });
   if (this._onClickOk) {
     this._onClickOk(t);
@@ -26,7 +26,7 @@ e.prototype.init = function (t) {
     e.active = t.inputDatas.length > n;
     if (e.active) {
       const i = t.inputDatas[n];
-      e.getChildByName("Title").getComponent(cc.Label).string = i.title;
+      e.getChildByName('Title').getComponent(cc.Label).string = i.title;
     }
   });
   this._onClickOk = t.onClickOk;
@@ -38,4 +38,4 @@ function e() {
   e._onClickOk = null;
   return e;
 }
-exports.default = u;
+export default u;

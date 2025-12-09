@@ -2,7 +2,7 @@ import $state from './State';
 import $actorEnum from './ActorEnum';
 import $actorMgr from './ActorMgr';
 let i;
-exports.Boss_621_Atk = void 0;
+export const Boss_621_Atk = void 0;
 e.prototype.end = function () {
   if (this._context.skin2ItemIds.length > 0) {
     this._context.skin2ItemIds.forEach(function (t) {
@@ -21,7 +21,7 @@ e.prototype.attack = function (t) {
   this._context.setDirX(t.x > this._context.node.x);
   this._context.playAnimAttack(
     function (n) {
-      if ("atk" == n) {
+      if ('atk' == n) {
         e._context.attackHit(t);
       }
     },
@@ -46,4 +46,4 @@ function e(e) {
   return n;
 }
 const c = e;
-exports.Boss_621_Atk = c;
+export const Boss_621_Atk = c;

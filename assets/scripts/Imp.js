@@ -35,7 +35,7 @@ const I =
       e.ownerRange = $randomUtil.RandomUtil.randomInt(50, 100);
       return e;
     }
-    Object.defineProperty(e.prototype, "ownerSkill", {
+    Object.defineProperty(e.prototype, 'ownerSkill', {
       get: function () {
         return this._initParam.ownerSkill;
       },
@@ -45,8 +45,8 @@ const I =
     e.prototype.onLoad = function () {
       this.node.opacity = 0;
       this._animCtrl = this.node
-        .getChildByName("Body")
-        .getChildByName("SpAnim")
+        .getChildByName('Body')
+        .getChildByName('SpAnim')
         .getComponent($spAnimCtrl.default);
       t.prototype.onLoad.call(this);
     };
@@ -56,9 +56,7 @@ const I =
     };
     e.prototype.initConfig = function () {
       this._attackRange = $randomUtil.RandomUtil.randomInt(20, 50);
-      this._duration = this.ownerSkill.getAttribute(
-        $attrEnum.E_SkillAttrType.EXTRA_ATTR_3,
-      ).value;
+      this._duration = this.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_3).value;
       this._isGroundMove = !0;
     };
     e.prototype.initType = function () {
@@ -70,33 +68,27 @@ const I =
       const e = this.ownerSkill.owner;
       const n = Math.floor(
         e.getAttribute($attrEnum.E_AttrType.ATK).value *
-          this.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.CORE_ATTR_RATE)
-            .value,
+          this.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.CORE_ATTR_RATE).value,
       );
       this.getAttribute($attrEnum.E_AttrType.ATK).setFixBase(n);
       const i = Math.floor(
         e.getAttribute($attrEnum.E_AttrType.HP).value *
-          this.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2)
-            .value,
+          this.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2).value,
       );
       this.getAttribute($attrEnum.E_AttrType.HP).setFixBase(i);
       const o =
-        this.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_4)
-          .value + $randomUtil.RandomUtil.randomInt(0, 30);
+        this.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_4).value +
+        $randomUtil.RandomUtil.randomInt(0, 30);
       this.getAttribute($attrEnum.E_AttrType.SPEED).setFixBase(o);
       this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).setFixBase(
-        this.ownerSkill.owner.getAttribute($attrEnum.E_AttrType.CRIT_RATE)
-          .value,
+        this.ownerSkill.owner.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value,
       );
       this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).setFixBase(
-        this.ownerSkill.owner.getAttribute($attrEnum.E_AttrType.CRIT_HURT)
-          .value,
+        this.ownerSkill.owner.getAttribute($attrEnum.E_AttrType.CRIT_HURT).value,
       );
     };
     e.prototype.registerState = function () {
-      this._sm = new $stateMachine.StateMachine(
-        new $impIdleState.ImpIdleState(this),
-      );
+      this._sm = new $stateMachine.StateMachine(new $impIdleState.ImpIdleState(this));
       this._sm.addState(
         $actorEnum.EActorStateType.ATTACK,
         new $summonAttackState.SummonAttackState(this),
@@ -105,10 +97,7 @@ const I =
         $actorEnum.EActorStateType.DEAD,
         new $summonDeadState.SummonDeadState(this),
       );
-      this._sm.addState(
-        $actorEnum.EActorStateType.WALK,
-        new $impWalkState.ImpWalkState(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.WALK, new $impWalkState.ImpWalkState(this));
     };
     e.prototype.playShowAnim = function () {
       const t = this;
@@ -125,17 +114,15 @@ const I =
       });
     };
     e.prototype.playAnimIdle = function () {
-      this._animCtrl.playAnim("stand", 1, !0);
+      this._animCtrl.playAnim('stand', 1, !0);
     };
     e.prototype.playAnimWalk = function () {
-      this._animCtrl.playAnim("move", 1, !0);
+      this._animCtrl.playAnim('move', 1, !0);
     };
     e.prototype.playAnimAttack = function (t, e) {
       const n = this;
-      this._animCtrl.playAnim("atk", 1, !1, function () {
-        n._attackCd = n.ownerSkill.getAttribute(
-          $attrEnum.E_SkillAttrType.EXTRA_ATTR_5,
-        ).value;
+      this._animCtrl.playAnim('atk', 1, !1, function () {
+        n._attackCd = n.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_5).value;
         if (t) {
           t();
         }
@@ -146,9 +133,7 @@ const I =
     };
     e.prototype.playAnimDie = function (t) {
       const e = this;
-      const n =
-        this.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_6)
-          .value > 0;
+      const n = this.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_6).value > 0;
       if (n) {
         this.scheduleOnce(function () {
           e.skillBlast();
@@ -157,7 +142,7 @@ const I =
       if (this._head) {
         this._head.hide();
       }
-      this._animCtrl.playAnim(n ? "skill" : "die", 1, !1, function () {
+      this._animCtrl.playAnim(n ? 'skill' : 'die', 1, !1, function () {
         if (t) {
           t();
         }
@@ -167,7 +152,10 @@ const I =
       const t = this.node.getPosition();
       t.y += 50;
       for (
-        const e = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(t, 70), n = [], i = 0, o = e;
+        const e = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(t, 70),
+          n = [],
+          i = 0,
+          o = e;
         i < o.length;
         i++
       ) {
@@ -183,14 +171,8 @@ const I =
       }
       for (const l = 0, p = n; l < p.length; l++) {
         const h = p[l];
-        if (
-          !h.isDead() &&
-          cc.Vec2.squaredDistance(h.node.getPosition(), t) <= 4900
-        ) {
-          const f = $battleHurtFormulaMgr.default.instance.skillHurt(
-            this.getSkillHurtOption(),
-            h,
-          );
+        if (!h.isDead() && cc.Vec2.squaredDistance(h.node.getPosition(), t) <= 4900) {
+          const f = $battleHurtFormulaMgr.default.instance.skillHurt(this.getSkillHurtOption(), h);
           h.beHurt(f);
           if (h.isDead()) {
             $eventManager.EventManager.instance.emit(
@@ -221,10 +203,7 @@ const I =
     e.prototype.canAttackTarget = function (e) {
       return (
         t.prototype.canAttackTarget.call(this, e) &&
-        cc.Vec2.squaredDistance(
-          e.node.getPosition(),
-          this.node.getPosition(),
-        ) <=
+        cc.Vec2.squaredDistance(e.node.getPosition(), this.node.getPosition()) <=
           this._attackRange * this._attackRange
       );
     };
@@ -240,8 +219,7 @@ const I =
     };
     e.prototype.getHurt = function () {
       const t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
-      const e =
-        Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
+      const e = Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
       if (e) {
         t *= this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).value;
       }
@@ -254,15 +232,13 @@ const I =
     };
     e.prototype.searchTarget = function () {
       for (
-        const t = $actorMgr.default.instance.queryActorByCamp(
-                  $actorEnum.ETeamType.ENEMY,
-                ),
-              e = this.ownerSkill.owner.node.getPosition(),
-              n = this.node.getPosition(),
-              i = this.ownerSkill.cfg.edge,
-              o = Number.MAX_VALUE,
-              r = null,
-              a = 0;
+        const t = $actorMgr.default.instance.queryActorByCamp($actorEnum.ETeamType.ENEMY),
+          e = this.ownerSkill.owner.node.getPosition(),
+          n = this.node.getPosition(),
+          i = this.ownerSkill.cfg.edge,
+          o = Number.MAX_VALUE,
+          r = null,
+          a = 0;
         a < t.length;
         a++
       ) {
@@ -293,10 +269,7 @@ const I =
           this.changeState($actorEnum.EActorStateType.DEAD);
         } else {
           const e = this.node.convertToWorldSpaceAR(cc.Vec2.ZERO);
-          const n = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(
-            this.node.x,
-            this.node.y,
-          );
+          const n = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(this.node.x, this.node.y);
           this.checkDoor(n.key, e, t);
         }
       }
@@ -304,12 +277,12 @@ const I =
     e.prototype.checkDoor = function (t, e) {
       for (
         const n = this,
-              i = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
-                t,
-                $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
-              ),
-              o = this._tempCollisionDoorIds,
-              r = 0;
+          i = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
+            t,
+            $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
+          ),
+          o = this._tempCollisionDoorIds,
+          r = 0;
         r < o.length;
         r++
       ) {
@@ -361,4 +334,4 @@ const I =
       t.prototype.onRemove.call(this);
     };
   })($summonBase.default));
-exports.default = I;
+export default I;

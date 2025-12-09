@@ -1,4 +1,4 @@
-exports.State = void 0;
+export const State = void 0;
 t.prototype.end = function () {};
 t.prototype.reason = function () {};
 t.prototype.begin = function () {
@@ -7,7 +7,7 @@ t.prototype.begin = function () {
   }
 };
 t.prototype.onInitialized = function () {};
-Object.defineProperty(t.prototype, "stateType", {
+Object.defineProperty(t.prototype, 'stateType', {
   get: function () {
     return this._stateType;
   },
@@ -21,4 +21,4 @@ function t(t) {
   this.onInitialized();
 }
 const i = t;
-exports.State = i;
+export const State = i;

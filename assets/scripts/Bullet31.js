@@ -14,19 +14,11 @@ e.prototype.checkCollision = function (t) {
   const n = this.circleCollider.node.getBoundingBox();
   n.x += this.node.x;
   n.y += this.node.y;
-  for (
-    const i = [], o = n.x, r = n.xMax;
-    ;
-    o += $gridAreaDivisionMgr.default.instance.gridSize
-  ) {
+  for (const i = [], o = n.x, r = n.xMax; ; o += $gridAreaDivisionMgr.default.instance.gridSize) {
     if (o > r) {
       o = r;
     }
-    for (
-      const a = n.y, l = a + n.height;
-      ;
-      a += $gridAreaDivisionMgr.default.instance.gridSize
-    ) {
+    for (const a = n.y, l = a + n.height; ; a += $gridAreaDivisionMgr.default.instance.gridSize) {
       if (a > l) {
         a = l;
       }
@@ -82,10 +74,7 @@ e.prototype.checkCollision = function (t) {
         b.time += t;
         if (
           b.time >=
-          1 /
-            this._ownerSkill.getAttribute(
-              $attrEnum.E_SkillAttrType.EXTRA_ATTR_5,
-            ).value
+          1 / this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_5).value
         ) {
           b.time = 0;
           this._collisionDataMap.delete(v.unitId);
@@ -125,9 +114,7 @@ e.prototype.onShoot = function (t, e, n, i) {
   this.nView.scale = n;
   this.circleCollider.node.scale = n;
   const s = t.sub(r).normalizeSelf();
-  this.node.angle = $mathUtil.MathUtil.radians2Angle(
-    cc.Vec2.RIGHT.signAngle(s),
-  );
+  this.node.angle = $mathUtil.MathUtil.radians2Angle(cc.Vec2.RIGHT.signAngle(s));
   this.animBullet.once(
     cc.Animation.EventType.FINISHED,
     function () {
@@ -141,13 +128,13 @@ e.prototype.onShoot = function (t, e, n, i) {
         !0,
         function () {
           if (i > 0) {
-            o.animBullet.play("Bullet31Loop");
+            o.animBullet.play('Bullet31Loop');
             o.scheduleOnce(function () {
               o.remove();
             }, i);
           }
         },
-        "",
+        '',
         i <= 0,
       );
     },
@@ -165,4 +152,4 @@ function e() {
   e._collisionDataMap = null;
   return e;
 }
-exports.default = y;
+export default y;

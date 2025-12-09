@@ -22,45 +22,34 @@ e.prototype.init = function (t) {
   $resLoader.ResLoader.setSpritFrame(
     this.spIcon,
     $frameEnum.Frame.EBundleName.GAME,
-    "textures/skill/" + n.icon,
+    'textures/skill/' + n.icon,
   );
-  n.showReward.split("|").forEach(function (t, n) {
-    const i = t.split("_").map(Number);
+  n.showReward.split('|').forEach(function (t, n) {
+    const i = t.split('_').map(Number);
     const o = i[0];
     const r = i[1];
     const s = e.nSkillView.children[n];
     if (s) {
       const u = $cfg.default.instance.dataChoose.getById(r);
       $resLoader.ResLoader.setSpritFrame(
-        s.getChildByName("Quality").getComponent(cc.Sprite),
+        s.getChildByName('Quality').getComponent(cc.Sprite),
         $frameEnum.Frame.EBundleName.RES,
-        "textures/atlas/quality/quality_skill_ex_" + u.rare,
+        'textures/atlas/quality/quality_skill_ex_' + u.rare,
       );
-      for (
-        const p = [], h = /\|([^|]+)\|/g, f = void 0;
-        null != (f = h.exec(u.info));
-      ) {
+      for (; null != (f = h.exec(u.info)); ) {
         p.push(f[1]);
       }
       const d = u.info;
       p.forEach(function (t) {
-        const e = t.replace("%", "");
-        d = d.replace(
-          "|" + t + "|",
-          t.includes("%") ? 100 * Number(u[e]) + "%" : "" + u[e],
-        );
+        const e = t.replace('%', '');
+        d = d.replace('|' + t + '|', t.includes('%') ? 100 * Number(u[e]) + '%' : '' + u[e]);
       });
-      s.getChildByName("Desc").getComponent(cc.Label).string = d;
+      s.getChildByName('Desc').getComponent(cc.Label).string = d;
       if (0 == o) {
-        s
-          .getChildByName("Lock")
-          .getChildByName("LockLv")
-          .getComponent(cc.Label).string = "";
+        s.getChildByName('Lock').getChildByName('LockLv').getComponent(cc.Label).string = '';
       } else {
-        s
-          .getChildByName("Lock")
-          .getChildByName("LockLv")
-          .getComponent(cc.Label).string = "法器" + o + "级解锁";
+        s.getChildByName('Lock').getChildByName('LockLv').getComponent(cc.Label).string =
+          '法器' + o + '级解锁';
       }
     }
   });
@@ -73,4 +62,4 @@ function e() {
   e.nSkillView = null;
   return e;
 }
-exports.default = m;
+export default m;

@@ -15,131 +15,113 @@ e.prototype.onClickBtnAddCoin = function () {
 };
 e.prototype.onClickBtnEnterStage = function () {
   $globalPopupMgr.default.instance.showGMInput(
-    "进入指定关卡",
+    '进入指定关卡',
     [
       {
-        title: "关卡ID：",
+        title: '关卡ID：',
       },
     ],
     function (t) {
       const e = t[0];
-      if (
-        "" != e &&
-        !isNaN(Number(e)) &&
-        $cfg.default.instance.dataStage.getById(Number(e))
-      ) {
+      if ('' != e && !isNaN(Number(e)) && $cfg.default.instance.dataStage.getById(Number(e))) {
         const n = Number(e);
         $stageDataProxy.stageDataProxy.selectedStageId = n;
         $battleMgr.default.instance.restartLevelScene();
       } else {
-        $globalPopupMgr.default.instance.showTips("请输入正确的关卡id");
+        $globalPopupMgr.default.instance.showTips('请输入正确的关卡id');
       }
     },
   );
 };
 e.prototype.onClickBtnAddSkillEx = function () {
   $globalPopupMgr.default.instance.showGMInput(
-    "添加强化技能",
+    '添加强化技能',
     [
       {
-        title: "技能ID：",
+        title: '技能ID：',
       },
     ],
     function (t) {
       const e = t[0];
-      if (
-        "" != e &&
-        !isNaN(Number(e)) &&
-        $cfg.default.instance.dataChoose.getById(Number(e))
-      ) {
+      if ('' != e && !isNaN(Number(e)) && $cfg.default.instance.dataChoose.getById(Number(e))) {
         const n = Number(e);
         if ($skillMgr.SkillMgr.instance.checkSkillEx(n)) {
           $skillMgr.SkillMgr.instance.selectSkillEx(n);
         } else {
-          $globalPopupMgr.default.instance.showTips("该技能暂不能被选择");
+          $globalPopupMgr.default.instance.showTips('该技能暂不能被选择');
         }
       } else {
-        $globalPopupMgr.default.instance.showTips("请输入正确的技能id");
+        $globalPopupMgr.default.instance.showTips('请输入正确的技能id');
       }
     },
   );
 };
 e.prototype.onClickBtnRemoveWeapon = function () {
   $globalPopupMgr.default.instance.showGMInput(
-    "移除武器",
+    '移除武器',
     [
       {
-        title: "武器ID：",
+        title: '武器ID：',
       },
     ],
     function (t) {
       const e = t[0];
-      if (
-        "" != e &&
-        !isNaN(Number(e)) &&
-        $cfg.default.instance.dataSkill.getById(Number(e))
-      ) {
+      if ('' != e && !isNaN(Number(e)) && $cfg.default.instance.dataSkill.getById(Number(e))) {
         const n = Number(e);
         $levelBattleData.levelBattleData.removeSkill(n);
       } else {
-        $globalPopupMgr.default.instance.showTips("请输入正确的武器id");
+        $globalPopupMgr.default.instance.showTips('请输入正确的武器id');
       }
     },
   );
 };
 e.prototype.onClickBtnAddWeapon = function () {
   $globalPopupMgr.default.instance.showGMInput(
-    "添加武器",
+    '添加武器',
     [
       {
-        title: "武器ID：",
+        title: '武器ID：',
       },
     ],
     function (t) {
       const e = t[0];
-      if (
-        "" != e &&
-        !isNaN(Number(e)) &&
-        $cfg.default.instance.dataSkill.getById(Number(e))
-      ) {
+      if ('' != e && !isNaN(Number(e)) && $cfg.default.instance.dataSkill.getById(Number(e))) {
         const n = Number(e);
         $levelBattleData.levelBattleData.addSkill(n);
       } else {
-        $globalPopupMgr.default.instance.showTips("请输入正确的武器id");
+        $globalPopupMgr.default.instance.showTips('请输入正确的武器id');
       }
     },
   );
 };
 e.prototype.onClickBtnRefreshEnemy = function () {
   $globalPopupMgr.default.instance.showGMInput(
-    "添加怪物",
+    '添加怪物',
     [
       {
-        title: "房间ID:",
+        title: '房间ID:',
       },
       {
-        title: "怪物ID:",
+        title: '怪物ID:',
       },
     ],
     function (t) {
       const e = t[0];
-      if ("" == e || isNaN(Number(e)) || isNaN(Number(t[1]))) {
-        $globalPopupMgr.default.instance.showTips("请正确的输入");
+      if ('' == e || isNaN(Number(e)) || isNaN(Number(t[1]))) {
+        $globalPopupMgr.default.instance.showTips('请正确的输入');
       } else {
         const n = Number(e);
         const i = Number(t[1]);
-        const o = $battleMgr.default.instance
-          .getCurScene()
-          .level.getRoomById(n);
+        const o = $battleMgr.default.instance.getCurScene().level.getRoomById(n);
         if (o) {
           if ($cfg.default.instance.dataEnemy.getById(i)) {
             const r = $levelBattleData.levelBattleData.curWaveInfo;
             o.gmCreateEnemy(i, 1, r.enemyLv);
           } else {
-            $globalPopupMgr.default.instance.showTips("怪物不存在");
+            $globalPopupMgr.default.instance.showTips('怪物不存在');
           }
         } else {
-          $globalPopupMgr.default.instance.showTips("房间不存在");
+          $globalPopupMgr.default.instance.showTips('房间不存在');
         }
       }
     },
@@ -189,4 +171,4 @@ function e() {
   e.nGMSwitch = null;
   return e;
 }
-exports.default = _;
+export default _;

@@ -3,17 +3,16 @@ import $resLoader from './ResLoader';
 import $frameEnum from './FrameEnum';
 import $animUtils from './AnimUtils';
 let i;
-exports.EUnlockType = void 0;
-let a;
+export const EUnlockType = {
+  GOLD: 1,
+  AD: 2,
+  ITEM: 3,
+  TIPS: 4
+};
+let a = EUnlockType;
 const p = cc._decorator;
 const h = p.ccclass;
 const f = p.property;
-!(function (t) {
-  t[(t.GOLD = 1)] = "GOLD";
-  t[(t.AD = 2)] = "AD";
-  t[(t.ITEM = 3)] = "ITEM";
-  t[(t.TIPS = 4)] = "TIPS";
-})((a = exports.EUnlockType || (exports.EUnlockType = {})));
 e.prototype.onClickBtnClickAd = function () {
   if (this._isLockClick) {
     //
@@ -53,10 +52,8 @@ e.prototype.hideTips = function (t) {
 };
 e.prototype.updateTips = function (t) {
   if (this.nGold.active) {
-    this.nGold
-      .getChildByName("View")
-      .getChildByName("Value")
-      .getComponent(cc.Label).string = t.toString();
+    this.nGold.getChildByName('View').getChildByName('Value').getComponent(cc.Label).string =
+      t.toString();
   }
 };
 e.prototype.showTips = function (t) {
@@ -72,7 +69,7 @@ e.prototype.showTips = function (t) {
         scale: 1,
       },
       {
-        easing: "backOut",
+        easing: 'backOut',
       },
     )
     .call(function () {
@@ -88,7 +85,7 @@ e.prototype.setLockClick = function (t) {
 };
 e.prototype.initTips = function (t, e, n, i, o, r) {
   if (void 0 === r) {
-    r = "";
+    r = '';
   }
   this._isLockClick = !1;
   this._onClickAd = i;
@@ -100,19 +97,13 @@ e.prototype.initTips = function (t, e, n, i, o, r) {
   if (this.nItem.active) {
     const u = $cfg.default.instance.dataReward.getById(n);
     $resLoader.ResLoader.setSpritFrame(
-      this.nItem
-        .getChildByName("View")
-        .getChildByName("Icon")
-        .getComponent(cc.Sprite),
+      this.nItem.getChildByName('View').getChildByName('Icon').getComponent(cc.Sprite),
       $frameEnum.Frame.EBundleName.RES,
-      "textures/atlas/item_scene/" + u.spr,
+      'textures/atlas/item_scene/' + u.spr,
     );
   }
   if (this.nTips.active) {
-    this.nTips
-      .getChildByName("View")
-      .getChildByName("Desc")
-      .getComponent(cc.Label).string = r;
+    this.nTips.getChildByName('View').getChildByName('Desc').getComponent(cc.Label).string = r;
   }
   this.updateTips(e);
 };
@@ -128,4 +119,4 @@ function e() {
   e._isLockClick = !1;
   return e;
 }
-exports.default = d;
+export default d;;

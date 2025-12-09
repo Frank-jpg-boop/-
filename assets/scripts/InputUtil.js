@@ -59,7 +59,7 @@ t.prototype.init = function () {
     }, 500);
   }
 };
-Object.defineProperty(t.prototype, "IgnoreInput", {
+Object.defineProperty(t.prototype, 'IgnoreInput', {
   get: function () {
     return this.ignoreInput;
   },
@@ -70,7 +70,7 @@ Object.defineProperty(t.prototype, "IgnoreInput", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (t._instance) {
       //
@@ -96,4 +96,4 @@ function t() {
   this.init();
 }
 const i = t;
-exports.default = i;
+export default i;

@@ -1,71 +1,71 @@
 import $randomUtil from './RandomUtil';
-exports.MathUtil = exports.SortAlgorithm = exports.SortOrder = void 0;
-let o;
-let r;
-(function (t) {
-  t[(t.ASC = 0)] = "ASC";
-  t[(t.DESC = 1)] = "DESC";
-})((o = exports.SortOrder || (exports.SortOrder = {})));
-(function (t) {
-  t[(t.SYSTEM = 0)] = "SYSTEM";
-  t[(t.BUBBLE = 1)] = "BUBBLE";
-  t[(t.DICHOTOMY = 2)] = "DICHOTOMY";
-  t[(t.INSERTION = 3)] = "INSERTION";
-})((r = exports.SortAlgorithm || (exports.SortAlgorithm = {})));
+export const MathUtil = exports.SortAlgorithm = exports.SortOrder = void 0;;
+export const SortOrder = {
+  ASC: 0,
+  DESC: 1
+};
+let o = SortOrder;
+export const SortAlgorithm = {
+  SYSTEM: 0,
+  BUBBLE: 1,
+  DICHOTOMY: 2,
+  INSERTION: 3
+};
+let r = SortAlgorithm;
 t.coinType = [
-  "",
-  "K",
-  "M",
-  "B",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-  "aa",
-  "ab",
-  "ac",
-  "ad",
-  "ae",
-  "af",
-  "ag",
-  "ah",
-  "ai",
-  "aj",
-  "ak",
-  "al",
-  "am",
-  "an",
-  "ao",
-  "ap",
-  "aq",
-  "ar",
-  "as",
-  "at",
-  "au",
-  "av",
-  "aw",
-  "ax",
-  "ay",
-  "az",
+  '',
+  'K',
+  'M',
+  'B',
+  'd',
+  'e',
+  'f',
+  'g',
+  'h',
+  'i',
+  'j',
+  'k',
+  'l',
+  'm',
+  'n',
+  'o',
+  'p',
+  'q',
+  'r',
+  's',
+  't',
+  'u',
+  'v',
+  'w',
+  'x',
+  'y',
+  'z',
+  'aa',
+  'ab',
+  'ac',
+  'ad',
+  'ae',
+  'af',
+  'ag',
+  'ah',
+  'ai',
+  'aj',
+  'ak',
+  'al',
+  'am',
+  'an',
+  'ao',
+  'ap',
+  'aq',
+  'ar',
+  'as',
+  'at',
+  'au',
+  'av',
+  'aw',
+  'ax',
+  'ay',
+  'az',
 ];
 t.getPerpendicularVector = function (t, e) {
   return cc.v2(-t.y, t.x).add(e);
@@ -82,11 +82,7 @@ t.getCirclePoints = function (t, e, n, i) {
   if (void 0 === i) {
     i = 60;
   }
-  for (
-    const o = [], r = (Math.PI / 180) * Math.round(360 / n), a = 0;
-    a < n;
-    a++
-  ) {
+  for (const o = [], r = (Math.PI / 180) * Math.round(360 / n), a = 0; a < n; a++) {
     const s = Math.sin(r * a);
     const c = Math.cos(r * a);
     const l = e.x + t * s;
@@ -106,11 +102,7 @@ t.weightedRandom = function (t) {
   t.forEach(function (t) {
     e += t;
   });
-  for (
-    const n = $randomUtil.RandomUtil.randomInt(0, e), i = 0;
-    i < t.length;
-    ++i
-  ) {
+  for (const n = $randomUtil.RandomUtil.randomInt(0, e), i = 0; i < t.length; ++i) {
     if (n < t[i]) {
       return i;
     }
@@ -128,7 +120,7 @@ t.transProbByWeight = function (t, e) {
 };
 t.bezierTo = function (e, n, i, o, r, a, s) {
   if (void 0 === s) {
-    s = "";
+    s = '';
   }
   const c = i.x;
   const l = i.y;
@@ -143,7 +135,7 @@ t.bezierTo = function (e, n, i, o, r, a, s) {
     }
     return i;
   };
-  if ("" != s) {
+  if ('' != s) {
     h.easing = s;
   }
   return cc.tween(e).to(
@@ -163,27 +155,16 @@ t.lerp = function (t, e, n) {
 };
 t.numToChinese = function (t) {
   if (!/^\d*(\.\d*)?$/.test(t)) {
-    alert("Number is wrong!");
-    return "Number is wrong!";
+    alert('Number is wrong!');
+    return 'Number is wrong!';
   }
   for (
-    const e = new Array(
-              "零",
-              "一",
-              "二",
-              "三",
-              "四",
-              "五",
-              "六",
-              "七",
-              "八",
-              "九",
-            ),
-          n = new Array("", "十", "百", "千", "万", "亿", "点", ""),
-          i = ("" + t).replace(/(^0*)/g, "").split("."),
-          o = 0,
-          r = "",
-          a = i[0].length - 1;
+    const e = new Array('零', '一', '二', '三', '四', '五', '六', '七', '八', '九'),
+      n = new Array('', '十', '百', '千', '万', '亿', '点', ''),
+      i = ('' + t).replace(/(^0*)/g, '').split('.'),
+      o = 0,
+      r = '',
+      a = i[0].length - 1;
     a >= 0;
     a--
   ) {
@@ -192,9 +173,7 @@ t.numToChinese = function (t) {
         r = n[7] + r;
         break;
       case 4:
-        if (
-          new RegExp("0{4}\\d{" + (i[0].length - a - 1) + "}$").test(i[0])
-        ) {
+        if (new RegExp('0{4}\\d{' + (i[0].length - a - 1) + '}$').test(i[0])) {
           //
         } else {
           r = n[4] + r;
@@ -205,11 +184,7 @@ t.numToChinese = function (t) {
         n[7] = n[5];
         o = 0;
     }
-    if (
-      o % 4 == 2 &&
-      0 != Number(i[0].charAt(a + 2)) &&
-      0 == Number(i[0].charAt(a + 1))
-    ) {
+    if (o % 4 == 2 && 0 != Number(i[0].charAt(a + 2)) && 0 == Number(i[0].charAt(a + 1))) {
       r = e[0] + r;
     }
     if (0 != Number(i[0].charAt(a))) {
@@ -246,7 +221,7 @@ t.formatNumber = function (t, e) {
   if (void 0 === e) {
     e = 1;
   }
-  return t ? (t % 1 == 0 ? t.toFixed(0) : t.toFixed(e)) : "0";
+  return t ? (t % 1 == 0 ? t.toFixed(0) : t.toFixed(e)) : '0';
 };
 t.toCeil = function (t, e) {
   const n = Math.pow(10, e);
@@ -295,11 +270,7 @@ t.sort = function (t, e, n, a) {
   }
   if (r.BUBBLE === a) {
     for (const s = (b = t.length), c = 0; c < b; c++) {
-      for (
-        const l = t[0] && e ? t[0][e] : t[0] || 0, u = !0, p = s - 1, h = 0;
-        h < p;
-        h++
-      ) {
+      for (const l = t[0] && e ? t[0][e] : t[0] || 0, u = !0, p = s - 1, h = 0; h < p; h++) {
         const f = null;
         if (t[h + 1] && e) {
           f = t[h + 1][e];
@@ -355,11 +326,7 @@ t.sort = function (t, e, n, a) {
         }
       }
     }
-    return __spreadArrays(
-      this.sort(_, e, n, a),
-      [t[m]],
-      this.sort(g, e, n, a),
-    );
+    return __spreadArrays(this.sort(_, e, n, a), [t[m]], this.sort(g, e, n, a));
   }
   if (r.INSERTION === a) {
     const b = t.length;
@@ -405,16 +372,16 @@ t.toNonExponential = function (t) {
   if (t == 1 / 0) {
     t = 99e306;
   }
-  const e = t.toExponential().split("e");
+  const e = t.toExponential().split('e');
   const n = 0;
-  if (e[0].split(".").length > 1) {
-    n = e[0].split(".")[1].length;
+  if (e[0].split('.').length > 1) {
+    n = e[0].split('.')[1].length;
   }
   if (n) {
-    e[0] = e[0].replace(".", "");
+    e[0] = e[0].replace('.', '');
   }
-  for (const i = Number(e[1].replace("+", "")), o = n; o < i; o++) {
-    e[0] += "0";
+  for (const i = Number(e[1].replace('+', '')), o = n; o < i; o++) {
+    e[0] += '0';
   }
   return e[0];
 };
@@ -426,7 +393,7 @@ t.formatValue = function (t, e, n) {
     n = 3;
   }
   if (isNaN(t)) {
-    return "0";
+    return '0';
   }
   if ((t = Number(t)) < 1e4) {
     return this.formatNumber(t, e);
@@ -440,8 +407,8 @@ t.formatValue = function (t, e, n) {
   if (t >= 1e20) {
     r = this.toNonExponential(t);
   }
-  for (const a = r.split(""), s = "", c = 0, l = a.length - 1; l >= 0; l--) {
-    0 != c && c % n == 0 && (s = "-" + s);
+  for (const a = r.split(''), s = '', c = 0, l = a.length - 1; l >= 0; l--) {
+    0 != c && c % n == 0 && (s = '-' + s);
     s = a[l] + s;
     c++;
   }
@@ -455,8 +422,8 @@ t.GetCoinStringDot = function (t, e, n) {
   if (void 0 === n) {
     n = 1;
   }
-  const i = "";
-  const o = t.split("-");
+  const i = '';
+  const o = t.split('-');
   const r = o.length;
   const a = (r = r > this.coinType.length ? this.coinType.length : r) - e;
   if (a < 0) {
@@ -464,54 +431,44 @@ t.GetCoinStringDot = function (t, e, n) {
   } else {
     a = a;
   }
-  for (
-    const s = this.coinType[a], c = Math.min(o.length, 2), l = 0;
-    l < c;
-    l++
-  ) {
+  for (const s = this.coinType[a], c = Math.min(o.length, 2), l = 0; l < c; l++) {
     const u = Number(o[l]);
-    if (
-      (0 != u || 0 !== l) &&
-      (0 === l && (i += u + (c > 1 ? "." : "")), 1 === l)
-    ) {
-      const p = "";
+    if ((0 != u || 0 !== l) && (0 === l && (i += u + (c > 1 ? '.' : '')), 1 === l)) {
+      const p = '';
       if (1 == n) {
         p = (u / 1e3).toString().match(/^-?\d+(?:\.\d{0,1})?/)[0];
       } else {
-        if (
-          (p = (u / 1e3).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0])
-            .length <= 1
-        ) {
-          p += "0";
+        if ((p = (u / 1e3).toString().match(/^-?\d+(?:\.\d{0,2})?/)[0]).length <= 1) {
+          p += '0';
         }
       }
       const h = p;
-      if (p.includes(".")) {
-        h = p.split(".")[1];
+      if (p.includes('.')) {
+        h = p.split('.')[1];
       }
       i += h;
     }
   }
   if (i) {
-    if (i.includes(".")) {
-      const f = i.split(".");
+    if (i.includes('.')) {
+      const f = i.split('.');
       if (f[0].length >= 3) {
         i = i.substring(0, 3);
       } else {
         if (f[0].length + f[1].length > 3) {
-          i = f[0] + "." + f[1].substring(0, 3 - f[0].length);
+          i = f[0] + '.' + f[1].substring(0, 3 - f[0].length);
         }
       }
     }
     i += s;
   } else {
-    i += "0";
+    i += '0';
   }
   return i;
 };
 t.GetCoinString = function (t, e) {
-  const n = "";
-  const i = t.split("-");
+  const n = '';
+  const i = t.split('-');
   const o = i.length;
   const r = (o = o > this.coinType.length ? this.coinType.length : o) - e;
   if (r < 0) {
@@ -528,8 +485,8 @@ t.GetCoinString = function (t, e) {
       n += c + a[s];
     }
   }
-  return n + (n ? "" : "0");
+  return n + (n ? '' : '0');
 };
 function t() {}
 const s = t;
-exports.MathUtil = s;
+export const MathUtil = s;;

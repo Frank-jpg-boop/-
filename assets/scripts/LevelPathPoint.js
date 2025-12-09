@@ -23,42 +23,42 @@ t.prototype.init = function (t) {
   this._lineIds = [];
   this._dijstraMap.clear();
 };
-Object.defineProperty(t.prototype, "dijstraObjMap", {
+Object.defineProperty(t.prototype, 'dijstraObjMap', {
   get: function () {
     return this._dijstraMap;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "pos", {
+Object.defineProperty(t.prototype, 'pos', {
   get: function () {
     return cc.v2(this._cfg.pos.x, this._cfg.pos.y);
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "lineIds", {
+Object.defineProperty(t.prototype, 'lineIds', {
   get: function () {
     return this._lineIds.slice();
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "linkIds", {
+Object.defineProperty(t.prototype, 'linkIds', {
   get: function () {
     return this._cfg.links.slice();
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "pointId", {
+Object.defineProperty(t.prototype, 'pointId', {
   get: function () {
     return this._cfg.id;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "roomId", {
+Object.defineProperty(t.prototype, 'roomId', {
   get: function () {
     return this._cfg.roomId;
   },
@@ -71,4 +71,4 @@ function t() {
   this._dijstraMap = new Map();
 }
 const o = t;
-exports.default = o;
+export default o;

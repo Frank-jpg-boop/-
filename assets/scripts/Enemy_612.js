@@ -27,18 +27,16 @@ const E =
     }
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
-      this._nBackView = this.node
-        .getChildByName("Body")
-        .getChildByName("BackView");
+      this._nBackView = this.node.getChildByName('Body').getChildByName('BackView');
     };
     e.prototype.initAnim = function () {
-      this.node.getChildByName("Body").getChildByName("Anim").active = !1;
+      this.node.getChildByName('Body').getChildByName('Anim').active = !1;
       this._spBackAnimCtrl = this._nBackView
-        .getChildByName("BackAnim")
+        .getChildByName('BackAnim')
         .getComponent($spAnimCtrl.default);
       this._nBackView.active = !0;
       this._spBackAnimCtrl.init();
-      this._spBackAnimCtrl.playAnim("stand", 1, !0);
+      this._spBackAnimCtrl.playAnim('stand', 1, !0);
       return t.prototype.initAnim.call(this);
     };
     e.prototype.onInit = function () {
@@ -77,9 +75,9 @@ const E =
     e.prototype.turnBack = function () {
       const t = this;
       this._isTurnBacking = !0;
-      this._spBackAnimCtrl.playAnim("startle", 1, !1, function () {
+      this._spBackAnimCtrl.playAnim('startle', 1, !1, function () {
         t._isTurnBacked = !0;
-        t.node.getChildByName("Body").getChildByName("Anim").active = !0;
+        t.node.getChildByName('Body').getChildByName('Anim').active = !0;
         t._nBackView.active = !1;
         const e = $battleMgr.default.instance.getCurScene();
         if (e) {
@@ -111,35 +109,23 @@ const E =
         } else {
           const n = t.getComponent($playerBase.default);
           if (n) {
-            if (
-              $levelBattleData.levelBattleData.bagData.bagEquipDatas.length > 0
-            ) {
+            if ($levelBattleData.levelBattleData.bagData.bagEquipDatas.length > 0) {
               for (const i = Number(this._cfg.val2); i > 0; ) {
-                if (
-                  $levelBattleData.levelBattleData.bagData.bagEquipDatas
-                    .length > 0
-                ) {
+                if ($levelBattleData.levelBattleData.bagData.bagEquipDatas.length > 0) {
                   const o = $randomUtil.RandomUtil.randomInt(
                     0,
-                    $levelBattleData.levelBattleData.bagData.bagEquipDatas
-                      .length,
+                    $levelBattleData.levelBattleData.bagData.bagEquipDatas.length,
                   );
-                  const r =
-                    $levelBattleData.levelBattleData.bagData.bagEquipDatas[o];
-                  r.rowCol = "";
-                  $levelBattleData.levelBattleData.bagData.bagEquipDatas.splice(
-                    o,
-                    1,
-                  );
+                  const r = $levelBattleData.levelBattleData.bagData.bagEquipDatas[o];
+                  r.rowCol = '';
+                  $levelBattleData.levelBattleData.bagData.bagEquipDatas.splice(o, 1);
                   $eventManager.EventManager.instance.emit(
                     $levelBattleData.ELevelBattleDataEvent.BAG_ITEM_CHANGE,
                   );
                   $eventManager.EventManager.instance.emit(
                     $battleEnum.EBattleEvent.REWARD_LEAVE_BAG_INFORM + r.unitId,
                   );
-                  $eventManager.EventManager.instance.emit(
-                    $battleEnum.EBattleEvent.UPDATE_BAG_UI,
-                  );
+                  $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.UPDATE_BAG_UI);
                 }
                 i--;
               }
@@ -157,4 +143,4 @@ const E =
       }
     };
   })($enemyBase.default));
-exports.default = E;
+export default E;

@@ -17,21 +17,21 @@ const u =
       e._unifyNode = null;
       return e;
     }
-    Object.defineProperty(e.prototype, "areaType", {
+    Object.defineProperty(e.prototype, 'areaType', {
       get: function () {
         return this._areaType;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "areaKeys", {
+    Object.defineProperty(e.prototype, 'areaKeys', {
       get: function () {
         return this._areaKeys;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "unifyPos", {
+    Object.defineProperty(e.prototype, 'unifyPos', {
       get: function () {
         return this._unifyPos.clone();
       },
@@ -39,25 +39,22 @@ const u =
       configurable: !0,
     });
     e.prototype.onLoad = function () {
-      this._unifyNode = cc.director
-        .getScene()
-        .getChildByName("Canvas")
-        .getChildByName("GameLayer");
+      this._unifyNode = cc.director.getScene().getChildByName('Canvas').getChildByName('GameLayer');
     };
     e.prototype.initAreaObject = function (t, e) {
       this._areaType = t;
       this._colliderType = e;
       switch (this._colliderType) {
         case $gridAreaDivisionMgr.E_AreaColliderType.POINT:
-          if (!(n = this.node.getChildByName("AreaColliderPoint"))) {
-            return void cc.error("AreaColliderPoint not found");
+          if (!(n = this.node.getChildByName('AreaColliderPoint'))) {
+            return void cc.error('AreaColliderPoint not found');
           }
           this._colliderNode = n;
           break;
         case $gridAreaDivisionMgr.E_AreaColliderType.RECT:
           let n;
-          if (!(n = this.node.getChildByName("AreaColliderRect"))) {
-            return void cc.error("AreaColliderRect not found");
+          if (!(n = this.node.getChildByName('AreaColliderRect'))) {
+            return void cc.error('AreaColliderRect not found');
           }
           this._colliderNode = n;
       }
@@ -94,11 +91,7 @@ const u =
         });
         this._areaKeys = [];
         const e = this.unifyPos.add(this._colliderNode.getPosition());
-        const n = $gridAreaDivisionMgr.default.instance.insertAreaObject(
-          this,
-          "",
-          e,
-        );
+        const n = $gridAreaDivisionMgr.default.instance.insertAreaObject(this, '', e);
         this._areaKeys.push(n);
       }
     };
@@ -110,7 +103,9 @@ const u =
         });
         this._areaKeys = [];
         for (
-          const e = this.unifyPos.add(this._colliderNode.getPosition()), n = e.x - this._colliderNode.width * this._colliderNode.anchorX, i = n + this._colliderNode.width;
+          const e = this.unifyPos.add(this._colliderNode.getPosition()),
+            n = e.x - this._colliderNode.width * this._colliderNode.anchorX,
+            i = n + this._colliderNode.width;
           ;
           n += $gridAreaDivisionMgr.default.instance.gridSize
         ) {
@@ -118,23 +113,19 @@ const u =
             n = i;
           }
           for (
-            const o =
-                      e.y - this._colliderNode.height * this._colliderNode.anchorY,
-                  r = o + this._colliderNode.height;
+            const o = e.y - this._colliderNode.height * this._colliderNode.anchorY,
+              r = o + this._colliderNode.height;
             ;
             o += $gridAreaDivisionMgr.default.instance.gridSize
           ) {
             if (o > r) {
               o = r;
             }
-            const a = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(
-              n,
-              o,
-            ).key;
+            const a = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(n, o).key;
             if (!this._areaKeys.includes(a)) {
               const c = $gridAreaDivisionMgr.default.instance.insertAreaObject(
                 this,
-                "",
+                '',
                 cc.v2(n, o),
               );
               this._areaKeys.push(c);
@@ -159,4 +150,4 @@ const u =
       }
     };
   })(cc.Component));
-exports.default = u;
+export default u;

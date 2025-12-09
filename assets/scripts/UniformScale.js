@@ -8,4 +8,4 @@ e.prototype.onLoad = function () {
 function e() {
   return (null !== t && t.apply(this, arguments)) || this;
 }
-exports.default = l;
+export default l;

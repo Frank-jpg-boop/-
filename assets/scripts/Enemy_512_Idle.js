@@ -4,20 +4,16 @@ import $actorEnum from './ActorEnum';
 import $door from './Door';
 import $unitMgr from './UnitMgr';
 let i;
-exports.Enemy_512_Idle = void 0;
+export const Enemy_512_Idle = void 0;
 e.prototype.end = function () {};
 e.prototype.update = function () {
   if (this._context.isNullItem && this._context.isTrigger) {
     const t = $battleMgr.default.instance.getCurScene();
     if (t) {
       if (
-        (this._context.isFixCreate &&
-          !t.level.getRoomById(this._context.roomId).isArriveed) ||
+        (this._context.isFixCreate && !t.level.getRoomById(this._context.roomId).isArriveed) ||
         (this._context.tempCollisionDoorIds.some(function (t) {
-          return (
-            $unitMgr.UnitMgr.instance.getUnit(t).state ==
-            $door.EDoorState.CLOSE
-          );
+          return $unitMgr.UnitMgr.instance.getUnit(t).state == $door.EDoorState.CLOSE;
         }) &&
           !this._context.canAttack())
       ) {
@@ -37,4 +33,4 @@ function e(e) {
   return n;
 }
 const u = e;
-exports.Enemy_512_Idle = u;
+export const Enemy_512_Idle = u;

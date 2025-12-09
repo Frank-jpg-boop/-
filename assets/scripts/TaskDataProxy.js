@@ -11,14 +11,10 @@ import $localDataProxy from './LocalDataProxy';
 import $playerDataProxy from './PlayerDataProxy';
 import $stageDataProxy from './StageDataProxy';
 let i;
-exports.taskDataProxy =
-  exports.TaskDataProxy =
-  exports.TaskData =
-  exports.ETaskEvent =
-    void 0;
+exports.taskDataProxy = exports.TaskDataProxy = exports.TaskData = exports.ETaskEvent = void 0;
 let r;
 !(function (t) {
-  t.UPDATE_MAIN_TASK = "UPDATE_MAIN_TASK";
+  t.UPDATE_MAIN_TASK = 'UPDATE_MAIN_TASK';
 })((r = exports.ETaskEvent || (exports.ETaskEvent = {})));
 e.prototype.createInitData = function () {
   return {
@@ -51,10 +47,8 @@ e.prototype.updateRedPoint = function () {
 };
 e.prototype.getMainTaskReward = function (t) {
   if (!this.isCompleteMainTask) {
-    const e = $cfg.default.instance.dataTask.getById(
-      this.curMainTaskData.curTaskId,
-    );
-    const n = e.reward.split("_").map(Number);
+    const e = $cfg.default.instance.dataTask.getById(this.curMainTaskData.curTaskId);
+    const n = e.reward.split('_').map(Number);
     const i = [
       {
         itemId: n[0],
@@ -82,25 +76,25 @@ e.prototype.onDailyTaskActionUpdate = function (t) {
     e[n - 1] = arguments[n];
   }
   if (!this.isCompleteMainTask) {
-    const i = $cfg.default.instance.dataTask.getById(
-      this.curMainTaskData.curTaskId,
-    );
+    const i = $cfg.default.instance.dataTask.getById(this.curMainTaskData.curTaskId);
     if (t == i.condition) {
       switch (t) {
         case $taskEnum.EPlayerActionType.WEAPON_UP:
-          const o = i.parm.split("|").map(Number), c = o[0];
+          const o = i.parm.split('|').map(Number),
+            c = o[0];
           o[1];
           this._data.localData.mainTaskData.curTaskCount =
             $playerDataProxy.playerDataProxy.getArtifactLv(c);
           break;
         case $taskEnum.EPlayerActionType.BUILD_UP_LV:
-          const l = i.parm.split("|").map(Number), p = l[0];
+          const l = i.parm.split('|').map(Number),
+            p = l[0];
           l[1];
           this._data.localData.mainTaskData.curTaskCount =
             $playerDataProxy.playerDataProxy.getBuildLv(p);
           break;
         case $taskEnum.EPlayerActionType.BUILD_UP_STAR:
-          const h = i.parm.split("|").map(Number);
+          const h = i.parm.split('|').map(Number);
           p = h[0];
           h[1];
           this._data.localData.mainTaskData.curTaskCount =
@@ -108,9 +102,7 @@ e.prototype.onDailyTaskActionUpdate = function (t) {
           break;
         case $taskEnum.EPlayerActionType.ARRIVE_LEVEL:
           this._data.localData.mainTaskData.curTaskCount =
-            $stageDataProxy.stageDataProxy.passStageId + 1 >= Number(i.parm)
-              ? 1
-              : 0;
+            $stageDataProxy.stageDataProxy.passStageId + 1 >= Number(i.parm) ? 1 : 0;
           this._data.localData.mainTaskData.curTaskMaxCount = 1;
           break;
         default:
@@ -124,34 +116,34 @@ e.prototype.onDailyTaskActionUpdate = function (t) {
 };
 e.prototype.initMainTaskCount = function () {
   if (this._data.localData.mainTaskData) {
-    const t = $cfg.default.instance.dataTask.getById(
-      this._data.localData.mainTaskData.curTaskId,
-    );
+    const t = $cfg.default.instance.dataTask.getById(this._data.localData.mainTaskData.curTaskId);
     switch (t.condition) {
       case $taskEnum.EPlayerActionType.WEAPON_UP:
-        const e = t.parm.split("|").map(Number), n = e[0], i = e[1];
+        const e = t.parm.split('|').map(Number),
+          n = e[0],
+          i = e[1];
         this._data.localData.mainTaskData.curTaskCount =
           $playerDataProxy.playerDataProxy.getArtifactLv(n);
         this._data.localData.mainTaskData.curTaskMaxCount = i;
         break;
       case $taskEnum.EPlayerActionType.BUILD_UP_LV:
-        const o = t.parm.split("|").map(Number), r = o[0];
+        const o = t.parm.split('|').map(Number),
+          r = o[0];
         i = o[1];
         this._data.localData.mainTaskData.curTaskCount =
           $playerDataProxy.playerDataProxy.getBuildLv(r);
         this._data.localData.mainTaskData.curTaskMaxCount = i;
         break;
       case $taskEnum.EPlayerActionType.BUILD_UP_STAR:
-        const c = t.parm.split("|").map(Number), l = ((r = c[0]), c[1]);
+        const c = t.parm.split('|').map(Number),
+          l = ((r = c[0]), c[1]);
         this._data.localData.mainTaskData.curTaskCount =
           $playerDataProxy.playerDataProxy.getBuildPeopleNum(r);
         this._data.localData.mainTaskData.curTaskMaxCount = l;
         break;
       case $taskEnum.EPlayerActionType.ARRIVE_LEVEL:
         this._data.localData.mainTaskData.curTaskCount =
-          $stageDataProxy.stageDataProxy.passStageId + 1 >= Number(t.parm)
-            ? 1
-            : 0;
+          $stageDataProxy.stageDataProxy.passStageId + 1 >= Number(t.parm) ? 1 : 0;
         this._data.localData.mainTaskData.curTaskMaxCount = 1;
         break;
       default:
@@ -168,14 +160,14 @@ e.prototype.initData = function () {
     this,
   );
 };
-Object.defineProperty(e.prototype, "isCompleteMainTask", {
+Object.defineProperty(e.prototype, 'isCompleteMainTask', {
   get: function () {
     return null == this._data.localData.mainTaskData;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "curMainTaskData", {
+Object.defineProperty(e.prototype, 'curMainTaskData', {
   get: function () {
     return this._data.localData.mainTaskData;
   },

@@ -10,7 +10,7 @@ e.prototype.drawCollider = function () {
   this.graphics.circle(this.vec2Offset.x, this.vec2Offset.y, this.radius);
   this.graphics.stroke();
 };
-Object.defineProperty(e.prototype, "circle", {
+Object.defineProperty(e.prototype, 'circle', {
   get: function () {
     const t = this.node.convertToWorldSpaceAR(this.vec2Offset);
     return new $simplyCircle.default(t.x, t.y, this.radius * this.node.scale);
@@ -18,7 +18,7 @@ Object.defineProperty(e.prototype, "circle", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "offset", {
+Object.defineProperty(e.prototype, 'offset', {
   set: function (t) {
     this.vec2Offset = t;
   },
@@ -31,4 +31,4 @@ function e() {
   e.radius = 0;
   return e;
 }
-exports.default = h;
+export default h;

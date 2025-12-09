@@ -31,7 +31,7 @@ e.prototype.initView = function () {
     $resLoader.ResLoader.setSpritFrame(
       this.spIcon,
       $frameEnum.Frame.EBundleName.GAME,
-      "textures/enemy_icon/" + e.bossFace,
+      'textures/enemy_icon/' + e.bossFace,
     );
   } else {
     this.node.active = !1;
@@ -58,4 +58,4 @@ function e() {
   e.anim = null;
   return e;
 }
-exports.default = m;
+export default m;

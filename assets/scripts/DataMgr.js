@@ -17,26 +17,26 @@ import $userDataProxy from './UserDataProxy';
 import $globalPopupMgr from './GlobalPopupMgr';
 import $proxyDataMgr from './ProxyDataMgr';
 import $userCenterMgr from './UserCenterMgr';
-exports.DataMgr = void 0;
+export const DataMgr = void 0;
 t.isAddDeskEnterGame = !1;
 t.isSidebarCardInGameForTT = !1;
-t.token = "";
+t.token = '';
 t._instance = null;
 t.prototype.subscriptionReward = function (t) {
   if (void 0 === t) {
     t = !1;
   }
-  const e = "通知时间=" + ($timeUtil.TimeUtil.getTime() + 288e5);
+  const e = '通知时间=' + ($timeUtil.TimeUtil.getTime() + 288e5);
   const n = {
-    templateId: mm.platform.tmplIds.length > 0 ? mm.platform.tmplIds[0] : "",
+    templateId: mm.platform.tmplIds.length > 0 ? mm.platform.tmplIds[0] : '',
     sendTime: Math.floor(28800),
     params: e,
-    page: "1",
+    page: '1',
   };
   $userCenterMgr.UserCenterMgr.instance.subscribe(n, function () {
-    console.log("订阅成功");
+    console.log('订阅成功');
     if (t) {
-      $globalPopupMgr.default.instance.showTips("订阅成功!");
+      $globalPopupMgr.default.instance.showTips('订阅成功!');
     }
   });
 };
@@ -51,28 +51,25 @@ t.prototype.checkSubscriptionReward = function () {
     ) {
       this.subscriptionReward();
     } else {
-      mm.platform.requestSubscribeMessage(
-        mm.platform.tmplIds,
-        function (e, n) {
-          if (e) {
-            if (n && "accept" == n[mm.platform.tmplIds[0]]) {
-              ($localDataProxy.localDataProxy.setPermanentValue(
-                $gameEnum.Game.EDailyRefreshDataKey.SUBSCRIPT_OFF,
-                1,
-              ),
-                t.subscriptionReward(!0));
-            } else {
-              ($localDataProxy.localDataProxy.setPermanentValue(
-                $gameEnum.Game.EDailyRefreshDataKey.SUBSCRIPT_OFF,
-                0,
-              ),
-                $globalPopupMgr.default.instance.showTips("订阅失败"));
-            }
+      mm.platform.requestSubscribeMessage(mm.platform.tmplIds, function (e, n) {
+        if (e) {
+          if (n && 'accept' == n[mm.platform.tmplIds[0]]) {
+            ($localDataProxy.localDataProxy.setPermanentValue(
+              $gameEnum.Game.EDailyRefreshDataKey.SUBSCRIPT_OFF,
+              1,
+            ),
+              t.subscriptionReward(!0));
           } else {
-            $globalPopupMgr.default.instance.showTips("订阅失败");
+            ($localDataProxy.localDataProxy.setPermanentValue(
+              $gameEnum.Game.EDailyRefreshDataKey.SUBSCRIPT_OFF,
+              0,
+            ),
+              $globalPopupMgr.default.instance.showTips('订阅失败'));
           }
-        },
-      );
+        } else {
+          $globalPopupMgr.default.instance.showTips('订阅失败');
+        }
+      });
     }
   }
 };
@@ -83,19 +80,14 @@ t.prototype.resetData = function (t) {
   $userCenterMgr.UserCenterMgr.instance.clearData(function () {
     $battleMgr.default.instance.clear();
     $localDataProxy.localDataProxy.clearData();
-    $popupManager.PopupManager.instance.removeAll(
-      $popupManager.PopupCacheMode.CACHE,
-    );
+    $popupManager.PopupManager.instance.removeAll($popupManager.PopupCacheMode.CACHE);
     if (t) {
       t();
     }
-    if (
-      cc.sys.platform == cc.sys.WECHAT_GAME ||
-      cc.sys.platform == cc.sys.BYTEDANCE_GAME
-    ) {
+    if (cc.sys.platform == cc.sys.WECHAT_GAME || cc.sys.platform == cc.sys.BYTEDANCE_GAME) {
       mm.platform.restartMiniProgramSync();
     } else {
-      $sceneManager.SceneManager.instance.runScene("load", "", null, !1);
+      $sceneManager.SceneManager.instance.runScene('load', '', null, !1);
     }
   });
 };
@@ -107,55 +99,40 @@ t.prototype.initCustomData = function () {
     );
 };
 t.prototype.initSignData = function () {
-  const t = new $signDataProxy.SignData(
-    $localDataProxy.localDataProxy.data.signData,
-  );
+  const t = new $signDataProxy.SignData($localDataProxy.localDataProxy.data.signData);
   $localDataProxy.localDataProxy.data.signData = t.localData;
   $signDataProxy.signDataProxy.init(t);
 };
 t.prototype.initTaskData = function () {
-  const t = new $taskDataProxy.TaskData(
-    $localDataProxy.localDataProxy.data.taskData,
-  );
+  const t = new $taskDataProxy.TaskData($localDataProxy.localDataProxy.data.taskData);
   $localDataProxy.localDataProxy.data.taskData = t.localData;
   $taskDataProxy.taskDataProxy.init(t);
 };
 t.prototype.initGuideData = function () {
-  const t = new $guideDataProxy.GuideData(
-    $localDataProxy.localDataProxy.data.guideData,
-  );
+  const t = new $guideDataProxy.GuideData($localDataProxy.localDataProxy.data.guideData);
   $localDataProxy.localDataProxy.data.guideData = t.localData;
   $guideDataProxy.guideDataProxy.init(t);
 };
 t.prototype.initStageData = function () {
-  const t = new $stageDataProxy.StageData(
-    $localDataProxy.localDataProxy.data.stageData,
-  );
+  const t = new $stageDataProxy.StageData($localDataProxy.localDataProxy.data.stageData);
   $localDataProxy.localDataProxy.data.stageData = t.localData;
   $stageDataProxy.stageDataProxy.init(t);
 };
 t.prototype.initItemData = function () {
-  const t = new $itemDataProxy.ItemData(
-    $localDataProxy.localDataProxy.data.itemData,
-  );
+  const t = new $itemDataProxy.ItemData($localDataProxy.localDataProxy.data.itemData);
   $localDataProxy.localDataProxy.data.itemData = t.localData;
   $itemDataProxy.itemDataProxy.init(t);
 };
 t.prototype.initPlayerData = function () {
-  const t = new $playerDataProxy.PlayerData(
-    $localDataProxy.localDataProxy.data.playerData,
-  );
+  const t = new $playerDataProxy.PlayerData($localDataProxy.localDataProxy.data.playerData);
   $localDataProxy.localDataProxy.data.playerData = t.localData;
   $playerDataProxy.playerDataProxy.init(t);
 };
 t.prototype.initLocalData = function (t) {
   let e;
-  const n = $sqlUtil.SqlUtil.getLocalUserData(
-    $localDataProxy.localDataProxy.localKey,
-    "",
-  );
+  const n = $sqlUtil.SqlUtil.getLocalUserData($localDataProxy.localDataProxy.localKey, '');
   const i = null;
-  if ("" == n) {
+  if ('' == n) {
     i = null;
   } else {
     i = JSON.parse(n);
@@ -190,10 +167,7 @@ t.prototype.initLocalData = function (t) {
   }
   if (
     0 != o.dailyRefreshNumberTime &&
-    $timeUtil.TimeUtil.isSameDay(
-      o.dailyRefreshNumberTime,
-      $timeUtil.TimeUtil.getTime(),
-    )
+    $timeUtil.TimeUtil.isSameDay(o.dailyRefreshNumberTime, $timeUtil.TimeUtil.getTime())
   ) {
     //
   } else {
@@ -213,7 +187,7 @@ t.prototype.initLocalData = function (t) {
 t.prototype.initUserData = function (t) {
   const e = new $userDataProxy.UserData(t);
   $userDataProxy.userDataProxy.init(e);
-  $commonUtil.CommonUtil.print("uid:", $userDataProxy.userDataProxy.data.uid);
+  $commonUtil.CommonUtil.print('uid:', $userDataProxy.userDataProxy.data.uid);
 };
 t.prototype.updateSecond = function () {
   $playerDataProxy.playerDataProxy.updateSecond();
@@ -221,7 +195,7 @@ t.prototype.updateSecond = function () {
 };
 t.prototype.init = function (t, e) {
   if (void 0 === t) {
-    t = "";
+    t = '';
   }
   if (this._intervalId) {
     clearInterval(this._intervalId);
@@ -238,7 +212,7 @@ t.prototype.init = function (t, e) {
   this.initCustomData();
   $localDataProxy.localDataProxy.saveData();
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == this._instance) {
       this._instance = new t();
@@ -253,4 +227,4 @@ function t() {
   this._saveLocalDataTime = 0;
 }
 const S = t;
-exports.DataMgr = S;
+export const DataMgr = S;

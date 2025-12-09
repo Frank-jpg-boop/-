@@ -6,7 +6,7 @@ import $attrEnum from './AttrEnum';
 import $battleEnum from './BattleEnum';
 import $weapon121Shield from './Weapon121Shield';
 let i;
-exports.Skill_121 = void 0;
+export const Skill_121 = void 0;
 e.prototype.onRemove = function () {
   $eventManager.EventManager.instance.off(
     $actorEnum.EActorEvent.BEFORE_BE_HURT + this._owner.unitId,
@@ -18,9 +18,7 @@ e.prototype.onRemove = function () {
 e.prototype.onSelectSkillEx = function (t) {
   const e = $cfg.default.instance.dataChoose.getById(t);
   if (11 == e.type && 5 === Number(e.val1) && this._effect) {
-    this._owner
-      .getAttribute($attrEnum.E_AttrType.CRIT_RATE)
-      .changeAddValue(Number(e.val2));
+    this._owner.getAttribute($attrEnum.E_AttrType.CRIT_RATE).changeAddValue(Number(e.val2));
   }
 };
 e.prototype.getShieldMax = function () {
@@ -76,7 +74,7 @@ e.prototype.addShield = function () {
     } else {
       $effectMgr.default.instance.createEffect({
         parent: this._owner.node,
-        prefabName: "Weapon121Shield",
+        prefabName: 'Weapon121Shield',
         initPos: cc.v2(0, 0),
         effectClass: $weapon121Shield.default,
         onCreated: function (e) {
@@ -110,4 +108,4 @@ function e() {
   return e;
 }
 const h = e;
-exports.Skill_121 = h;
+export const Skill_121 = h;

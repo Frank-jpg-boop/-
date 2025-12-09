@@ -1,21 +1,21 @@
 let i;
-exports.E_AreaColliderType = exports.E_AreaObjectType = void 0;
-(function (t) {
-  t[(t.DEFAULT = 0)] = "DEFAULT";
-  t[(t.PLAYER = 1)] = "PLAYER";
-  t[(t.ENEMY = 2)] = "ENEMY";
-  t[(t.DOOR = 3)] = "DOOR";
-  t[(t.LADDER = 4)] = "LADDER";
-  t[(t.GOOD = 5)] = "GOOD";
-  t[(t.ROOM_UNLOCK_AREA = 6)] = "ROOM_UNLOCK_AREA";
-  t[(t.SEARCH_POINT = 7)] = "SEARCH_POINT";
-  t[(t.SURVIVOR = 8)] = "SURVIVOR";
-  t[(t.EVACUATION_EXIT = 9)] = "EVACUATION_EXIT";
-})((i = exports.E_AreaObjectType || (exports.E_AreaObjectType = {})));
-exports.E_AreaColliderType = {
-  POINT: 0,
-  RECT: 1
+export const E_AreaColliderType = exports.E_AreaObjectType = void 0;;
+export const E_AreaObjectType = {
+  DEFAULT: 0,
+  PLAYER: 1,
+  ENEMY: 2,
+  DOOR: 3,
+  LADDER: 4,
+  GOOD: 5,
+  ROOM_UNLOCK_AREA: 6,
+  SEARCH_POINT: 7,
+  SURVIVOR: 8,
+  EVACUATION_EXIT: 9
 };
+export const E_AreaColliderType = {
+  POINT: 0,
+  RECT: 1,
+};;
 t.prototype.getRectAreaKeys = function (e) {
   for (const n = [], i = e.x, o = e.xMax; ; i += t.instance.gridSize) {
     if (i > o) {
@@ -81,7 +81,7 @@ t.prototype.getAreaKeyInfo = function (t, e) {
   const n = Math.floor(e / this.gridSize);
   const i = Math.floor(t / this.gridSize);
   return {
-    key: n + "|" + i,
+    key: n + '|' + i,
     row: n,
     col: i,
   };
@@ -101,7 +101,7 @@ t.prototype.removeAreaObject = function (t, e) {
 t.prototype.insertAreaObject = function (t, e, n) {
   const i = this.getAreaKeyInfo(n.x, n.y).key;
   if (!this._gridAreaObject.has(i)) {
-    return "";
+    return '';
   }
   if (i == e) {
     return i;
@@ -126,15 +126,16 @@ t.prototype.insertAreaObject = function (t, e, n) {
 t.prototype.init = function (t, e) {
   this._gridAreaObject = new Map();
   for (
-    const n = Math.ceil(e / this.gridSize), o = Math.ceil(t / this.gridSize), r = -t / 2 + this.gridSize / 2, a = -e / 2 + this.gridSize / 2, s = 0;
+    const n = Math.ceil(e / this.gridSize),
+      o = Math.ceil(t / this.gridSize),
+      r = -t / 2 + this.gridSize / 2,
+      a = -e / 2 + this.gridSize / 2,
+      s = 0;
     s < n;
     ++s
   ) {
     for (const c = 0; c < o; ++c) {
-      const l = this.getAreaKeyInfo(
-        r + c * this.gridSize,
-        a + s * this.gridSize,
-      ).key;
+      const l = this.getAreaKeyInfo(r + c * this.gridSize, a + s * this.gridSize).key;
       const u = new Map();
       for (let p in i)
         if (isNaN(Number(p))) {
@@ -146,7 +147,7 @@ t.prototype.init = function (t, e) {
     }
   }
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (this._instance) {
       //
@@ -164,4 +165,4 @@ function t() {
   this._gridAreaObject = null;
 }
 const o = t;
-exports.default = o;
+export default o;;

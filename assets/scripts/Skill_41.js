@@ -6,7 +6,7 @@ import $effectMgr from './EffectMgr';
 import $attrEnum from './AttrEnum';
 import $weapon41 from './Weapon41';
 let i;
-exports.Skill_41 = void 0;
+export const Skill_41 = void 0;
 e.prototype.onRemove = function () {
   this.removeWeapon();
   t.prototype.onRemove.call(this);
@@ -25,14 +25,11 @@ e.prototype.onSelectSkillEx = function (e) {
 e.prototype.checkSummon = function () {
   for (
     const t = this,
-          e = this._owner.node.getPosition(),
-          n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(
-            e,
-            this._cfg.edge,
-          ),
-          i = [],
-          o = 0,
-          r = n;
+      e = this._owner.node.getPosition(),
+      n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(e, this._cfg.edge),
+      i = [],
+      o = 0,
+      r = n;
     o < r.length;
     o++
   ) {
@@ -46,11 +43,13 @@ e.prototype.checkSummon = function () {
       i.push.apply(i, s);
     }
   }
-  return ((i = i.filter(function (e) {
-    const n = e.node.getPosition();
-    const i = cc.Vec2.distance(n, t._owner.node.getPosition());
-    return e.canBeSearch() && i <= t._cfg.edge;
-  })).length > 0);
+  return (
+    (i = i.filter(function (e) {
+      const n = e.node.getPosition();
+      const i = cc.Vec2.distance(n, t._owner.node.getPosition());
+      return e.canBeSearch() && i <= t._cfg.edge;
+    })).length > 0
+  );
 };
 e.prototype.summonWeapon = function () {
   const t = this;
@@ -58,31 +57,26 @@ e.prototype.summonWeapon = function () {
   const e = $battleMgr.default.instance.getCurScene();
   const n = this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_1).value;
   const i = this._owner.node.getPosition().add(cc.v2(0, 50));
-  this._durationTimer =
-    this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2).value + 0.4;
+  this._durationTimer = this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2).value + 0.4;
   this.duration = this._durationTimer;
   for (
     const o = function (n) {
-              const o =
-                i.x +
-                (n % 2 == 0 ? -1 : 1) * (15 + 40 * Math.ceil((n + 1) / 2)) +
-                $randomUtil.RandomUtil.randomInt(-10, 10);
-              $effectMgr.default.instance.createEffect({
-                parent: e.bulletParent,
-                prefabName: "Weapon41",
-                initPos: i,
-                effectClass: $weapon41.default,
-                onCreated: function (e) {
-                  t._weapons.push(e);
-                  e.show(
-                    cc.v2(o, i.y + $randomUtil.RandomUtil.randomInt(100, 150)),
-                    t._owner,
-                    t,
-                  );
-                },
-              });
-            },
-          r = 0;
+        const o =
+          i.x +
+          (n % 2 == 0 ? -1 : 1) * (15 + 40 * Math.ceil((n + 1) / 2)) +
+          $randomUtil.RandomUtil.randomInt(-10, 10);
+        $effectMgr.default.instance.createEffect({
+          parent: e.bulletParent,
+          prefabName: 'Weapon41',
+          initPos: i,
+          effectClass: $weapon41.default,
+          onCreated: function (e) {
+            t._weapons.push(e);
+            e.show(cc.v2(o, i.y + $randomUtil.RandomUtil.randomInt(100, 150)), t._owner, t);
+          },
+        });
+      },
+      r = 0;
     r < n;
     r++
   ) {
@@ -99,31 +93,21 @@ e.prototype.removeWeapon = function () {
 };
 e.prototype.onUpdate = function (t) {
   if (this.skillCD > 0) {
-    return (
-      (this.skillCD -= t),
-      void (this.skillCD <= 0 && (this.skillCD = 0))
-    );
+    return ((this.skillCD -= t), void (this.skillCD <= 0 && (this.skillCD = 0)));
   } else {
     if (this.duration > 0) {
       return (
         (this.duration -= t),
-        void (
-          this.duration <= 0 && ((this.duration = 0), this.removeWeapon())
-        )
+        void (this.duration <= 0 && ((this.duration = 0), this.removeWeapon()))
       );
     } else {
-      return void (
-        this._isReleasing ||
-        (this.checkSummon() && this.summonWeapon())
-      );
+      return void (this._isReleasing || (this.checkSummon() && this.summonWeapon()));
     }
   }
 };
 e.prototype.onInit = function () {
   t.prototype.onInit.call(this);
-  this._durationTimer = this.getAttribute(
-    $attrEnum.E_SkillAttrType.EXTRA_ATTR_2,
-  ).value;
+  this._durationTimer = this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2).value;
   this._weapons = [];
 };
 function e() {
@@ -133,4 +117,4 @@ function e() {
   return e;
 }
 const h = e;
-exports.Skill_41 = h;
+export const Skill_41 = h;

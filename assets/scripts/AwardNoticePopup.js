@@ -22,10 +22,7 @@ e.prototype.onClickBtnClose = function () {
       startWorldPos: $nodeUtil.default.nodeWorldPos(t.node),
       onComplete: null,
     };
-    $eventManager.EventManager.instance.emit(
-      $flyItemAnimCtrl.EFlyItemAnimEvent.FLY_ITEM_ANIM,
-      i,
-    );
+    $eventManager.EventManager.instance.emit($flyItemAnimCtrl.EFlyItemAnimEvent.FLY_ITEM_ANIM, i);
   });
   const e = [];
   this._rewardDatas.forEach(function (t) {
@@ -61,4 +58,4 @@ function e() {
   e._onClose = null;
   return e;
 }
-exports.default = g;
+export default g;

@@ -2,15 +2,12 @@ import $state from './State';
 import $actorEnum from './ActorEnum';
 import $attrEnum from './AttrEnum';
 let i;
-exports.Enemy_413_Walk = void 0;
+export const Enemy_413_Walk = void 0;
 e.prototype.update = function (t) {
   const e = this._context.searchTarget();
   if (e && this._context.canAttackTarget(e)) {
     if (this._context.canAttack()) {
-      return void this._context.changeState(
-        $actorEnum.EActorStateType.ATTACK,
-        e.node,
-      );
+      return void this._context.changeState($actorEnum.EActorStateType.ATTACK, e.node);
     } else {
       return void this._context.playAnimIdle();
     }
@@ -26,9 +23,7 @@ e.prototype.update = function (t) {
       if (e) {
         return void this.updateTargetPos();
       } else {
-        return void this._context.changeState(
-          $actorEnum.EActorStateType.IDLE,
-        );
+        return void this._context.changeState($actorEnum.EActorStateType.IDLE);
       }
     }
     const i = null;
@@ -66,4 +61,4 @@ function e(e) {
   return n;
 }
 const c = e;
-exports.Enemy_413_Walk = c;
+export const Enemy_413_Walk = c;

@@ -17,7 +17,7 @@ e.prototype.openAnim = function (t) {
         scale: 1,
       },
       {
-        easing: "circOut",
+        easing: 'circOut',
       },
     )
     .delay(this._duration)
@@ -53,11 +53,10 @@ e.prototype.pushTips = function (t, e) {
     }
     n.nView.addChild(i);
     i.active = !0;
-    const o = i.getChildByName("Desc").getComponent(cc.RichText);
-    const r = i.getChildByName("Bg");
+    const o = i.getChildByName('Desc').getComponent(cc.RichText);
+    const r = i.getChildByName('Bg');
     if (o) {
-      o.string =
-        "<b><outline color = #000000 width = 2>" + t + "</outline></b>";
+      o.string = '<b><outline color = #000000 width = 2>' + t + '</outline></b>';
       this.scheduleOnce(function () {
         r.width = (o.node.width + 80) * o.node.scaleX;
         n.queue.enqueue(i);
@@ -79,4 +78,4 @@ function e() {
   e._duration = 0;
   return e;
 }
-exports.default = p;
+export default p;

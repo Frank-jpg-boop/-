@@ -24,4 +24,4 @@ function e() {
   e.bagView = null;
   return e;
 }
-exports.default = h;
+export default h;

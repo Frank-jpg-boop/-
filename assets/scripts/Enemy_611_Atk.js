@@ -2,7 +2,7 @@ import $state from './State';
 import $actorEnum from './ActorEnum';
 import $door from './Door';
 let i;
-exports.Enemy_611_Atk = void 0;
+export const Enemy_611_Atk = void 0;
 e.prototype.end = function () {
   this._context.unscheduleAllCallbacks();
 };
@@ -57,4 +57,4 @@ function e(e) {
   return n;
 }
 const c = e;
-exports.Enemy_611_Atk = c;
+export const Enemy_611_Atk = c;

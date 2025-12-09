@@ -25,4 +25,4 @@ function e() {
   e.maxX = 0;
   return e;
 }
-exports.default = l;
+export default l;

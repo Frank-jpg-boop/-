@@ -1,4 +1,4 @@
-exports.ELevelSceneType = void 0;
-exports.ELevelSceneType = {
-  SCHOOL: 1
+export const ELevelSceneType = void 0;
+export const ELevelSceneType = {
+  SCHOOL: 1,
 };

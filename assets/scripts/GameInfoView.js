@@ -30,24 +30,21 @@ e.prototype.onEventSetNextWaveActive = function (t) {
     } else {
       n = e.curWaveTime;
     }
-    this.nNextWave.getChildByName("Time").getComponent(cc.Label).string =
-      Math.ceil(n).toString();
+    this.nNextWave.getChildByName('Time').getComponent(cc.Label).string = Math.ceil(n).toString();
   }
 };
 e.prototype.onEventEnterWaitRescue = function () {
   this.nWaitRescue.active = !0;
   this.nNextWave.active = !1;
-  this.nWaitRescue.getComponent(cc.Animation).play("WaitRescue", 0);
-  this.lStageName.string = "楼梯已被摧毁，坚持到最后吧！";
+  this.nWaitRescue.getComponent(cc.Animation).play('WaitRescue', 0);
+  this.lStageName.string = '楼梯已被摧毁，坚持到最后吧！';
 };
 e.prototype.onEventWaveChange = function () {
   if (1 != $levelBattleData.levelBattleData.curWave) {
-    const t = this.nEnemyLvView
-      .getChildByName("UpLvAnim")
-      .getComponent($spAnimCtrl.default);
+    const t = this.nEnemyLvView.getChildByName('UpLvAnim').getComponent($spAnimCtrl.default);
     t.clearAnim();
     t.node.active = !0;
-    t.playAnim("hit", 1, !1, function () {
+    t.playAnim('hit', 1, !1, function () {
       t.node.active = !1;
     });
   }
@@ -69,18 +66,17 @@ e.prototype.update = function () {
     } else {
       e = t.curWaveTime;
     }
-    this.nNextWave.getChildByName("Time").getComponent(cc.Label).string =
-      Math.ceil(e).toString();
+    this.nNextWave.getChildByName('Time').getComponent(cc.Label).string = Math.ceil(e).toString();
   }
 };
 e.prototype.updateEnemyLvView = function () {
   const t = $levelBattleData.levelBattleData.moonLvIndex;
   $resLoader.ResLoader.setSpritFrame(
-    this.nEnemyLvView.getChildByName("Icon").getComponent(cc.Sprite),
+    this.nEnemyLvView.getChildByName('Icon').getComponent(cc.Sprite),
     $frameEnum.Frame.EBundleName.GAME,
-    "textures/game/moon_" + t,
+    'textures/game/moon_' + t,
   );
-  const e = this.nEnemyLvView.getChildByName("Lv");
+  const e = this.nEnemyLvView.getChildByName('Lv');
   e.active = 3 != t;
   if (e.active) {
     e.getComponent(cc.Label).string = Math.floor(
@@ -88,14 +84,14 @@ e.prototype.updateEnemyLvView = function () {
         $levelBattleData.levelBattleData.stageEnemyLvScale,
     ).toString();
   }
-  const n = this.nEnemyLvView.getChildByName("LvDesc");
+  const n = this.nEnemyLvView.getChildByName('LvDesc');
   n.active = 3 != t;
   if (0 == t) {
     n.color = cc.Color.WHITE;
   } else {
-    n.color = new cc.Color().fromHEX("#DA7A73");
+    n.color = new cc.Color().fromHEX('#DA7A73');
   }
-  this.nEnemyLvView.getChildByName("Full").active = 3 == t;
+  this.nEnemyLvView.getChildByName('Full').active = 3 == t;
 };
 e.prototype.initView = function () {
   this.lStageName.string = $levelBattleData.levelBattleData.cfgStage.name;
@@ -184,4 +180,4 @@ function e() {
   e._rescueWaitTime = 0;
   return e;
 }
-exports.default = g;
+export default g;

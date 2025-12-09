@@ -1,13 +1,13 @@
-exports.TimeUtil =
-  exports.DAY_TIMESTAMPS =
+export const TimeUtil =
+  (exports.DAY_TIMESTAMPS =
   exports.HOUR_TIMESTAMPS =
   exports.MINUTE_TIMESTAMPS =
   exports.SECOND_TIMESTAMPS =
-    void 0;
-exports.SECOND_TIMESTAMPS = 1e3;
-exports.MINUTE_TIMESTAMPS = 60 * exports.SECOND_TIMESTAMPS;
-exports.HOUR_TIMESTAMPS = 60 * exports.MINUTE_TIMESTAMPS;
-exports.DAY_TIMESTAMPS = 24 * exports.HOUR_TIMESTAMPS;
+    void 0);
+export const SECOND_TIMESTAMPS = 1e3;
+export const MINUTE_TIMESTAMPS = 60 * exports.SECOND_TIMESTAMPS;
+export const HOUR_TIMESTAMPS = 60 * exports.MINUTE_TIMESTAMPS;
+export const DAY_TIMESTAMPS = 24 * exports.HOUR_TIMESTAMPS;
 t._useLocalDate = !1;
 t._updateTime = 0;
 t._diff = 0;
@@ -39,27 +39,27 @@ t.getTomorrowZeroDate = function () {
 t.format_MMSS = function (t) {
   const e = Math.floor(t / 1e3);
   return (
-    (Array(2).join("0") + Math.floor(e / 60)).slice(-2) +
-    ":" +
-    (Array(2).join("0") + (Math.floor(e) % 60)).slice(-2)
+    (Array(2).join('0') + Math.floor(e / 60)).slice(-2) +
+    ':' +
+    (Array(2).join('0') + (Math.floor(e) % 60)).slice(-2)
   );
 };
 t.format_HHMM = function (t) {
   const e = Math.floor(t / 1e3);
   return (
-    (Array(2).join("0") + Math.floor(e / 3600)).slice(-2) +
-    ":" +
-    (Array(2).join("0") + Math.floor((e % 3600) / 60)).slice(-2)
+    (Array(2).join('0') + Math.floor(e / 3600)).slice(-2) +
+    ':' +
+    (Array(2).join('0') + Math.floor((e % 3600) / 60)).slice(-2)
   );
 };
 t.format_HHMMSS = function (t) {
   const e = Math.floor(t / 1e3);
   return (
-    (Array(2).join("0") + Math.floor(e / 3600)).slice(-2) +
-    ":" +
-    (Array(2).join("0") + Math.floor((e % 3600) / 60)).slice(-2) +
-    ":" +
-    (Array(2).join("0") + (Math.floor(e) % 60)).slice(-2)
+    (Array(2).join('0') + Math.floor(e / 3600)).slice(-2) +
+    ':' +
+    (Array(2).join('0') + Math.floor((e % 3600) / 60)).slice(-2) +
+    ':' +
+    (Array(2).join('0') + (Math.floor(e) % 60)).slice(-2)
   );
 };
 t.formatMillisecond = function (t, e) {
@@ -70,16 +70,13 @@ t.formatMillisecond = function (t, e) {
   const o = Math.floor(t / 6e4);
   t -= 6e4 * o;
   const r = Math.floor(t / 1e3);
-  return (e = (e = (e = (e = (e = (e = (e = (e = e.replace(
-    /%%/g,
-    "%$",
-  )).replace(/%d/g, n)).replace(/%0h/g, this.format("%02d", i))).replace(
-    /%h/g,
-    i,
-  )).replace(/%0m/g, this.format("%02d", o))).replace(/%m/g, o)).replace(
+  return (e = (e = (e = (e = (e = (e = (e = (e = e.replace(/%%/g, '%$')).replace(/%d/g, n)).replace(
+    /%0h/g,
+    this.format('%02d', i),
+  )).replace(/%h/g, i)).replace(/%0m/g, this.format('%02d', o))).replace(/%m/g, o)).replace(
     /%0s/g,
-    this.format("%02d", r),
-  )).replace(/%s/g, r)).replace(/%\$/g, "%");
+    this.format('%02d', r),
+  )).replace(/%s/g, r)).replace(/%\$/g, '%');
 };
 t.format = function (t) {
   for (const e = [], n = 1; n < arguments.length; n++) {
@@ -87,28 +84,26 @@ t.format = function (t) {
   }
 
   function i(t, e) {
-    for (const n = "", i = 0; i < e; i++) {
+    for (const n = '', i = 0; i < e; i++) {
       n += t;
     }
     return n;
   }
   for (const o = 1; o < arguments.length; o++) {
-    const r = "";
+    const r = '';
     const a = !1;
-    const s = " ";
+    const s = ' ';
     const c = 256;
-    const l = (t = t.replace(/%%/g, "%$")).match(
-      /%(?!\$)-?0?[0-9]*\.?[0-9]*[adfgs]/,
-    );
+    const l = (t = t.replace(/%%/g, '%$')).match(/%(?!\$)-?0?[0-9]*\.?[0-9]*[adfgs]/);
     if (!l || !(l = l[0])) {
       break;
     }
-    if ("-" == (l = l.substr(1)).charAt(0)) {
+    if ('-' == (l = l.substr(1)).charAt(0)) {
       a = !0;
       l = l.substr(1);
     }
-    if ("0" == l.charAt(0)) {
-      s = "0";
+    if ('0' == l.charAt(0)) {
+      s = '0';
       l = l.substr(1);
     }
     const u = l.split(/[\.adfgs]/);
@@ -137,16 +132,16 @@ t.format = function (t) {
       return t;
     };
     switch (l.charAt(l.length - 1)) {
-      case "d":
-      case "f":
-        r = p(parseInt(arguments[o]) + "");
+      case 'd':
+      case 'f':
+        r = p(parseInt(arguments[o]) + '');
         break;
-      case "s":
-        r = arguments[o] ? p(arguments[o].toString()) : "";
+      case 's':
+        r = arguments[o] ? p(arguments[o].toString()) : '';
     }
     t = t.replace(/%(?!\$)-?0?[0-9]*\.?[0-9]*[adfgs]/, r);
   }
-  return t.replace(/%\$/g, "%");
+  return t.replace(/%\$/g, '%');
 };
 t.getDiffDayNum = function (t, e) {
   const i = this.getDayStartTime(t);
@@ -167,9 +162,7 @@ t.getMonthEndTime = function (t) {
 };
 t.getWeekEndTime = function (t) {
   const e = new Date(t).getDay();
-  return (
-    this.getDayEndTime(t) + (0 === e ? 0 : (7 - e) * exports.DAY_TIMESTAMPS)
-  );
+  return this.getDayEndTime(t) + (0 === e ? 0 : (7 - e) * exports.DAY_TIMESTAMPS);
 };
 t.getDayEndTime = function (t) {
   return new Date(t).setHours(23, 59, 59, 999);
@@ -203,7 +196,7 @@ t.updateServerTime = function (t) {
     }
   }
 };
-Object.defineProperty(t, "useLocalDate", {
+Object.defineProperty(t, 'useLocalDate', {
   set: function (t) {
     this._useLocalDate = t;
   },
@@ -212,4 +205,4 @@ Object.defineProperty(t, "useLocalDate", {
 });
 function t() {}
 const i = t;
-exports.TimeUtil = i;
+export const TimeUtil = i;

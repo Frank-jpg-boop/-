@@ -61,7 +61,7 @@ t.prototype.checkNodePoolVaild = function (t) {
     this.poolListMap.set(t, new cc.NodePool(t));
   }
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new t();
@@ -76,4 +76,4 @@ function t() {
   this.poolPrefabMap = new Map();
 }
 const i = t;
-exports.default = i;
+export default i;

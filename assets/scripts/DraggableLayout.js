@@ -5,8 +5,8 @@ const c = cc._decorator;
 const l = c.ccclass;
 const u = c.property;
 !(function (t) {
-  t[(t.HORIZONTAL = 1)] = "HORIZONTAL";
-  t[(t.VERTICAL = 2)] = "VERTICAL";
+  t[(t.HORIZONTAL = 1)] = 'HORIZONTAL';
+  t[(t.VERTICAL = 2)] = 'VERTICAL';
 })(a || (a = {}));
 e.prototype.getVerticalBaseHeight = function () {
   const t = 0;
@@ -24,7 +24,11 @@ e.prototype.getHorizontalBaseWidth = function () {
 };
 e.prototype.addNode = function (t, e) {
   for (
-    const n = this, i = $nodeUtil.default.nodeParentChangeLocalPos(t, this.node), o = cc.v2(), r = this.node.childrenCount, c = 0;
+    const n = this,
+      i = $nodeUtil.default.nodeParentChangeLocalPos(t, this.node),
+      o = cc.v2(),
+      r = this.node.childrenCount,
+      c = 0;
     c < this.node.children.length;
     c++
   ) {
@@ -149,4 +153,4 @@ function e() {
   e.spacing = 0;
   return e;
 }
-exports.default = p;
+export default p;

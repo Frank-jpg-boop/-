@@ -8,23 +8,18 @@ import $frameEnum from './FrameEnum';
 import $localDataProxy from './LocalDataProxy';
 import $popupManager from './PopupManager';
 let i;
-exports.LoadUIBase = void 0;
+export const LoadUIBase = void 0;
 const _ = cc._decorator;
 const g = _.ccclass;
 const v = _.property;
 e.prototype.onClickBtnRepair = function () {
   this.nBtnRepair.active = !1;
   $localDataProxy.localDataProxy.clearData();
-  $popupManager.PopupManager.instance.removeAll(
-    $popupManager.PopupCacheMode.CACHE,
-  );
-  if (
-    cc.sys.platform == cc.sys.WECHAT_GAME ||
-    cc.sys.platform == cc.sys.BYTEDANCE_GAME
-  ) {
+  $popupManager.PopupManager.instance.removeAll($popupManager.PopupCacheMode.CACHE);
+  if (cc.sys.platform == cc.sys.WECHAT_GAME || cc.sys.platform == cc.sys.BYTEDANCE_GAME) {
     mm.platform.restartMiniProgramSync();
   } else {
-    $sceneManager.SceneManager.instance.runScene("load", "", null, !1);
+    $sceneManager.SceneManager.instance.runScene('load', '', null, !1);
   }
 };
 e.prototype.loadComplete = function () {};
@@ -69,10 +64,7 @@ e.prototype.update = function (t) {
     this._progressTag = !0;
   }
   if (
-    (null ===
-      (n =
-        null === (e = this.spProgress) || void 0 === e ? void 0 : e.node) ||
-    void 0 === n
+    (null === (n = null === (e = this.spProgress) || void 0 === e ? void 0 : e.node) || void 0 === n
       ? void 0
       : n.active) &&
     this._progressTag
@@ -80,11 +72,8 @@ e.prototype.update = function (t) {
     this.spProgress.fillRange = this._progress;
   }
   if (
-    (null ===
-      (o =
-        null === (i = this.progressLabel) || void 0 === i
-          ? void 0
-          : i.node) || void 0 === o
+    (null === (o = null === (i = this.progressLabel) || void 0 === i ? void 0 : i.node) ||
+    void 0 === o
       ? void 0
       : o.active) &&
     this._msgTag
@@ -96,8 +85,7 @@ e.prototype.update = function (t) {
     this._progressTag
   ) {
     this.progressBlock.x =
-      this.spProgress.fillRange * this.spProgress.node.width -
-      this.spProgress.node.width / 2;
+      this.spProgress.fillRange * this.spProgress.node.width - this.spProgress.node.width / 2;
   }
   this._loadTime += t;
   if (this._loadTime >= 15 && !this.nBtnRepair.active) {
@@ -107,7 +95,7 @@ e.prototype.update = function (t) {
 e.prototype.loadBundle = function () {};
 e.prototype.initView = function () {
   this.nLoadInfo.active = !0;
-  this.versionLabel.string = "v" + yzll.gameConfig.v;
+  this.versionLabel.string = 'v' + yzll.gameConfig.v;
 };
 e.prototype.loadGame = function () {};
 e.prototype.start = function () {
@@ -121,7 +109,7 @@ e.prototype.onLoad = function () {
   this.nBtnRepair.active = !1;
   t.prototype.onLoad.call(this);
 };
-Object.defineProperty(e.prototype, "progress", {
+Object.defineProperty(e.prototype, 'progress', {
   get: function () {
     return this._progress;
   },
@@ -136,17 +124,17 @@ function e() {
   e.progressBlock = null;
   e.nLoadInfo = null;
   e.nBtnRepair = null;
-  e.nextSceneBundle = "";
-  e.nextSceneName = "";
+  e.nextSceneBundle = '';
+  e.nextSceneName = '';
   e._isNet = !1;
   e._maxProgress = 0;
   e._progress = 0;
   e._progressTag = !1;
-  e._msg = "";
+  e._msg = '';
   e._msgTag = !1;
   e.bundles = [];
   e.dirs = [];
   e._loadTime = 0;
   return e;
 }
-exports.LoadUIBase = b;
+export const LoadUIBase = b;

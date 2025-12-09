@@ -1,7 +1,7 @@
 import $state from './State';
 import $actorEnum from './ActorEnum';
 let i;
-exports.Enemy_111_Atk = void 0;
+export const Enemy_111_Atk = void 0;
 e.prototype.update = function () {};
 e.prototype.begin = function (t) {
   const e = this;
@@ -21,4 +21,4 @@ function e(e) {
   return n;
 }
 const s = e;
-exports.Enemy_111_Atk = s;
+export const Enemy_111_Atk = s;

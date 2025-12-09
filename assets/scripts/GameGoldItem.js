@@ -26,4 +26,4 @@ function e() {
   e.lValue = null;
   return e;
 }
-exports.default = p;
+export default p;

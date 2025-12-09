@@ -1,9 +1,4 @@
-exports.RVOMath =
-  exports.KeyValuePair =
-  exports.Line =
-  exports.Obstacle =
-  exports.Vector2 =
-    void 0;
+exports.RVOMath = exports.KeyValuePair = exports.Line = exports.Obstacle = exports.Vector2 = void 0;
 t.prototype.lengthSqr = function () {
   return Math.pow(this.x, 2) + Math.pow(this.y, 2);
 };

@@ -35,7 +35,7 @@ t.prototype.skillHurt = function (t, e) {
     skillId: t.option.skillId,
   };
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new t();
@@ -47,4 +47,4 @@ Object.defineProperty(t, "instance", {
 });
 function t() {}
 const r = t;
-exports.default = r;
+export default r;

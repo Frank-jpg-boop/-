@@ -26,7 +26,7 @@ t.prototype.conn = function (t) {
   const e = this;
   const n = null;
   if (cc.sys.isNative && cc.sys.os == cc.sys.OS_ANDROID) {
-    const o = cc.url.raw("resources/cacert.pem");
+    const o = cc.url.raw('resources/cacert.pem');
     if (cc.loader.md5Pipe) {
       o = cc.loader.md5Pipe.transformURL(o);
     }
@@ -35,7 +35,7 @@ t.prototype.conn = function (t) {
     n = new WebSocket(t);
   }
   this._client = n;
-  n.binaryType = "arraybuffer";
+  n.binaryType = 'arraybuffer';
   n.onopen = function (t) {
     e._isConn = !0;
     e._socketSink.onopen(t);
@@ -44,24 +44,21 @@ t.prototype.conn = function (t) {
     if (t && t.data && t.data instanceof ArrayBuffer) {
       e._socketSink.onmessage(t.data);
     } else {
-      $commonUtil.CommonUtil.print("onmessage error", t);
+      $commonUtil.CommonUtil.print('onmessage error', t);
     }
   };
   n.onclose = function (t) {
-    $commonUtil.CommonUtil.print("====ws断开连接！ name = ", e._name);
+    $commonUtil.CommonUtil.print('====ws断开连接！ name = ', e._name);
     e._isConn = !1;
     e._socketSink.onclose(t);
   };
   n.onerror = function (t) {
-    $commonUtil.CommonUtil.print(
-      "====ws连接错误！ name = " + e._name,
-      " code=" + t.errcode,
-    );
+    $commonUtil.CommonUtil.print('====ws连接错误！ name = ' + e._name, ' code=' + t.errcode);
     e._isConn = !1;
     e._socketSink.onerror(t);
   };
   n.ontimeout = function () {
-    $commonUtil.CommonUtil.print("ws连接超时---ontimeout");
+    $commonUtil.CommonUtil.print('ws连接超时---ontimeout');
   };
 };
 function t(t) {
@@ -70,4 +67,4 @@ function t(t) {
   this._client = null;
 }
 const o = t;
-exports.default = o;
+export default o;

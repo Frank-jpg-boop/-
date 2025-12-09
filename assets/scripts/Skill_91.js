@@ -4,7 +4,7 @@ import $actorEnum from './ActorEnum';
 import $attrEnum from './AttrEnum';
 import $weapon91 from './Weapon91';
 let i;
-exports.Skill_91 = void 0;
+export const Skill_91 = void 0;
 e.prototype.onRemove = function () {
   if (this._weapon) {
     this._weapon.remove();
@@ -15,14 +15,11 @@ e.prototype.onRemove = function () {
 e.prototype.searchTarget = function () {
   for (
     const t = this,
-          e = this._owner.node.getPosition(),
-          n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(
-            e,
-            this._cfg.edge,
-          ),
-          i = [],
-          o = 0,
-          a = n;
+      e = this._owner.node.getPosition(),
+      n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(e, this._cfg.edge),
+      i = [],
+      o = 0,
+      a = n;
     o < a.length;
     o++
   ) {
@@ -67,14 +64,12 @@ e.prototype.release = function (t) {
   const i = t.getBeHurtPos();
   $effectMgr.default.instance.createEffect({
     parent: this._owner.node,
-    prefabName: "Weapon91",
+    prefabName: 'Weapon91',
     initPos: n,
     effectClass: $weapon91.default,
     onCreated: function (t) {
       e._weapon = t;
-      e._durationTimer = e.getAttribute(
-        $attrEnum.E_SkillAttrType.EXTRA_ATTR_1,
-      ).value;
+      e._durationTimer = e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_1).value;
       e.duration = e._durationTimer;
       t.play(e, i, function () {
         e._isReleased = !1;
@@ -117,4 +112,4 @@ function e() {
   return e;
 }
 const u = e;
-exports.Skill_91 = u;
+export const Skill_91 = u;

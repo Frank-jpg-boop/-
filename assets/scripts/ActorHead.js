@@ -25,7 +25,7 @@ e.prototype.updateHP = function (t, e) {
         fillRange: i,
       },
       {
-        easing: "cubicIn",
+        easing: 'cubicIn',
       },
     )
     .call(function () {
@@ -47,7 +47,7 @@ e.prototype.init = function (t, e) {
   this.node.active = this._isFixedShow;
   this.onInit();
 };
-Object.defineProperty(e.prototype, "headOffsetY", {
+Object.defineProperty(e.prototype, 'headOffsetY', {
   get: function () {
     return this._headOffsetY;
   },
@@ -62,4 +62,4 @@ function e() {
   e._isFixedShow = !1;
   return e;
 }
-exports.default = l;
+export default l;

@@ -16,7 +16,7 @@ const y =
       const e = (null !== t && t.apply(this, arguments)) || this;
       e._cfgEquip = null;
       e._equipId = 0;
-      e._rowCol = "";
+      e._rowCol = '';
       e._occupyRowCols = [];
       e._formGrids = null;
       e._nAnchor = null;
@@ -24,14 +24,14 @@ const y =
       e._index = -1;
       return e;
     }
-    Object.defineProperty(e.prototype, "occupyRowCols", {
+    Object.defineProperty(e.prototype, 'occupyRowCols', {
       get: function () {
         return this._occupyRowCols.slice();
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "cfgEquip", {
+    Object.defineProperty(e.prototype, 'cfgEquip', {
       get: function () {
         return this._cfgEquip;
       },
@@ -39,9 +39,7 @@ const y =
       configurable: !0,
     });
     e.prototype.onLoad = function () {
-      this._nAnchor = this.node
-        .getChildByName("Grids")
-        .getChildByName("Anchor");
+      this._nAnchor = this.node.getChildByName('Grids').getChildByName('Anchor');
     };
     e.prototype.init = function (t, e, n) {
       const i = this;
@@ -49,39 +47,35 @@ const y =
       this._rowCol = n;
       this._index = t;
       this._cfgEquip = $cfg.default.instance.dataReward.getById(this._equipId);
-      this._formGrids =
-        $bagConst.BAG_EQUIP_FORM[this._cfgEquip.boxSet].grids.slice();
-      const o = this._rowCol.split("&").map(Number);
+      this._formGrids = $bagConst.BAG_EQUIP_FORM[this._cfgEquip.boxSet].grids.slice();
+      const o = this._rowCol.split('&').map(Number);
       this._occupyRowCols = [];
       for (const r = 0; r < this._formGrids.length; r++) {
         const s = this._formGrids[r];
-        this._occupyRowCols.push(o[0] + s[0] + "&" + (o[1] + s[1]));
+        this._occupyRowCols.push(o[0] + s[0] + '&' + (o[1] + s[1]));
       }
-      this.node.getChildByName("Grids").children.forEach(function (t) {
+      this.node.getChildByName('Grids').children.forEach(function (t) {
         $resLoader.ResLoader.setSpritFrame(
-          t.getChildByName("Icon").getComponent(cc.Sprite),
+          t.getChildByName('Icon').getComponent(cc.Sprite),
           $frameEnum.Frame.EBundleName.RES,
-          "textures/atlas/item_scene/bag_quality_" + i._cfgEquip.rare,
+          'textures/atlas/item_scene/bag_quality_' + i._cfgEquip.rare,
         );
       });
       $resLoader.ResLoader.setSpritFrame(
-        this.node.getChildByName("Icon").getComponent(cc.Sprite),
+        this.node.getChildByName('Icon').getComponent(cc.Sprite),
         $frameEnum.Frame.EBundleName.GAME,
-        "textures/icon_bag/" + this.cfgEquip.boxObj,
+        'textures/icon_bag/' + this.cfgEquip.boxObj,
       );
       $resLoader.ResLoader.loadAsset({
         bundleName: $frameEnum.Frame.EBundleName.GAME,
-        path: "prefabs/bag/BagConversionItem",
+        path: 'prefabs/bag/BagConversionItem',
         type: cc.Prefab,
       })
         .then(function (t) {
           const e = cc.instantiate(t);
           i.node.addChild(e);
           i._bagConversionItem = e.getComponent($bagConversionItem.default);
-          i._bagConversionItem.updateView(
-            i._cfgEquip.type,
-            i._cfgEquip.changeID,
-          );
+          i._bagConversionItem.updateView(i._cfgEquip.type, i._cfgEquip.changeID);
           i._bagConversionItem.show();
         })
         .catch(function () {});
@@ -96,7 +90,7 @@ const y =
             scale: 1,
           },
           {
-            easing: "backOut",
+            easing: 'backOut',
           },
         )
         .call(function () {
@@ -131,10 +125,7 @@ const y =
         .start();
     };
     e.prototype.setPosByGrid = function (t) {
-      const e = $nodeUtil.default.nodeParentChangeLocalPos(
-        this._nAnchor,
-        this.node,
-      );
+      const e = $nodeUtil.default.nodeParentChangeLocalPos(this._nAnchor, this.node);
       const n = t.sub(e);
       this.node.setPosition(n);
     };
@@ -149,4 +140,4 @@ const y =
       }
     };
   })(cc.Component));
-exports.default = y;
+export default y;

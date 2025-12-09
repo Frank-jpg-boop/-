@@ -1,7 +1,7 @@
 import $appProxy from './AppProxy';
 import $timeUtil from './TimeUtil';
 import $eventManager from './EventManager';
-exports.AppManager = void 0;
+export const AppManager = void 0;
 t._instance = null;
 t.prototype.checkEndTime = function () {
   const t = $timeUtil.TimeUtil.getTime();
@@ -14,7 +14,7 @@ t.prototype.checkEndTime = function () {
   }
   setTimeout(this.checkEndTime.bind(this), 6e4);
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new t();
@@ -28,4 +28,4 @@ function t() {
   this._endTime = 0;
 }
 const a = t;
-exports.AppManager = a;
+export const AppManager = a;

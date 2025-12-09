@@ -27,14 +27,12 @@ e.prototype.onClickBtnOk = function () {
   if (t) {
     const e = $actorMgr.default.instance.getActor(t.playerId);
     if (!e || e.isDead()) {
-      return void $globalPopupMgr.default.instance.showTips(
-        "玩家已死亡，无法撤离",
-      );
+      return void $globalPopupMgr.default.instance.showTips('玩家已死亡，无法撤离');
     }
     this.removeUI();
     $popupManager.PopupManager.instance.show({
       bundleName: $frameEnum.Frame.EBundleName.GAME,
-      path: "popups/LevelBackPopup",
+      path: 'popups/LevelBackPopup',
       keep: !0,
     });
   }
@@ -49,4 +47,4 @@ function e() {
   e._battlePlayState = !1;
   return e;
 }
-exports.default = _;
+export default _;

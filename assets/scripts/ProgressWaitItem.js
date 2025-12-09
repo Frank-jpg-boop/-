@@ -34,7 +34,7 @@ e.prototype.init = function (t, e) {
     $resLoader.ResLoader.setSpritFrame(
       this.spBar,
       $frameEnum.Frame.EBundleName.GAME,
-      "textures/quality/quality_progress_" + t,
+      'textures/quality/quality_progress_' + t,
     );
   }
   this.spBar.fillRange = 0;
@@ -45,4 +45,4 @@ function e() {
   e.spBar = null;
   return e;
 }
-exports.default = h;
+export default h;

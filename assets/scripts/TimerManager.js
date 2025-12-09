@@ -1,5 +1,5 @@
 import $logger from './Logger';
-exports.TimerManager = void 0;
+export const TimerManager = void 0;
 const o = function () {
   this.interval = 0;
   this.dt = 0;
@@ -14,11 +14,7 @@ t.prototype.runTimer = function (t, e) {
   let i;
   if (1 === t.repeat) {
     this._timer.splice(e, 1);
-    return void (
-      null === (n = t.callback) ||
-      void 0 === n ||
-      n.call(t.target)
-    );
+    return void (null === (n = t.callback) || void 0 === n || n.call(t.target));
   }
   if (null === (i = t.callback) || void 0 === i) {
     //
@@ -35,11 +31,7 @@ t.prototype._update = function () {
   if (!this._pause) {
     const e = this._timer.length;
     if (0 !== e) {
-      for (
-        const n = cc.director.getDeltaTime(), i = null, o = e - 1;
-        o >= 0;
-        o--
-      ) {
+      for (const n = cc.director.getDeltaTime(), i = null, o = e - 1; o >= 0; o--) {
         if (
           !(i = this._timer[o]).check ||
           (null === (t = i.target) || void 0 === t ? void 0 : t.node)
@@ -69,7 +61,7 @@ t.prototype.unschedule = function (t) {
   if (-1 !== e) {
     this._timer.splice(e, 1);
   } else {
-    $logger.Logger.warn("该定时器不存在或已销毁");
+    $logger.Logger.warn('该定时器不存在或已销毁');
   }
 };
 t.prototype.resumeAll = function () {
@@ -82,7 +74,7 @@ t.prototype.resume = function (t) {
   if (e) {
     e.pause = !1;
   } else {
-    $logger.Logger.warn("该定时器不存在或已销毁");
+    $logger.Logger.warn('该定时器不存在或已销毁');
   }
 };
 t.prototype.pauseAll = function () {
@@ -95,7 +87,7 @@ t.prototype.pause = function (t) {
   if (e) {
     e.pause = !0;
   } else {
-    $logger.Logger.warn("该定时器不存在或已销毁");
+    $logger.Logger.warn('该定时器不存在或已销毁');
   }
 };
 t.prototype.schedule = function (t, e, n, i, r) {
@@ -156,7 +148,7 @@ t.prototype.hasSchedule = function (t) {
     })
   );
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == this._instance) {
       this._instance = new t();
@@ -172,4 +164,4 @@ function t() {
   cc.director.on(cc.Director.EVENT_AFTER_UPDATE, this._update, this);
 }
 const r = t;
-exports.TimerManager = r;
+export const TimerManager = r;

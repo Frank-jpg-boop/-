@@ -10,23 +10,23 @@ import $guideDataProxy from './GuideDataProxy';
 import $reportMgr from './ReportMgr';
 import $blockInputManager from './BlockInputManager';
 import $audioUtil from './AudioUtil';
-exports.GuideMgr = exports.EGuideEvent = void 0;
-let i;
-!(function (t) {
-  t.COMPLETE_GUIDE_STEP = "COMPLETE_GUIDE_STEP";
-  t.GUIDE_CHANGE = "GUIDE_CHANGE";
-})((i = exports.EGuideEvent || (exports.EGuideEvent = {})));
+export const GuideMgr = exports.EGuideEvent = void 0;;
+export const EGuideEvent = {
+  COMPLETE_GUIDE_STEP: 'COMPLETE_GUIDE_STEP',
+  GUIDE_CHANGE: 'GUIDE_CHANGE'
+};
+let i = EGuideEvent;
 t.prototype.initGuideStep41 = function () {
   const t = {
     isShowGuidePopup: !0,
     rootNode: this._popupNode,
-    path: "",
+    path: '',
     updateInitData: function (t) {
-      if ("game" == cc.director.getScene().name) {
+      if ('game' == cc.director.getScene().name) {
         const e = $battleMgr.default.instance.getCurScene();
         if (e && e.isInit && e.isPlay) {
           t.rootNode = $appBase.topNode;
-          t.path = "ElectricItem";
+          t.path = 'ElectricItem';
           e.pause();
         }
       }
@@ -37,7 +37,7 @@ t.prototype.initGuideStep41 = function () {
         i.COMPLETE_GUIDE_STEP,
         $guideDataProxy.EGuideStepId.G_41,
       );
-      $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_Click");
+      $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_Click');
     },
     delay: 0.1,
   };
@@ -49,7 +49,7 @@ t.prototype.initGuideStep27 = function () {
     rootNode: this._popupNode,
     showFinger: !0,
     updateInitData: function (t) {
-      if ("home" == cc.director.getScene().name) {
+      if ('home' == cc.director.getScene().name) {
         t.rootNode = cc.director.getScene();
       }
     },
@@ -60,13 +60,11 @@ t.prototype.initGuideStep27 = function () {
       );
     },
     onStart: function () {
-      if (
-        0 != $blockInputManager.BlockInputManager.instance.netBlockInputNum
-      ) {
+      if (0 != $blockInputManager.BlockInputManager.instance.netBlockInputNum) {
         $blockInputManager.BlockInputManager.instance.netBlockInputNum--;
       }
     },
-    path: "Canvas/pages/BattleView/BtnStart",
+    path: 'Canvas/pages/BattleView/BtnStart',
     delay: 0.5,
   };
   this._guideStepMap.set(27, t);
@@ -77,29 +75,27 @@ t.prototype.initGuideStep26 = function () {
     rootNode: this._popupNode,
     showFinger: !0,
     updateInitData: function (t) {
-      if ("home" == cc.director.getScene().name) {
+      if ('home' == cc.director.getScene().name) {
         t.rootNode = cc.director.getScene();
       }
-      const e = cc.find("Canvas/pages/BattleView", cc.director.getScene());
+      const e = cc.find('Canvas/pages/BattleView', cc.director.getScene());
       if (e && e.active) {
         $eventManager.EventManager.instance.emit(
           i.COMPLETE_GUIDE_STEP,
           $guideDataProxy.EGuideStepId.G_26,
         );
-        t.path = "";
+        t.path = '';
       }
     },
     onStart: function () {
-      if (
-        0 != $blockInputManager.BlockInputManager.instance.netBlockInputNum
-      ) {
+      if (0 != $blockInputManager.BlockInputManager.instance.netBlockInputNum) {
         $blockInputManager.BlockInputManager.instance.netBlockInputNum--;
       }
     },
     onEnd: function () {
       $blockInputManager.BlockInputManager.instance.netBlockInputNum++;
     },
-    path: "Canvas/downUI/btns/BtnBattle",
+    path: 'Canvas/downUI/btns/BtnBattle',
     delay: 1,
   };
   this._guideStepMap.set(26, t);
@@ -109,12 +105,10 @@ t.prototype.initGuideStep25 = function () {
     isShowGuidePopup: !0,
     rootNode: this._popupNode,
     showFinger: !0,
-    path: "ArtifactDetailsPopup/BtnUpGerad",
+    path: 'ArtifactDetailsPopup/BtnUpGerad',
     delay: 0.5,
     onStart: function () {
-      if (
-        0 != $blockInputManager.BlockInputManager.instance.netBlockInputNum
-      ) {
+      if (0 != $blockInputManager.BlockInputManager.instance.netBlockInputNum) {
         $blockInputManager.BlockInputManager.instance.netBlockInputNum--;
       }
     },
@@ -129,14 +123,12 @@ t.prototype.initGuideStep24 = function () {
     isShowGuidePopup: !0,
     rootNode: this._popupNode,
     showFinger: !0,
-    path: "Canvas/pages/ArtifactView/scrollView/view/content/possessRoot/items/item11",
+    path: 'Canvas/pages/ArtifactView/scrollView/view/content/possessRoot/items/item11',
     updateInitData: function (t) {
       t.rootNode = cc.director.getScene();
     },
     onStart: function () {
-      if (
-        0 != $blockInputManager.BlockInputManager.instance.netBlockInputNum
-      ) {
+      if (0 != $blockInputManager.BlockInputManager.instance.netBlockInputNum) {
         $blockInputManager.BlockInputManager.instance.netBlockInputNum--;
       }
     },
@@ -152,16 +144,14 @@ t.prototype.initGuideStep23 = function () {
     isShowGuidePopup: !0,
     rootNode: this._popupNode,
     showFinger: !0,
-    path: "Canvas/downUI/btns/BtnArtifact",
+    path: 'Canvas/downUI/btns/BtnArtifact',
     updateInitData: function (t) {
-      if ("home" == cc.director.getScene().name) {
+      if ('home' == cc.director.getScene().name) {
         t.rootNode = cc.director.getScene();
       }
     },
     onStart: function () {
-      if (
-        0 != $blockInputManager.BlockInputManager.instance.netBlockInputNum
-      ) {
+      if (0 != $blockInputManager.BlockInputManager.instance.netBlockInputNum) {
         $blockInputManager.BlockInputManager.instance.netBlockInputNum--;
       }
     },
@@ -176,9 +166,9 @@ t.prototype.initGuideStep21 = function () {
   const t = {
     isShowGuidePopup: !0,
     rootNode: this._popupNode,
-    path: "",
+    path: '',
     updateInitData: function (t) {
-      if ("home" == cc.director.getScene().name) {
+      if ('home' == cc.director.getScene().name) {
         t.rootNode = null;
         $blockInputManager.BlockInputManager.instance.netBlockInputNum--;
       }
@@ -188,7 +178,7 @@ t.prototype.initGuideStep21 = function () {
         i.COMPLETE_GUIDE_STEP,
         $guideDataProxy.EGuideStepId.G_21,
       );
-      $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_Click");
+      $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_Click');
     },
     onEnd: function () {
       $blockInputManager.BlockInputManager.instance.netBlockInputNum++;
@@ -215,8 +205,8 @@ t.prototype.initGuideStepData = function () {
   this.initGuideStep41();
 };
 t.prototype.onGuideStepComplete = function (t) {
-  $reportMgr.ReportMgr.instance.reportEvent("Guide", {
-    userA: "" + t,
+  $reportMgr.ReportMgr.instance.reportEvent('Guide', {
+    userA: '' + t,
   });
   this.closeGuide();
   this.saveGuide(t);
@@ -235,11 +225,7 @@ t.prototype.openGuide = function (t, e) {
   if (this._isGuideing) {
     //
   } else {
-    if (
-      this._curGuideStepData &&
-      this._curGuideStepData != e &&
-      this._curGuideStepData.onEnd
-    ) {
+    if (this._curGuideStepData && this._curGuideStepData != e && this._curGuideStepData.onEnd) {
       this._curGuideStepData.onEnd.call(this._curGuideStepData.eventCaller);
     }
     if (e.onInitPopupOption) {
@@ -260,10 +246,7 @@ t.prototype.updateGuide = function (t) {
   if (this._isInit && null != this._cfgGuide && !this._isLockGuide) {
     if (this._isGuideing) {
       if (this._curGuideStepData && this._curGuideStepData.onUpdate) {
-        this._curGuideStepData.onUpdate.call(
-          this._curGuideStepData.eventCaller,
-          t,
-        );
+        this._curGuideStepData.onUpdate.call(this._curGuideStepData.eventCaller, t);
       }
     } else if (this._guideStepMap.has(this._cfgGuide.id)) {
       const e = this._guideStepMap.get(this._cfgGuide.id);
@@ -283,18 +266,14 @@ t.prototype.updateGuide = function (t) {
             delay: e.delay,
           };
           this.openGuide(n, e);
-        } else if ("" == e.path) {
+        } else if ('' == e.path) {
           this._curGuideStepData != e &&
             (this._curGuideStepData &&
               this._curGuideStepData.onEnd &&
-              this._curGuideStepData.onEnd.call(
-                this._curGuideStepData.eventCaller,
-              ),
+              this._curGuideStepData.onEnd.call(this._curGuideStepData.eventCaller),
             (this._curGuideStepData = e),
             this._curGuideStepData.onStart &&
-              this._curGuideStepData.onStart.call(
-                this._curGuideStepData.eventCaller,
-              ));
+              this._curGuideStepData.onStart.call(this._curGuideStepData.eventCaller));
           e.onUpdate && e.onUpdate.call(e.eventCaller, t);
         } else {
           const i = cc.find(e.path, e.rootNode);
@@ -331,11 +310,7 @@ t.prototype.triggerGuide = function (t) {
   this._cfgGuide = null;
   this._guideUI.scheduleOnce(function () {
     e._cfgGuide = t;
-    $eventManager.EventManager.instance.emit(
-      i.GUIDE_CHANGE,
-      t ? e._cfgGuide.id : -1,
-      n,
-    );
+    $eventManager.EventManager.instance.emit(i.GUIDE_CHANGE, t ? e._cfgGuide.id : -1, n);
   });
 };
 t.prototype.saveGuide = function (t) {
@@ -361,15 +336,15 @@ t.prototype.initGuide = function () {
   const t = this;
   this._isGuideing = !1;
   this._isLockGuide = !1;
-  this._popupNode = $appBase.rootNode.getChildByName("PopupNode");
+  this._popupNode = $appBase.rootNode.getChildByName('PopupNode');
   this.initGuideStepData();
   $resLoader.ResLoader.loadAsset({
     bundleName: $frameEnum.Frame.EBundleName.RES,
-    path: "popups/GuidePopup",
+    path: 'popups/GuidePopup',
     type: cc.Prefab,
     success: function (e) {
       e.addRef();
-      t._guideNodeParent = new cc.Node("GuideNode");
+      t._guideNodeParent = new cc.Node('GuideNode');
       $appBase.topNode.addChild(t._guideNodeParent);
       t._guideNodeParent.width = $appBase.topNode.width;
       t._guideNodeParent.height = $appBase.topNode.height;
@@ -392,13 +367,9 @@ t.prototype.initGuide = function () {
       $guideDataProxy.guideDataProxy.curGuideId,
     );
   }
-  $eventManager.EventManager.instance.on(
-    i.COMPLETE_GUIDE_STEP,
-    this.onGuideStepComplete,
-    this,
-  );
+  $eventManager.EventManager.instance.on(i.COMPLETE_GUIDE_STEP, this.onGuideStepComplete, this);
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == this._instance) {
       this._instance = new t();
@@ -408,14 +379,14 @@ Object.defineProperty(t, "instance", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "isComplateGuide", {
+Object.defineProperty(t.prototype, 'isComplateGuide', {
   get: function () {
     return this._isCompleteGuide;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "cfgGuideStepId", {
+Object.defineProperty(t.prototype, 'cfgGuideStepId', {
   get: function () {
     if (this._cfgGuide) {
       return this._cfgGuide.id;
@@ -441,4 +412,4 @@ function t() {
   this._isInit = !1;
 }
 const y = t;
-exports.GuideMgr = y;
+export const GuideMgr = y;;

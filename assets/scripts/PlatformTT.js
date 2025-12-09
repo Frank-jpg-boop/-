@@ -6,7 +6,7 @@ import $eventManager from './EventManager';
 import $commonUtil from './CommonUtil';
 import $appProxy from './AppProxy';
 import $sceneManager from './SceneManager';
-exports.PlatformTT = void 0;
+export const PlatformTT = void 0;
 t._instance = null;
 t.prototype.copyToClipboard = function (t, e, n) {
   tt.setClipboardData({
@@ -30,22 +30,22 @@ t.prototype.getImRankList = function (t, e) {
   tt.login({
     force: !0,
     success: function (n) {
-      console.log("login success res: " + n.code);
+      console.log('login success res: ' + n.code);
       tt.getImRankList({
-        relationType: "all",
+        relationType: 'all',
         dataType: 0,
-        rankType: "day",
-        suffix: "波",
-        rankTitle: "天黑请闭眼",
-        zoneId: "default",
+        rankType: 'day',
+        suffix: '波',
+        rankTitle: '天黑请闭眼',
+        zoneId: 'default',
         success: function (e) {
-          console.log("getImRankData success res: " + e);
+          console.log('getImRankData success res: ' + e);
           if (t) {
             t(e);
           }
         },
         fail: function (t) {
-          console.log("getImRankData fail res: " + t.errMsg);
+          console.log('getImRankData fail res: ' + t.errMsg);
           if (e) {
             e(t);
           }
@@ -53,7 +53,7 @@ t.prototype.getImRankList = function (t, e) {
       });
     },
     fail: function (t) {
-      console.log("login fail res: " + t.errMsg);
+      console.log('login fail res: ' + t.errMsg);
     },
   });
 };
@@ -62,13 +62,13 @@ t.prototype.setImRankData = function (t) {
     dataType: 0,
     value: t.toString(),
     priority: 0,
-    extra: "extra",
-    zoneId: "default",
+    extra: 'extra',
+    zoneId: 'default',
     success: function (t) {
-      console.log("setImRankData success res: " + t);
+      console.log('setImRankData success res: ' + t);
     },
     fail: function (t) {
-      console.log("setImRankData fail res: " + t.errMsg);
+      console.log('setImRankData fail res: ' + t.errMsg);
     },
   };
   tt.setImRankData(e);
@@ -76,49 +76,49 @@ t.prototype.setImRankData = function (t) {
 t.prototype.umaTrackEvent = function (t, e) {
   const n = e.userA;
   const i = $userCenterMgr.UserCenterMgr.instance.configVersion;
-  const o = Number(yzll.gameConfig.v.split(".").join(""));
+  const o = Number(yzll.gameConfig.v.split('.').join(''));
   if (n) {
-    n = i + "_" + o + "_" + n;
+    n = i + '_' + o + '_' + n;
   }
   e.userA = n;
-  if (t && "" != t) {
+  if (t && '' != t) {
     tt.uma.trackEvent(t, e);
   }
 };
 t.prototype.hideGameClubButton = function () {};
 t.prototype.createGameClubButton = function () {};
 t.prototype.requestSubscribeMessage = function (t, e) {
-  $commonUtil.CommonUtil.print("==requestSubscribeMessage:", t);
+  $commonUtil.CommonUtil.print('==requestSubscribeMessage:', t);
   if (tt.requestSubscribeMessage) {
     tt.requestSubscribeMessage({
       tmplIds: t,
       success: function (t) {
-        $commonUtil.CommonUtil.print("==requestSubscribeMessage success:", t);
+        $commonUtil.CommonUtil.print('==requestSubscribeMessage success:', t);
         if (e) {
           e(!0, t);
         }
       },
       fail: function (t) {
-        $commonUtil.CommonUtil.print("==requestSubscribeMessage fail:", t);
+        $commonUtil.CommonUtil.print('==requestSubscribeMessage fail:', t);
         if (e) {
           e(!1, t);
         }
       },
     });
   } else {
-    this.showTips("当前应用暂不支持订阅!");
+    this.showTips('当前应用暂不支持订阅!');
   }
 };
 t.prototype.openAwemeUserProfile = function (t) {
   tt.openAwemeUserProfile({
     success: function (e) {
-      $commonUtil.CommonUtil.print("调用成功", e);
+      $commonUtil.CommonUtil.print('调用成功', e);
       if (t) {
         t(!0);
       }
     },
     fail: function (e) {
-      $commonUtil.CommonUtil.print("调用失败", e);
+      $commonUtil.CommonUtil.print('调用失败', e);
       if (t) {
         t(!1);
       }
@@ -129,10 +129,10 @@ t.prototype.checkFollowAwemeState = function (t) {
   const e = !1;
   try {
     const n = tt.getSystemInfoSync();
-    $commonUtil.CommonUtil.print("手机型号为 " + n.model);
-    e = "Douyin" == n.appName || "douyin_lite" == n.appName;
+    $commonUtil.CommonUtil.print('手机型号为 ' + n.model);
+    e = 'Douyin' == n.appName || 'douyin_lite' == n.appName;
   } catch (e) {
-    $commonUtil.CommonUtil.print("获取系统信息失败");
+    $commonUtil.CommonUtil.print('获取系统信息失败');
     if (t) {
       t(!1);
     }
@@ -148,7 +148,7 @@ t.prototype.checkFollowAwemeState = function (t) {
   }
 };
 t.prototype.joinGroup = function (t, e) {
-  $commonUtil.CommonUtil.print("加入群id:", t);
+  $commonUtil.CommonUtil.print('加入群id:', t);
   tt.joinGroup({
     groupid: t,
     success: function (t) {
@@ -169,10 +169,10 @@ t.prototype.checkGroupInfo = function (t) {
   const e = !1;
   try {
     const n = tt.getSystemInfoSync();
-    $commonUtil.CommonUtil.print("手机型号为 " + n.model);
-    e = "Douyin" == n.appName || "douyin_lite" == n.appName;
+    $commonUtil.CommonUtil.print('手机型号为 ' + n.model);
+    e = 'Douyin' == n.appName || 'douyin_lite' == n.appName;
   } catch (e) {
-    $commonUtil.CommonUtil.print("获取系统信息失败");
+    $commonUtil.CommonUtil.print('获取系统信息失败');
     if (t) {
       t(!1);
     }
@@ -185,7 +185,7 @@ t.prototype.followOfficialAccount = function (t) {
   tt.followOfficialAccount({
     success: function (e) {
       if (0 === e.errCode) {
-        $commonUtil.CommonUtil.print("关注成功");
+        $commonUtil.CommonUtil.print('关注成功');
         t && t(!0);
       } else {
         $commonUtil.CommonUtil.print(e.errMsg);
@@ -206,22 +206,22 @@ t.prototype.checkFollowState = function (t) {
 };
 t.prototype.recorderShare = function (t) {
   if (!this.recorder) {
-    $commonUtil.CommonUtil.print("分享录屏失败1");
-    return void (t && t(!1, "录屏失败，请稍后再试"));
+    $commonUtil.CommonUtil.print('分享录屏失败1');
+    return void (t && t(!1, '录屏失败，请稍后再试'));
   }
-  if ("" == this.recorderVideoPath) {
-    $commonUtil.CommonUtil.print("分享录屏失败2");
+  if ('' == this.recorderVideoPath) {
+    $commonUtil.CommonUtil.print('分享录屏失败2');
     return void (t && t(!1, this.recorderErrorMsg));
   }
   const e = this.recorderVideoPath;
   tt.shareAppMessage({
-    channel: "video",
+    channel: 'video',
     extra: {
       videoPath: e,
-      videoTopics: ["进我鱼塘", "进我鱼塘小游戏"],
+      videoTopics: ['进我鱼塘', '进我鱼塘小游戏'],
     },
     success: function (e) {
-      $commonUtil.CommonUtil.print("分享成功：", e);
+      $commonUtil.CommonUtil.print('分享成功：', e);
       setTimeout(function () {
         if (t) {
           t(!0, e);
@@ -229,7 +229,7 @@ t.prototype.recorderShare = function (t) {
       }, 10);
     },
     fail: function (e) {
-      $commonUtil.CommonUtil.print("分享失败：", e);
+      $commonUtil.CommonUtil.print('分享失败：', e);
       setTimeout(function () {
         if (t) {
           t(!1, e);
@@ -242,17 +242,14 @@ t.prototype.recordStop = function (t) {
   if (void 0 === t) {
     t = null;
   }
-  $commonUtil.CommonUtil.print(
-    "停止录制：",
-    !this.recorder + "" + this.isStopRecorder,
-  );
+  $commonUtil.CommonUtil.print('停止录制：', !this.recorder + '' + this.isStopRecorder);
   if (this.recorder) {
     if (this.isStopRecorder) {
       t && t();
     } else {
       ((this.recorderStopCallback = t),
         (this.isStopRecorder = !0),
-        $commonUtil.CommonUtil.print("调停止录制接口"),
+        $commonUtil.CommonUtil.print('调停止录制接口'),
         this.recorder.stop());
     }
   }
@@ -276,35 +273,32 @@ t.prototype.recorderStart = function (t, e) {
     if (!this.recorder) {
       return;
     }
-    $commonUtil.CommonUtil.print("开始录制");
+    $commonUtil.CommonUtil.print('开始录制');
     this.recorder.onStart(function (t) {
-      $commonUtil.CommonUtil.print("录屏开始");
+      $commonUtil.CommonUtil.print('录屏开始');
       n.isStopRecorder = !1;
-      n.recorderVideoPath = "";
+      n.recorderVideoPath = '';
       if (e) {
         e(!0, t);
       }
     });
     this.recorder.onPause(function () {
-      $commonUtil.CommonUtil.print("录屏暂停");
+      $commonUtil.CommonUtil.print('录屏暂停');
     });
     this.recorder.onResume(function () {
-      $commonUtil.CommonUtil.print("录屏恢复");
+      $commonUtil.CommonUtil.print('录屏恢复');
     });
     this.recorder.onStop(function (t) {
       n.isStopRecorder = !0;
-      $commonUtil.CommonUtil.print("录屏停止，文件保存在：", t.videoPath);
+      $commonUtil.CommonUtil.print('录屏停止，文件保存在：', t.videoPath);
       n.recorderVideoPath = t.videoPath;
-      $commonUtil.CommonUtil.print(
-        "录屏停止，this.recorderStopCallback：",
-        n.recorderStopCallback,
-      );
+      $commonUtil.CommonUtil.print('录屏停止，this.recorderStopCallback：', n.recorderStopCallback);
       if (n.recorderStopCallback) {
         n.recorderStopCallback(!0);
       }
     });
     this.recorder.onError(function (t) {
-      $commonUtil.CommonUtil.print("录屏失败，errMsg：" + t);
+      $commonUtil.CommonUtil.print('录屏失败，errMsg：' + t);
       n.recorderErrorMsg = t;
       if (n.recorderStopCallback) {
         n.recorderStopCallback(!1);
@@ -337,8 +331,8 @@ t.prototype.checkUpdate = function () {
   const t = tt.getUpdateManager();
   t.onUpdateReady(function () {
     tt.showModal({
-      title: "更新提示",
-      content: "新版本已准备好，是否重启应用？",
+      title: '更新提示',
+      content: '新版本已准备好，是否重启应用？',
       success: function (e) {
         if (e.confirm) {
           t.applyUpdate();
@@ -351,10 +345,10 @@ t.prototype.compareVersion = function (t) {
   const e = this.systemInfo.SDKVersion;
   const n = /\d+.\d+.\d+/;
   if (!n.test(t) || !n.test(e)) {
-    console.warn("SDKVersion取值异常");
+    console.warn('SDKVersion取值异常');
     return !1;
   }
-  for (const i = e.split("."), o = t.split("."), r = 0; r < 3; r++) {
+  for (const i = e.split('.'), o = t.split('.'), r = 0; r < 3; r++) {
     const a = parseInt(i[r]);
     const s = parseInt(o[r]);
     if (a > s) {
@@ -383,10 +377,10 @@ t.prototype.showVideoAds = function (t) {
         $sceneManager.SceneManager.instance.hideLoading();
         setTimeout(function () {
           if (t.isEnded) {
-            e.showTips("视频播放完毕!");
+            e.showTips('视频播放完毕!');
             e.ttVideoObj && e.ttVideoObj.success && e.ttVideoObj.success();
           } else {
-            e.showTips("视频未播放完毕!");
+            e.showTips('视频未播放完毕!');
             e.ttVideoObj.fail && e.ttVideoObj.fail();
           }
         }, 10);
@@ -397,7 +391,7 @@ t.prototype.showVideoAds = function (t) {
         $audioUtil.AudioUtil.resumeMusic();
       }, 10);
       this.ttVideoAd.onError(function (t) {
-        e.showTips("视频加载失败!");
+        e.showTips('视频加载失败!');
         $sceneManager.SceneManager.instance.hideLoading();
         $commonUtil.CommonUtil.print(t);
         if (e.ttVideoObj.error) {
@@ -414,7 +408,7 @@ t.prototype.showVideoAds = function (t) {
       this.ttVideoAd.load().then(function () {
         e.ttVideoAd.show().then(function () {
           $audioUtil.AudioUtil.pauseMusic();
-          $commonUtil.CommonUtil.print("视频广告显示成功");
+          $commonUtil.CommonUtil.print('视频广告显示成功');
           $sceneManager.SceneManager.instance.hideLoading();
           Date.now();
         });
@@ -438,10 +432,10 @@ t.prototype.setClipboardData = function (t) {
   tt.setClipboardData({
     data: t,
     success: function () {
-      this.showTips("复制成功~");
+      this.showTips('复制成功~');
     },
     fail: function () {
-      this.showTips("复制失败~");
+      this.showTips('复制失败~');
     },
   });
 };
@@ -453,7 +447,7 @@ t.prototype.hideInterstitial = function () {
 t.prototype.addInterstitial = function (t) {
   const e = this;
   const n = this.adUintId.Interstitial[t];
-  if (this.compareVersion("2.6.0")) {
+  if (this.compareVersion('2.6.0')) {
     if (this.interstitial) {
       //
     } else {
@@ -493,11 +487,9 @@ t.prototype.addBanner = function (t) {
   const l = function (t) {
     if (i) {
       t.style.top =
-        e.systemInfo.screenHeight *
-        (1 - i.getBoundingBoxToWorld().yMin / cc.winSize.height);
+        e.systemInfo.screenHeight * (1 - i.getBoundingBoxToWorld().yMin / cc.winSize.height);
     } else {
-      t.style.top =
-        e.systemInfo.screenHeight - Math.ceil(t.style.realHeight) - 2;
+      t.style.top = e.systemInfo.screenHeight - Math.ceil(t.style.realHeight) - 2;
     }
   };
   if (!this.bannerCache[s] || this.bannerCache[s].sCnt <= 0) {
@@ -538,27 +530,27 @@ t.prototype.addDesk = function () {
   const t = this;
   tt.addShortcut({
     success: function () {
-      t.showTips("添加桌面成功!");
+      t.showTips('添加桌面成功!');
     },
     fail: function () {
-      t.showTips("添加桌面失败!");
+      t.showTips('添加桌面失败!');
     },
   });
 };
 t.prototype.showShareMenu = function () {
   const t = this;
   tt.showShareMenu({
-    showShareItems: ["qq", "qzone", "wechatFriends", "wechatMoment"],
+    showShareItems: ['qq', 'qzone', 'wechatFriends', 'wechatMoment'],
     withShareTicket: !0,
   });
   tt.onShareAppMessage(function () {
-    const e = ["share_1", "share_2"];
+    const e = ['share_1', 'share_2'];
     const n = t.getRandomNum(0, t.shareDescs.length);
     const i = t.getRandomNum(0, e.length);
     return {
       title: t.shareDescs[n],
-      imageUrl: cc.url.raw("resources/share/" + e[i] + ".png"),
-      query: "",
+      imageUrl: cc.url.raw('resources/share/' + e[i] + '.png'),
+      query: '',
     };
   });
 };
@@ -569,18 +561,14 @@ t.prototype.getImageUrlByCamera = function (t) {
   t.targetTexture = e;
   t.render(null);
   const i = e.readPixels();
-  const o = document.createElement("canvas");
-  const r = o.getContext("2d");
+  const o = document.createElement('canvas');
+  const r = o.getContext('2d');
   const a = (o.width = e.width);
   const s = (o.height = e.height);
   o.width = e.width;
   o.height = e.height;
   for (const c = 4 * a, l = 0; l < s; l++) {
-    for (
-      const u = s - 1 - l, p = r.createImageData(a, 1), h = u * a * 4, f = 0;
-      f < c;
-      f++
-    ) {
+    for (const u = s - 1 - l, p = r.createImageData(a, 1), h = u * a * 4, f = 0; f < c; f++) {
       p.data[f] = i[h + f];
     }
     r.putImageData(p, 0, l);
@@ -593,8 +581,8 @@ t.prototype.getImageUrlFromCanvasCenter = function () {
   let n;
   let i;
   const o =
-    cc.game.canvas.getContext("2d") ||
-    cc.game.canvas.getContext("webgl", {
+    cc.game.canvas.getContext('2d') ||
+    cc.game.canvas.getContext('webgl', {
       preserveDrawingBuffer: !0,
     });
   if (cc.winSize.width > cc.winSize.height) {
@@ -645,24 +633,22 @@ t.prototype.shareAppMessage = function (t) {
       complete: null,
     };
   }
-  t.title =
-    (null == t ? void 0 : t.title) ||
-    (null == this ? void 0 : this.shareTitle);
+  t.title = (null == t ? void 0 : t.title) || (null == this ? void 0 : this.shareTitle);
   const e = this.getRandomNum(0, this.shareDescs.length);
   tt.shareAppMessage({
-    channel: "invite",
+    channel: 'invite',
     templateId: this.shareIds[0],
     title: this.shareDescs[e],
     query: t.query,
     success: function (e) {
-      $commonUtil.CommonUtil.print("分享成功" + JSON.stringify(e));
+      $commonUtil.CommonUtil.print('分享成功' + JSON.stringify(e));
       if (t.success) {
         t.success();
       }
       t = null;
     },
     fail: function () {
-      $commonUtil.CommonUtil.print("分享失败");
+      $commonUtil.CommonUtil.print('分享失败');
       if (t.fail) {
         t.fail();
       }
@@ -673,10 +659,10 @@ t.prototype.shareAppMessage = function (t) {
 t.prototype.getUserInfo = function (t) {
   tt.login({
     success: function (e) {
-      $commonUtil.CommonUtil.print("登录成功:", e);
+      $commonUtil.CommonUtil.print('登录成功:', e);
       tt.getUserInfo({
         success: function (e) {
-          $commonUtil.CommonUtil.print("getUserInfo 调用成功", e.userInfo);
+          $commonUtil.CommonUtil.print('getUserInfo 调用成功', e.userInfo);
           if (t) {
             t({
               nickName: e.userInfo.nickName,
@@ -685,7 +671,7 @@ t.prototype.getUserInfo = function (t) {
           }
         },
         fail: function (e) {
-          $commonUtil.CommonUtil.print("getUserInfo 调用失败", e.errMsg);
+          $commonUtil.CommonUtil.print('getUserInfo 调用失败', e.errMsg);
           if (t) {
             t();
           }
@@ -693,7 +679,7 @@ t.prototype.getUserInfo = function (t) {
       });
     },
     fail: function (e) {
-      $commonUtil.CommonUtil.print("登录失败", e.errMsg);
+      $commonUtil.CommonUtil.print('登录失败', e.errMsg);
       if (t) {
         t();
       }
@@ -704,39 +690,39 @@ t.prototype.authorize = function (t) {
   tt.getSetting({
     success: function (e) {
       if (e.authSetting[t.scope]) {
-        console.log("已经授权过了");
+        console.log('已经授权过了');
         tt.getUserInfo({
           withCredentials: !1,
-          lang: "zh_CN",
+          lang: 'zh_CN',
           success: function (e) {
-            console.log("获取到了用户信息");
+            console.log('获取到了用户信息');
             if (t.success) {
               t.success(e);
             }
           },
           fail: function () {
-            console.log("获取用户信息失败");
+            console.log('获取用户信息失败');
             if (t.fail) {
               t.fail(null);
             }
           },
         });
       } else {
-        console.log("没授权过，开始请求授权");
+        console.log('没授权过，开始请求授权');
         tt.authorize({
           scope: t.scope,
           success: function () {
             tt.getUserInfo({
               withCredentials: !1,
-              lang: "zh_CN",
+              lang: 'zh_CN',
               success: function (e) {
-                console.log("获取到了用户信息");
+                console.log('获取到了用户信息');
                 if (t.success) {
                   t.success(e);
                 }
               },
               fail: function () {
-                console.log("获取用户信息失败");
+                console.log('获取用户信息失败');
                 if (t.fail) {
                   t.fail(null);
                 }
@@ -752,7 +738,7 @@ t.prototype.authorize = function (t) {
       }
     },
     fail: function () {
-      $commonUtil.CommonUtil.print("tt.getSetting fail");
+      $commonUtil.CommonUtil.print('tt.getSetting fail');
       if (t.fail) {
         t.fail(null);
       }
@@ -767,7 +753,7 @@ t.prototype.login = function (t) {
       }
     },
     fail: function () {
-      $commonUtil.CommonUtil.print("tt.login fail");
+      $commonUtil.CommonUtil.print('tt.login fail');
       if (t) {
         t(!1, null);
       }
@@ -800,10 +786,10 @@ t.prototype.setKeepScreenOn = function () {
   tt.setKeepScreenOn({
     keepScreenOn: !0,
     success: function () {
-      console.log("屏幕常亮已关闭，省电中");
+      console.log('屏幕常亮已关闭，省电中');
     },
     fail: function () {
-      console.log("setKeepScreenOn调用失败");
+      console.log('setKeepScreenOn调用失败');
     },
   });
 };
@@ -811,21 +797,21 @@ t.prototype.restartMiniProgramSync = function () {
   try {
     tt.restartMiniProgramSync();
   } catch (t) {
-    console.log("restartMiniProgramSync调用失败", t);
+    console.log('restartMiniProgramSync调用失败', t);
   }
 };
 t.prototype.getPlatform = function () {
-  return "tt";
+  return 'tt';
 };
 t.prototype.triggerGC = function () {
   tt.triggerGC();
 };
 t.prototype.listenMemoryWarning = function () {
   tt.onMemoryWarning(function () {
-    console.log("onMemoryWarning");
+    console.log('onMemoryWarning');
   });
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     return this._instance || (this._instance = new this());
   },
@@ -833,20 +819,20 @@ Object.defineProperty(t, "instance", {
   configurable: !0,
 });
 function t() {
-  this.tmplIds = ["MSG2134944137207486165810172512564"];
+  this.tmplIds = ['MSG2134944137207486165810172512564'];
   this.sceneId = 3;
   this.versionCode = 100;
   this.systemInfo = null;
   this.launchInfo = null;
-  this.shareTitle = "[有人@我]快来看看我是怎么玩游戏的！";
+  this.shareTitle = '[有人@我]快来看看我是怎么玩游戏的！';
   this.shareImageUrl = null;
-  this.shareIds = ["41902i4f4e5d6c1jkl"];
+  this.shareIds = ['41902i4f4e5d6c1jkl'];
   this.shareDescs = [
-    "躺平又出新玩法了？",
-    "电量、理智、生命值，我该如何在黑暗中守住最后30秒？",
-    "我不是在讲故事，我在分享我的“求生实录”。",
-    "和队友在电诈园区里被鬼追是什么体验？",
-    "我已经知道真相了，但知道真相，还能活下去吗？",
+    '躺平又出新玩法了？',
+    '电量、理智、生命值，我该如何在黑暗中守住最后30秒？',
+    '我不是在讲故事，我在分享我的“求生实录”。',
+    '和队友在电诈园区里被鬼追是什么体验？',
+    '我已经知道真相了，但知道真相，还能活下去吗？',
   ];
   this.recorder = null;
   this.recorderVideoPath = null;
@@ -855,15 +841,15 @@ function t() {
   this.isStopRecorder = !1;
   this.adUintId = {
     Video: {
-      1: "1515kfan2kmikk95ik",
-      2: "141jt1j031j3i405jb",
-      3: "3fmka9dr9em70xl59t",
+      1: '1515kfan2kmikk95ik',
+      2: '141jt1j031j3i405jb',
+      3: '3fmka9dr9em70xl59t',
     },
     Banner: {
-      1: "4552986c79mi702kcm",
+      1: '4552986c79mi702kcm',
     },
     Interstitial: {
-      1: "3f59diedembh9o2lgl",
+      1: '3f59diedembh9o2lgl',
     },
   };
   this.shareTime = 0;
@@ -875,22 +861,16 @@ function t() {
   this.ttVideoAd = null;
   this.ttVideoObj = null;
   this._adsId = 1;
-  $commonUtil.CommonUtil.print("运行环境：tt");
+  $commonUtil.CommonUtil.print('运行环境：tt');
   this.systemInfo = tt.getSystemInfoSync();
   this.launchInfo = tt.getLaunchOptionsSync();
   this.showShareMenu({});
   this.checkUpdate();
   tt.onShow(function (t) {
-    $commonUtil.CommonUtil.print("game_on_show callback = ", t);
-    if (
-      "021036" === t.scene &&
-      "homepage" === t.launch_from &&
-      "sidebar_card" === t.location
-    ) {
+    $commonUtil.CommonUtil.print('game_on_show callback = ', t);
+    if ('021036' === t.scene && 'homepage' === t.launch_from && 'sidebar_card' === t.location) {
       $dataMgr.DataMgr.isSidebarCardInGameForTT = !0;
-      $eventManager.EventManager.instance.emit(
-        "ETTSidebarItemEvent.UPDATE_REDPOINT",
-      );
+      $eventManager.EventManager.instance.emit('ETTSidebarItemEvent.UPDATE_REDPOINT');
     }
     $eventManager.EventManager.instance.emit($appProxy.AppEvent.GAME_SHOW);
   });
@@ -899,4 +879,4 @@ function t() {
   });
 }
 const p = t;
-exports.PlatformTT = p;
+export const PlatformTT = p;

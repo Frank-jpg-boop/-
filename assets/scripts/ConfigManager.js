@@ -1,12 +1,12 @@
 import $frameEnum from './FrameEnum';
 import $csvHelper from './CsvHelper';
-exports.ConfigManager = void 0;
+export const ConfigManager = void 0;
 t._instance = null;
 t.prototype.strToArray = function (t, e) {
   if (void 0 === e) {
-    e = "|";
+    e = '|';
   }
-  return "string" != typeof t
+  return 'string' != typeof t
     ? [t]
     : t.split(e).map(function (t) {
         if (isNaN(Number(t))) {
@@ -19,9 +19,7 @@ t.prototype.strToArray = function (t, e) {
 t.prototype.queryOne = function (t, e) {
   const n = this.dict.get(t.prototype.JN);
   if (!n) {
-    throw new Error(
-      "argument is wrong,or Method load not called,tb=" + t.prototype.JN,
-    );
+    throw new Error('argument is wrong,or Method load not called,tb=' + t.prototype.JN);
   }
   for (let i, o = n.values(); !(i = o.next()).done; ) {
     const r = i.value;
@@ -34,9 +32,7 @@ t.prototype.queryOne = function (t, e) {
 t.prototype.queryAll = function (t, e, n) {
   const i = this.dict.get(t.prototype.JN);
   if (!i) {
-    throw new Error(
-      "argument is wrong,or Method loadAll not called,tb=" + t.prototype.JN,
-    );
+    throw new Error('argument is wrong,or Method loadAll not called,tb=' + t.prototype.JN);
   }
   for (let o, r = new Array(), a = i.values(); !(o = a.next()).done; ) {
     const s = o.value;
@@ -49,18 +45,14 @@ t.prototype.queryAll = function (t, e, n) {
 t.prototype.sheet = function (t) {
   const e = this.dict.get(t.prototype.JN);
   if (!e) {
-    throw new Error(
-      "argument is wrong,or Method loadAll not called,tb=" + t.prototype.JN,
-    );
+    throw new Error('argument is wrong,or Method loadAll not called,tb=' + t.prototype.JN);
   }
   return Array.from(e.values());
 };
 t.prototype.get = function (t, e) {
   const n = this.dict.get(t.prototype.JN);
   if (!n) {
-    throw new Error(
-      "argument is wrong,or Method load not called,tb=" + t.prototype.JN,
-    );
+    throw new Error('argument is wrong,or Method load not called,tb=' + t.prototype.JN);
   }
   if (!n.has(e)) {
     const i = this.itemIdDict.get(t.prototype.JN);
@@ -112,7 +104,7 @@ t.prototype.load = function (t, e) {
     );
   }
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == this._instance) {
       this._instance = new t();
@@ -127,4 +119,4 @@ function t() {
   this.itemIdDict = new Map();
 }
 const r = t;
-exports.ConfigManager = r;
+export const ConfigManager = r;

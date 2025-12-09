@@ -1,5 +1,5 @@
 import $randomUtil from './RandomUtil';
-exports.AnimUtil = void 0;
+export const AnimUtil = void 0;
 t.fade = function (t, e, n, i, o) {
   if (void 0 === e) {
     e = null;
@@ -108,7 +108,7 @@ t.shakeAngle = function (t, e, n, i, o) {
             angle: -e,
           },
           {
-            easing: "sineInOut",
+            easing: 'sineInOut',
           },
         )
         .to(
@@ -117,7 +117,7 @@ t.shakeAngle = function (t, e, n, i, o) {
             angle: e,
           },
           {
-            easing: "sineInOut",
+            easing: 'sineInOut',
           },
         )
         .call(function () {
@@ -135,7 +135,7 @@ t.shakeAngle = function (t, e, n, i, o) {
           angle: e,
         },
         {
-          easing: "sineOut",
+          easing: 'sineOut',
         },
       )
       .to(0.2, {
@@ -156,7 +156,7 @@ t.shakeAngle = function (t, e, n, i, o) {
           angle: e,
         },
         {
-          easing: "sineOut",
+          easing: 'sineOut',
         },
       )
       .call(function () {
@@ -287,7 +287,7 @@ t.swingLRAnim = function (t, e, n, i) {
             x: o - e,
           },
           {
-            easing: "sineInOut",
+            easing: 'sineInOut',
           },
         )
         .to(
@@ -296,7 +296,7 @@ t.swingLRAnim = function (t, e, n, i) {
             x: o + e,
           },
           {
-            easing: "sineInOut",
+            easing: 'sineInOut',
           },
         )
         .call(function () {
@@ -312,7 +312,7 @@ t.swingLRAnim = function (t, e, n, i) {
         x: e + o,
       },
       {
-        easing: "sineOut",
+        easing: 'sineOut',
       },
     )
     .call(function () {
@@ -327,10 +327,7 @@ t.flyDropItemAnim = function (t, e, n, o) {
     const s = t.getPosition();
     const c = e;
     const l = s.add(
-      cc.v2(
-        $randomUtil.RandomUtil.randomInt(-300, 300),
-        $randomUtil.RandomUtil.randomInt(0, -150),
-      ),
+      cc.v2($randomUtil.RandomUtil.randomInt(-300, 300), $randomUtil.RandomUtil.randomInt(0, -150)),
     );
     cc.tween(t)
       .bezierTo(0.3 + a * $randomUtil.RandomUtil.random(0.01, 0.05), s, l, c)
@@ -366,7 +363,7 @@ t.dropItemAnim = function (e, n, i, o, r, a) {
       n.y = t.y + (e.y - t.y) * i;
       return n;
     };
-    i.easing = "bounceOut";
+    i.easing = 'bounceOut';
     cc.tween(t)
       .to(
         1.5,
@@ -385,7 +382,7 @@ t.dropItemAnim = function (e, n, i, o, r, a) {
 };
 t.swingAnim = function (t, e, n, i, o, r) {
   if (void 0 === r) {
-    r = "";
+    r = '';
   }
   cc.Tween.stopAllByTarget(t);
   cc.tween(t)
@@ -431,7 +428,7 @@ t.breathAnim = function (t, e, n) {
         scale: e,
       },
       {
-        easing: "sineIn",
+        easing: 'sineIn',
       },
     )
     .to(
@@ -440,7 +437,7 @@ t.breathAnim = function (t, e, n) {
         scale: 1,
       },
       {
-        easing: "sineOut",
+        easing: 'sineOut',
       },
     )
     .union()
@@ -454,11 +451,7 @@ t.getCirclePoints = function (t, e, n, i, o) {
   if (void 0 === o) {
     o = 1;
   }
-  for (
-    const r = [], a = (Math.PI / 180) * Math.round(360 / n), s = 0;
-    s < n;
-    s++
-  ) {
+  for (const r = [], a = (Math.PI / 180) * Math.round(360 / n), s = 0; s < n; s++) {
     const c = Math.sin(a * s);
     const l = Math.cos(a * s);
     const u = e.x + t * c;
@@ -588,4 +581,4 @@ t.floatAnim = function (t, e, n) {
 };
 function t() {}
 const o = t;
-exports.AnimUtil = o;
+export const AnimUtil = o;

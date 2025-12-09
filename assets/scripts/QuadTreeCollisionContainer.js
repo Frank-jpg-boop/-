@@ -1,14 +1,9 @@
 import $quadTree from './QuadTree';
 let i;
-exports.EQuadTreeCollisionGroup = void 0;
-let a;
-!(function (t) {
-  t[(t.WeaponBullet = 1)] = "WeaponBullet";
-  t[(t.Enemy = 2)] = "Enemy";
-})(
-  (a =
-    exports.EQuadTreeCollisionGroup || (exports.EQuadTreeCollisionGroup = {})),
-);
+export const EQuadTreeCollisionGroup = {
+  WeaponBullet: 1,
+  Enemy: 2,
+};
 const c = cc._decorator;
 const l = c.ccclass;
 const u = c.property;
@@ -67,7 +62,7 @@ e.prototype.onLoad = function () {
     this.graphics = this.node.addComponent(cc.Graphics);
   }
 };
-Object.defineProperty(e.prototype, "rect", {
+Object.defineProperty(e.prototype, 'rect', {
   get: function () {
     return this._rect;
   },
@@ -84,4 +79,4 @@ function e() {
   e.updateCount = 0;
   return e;
 }
-exports.default = p;
+export default p;;

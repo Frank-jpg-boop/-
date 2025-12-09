@@ -23,9 +23,7 @@ const _ =
       t.prototype.onInit.call(this);
     };
     e.prototype.registerState = function () {
-      this._sm = new $stateMachine.StateMachine(
-        new $summonIdleState.SummonIdleState(this),
-      );
+      this._sm = new $stateMachine.StateMachine(new $summonIdleState.SummonIdleState(this));
       this._sm.addState(
         $actorEnum.EActorStateType.WALK,
         new $summonWalkState.SummonWalkState(this),
@@ -65,22 +63,23 @@ const _ =
     };
     e.prototype.updatePathData = function () {
       for (
-        const t = $mathUtil.MathUtil.vec2Fixed(this._pathPos), e = $battleMgr.default.instance.getCurScene().level.path;
+        const t = $mathUtil.MathUtil.vec2Fixed(this._pathPos),
+          e = $battleMgr.default.instance.getCurScene().level.path;
         ;
       ) {
         const n = e.findPathPointByPos(t);
-        if ("" != n) {
+        if ('' != n) {
           this._pathPointId = n;
-          this._pathLineId = "";
+          this._pathLineId = '';
           break;
         }
         const i = e.findPathLineByPos(t);
-        if ("" != i) {
+        if ('' != i) {
           this._pathLineId = i;
-          this._pathPointId = "";
+          this._pathPointId = '';
           break;
         }
-        if ("" == i && "" == n) {
+        if ('' == i && '' == n) {
           console.error('pathLineId == "" && pathPointId == ""');
         }
         break;
@@ -88,4 +87,4 @@ const _ =
       this.updateRoomId();
     };
   })($actorBase.default));
-exports.default = _;
+export default _;

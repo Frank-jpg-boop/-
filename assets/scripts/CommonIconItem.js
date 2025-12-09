@@ -29,7 +29,7 @@ e.prototype.playShowAnim = function () {
       })
       .call(function () {
         t.heightSpAnim.node.active = !0;
-        t.heightSpAnim.playAnim("animation", 1, !1, function () {
+        t.heightSpAnim.playAnim('animation', 1, !1, function () {
           t.heightSpAnim.node.active = !1;
         });
         e.enabled = !0;
@@ -53,7 +53,7 @@ e.prototype.updateData = function (t) {
       $resLoader.ResLoader.setSpritFrame(
         this.spFrame,
         $frameEnum.Frame.EBundleName.RES,
-        "textures/atlas/quality/pic_wuping_di_" + e.rare,
+        'textures/atlas/quality/pic_wuping_di_' + e.rare,
       );
     }
     $resLoader.ResLoader.setSpritFrame(
@@ -64,15 +64,14 @@ e.prototype.updateData = function (t) {
   }
   this.lNum.node.active = !t.isNotShowNum;
   if (this.lNum.node.active) {
-    this.lNum.string = "x" + $mathUtil.MathUtil.formatValue(t.itemNum);
+    this.lNum.string = 'x' + $mathUtil.MathUtil.formatValue(t.itemNum);
   }
   this.nName.active = t.isShowName;
   if (this.nName.active) {
     this.nName.children[0].getComponent(cc.Label).string = this._cfgItem.name;
   }
   this.spIcon.node.scale =
-    t.iconScale ||
-    $itemDataProxy.itemDataProxy.getItemIconScale(this._cfgItem.id);
+    t.iconScale || $itemDataProxy.itemDataProxy.getItemIconScale(this._cfgItem.id);
   this.getComponent(cc.Button).enabled = !0;
 };
 function e() {
@@ -86,4 +85,4 @@ function e() {
   e._cfgItem = null;
   return e;
 }
-exports.default = m;
+export default m;

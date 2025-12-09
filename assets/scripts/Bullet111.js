@@ -20,21 +20,18 @@ const d =
       this._ownerSkill = t;
       const i = this.node.getPosition();
       const o = e.clone();
-      const r = cc.v2(
-        i.x + 0.4 * (o.x - i.x),
-        i.y + $randomUtil.RandomUtil.randomInt(180, 250),
-      );
+      const r = cc.v2(i.x + 0.4 * (o.x - i.x), i.y + $randomUtil.RandomUtil.randomInt(180, 250));
       this.bezierTo(i, r, o, 0.4, !0, function () {
         n.blast();
       });
     };
     e.prototype.blast = function () {
       const t = this;
-      $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_ShenBei");
+      $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_ShenBei');
       const e = $battleMgr.default.instance.getCurScene();
       $effectMgr.default.instance.createEffect({
         parent: e.lowEffectParent,
-        prefabName: "Weapon111Hurt",
+        prefabName: 'Weapon111Hurt',
         initPos: this.node.getPosition(),
         effectClass: $weapon111Hurt.default,
         onCreated: function (e) {
@@ -43,4 +40,4 @@ const d =
       });
     };
   })($bulletBase.default));
-exports.default = d;
+export default d;

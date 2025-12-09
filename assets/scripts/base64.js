@@ -2,10 +2,10 @@
   (function (t, i) {
     let o;
     let r;
-    if ("object" == typeof exports && void 0 !== module) {
-      module.exports = i();
+    if ('object' == typeof exports && void 0 !== module) {
+      export default i();
     } else {
-      if ("function" == typeof define && define.amd) {
+      if ('function' == typeof define && define.amd) {
         define(i);
       } else {
         ((o = t.Base64),
@@ -18,30 +18,30 @@
       }
     }
   })(
-    "undefined" != typeof self
+    'undefined' != typeof self
       ? self
-      : "undefined" != typeof window
+      : 'undefined' != typeof window
         ? window
         : void 0 !== t
           ? t
           : void 0,
     function () {
       let t;
-      const e = "function" == typeof i;
+      const e = 'function' == typeof i;
       const n = null;
-      if ("function" == typeof TextDecoder) {
+      if ('function' == typeof TextDecoder) {
         n = new TextDecoder();
       } else {
         n = void 0;
       }
       const o = null;
-      if ("function" == typeof TextEncoder) {
+      if ('function' == typeof TextEncoder) {
         o = new TextEncoder();
       } else {
         o = void 0;
       }
       const r = Array.prototype.slice.call(
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
       );
       const a =
         ((t = {}),
@@ -49,11 +49,10 @@
           return (t[e] = n);
         }),
         t);
-      const s =
-        /^(?:[A-Za-z\d+\/]{4})*?(?:[A-Za-z\d+\/]{2}(?:==)?|[A-Za-z\d+\/]{3}=?)?$/;
+      const s = /^(?:[A-Za-z\d+\/]{4})*?(?:[A-Za-z\d+\/]{2}(?:==)?|[A-Za-z\d+\/]{3}=?)?$/;
       const c = String.fromCharCode.bind(String);
       const l = null;
-      if ("function" == typeof Uint8Array.from) {
+      if ('function' == typeof Uint8Array.from) {
         l = Uint8Array.from.bind(Uint8Array);
       } else {
         l = function (t) {
@@ -61,25 +60,25 @@
         };
       }
       const u = function (t) {
-        return t.replace(/=/g, "").replace(/[+\/]/g, function (t) {
-          if ("+" == t) {
-            return "-";
+        return t.replace(/=/g, '').replace(/[+\/]/g, function (t) {
+          if ('+' == t) {
+            return '-';
           } else {
-            return "_";
+            return '_';
           }
         });
       };
       const p = function (t) {
-        return t.replace(/[^A-Za-z0-9\+\/]/g, "");
+        return t.replace(/[^A-Za-z0-9\+\/]/g, '');
       };
       const h = function (t) {
-        for (let e, n, i, o, a = "", s = t.length % 3, c = 0; c < t.length; ) {
+        for (let e, n, i, o, a = '', s = t.length % 3, c = 0; c < t.length; ) {
           if (
             (n = t.charCodeAt(c++)) > 255 ||
             (i = t.charCodeAt(c++)) > 255 ||
             (o = t.charCodeAt(c++)) > 255
           ) {
-            throw new TypeError("invalid character found");
+            throw new TypeError('invalid character found');
           }
           a +=
             r[((e = (n << 16) | (i << 8) | o) >> 18) & 63] +
@@ -88,20 +87,20 @@
             r[63 & e];
         }
         if (s) {
-          return a.slice(0, s - 3) + "===".substring(s);
+          return a.slice(0, s - 3) + '==='.substring(s);
         } else {
           return a;
         }
       };
       const f = null;
-      if ("function" == typeof btoa) {
+      if ('function' == typeof btoa) {
         f = function (t) {
           return btoa(t);
         };
       } else {
         if (e) {
           f = function (t) {
-            return i.from(t, "binary").toString("base64");
+            return i.from(t, 'binary').toString('base64');
           };
         } else {
           f = h;
@@ -110,14 +109,14 @@
       const d = null;
       if (e) {
         d = function (t) {
-          return i.from(t).toString("base64");
+          return i.from(t).toString('base64');
         };
       } else {
         d = function (t) {
           for (const e = [], n = 0, i = t.length; n < i; n += 4096) {
             e.push(c.apply(null, t.subarray(n, n + 4096)));
           }
-          return f(e.join(""));
+          return f(e.join(''));
         };
       }
       const m = function (t, e) {
@@ -134,16 +133,11 @@
             if (e < 2048) {
               return c(192 | (e >>> 6)) + c(128 | (63 & e));
             } else {
-              return (
-                c(224 | ((e >>> 12) & 15)) +
-                c(128 | ((e >>> 6) & 63)) +
-                c(128 | (63 & e))
-              );
+              return c(224 | ((e >>> 12) & 15)) + c(128 | ((e >>> 6) & 63)) + c(128 | (63 & e));
             }
           }
         }
-        const e =
-          65536 + 1024 * (t.charCodeAt(0) - 55296) + (t.charCodeAt(1) - 56320);
+        const e = 65536 + 1024 * (t.charCodeAt(0) - 55296) + (t.charCodeAt(1) - 56320);
         return (
           c(240 | ((e >>> 18) & 7)) +
           c(128 | ((e >>> 12) & 63)) +
@@ -158,7 +152,7 @@
       const v = null;
       if (e) {
         v = function (t) {
-          return i.from(t, "utf8").toString("base64");
+          return i.from(t, 'utf8').toString('base64');
         };
       } else {
         if (o) {
@@ -180,8 +174,7 @@
       const E = function (t) {
         return b(t, !0);
       };
-      const S =
-        /[\xC0-\xDF][\x80-\xBF]|[\xE0-\xEF][\x80-\xBF]{2}|[\xF0-\xF7][\x80-\xBF]{3}/g;
+      const S = /[\xC0-\xDF][\x80-\xBF]|[\xE0-\xEF][\x80-\xBF]{2}|[\xF0-\xF7][\x80-\xBF]{3}/g;
       const P = function (t) {
         switch (t.length) {
           case 4:
@@ -206,12 +199,12 @@
         return t.replace(S, P);
       };
       const w = function (t) {
-        t = t.replace(/\s+/g, "");
+        t = t.replace(/\s+/g, '');
         if (!s.test(t)) {
-          throw new TypeError("malformed base64.");
+          throw new TypeError('malformed base64.');
         }
-        t += "==".slice(2 - (3 & t.length));
-        for (let e, n, i, o = "", r = 0; r < t.length; ) {
+        t += '=='.slice(2 - (3 & t.length));
+        for (let e, n, i, o = '', r = 0; r < t.length; ) {
           e =
             (a[t.charAt(r++)] << 18) |
             (a[t.charAt(r++)] << 12) |
@@ -230,14 +223,14 @@
         return o;
       };
       const C = null;
-      if ("function" == typeof atob) {
+      if ('function' == typeof atob) {
         C = function (t) {
           return atob(p(t));
         };
       } else {
         if (e) {
           C = function (t) {
-            return i.from(t, "base64").toString("binary");
+            return i.from(t, 'base64').toString('binary');
           };
         } else {
           C = w;
@@ -246,13 +239,13 @@
       const M = null;
       if (e) {
         M = function (t) {
-          return l(i.from(t, "base64"));
+          return l(i.from(t, 'base64'));
         };
       } else {
         M = function (t) {
           return l(
             C(t)
-              .split("")
+              .split('')
               .map(function (t) {
                 return t.charCodeAt(0);
               }),
@@ -265,7 +258,7 @@
       const R = null;
       if (e) {
         R = function (t) {
-          return i.from(t, "base64").toString("utf8");
+          return i.from(t, 'base64').toString('utf8');
         };
       } else {
         if (n) {
@@ -281,10 +274,10 @@
       const D = function (t) {
         return p(
           t.replace(/[-_]/g, function (t) {
-            if ("-" == t) {
-              return "+";
+            if ('-' == t) {
+              return '+';
             } else {
-              return "/";
+              return '/';
             }
           }),
         );
@@ -304,19 +297,19 @@
         const t = function (t, e) {
           return Object.defineProperty(String.prototype, t, B(e));
         };
-        t("fromBase64", function () {
+        t('fromBase64', function () {
           return T(this);
         });
-        t("toBase64", function (t) {
+        t('toBase64', function (t) {
           return b(this, t);
         });
-        t("toBase64URI", function () {
+        t('toBase64URI', function () {
           return b(this, !0);
         });
-        t("toBase64URL", function () {
+        t('toBase64URL', function () {
           return b(this, !0);
         });
-        t("toUint8Array", function () {
+        t('toUint8Array', function () {
           return I(this);
         });
       };
@@ -324,19 +317,19 @@
         const t = function (t, e) {
           return Object.defineProperty(Uint8Array.prototype, t, B(e));
         };
-        t("toBase64", function (t) {
+        t('toBase64', function (t) {
           return m(this, t);
         });
-        t("toBase64URI", function () {
+        t('toBase64URI', function () {
           return m(this, !0);
         });
-        t("toBase64URL", function () {
+        t('toBase64URL', function () {
           return m(this, !0);
         });
       };
       const k = {
-        version: "3.7.7",
-        VERSION: "3.7.7",
+        version: '3.7.7',
+        VERSION: '3.7.7',
         atob: C,
         atobPolyfill: w,
         btoa: f,
@@ -350,10 +343,10 @@
         btou: A,
         decode: T,
         isValid: function (t) {
-          if ("string" != typeof t) {
+          if ('string' != typeof t) {
             return !1;
           }
-          const e = t.replace(/\s+/g, "").replace(/={0,2}$/, "");
+          const e = t.replace(/\s+/g, '').replace(/={0,2}$/, '');
           return !/[^\s0-9a-zA-Z\+/]/.test(e) || !/[^\s0-9a-zA-Z\-_]/.test(e);
         },
         fromUint8Array: m,
@@ -374,12 +367,12 @@
   );
 }).call(
   this,
-  "undefined" != typeof global
+  'undefined' != typeof global
     ? global
-    : "undefined" != typeof self
+    : 'undefined' != typeof self
       ? self
-      : "undefined" != typeof window
+      : 'undefined' != typeof window
         ? window
         : {},
-  require("buffer").Buffer,
+  require('buffer').Buffer,
 );

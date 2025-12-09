@@ -27,7 +27,7 @@ const w =
       e._isShowBossTag = !1;
       return e;
     }
-    Object.defineProperty(e.prototype, "spAnimCtrl", {
+    Object.defineProperty(e.prototype, 'spAnimCtrl', {
       get: function () {
         return this._spCtrl;
       },
@@ -39,10 +39,7 @@ const w =
     };
     e.prototype.registerState = function () {
       t.prototype.registerState.call(this);
-      this._sm.addState(
-        $actorEnum.EActorStateType.ATTACK,
-        new $boss_421_Atk.Boss_421_Atk(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.ATTACK, new $boss_421_Atk.Boss_421_Atk(this));
     };
     e.prototype.canReleaseSkillTarget = function (e) {
       if (t.prototype.canAttackTarget.call(this, e)) {
@@ -51,10 +48,10 @@ const w =
         if (e.pathPos.x == this.pathPos.x) {
           const i = cc.v2(0, e.pathPos.y > this.pathPos.y ? 1 : -1);
           const o = null;
-          if ("" != this._pathPointId) {
+          if ('' != this._pathPointId) {
             o = n.level.path.getPoint(this._pathPointId).getDirLine(i);
           } else {
-            if ("" != this._pathLineId) {
+            if ('' != this._pathLineId) {
               o = this._pathLineId;
             }
           }
@@ -83,10 +80,10 @@ const w =
           let s;
           i = cc.v2(e.pathPos.x > this.pathPos.x ? 1 : -1, 0);
           o = null;
-          if ("" != this._pathPointId) {
+          if ('' != this._pathPointId) {
             o = n.level.path.getPoint(this._pathPointId).getDirLine(i);
           } else {
-            if ("" != this._pathLineId) {
+            if ('' != this._pathLineId) {
               o = this._pathLineId;
             }
           }
@@ -133,9 +130,7 @@ const w =
     e.prototype.findMoveDoor = function (t, e, n, i) {
       for (
         const o = 0,
-              r = $unitMgr.UnitMgr.instance.queryUnit(
-                $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
-              );
+          r = $unitMgr.UnitMgr.instance.queryUnit($gridAreaDivisionMgr.E_AreaObjectType.DOOR);
         o < r.length;
         o++
       ) {
@@ -161,10 +156,7 @@ const w =
           this._isShowBossTag = !0;
           this.changeState($actorEnum.EActorStateType.IDLE);
           this.enterAttackCd();
-          $eventManager.EventManager.instance.emit(
-            $battleEnum.EBattleEvent.LOOKAT_BOSS,
-            n,
-          );
+          $eventManager.EventManager.instance.emit($battleEnum.EBattleEvent.LOOKAT_BOSS, n);
         }
       }
     };
@@ -181,47 +173,42 @@ const w =
           if (r) {
             for (
               const a = r.getBeHurtPos(),
-                    p = Number(this._cfg.val3),
-                    d = function () {
-                      const t = a.clone();
-                      t.x += $randomUtil.RandomUtil.randomInt(-100, 100);
-                      $bulletMgr.default.instance.createBullet({
-                        parent:
-                          $battleMgr.default.instance.getCurScene().bulletParent,
-                        prefabName: "CommonEnemyBullet",
-                        initPos: y.shootPos,
-                        iconPath:
-                          "textures/bullet/BOSS421_zidan" +
-                          $randomUtil.RandomUtil.randomInt(1, 4),
-                        bulletClass: $commonEnemyBullet.default,
-                        onCreated: function (n) {
-                          n.shoot(e, t, {
-                            bulletType: 3,
-                            bezierHeight: $randomUtil.RandomUtil.randomInt(
-                              200,
-                              300,
-                            ),
-                            time: 0.5,
-                            onRemove: function (t) {
-                              if ("" != e._cfg.hitAni) {
-                                const n = $battleMgr.default.instance.getCurScene();
-                                $effectMgr.default.instance.createEffect({
-                                  parent: n.effectParent,
-                                  prefabName: e._cfg.hitAni,
-                                  initPos: t,
-                                  effectClass: $spAnimEffect.default,
-                                  onCreated: function (t) {
-                                    t.playOnceAllAnim();
-                                  },
-                                });
-                              }
-                            },
-                          });
+                p = Number(this._cfg.val3),
+                d = function () {
+                  const t = a.clone();
+                  t.x += $randomUtil.RandomUtil.randomInt(-100, 100);
+                  $bulletMgr.default.instance.createBullet({
+                    parent: $battleMgr.default.instance.getCurScene().bulletParent,
+                    prefabName: 'CommonEnemyBullet',
+                    initPos: y.shootPos,
+                    iconPath:
+                      'textures/bullet/BOSS421_zidan' + $randomUtil.RandomUtil.randomInt(1, 4),
+                    bulletClass: $commonEnemyBullet.default,
+                    onCreated: function (n) {
+                      n.shoot(e, t, {
+                        bulletType: 3,
+                        bezierHeight: $randomUtil.RandomUtil.randomInt(200, 300),
+                        time: 0.5,
+                        onRemove: function (t) {
+                          if ('' != e._cfg.hitAni) {
+                            const n = $battleMgr.default.instance.getCurScene();
+                            $effectMgr.default.instance.createEffect({
+                              parent: n.effectParent,
+                              prefabName: e._cfg.hitAni,
+                              initPos: t,
+                              effectClass: $spAnimEffect.default,
+                              onCreated: function (t) {
+                                t.playOnceAllAnim();
+                              },
+                            });
+                          }
                         },
                       });
                     },
-                    y = this,
-                    g = 0;
+                  });
+                },
+                y = this,
+                g = 0;
               g < p;
               ++g
             ) {
@@ -244,14 +231,12 @@ const w =
     };
     e.prototype.searchTarget = function () {
       for (
-        const t = $actorMgr.default.instance.queryActorByCamp(
-                  $actorEnum.ETeamType.PLAYER,
-                ),
-              e = this.node.getPosition(),
-              n = $battleMgr.default.instance.getCurScene(),
-              i = Number.MAX_VALUE,
-              o = null,
-              r = 0;
+        const t = $actorMgr.default.instance.queryActorByCamp($actorEnum.ETeamType.PLAYER),
+          e = this.node.getPosition(),
+          n = $battleMgr.default.instance.getCurScene(),
+          i = Number.MAX_VALUE,
+          o = null,
+          r = 0;
         r < t.length;
         r++
       ) {
@@ -275,4 +260,4 @@ const w =
       return o;
     };
   })($enemyBase.default));
-exports.default = w;
+export default w;

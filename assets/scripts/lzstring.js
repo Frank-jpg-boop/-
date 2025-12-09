@@ -1,7 +1,7 @@
 const r = {
   compressToBase64: function (t) {
     if (null == t) {
-      return "";
+      return '';
     }
     const n = r._compress(t, 6, function (t) {
       return e.charAt(t);
@@ -11,18 +11,18 @@ const r = {
       case 0:
         return n;
       case 1:
-        return n + "===";
+        return n + '===';
       case 2:
-        return n + "==";
+        return n + '==';
       case 3:
-        return n + "=";
+        return n + '=';
     }
   },
   decompressFromBase64: function (t) {
     if (null == t) {
-      return "";
+      return '';
     } else {
-      if ("" == t) {
+      if ('' == t) {
         return null;
       } else {
         return r._decompress(t.length, 32, function (n) {
@@ -33,20 +33,20 @@ const r = {
   },
   compressToUTF16: function (e) {
     if (null == e) {
-      return "";
+      return '';
     } else {
       return (
         r._compress(e, 15, function (e) {
           return t(e + 32);
-        }) + " "
+        }) + ' '
       );
     }
   },
   decompressFromUTF16: function (t) {
     if (null == t) {
-      return "";
+      return '';
     } else {
-      if ("" == t) {
+      if ('' == t) {
         return null;
       } else {
         return r._decompress(t.length, 16384, function (e) {
@@ -78,11 +78,11 @@ const r = {
     n.forEach(function (e) {
       a.push(t(e));
     });
-    return r.decompress(a.join(""));
+    return r.decompress(a.join(''));
   },
   compressToEncodedURIComponent: function (t) {
     if (null == t) {
-      return "";
+      return '';
     } else {
       return r._compress(t, 6, function (t) {
         return n.charAt(t);
@@ -91,13 +91,13 @@ const r = {
   },
   decompressFromEncodedURIComponent: function (t) {
     if (null == t) {
-      return "";
+      return '';
     } else {
-      if ("" == t) {
+      if ('' == t) {
         return null;
       } else {
         return (
-          (t = t.replace(/ /g, "+")),
+          (t = t.replace(/ /g, '+')),
           r._decompress(t.length, 32, function (e) {
             return o(n, t.charAt(e));
           })
@@ -112,16 +112,16 @@ const r = {
   },
   _compress: function (t, e, n) {
     if (null == t) {
-      return "";
+      return '';
     }
     let i;
     let o;
     let r;
     const a = {};
     const s = {};
-    const c = "";
-    const l = "";
-    const u = "";
+    const c = '';
+    const l = '';
+    const u = '';
     const p = 2;
     const h = 3;
     const f = 2;
@@ -130,8 +130,7 @@ const r = {
     const y = 0;
     for (r = 0; r < t.length; r += 1) {
       c = t.charAt(r);
-      Object.prototype.hasOwnProperty.call(a, c) ||
-        ((a[c] = h++), (s[c] = !0));
+      Object.prototype.hasOwnProperty.call(a, c) || ((a[c] = h++), (s[c] = !0));
       l = u + c;
       if (Object.prototype.hasOwnProperty.call(a, l)) {
         u = l;
@@ -203,7 +202,7 @@ const r = {
         u = String(c);
       }
     }
-    if ("" !== u) {
+    if ('' !== u) {
       if (Object.prototype.hasOwnProperty.call(s, u)) {
         if (u.charCodeAt(0) < 256) {
           for (i = 0; i < f; i++) {
@@ -286,13 +285,13 @@ const r = {
       }
       y++;
     }
-    return d.join("");
+    return d.join('');
   },
   decompress: function (t) {
     if (null == t) {
-      return "";
+      return '';
     } else {
-      if ("" == t) {
+      if ('' == t) {
         return null;
       } else {
         return r._decompress(t.length, 32768, function (e) {
@@ -313,7 +312,7 @@ const r = {
     const h = 4;
     const f = 4;
     const d = 3;
-    const m = "";
+    const m = '';
     const y = [];
     const _ = {
       val: i(0),
@@ -354,13 +353,13 @@ const r = {
         u = t(a);
         break;
       case 2:
-        return "";
+        return '';
     }
     p[3] = u;
     r = u;
     for (y.push(u); ; ) {
       if (_.index > e) {
-        return "";
+        return '';
       }
       a = 0;
       c = Math.pow(2, d);
@@ -397,7 +396,7 @@ const r = {
           h--;
           break;
         case 2:
-          return y.join("");
+          return y.join('');
       }
       if (0 == h) {
         h = Math.pow(2, d);
@@ -433,11 +432,11 @@ function o(t, e) {
 }
 const i = {};
 
-const n = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$";
-const e = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+const n = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$';
+const e = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 const t = String.fromCharCode;
 const n = r;
-"function" == typeof define && define.amd
+'function' == typeof define && define.amd
   ? define(function () {
       return n;
     })

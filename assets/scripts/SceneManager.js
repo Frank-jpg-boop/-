@@ -5,7 +5,7 @@ import $frameEnum from './FrameEnum';
 import $yZLLLoading from './YZLLLoading';
 import $yZLLSceneLoading from './YZLLSceneLoading';
 import $popupManager from './PopupManager';
-exports.SceneManager = void 0;
+export const SceneManager = void 0;
 t._instance = null;
 t.prototype.hideLoading = function (t) {
   if (void 0 === t) {
@@ -15,7 +15,7 @@ t.prototype.hideLoading = function (t) {
 };
 t.prototype.showLoading = function (t, e, n, i) {
   if (void 0 === t) {
-    t = "加载中";
+    t = '加载中';
   }
   if (void 0 === e) {
     e = 120;
@@ -39,7 +39,7 @@ t.prototype.hideSceneLoading = function (t, e) {
 };
 t.prototype.showSceneLoading = function (t, e, n, i, o, r) {
   if (void 0 === t) {
-    t = "加载中";
+    t = '加载中';
   }
   if (void 0 === e) {
     e = 120;
@@ -73,7 +73,7 @@ t.prototype.preloadPopups = function (t, e, n) {
     e.forEach(function (r) {
       $resLoader.ResLoader.loadAsset({
         bundleName: t,
-        path: "popups/" + r,
+        path: 'popups/' + r,
         type: cc.Prefab,
       }).then(function (t) {
         ++i;
@@ -118,7 +118,7 @@ t.prototype.runScene = function (t, e, n, s, c) {
           l.preloadPopups(e, c, null);
         },
         fail: function () {
-          $globalPopupMgr.default.instance.showTips("加载失败");
+          $globalPopupMgr.default.instance.showTips('加载失败');
           l.hideSceneLoading(null, !0);
         },
       });
@@ -126,7 +126,7 @@ t.prototype.runScene = function (t, e, n, s, c) {
   };
   if (s) {
     this.showSceneLoading(
-      "玩命加载中",
+      '玩命加载中',
       255,
       function () {
         u();
@@ -139,7 +139,7 @@ t.prototype.runScene = function (t, e, n, s, c) {
     u();
   }
 };
-Object.defineProperty(t.prototype, "fragment", {
+Object.defineProperty(t.prototype, 'fragment', {
   get: function () {
     return this._fragment;
   },
@@ -149,14 +149,14 @@ Object.defineProperty(t.prototype, "fragment", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "curScene", {
+Object.defineProperty(t.prototype, 'curScene', {
   get: function () {
     return this._scene;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == this._instance) {
       this._instance = new t();
@@ -173,4 +173,4 @@ function t() {
   this._loading = null;
 }
 const u = t;
-exports.SceneManager = u;
+export const SceneManager = u;

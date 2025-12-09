@@ -7,8 +7,7 @@ e.prototype.updateProgressCd = function (t) {
   const e = t < 1;
   this.nProgress.active = e;
   if (e) {
-    this.nProgress.getChildByName("Bar").getComponent(cc.Sprite).fillRange =
-      t;
+    this.nProgress.getChildByName('Bar').getComponent(cc.Sprite).fillRange = t;
   }
 };
 e.prototype.hide = function () {
@@ -26,4 +25,4 @@ function e() {
   e.nProgress = null;
   return e;
 }
-exports.default = u;
+export default u;

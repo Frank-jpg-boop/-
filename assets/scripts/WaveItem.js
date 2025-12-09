@@ -7,7 +7,7 @@ const u = cc._decorator;
 const p = u.ccclass;
 const h = u.property;
 e.prototype.updateBar = function (t) {
-  this.nBar.getChildByName("Bar").width = this._width + 100 * t;
+  this.nBar.getChildByName('Bar').width = this._width + 100 * t;
 };
 e.prototype.update = function () {
   const t = $battleMgr.default.instance.getCurScene();
@@ -32,17 +32,15 @@ e.prototype.updateData = function (t) {
   this._wave = t;
   const e = $levelBattleData.levelBattleData.getWaveId(this._wave);
   const n = $cfg.default.instance.dataWave.getById(e).spe > 0;
-  const i = this.nState.getChildByName("Boss");
-  const o = this.nState.getChildByName("Normal");
+  const i = this.nState.getChildByName('Boss');
+  const o = this.nState.getChildByName('Normal');
   i.active = n;
   o.active = !n;
   if (i.active) {
-    i.children[1].active =
-      $levelBattleData.levelBattleData.curWave == this._wave;
+    i.children[1].active = $levelBattleData.levelBattleData.curWave == this._wave;
   }
   if (o.active) {
-    o.children[1].active =
-      $levelBattleData.levelBattleData.curWave == this._wave;
+    o.children[1].active = $levelBattleData.levelBattleData.curWave == this._wave;
   }
 };
 e.prototype.onLoad = function () {
@@ -65,4 +63,4 @@ function e() {
   e._wave = 0;
   return e;
 }
-exports.default = f;
+export default f;

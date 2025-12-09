@@ -38,14 +38,11 @@ e.prototype.bagItemSwitchReward = function () {
 e.prototype.init = function (t, e) {
   const n = this;
   this._gridMap.clear();
-  this._gridMap.set("0&0", this.nGrids.children[0]);
+  this._gridMap.set('0&0', this.nGrids.children[0]);
   for (const i = $bagConst.BAG_ROW * $bagConst.BAG_COL, o = 1; o < i; ++o) {
     const r = cc.instantiate(this.nGrids.children[0]);
     this.nGrids.addChild(r);
-    this._gridMap.set(
-      Math.floor(o / $bagConst.BAG_COL) + "&" + (o % $bagConst.BAG_COL),
-      r,
-    );
+    this._gridMap.set(Math.floor(o / $bagConst.BAG_COL) + '&' + (o % $bagConst.BAG_COL), r);
   }
   this.nGrids.getComponent(cc.Layout).updateLayout();
   const f = 0;
@@ -54,7 +51,7 @@ e.prototype.init = function (t, e) {
     const o = $cfg.default.instance.dataReward.getById(t.rewardId);
     $resLoader.ResLoader.loadAsset({
       bundleName: $frameEnum.Frame.EBundleName.GAME,
-      path: "prefabs/bag/Bag_Item_" + o.boxSet,
+      path: 'prefabs/bag/Bag_Item_' + o.boxSet,
       type: cc.Prefab,
     })
       .then(function (o) {
@@ -94,4 +91,4 @@ function e() {
   e._gridMap = new Map();
   return e;
 }
-exports.default = y;
+export default y;

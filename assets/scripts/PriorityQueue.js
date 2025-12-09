@@ -49,4 +49,4 @@ function t() {
   this.queue = [];
 }
 const n = t;
-module.exports = n;
+export default n;

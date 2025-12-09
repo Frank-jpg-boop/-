@@ -1,6 +1,6 @@
-exports.EventManager = void 0;
+export const EventManager = void 0;
 t._instance = null;
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new cc.EventTarget();
@@ -12,4 +12,4 @@ Object.defineProperty(t, "instance", {
 });
 function t() {}
 const i = t;
-exports.EventManager = i;
+export const EventManager = i;

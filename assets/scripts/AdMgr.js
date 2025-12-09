@@ -1,6 +1,6 @@
 import $playerDataProxy from './PlayerDataProxy';
 import $reportMgr from './ReportMgr';
-exports.AdMgr = void 0;
+export const AdMgr = void 0;
 t._instance = null;
 t.prototype.showVideoAd = function (t) {
   const e = {
@@ -8,10 +8,7 @@ t.prototype.showVideoAd = function (t) {
     eventId: t.eventId,
     success: function () {
       $playerDataProxy.playerDataProxy.addVideoNum();
-      $reportMgr.ReportMgr.instance.reportEvent(
-        t.eventId,
-        t.eventData ? t.eventData : {},
-      );
+      $reportMgr.ReportMgr.instance.reportEvent(t.eventId, t.eventData ? t.eventData : {});
       if (t.success) {
         t.success();
       }
@@ -27,7 +24,7 @@ t.prototype.showVideoAd = function (t) {
     mm.platform.showVideoAds(e);
   }
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == this._instance) {
       this._instance = new t();
@@ -39,4 +36,4 @@ Object.defineProperty(t, "instance", {
 });
 function t() {}
 const r = t;
-exports.AdMgr = r;
+export const AdMgr = r;

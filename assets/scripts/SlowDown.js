@@ -1,6 +1,6 @@
 import $attrEnum from './AttrEnum';
 let i;
-exports.SlowDown = void 0;
+export const SlowDown = void 0;
 e.prototype.onRemove = function () {
   t.prototype.onRemove.call(this);
   this._buffData.parentActor
@@ -9,9 +9,7 @@ e.prototype.onRemove = function () {
 };
 e.prototype.onTrigger = function (t) {
   this._subSpeed = t;
-  this._buffData.parentActor
-    .getAttribute($attrEnum.E_AttrType.SPEED)
-    .changePercentAdd(100 * -t);
+  this._buffData.parentActor.getAttribute($attrEnum.E_AttrType.SPEED).changePercentAdd(100 * -t);
 };
 function e() {
   const e = (null !== t && t.apply(this, arguments)) || this;
@@ -19,4 +17,4 @@ function e() {
   return e;
 }
 const a = e;
-exports.SlowDown = a;
+export const SlowDown = a;

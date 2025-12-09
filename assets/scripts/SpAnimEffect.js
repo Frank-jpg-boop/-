@@ -8,7 +8,7 @@ e.prototype.onPlayRemvoeEffect = function () {};
 e.prototype.playRemoveEffect = function () {
   const t = this;
   this.onPlayRemvoeEffect();
-  if ("" !== this._removeEffectName) {
+  if ('' !== this._removeEffectName) {
     this.playDefaultAnim(this._removeEffectName, 1, !1, function () {
       t.remove();
     });
@@ -87,7 +87,7 @@ function e() {
   const e = (null !== t && t.apply(this, arguments)) || this;
   e.spAnimCtrls = [];
   e._isAnimCompleteRemove = !0;
-  e._removeEffectName = "";
+  e._removeEffectName = '';
   return e;
 }
-exports.default = p;
+export default p;

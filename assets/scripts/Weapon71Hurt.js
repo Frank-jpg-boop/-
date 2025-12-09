@@ -16,7 +16,14 @@ e.prototype.onRemove = function () {
 };
 e.prototype.checkHurt = function () {
   for (
-    const t = this, e = this.collider.rect, n = this.node.parent.convertToNodeSpaceAR(cc.v2(e.xMin, e.yMin)), i = new cc.Rect(n.x, n.y, e.width, e.height), o = $gridAreaDivisionMgr.default.instance.getRectAreaKeys(i), r = [], c = 0, u = o;
+    const t = this,
+      e = this.collider.rect,
+      n = this.node.parent.convertToNodeSpaceAR(cc.v2(e.xMin, e.yMin)),
+      i = new cc.Rect(n.x, n.y, e.width, e.height),
+      o = $gridAreaDivisionMgr.default.instance.getRectAreaKeys(i),
+      r = [],
+      c = 0,
+      u = o;
     c < u.length;
     c++
   ) {
@@ -34,25 +41,15 @@ e.prototype.checkHurt = function () {
     if (
       !n.isDead() &&
       !t._collisionIds.includes(n.unitId) &&
-      $simplyCollisionDetector.default.isCollisionRectToRect(
-        e,
-        n.hurtColliderRect,
-      )
+      $simplyCollisionDetector.default.isCollisionRectToRect(e, n.hurtColliderRect)
     ) {
-      const i = $battleHurtFormulaMgr.default.instance.skillHurt(
-        t._ownerSkill.getHurtOption(),
-        n,
-      );
+      const i = $battleHurtFormulaMgr.default.instance.skillHurt(t._ownerSkill.getHurtOption(), n);
       n.beHurt(i);
       if (
         !n.isDead() &&
-        Math.random() <
-          t._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_4)
-            .value
+        Math.random() < t._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_4).value
       ) {
-        const o = t._ownerSkill.getAttribute(
-          $attrEnum.E_SkillAttrType.EXTRA_ATTR_1,
-        ).value;
+        const o = t._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_1).value;
         n.buff.add({
           buffId: $buffEnum.EBuffId.PALSY,
           buffType: $buffEnum.EBuffType.PALSY,
@@ -81,16 +78,12 @@ e.prototype.play = function (t) {
   this._collisionIds = [];
   this._ownerSkill = t;
   this.collider.node.width = 0;
-  const e = this._ownerSkill.getAttribute(
-    $attrEnum.E_SkillAttrType.EXTRA_ATTR_2,
-  ).value;
+  const e = this._ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2).value;
   this._maxRange = e * this.range;
-  this.node.getChildByName("View").scale = e;
-  const n =
-    this.spAnimCtrls[0].spAnim.findAnimation("dianquan").duration /
-    this.speed;
+  this.node.getChildByName('View').scale = e;
+  const n = this.spAnimCtrls[0].spAnim.findAnimation('dianquan').duration / this.speed;
   this._rangeSpeed = this._maxRange / n;
-  this.playDefaultAnim("dianquan", this.speed, !1);
+  this.playDefaultAnim('dianquan', this.speed, !1);
 };
 function e() {
   const e = (null !== t && t.apply(this, arguments)) || this;
@@ -103,4 +96,4 @@ function e() {
   e._collisionIds = [];
   return e;
 }
-exports.default = y;
+export default y;

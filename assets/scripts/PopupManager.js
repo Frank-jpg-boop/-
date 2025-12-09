@@ -5,19 +5,18 @@ import $resLoader from './ResLoader';
 import $appProxy from './AppProxy';
 import $sceneManager from './SceneManager';
 import $util from './Util';
-exports.PopupManager = exports.PopupCacheMode = void 0;
-let r;
-!(function (t) {
-  t[(t.ONCE = 0)] = "ONCE";
-  t[(t.CACHE = 1)] = "CACHE";
-  t[(t.CACHE_RES = 2)] = "CACHE_RES";
-  t[(t.AWAY = 3)] = "AWAY";
-})((r = exports.PopupCacheMode || (exports.PopupCacheMode = {})));
+export const PopupCacheMode = {
+  ONCE: 0,
+  CACHE: 1,
+  CACHE_RES: 2,
+  AWAY: 3,
+};
+export const PopupManager = t;
 t.prototype.setParent = function () {
   if (this.popupInit) {
     //
   } else {
-    this.popupNode = new cc.Node("PopupNode");
+    this.popupNode = new cc.Node('PopupNode');
     this.popupNode.width = $appBase.rootNode.width;
     this.popupNode.height = $appBase.rootNode.height;
     $appBase.rootNode.addChild(this.popupNode, 1);
@@ -82,9 +81,7 @@ t.prototype.removeAll = function (t, e) {
   if (n) {
     this.remove(n, t, e);
   } else {
-    $eventManager.EventManager.instance.emit(
-      $appProxy.AppEvent.POPUP_CHANGED,
-    );
+    $eventManager.EventManager.instance.emit($appProxy.AppEvent.POPUP_CHANGED);
   }
   this.cleanAllPopup();
 };
@@ -106,9 +103,7 @@ t.prototype.remove = function (t, e, n, i) {
   this.hidePopup(t, e, n);
   if (a && i) {
     this.showLast();
-    $eventManager.EventManager.instance.emit(
-      $appProxy.AppEvent.POPUP_CHANGED,
-    );
+    $eventManager.EventManager.instance.emit($appProxy.AppEvent.POPUP_CHANGED);
   }
 };
 t.prototype.removeNode = function (t, e, n) {
@@ -140,7 +135,7 @@ t.prototype.hidePopup = function (t, e, n) {
     } else {
       this._prefabMap[t] = null;
     }
-    const s = o.getComponent("PopupBase");
+    const s = o.getComponent('PopupBase');
     if (o.active) {
       s._hide(n)
         .then(function () {
@@ -154,12 +149,12 @@ t.prototype.hidePopup = function (t, e, n) {
       this.removeNode(o, a, e);
     }
   } else {
-    console.warn(t + "已被销毁");
+    console.warn(t + '已被销毁');
   }
 };
 t.prototype.showPopup = function (t) {
   const e = this;
-  const n = t.getComponent("PopupBase");
+  const n = t.getComponent('PopupBase');
   const i = 0 === this._showOptions.length;
   n._show().then(function () {
     if (i) {
@@ -184,7 +179,7 @@ t.prototype.showLast = function () {
       this.checkDealing();
     } else {
       t.active = !0;
-      const n = t.getComponent("PopupBase");
+      const n = t.getComponent('PopupBase');
       if (n._isShow) {
         //
       } else {
@@ -200,18 +195,15 @@ t.prototype.showLast = function () {
 };
 t.prototype._show = function (t, e, n, i, o, r, a) {
   let s;
-  const c = e.getComponent("PopupBase");
+  const c = e.getComponent('PopupBase');
   if (null == c) {
-    throw (this.checkDealing(), new Error("请将Popup继承PopupBase"));
+    throw (this.checkDealing(), new Error('请将Popup继承PopupBase'));
   }
   const l = this._popups.indexOf(t);
   if (l >= 0) {
     this._popups.splice(l, 1);
   }
-  const u =
-    (null === (s = this.getCurrentPopup()) || void 0 === s
-      ? void 0
-      : s.zIndex) || 0;
+  const u = (null === (s = this.getCurrentPopup()) || void 0 === s ? void 0 : s.zIndex) || 0;
   if (n < u) {
     e.active = !1;
     for (const p = this._popups.length - 1; p >= 0; p--) {
@@ -254,13 +246,12 @@ t.prototype._show = function (t, e, n, i, o, r, a) {
 t.prototype.show = function (t) {
   let e;
   if (!this.popupInit) {
-    throw new Error("请先初始化PopupManager");
+    throw new Error('请先初始化PopupManager');
   }
-  const n =
-    t.name || (null === (e = t.prefab) || void 0 === e ? void 0 : e.name);
+  const n = t.name || (null === (e = t.prefab) || void 0 === e ? void 0 : e.name);
   if (null == n) {
     if (null == t.path) {
-      throw new Error("name、prefab、path不同同时为空");
+      throw new Error('name、prefab、path不同同时为空');
     }
     n = cc.path.basename(t.path);
   }
@@ -291,7 +282,7 @@ t.prototype.checkDealing = function () {
 t.prototype.init = function () {
   this.setParent();
 };
-Object.defineProperty(t.prototype, "globalAnim", {
+Object.defineProperty(t.prototype, 'globalAnim', {
   get: function () {
     return this._globalAnim;
   },
@@ -301,14 +292,14 @@ Object.defineProperty(t.prototype, "globalAnim", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "popups", {
+Object.defineProperty(t.prototype, 'popups', {
   get: function () {
     return this._popups;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == this._instance) {
       this._instance = new t();
@@ -330,4 +321,4 @@ function t() {
   this._globalAnim = null;
 }
 const f = t;
-exports.PopupManager = f;
+export const PopupManager = f;;

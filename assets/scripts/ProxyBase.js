@@ -1,4 +1,4 @@
-exports.ProxyBase = void 0;
+export const ProxyBase = void 0;
 t.prototype.initData = function () {};
 t.prototype.init = function (t) {
   if (t) {
@@ -11,4 +11,4 @@ function t(t) {
   this._data = new t();
 }
 const i = t;
-exports.ProxyBase = i;
+export const ProxyBase = i;

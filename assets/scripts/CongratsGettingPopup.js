@@ -15,82 +15,81 @@ e.prototype.onBtnClose = function () {
 e.prototype.initRewardItems = function (t) {
   for (
     const e = this,
-          n = this.node.getChildByName("BtnClose"),
-          i = t.children[0],
-          o = function (o) {
-            const u = r._rewardDatas[o];
-            const p = t.children[o];
-            if (p) {
-              //
-            } else {
-              p = cc.instantiate(i);
-              t.addChild(p);
+      n = this.node.getChildByName('BtnClose'),
+      i = t.children[0],
+      o = function (o) {
+        const u = r._rewardDatas[o];
+        const p = t.children[o];
+        if (p) {
+          //
+        } else {
+          p = cc.instantiate(i);
+          t.addChild(p);
+        }
+        p.active = !0;
+        const h = p.getChildByName('greadImg');
+        const f = p.getChildByName('icon');
+        const d = p.getChildByName('num');
+        const m = p.getChildByName('effectSp');
+        const y = $cfg.default.instance.dataItem.getById(u.itemId);
+        $resLoader.ResLoader.loadAsset({
+          path: 'textures/public/pic_wuping_di_' + y.rare,
+          type: cc.SpriteFrame,
+          bundleName: $frameEnum.Frame.EBundleName.HOME,
+        })
+          .then(function (t) {
+            h.getComponent(cc.Sprite).spriteFrame = t;
+          })
+          .catch(function (t) {
+            console.log('error:', t);
+          });
+        $resLoader.ResLoader.loadAsset({
+          path: 'textures/atlas/item/' + y.icon,
+          type: cc.SpriteFrame,
+          bundleName: $frameEnum.Frame.EBundleName.RES,
+        })
+          .then(function (t) {
+            f.getComponent(cc.Sprite).spriteFrame = t;
+          })
+          .catch(function (t) {
+            console.log('error:', t);
+          });
+        d.getComponent(cc.Label).string = 'x' + $mathUtil.MathUtil.formatValue(u.itemNum);
+        m.active = !1;
+        const _ = o;
+        p.scale = 0;
+        cc.tween(p)
+          .delay(0.1 * o)
+          .to(0.2, {
+            scale: 1.1,
+          })
+          .to(0.1, {
+            scale: 1,
+          })
+          .call(function () {
+            if (_ == e._rewardDatas.length - 1) {
+              n.active = !0;
+              n.scale = 0;
+              cc.Tween.stopAllByTarget(n);
+              cc.tween(n)
+                .to(0.2, {
+                  scale: 1.1,
+                })
+                .to(0.1, {
+                  scale: 1,
+                })
+                .start();
             }
-            p.active = !0;
-            const h = p.getChildByName("greadImg");
-            const f = p.getChildByName("icon");
-            const d = p.getChildByName("num");
-            const m = p.getChildByName("effectSp");
-            const y = $cfg.default.instance.dataItem.getById(u.itemId);
-            $resLoader.ResLoader.loadAsset({
-              path: "textures/public/pic_wuping_di_" + y.rare,
-              type: cc.SpriteFrame,
-              bundleName: $frameEnum.Frame.EBundleName.HOME,
-            })
-              .then(function (t) {
-                h.getComponent(cc.Sprite).spriteFrame = t;
-              })
-              .catch(function (t) {
-                console.log("error:", t);
-              });
-            $resLoader.ResLoader.loadAsset({
-              path: "textures/atlas/item/" + y.icon,
-              type: cc.SpriteFrame,
-              bundleName: $frameEnum.Frame.EBundleName.RES,
-            })
-              .then(function (t) {
-                f.getComponent(cc.Sprite).spriteFrame = t;
-              })
-              .catch(function (t) {
-                console.log("error:", t);
-              });
-            d.getComponent(cc.Label).string =
-              "x" + $mathUtil.MathUtil.formatValue(u.itemNum);
-            m.active = !1;
-            const _ = o;
-            p.scale = 0;
-            cc.tween(p)
-              .delay(0.1 * o)
-              .to(0.2, {
-                scale: 1.1,
-              })
-              .to(0.1, {
-                scale: 1,
-              })
-              .call(function () {
-                if (_ == e._rewardDatas.length - 1) {
-                  n.active = !0;
-                  n.scale = 0;
-                  cc.Tween.stopAllByTarget(n);
-                  cc.tween(n)
-                    .to(0.2, {
-                      scale: 1.1,
-                    })
-                    .to(0.1, {
-                      scale: 1,
-                    })
-                    .start();
-                }
-                m.active = !0;
-                m.getComponent(sp.Skeleton).setCompleteListener(function () {
-                  m.active = !1;
-                });
-                m.getComponent(sp.Skeleton).setAnimation(0, "animation", !1);
-              })
-              .start();
-          },
-          r = this,
-          u = 0;
+            m.active = !0;
+            m.getComponent(sp.Skeleton).setCompleteListener(function () {
+              m.active = !1;
+            });
+            m.getComponent(sp.Skeleton).setAnimation(0, 'animation', !1);
+          })
+          .start();
+      },
+      r = this,
+      u = 0;
     u < this._rewardDatas.length;
     ++u
   ) {
@@ -98,9 +97,9 @@ e.prototype.initRewardItems = function (t) {
   }
 };
 e.prototype.onShow = function () {
-  const t = this.node.getChildByName("gongxihuode");
+  const t = this.node.getChildByName('gongxihuode');
   t.active = !0;
-  t.getComponent(sp.Skeleton).setAnimation(0, "animation", !1);
+  t.getComponent(sp.Skeleton).setAnimation(0, 'animation', !1);
   if (this._rewardDatas.length > 4) {
     this.mMaxItems.active = !0;
     this.initRewardItems(this.mMaxItems);
@@ -111,8 +110,8 @@ e.prototype.onShow = function () {
 };
 e.prototype.init = function (t) {
   this._rewardDatas = t.rewardDatas;
-  this.node.getChildByName("gongxihuode").active = !1;
-  this.node.getChildByName("BtnClose").active = !1;
+  this.node.getChildByName('gongxihuode').active = !1;
+  this.node.getChildByName('BtnClose').active = !1;
 };
 function e() {
   const e = (null !== t && t.apply(this, arguments)) || this;
@@ -121,4 +120,4 @@ function e() {
   e._rewardDatas = [];
   return e;
 }
-exports.default = m;
+export default m;

@@ -19,14 +19,10 @@ const m =
     }
     e.prototype.registerState = function () {
       t.prototype.registerState.call(this);
-      this._sm.addState(
-        $actorEnum.EActorStateType.ATTACK,
-        new $enemy_212_Atk.Enemy_212_Atk(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.ATTACK, new $enemy_212_Atk.Enemy_212_Atk(this));
     };
     e.prototype.onInit = function () {
-      this.attackAnimDuration =
-        this._spCtrl.spAnim.findAnimation("atk").duration;
+      this.attackAnimDuration = this._spCtrl.spAnim.findAnimation('atk').duration;
       t.prototype.onInit.call(this);
     };
     e.prototype.canAttackTarget = function (e) {
@@ -36,10 +32,10 @@ const m =
         if (e.pathPos.x == this.pathPos.x) {
           const i = cc.v2(0, e.pathPos.y > this.pathPos.y ? 1 : -1);
           const o = null;
-          if ("" != this._pathPointId) {
+          if ('' != this._pathPointId) {
             o = n.level.path.getPoint(this._pathPointId).getDirLine(i);
           } else {
-            if ("" != this._pathLineId) {
+            if ('' != this._pathLineId) {
               o = this._pathLineId;
             }
           }
@@ -68,10 +64,10 @@ const m =
           let c;
           i = cc.v2(e.pathPos.x > this.pathPos.x ? 1 : -1, 0);
           o = null;
-          if ("" != this._pathPointId) {
+          if ('' != this._pathPointId) {
             o = n.level.path.getPoint(this._pathPointId).getDirLine(i);
           } else {
-            if ("" != this._pathLineId) {
+            if ('' != this._pathLineId) {
               o = this._pathLineId;
             }
           }
@@ -109,9 +105,7 @@ const m =
     e.prototype.findMoveDoor = function (t, e, n, i) {
       for (
         const o = 0,
-              r = $unitMgr.UnitMgr.instance.queryUnit(
-                $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
-              );
+          r = $unitMgr.UnitMgr.instance.queryUnit($gridAreaDivisionMgr.E_AreaObjectType.DOOR);
         o < r.length;
         o++
       ) {
@@ -128,4 +122,4 @@ const m =
       return null;
     };
   })($enemyBase.default));
-exports.default = m;
+export default m;

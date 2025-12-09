@@ -49,10 +49,10 @@ const z =
       e._cfg = null;
       e._isFixCreate = !1;
       e._isWaveRefresh = !1;
-      e._atkAnimName = "atk";
-      e._standAnimName = "stand";
-      e._dieAnimName = "die";
-      e._moveAnimName = "move";
+      e._atkAnimName = 'atk';
+      e._standAnimName = 'stand';
+      e._dieAnimName = 'die';
+      e._moveAnimName = 'move';
       e._attackCD = 0;
       e._rewardMap = null;
       e._attackRange = 0;
@@ -65,59 +65,56 @@ const z =
       e.tempCollisionDoorIds = [];
       return e;
     }
-    Object.defineProperty(e.prototype, "cfg", {
+    Object.defineProperty(e.prototype, 'cfg', {
       get: function () {
         return this._cfg;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "isFixCreate", {
+    Object.defineProperty(e.prototype, 'isFixCreate', {
       get: function () {
         return this._isFixCreate;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "shootPos", {
+    Object.defineProperty(e.prototype, 'shootPos', {
       get: function () {
-        return $nodeUtil.default.nodeParentChangeLocalPos(
-          this._shootPosNode,
-          this.node.parent,
-        );
+        return $nodeUtil.default.nodeParentChangeLocalPos(this._shootPosNode, this.node.parent);
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "isWaveRefresh", {
+    Object.defineProperty(e.prototype, 'isWaveRefresh', {
       get: function () {
         return this._isWaveRefresh;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "isTrigger", {
+    Object.defineProperty(e.prototype, 'isTrigger', {
       get: function () {
         return this._isTrigger;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "attackRange", {
+    Object.defineProperty(e.prototype, 'attackRange', {
       get: function () {
         return this._attackRange;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "isGuideEnemy", {
+    Object.defineProperty(e.prototype, 'isGuideEnemy', {
       get: function () {
         return this._initParam && this._initParam.isGuideEnemy;
       },
       enumerable: !1,
       configurable: !0,
     });
-    Object.defineProperty(e.prototype, "isNotReward", {
+    Object.defineProperty(e.prototype, 'isNotReward', {
       get: function () {
         return this._initParam && this._initParam.isNotReward;
       },
@@ -126,17 +123,14 @@ const z =
     });
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
-      this._shootPosNode = this.node
-        .getChildByName("Body")
-        .getChildByName("ShootPos");
+      this._shootPosNode = this.node.getChildByName('Body').getChildByName('ShootPos');
       this._nTagParent = this.node;
       this.node.opacity = 0;
     };
     e.prototype.onEnable = function () {};
     e.prototype.initConfig = function () {
       this._cfg = $cfg.default.instance.dataEnemy.getById(this._cfgId);
-      this._attackRange =
-        this._cfg.edge + $randomUtil.RandomUtil.randomInt(20, 50);
+      this._attackRange = this._cfg.edge + $randomUtil.RandomUtil.randomInt(20, 50);
       this._isGroundMove = 1 == this._cfg.moveType;
     };
     e.prototype.initType = function () {
@@ -160,46 +154,39 @@ const z =
       }
       n = Math.ceil(n * $levelBattleData.levelBattleData.enemyLevelRate);
       const i = Math.floor(
-        (this._cfg.ark + this._cfg.arkP * n) *
-          $levelBattleData.levelBattleData.stageEnemyAtkScale,
+        (this._cfg.ark + this._cfg.arkP * n) * $levelBattleData.levelBattleData.stageEnemyAtkScale,
       );
       this.getAttribute($attrEnum.E_AttrType.ATK).setFixBase(i);
       const o = Math.floor(
         this._cfg.hp +
-          this._cfg.hpP *
-            n *
-            (this._initParam && this._initParam.isGuideEnemy ? 0.5 : 1),
+          this._cfg.hpP * n * (this._initParam && this._initParam.isGuideEnemy ? 0.5 : 1),
       );
       if (0 == $levelBattleData.levelBattleData.cfgStage.id) {
         o -= 300;
       }
       this.getAttribute($attrEnum.E_AttrType.HP).setFixBase(o);
-      this.getAttribute($attrEnum.E_AttrType.SPEED).setBaseGetValueFunc(
-        function () {
-          const t = e._cfg.spe;
-          if (1 != e._cfg.moveType) {
-            return t;
+      this.getAttribute($attrEnum.E_AttrType.SPEED).setBaseGetValueFunc(function () {
+        const t = e._cfg.spe;
+        if (1 != e._cfg.moveType) {
+          return t;
+        }
+        const n = $battleMgr.default.instance.getCurScene();
+        const i = $actorMgr.default.instance.getActor(n.playerId);
+        if (i) {
+          const o = n.level.getRoomById(e.roomId);
+          const r = n.level.getRoomById(i.roomId);
+          if (o && r) {
+            const a = Math.abs(o.layer - r.layer);
+            t *= Math.pow(1.4, a);
           }
-          const n = $battleMgr.default.instance.getCurScene();
-          const i = $actorMgr.default.instance.getActor(n.playerId);
-          if (i) {
-            const o = n.level.getRoomById(e.roomId);
-            const r = n.level.getRoomById(i.roomId);
-            if (o && r) {
-              const a = Math.abs(o.layer - r.layer);
-              t *= Math.pow(1.4, a);
-            }
-          }
-          if (e._initParam && e._initParam.waitRescueFlag) {
-            return t * (1 == e._initParam.waitRescueFlag ? 1.5 : 2);
-          } else {
-            return t;
-          }
-        },
-      );
-      const r = $cfg.default.instance.dataAtt.getById(
-        $attrEnum.E_AttrType.CRIT_HURT,
-      ).val;
+        }
+        if (e._initParam && e._initParam.waitRescueFlag) {
+          return t * (1 == e._initParam.waitRescueFlag ? 1.5 : 2);
+        } else {
+          return t;
+        }
+      });
+      const r = $cfg.default.instance.dataAtt.getById($attrEnum.E_AttrType.CRIT_HURT).val;
       this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).setFixBase(r);
     };
     e.prototype.onInit = function () {
@@ -213,12 +200,11 @@ const z =
         );
       }
       this._isWaveRefresh =
-        !(!this._initParam || !this._initParam.isWaveRefresh) &&
-        this._initParam.isWaveRefresh;
+        !(!this._initParam || !this._initParam.isWaveRefresh) && this._initParam.isWaveRefresh;
       this._rewardMap = this._initParam.rewardMap;
-      if ("" != this._cfg.dropAll) {
-        this._cfg.dropAll.split("|").forEach(function (t) {
-          const n = t.split("_").map(Number);
+      if ('' != this._cfg.dropAll) {
+        this._cfg.dropAll.split('|').forEach(function (t) {
+          const n = t.split('_').map(Number);
           const i = n[0];
           const o = n[1];
           if ($itemDataProxy.itemDataProxy.checkCanDropReward(i)) {
@@ -230,15 +216,12 @@ const z =
           }
         });
       }
-      if ("" != this._cfg.dropPro) {
-        this._cfg.dropPro.split("|").forEach(function (t) {
-          const n = t.split("_").map(Number);
+      if ('' != this._cfg.dropPro) {
+        this._cfg.dropPro.split('|').forEach(function (t) {
+          const n = t.split('_').map(Number);
           const i = n[0];
           const o = n[1];
-          if (
-            $itemDataProxy.itemDataProxy.checkCanDropReward(i) &&
-            Math.random() < o
-          ) {
+          if ($itemDataProxy.itemDataProxy.checkCanDropReward(i) && Math.random() < o) {
             if (e._rewardMap.has(i)) {
               e._rewardMap.set(i, e._rewardMap.get(i) + 1);
             } else {
@@ -259,21 +242,20 @@ const z =
         }
       }
       this._isFixCreate =
-        !(!this._initParam || !this._initParam.isFixCreate) &&
-        this._initParam.isFixCreate;
+        !(!this._initParam || !this._initParam.isFixCreate) && this._initParam.isFixCreate;
       this._nTagParent.active = !0;
       t.prototype.onInit.call(this);
     };
     e.prototype.initAnim = function () {
       const t = this;
-      const e = this.node.getChildByName("Body").getChildByName("Anim");
+      const e = this.node.getChildByName('Body').getChildByName('Anim');
       if (0 == this._cfg.isBoss) {
         this._animCtrl = e.getComponent($animationCtrl.default);
       } else {
         this._nTagParent != this.node && (this._nTagParent.active = !1);
         $effectMgr.default.instance.createEffect({
           parent: this._nTagParent,
-          prefabName: "EEnemyFlag",
+          prefabName: 'EEnemyFlag',
           initPos: cc.v2(0, this.rightHeight + 30),
           effectClass: $spAnimEffect.default,
           onCreated: function (e) {
@@ -282,14 +264,14 @@ const z =
               e.remove();
             } else {
               if (2 == t._cfg.isBoss) {
-                (e.spAnimCtrls[0].spAnim.setSkin("boss"),
+                (e.spAnimCtrls[0].spAnim.setSkin('boss'),
                   (e.spAnimCtrls[0].node.active = !0),
                   (e.spAnimCtrls[1].node.active = !1),
-                  e.playDefaultAnim("loop", 1, !0));
+                  e.playDefaultAnim('loop', 1, !0));
               } else {
                 ((e.spAnimCtrls[0].node.active = !1),
                   (e.spAnimCtrls[1].node.active = !0),
-                  e.spAnimCtrls[1].playAnim("stand", 1, !0));
+                  e.spAnimCtrls[1].playAnim('stand', 1, !0));
               }
               t._flagEffect = e;
             }
@@ -308,7 +290,7 @@ const z =
         t._animCtrl
           .loadAtlasAnimation(
             $frameEnum.Frame.EBundleName.GAME,
-            "textures/anim_enemy/enemy" + t._cfg.id + "/enemy" + t._cfg.id,
+            'textures/anim_enemy/enemy' + t._cfg.id + '/enemy' + t._cfg.id,
             $animationCfgMgr.AnimationCfgMgr.instance.getEnemyAnimCfg(t._cfgId),
             function () {
               e();
@@ -340,26 +322,14 @@ const z =
     };
     e.prototype.registerState = function () {
       this._sm = new $stateMachine.StateMachine();
-      this._sm.addState(
-        $actorEnum.EActorStateType.IDLE,
-        new $enemyIdleState.EnemyIdleState(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.WALK,
-        new $enemyWalkState.EnemyWalkState(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.IDLE, new $enemyIdleState.EnemyIdleState(this));
+      this._sm.addState($actorEnum.EActorStateType.WALK, new $enemyWalkState.EnemyWalkState(this));
       this._sm.addState(
         $actorEnum.EActorStateType.ATTACK,
         new $enemyAttackState.EnemyAttackState(this),
       );
-      this._sm.addState(
-        $actorEnum.EActorStateType.DEAD,
-        new $enemyDeadState.EnemyDeadState(this),
-      );
-      this._sm.addState(
-        $actorEnum.EActorStateType.STOP,
-        new $enemyStopState.EnemyStopState(this),
-      );
+      this._sm.addState($actorEnum.EActorStateType.DEAD, new $enemyDeadState.EnemyDeadState(this));
+      this._sm.addState($actorEnum.EActorStateType.STOP, new $enemyStopState.EnemyStopState(this));
       this._sm.addState(
         $actorEnum.EActorStateType.SKILL,
         new $enemySkillState.EnemySkillState(this),
@@ -472,9 +442,7 @@ const z =
       if (this.isDead()) {
         //
       } else {
-        if (
-          this._sm.currentState.stateType == $actorEnum.EActorStateType.STOP
-        ) {
+        if (this._sm.currentState.stateType == $actorEnum.EActorStateType.STOP) {
           this._sm.currentState.again(t);
         } else {
           this.changeState($actorEnum.EActorStateType.STOP, t);
@@ -518,20 +486,17 @@ const z =
         }
       }
       const n = this.node.convertToWorldSpaceAR(cc.Vec2.ZERO);
-      const i = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(
-        this.node.x,
-        this.node.y,
-      );
+      const i = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(this.node.x, this.node.y);
       this.checkDoor(i.key, n, e);
     };
     e.prototype.checkDoor = function (t, e, n) {
       for (
         const i = this,
-              o = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
-                t,
-                $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
-              ),
-              r = 0;
+          o = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
+            t,
+            $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
+          ),
+          r = 0;
         r < this.tempCollisionDoorIds.length;
         r++
       ) {
@@ -585,13 +550,7 @@ const z =
           i.beHurt(this.getAttribute($attrEnum.E_AttrType.ATK).value);
         } else if (2 != this._cfg.enemyType && 3 != this._cfg.enemyType) {
           const o = t.getComponent($actorBase.default);
-          if (
-            o &&
-            cc.Vec2.squaredDistance(
-              o.node.getPosition(),
-              this.node.getPosition(),
-            ) <= 1e4
-          ) {
+          if (o && cc.Vec2.squaredDistance(o.node.getPosition(), this.node.getPosition()) <= 1e4) {
             o.beHurt(this.getHurt());
           }
         } else {
@@ -617,7 +576,6 @@ const z =
         n = null;
       }
       const o = t.getComponent($actorBase.default);
-      const r = void 0;
       if (o) {
         const s = o.getBeHurtPos();
         if (2 == e) {
@@ -631,15 +589,14 @@ const z =
         }
         $bulletMgr.default.instance.createBullet({
           parent: $battleMgr.default.instance.getCurScene().bulletParent,
-          prefabName: "CommonEnemyBullet",
+          prefabName: 'CommonEnemyBullet',
           initPos: this.shootPos,
-          iconPath: "textures/bullet/Enemy" + this._cfg.id + "_zidan",
+          iconPath: 'textures/bullet/Enemy' + this._cfg.id + '_zidan',
           bulletClass: $commonEnemyBullet.default,
           onCreated: function (t) {
             t.shoot(i, s, {
               bulletType: e,
-              bezierHeight:
-                3 == e ? $randomUtil.RandomUtil.randomInt(150, 200) : 0,
+              bezierHeight: 3 == e ? $randomUtil.RandomUtil.randomInt(150, 200) : 0,
               onRemove: n,
               groundY: r,
             });
@@ -649,8 +606,7 @@ const z =
     };
     e.prototype.getHurt = function () {
       const t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
-      const e =
-        Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
+      const e = Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
       if (e) {
         t *= this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).value;
       }
@@ -664,28 +620,27 @@ const z =
     e.prototype.canAttackTarget = function (e) {
       return (
         t.prototype.canAttackTarget.call(this, e) &&
-        cc.Vec2.squaredDistance(
-          e.node.getPosition(),
-          this.node.getPosition(),
-        ) <=
+        cc.Vec2.squaredDistance(e.node.getPosition(), this.node.getPosition()) <=
           this._attackRange * this._attackRange
       );
     };
     e.prototype.updatePathData = function () {
       for (
-        const t = $mathUtil.MathUtil.vec2Fixed(this._pathPos), e = $battleMgr.default.instance.getCurScene().level.path, n = (1 * this.getAttribute($attrEnum.E_AttrType.SPEED).value) / 60;
+        const t = $mathUtil.MathUtil.vec2Fixed(this._pathPos),
+          e = $battleMgr.default.instance.getCurScene().level.path,
+          n = (1 * this.getAttribute($attrEnum.E_AttrType.SPEED).value) / 60;
         ;
       ) {
         const i = e.findPathPointByPos(t, n - 0.5);
-        if ("" != i) {
+        if ('' != i) {
           this._pathPointId = i;
-          this._pathLineId = "";
+          this._pathLineId = '';
           break;
         }
         const o = e.findPathLineByPos(t);
-        if ("" != o) {
+        if ('' != o) {
           this._pathLineId = o;
-          this._pathPointId = "";
+          this._pathPointId = '';
         }
         break;
       }
@@ -694,7 +649,7 @@ const z =
     e.prototype.onBeHurt = function (e) {
       const n = this;
       t.prototype.onBeHurt.call(this, e);
-      const i = this.node.getChildByName("Body").getComponent(cc.Animation);
+      const i = this.node.getChildByName('Body').getComponent(cc.Animation);
       if (i) {
         this.fixedZIndex = cc.macro.MAX_ZINDEX;
         i.once(
@@ -705,21 +660,15 @@ const z =
           this,
         );
         if (e.skillId && 21 == e.skillId) {
-          $audioUtil.AudioUtil.playLimitEffect(
-            "sounds/lmtw_yx_JinQianJianMingZhong",
-            0.2,
-          );
+          $audioUtil.AudioUtil.playLimitEffect('sounds/lmtw_yx_JinQianJianMingZhong', 0.2);
         } else {
-          $audioUtil.AudioUtil.playLimitEffect(
-            "sounds/lmtw_yx_MonsterHurt",
-            0.2,
-          );
+          $audioUtil.AudioUtil.playLimitEffect('sounds/lmtw_yx_MonsterHurt', 0.2);
         }
-        i.play("EnemyHurt", 0);
+        i.play('EnemyHurt', 0);
       }
       const o = this.node
-        .getChildByName("Body")
-        .getChildByName("Anim")
+        .getChildByName('Body')
+        .getChildByName('Anim')
         .getComponent($shimmerWhite.default);
       if (o) {
         o.show(0.2);
@@ -727,13 +676,11 @@ const z =
     };
     e.prototype.searchTarget = function () {
       for (
-        const t = $actorMgr.default.instance.queryActorByCamp(
-                  $actorEnum.ETeamType.PLAYER,
-                ),
-              e = this.node.getPosition(),
-              n = Number.MAX_VALUE,
-              i = null,
-              o = 0;
+        const t = $actorMgr.default.instance.queryActorByCamp($actorEnum.ETeamType.PLAYER),
+          e = this.node.getPosition(),
+          n = Number.MAX_VALUE,
+          i = null,
+          o = 0;
         o < t.length;
         o++
       ) {
@@ -788,11 +735,11 @@ const z =
             }
             break;
           }
-          if ("" != this._pathLineId) {
+          if ('' != this._pathLineId) {
             const l = n.level.path.getLine(this._pathLineId);
             r = l.startPos.y;
             i = l.roomId;
-          } else if ("" != this._pathPointId) {
+          } else if ('' != this._pathPointId) {
             const h = n.level.path.getPoint(this._pathPointId);
             r = h.pos.y;
             i = h.roomId;
@@ -806,33 +753,32 @@ const z =
             $cfg.default.instance.dataReward.getById(s);
             for (
               const c = t,
-                    l = function () {
-                      const t =
-                        (25 * Math.min(Math.floor(d / 2) + 1, 5) +
-                          $randomUtil.RandomUtil.randomInt(-10, 10)) *
-                        (d % 2 == 0 ? 1 : -1);
-                      t = Math.max(t, e.dropMinOffsetX);
-                      t = Math.min(t, e.dropMaxOffsetX);
-                      $unitMgr.UnitMgr.instance.createUnit({
-                        areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.GOOD,
-                        areaColliderType:
-                          $gridAreaDivisionMgr.E_AreaColliderType.RECT,
-                        parent: n.unitParent,
-                        prefabName: "SceneGood",
-                        unitClass: "SceneGood",
-                        initPos: o,
-                        initParam: {
-                          rewardId: s,
-                          rewardNum: 1,
-                        },
-                        onCreated: function (e) {
-                          e.updateRoomId(i);
-                          e.drop(r, t, 0.5, 40, 0.2);
-                        },
-                      });
-                      --c;
-                      d++;
-                    };
+                l = function () {
+                  const t =
+                    (25 * Math.min(Math.floor(d / 2) + 1, 5) +
+                      $randomUtil.RandomUtil.randomInt(-10, 10)) *
+                    (d % 2 == 0 ? 1 : -1);
+                  t = Math.max(t, e.dropMinOffsetX);
+                  t = Math.min(t, e.dropMaxOffsetX);
+                  $unitMgr.UnitMgr.instance.createUnit({
+                    areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.GOOD,
+                    areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
+                    parent: n.unitParent,
+                    prefabName: 'SceneGood',
+                    unitClass: 'SceneGood',
+                    initPos: o,
+                    initParam: {
+                      rewardId: s,
+                      rewardNum: 1,
+                    },
+                    onCreated: function (e) {
+                      e.updateRoomId(i);
+                      e.drop(r, t, 0.5, 40, 0.2);
+                    },
+                  });
+                  --c;
+                  d++;
+                };
               c > 0;
             ) {
               l();
@@ -876,9 +822,8 @@ const z =
     e.prototype.checkGuide = function () {
       return (
         !this.isGuideEnemy ||
-        $guideMgr.GuideMgr.instance.cfgGuideStepId !=
-          $guideDataProxy.EGuideStepId.G_7
+        $guideMgr.GuideMgr.instance.cfgGuideStepId != $guideDataProxy.EGuideStepId.G_7
       );
     };
   })($actorBase.default));
-exports.default = z;
+export default z;

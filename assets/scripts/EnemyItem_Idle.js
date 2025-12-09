@@ -1,7 +1,7 @@
 import $state from './State';
 import $actorEnum from './ActorEnum';
 let i;
-exports.EnemyItem_Idle = void 0;
+export const EnemyItem_Idle = void 0;
 e.prototype.update = function () {};
 e.prototype.begin = function () {
   this._context.playAnimIdle();
@@ -12,4 +12,4 @@ function e(e) {
   return n;
 }
 const s = e;
-exports.EnemyItem_Idle = s;
+export const EnemyItem_Idle = s;

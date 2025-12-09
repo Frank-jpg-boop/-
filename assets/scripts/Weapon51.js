@@ -6,7 +6,7 @@ const l = cc._decorator;
 const u = l.ccclass;
 const p = l.property;
 e.prototype.onDefaultAnimFrameEvent = function (t, e) {
-  if ("atk" == e && this._onEventComplete) {
+  if ('atk' == e && this._onEventComplete) {
     this._onEventComplete();
   }
 };
@@ -14,8 +14,7 @@ e.prototype.updateProgressCd = function (t) {
   const e = t < 1;
   this.nProgress.active = e;
   if (e) {
-    this.nProgress.getChildByName("Bar").getComponent(cc.Sprite).fillRange =
-      t;
+    this.nProgress.getChildByName('Bar').getComponent(cc.Sprite).fillRange = t;
   }
 };
 e.prototype.reset = function (t) {
@@ -29,8 +28,7 @@ e.prototype.reset = function (t) {
     e = -10;
   }
   this.spAnimCtrls[0].spAnim.node.angle = e;
-  this.spAnimCtrls[0].spAnim.node.scaleX =
-    Math.abs(this.spAnimCtrls[0].spAnim.node.scaleX) * t;
+  this.spAnimCtrls[0].spAnim.node.scaleX = Math.abs(this.spAnimCtrls[0].spAnim.node.scaleX) * t;
   this.nProgress.scaleX = Math.abs(this.nProgress.scaleX) * t;
   this.nProgress.angle = e;
 };
@@ -42,8 +40,7 @@ e.prototype.setDir = function (t) {
   } else {
     n = -1;
   }
-  this.spAnimCtrls[0].spAnim.node.scaleX =
-    Math.abs(this.spAnimCtrls[0].spAnim.node.scaleX) * n;
+  this.spAnimCtrls[0].spAnim.node.scaleX = Math.abs(this.spAnimCtrls[0].spAnim.node.scaleX) * n;
   const i = (180 * cc.v2(e ? 1 : -1, 0).signAngle(t)) / Math.PI;
   this.spAnimCtrls[0].spAnim.node.angle = i;
   this.nProgress.scaleX = Math.abs(this.nProgress.scaleX) * n;
@@ -52,7 +49,7 @@ e.prototype.playShootAnim = function (t, e, n, i) {
   const o = this;
   this._onEventComplete = t;
   this._isShooting = !0;
-  const r = this.spAnimCtrls[0].spAnim.findAnimation("atk").duration;
+  const r = this.spAnimCtrls[0].spAnim.findAnimation('atk').duration;
   const a = Math.max(1 - r, 0);
   const s = null;
   if (1 > r) {
@@ -62,7 +59,7 @@ e.prototype.playShootAnim = function (t, e, n, i) {
   }
   this.setDir(n);
   this.playDefaultAnim(
-    "atk",
+    'atk',
     2 * s,
     !1,
     function () {
@@ -79,18 +76,15 @@ e.prototype.onInit = function () {
   t.prototype.onInit.call(this);
   this.nProgress.active = !1;
 };
-Object.defineProperty(e.prototype, "shootPos", {
+Object.defineProperty(e.prototype, 'shootPos', {
   get: function () {
     const t = $battleMgr.default.instance.getCurScene();
-    return $nodeUtil.default.nodeParentChangeLocalPos(
-      this.nShootPos,
-      t.bulletParent,
-    );
+    return $nodeUtil.default.nodeParentChangeLocalPos(this.nShootPos, t.bulletParent);
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "isShooting", {
+Object.defineProperty(e.prototype, 'isShooting', {
   get: function () {
     return this._isShooting;
   },
@@ -105,4 +99,4 @@ function e() {
   e._onEventComplete = null;
   return e;
 }
-exports.default = h;
+export default h;

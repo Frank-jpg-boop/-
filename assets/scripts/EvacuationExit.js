@@ -30,15 +30,12 @@ const b =
       this._isEnterRescue = !1;
       this._isTrigger = !1;
       this._waitTimer = Number($cfg.default.instance.dataCons.getById(128).val);
-      $battleMgr.default.instance.createOtherNode(
-        "ExitProgressWaitItem",
-        function (e) {
-          t._progress = e.getComponent($progressWaitItem.default);
-          t._progress.init(1, !1);
-          t._progress.node.x = t.node.x;
-          t._progress.node.y = t.node.y + 300;
-        },
-      );
+      $battleMgr.default.instance.createOtherNode('ExitProgressWaitItem', function (e) {
+        t._progress = e.getComponent($progressWaitItem.default);
+        t._progress.init(1, !1);
+        t._progress.node.x = t.node.x;
+        t._progress.node.y = t.node.y + 300;
+      });
     };
     e.prototype.checkPlayerCollision = function () {
       return !0;
@@ -55,8 +52,7 @@ const b =
         this._isTrigger = !0;
         if (
           0 == $levelBattleData.levelBattleData.cfgStage.id &&
-          $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-            $guideDataProxy.EGuideStepId.G_12
+          $guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_12
         ) {
           $eventManager.EventManager.instance.emit(
             $guideMgr.EGuideEvent.COMPLETE_GUIDE_STEP,
@@ -64,18 +60,18 @@ const b =
           );
         }
         const n = $battleMgr.default.instance.getCurScene();
-        $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_Helicopter");
+        $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_Helicopter');
         $effectMgr.default.instance.createEffect({
           parent: n.lowEffectParent,
-          prefabName: "ESignalShell",
+          prefabName: 'ESignalShell',
           initPos: this.node.getPosition(),
           effectClass: $spAnimEffect.default,
           onCreated: function (t) {
             $sceneManager.SceneManager.instance.curScene.node
-              .getChildByName("Mist")
+              .getChildByName('Mist')
               .getComponent(cc.Animation)
-              .play("MistBack", 0);
-            t.playDefaultAnim("launch", 1, !1, function () {
+              .play('MistBack', 0);
+            t.playDefaultAnim('launch', 1, !1, function () {
               $battleMgr.default.instance.getCurScene().waitRescue();
             });
           },
@@ -95,4 +91,4 @@ const b =
       }
     };
   })($levelObjectBase.default));
-exports.default = b;
+export default b;

@@ -23,14 +23,14 @@ const _ =
     }
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
-      this._nIcon = this.node.getChildByName("Body").getChildByName("Icon");
+      this._nIcon = this.node.getChildByName('Body').getChildByName('Icon');
       this._spAnimCtrl = this.node
-        .getChildByName("Body")
-        .getChildByName("Anim")
+        .getChildByName('Body')
+        .getChildByName('Anim')
         .getComponent($spAnimCtrl.default);
       this._atkCollider = cc
         .find(
-          "Body/Anim/ATTACHED_NODE_TREE/ATTACHED_NODE:root/ATTACHED_NODE:xiangshui/ATTACHED_NODE:atk/Collider",
+          'Body/Anim/ATTACHED_NODE_TREE/ATTACHED_NODE:root/ATTACHED_NODE:xiangshui/ATTACHED_NODE:atk/Collider',
           this.node,
         )
         .getComponent($simplyCircleCollider.default);
@@ -46,7 +46,7 @@ const _ =
       const i = e.sub(n);
       const o = i.normalize();
       const r = (180 * cc.Vec2.RIGHT_R.signAngle(o)) / Math.PI;
-      this.node.getChildByName("Body").angle = r + 90;
+      this.node.getChildByName('Body').angle = r + 90;
       const a = i.magSqr() / 64e4;
       return new Promise(function (n) {
         cc.tween(t.node)
@@ -65,22 +65,17 @@ const _ =
       this._atkCollisionIds = [];
       this._nIcon.active = !1;
       this._spAnimCtrl.node.active = !0;
-      this._spAnimCtrl.playAnim("atk", 1, !0);
+      this._spAnimCtrl.playAnim('atk', 1, !0);
     };
     e.prototype.initAttribute = function () {
       t.prototype.initAttribute.call(this);
       this._actorAttribute.init($attrEnum.E_AttrType);
-      this._actorAttribute
-        .getNumeric($attrEnum.E_AttrType.ATK)
-        .setFixBase(this._initParam.atk);
-      this._actorAttribute
-        .getNumeric($attrEnum.E_AttrType.HP)
-        .setFixBase(this._initParam.maxHp);
+      this._actorAttribute.getNumeric($attrEnum.E_AttrType.ATK).setFixBase(this._initParam.atk);
+      this._actorAttribute.getNumeric($attrEnum.E_AttrType.HP).setFixBase(this._initParam.maxHp);
     };
     e.prototype.getHurt = function () {
       const t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
-      const e =
-        Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
+      const e = Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
       if (e) {
         t *= this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).value;
       }
@@ -119,8 +114,7 @@ const _ =
                   t._atkCollider.circle,
                 )
               ) {
-                -1 == n &&
-                  (e.beHurt(t.getHurt()), t._atkCollisionIds.push(e.unitId));
+                -1 == n && (e.beHurt(t.getHurt()), t._atkCollisionIds.push(e.unitId));
               } else {
                 -1 != n && t._atkCollisionIds.splice(n, 1);
               }
@@ -129,4 +123,4 @@ const _ =
       }
     };
   })($enemyItemBase.default));
-exports.default = _;
+export default _;

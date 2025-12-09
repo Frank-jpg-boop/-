@@ -48,16 +48,16 @@ e.prototype.onSliderMusicVolumeChanged = function (t) {
   $userSetDataProxy.userSetDataProxy.setMusicVolume(t.progress);
 };
 e.prototype.updateView = function () {
-  this.uid.string = "UID: " + $userDataProxy.userDataProxy.data.uid;
-  this.versions.string = "版本号: " + yzll.gameConfig.v;
+  this.uid.string = 'UID: ' + $userDataProxy.userDataProxy.data.uid;
+  this.versions.string = '版本号: ' + yzll.gameConfig.v;
   this.sliderMusicVolume.progress = $basicsProxy.basicsProxy.bgmVolume;
   this.musicVolumePro.fillRange = $basicsProxy.basicsProxy.bgmVolume;
   this.sliderEffectVolume.progress = $basicsProxy.basicsProxy.effectVolume;
   this.effectVolumePro.fillRange = $basicsProxy.basicsProxy.effectVolume;
   const t = $userSetDataProxy.userSetDataProxy.isVibration;
   this.nGm.active = yzll.gameConfig.isGM;
-  this.nShake.getChildByName("BtnSwitch").getChildByName("Open").active = t;
-  this.nShake.getChildByName("BtnSwitch").getChildByName("Close").active = !t;
+  this.nShake.getChildByName('BtnSwitch').getChildByName('Open').active = t;
+  this.nShake.getChildByName('BtnSwitch').getChildByName('Close').active = !t;
 };
 e.prototype.init = function () {
   this._clickSetCount = 0;
@@ -77,4 +77,4 @@ function e() {
   e._clickSetCount = 0;
   return e;
 }
-exports.default = y;
+export default y;

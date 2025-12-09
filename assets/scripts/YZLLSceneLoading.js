@@ -42,12 +42,10 @@ e.prototype.hide = function (t, e) {
   }
 };
 e.prototype.updateProgress = function () {
-  this.nBottom.getChildByName("Progress").getComponent(cc.Label).string =
-    "加载中:" + $mathUtil.MathUtil.toFixed(100 * this._progress, 0) + "%";
-  this.nBottom
-    .getChildByName("Bar")
-    .getChildByName("SpBar")
-    .getComponent(cc.Sprite).fillRange = this._progress;
+  this.nBottom.getChildByName('Progress').getComponent(cc.Label).string =
+    '加载中:' + $mathUtil.MathUtil.toFixed(100 * this._progress, 0) + '%';
+  this.nBottom.getChildByName('Bar').getChildByName('SpBar').getComponent(cc.Sprite).fillRange =
+    this._progress;
 };
 e.prototype.update = function (t) {
   if (this.isShow && this.nBottom.active && this._progress < 1) {
@@ -59,10 +57,10 @@ e.prototype.update = function (t) {
   }
 };
 e.prototype.onOpenAnimEvent = function (t, e) {
-  if ("disappear" != e) {
-    if ("appear" == e) {
+  if ('disappear' != e) {
+    if ('appear' == e) {
       return (
-        (this.nDayView.getChildByName("Day").getComponent(cc.Label).string = (
+        (this.nDayView.getChildByName('Day').getComponent(cc.Label).string = (
           $stageDataProxy.stageDataProxy.day - 1
         ).toString()),
         void (this.nDayView.active = !0)
@@ -76,7 +74,7 @@ e.prototype.onOpenAnimEvent = function (t, e) {
 e.prototype.show = function (t, e, n, i, o, r) {
   const s = this;
   if (void 0 === t) {
-    t = "";
+    t = '';
   }
   if (void 0 === e) {
     e = 120;
@@ -94,21 +92,21 @@ e.prototype.show = function (t, e, n, i, o, r) {
     r = !1;
   }
   if (!this.isShow && !this.isLock) {
-    const l = $cfg.default.instance.dataCons.getById(161).val.split("|");
+    const l = $cfg.default.instance.dataCons.getById(161).val.split('|');
     this.lDesc.string = l[$randomUtil.RandomUtil.randomInt(0, l.length)];
     this.isLock = i;
     this.node.setSiblingIndex(this.node.parent.childrenCount - 1);
     this.nBg.opacity = e;
     this.nBottom.active = !1;
     this.nDayView.active = !0;
-    this.nDayView.getChildByName("Day").getComponent(cc.Label).string =
+    this.nDayView.getChildByName('Day').getComponent(cc.Label).string =
       $stageDataProxy.stageDataProxy.day.toString();
     this.node.active = !0;
     this.spAnimCtrl.clearAnim();
-    this.spAnimCtrl.playAnim("loop", 1, !1, function () {
+    this.spAnimCtrl.playAnim('loop', 1, !1, function () {
       if (r) {
         s.scheduleOnce(function () {
-          s.spAnimCtrl.playAnim("turn the page", 1, !1, function () {
+          s.spAnimCtrl.playAnim('turn the page', 1, !1, function () {
             s.nBottom.active = o;
             if (n) {
               n();
@@ -143,4 +141,4 @@ function e() {
   e._progress = 0;
   return e;
 }
-exports.default = d;
+export default d;

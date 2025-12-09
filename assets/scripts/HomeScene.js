@@ -43,25 +43,19 @@ e.prototype.gotoPageView = function (t) {
     (0 == t && $stageDataProxy.stageDataProxy.passStageId < 1) ||
     (1 == t && $stageDataProxy.stageDataProxy.passStageId < 1)
   ) {
-    $globalPopupMgr.default.instance.showTips("通过第一章解锁");
+    $globalPopupMgr.default.instance.showTips('通过第一章解锁');
   } else {
     if (4 != t) {
       (this.updateDownBtnState({
         target: {
-          name: [
-            "BtnShop",
-            "BtnCampsite",
-            "BtnBattle",
-            "BtnArtifact",
-            "BtnInstance",
-          ][t],
+          name: ['BtnShop', 'BtnCampsite', 'BtnBattle', 'BtnArtifact', 'BtnInstance'][t],
         },
       }),
         (this.mBattleView.active = 2 == t),
         0 == t
           ? this.mShopView
             ? (this.mShopView.active = !0)
-            : this.addHomeView("ShopView", function (t) {
+            : this.addHomeView('ShopView', function (t) {
                 e.mShopView = t;
                 e.mShopView.active = !0;
               })
@@ -69,7 +63,7 @@ e.prototype.gotoPageView = function (t) {
         1 == t
           ? this.mCampsiteView
             ? (this.mCampsiteView.active = !0)
-            : this.addHomeView("CampsiteView", function (t) {
+            : this.addHomeView('CampsiteView', function (t) {
                 e.mCampsiteView = t;
                 e.mCampsiteView.active = !0;
               })
@@ -77,7 +71,7 @@ e.prototype.gotoPageView = function (t) {
         3 == t
           ? this.mArtifactView
             ? (this.mArtifactView.active = !0)
-            : this.addHomeView("ArtifactView", function (t) {
+            : this.addHomeView('ArtifactView', function (t) {
                 e.mArtifactView = t;
                 e.mArtifactView.active = !0;
               })
@@ -85,38 +79,32 @@ e.prototype.gotoPageView = function (t) {
         4 == t
           ? this.mInstanceView
             ? (this.mInstanceView.active = !0)
-            : this.addHomeView("InstanceView", function (t) {
+            : this.addHomeView('InstanceView', function (t) {
                 e.mInstanceView = t;
                 e.mInstanceView.active = !0;
               })
           : this.mInstanceView && (this.mInstanceView.active = !1));
     } else {
-      $globalPopupMgr.default.instance.showTips("暂未解锁");
+      $globalPopupMgr.default.instance.showTips('暂未解锁');
     }
   }
 };
 e.prototype.updateDownBtnState = function (t) {
   for (
     const e = t.target,
-          n = [
-            "BtnShop",
-            "BtnCampsite",
-            "BtnBattle",
-            "BtnArtifact",
-            "BtnInstance",
-          ],
-          i = 0;
+      n = ['BtnShop', 'BtnCampsite', 'BtnBattle', 'BtnArtifact', 'BtnInstance'],
+      i = 0;
     i < n.length;
     ++i
   ) {
     const o = n[i];
     const r = this.mDownBtns.getChildByName(o);
-    r.getChildByName("selectBg").active = o == e.name;
-    r.getChildByName("lab").active = o == e.name;
+    r.getChildByName('selectBg').active = o == e.name;
+    r.getChildByName('lab').active = o == e.name;
     if (o == e.name) {
-      r.getChildByName("icon").y = 42;
+      r.getChildByName('icon').y = 42;
     } else {
-      r.getChildByName("icon").y = 4;
+      r.getChildByName('icon').y = 4;
     }
   }
 };
@@ -124,9 +112,9 @@ e.prototype.addHomeView = function (t, e) {
   const n = this;
   this._isCanClick = !1;
   $resLoader.ResLoader.loadAsset({
-    path: "uis/homeView/" + t,
+    path: 'uis/homeView/' + t,
     type: cc.Prefab,
-    bundleName: "home",
+    bundleName: 'home',
   })
     .then(function (t) {
       n._isCanClick = !0;
@@ -137,21 +125,18 @@ e.prototype.addHomeView = function (t, e) {
       }
     })
     .catch(function (t) {
-      console.log("error:", t);
+      console.log('error:', t);
     });
 };
 e.prototype.onBtnInstance = function () {
   if (this._isCanClick) {
-    $globalPopupMgr.default.instance.showTips("暂未解锁");
+    $globalPopupMgr.default.instance.showTips('暂未解锁');
   }
 };
 e.prototype.onBtnArtifact = function (t) {
   const e = this;
   if (this._isCanClick) {
-    if (
-      $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-      $guideDataProxy.EGuideStepId.G_23
-    ) {
+    if ($guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_23) {
       $eventManager.EventManager.instance.emit(
         $guideMgr.EGuideEvent.COMPLETE_GUIDE_STEP,
         $guideDataProxy.EGuideStepId.G_23,
@@ -165,7 +150,7 @@ e.prototype.onBtnArtifact = function (t) {
     if (this.mArtifactView) {
       this.mArtifactView.active = !0;
     } else {
-      this.addHomeView("ArtifactView", function (t) {
+      this.addHomeView('ArtifactView', function (t) {
         e.mArtifactView = t;
       });
     }
@@ -179,10 +164,7 @@ e.prototype.onBtnArtifact = function (t) {
 };
 e.prototype.onBtnBattle = function (t) {
   if (this._isCanClick) {
-    if (
-      $guideMgr.GuideMgr.instance.cfgGuideStepId ==
-      $guideDataProxy.EGuideStepId.G_26
-    ) {
+    if ($guideMgr.GuideMgr.instance.cfgGuideStepId == $guideDataProxy.EGuideStepId.G_26) {
       $eventManager.EventManager.instance.emit(
         $guideMgr.EGuideEvent.COMPLETE_GUIDE_STEP,
         $guideDataProxy.EGuideStepId.G_26,
@@ -208,13 +190,13 @@ e.prototype.onBtnCampsite = function (t) {
   const e = this;
   if (this._isCanClick) {
     if ($stageDataProxy.stageDataProxy.passStageId < 1) {
-      $globalPopupMgr.default.instance.showTips("通过第一章解锁");
+      $globalPopupMgr.default.instance.showTips('通过第一章解锁');
     } else {
       (this.updateDownBtnState(t),
         (this.mBattleView.active = !1),
         this.mCampsiteView
           ? (this.mCampsiteView.active = !0)
-          : this.addHomeView("CampsiteView", function (t) {
+          : this.addHomeView('CampsiteView', function (t) {
               e.mCampsiteView = t;
             }),
         this.mArtifactView && (this.mArtifactView.active = !1),
@@ -227,7 +209,7 @@ e.prototype.onBtnShop = function (t) {
   const e = this;
   if (this._isCanClick) {
     if ($stageDataProxy.stageDataProxy.passStageId < 1) {
-      $globalPopupMgr.default.instance.showTips("通过第一章解锁");
+      $globalPopupMgr.default.instance.showTips('通过第一章解锁');
     } else {
       (this.updateDownBtnState(t),
         this.mArtifactView && (this.mArtifactView.active = !1),
@@ -236,7 +218,7 @@ e.prototype.onBtnShop = function (t) {
         this.mInstanceView && (this.mInstanceView.active = !1),
         this.mShopView
           ? (this.mShopView.active = !0)
-          : this.addHomeView("ShopView", function (t) {
+          : this.addHomeView('ShopView', function (t) {
               e.mShopView = t;
             }));
     }
@@ -261,25 +243,19 @@ e.prototype.onEnable = function () {
   $sceneManager.SceneManager.instance.hideSceneLoading(null, !0);
 };
 e.prototype.onDestroy = function () {
-  $eventManager.EventManager.instance.off(
-    $homeEnum.EHomeEvent.GOTO_PAGE,
-    this.gotoPageView,
-    this,
-  );
+  $eventManager.EventManager.instance.off($homeEnum.EHomeEvent.GOTO_PAGE, this.gotoPageView, this);
   $eventManager.EventManager.instance.off(
     $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE + $itemEnum.E_ItemId.GOLD,
     this.updateGoldNum,
     this,
   );
   $eventManager.EventManager.instance.off(
-    $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE +
-      $itemEnum.E_ItemId.DIAMOND,
+    $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE + $itemEnum.E_ItemId.DIAMOND,
     this.updateDiamondNum,
     this,
   );
   $eventManager.EventManager.instance.off(
-    $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE +
-      $itemEnum.E_ItemId.SURVIVOR,
+    $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE + $itemEnum.E_ItemId.SURVIVOR,
     this.updateSurviveNum,
     this,
   );
@@ -296,33 +272,27 @@ e.prototype.onDestroy = function () {
 };
 e.prototype.initFlyItemAnim = function () {
   for (
-    const t = this.node.getChildByName("Fly"),
-          e = t.getComponent($flyItemAnimCtrl.default),
-          n = new Map([
-            [0, t],
-            [1, $appBase.rootNode],
-          ]),
-          i = new Map([
-            [
-              $itemEnum.E_ItemId.GOLD,
-              $nodeUtil.default.nodeWorldPos(
-                cc.find("topUI/btns/BtnGold/Gold", this.node),
-              ),
-            ],
-            [
-              $itemEnum.E_ItemId.DIAMOND,
-              $nodeUtil.default.nodeWorldPos(
-                cc.find("topUI/btns/BtnDiamond/Diamond", this.node),
-              ),
-            ],
-          ]),
-          o = $cfg.default.instance.dataItem.queryAll(function (t) {
-            return 2 == t.type;
-          }),
-          r = $nodeUtil.default.nodeWorldPos(
-            cc.find("downUI/btns/BtnArtifact", this.node),
-          ),
-          s = 0;
+    const t = this.node.getChildByName('Fly'),
+      e = t.getComponent($flyItemAnimCtrl.default),
+      n = new Map([
+        [0, t],
+        [1, $appBase.rootNode],
+      ]),
+      i = new Map([
+        [
+          $itemEnum.E_ItemId.GOLD,
+          $nodeUtil.default.nodeWorldPos(cc.find('topUI/btns/BtnGold/Gold', this.node)),
+        ],
+        [
+          $itemEnum.E_ItemId.DIAMOND,
+          $nodeUtil.default.nodeWorldPos(cc.find('topUI/btns/BtnDiamond/Diamond', this.node)),
+        ],
+      ]),
+      o = $cfg.default.instance.dataItem.queryAll(function (t) {
+        return 2 == t.type;
+      }),
+      r = $nodeUtil.default.nodeWorldPos(cc.find('downUI/btns/BtnArtifact', this.node)),
+      s = 0;
     s < o.length;
     s++
   ) {
@@ -333,24 +303,24 @@ e.prototype.initFlyItemAnim = function () {
 };
 e.prototype.onUpdateBtnState = function () {
   const t = $stageDataProxy.stageDataProxy.passStageId >= 1;
-  const e = this.mDownBtns.getChildByName("BtnShop");
-  e.getChildByName("lockIcon").active = !t;
+  const e = this.mDownBtns.getChildByName('BtnShop');
+  e.getChildByName('lockIcon').active = !t;
   if (t) {
-    n = e.getChildByName("icon");
+    n = e.getChildByName('icon');
     $nodeUtil.default.setSpriteNormalMaterial(n);
   } else {
-    const n = e.getChildByName("icon");
+    const n = e.getChildByName('icon');
     $nodeUtil.default.setSpriteGrayMaterial(n);
   }
-  const i = this.mDownBtns.getChildByName("BtnCampsite");
-  const o = i.getChildByName("lockIcon");
+  const i = this.mDownBtns.getChildByName('BtnCampsite');
+  const o = i.getChildByName('lockIcon');
   const r = $stageDataProxy.stageDataProxy.passStageId >= 1;
   o.active = !r;
   if (r) {
-    n = i.getChildByName("icon");
+    n = i.getChildByName('icon');
     $nodeUtil.default.setSpriteNormalMaterial(n);
   } else {
-    n = i.getChildByName("icon");
+    n = i.getChildByName('icon');
     $nodeUtil.default.setSpriteGrayMaterial(n);
   }
 };
@@ -367,23 +337,15 @@ e.prototype.updateAutoPopup = function () {
       1,
     );
     this.autoPopupCtrl.pushPopup(
-      "GentleTipsPopup",
-      "popups/GentleTipsPopup",
+      'GentleTipsPopup',
+      'popups/GentleTipsPopup',
       {},
       !0,
       $frameEnum.Frame.EBundleName.RES,
     );
   }
-  if (
-    $guideDataProxy.guideDataProxy.isComplete &&
-    $signDataProxy.signDataProxy.canSevenSign()
-  ) {
-    this.autoPopupCtrl.pushPopup(
-      "SevenSignPopup",
-      "popups/SevenSignPopup",
-      {},
-      !0,
-    );
+  if ($guideDataProxy.guideDataProxy.isComplete && $signDataProxy.signDataProxy.canSevenSign()) {
+    this.autoPopupCtrl.pushPopup('SevenSignPopup', 'popups/SevenSignPopup', {}, !0);
   }
   if (
     $guideDataProxy.guideDataProxy.isComplete &&
@@ -391,8 +353,8 @@ e.prototype.updateAutoPopup = function () {
     0 != $stageDataProxy.stageDataProxy.unlockSkillId
   ) {
     this.autoPopupCtrl.pushPopup(
-      "UnlockArtifactPopup",
-      "popups/UnlockArtifactPopup",
+      'UnlockArtifactPopup',
+      'popups/UnlockArtifactPopup',
       {
         skillId: $stageDataProxy.stageDataProxy.unlockSkillId,
       },
@@ -408,8 +370,8 @@ e.prototype.updateAutoPopup = function () {
   ) {
     $stageDataProxy.stageDataProxy.isBackBattleFail = !1;
     this.autoPopupCtrl.pushPopup(
-      "IntensifyPopup",
-      "popups/IntensifyPopup",
+      'IntensifyPopup',
+      'popups/IntensifyPopup',
       {},
       !1,
       $frameEnum.Frame.EBundleName.HOME,
@@ -425,27 +387,21 @@ e.prototype.onLoad = function () {
   if ($stageDataProxy.stageDataProxy.isUnlockNewStage) {
     $blockInputManager.BlockInputManager.instance.netBlockInputNum++;
   }
-  cc.director.getScene().name = "home";
+  cc.director.getScene().name = 'home';
   t.prototype.onLoad.call(this);
-  $eventManager.EventManager.instance.on(
-    $homeEnum.EHomeEvent.GOTO_PAGE,
-    this.gotoPageView,
-    this,
-  );
+  $eventManager.EventManager.instance.on($homeEnum.EHomeEvent.GOTO_PAGE, this.gotoPageView, this);
   $eventManager.EventManager.instance.on(
     $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE + $itemEnum.E_ItemId.GOLD,
     this.updateGoldNum,
     this,
   );
   $eventManager.EventManager.instance.on(
-    $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE +
-      $itemEnum.E_ItemId.DIAMOND,
+    $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE + $itemEnum.E_ItemId.DIAMOND,
     this.updateDiamondNum,
     this,
   );
   $eventManager.EventManager.instance.on(
-    $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE +
-      $itemEnum.E_ItemId.SURVIVOR,
+    $itemDataProxy.EItemDataEvent.ITEM_ONCE_UPDATE + $itemEnum.E_ItemId.SURVIVOR,
     this.updateSurviveNum,
     this,
   );
@@ -471,8 +427,7 @@ e.prototype.onLoad = function () {
   );
   if (
     -1 != $guideMgr.GuideMgr.instance.cfgGuideStepId &&
-    $guideMgr.GuideMgr.instance.cfgGuideStepId <=
-      $guideDataProxy.EGuideStepId.G_27
+    $guideMgr.GuideMgr.instance.cfgGuideStepId <= $guideDataProxy.EGuideStepId.G_27
   ) {
     $blockInputManager.BlockInputManager.instance.netBlockInputNum++;
   }
@@ -493,4 +448,4 @@ function e() {
   e._isCanClick = !0;
   return e;
 }
-exports.default = x;
+export default x;

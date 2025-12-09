@@ -44,7 +44,7 @@ e.prototype.update = function (t) {
 e.prototype.tweenTo = function (t, e, n, i, o, r, a) {
   const c = this;
   if (void 0 === r) {
-    r = "";
+    r = '';
   }
   if (void 0 === a) {
     a = !0;
@@ -58,12 +58,10 @@ e.prototype.tweenTo = function (t, e, n, i, o, r, a) {
   }
   if (i) {
     const l = e.sub(t).normalizeSelf();
-    this.node.angle = $mathUtil.MathUtil.radians2Angle(
-      cc.Vec2.RIGHT.signAngle(l),
-    );
+    this.node.angle = $mathUtil.MathUtil.radians2Angle(cc.Vec2.RIGHT.signAngle(l));
   }
   const p = {};
-  if ("" != r) {
+  if ('' != r) {
     p.easing = r;
   }
   n /= $battleMgr.default.instance.gameSpeed;
@@ -89,7 +87,7 @@ e.prototype.tweenTo = function (t, e, n, i, o, r, a) {
 e.prototype.bezierTo = function (t, e, n, i, o, r, a, c, l) {
   const p = this;
   if (void 0 === a) {
-    a = "";
+    a = '';
   }
   if (void 0 === c) {
     c = null;
@@ -113,9 +111,7 @@ e.prototype.bezierTo = function (t, e, n, i, o, r, a, c, l) {
         if (0 == r.x && 0 == r.y) {
           return;
         }
-        p.node.angle = $mathUtil.MathUtil.radians2Angle(
-          cc.Vec2.RIGHT_R.signAngle(r),
-        );
+        p.node.angle = $mathUtil.MathUtil.radians2Angle(cc.Vec2.RIGHT_R.signAngle(r));
       }
       if (c) {
         c(t, e);
@@ -161,10 +157,10 @@ e.prototype.onInit = function () {};
 e.prototype.init = function (t) {
   const e = this;
   if (void 0 === t) {
-    t = "";
+    t = '';
   }
   this._iconPath = t;
-  if ("" != t && this.spIcon) {
+  if ('' != t && this.spIcon) {
     $resLoader.ResLoader.loadAsset({
       bundleName: $frameEnum.Frame.EBundleName.GAME,
       path: t,
@@ -183,10 +179,10 @@ function e() {
   const e = (null !== t && t.apply(this, arguments)) || this;
   e.spIcon = null;
   e._owner = null;
-  e._iconPath = "";
+  e._iconPath = '';
   e._isShoot = !1;
   e._isRemove = !1;
   e.delayShowTime = 0;
   return e;
 }
-exports.default = d;
+export default d;

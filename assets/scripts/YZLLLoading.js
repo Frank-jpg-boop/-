@@ -4,9 +4,9 @@ const s = a.ccclass;
 const c = a.property;
 e.prototype.pointLoad = function () {
   if (this.pointStr.length >= 3) {
-    this.pointStr = "";
+    this.pointStr = '';
   } else {
-    this.pointStr += ".";
+    this.pointStr += '.';
   }
   this.lPoint.string = this.pointStr;
 };
@@ -49,7 +49,7 @@ e.prototype.hide = function (t, e) {
 e.prototype.show = function (t, e, n, i) {
   const o = this;
   if (void 0 === t) {
-    t = "玩命加载中";
+    t = '玩命加载中';
   }
   if (void 0 === e) {
     e = 120;
@@ -68,7 +68,7 @@ e.prototype.show = function (t, e, n, i) {
     this.nCenterView.active = !1;
     this.nBg.opacity = 0;
     this.lDesc.string = t;
-    this.pointStr = "";
+    this.pointStr = '';
     this.lPoint.string = this.pointStr;
     this.unschedule(this.pointLoad);
     cc.Tween.stopAllByTarget(this.nBg);
@@ -94,9 +94,9 @@ function e() {
   e.nCenterView = null;
   e.lPoint = null;
   e.lDesc = null;
-  e.pointStr = "";
+  e.pointStr = '';
   e.isShow = !1;
   e.isLock = !1;
   return e;
 }
-exports.default = l;
+export default l;

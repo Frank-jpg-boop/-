@@ -2,7 +2,7 @@ import $state from './State';
 import $actorEnum from './ActorEnum';
 import $attrEnum from './AttrEnum';
 let i;
-exports.Boss_122_Walk = void 0;
+export const Boss_122_Walk = void 0;
 e.prototype.update = function (t) {
   if (this._context.isTrigger) {
     if (this._context.isFace()) {
@@ -11,14 +11,9 @@ e.prototype.update = function (t) {
       const e = this._context.searchTarget();
       if (e && this._context.canAttackTarget(e)) {
         if (this._context.canAttack()) {
-          return void this._context.changeState(
-            $actorEnum.EActorStateType.ATTACK,
-            e.node,
-          );
+          return void this._context.changeState($actorEnum.EActorStateType.ATTACK, e.node);
         } else {
-          return void this._context.changeState(
-            $actorEnum.EActorStateType.IDLE,
-          );
+          return void this._context.changeState($actorEnum.EActorStateType.IDLE);
         }
       }
       this._targetPosRefreshTime -= t;
@@ -28,9 +23,7 @@ e.prototype.update = function (t) {
       if (this._targetPos) {
         const n = this._context.node.getPosition();
         if (this._targetPos.fuzzyEquals(n, 5)) {
-          return void this._context.changeState(
-            $actorEnum.EActorStateType.IDLE,
-          );
+          return void this._context.changeState($actorEnum.EActorStateType.IDLE);
         }
         const i = this._targetPos.sub(n).normalize();
         const o = this._context.getAttribute($attrEnum.E_AttrType.SPEED).value;
@@ -64,4 +57,4 @@ function e(e) {
   return n;
 }
 const c = e;
-exports.Boss_122_Walk = c;
+export const Boss_122_Walk = c;

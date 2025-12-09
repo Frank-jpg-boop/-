@@ -18,7 +18,7 @@ const f =
       e._isOpenKeepMove = !1;
       return e;
     }
-    Object.defineProperty(e.prototype, "owner", {
+    Object.defineProperty(e.prototype, 'owner', {
       get: function () {
         return this._owner;
       },
@@ -46,12 +46,12 @@ const f =
           this._groundY = e.groundY;
           r = e.time ? e.time : o / this.owner.cfg.edgeSpe;
           const s = i,
-                c = i.add(t).mul(0.5),
-                l = Math.max(t.y, i.y),
-                u = cc.v2(
-                  c.x - this._owner.dirX * $randomUtil.RandomUtil.randomInt(0, 50),
-                  l + $randomUtil.RandomUtil.randomInt(100, 200),
-                );
+            c = i.add(t).mul(0.5),
+            l = Math.max(t.y, i.y),
+            u = cc.v2(
+              c.x - this._owner.dirX * $randomUtil.RandomUtil.randomInt(0, 50),
+              l + $randomUtil.RandomUtil.randomInt(100, 200),
+            );
           this.bezierTo(
             s,
             u,
@@ -66,7 +66,7 @@ const f =
                 n._isOpenKeepMove = !0;
               }
             },
-            "",
+            '',
             null,
             null == e.groundY,
           );
@@ -97,13 +97,13 @@ const f =
     e.prototype.checkCollision = function () {
       for (
         const t = this.node.getPosition(),
-              e = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(t.x, t.y),
-              n = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
-                e.key,
-                $gridAreaDivisionMgr.E_AreaObjectType.PLAYER,
-              ),
-              i = this.node.convertToWorldSpaceAR(cc.v2()),
-              o = 0;
+          e = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(t.x, t.y),
+          n = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
+            e.key,
+            $gridAreaDivisionMgr.E_AreaObjectType.PLAYER,
+          ),
+          i = this.node.convertToWorldSpaceAR(cc.v2()),
+          o = 0;
         o < n.length;
         o++
       ) {
@@ -128,4 +128,4 @@ const f =
       t.prototype.onRemove.call(this);
     };
   })($bulletBase.default));
-exports.default = f;
+export default f;

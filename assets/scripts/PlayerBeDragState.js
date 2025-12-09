@@ -4,9 +4,9 @@ import $effectMgr from './EffectMgr';
 import $frameAnimEffect from './FrameAnimEffect';
 import $actorEnum from './ActorEnum';
 let i;
-exports.PlayerBeDragState = void 0;
+export const PlayerBeDragState = void 0;
 e.prototype.end = function () {
-  const t = this._context.node.getChildByName("Body");
+  const t = this._context.node.getChildByName('Body');
   cc.Tween.stopAllByTarget(t);
   t.x = 0;
   if (this._effect) {
@@ -38,24 +38,19 @@ e.prototype.begin = function (t, e) {
         y: t.y,
       },
       {
-        easing: "sineIn",
+        easing: 'sineIn',
       },
     )
     .call(function () {
       n._context.setPos(t);
       n._context.updatePathData();
-      $animUtils.AnimUtil.swingLRAnimDuration(
-        n._context.node.getChildByName("Body"),
-        4,
-        0.1,
-        0.2,
-      );
+      $animUtils.AnimUtil.swingLRAnimDuration(n._context.node.getChildByName('Body'), 4, 0.1, 0.2);
     })
     .start();
-  this._context.spAnimCtrl.playAnim("bide", 1, !0);
+  this._context.spAnimCtrl.playAnim('bide', 1, !0);
   $effectMgr.default.instance.createEffect({
     parent: this._context.node,
-    prefabName: "EBeDrag",
+    prefabName: 'EBeDrag',
     initPos: cc.v2(0, this._context.rightHeight + 30),
     effectClass: $frameAnimEffect.default,
     onCreated: function (t) {
@@ -77,4 +72,4 @@ function e(e) {
   return n;
 }
 const u = e;
-exports.PlayerBeDragState = u;
+export const PlayerBeDragState = u;

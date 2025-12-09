@@ -5,14 +5,14 @@ const c = cc._decorator;
 const l = c.ccclass;
 const u = c.property;
 !(function (t) {
-  t[(t.BREATHE = 0)] = "BREATHE";
-  t[(t.FLOAT = 1)] = "FLOAT";
+  t[(t.BREATHE = 0)] = 'BREATHE';
+  t[(t.FLOAT = 1)] = 'FLOAT';
 })(a || (a = {}));
 e.prototype.setRedPointState = function (t, e) {
   this.node.active = t;
   if (e) {
-    this.node.getChildByName("Num").active = !0;
-    this.node.getChildByName("Num").getComponent(cc.Label).string = "" + e;
+    this.node.getChildByName('Num').active = !0;
+    this.node.getChildByName('Num').getComponent(cc.Label).string = '' + e;
   }
 };
 e.prototype.onEnable = function () {
@@ -38,4 +38,4 @@ function e() {
   e._initY = 0;
   return e;
 }
-exports.default = p;
+export default p;

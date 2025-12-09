@@ -1,9 +1,9 @@
 let i;
-exports.C_DataSkin = void 0;
+export const C_DataSkin = void 0;
 function e() {
   const e = t.call(this) || this;
-  e._name = "DataSkin";
+  e._name = 'DataSkin';
   return e;
 }
 const r = e;
-exports.C_DataSkin = r;
+export const C_DataSkin = r;

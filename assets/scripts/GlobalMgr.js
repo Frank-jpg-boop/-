@@ -14,7 +14,7 @@ const f =
     }
     let n;
     n = e;
-    Object.defineProperty(e, "instance", {
+    Object.defineProperty(e, 'instance', {
       get: function () {
         return n._instance;
       },
@@ -32,11 +32,7 @@ const f =
         this.playBtnAudio,
         this,
       );
-      $eventManager.EventManager.instance.on(
-        $appProxy.AppEvent.BGM_CHANGED,
-        this.playBgm,
-        this,
-      );
+      $eventManager.EventManager.instance.on($appProxy.AppEvent.BGM_CHANGED, this.playBgm, this);
     };
     e.prototype.onDestroy = function () {
       $eventManager.EventManager.instance.off(
@@ -44,25 +40,21 @@ const f =
         this.playBtnAudio,
         this,
       );
-      $eventManager.EventManager.instance.off(
-        $appProxy.AppEvent.BGM_CHANGED,
-        this.playBgm,
-        this,
-      );
+      $eventManager.EventManager.instance.off($appProxy.AppEvent.BGM_CHANGED, this.playBgm, this);
     };
     e.prototype.playBtnAudio = function () {
-      $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_Click");
+      $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_Click');
     };
     e.prototype.playBgm = function (t) {
       switch (t) {
         case $globalEnum.Global.EBgmType.HOME:
-          $audioUtil.AudioUtil.playMusic("sounds/lmtw_yx_PeripheryBgm");
+          $audioUtil.AudioUtil.playMusic('sounds/lmtw_yx_PeripheryBgm');
           break;
         case $globalEnum.Global.EBgmType.GAME:
-          $audioUtil.AudioUtil.playMusic("sounds/lmtw_yx_IngameBgm");
+          $audioUtil.AudioUtil.playMusic('sounds/lmtw_yx_IngameBgm');
           break;
         case $globalEnum.Global.EBgmType.GAME_RESCUE:
-          $audioUtil.AudioUtil.playMusic("sounds/lmtw_yx_EscapeBgm");
+          $audioUtil.AudioUtil.playMusic('sounds/lmtw_yx_EscapeBgm');
       }
     };
     e.prototype.update = function (t) {
@@ -71,4 +63,4 @@ const f =
     e._instance = null;
     return;
   })(cc.Component));
-exports.default = f;
+export default f;

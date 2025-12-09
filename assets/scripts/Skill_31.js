@@ -9,7 +9,7 @@ import $attrEnum from './AttrEnum';
 import $weapon31 from './Weapon31';
 import $weapon31Atk from './Weapon31Atk';
 let i;
-exports.Skill_31 = void 0;
+export const Skill_31 = void 0;
 e.prototype.onRemove = function () {
   this._weapon.remove();
   this._weapon = null;
@@ -17,8 +17,7 @@ e.prototype.onRemove = function () {
 };
 e.prototype.checkTarget = function (t) {
   const e = this._owner.node.getPosition();
-  const n =
-    this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_6).value >= 1;
+  const n = this.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_6).value >= 1;
   const i = null;
   if (n) {
     i = 2 * this._cfg.edge;
@@ -30,7 +29,11 @@ e.prototype.checkTarget = function (t) {
     o -= this._cfg.edge;
   }
   for (
-    const r = new cc.Rect(o, e.y - 25, i, 50), a = $gridAreaDivisionMgr.default.instance.getRectAreaKeys(r), s = [], c = 0, u = a;
+    const r = new cc.Rect(o, e.y - 25, i, 50),
+      a = $gridAreaDivisionMgr.default.instance.getRectAreaKeys(r),
+      s = [],
+      c = 0,
+      u = a;
     c < u.length;
     c++
   ) {
@@ -62,12 +65,10 @@ e.prototype.shootBullet = function (t) {
       o = null;
     }
     const a = e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_4).value > 0;
-    const l = e._owner.node
-      .getPosition()
-      .add(cc.v2(30 * (t.x > 0 ? 1 : -1), 50));
+    const l = e._owner.node.getPosition().add(cc.v2(30 * (t.x > 0 ? 1 : -1), 50));
     $effectMgr.default.instance.createEffect({
       parent: n.effectParent,
-      prefabName: "Weapon31Atk",
+      prefabName: 'Weapon31Atk',
       initPos: l,
       effectClass: $weapon31Atk.default,
       onCreated: function (u) {
@@ -81,7 +82,7 @@ e.prototype.shootBullet = function (t) {
         }
         u.node.scaleX = Math.abs(u.node.scaleX) * (d > 0 ? 1 : -1);
         u.node.angle = (180 * cc.v2(d, 0).signAngle(t)) / Math.PI;
-        $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_ZhanYaoDao");
+        $audioUtil.AudioUtil.playEffect('sounds/lmtw_yx_ZhanYaoDao');
         u.play(
           function () {
             for (const i = 0; i < f; i++) {
@@ -91,21 +92,19 @@ e.prototype.shootBullet = function (t) {
                 const r = l.add(i.mul(10));
                 $bulletMgr.default.instance.createBullet({
                   parent: n.bulletParent,
-                  prefabName: "Bullet31",
+                  prefabName: 'Bullet31',
                   initPos: r,
                   iconPath: a
-                    ? "textures/bullet/pic_wuqi3_daoguang"
-                    : "textures/bullet/pic_wuqi3_daoguang2",
+                    ? 'textures/bullet/pic_wuqi3_daoguang'
+                    : 'textures/bullet/pic_wuqi3_daoguang2',
                   bulletClass: $bullet31.default,
                   onCreated: function (t) {
                     t.shoot(
                       e._owner,
                       o,
                       e,
-                      e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2)
-                        .value,
-                      e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_4)
-                        .value,
+                      e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2).value,
+                      e.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_4).value,
                     );
                   },
                 });
@@ -140,13 +139,9 @@ e.prototype.shootBullet = function (t) {
 e.prototype.onUpdate = function (t) {
   const e = this;
   if (this._weapon) {
-    this._weaponOffsetPos.x =
-      Math.abs(this._weaponOffsetPos.x) * -this._owner.dirX;
-    this._weapon.node.setPosition(
-      this._weaponCentrePos.add(this._weaponOffsetPos),
-    );
-    this._weapon.node.scaleX =
-      Math.abs(this._weapon.node.scaleX) * this._owner.dirX;
+    this._weaponOffsetPos.x = Math.abs(this._weaponOffsetPos.x) * -this._owner.dirX;
+    this._weapon.node.setPosition(this._weaponCentrePos.add(this._weaponOffsetPos));
+    this._weapon.node.scaleX = Math.abs(this._weapon.node.scaleX) * this._owner.dirX;
     if (this.skillCD > 0) {
       this.skillCD -= t;
       if (this.skillCD < 0) {
@@ -181,7 +176,7 @@ e.prototype.createWeapon = function () {
   this._weaponOffsetPos = cc.v2(40 * -this._owner.dirX, 0);
   $effectMgr.default.instance.createEffect({
     parent: this._owner.node,
-    prefabName: "Weapon31",
+    prefabName: 'Weapon31',
     effectClass: $weapon31.default,
     initPos: this._weaponCentrePos.add(this._weaponOffsetPos),
     onCreated: function (e) {
@@ -205,4 +200,4 @@ function e() {
   return e;
 }
 const m = e;
-exports.Skill_31 = m;
+export const Skill_31 = m;

@@ -14,13 +14,10 @@ e.prototype.init = function (t) {
   $resLoader.ResLoader.setSpritFrame(
     this.spIcon,
     $frameEnum.Frame.EBundleName.RES,
-    "textures/atlas/item_scene/" + this._cfgReward.spr,
+    'textures/atlas/item_scene/' + this._cfgReward.spr,
   );
   this.lName.string = this._cfgReward.name;
-  this.lDesc.string = this._cfgReward.info.replace(
-    "|val|",
-    this._cfgReward.changeID.toString(),
-  );
+  this.lDesc.string = this._cfgReward.info.replace('|val|', this._cfgReward.changeID.toString());
 };
 function e() {
   const e = (null !== t && t.apply(this, arguments)) || this;
@@ -30,4 +27,4 @@ function e() {
   e._cfgReward = null;
   return e;
 }
-exports.default = f;
+export default f;

@@ -1,6 +1,9 @@
 let i;
-exports.HollowOutShape = void 0;
-let c;
+export const HollowOutShape = {
+  Rect: 1,
+  Circle: 2
+};
+let c = HollowOutShape;
 const l = cc._decorator;
 const u = l.ccclass;
 const p = l.property;
@@ -8,10 +11,6 @@ const h = l.requireComponent;
 const f = l.executeInEditMode;
 const d = l.disallowMultiple;
 const m = l.executionOrder;
-!(function (t) {
-  t[(t.Rect = 1)] = "Rect";
-  t[(t.Circle = 2)] = "Circle";
-})((c = exports.HollowOutShape || (exports.HollowOutShape = {})));
 e.prototype.getFeather = function (t) {
   return t / this.node.width;
 };
@@ -128,12 +127,12 @@ e.prototype.circle = function (t, e, n) {
     }
   }
   const i = this.material;
-  i.setProperty("size", this.getNodeSize());
-  i.setProperty("center", this.getCenter(this._center));
-  i.setProperty("width", this.getWidth(2 * this._radius));
-  i.setProperty("height", this.getHeight(2 * this._radius));
-  i.setProperty("round", this.getRound(this._radius));
-  i.setProperty("feather", this.getFeather(this._feather));
+  i.setProperty('size', this.getNodeSize());
+  i.setProperty('center', this.getCenter(this._center));
+  i.setProperty('width', this.getWidth(2 * this._radius));
+  i.setProperty('height', this.getHeight(2 * this._radius));
+  i.setProperty('round', this.getRound(this._radius));
+  i.setProperty('feather', this.getFeather(this._feather));
 };
 e.prototype.rect = function (t, e, n, i, o) {
   this._shape = c.Rect;
@@ -172,23 +171,17 @@ e.prototype.rect = function (t, e, n, i, o) {
     }
   }
   const a = this.material;
-  a.setProperty("size", this.getNodeSize());
-  a.setProperty("center", this.getCenter(this._center));
-  a.setProperty("width", this.getWidth(this._width));
-  a.setProperty("height", this.getHeight(this._height));
-  a.setProperty("round", this.getRound(this._round));
-  a.setProperty("feather", this.getFeather(this._feather));
+  a.setProperty('size', this.getNodeSize());
+  a.setProperty('center', this.getCenter(this._center));
+  a.setProperty('width', this.getWidth(this._width));
+  a.setProperty('height', this.getHeight(this._height));
+  a.setProperty('round', this.getRound(this._round));
+  a.setProperty('feather', this.getFeather(this._feather));
 };
 e.prototype.updateProperties = function () {
   switch (this._shape) {
     case c.Rect:
-      this.rect(
-        this._center,
-        this._width,
-        this._height,
-        this._round,
-        this._feather,
-      );
+      this.rect(this._center, this._width, this._height, this._round, this._feather);
       break;
     case c.Circle:
       this.circle(this._center, this._radius, this._feather);
@@ -201,7 +194,7 @@ e.prototype.resetInEditor = function () {
 e.prototype.onLoad = function () {
   this.init();
 };
-Object.defineProperty(e.prototype, "feather", {
+Object.defineProperty(e.prototype, 'feather', {
   get: function () {
     return this._feather;
   },
@@ -212,7 +205,7 @@ Object.defineProperty(e.prototype, "feather", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "radius", {
+Object.defineProperty(e.prototype, 'radius', {
   get: function () {
     return this._radius;
   },
@@ -223,7 +216,7 @@ Object.defineProperty(e.prototype, "radius", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "round", {
+Object.defineProperty(e.prototype, 'round', {
   get: function () {
     return this._round;
   },
@@ -234,7 +227,7 @@ Object.defineProperty(e.prototype, "round", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "height", {
+Object.defineProperty(e.prototype, 'height', {
   get: function () {
     return this._height;
   },
@@ -245,7 +238,7 @@ Object.defineProperty(e.prototype, "height", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "width", {
+Object.defineProperty(e.prototype, 'width', {
   get: function () {
     return this._width;
   },
@@ -256,7 +249,7 @@ Object.defineProperty(e.prototype, "width", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "center", {
+Object.defineProperty(e.prototype, 'center', {
   get: function () {
     return this._center;
   },
@@ -267,7 +260,7 @@ Object.defineProperty(e.prototype, "center", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "shape", {
+Object.defineProperty(e.prototype, 'shape', {
   get: function () {
     return this._shape;
   },
@@ -278,7 +271,7 @@ Object.defineProperty(e.prototype, "shape", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "effect", {
+Object.defineProperty(e.prototype, 'effect', {
   get: function () {
     return this._effect;
   },
@@ -304,4 +297,4 @@ function e() {
   e.tweenRes = null;
   return e;
 }
-exports.default = y;
+export default y;;

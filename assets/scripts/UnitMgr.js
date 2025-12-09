@@ -2,7 +2,7 @@ import $nodePoolManager from './NodePoolManager';
 import $resLoader from './ResLoader';
 import $frameEnum from './FrameEnum';
 import $battleMgr from './BattleMgr';
-exports.UnitMgr = void 0;
+export const UnitMgr = void 0;
 t.prototype.clear = function () {
   this._unitId = 0;
   this._unitMap.forEach(function (t) {
@@ -35,17 +35,15 @@ t.prototype.createUnit = function (t) {
     c.setPosition(t.initPos);
     const l = c.getComponent(t.unitClass);
     this._unitMap.set(s, l);
-    l.init(s, t.areaObjType, t.areaColliderType, t.initParam).then(
-      function () {
-        if (t.onCreated) {
-          t.onCreated(l);
-        }
-      },
-    );
+    l.init(s, t.areaObjType, t.areaColliderType, t.initParam).then(function () {
+      if (t.onCreated) {
+        t.onCreated(l);
+      }
+    });
   } else {
     $resLoader.ResLoader.loadAsset({
       bundleName: $frameEnum.Frame.EBundleName.GAME,
-      path: "prefabs/room/units/" + t.prefabName,
+      path: 'prefabs/room/units/' + t.prefabName,
       type: cc.Prefab,
       success: function (n) {
         if ($battleMgr.default.instance.getCurScene()) {
@@ -61,7 +59,7 @@ t.prototype.init = function () {
   this._unitId = 0;
   this._unitMap.clear();
 };
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (this._instance) {
       //
@@ -78,4 +76,4 @@ function t() {
   this._unitMap = new Map();
 }
 const s = t;
-exports.UnitMgr = s;
+export const UnitMgr = s;

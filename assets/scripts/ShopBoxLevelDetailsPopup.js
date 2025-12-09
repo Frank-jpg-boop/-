@@ -7,32 +7,26 @@ const u = l.ccclass;
 const p = l.property;
 e.prototype.updateBoxLv = function () {
   const t = this;
-  this.mLvLab.string = "Lv." + this._boxLevel;
+  this.mLvLab.string = 'Lv.' + this._boxLevel;
   this.mBtnLeft.active = this._boxLevel > 1;
   this.mBtnRight.active = this._boxLevel < this._maxLv;
   for (
     const e = $cfg.default.instance.dataShopBox.queryOne(function (e) {
-              return e.level == t._boxLevel;
-            }),
-          n = 1;
+        return e.level == t._boxLevel;
+      }),
+      n = 1;
     n < 3;
     ++n
   ) {
-    const i = this.node
-      .getChildByName("boxItem" + n)
-      .getChildByName("cards").children;
+    const i = this.node.getChildByName('boxItem' + n).getChildByName('cards').children;
     i.forEach(function (t) {
       t.active = !1;
     });
-    for (
-      const o = (1 == n ? e.reward : e.bigReward).split("|"), r = 0;
-      r < o.length;
-      ++r
-    ) {
-      const s = o[r].split("_").map(Number);
+    for (const o = (1 == n ? e.reward : e.bigReward).split('|'), r = 0; r < o.length; ++r) {
+      const s = o[r].split('_').map(Number);
       const c = i[r];
       c.active = !0;
-      c.getChildByName("num").getComponent(cc.Label).string = "" + s[1];
+      c.getChildByName('num').getComponent(cc.Label).string = '' + s[1];
     }
   }
 };
@@ -60,4 +54,4 @@ function e() {
   e._maxLv = 0;
   return e;
 }
-exports.default = h;
+export default h;

@@ -6,10 +6,10 @@ import $userDataProxy from './UserDataProxy';
 import $localDataProxy from './LocalDataProxy';
 import $globalPopupMgr from './GlobalPopupMgr';
 import $sqlUtil from './SqlUtil';
-exports.UserCenterMgr = void 0;
+export const UserCenterMgr = void 0;
 t._instance = null;
 t.prototype.clearToken = function () {
-  this._token = "";
+  this._token = '';
 };
 t.prototype.zbActiveApply = function (t, e, n) {
   if (void 0 === n) {
@@ -23,12 +23,7 @@ t.prototype.zbActiveApply = function (t, e, n) {
     params: $httpRequest.HttpRequest.inst.encryptStr(JSON.stringify(i)),
   });
   $httpRequest.HttpRequest.inst
-    .request(
-      "POST",
-      "/appdata/zhubo/apply",
-      r,
-      "https://game.yuanzililiang.cn",
-    )
+    .request('POST', '/appdata/zhubo/apply', r, 'https://game.yuanzililiang.cn')
     .then(function (t) {
       if (200 == t.code) {
         if (n) {
@@ -55,12 +50,7 @@ t.prototype.zbActiveState = function (t, e) {
     params: $httpRequest.HttpRequest.inst.encryptStr(JSON.stringify(i)),
   });
   $httpRequest.HttpRequest.inst
-    .request(
-      "POST",
-      "/appdata/zhubo/data",
-      r,
-      "https://game.yuanzililiang.cn",
-    )
+    .request('POST', '/appdata/zhubo/data', r, 'https://game.yuanzililiang.cn')
     .then(function (t) {
       if (200 == t.code) {
         t.data && (n._zbState = t.data.state);
@@ -81,13 +71,10 @@ t.prototype.resetLogin = function () {
   const e = this;
   mm.platform.login(function (n, i) {
     if (n) {
-      if (i && "" != i) {
+      if (i && '' != i) {
         //
       } else {
-        i = $sqlUtil.SqlUtil.getLocalUserData(
-          $userDataProxy.userDataProxy.codeKey,
-          "",
-        );
+        i = $sqlUtil.SqlUtil.getLocalUserData($userDataProxy.userDataProxy.codeKey, '');
       }
       t.instance.loginUserCenter(
         i,
@@ -106,26 +93,26 @@ t.prototype.resetLogin = function () {
 };
 t.prototype.clearData = function (t) {
   $httpRequest.HttpRequest.inst
-    .request("POST", "/player/props/clear", {}, this.loginUrl)
+    .request('POST', '/player/props/clear', {}, this.loginUrl)
     .then(function (e) {
       if (200 == e.code) {
         if (t) {
           t();
         }
-        console.log("清除成功");
+        console.log('清除成功');
       }
     })
     .catch(function () {});
 };
 t.prototype.saveData = function (t, e, n) {
-  if ("" != this._token) {
+  if ('' != this._token) {
     const i = {};
     i[t] = e;
     const r = JSON.stringify({
       params: $httpRequest.HttpRequest.inst.encryptStr(JSON.stringify(i)),
     });
     $httpRequest.HttpRequest.inst
-      .request("POST", "/player/updateProps", r, this.loginUrl)
+      .request('POST', '/player/updateProps', r, this.loginUrl)
       .then(function () {
         if (n) {
           n();
@@ -141,14 +128,14 @@ t.prototype.cdkey = function (t, e) {
     params: $httpRequest.HttpRequest.inst.encryptStr(JSON.stringify(t)),
   });
   $httpRequest.HttpRequest.inst
-    .request("POST", "/player/cdkey", n, this.loginUrl)
+    .request('POST', '/player/cdkey', n, this.loginUrl)
     .then(function (t) {
       if (200 == t.code) {
-        if ("" != t.data) {
-          const n = t.data.split("|");
+        if ('' != t.data) {
+          const n = t.data.split('|');
           const i = [];
           n.forEach(function (t) {
-            const e = t.split("_").map(Number);
+            const e = t.split('_').map(Number);
             const n = e[0];
             const o = e[1];
             i.push({
@@ -161,19 +148,19 @@ t.prototype.cdkey = function (t, e) {
             i,
           );
         } else {
-          $globalPopupMgr.default.instance.showTips("开启无广模式");
+          $globalPopupMgr.default.instance.showTips('开启无广模式');
           yzll.gameConfig.isGM = !0;
         }
       } else {
-        $globalPopupMgr.default.instance.showTips("无效兑换码");
+        $globalPopupMgr.default.instance.showTips('无效兑换码');
       }
       if (e) {
         e(t);
       }
     })
     .catch(function (t) {
-      console.error("提交失败：", t);
-      $globalPopupMgr.default.instance.showTips("无效兑换码");
+      console.error('提交失败：', t);
+      $globalPopupMgr.default.instance.showTips('无效兑换码');
     });
 };
 t.prototype.subscribe = function (t, e) {
@@ -182,10 +169,8 @@ t.prototype.subscribe = function (t, e) {
   });
   $httpRequest.HttpRequest.inst
     .request(
-      "POST",
-      "/subscribe/" +
-        (cc.sys.platform == cc.sys.BYTEDANCE_GAME ? "douyin" : "weixin") +
-        "/send",
+      'POST',
+      '/subscribe/' + (cc.sys.platform == cc.sys.BYTEDANCE_GAME ? 'douyin' : 'weixin') + '/send',
       n,
       this.loginUrl,
     )
@@ -195,7 +180,7 @@ t.prototype.subscribe = function (t, e) {
       }
     })
     .catch(function (t) {
-      console.error("提交失败：", t);
+      console.error('提交失败：', t);
     });
 };
 t.prototype.loginUserCenter = function (t, e, n, r) {
@@ -241,49 +226,49 @@ t.prototype.loginUserCenter = function (t, e, n, r) {
   //         }
   //     });
 };
-Object.defineProperty(t.prototype, "configVersion", {
+Object.defineProperty(t.prototype, 'configVersion', {
   get: function () {
-    return "a";
+    return 'a';
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "zbState", {
+Object.defineProperty(t.prototype, 'zbState', {
   get: function () {
     return this._zbState;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "svrData", {
+Object.defineProperty(t.prototype, 'svrData', {
   get: function () {
     return this._svrData;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "openId", {
+Object.defineProperty(t.prototype, 'openId', {
   get: function () {
     return this._openId;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "playerId", {
+Object.defineProperty(t.prototype, 'playerId', {
   get: function () {
     return this._playerId;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "token", {
+Object.defineProperty(t.prototype, 'token', {
   get: function () {
     return this._token;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new t();
@@ -294,12 +279,12 @@ Object.defineProperty(t, "instance", {
   configurable: !0,
 });
 function t() {
-  this.loginUrl = "https://minigame.yuanzililiang.cn/doomsday";
-  this._token = "";
-  this._playerId = "";
-  this._openId = "";
+  this.loginUrl = 'https://minigame.yuanzililiang.cn/doomsday';
+  this._token = '';
+  this._playerId = '';
+  this._openId = '';
   this._zbState = 0;
   this._svrData = null;
 }
 const p = t;
-exports.UserCenterMgr = p;
+export const UserCenterMgr = p;

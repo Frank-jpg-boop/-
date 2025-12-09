@@ -18,7 +18,7 @@ const f =
       const n = this;
       this._isSummon = Math.random() < Number(this._cfg.val1);
       this._spCtrl.playAnim(
-        this._isSummon ? "call" : "atk",
+        this._isSummon ? 'call' : 'atk',
         1,
         !1,
         function () {
@@ -52,7 +52,7 @@ const f =
           this.scheduleOnce(function () {
             const e = t.pathPos;
             t.updatePathData();
-            if ("" != t._pathLineId) {
+            if ('' != t._pathLineId) {
               const n = i.level.path.getLine(t.pathLineId);
               if (0 != n.dir.x) {
                 const r = $randomUtil.RandomUtil.randomInt(-50, 50);
@@ -70,7 +70,7 @@ const f =
               cfgId: o,
               camp: $actorEnum.ETeamType.ENEMY,
               parent: i.actorParent,
-              prefabName: "Enemy_" + o,
+              prefabName: 'Enemy_' + o,
               initPos: e,
               actorClass: $actorMgr.default.instance.getActorClassName(
                 o,
@@ -89,7 +89,7 @@ const f =
                         opacity: 255,
                       },
                       {
-                        easing: "sineIn",
+                        easing: 'sineIn',
                       },
                     )
                     .call(function () {
@@ -106,4 +106,4 @@ const f =
       }
     };
   })($enemyBase.default));
-exports.default = f;
+export default f;

@@ -7,30 +7,26 @@ t.toImgUrl = function (e) {
   const o = e.height;
   if (cc.sys.isNative) {
     const r = e.readPixels();
-    const a = jsb.fileUtils.getWritablePath() + "tmpImg.png";
+    const a = jsb.fileUtils.getWritablePath() + 'tmpImg.png';
     jsb.saveImageData(r, i, o, a);
     n = a;
   } else {
     const s = t.getCanvas();
-    const c = s.getContext("2d");
+    const c = s.getContext('2d');
     const l = s.toTempFilePathSync;
     const u = ((r = e.readPixels()), 4 * i);
     const p = 0;
     s.width = i;
     for (s.height = o; p < o; ) {
-      for (
-        const h = o - 1 - p, f = c.createImageData(i, 1), d = h * i * 4, m = 0;
-        m < u;
-        m++
-      ) {
+      for (const h = o - 1 - p, f = c.createImageData(i, 1), d = h * i * 4, m = 0; m < u; m++) {
         f.data[m] = r[d + m];
       }
       c.putImageData(f, 0, p++);
     }
-    if ("function" == typeof l) {
+    if ('function' == typeof l) {
       n = l.call(s, {});
     } else {
-      n = s.toDataURL("image/png");
+      n = s.toDataURL('image/png');
     }
     c.clearRect(0, 0, i, o);
   }
@@ -69,16 +65,14 @@ t.capture = function (t, e) {
   return n;
 };
 t.getCanvas = function () {
-  return t._canvas || (t._canvas = document.createElement("canvas"));
+  return t._canvas || (t._canvas = document.createElement('canvas'));
 };
 t.getCamera = function () {
   const e = t._camera;
   if (e) {
     //
   } else {
-    (e = t._camera =
-      new cc.Node("CaptureUtils").addComponent(cc.Camera)).alignWithScreen =
-      !1;
+    (e = t._camera = new cc.Node('CaptureUtils').addComponent(cc.Camera)).alignWithScreen = !1;
     e.ortho = !0;
     e.nearClip = 0;
   }
@@ -119,4 +113,4 @@ t._capture = function (e, n) {
 };
 function t() {}
 const i = t;
-exports.default = i;
+export default i;

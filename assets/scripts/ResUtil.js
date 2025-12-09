@@ -1,5 +1,5 @@
 import $resKeeper from './ResKeeper';
-exports.ResUtil = void 0;
+export const ResUtil = void 0;
 t.instantiate = function (e) {
   const n = cc.instantiate(e);
   const i = t.getResKeeper(n, !0);
@@ -13,7 +13,7 @@ t.assignWith = function (e, n, i) {
   if (o && e instanceof cc.Asset) {
     return (o.cacheAsset(e), e);
   } else {
-    return (console.error("assignWith " + e + " to " + n + " faile"), null);
+    return (console.error('assignWith ' + e + ' to ' + n + ' faile'), null);
   }
 };
 t.getResKeeper = function (e, n) {
@@ -28,4 +28,4 @@ t.getResKeeper = function (e, n) {
 };
 function t() {}
 const o = t;
-exports.ResUtil = o;
+export const ResUtil = o;

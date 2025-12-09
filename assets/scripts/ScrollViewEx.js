@@ -7,14 +7,12 @@ const u = s.menu;
 const p = s.requireComponent;
 const h = s.disallowMultiple;
 !(function (t) {
-  t[(t.ONE = 1)] = "ONE";
-  t[(t.TWO = 2)] = "TWO";
-  t[(t.MORE = 3)] = "MORE";
+  t[(t.ONE = 1)] = 'ONE';
+  t[(t.TWO = 2)] = 'TWO';
+  t[(t.MORE = 3)] = 'MORE';
 })(a || (a = {}));
 e.prototype.checkCollision = function (t) {
-  const e = this.getBoundingBoxToWorld(
-    this.node.getComponent(cc.ScrollView).content.parent,
-  );
+  const e = this.getBoundingBoxToWorld(this.node.getComponent(cc.ScrollView).content.parent);
   const n = this.getBoundingBoxToWorld(t);
   return e.intersects(n);
 };
@@ -35,12 +33,9 @@ e.prototype.updateOpacity = function () {
     t.updateLayout();
   });
   for (
-    const e =
-              this.childLayerType == a.MORE
-                ? this.childLayerNum
-                : this.childLayerType,
-          n = [],
-          i = [this._scrollView.content];
+    const e = this.childLayerType == a.MORE ? this.childLayerNum : this.childLayerType,
+      n = [],
+      i = [this._scrollView.content];
     e > 0;
   ) {
     n = [];
@@ -59,40 +54,16 @@ e.prototype.updateOpacity = function () {
   });
 };
 e.prototype.onDisable = function () {
-  this.node.off("scrolling", this.onEventUpdateOpacity, this);
-  this._scrollView.content.off(
-    cc.Node.EventType.CHILD_REMOVED,
-    this.onEventUpdateOpacity,
-    this,
-  );
-  this._scrollView.content.off(
-    cc.Node.EventType.CHILD_ADDED,
-    this.onEventUpdateOpacity,
-    this,
-  );
-  this._scrollView.content.off(
-    cc.Node.EventType.CHILD_REORDER,
-    this.onEventUpdateOpacity,
-    this,
-  );
+  this.node.off('scrolling', this.onEventUpdateOpacity, this);
+  this._scrollView.content.off(cc.Node.EventType.CHILD_REMOVED, this.onEventUpdateOpacity, this);
+  this._scrollView.content.off(cc.Node.EventType.CHILD_ADDED, this.onEventUpdateOpacity, this);
+  this._scrollView.content.off(cc.Node.EventType.CHILD_REORDER, this.onEventUpdateOpacity, this);
 };
 e.prototype.onEnable = function () {
-  this.node.on("scrolling", this.onEventUpdateOpacity, this);
-  this._scrollView.content.on(
-    cc.Node.EventType.CHILD_REMOVED,
-    this.onEventUpdateOpacity,
-    this,
-  );
-  this._scrollView.content.on(
-    cc.Node.EventType.CHILD_ADDED,
-    this.onEventUpdateOpacity,
-    this,
-  );
-  this._scrollView.content.on(
-    cc.Node.EventType.CHILD_REORDER,
-    this.onEventUpdateOpacity,
-    this,
-  );
+  this.node.on('scrolling', this.onEventUpdateOpacity, this);
+  this._scrollView.content.on(cc.Node.EventType.CHILD_REMOVED, this.onEventUpdateOpacity, this);
+  this._scrollView.content.on(cc.Node.EventType.CHILD_ADDED, this.onEventUpdateOpacity, this);
+  this._scrollView.content.on(cc.Node.EventType.CHILD_REORDER, this.onEventUpdateOpacity, this);
 };
 e.prototype.onLoad = function () {
   this._scrollView = this.node.getComponent(cc.ScrollView);
@@ -104,4 +75,4 @@ function e() {
   e._scrollView = null;
   return e;
 }
-exports.default = f;
+export default f;

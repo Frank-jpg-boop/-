@@ -5,26 +5,24 @@ import $itemDataProxy from './ItemDataProxy';
 import $playerDataProxy from './PlayerDataProxy';
 import $stageDataProxy from './StageDataProxy';
 import $bagConst from './BagConst';
-exports.levelBattleData =
-  exports.LevelBattleData =
-  exports.ELevelBattleDataEvent =
-    void 0;
 let i;
-!(function (t) {
-  t.GOLD_CHANGE = "gold_change";
-  t.ELECTRIC_CHANGE = "electric_change";
-  t.WAVE_CHANGE = "wave_change";
-  t.CONSUME_BAG_ITEM = "consume_bag_item";
-  t.BAG_ITEM_CHANGE = "bag_item_change";
-  t.ADD_SKILL = "add_skill";
-  t.REMOVE_SKILL = "remove_skill";
-  t.ENEMY_LEVEL_UPDATE = "monster_level_update";
-})((i = exports.ELevelBattleDataEvent || (exports.ELevelBattleDataEvent = {})));
+export const ELevelBattleDataEvent = {
+  GOLD_CHANGE: 'gold_change',
+  ELECTRIC_CHANGE: 'electric_change',
+  WAVE_CHANGE: 'wave_change',
+  CONSUME_BAG_ITEM: 'consume_bag_item',
+  BAG_ITEM_CHANGE: 'bag_item_change',
+  ADD_SKILL: 'add_skill',
+  REMOVE_SKILL: 'remove_skill',
+  ENEMY_LEVEL_UPDATE: 'monster_level_update',
+};
+export const LevelBattleData = t;
+export const levelBattleData = new LevelBattleData();
 t.prototype.update = function () {};
 t.prototype.findBagPutRowCol = function (t) {
   for (const e = new Map(), n = 0; n < $bagConst.BAG_ROW; ++n) {
     for (const i = 0; i < $bagConst.BAG_COL; ++i) {
-      e.set(n + "&" + i, !0);
+      e.set(n + '&' + i, !0);
     }
   }
   if (!this._data.bagData.isUnlock) {
@@ -38,12 +36,17 @@ t.prototype.findBagPutRowCol = function (t) {
   }
   for (n = 0; n < this._data.bagData.bagEquipDatas.length; ++n) {
     for (
-      const a = this._data.bagData.bagEquipDatas[n], s = $cfg.default.instance.dataReward.getById(a.rewardId), l = $bagConst.BAG_EQUIP_FORM[s.boxSet].grids.slice(), p = a.rowCol.split("&").map(Number), h = [], f = 0;
+      const a = this._data.bagData.bagEquipDatas[n],
+        s = $cfg.default.instance.dataReward.getById(a.rewardId),
+        l = $bagConst.BAG_EQUIP_FORM[s.boxSet].grids.slice(),
+        p = a.rowCol.split('&').map(Number),
+        h = [],
+        f = 0;
       f < l.length;
       f++
     ) {
       const d = l[f];
-      h.push(p[0] + d[0] + "&" + (p[1] + d[1]));
+      h.push(p[0] + d[0] + '&' + (p[1] + d[1]));
     }
     h.forEach(function (t) {
       e.set(t, !1);
@@ -52,14 +55,14 @@ t.prototype.findBagPutRowCol = function (t) {
   for (n = 0; n < $bagConst.BAG_ROW; ++n) {
     for (i = 0; i < $bagConst.BAG_COL; ++i) {
       const m = !0;
-      if (e.get(n + "&" + i)) {
+      if (e.get(n + '&' + i)) {
         l =
           $bagConst.BAG_EQUIP_FORM[
             $cfg.default.instance.dataReward.getById(t).boxSet
           ].grids.slice();
         for (const y = 0; y < l.length; y++) {
           d = l[y];
-          if (!e.get(n + d[0] + "&" + (i + d[1]))) {
+          if (!e.get(n + d[0] + '&' + (i + d[1]))) {
             m = !1;
             break;
           }
@@ -68,16 +71,16 @@ t.prototype.findBagPutRowCol = function (t) {
         m = !1;
       }
       if (m) {
-        return n + "&" + i;
+        return n + '&' + i;
       }
     }
   }
-  return "";
+  return '';
 };
 t.prototype.getBagNullGridCount = function () {
   for (const t = new Map(), e = 0; e < $bagConst.BAG_ROW; ++e) {
     for (const n = 0; n < $bagConst.BAG_COL; ++n) {
-      t.set(e + "&" + n, !0);
+      t.set(e + '&' + n, !0);
     }
   }
   if (!this._data.bagData.isUnlock) {
@@ -91,12 +94,17 @@ t.prototype.getBagNullGridCount = function () {
   }
   for (e = 0; e < this._data.bagData.bagEquipDatas.length; ++e) {
     for (
-      const r = this._data.bagData.bagEquipDatas[e], a = $cfg.default.instance.dataReward.getById(r.rewardId), s = $bagConst.BAG_EQUIP_FORM[a.boxSet].grids.slice(), l = r.rowCol.split("&").map(Number), p = [], h = 0;
+      const r = this._data.bagData.bagEquipDatas[e],
+        a = $cfg.default.instance.dataReward.getById(r.rewardId),
+        s = $bagConst.BAG_EQUIP_FORM[a.boxSet].grids.slice(),
+        l = r.rowCol.split('&').map(Number),
+        p = [],
+        h = 0;
       h < s.length;
       h++
     ) {
       const f = s[h];
-      p.push(l[0] + f[0] + "&" + (l[1] + f[1]));
+      p.push(l[0] + f[0] + '&' + (l[1] + f[1]));
     }
     p.forEach(function (e) {
       t.set(e, !1);
@@ -148,12 +156,12 @@ t.prototype.enterNextWave = function () {
 };
 t.prototype.getWaveId = function (t) {
   const e = $cfg.default.instance.dataStage.getById(this._data.curStageId);
-  const n = e.waveSet.split("|");
+  const n = e.waveSet.split('|');
   if (t > n.length) {
-    const i = e.waveRepeat.split("|").map(Number);
+    const i = e.waveRepeat.split('|').map(Number);
     return i[(t - n.length) % i.length];
   }
-  return Number(n[t - 1].split("_")[0]);
+  return Number(n[t - 1].split('_')[0]);
 };
 t.prototype.hasBagItem = function (t) {
   return this._data.bagData.bagEquipDatas.some(function (e) {
@@ -177,11 +185,7 @@ t.prototype.addRescue = function (t) {
 };
 t.prototype.updateElectric = function (t) {
   this._data.electric += t;
-  $eventManager.EventManager.instance.emit(
-    i.ELECTRIC_CHANGE,
-    this._data.electric,
-    t,
-  );
+  $eventManager.EventManager.instance.emit(i.ELECTRIC_CHANGE, this._data.electric, t);
 };
 t.prototype.updateGold = function (t) {
   t = Math.floor(t);
@@ -216,9 +220,7 @@ t.prototype.init = function (t) {
     commonOrangeNotShowCount: 0,
   };
   this._cfgStage = $cfg.default.instance.dataStage.getById(t);
-  const n = $cfg.default.instance.dataSkin.getById(
-    $playerDataProxy.playerDataProxy.skinId,
-  );
+  const n = $cfg.default.instance.dataSkin.getById($playerDataProxy.playerDataProxy.skinId);
   this._data.skillIds.push(n.baseSkill);
   if (-1 != n.baseChoose) {
     this.addSkillEx(n.baseChoose);
@@ -226,9 +228,9 @@ t.prototype.init = function (t) {
   this._data.skillIds.forEach(function (t) {
     $cfg.default.instance.dataSkill
       .getById(t)
-      .speReward.split("|")
+      .speReward.split('|')
       .forEach(function (t) {
-        const n = t.split("_").map(Number);
+        const n = t.split('_').map(Number);
         const i = n[0];
         const o = n[1];
         if ($itemDataProxy.itemDataProxy.getItemValue(i) > 0) {
@@ -237,10 +239,10 @@ t.prototype.init = function (t) {
       });
   });
   this.extraRoomEnemyLv = 0;
-  if ("" != this._cfgStage.bossVal) {
+  if ('' != this._cfgStage.bossVal) {
     const l = [];
-    this._cfgStage.bossVal.split("|").forEach(function (t) {
-      const e = t.split("_").map(Number);
+    this._cfgStage.bossVal.split('|').forEach(function (t) {
+      const e = t.split('_').map(Number);
       const n = e[0];
       const i = e[1];
       const o = e[2];
@@ -261,18 +263,12 @@ t.prototype.init = function (t) {
     };
   }
   $eventManager.EventManager.instance.emit(i.GOLD_CHANGE, this._data.gold, 0);
-  $eventManager.EventManager.instance.emit(
-    i.ELECTRIC_CHANGE,
-    this._data.electric,
-    0,
-  );
+  $eventManager.EventManager.instance.emit(i.ELECTRIC_CHANGE, this._data.electric, 0);
 };
-Object.defineProperty(t.prototype, "enemyLevelRate", {
+Object.defineProperty(t.prototype, 'enemyLevelRate', {
   get: function () {
-    const t = $stageDataProxy.stageDataProxy.getStageSurvivalCount(
-      this._data.curStageId,
-    );
-    const e = this._cfgStage.survivor.split("|").length;
+    const t = $stageDataProxy.stageDataProxy.getStageSurvivalCount(this._data.curStageId);
+    const e = this._cfgStage.survivor.split('|').length;
     const n = Number($cfg.default.instance.dataCons.getById(20).val);
     const i = Math.max(e - t, 1);
     return Math.pow(e / i, n);
@@ -280,7 +276,7 @@ Object.defineProperty(t.prototype, "enemyLevelRate", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "skillExMap", {
+Object.defineProperty(t.prototype, 'skillExMap', {
   get: function () {
     for (
       const t = new Map(), e = 0, n = Object.entries(this._data.skillExDataMap);
@@ -297,10 +293,13 @@ Object.defineProperty(t.prototype, "skillExMap", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "moonLvIndex", {
+Object.defineProperty(t.prototype, 'moonLvIndex', {
   get: function () {
     for (
-      const t = this._cfgStage.moonShow.split("|").map(Number), e = this.curWaveInfo.enemyLv, n = t.length - 1, i = 0;
+      const t = this._cfgStage.moonShow.split('|').map(Number),
+        e = this.curWaveInfo.enemyLv,
+        n = t.length - 1,
+        i = 0;
       i < t.length;
       i++
     ) {
@@ -314,14 +313,14 @@ Object.defineProperty(t.prototype, "moonLvIndex", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "skillIds", {
+Object.defineProperty(t.prototype, 'skillIds', {
   get: function () {
     return this._data.skillIds.slice();
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "stageEnemyAtkScale", {
+Object.defineProperty(t.prototype, 'stageEnemyAtkScale', {
   get: function () {
     const t = $cfg.default.instance.dataStageUp.getById(this._data.curStageId);
     if (t) {
@@ -333,7 +332,7 @@ Object.defineProperty(t.prototype, "stageEnemyAtkScale", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "stageEnemyLvScale", {
+Object.defineProperty(t.prototype, 'stageEnemyLvScale', {
   get: function () {
     const t = $cfg.default.instance.dataStageUp.getById(this._data.curStageId);
     if (t) {
@@ -345,7 +344,7 @@ Object.defineProperty(t.prototype, "stageEnemyLvScale", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "curWaveInfo", {
+Object.defineProperty(t.prototype, 'curWaveInfo', {
   get: function () {
     const t = null;
     if (0 == this._data.curWave) {
@@ -354,7 +353,7 @@ Object.defineProperty(t.prototype, "curWaveInfo", {
       t = this._data.curWave;
     }
     const e = $cfg.default.instance.dataStage.getById(this._data.curStageId);
-    const n = e.waveSet.split("|");
+    const n = e.waveSet.split('|');
     if (0 == n.length) {
       return {
         waveId: 0,
@@ -362,18 +361,17 @@ Object.defineProperty(t.prototype, "curWaveInfo", {
       };
     }
     if (t > n.length) {
-      const i = e.waveRepeat.split("|").map(Number);
+      const i = e.waveRepeat.split('|').map(Number);
       const r = i[(t - n.length) % i.length];
       const a = Math.floor((t - n.length) / i.length);
       return {
         waveId: r,
         enemyLv: Math.floor(
-          (e.waveRepeatLv + this.extraRoomEnemyLv) *
-            Math.pow(e.waveRepeatLvUp, a),
+          (e.waveRepeatLv + this.extraRoomEnemyLv) * Math.pow(e.waveRepeatLvUp, a),
         ),
       };
     }
-    const s = n[t - 1].split("_").map(Number);
+    const s = n[t - 1].split('_').map(Number);
     return {
       waveId: s[0],
       enemyLv: s[1] + this.extraRoomEnemyLv,
@@ -382,71 +380,69 @@ Object.defineProperty(t.prototype, "curWaveInfo", {
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "residueSurvivorNum", {
+Object.defineProperty(t.prototype, 'residueSurvivorNum', {
   get: function () {
     const t = $cfg.default.instance.dataStage.getById(this._data.curStageId);
     const e = this._data.bagData.bagEquipDatas.filter(function (t) {
       return 999 == t.rewardId;
     });
     return (
-      t.maxNpc -
-      $stageDataProxy.stageDataProxy.getStageInfo(t.id).survivalKeys.length -
-      e.length
+      t.maxNpc - $stageDataProxy.stageDataProxy.getStageInfo(t.id).survivalKeys.length - e.length
     );
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "bagData", {
+Object.defineProperty(t.prototype, 'bagData', {
   get: function () {
     return this._data.bagData;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "curWave", {
+Object.defineProperty(t.prototype, 'curWave', {
   get: function () {
     return this._data.curWave;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "cfgStage", {
+Object.defineProperty(t.prototype, 'cfgStage', {
   get: function () {
     return this._cfgStage;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "stageId", {
+Object.defineProperty(t.prototype, 'stageId', {
   get: function () {
     return this._data.curStageId;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "rescue", {
+Object.defineProperty(t.prototype, 'rescue', {
   get: function () {
     return this._data.rescue;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "electric", {
+Object.defineProperty(t.prototype, 'electric', {
   get: function () {
     return this._data.electric;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "gold", {
+Object.defineProperty(t.prototype, 'gold', {
   get: function () {
     return this._data.gold;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "data", {
+Object.defineProperty(t.prototype, 'data', {
   get: function () {
     return this._data;
   },
@@ -461,5 +457,5 @@ function t() {
   this.extraRoomEnemyLv = 0;
 }
 const p = t;
-exports.LevelBattleData = p;
-exports.levelBattleData = new p();
+export const LevelBattleData = p;;
+export const levelBattleData = new p();;

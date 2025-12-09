@@ -26,154 +26,154 @@ t._instance = null;
 t.prototype.initBySingleJson = function () {};
 t.prototype.initByMergeCompressConfig = function () {};
 t.prototype.initByMergeJson = function () {};
-Object.defineProperty(t.prototype, "dataGuide", {
+Object.defineProperty(t.prototype, 'dataGuide', {
   get: function () {
     return this._dataGuide;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataSurvivor", {
+Object.defineProperty(t.prototype, 'dataSurvivor', {
   get: function () {
     return this._dataSurvivor;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataReward", {
+Object.defineProperty(t.prototype, 'dataReward', {
   get: function () {
     return this._dataReward;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataItem", {
+Object.defineProperty(t.prototype, 'dataItem', {
   get: function () {
     return this._dataItem;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataAtt", {
+Object.defineProperty(t.prototype, 'dataAtt', {
   get: function () {
     return this._dataAtt;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataShopDaily", {
+Object.defineProperty(t.prototype, 'dataShopDaily', {
   get: function () {
     return this._dataShopDaily;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataShopBox", {
+Object.defineProperty(t.prototype, 'dataShopBox', {
   get: function () {
     return this._dataShopBox;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataTask", {
+Object.defineProperty(t.prototype, 'dataTask', {
   get: function () {
     return this._dataTask;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataSign", {
+Object.defineProperty(t.prototype, 'dataSign', {
   get: function () {
     return this._dataSign;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataChoose", {
+Object.defineProperty(t.prototype, 'dataChoose', {
   get: function () {
     return this._dataChoose;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataSkin", {
+Object.defineProperty(t.prototype, 'dataSkin', {
   get: function () {
     return this._dataSkin;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataStageUp", {
+Object.defineProperty(t.prototype, 'dataStageUp', {
   get: function () {
     return this._dataStageUp;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataSkill", {
+Object.defineProperty(t.prototype, 'dataSkill', {
   get: function () {
     return this._dataSkill;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataBuild", {
+Object.defineProperty(t.prototype, 'dataBuild', {
   get: function () {
     return this._dataBuild;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataMerchant", {
+Object.defineProperty(t.prototype, 'dataMerchant', {
   get: function () {
     return this._dataMerchant;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataEnemy", {
+Object.defineProperty(t.prototype, 'dataEnemy', {
   get: function () {
     return this._dataEnemy;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataStage", {
+Object.defineProperty(t.prototype, 'dataStage', {
   get: function () {
     return this._dataStage;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataRoom", {
+Object.defineProperty(t.prototype, 'dataRoom', {
   get: function () {
     return this._dataRoom;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "vipConfig", {
+Object.defineProperty(t.prototype, 'vipConfig', {
   get: function () {
     return this._vipConfig;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataCons", {
+Object.defineProperty(t.prototype, 'dataCons', {
   get: function () {
     return this._dataCons;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t.prototype, "dataWave", {
+Object.defineProperty(t.prototype, 'dataWave', {
   get: function () {
     return this._dataWave;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(t, "instance", {
+Object.defineProperty(t, 'instance', {
   get: function () {
     if (null == t._instance) {
       t._instance = new t();
@@ -207,4 +207,4 @@ function t() {
   this._dataGuide = new $c_DataGuide.C_DataGuide();
 }
 const R = t;
-exports.default = R;
+export default R;

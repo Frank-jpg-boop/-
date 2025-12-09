@@ -31,32 +31,28 @@ e.prototype.gmPassStage = function (t) {
     if ($cfg.default.instance.dataStage.getById(t)) {
       for (
         const e = function (t) {
-                  const e = $cfg.default.instance.dataStage.getById(t);
-                  const i = e.survivor.split("|").map(function (t) {
-                    return (Number(t) + e.checkSur).toString();
-                  });
-                  const o = [];
-                  const s = $cfg.default.instance.dataStage.getById(t + 1);
-                  if (s) {
-                    const c = s.need;
-                    for (
-                      $itemDataProxy.itemDataProxy.updateItemValue(
-                        $itemEnum.E_ItemId.SURVIVOR,
-                        c,
-                        !1,
-                      );
-                      c > 0;
-                    ) {
-                      const l = $randomUtil.RandomUtil.randomInt(0, i.length);
-                      o.push(i[l]);
-                      i.splice(l, 1);
-                      c--;
-                    }
-                  }
-                  n._data.localData.stageInfos[t].survivalKeys = o;
-                },
-              n = this,
-              i = this.passStageId + 1;
+            const e = $cfg.default.instance.dataStage.getById(t);
+            const i = e.survivor.split('|').map(function (t) {
+              return (Number(t) + e.checkSur).toString();
+            });
+            const o = [];
+            const s = $cfg.default.instance.dataStage.getById(t + 1);
+            if (s) {
+              const c = s.need;
+              for (
+                $itemDataProxy.itemDataProxy.updateItemValue($itemEnum.E_ItemId.SURVIVOR, c, !1);
+                c > 0;
+              ) {
+                const l = $randomUtil.RandomUtil.randomInt(0, i.length);
+                o.push(i[l]);
+                i.splice(l, 1);
+                c--;
+              }
+            }
+            n._data.localData.stageInfos[t].survivalKeys = o;
+          },
+          n = this,
+          i = this.passStageId + 1;
         i <= t;
         ++i
       ) {
@@ -73,9 +69,7 @@ e.prototype.gmPassStage = function (t) {
   }
 };
 e.prototype.isRescueSurvival = function (t, e) {
-  return this._data.localData.stageInfos[t].survivalKeys.includes(
-    e.toString(),
-  );
+  return this._data.localData.stageInfos[t].survivalKeys.includes(e.toString());
 };
 e.prototype.resetGame = function () {
   this._data.resetData();
@@ -118,30 +112,18 @@ e.prototype.passStage = function (t, e, n) {
   if (n) {
     this.updatePassStageId();
     if (this.startPassStageId != this.passStageId) {
-      ((this.selectedStageId = Math.min(
-        this.passStageId + 1,
-        this.maxStageId,
-      )),
+      ((this.selectedStageId = Math.min(this.passStageId + 1, this.maxStageId)),
         (this.isUnlockNewStage = !0),
         (this.unlockSkillId = this.getUnlockSkillId()));
     } else {
       if (t == this.passStageId + 1) {
         if (this.getStageSurvivalCount(t) == this.startStagePeople) {
-          this.selectedStageId = Math.min(
-            this.passStageId + 1,
-            this.maxStageId,
-          );
+          this.selectedStageId = Math.min(this.passStageId + 1, this.maxStageId);
         } else {
-          this.selectedStageId = Math.min(
-            this.passStageId + 2,
-            this.maxStageId,
-          );
+          this.selectedStageId = Math.min(this.passStageId + 2, this.maxStageId);
         }
       } else {
-        this.selectedStageId = Math.min(
-          this.passStageId + 1,
-          this.maxStageId,
-        );
+        this.selectedStageId = Math.min(this.passStageId + 1, this.maxStageId);
       }
     }
   }
@@ -160,10 +142,7 @@ e.prototype.updatePassStageId = function () {
   const e = t + 1;
   if (!(e > this.maxStageId)) {
     const n = $cfg.default.instance.dataStage.getById(e);
-    if (
-      n &&
-      this._data.localData.stageInfos[t].survivalKeys.length >= n.need
-    ) {
+    if (n && this._data.localData.stageInfos[t].survivalKeys.length >= n.need) {
       this._data.localData.passStageId = t;
       $playerActionMgr.PlayerActionMgr.instance.triggerAction(
         $taskEnum.EPlayerActionType.ARRIVE_LEVEL,
@@ -215,28 +194,28 @@ e.prototype.initData = function () {
     }
   });
 };
-Object.defineProperty(e.prototype, "maxStageId", {
+Object.defineProperty(e.prototype, 'maxStageId', {
   get: function () {
     return $cfg.default.instance.dataStage.sheet().length - 1;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "passStageId", {
+Object.defineProperty(e.prototype, 'passStageId', {
   get: function () {
     return this._data.localData.passStageId;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "stageData", {
+Object.defineProperty(e.prototype, 'stageData', {
   get: function () {
     return this._data.localData;
   },
   enumerable: !1,
   configurable: !0,
 });
-Object.defineProperty(e.prototype, "day", {
+Object.defineProperty(e.prototype, 'day', {
   get: function () {
     return this._data.localData.day;
   },

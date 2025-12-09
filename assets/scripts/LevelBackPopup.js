@@ -12,9 +12,7 @@ e.prototype.onClickBtnOk = function () {
   if (t) {
     const e = $actorMgr.default.instance.getActor(t.playerId);
     if (!e || e.isDead()) {
-      return void $globalPopupMgr.default.instance.showTips(
-        "玩家已死亡，无法撤离",
-      );
+      return void $globalPopupMgr.default.instance.showTips('玩家已死亡，无法撤离');
     }
     this.removeUI();
     $battleMgr.default.instance.getCurScene().scheduleWin();
@@ -27,26 +25,24 @@ e.prototype.onClickBtnCancel = function () {
 e.prototype.onHide = function () {
   const t = cc.director
     .getScene()
-    .getChildByName("Canvas")
-    .getChildByName("PhotoGameCamera")
+    .getChildByName('Canvas')
+    .getChildByName('PhotoGameCamera')
     .getComponent(cc.Camera);
   t.targetTexture = null;
   t.node.active = !1;
 };
 e.prototype.init = function () {
   if (0 == $levelBattleData.levelBattleData.rescue) {
-    this.lDesc.string = "天台中没有幸存者";
+    this.lDesc.string = '天台中没有幸存者';
   } else {
     this.lDesc.string =
-      "天台还有" +
-      $levelBattleData.levelBattleData.rescue +
-      "名幸存者等你！\n是否独自撤离?";
+      '天台还有' + $levelBattleData.levelBattleData.rescue + '名幸存者等你！\n是否独自撤离?';
   }
   const t = $battleMgr.default.instance.getCurScene();
   const e = cc.director
     .getScene()
-    .getChildByName("Canvas")
-    .getChildByName("PhotoGameCamera")
+    .getChildByName('Canvas')
+    .getChildByName('PhotoGameCamera')
     .getComponent(cc.Camera);
   e.zoomRatio = 8;
   const n = t.level.playerExitPos;
@@ -69,4 +65,4 @@ function e() {
   e.lDesc = null;
   return e;
 }
-exports.default = d;
+export default d;
