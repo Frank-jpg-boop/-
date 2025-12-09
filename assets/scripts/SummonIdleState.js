@@ -1,32 +1,29 @@
-var i;
+import $state from './State';
+import $actorEnum from './ActorEnum';
+let i;
 exports.SummonIdleState = void 0;
-var $state = require("./State");
-var $actorEnum = require("./ActorEnum");
-var s = (function (t) {
-  function e(e) {
-    var n = t.call(this, e) || this;
-    n._stateType = $actorEnum.EActorStateType.IDLE;
-    return n;
-  }
-  __extends(e, t);
-  e.prototype.begin = function () {
-    this._context.playAnimIdle();
-  };
-  e.prototype.update = function () {
-    var t = this._context.searchTarget();
-    if (t) {
-      if (this._context.canAttackTarget(t)) {
-        if (!this._context.canAttack()) {
-          return;
-        }
-        return void this._context.changeState(
-          $actorEnum.EActorStateType.ATTACK,
-          t,
-        );
+e.prototype.update = function () {
+  const t = this._context.searchTarget();
+  if (t) {
+    if (this._context.canAttackTarget(t)) {
+      if (!this._context.canAttack()) {
+        return;
       }
-      this._context.changeState($actorEnum.EActorStateType.WALK);
+      return void this._context.changeState(
+        $actorEnum.EActorStateType.ATTACK,
+        t,
+      );
     }
-  };
-  return e;
-})($state.State);
+    this._context.changeState($actorEnum.EActorStateType.WALK);
+  }
+};
+e.prototype.begin = function () {
+  this._context.playAnimIdle();
+};
+function e(e) {
+  const n = t.call(this, e) || this;
+  n._stateType = $actorEnum.EActorStateType.IDLE;
+  return n;
+}
+const s = e;
 exports.SummonIdleState = s;

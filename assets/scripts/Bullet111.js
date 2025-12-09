@@ -1,27 +1,26 @@
-var i;
-var $audioUtil = require("./AudioUtil");
-var $randomUtil = require("./RandomUtil");
-var $battleMgr = require("./BattleMgr");
-var $effectMgr = require("./EffectMgr");
-var $weapon111Hurt = require("./Weapon111Hurt");
-var $bulletBase = require("./BulletBase");
-var h = cc._decorator;
-var f = h.ccclass;
-var d =
+import $audioUtil from './AudioUtil';
+import $randomUtil from './RandomUtil';
+import $battleMgr from './BattleMgr';
+import $effectMgr from './EffectMgr';
+import $weapon111Hurt from './Weapon111Hurt';
+import $bulletBase from './BulletBase';
+let i;
+const h = cc._decorator;
+const f = h.ccclass;
+const d =
   (h.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._ownerSkill = null;
       return e;
     }
-    __extends(e, t);
     e.prototype.onShoot = function (t, e) {
-      var n = this;
+      const n = this;
       this._ownerSkill = t;
-      var i = this.node.getPosition();
-      var o = e.clone();
-      var r = cc.v2(
+      const i = this.node.getPosition();
+      const o = e.clone();
+      const r = cc.v2(
         i.x + 0.4 * (o.x - i.x),
         i.y + $randomUtil.RandomUtil.randomInt(180, 250),
       );
@@ -30,9 +29,9 @@ var d =
       });
     };
     e.prototype.blast = function () {
-      var t = this;
+      const t = this;
       $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_ShenBei");
-      var e = $battleMgr.default.instance.getCurScene();
+      const e = $battleMgr.default.instance.getCurScene();
       $effectMgr.default.instance.createEffect({
         parent: e.lowEffectParent,
         prefabName: "Weapon111Hurt",
@@ -43,6 +42,5 @@ var d =
         },
       });
     };
-    return __decorate([f], e);
   })($bulletBase.default));
 exports.default = d;

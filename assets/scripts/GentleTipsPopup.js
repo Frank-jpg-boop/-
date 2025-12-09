@@ -1,16 +1,15 @@
-var i;
-var $popupBase = require("./PopupBase");
-var s = cc._decorator;
-var c = s.ccclass;
-var l =
+import $popupBase from './PopupBase';
+let i;
+const s = cc._decorator;
+const c = s.ccclass;
+const l =
   (s.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._onClose = null;
       return e;
     }
-    __extends(e, t);
     e.prototype.init = function (t) {
       this._onClose = t.onClose;
     };
@@ -20,6 +19,5 @@ var l =
         this._onClose();
       }
     };
-    return __decorate([c], e);
   })($popupBase.PopupBase));
 exports.default = l;

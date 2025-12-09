@@ -1,21 +1,20 @@
-var i;
-var $audioUtil = require("./AudioUtil");
-var $battleMgr = require("./BattleMgr");
-var $gridAreaDivisionMgr = require("./GridAreaDivisionMgr");
-var $actorEnum = require("./ActorEnum");
-var $actorMgr = require("./ActorMgr");
-var $spAnimEffect = require("./SpAnimEffect");
-var h = cc._decorator;
-var f = h.ccclass;
-var d =
+import $audioUtil from './AudioUtil';
+import $battleMgr from './BattleMgr';
+import $gridAreaDivisionMgr from './GridAreaDivisionMgr';
+import $actorEnum from './ActorEnum';
+import $actorMgr from './ActorMgr';
+import $spAnimEffect from './SpAnimEffect';
+let i;
+const h = cc._decorator;
+const f = h.ccclass;
+const d =
   (h.property,
   (function (t) {
     function e() {
       return (null !== t && t.apply(this, arguments)) || this;
     }
-    __extends(e, t);
     e.prototype.play = function (t) {
-      var e = this;
+      const e = this;
       $audioUtil.AudioUtil.playLimitEffect("sounds/lmtw_yx_Boom", 0.3);
       this.playDefaultAnim("atk", 1, !1, function () {
         if (t) {
@@ -23,7 +22,7 @@ var d =
         }
       });
       this.scheduleOnce(function () {
-        var t;
+        let t;
         if (
           null === (t = $battleMgr.default.instance.getCurScene()) ||
           void 0 === t
@@ -55,15 +54,12 @@ var d =
           }
         });
       for (
-        var n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(t, e),
-          i = [],
-          o = 0,
-          r = n;
+        const n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(t, e), i = [], o = 0, r = n;
         o < r.length;
         o++
       ) {
-        var a = r[o];
-        var s = $gridAreaDivisionMgr.default.instance
+        const a = r[o];
+        const s = $gridAreaDivisionMgr.default.instance
           .getAreaObjectList(a, $gridAreaDivisionMgr.E_AreaObjectType.ENEMY)
           .filter(function (t) {
             return !i.includes(t);
@@ -72,8 +68,8 @@ var d =
           i.push.apply(i, s);
         }
       }
-      for (var p = 0, h = i; p < h.length; p++) {
-        var f = h[p];
+      for (const p = 0, h = i; p < h.length; p++) {
+        const f = h[p];
         if (f.isDead()) {
           //
         } else {
@@ -84,6 +80,5 @@ var d =
         }
       }
     };
-    return __decorate([f], e);
   })($spAnimEffect.default));
 exports.default = d;

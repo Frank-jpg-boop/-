@@ -1,26 +1,26 @@
-var i;
-var $mathUtil = require("./MathUtil");
-var $randomUtil = require("./RandomUtil");
-var $globalPopupMgr = require("./GlobalPopupMgr");
-var $battleMgr = require("./BattleMgr");
-var $stateMachine = require("./StateMachine");
-var $gridAreaDivisionMgr = require("./GridAreaDivisionMgr");
-var $spAnimCtrl = require("./SpAnimCtrl");
-var $actorEnum = require("./ActorEnum");
-var $attrEnum = require("./AttrEnum");
-var $levelBattleData = require("./LevelBattleData");
-var $unitMgr = require("./UnitMgr");
-var $actorMgr = require("./ActorMgr");
-var $enemyBase = require("./EnemyBase");
-var $enemy_513_Idle = require("./Enemy_513_Idle");
-var $enemyDeadState = require("./EnemyDeadState");
-var E = cc._decorator;
-var S = E.ccclass;
-var P =
+import $mathUtil from './MathUtil';
+import $randomUtil from './RandomUtil';
+import $globalPopupMgr from './GlobalPopupMgr';
+import $battleMgr from './BattleMgr';
+import $stateMachine from './StateMachine';
+import $gridAreaDivisionMgr from './GridAreaDivisionMgr';
+import $spAnimCtrl from './SpAnimCtrl';
+import $actorEnum from './ActorEnum';
+import $attrEnum from './AttrEnum';
+import $levelBattleData from './LevelBattleData';
+import $unitMgr from './UnitMgr';
+import $actorMgr from './ActorMgr';
+import $enemyBase from './EnemyBase';
+import $enemy_513_Idle from './Enemy_513_Idle';
+import $enemyDeadState from './EnemyDeadState';
+let i;
+const E = cc._decorator;
+const S = E.ccclass;
+const P =
   (E.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._nDice = null;
       e._nSmallView = null;
       e._nBigView = null;
@@ -40,7 +40,6 @@ var P =
       e._isShowTips = !1;
       return e;
     }
-    __extends(e, t);
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
       this._nDice = this.node.getChildByName("Body").getChildByName("Dice");
@@ -64,10 +63,10 @@ var P =
       );
     };
     e.prototype.initPos = function () {
-      var t = $battleMgr.default.instance
+      const t = $battleMgr.default.instance
         .getCurScene()
         .level.getRoomById(this._initParam.roomId);
-      var e = cc.v2(t.node.x + t.node.width / 2, t.getGroundY());
+      const e = cc.v2(t.node.x + t.node.width / 2, t.getGroundY());
       this.node.setPosition(e);
     };
     e.prototype.onInit = function () {
@@ -134,7 +133,7 @@ var P =
       }
     };
     e.prototype.drawLottery = function () {
-      var t = this;
+      const t = this;
       this._nSmallView.getChildByName("Item").active = !1;
       this._nBigView.getChildByName("Item").active = !1;
       this._spCtrl.playAnim("rolling_start", 1, !1, function () {
@@ -154,16 +153,16 @@ var P =
       });
     };
     e.prototype.lotteryResult = function () {
-      var t = this;
+      const t = this;
       this._spCtrl.playAnim("call", 1, !1, function () {
         t._spCtrl.playAnim("call_stand", 1, !0);
-        var e = null;
+        const e = null;
         if (0 == t._result) {
           e = t._nSmallView;
         } else {
           e = t._nBigView;
         }
-        var n = e.getChildByName("SpAnim").getComponent($spAnimCtrl.default);
+        const n = e.getChildByName("SpAnim").getComponent($spAnimCtrl.default);
         n.playAnim(
           0 == t._result ? "xiao_choice" : "da_choice",
           1,
@@ -181,11 +180,11 @@ var P =
       });
     };
     e.prototype.win = function (t) {
-      var e = $battleMgr.default.instance
+      const e = $battleMgr.default.instance
         .getCurScene()
         .level.getRoomById(this._initParam.roomId);
       this.dropReward(this.node.x + this.dirX * t.x, e.getGroundY());
-      var n = this.getAttribute($attrEnum.E_AttrType.HP).value;
+      const n = this.getAttribute($attrEnum.E_AttrType.HP).value;
       this._hp -= n * Number(this._cfg.val3);
       if (this._head) {
         this._head.updateHP(this._hp, n);
@@ -204,15 +203,15 @@ var P =
       }
     };
     e.prototype.lose = function (t) {
-      var e = $battleMgr.default.instance
+      const e = $battleMgr.default.instance
         .getCurScene()
         .level.getRoomById(this._initParam.roomId);
-      var n = this.node.getPosition();
+      const n = this.node.getPosition();
       n.x += this.dirX * t.x;
       n.y = e.getGroundY();
-      var i = this._cfg.val2.split("_").map(Number);
-      var o = i[0];
-      var r = i[1];
+      const i = this._cfg.val2.split("_").map(Number);
+      const o = i[0];
+      const r = i[1];
       this.createEnemy(r, o, n);
       this._spCtrl.playAnim("stand", 1, !0);
       this._waveGold *= 2;
@@ -224,11 +223,11 @@ var P =
       this.waitBottomPour();
     };
     e.prototype.lotteryDice = function (t) {
-      var e = this;
+      const e = this;
       if (void 0 === t) {
         t = null;
       }
-      var n = 0;
+      const n = 0;
       this.schedule(
         function () {
           e._curDice = $randomUtil.RandomUtil.randomInt(1, 7);
@@ -245,7 +244,7 @@ var P =
     };
     e.prototype.createEnemy = function (t, e, n) {
       for (
-        var i = this, o = $battleMgr.default.instance.getCurScene(), r = 0;
+        const i = this, o = $battleMgr.default.instance.getCurScene(), r = 0;
         r < e;
         r++
       ) {
@@ -272,24 +271,24 @@ var P =
       }
     };
     e.prototype.dropReward = function (t, e) {
-      var n = Math.floor(this._waveGold * Number(this._cfg.val4));
+      const n = Math.floor(this._waveGold * Number(this._cfg.val4));
       if (n > 20) {
-        var i = n - 20;
+        const i = n - 20;
         $levelBattleData.levelBattleData.updateGold(i);
         n = 20;
       }
-      for (var o = 0; o < n; o++) {
+      for (const o = 0; o < n; o++) {
         this.createReward(t, e, 1);
       }
       this.createReward(t, e, 111);
     };
     e.prototype.createReward = function (t, e, n) {
-      var i = this;
-      var o = $battleMgr.default.instance.getCurScene();
-      var r = this.node.getPosition();
+      const i = this;
+      const o = $battleMgr.default.instance.getCurScene();
+      const r = this.node.getPosition();
       r.y += 50;
       r.x = t;
-      var a = $randomUtil.RandomUtil.randomInt(-100, 100);
+      const a = $randomUtil.RandomUtil.randomInt(-100, 100);
       $unitMgr.UnitMgr.instance.createUnit({
         areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.GOOD,
         areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
@@ -371,20 +370,20 @@ var P =
       }
     };
     e.prototype.checkSmallRange = function (t) {
-      var e =
+      const e =
         this.node.x +
         this.dirX * this._nSmallView.x -
         this._nSmallView.width / 2;
-      var n =
+      const n =
         this.node.x +
         this.dirX * this._nSmallView.x +
         this._nSmallView.width / 2;
       return t.node.x >= e && t.node.x <= n;
     };
     e.prototype.checkBigRange = function (t) {
-      var e =
+      const e =
         this.node.x + this.dirX * this._nBigView.x - this._nBigView.width / 2;
-      var n =
+      const n =
         this.node.x + this.dirX * this._nBigView.x + this._nBigView.width / 2;
       return t.node.x >= e && t.node.x <= n;
     };
@@ -393,6 +392,5 @@ var P =
       this._consumeTime = this._consumeTimer;
       this._isShowTips = !1;
     };
-    return __decorate([S], e);
   })($enemyBase.default));
 exports.default = P;

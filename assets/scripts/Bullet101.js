@@ -1,24 +1,23 @@
-var i;
-var $audioUtil = require("./AudioUtil");
-var $randomUtil = require("./RandomUtil");
-var $battleMgr = require("./BattleMgr");
-var $effectMgr = require("./EffectMgr");
-var $attrEnum = require("./AttrEnum");
-var $weapon101Boom = require("./Weapon101Boom");
-var $bulletBase = require("./BulletBase");
-var f = cc._decorator;
-var d = f.ccclass;
-var m =
+import $audioUtil from './AudioUtil';
+import $randomUtil from './RandomUtil';
+import $battleMgr from './BattleMgr';
+import $effectMgr from './EffectMgr';
+import $attrEnum from './AttrEnum';
+import $weapon101Boom from './Weapon101Boom';
+import $bulletBase from './BulletBase';
+let i;
+const f = cc._decorator;
+const d = f.ccclass;
+const m =
   (f.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._ownerSkill = null;
       e._bounceCount = 0;
       e._maxBounceCount = 0;
       return e;
     }
-    __extends(e, t);
     e.prototype.onShoot = function (t, e) {
       this._ownerSkill = t;
       this._maxBounceCount = this._ownerSkill.getAttribute(
@@ -28,11 +27,11 @@ var m =
       this.bounce(e);
     };
     e.prototype.bounce = function (t) {
-      var e = this;
-      var n = this.node.getPosition();
-      var i = t.clone();
-      var o = this._maxBounceCount - this._bounceCount;
-      var r = cc.v2(
+      const e = this;
+      const n = this.node.getPosition();
+      const i = t.clone();
+      const o = this._maxBounceCount - this._bounceCount;
+      const r = cc.v2(
         n.x + 0.6 * (i.x - n.x),
         n.y +
           $randomUtil.RandomUtil.randomInt(150, 200) *
@@ -58,9 +57,9 @@ var m =
       );
     };
     e.prototype.blast = function (t) {
-      var e = this;
+      const e = this;
       $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_MuDiaoXiang");
-      var n = $battleMgr.default.instance.getCurScene();
+      const n = $battleMgr.default.instance.getCurScene();
       $effectMgr.default.instance.createEffect({
         parent: n.effectParent,
         prefabName: "Weapon101Boom",
@@ -71,6 +70,5 @@ var m =
         },
       });
     };
-    return __decorate([d], e);
   })($bulletBase.default));
 exports.default = m;

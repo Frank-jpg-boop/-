@@ -1,31 +1,30 @@
-var i;
-var $eventManager = require("./EventManager");
-var $randomUtil = require("./RandomUtil");
-var $battleMgr = require("./BattleMgr");
-var $spAnimCtrl = require("./SpAnimCtrl");
-var $actorEnum = require("./ActorEnum");
-var $attrEnum = require("./AttrEnum");
-var $battleEnum = require("./BattleEnum");
-var $levelBattleData = require("./LevelBattleData");
-var $door = require("./Door");
-var $actorBase = require("./ActorBase");
-var $actorMgr = require("./ActorMgr");
-var $playerBase = require("./PlayerBase");
-var $enemyBase = require("./EnemyBase");
-var v = cc._decorator;
-var b = v.ccclass;
-var E =
+import $eventManager from './EventManager';
+import $randomUtil from './RandomUtil';
+import $battleMgr from './BattleMgr';
+import $spAnimCtrl from './SpAnimCtrl';
+import $actorEnum from './ActorEnum';
+import $attrEnum from './AttrEnum';
+import $battleEnum from './BattleEnum';
+import $levelBattleData from './LevelBattleData';
+import $door from './Door';
+import $actorBase from './ActorBase';
+import $actorMgr from './ActorMgr';
+import $playerBase from './PlayerBase';
+import $enemyBase from './EnemyBase';
+let i;
+const v = cc._decorator;
+const b = v.ccclass;
+const E =
   (v.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._isTurnBacked = !1;
       e._isTurnBacking = !1;
       e._nBackView = null;
       e._spBackAnimCtrl = null;
       return e;
     }
-    __extends(e, t);
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
       this._nBackView = this.node
@@ -60,11 +59,11 @@ var E =
       if (this._isTurnBacking) {
         return !1;
       }
-      var t = $battleMgr.default.instance.getCurScene();
+      const t = $battleMgr.default.instance.getCurScene();
       if (!t) {
         return !1;
       }
-      var e = $actorMgr.default.instance.getActor(t.playerId);
+      const e = $actorMgr.default.instance.getActor(t.playerId);
       return !(
         !e ||
         e.isDead() ||
@@ -76,15 +75,15 @@ var E =
       );
     };
     e.prototype.turnBack = function () {
-      var t = this;
+      const t = this;
       this._isTurnBacking = !0;
       this._spBackAnimCtrl.playAnim("startle", 1, !1, function () {
         t._isTurnBacked = !0;
         t.node.getChildByName("Body").getChildByName("Anim").active = !0;
         t._nBackView.active = !1;
-        var e = $battleMgr.default.instance.getCurScene();
+        const e = $battleMgr.default.instance.getCurScene();
         if (e) {
-          var n = $actorMgr.default.instance.getActor(e.playerId);
+          const n = $actorMgr.default.instance.getActor(e.playerId);
           if (n && !n.isDead()) {
             t.changeState($actorEnum.EActorStateType.WALK, n);
           }
@@ -106,26 +105,26 @@ var E =
     };
     e.prototype.attackHit = function (t) {
       if (t && t.isValid) {
-        var e = t.getComponent($door.default);
+        const e = t.getComponent($door.default);
         if (e && e.state != $door.EDoorState.DESTROY) {
           e.beHurt(this.getAttribute($attrEnum.E_AttrType.ATK).value);
         } else {
-          var n = t.getComponent($playerBase.default);
+          const n = t.getComponent($playerBase.default);
           if (n) {
             if (
               $levelBattleData.levelBattleData.bagData.bagEquipDatas.length > 0
             ) {
-              for (var i = Number(this._cfg.val2); i > 0; ) {
+              for (const i = Number(this._cfg.val2); i > 0; ) {
                 if (
                   $levelBattleData.levelBattleData.bagData.bagEquipDatas
                     .length > 0
                 ) {
-                  var o = $randomUtil.RandomUtil.randomInt(
+                  const o = $randomUtil.RandomUtil.randomInt(
                     0,
                     $levelBattleData.levelBattleData.bagData.bagEquipDatas
                       .length,
                   );
-                  var r =
+                  const r =
                     $levelBattleData.levelBattleData.bagData.bagEquipDatas[o];
                   r.rowCol = "";
                   $levelBattleData.levelBattleData.bagData.bagEquipDatas.splice(
@@ -148,7 +147,7 @@ var E =
             }
             n.beHurt(this.getHurt());
           } else {
-            var c = t.getComponent($actorBase.default);
+            const c = t.getComponent($actorBase.default);
             if (c) {
               c.beHurt(this.getHurt());
             }
@@ -157,6 +156,5 @@ var E =
         }
       }
     };
-    return __decorate([b], e);
   })($enemyBase.default));
 exports.default = E;

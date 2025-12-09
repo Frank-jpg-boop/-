@@ -1,22 +1,21 @@
-var i;
-var $eventManager = require("./EventManager");
-var $battleMgr = require("./BattleMgr");
-var $actorEnum = require("./ActorEnum");
-var $battleEnum = require("./BattleEnum");
-var $actorMgr = require("./ActorMgr");
-var $enemyBase = require("./EnemyBase");
-var $enemy_113_Appear = require("./Enemy_113_Appear");
-var f = cc._decorator;
-var d = f.ccclass;
-var m =
+import $eventManager from './EventManager';
+import $battleMgr from './BattleMgr';
+import $actorEnum from './ActorEnum';
+import $battleEnum from './BattleEnum';
+import $actorMgr from './ActorMgr';
+import $enemyBase from './EnemyBase';
+import $enemy_113_Appear from './Enemy_113_Appear';
+let i;
+const f = cc._decorator;
+const d = f.ccclass;
+const m =
   (f.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._isAppear = !1;
       return e;
     }
-    __extends(e, t);
     e.prototype.registerEvent = function () {
       t.prototype.registerEvent.call(this);
       $eventManager.EventManager.instance.on(
@@ -88,7 +87,7 @@ var m =
     };
     e.prototype.onUpdate = function (e) {
       t.prototype.onUpdate.call(this, e);
-      var n = $actorMgr.default.instance.getActor(
+      const n = $actorMgr.default.instance.getActor(
         $battleMgr.default.instance.getCurScene().playerId,
       );
       if (
@@ -105,6 +104,5 @@ var m =
     e.prototype.onEventRoomActivate = function () {
       this._roomId;
     };
-    return __decorate([d], e);
   })($enemyBase.default));
 exports.default = m;

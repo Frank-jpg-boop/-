@@ -1,21 +1,18 @@
-var i;
+import $state from './State';
+import $actorEnum from './ActorEnum';
+let i;
 exports.PlayerAttackState = void 0;
-var $state = require("./State");
-var $actorEnum = require("./ActorEnum");
-var s = (function (t) {
-  function e(e) {
-    var n = t.call(this, e) || this;
-    n._stateType = $actorEnum.EActorStateType.ATTACK;
-    return n;
+e.prototype.end = function () {};
+e.prototype.update = function () {};
+e.prototype.begin = function (t) {
+  if (void 0 === t) {
+    t = 0;
   }
-  __extends(e, t);
-  e.prototype.begin = function (t) {
-    if (void 0 === t) {
-      t = 0;
-    }
-  };
-  e.prototype.update = function () {};
-  e.prototype.end = function () {};
-  return e;
-})($state.State);
+};
+function e(e) {
+  const n = t.call(this, e) || this;
+  n._stateType = $actorEnum.EActorStateType.ATTACK;
+  return n;
+}
+const s = e;
 exports.PlayerAttackState = s;

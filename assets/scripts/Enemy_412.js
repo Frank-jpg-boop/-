@@ -1,19 +1,18 @@
-var i;
-var $randomUtil = require("./RandomUtil");
-var $battleMgr = require("./BattleMgr");
-var $actorEnum = require("./ActorEnum");
-var $actorMgr = require("./ActorMgr");
-var $enemyBase = require("./EnemyBase");
-var $enemy_412_Walk = require("./Enemy_412_Walk");
-var h = cc._decorator;
-var f = h.ccclass;
-var d =
+import $randomUtil from './RandomUtil';
+import $battleMgr from './BattleMgr';
+import $actorEnum from './ActorEnum';
+import $actorMgr from './ActorMgr';
+import $enemyBase from './EnemyBase';
+import $enemy_412_Walk from './Enemy_412_Walk';
+let i;
+const h = cc._decorator;
+const f = h.ccclass;
+const d =
   (h.property,
   (function (t) {
     function e() {
       return (null !== t && t.apply(this, arguments)) || this;
     }
-    __extends(e, t);
     e.prototype.registerState = function () {
       t.prototype.registerState.call(this);
       this._sm.addState(
@@ -29,31 +28,31 @@ var d =
       if (!t || t.isDead()) {
         return !1;
       }
-      var e = cc.Vec2.squaredDistance(
+      const e = cc.Vec2.squaredDistance(
         t.node.getPosition(),
         this.node.getPosition(),
       );
-      var n = Number(this._cfg.val1) * Number(this._cfg.val1);
-      var i = Number(this._cfg.val2) * Number(this._cfg.val2);
+      const n = Number(this._cfg.val1) * Number(this._cfg.val1);
+      const i = Number(this._cfg.val2) * Number(this._cfg.val2);
       return e >= n && e <= i;
     };
     e.prototype.attackHit = function (t) {
-      for (var e = [], n = 1; n < arguments.length; n++) {
+      for (const e = [], n = 1; n < arguments.length; n++) {
         e[n - 1] = arguments[n];
       }
       this.summon();
     };
     e.prototype.summon = function () {
-      var t = $battleMgr.default.instance.getCurScene();
+      const t = $battleMgr.default.instance.getCurScene();
       if (t) {
-        var e = this._cfg.val3.split("|").map(Number);
-        var n = e[$randomUtil.RandomUtil.randomInt(0, e.length)];
-        var i = this.pathPos;
+        const e = this._cfg.val3.split("|").map(Number);
+        const n = e[$randomUtil.RandomUtil.randomInt(0, e.length)];
+        const i = this.pathPos;
         this.updatePathData();
         if ("" != this._pathLineId) {
-          var o = t.level.path.getLine(this.pathLineId);
+          const o = t.level.path.getLine(this.pathLineId);
           if (0 != o.dir.x) {
-            var r = $randomUtil.RandomUtil.randomInt(-50, 50);
+            const r = $randomUtil.RandomUtil.randomInt(-50, 50);
             i.x += r;
             if (i.x >= o.maxX) {
               i.x = o.maxX - $randomUtil.RandomUtil.randomInt(0, 50);
@@ -101,6 +100,5 @@ var d =
         });
       }
     };
-    return __decorate([f], e);
   })($enemyBase.default));
 exports.default = d;

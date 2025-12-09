@@ -1,12 +1,9 @@
-var i;
+let i;
 exports.C_DataSurvivor = void 0;
-var r = (function (t) {
-  function e() {
-    var e = t.call(this) || this;
-    e._name = "DataSurvivor";
-    return e;
-  }
-  __extends(e, t);
+function e() {
+  const e = t.call(this) || this;
+  e._name = "DataSurvivor";
   return e;
-})(require("./C_Base").C_Base);
+}
+const r = e;
 exports.C_DataSurvivor = r;

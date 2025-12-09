@@ -1,24 +1,23 @@
-var i;
-var $cfg = require("./Cfg");
-var $appBase = require("./AppBase");
-var $blockInputManager = require("./BlockInputManager");
-var $resLoader = require("./ResLoader");
-var $frameEnum = require("./FrameEnum");
-var $popupManager = require("./PopupManager");
-var $util = require("./Util");
-var $battleMgr = require("./BattleMgr");
-var $itemDataProxy = require("./ItemDataProxy");
-var $tips = require("./Tips");
-var y = cc._decorator;
-var _ = y.ccclass;
-var g =
+import $cfg from './Cfg';
+import $appBase from './AppBase';
+import $blockInputManager from './BlockInputManager';
+import $resLoader from './ResLoader';
+import $frameEnum from './FrameEnum';
+import $popupManager from './PopupManager';
+import $util from './Util';
+import $battleMgr from './BattleMgr';
+import $itemDataProxy from './ItemDataProxy';
+import $tips from './Tips';
+let i;
+const y = cc._decorator;
+const _ = y.ccclass;
+const g =
   (y.property,
   (function (t) {
     function e() {
       return (null !== t && t.apply(this, arguments)) || this;
     }
-    var n;
-    __extends(e, t);
+    let n;
     n = e;
     Object.defineProperty(e, "instance", {
       get: function () {
@@ -35,9 +34,9 @@ var g =
       if (void 0 === e) {
         e = 1;
       }
-      var n = $appBase.topNode.getChildByName("Tips");
+      const n = $appBase.topNode.getChildByName("Tips");
       if (n) {
-        var i = n.getComponent($tips.default);
+        const i = n.getComponent($tips.default);
         if (i) {
           return void i.pushTips(t, e);
         }
@@ -48,9 +47,9 @@ var g =
         type: cc.Prefab,
         success: function (n) {
           n.addRef();
-          var i = cc.instantiate(n);
+          const i = cc.instantiate(n);
           $appBase.topNode.addChild(i);
-          var o = i.getComponent($tips.default);
+          const o = i.getComponent($tips.default);
           if (o) {
             o.pushTips(t, e);
           }
@@ -358,43 +357,43 @@ var g =
         }
       } else {
         for (
-          var n = new Map(),
-            i = function (e) {
-              var i = t[e];
-              var o = $cfg.default.instance.dataSkill.queryOne(function (t) {
-                return (
-                  -1 !=
-                  t.speReward.split("|").findIndex(function (t) {
-                    return Number(t.split("_")[0]) == i;
-                  })
-                );
-              });
-              if (n.has(o.id)) {
-                n.get(o.id).remainIds.push(i);
-              } else {
-                n.set(o.id, {
-                  remainIds: [i],
-                });
-              }
-            },
-            o = 0;
+          const n = new Map(),
+                i = function (e) {
+                  const i = t[e];
+                  const o = $cfg.default.instance.dataSkill.queryOne(function (t) {
+                    return (
+                      -1 !=
+                      t.speReward.split("|").findIndex(function (t) {
+                        return Number(t.split("_")[0]) == i;
+                      })
+                    );
+                  });
+                  if (n.has(o.id)) {
+                    n.get(o.id).remainIds.push(i);
+                  } else {
+                    n.set(o.id, {
+                      remainIds: [i],
+                    });
+                  }
+                },
+                o = 0;
           o < t.length;
           o++
         ) {
           i(o);
         }
-        var r = Array.from(n.values());
+        const r = Array.from(n.values());
         this.showUnlockSomeRemainsPopup(r, e);
       }
     };
     e.prototype.showUnlockSomeRemainsPopup = function (t, e) {
-      var n = this;
+      const n = this;
       if (t.length <= 0) {
         if (e) {
           e();
         }
       } else {
-        var i = t.shift().remainIds;
+        const i = t.shift().remainIds;
         $popupManager.PopupManager.instance.show({
           bundleName: $frameEnum.Frame.EBundleName.RES,
           path: "popups/UnlockRemainsPopup",
@@ -418,6 +417,6 @@ var g =
       }
     };
     e._instance = null;
-    return (n = __decorate([_], e));
+    return;
   })(cc.Component));
 exports.default = g;

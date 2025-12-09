@@ -1,26 +1,26 @@
-var i;
-var $audioUtil = require("./AudioUtil");
-var $eventManager = require("./EventManager");
-var $randomUtil = require("./RandomUtil");
-var $battleMgr = require("./BattleMgr");
-var $stateMachine = require("./StateMachine");
-var $simplyRectCollider = require("./SimplyRectCollider");
-var $simplyCollisionDetector = require("./SimplyCollisionDetector");
-var $actorEnum = require("./ActorEnum");
-var $battleEnum = require("./BattleEnum");
-var $actorMgr = require("./ActorMgr");
-var $enemyBase = require("./EnemyBase");
-var $boss_321_Atk = require("./Boss_321_Atk");
-var $boss_321_die = require("./Boss_321_die");
-var $boss_321_Idle = require("./Boss_321_Idle");
-var $boss_321_IdleEx = require("./Boss_321_IdleEx");
-var E = cc._decorator;
-var S = E.ccclass;
-var P =
+import $audioUtil from './AudioUtil';
+import $eventManager from './EventManager';
+import $randomUtil from './RandomUtil';
+import $battleMgr from './BattleMgr';
+import $stateMachine from './StateMachine';
+import $simplyRectCollider from './SimplyRectCollider';
+import $simplyCollisionDetector from './SimplyCollisionDetector';
+import $actorEnum from './ActorEnum';
+import $battleEnum from './BattleEnum';
+import $actorMgr from './ActorMgr';
+import $enemyBase from './EnemyBase';
+import $boss_321_Atk from './Boss_321_Atk';
+import $boss_321_die from './Boss_321_die';
+import $boss_321_Idle from './Boss_321_Idle';
+import $boss_321_IdleEx from './Boss_321_IdleEx';
+let i;
+const E = cc._decorator;
+const S = E.ccclass;
+const P =
   (E.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._isFake = !1;
       e._waitTime = 0;
       e._atkCollisionIds = [];
@@ -29,7 +29,6 @@ var P =
       e._isShow = !1;
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "isFake", {
       get: function () {
         return this._isFake;
@@ -108,7 +107,7 @@ var P =
       this.setDirX(!0);
     };
     e.prototype.fadeIn = function (t) {
-      var e = this;
+      const e = this;
       this.node.opacity = 0;
       this._isFade = !0;
       cc.tween(this.node)
@@ -124,7 +123,7 @@ var P =
         .start();
     };
     e.prototype.fadeOut = function (t) {
-      var e = this;
+      const e = this;
       this._isFade = !0;
       cc.tween(this.node)
         .to(0.3, {
@@ -189,31 +188,31 @@ var P =
       }
     };
     e.prototype.appear = function () {
-      var t = this;
+      const t = this;
       this._waitTime = Number(this._cfg.val2);
       if (this._isFake) {
         this.fadeIn();
       } else {
-        var e = $battleMgr.default.instance.getCurScene();
+        const e = $battleMgr.default.instance.getCurScene();
         if (e) {
-          var n = $actorMgr.default.instance.getActor(e.playerId);
-          var i = e.level.getRoomById(n.roomId);
+          const n = $actorMgr.default.instance.getActor(e.playerId);
+          const i = e.level.getRoomById(n.roomId);
           if (i) {
             this.updateRoomId(n.roomId);
-            var o = e.level.getRoomsByLayer(i.layer).filter(function (t) {
+            const o = e.level.getRoomsByLayer(i.layer).filter(function (t) {
               return t.cfg.isBase;
             });
             if (o.length > 0) {
-              var r = [];
-              var a = i.getGroundY();
+              const r = [];
+              const a = i.getGroundY();
               o.forEach(function (e) {
-                for (var n = e.node.x + 100; n < e.node.x + e.node.width; ) {
+                for (const n = e.node.x + 100; n < e.node.x + e.node.width; ) {
                   r.push(cc.v2(n, a));
                   n += Number(t._cfg.val3);
                 }
               });
-              var s = $randomUtil.RandomUtil.randomInt(0, r.length);
-              var u = r[s];
+              const s = $randomUtil.RandomUtil.randomInt(0, r.length);
+              const u = r[s];
               r.splice(s, 1);
               this.setPos(u);
               this.fadeIn();
@@ -226,7 +225,7 @@ var P =
       }
     };
     e.prototype.createFake = function (t) {
-      var e = $battleMgr.default.instance.getCurScene();
+      const e = $battleMgr.default.instance.getCurScene();
       $actorMgr.default.instance.createActor({
         id: e.getCreateActorId(),
         cfgId: this._cfg.id,
@@ -263,7 +262,7 @@ var P =
       }
     };
     e.prototype.checkHurt = function () {
-      var t = this;
+      const t = this;
       if (this._isFade || this.curState == $actorEnum.EActorStateType.DEAD) {
         //
       } else {
@@ -271,7 +270,7 @@ var P =
           $actorMgr.default.instance
             .queryActorByCamp($actorEnum.ETeamType.PLAYER)
             .forEach(function (e) {
-              var n = t._atkCollisionIds.indexOf(e.unitId);
+              const n = t._atkCollisionIds.indexOf(e.unitId);
               if (e.isDead()) {
                 if (-1 != n) {
                   t._atkCollisionIds.splice(n, 1);
@@ -294,7 +293,7 @@ var P =
       }
     };
     e.prototype.onBossTrigger = function () {
-      var e = this;
+      const e = this;
       this._waitTime = Number(this._cfg.val2);
       this.changeState($actorEnum.EActorStateType.IDLE);
       this.appear();
@@ -311,7 +310,7 @@ var P =
       t.prototype.onBossTrigger.call(this);
     };
     e.prototype.onDie = function () {
-      var e = this;
+      const e = this;
       t.prototype.onDie.call(this);
       if (this._isFake) {
         //
@@ -329,6 +328,5 @@ var P =
           });
       }
     };
-    return __decorate([S], e);
   })($enemyBase.default));
 exports.default = P;

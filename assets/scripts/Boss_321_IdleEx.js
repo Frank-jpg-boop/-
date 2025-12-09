@@ -1,33 +1,30 @@
-var i;
+import $state from './State';
+import $actorEnum from './ActorEnum';
+let i;
 exports.Boss_321_IdleEx = void 0;
-var $state = require("./State");
-var $actorEnum = require("./ActorEnum");
-var s = (function (t) {
-  function e(e) {
-    var n = t.call(this, e) || this;
-    n._isAppeared = !1;
-    n._stateType = $actorEnum.EActorStateType.EXTEND_1;
-    return n;
+e.prototype.update = function () {
+  const t = this;
+  if (
+    this._context.isTrigger &&
+    !this._isAppeared &&
+    this._context.waitTime <= 0
+  ) {
+    this._isAppeared = !0;
+    this._context.fadeOut(function () {
+      t._context.changeState($actorEnum.EActorStateType.IDLE);
+      t._context.appear();
+    });
   }
-  __extends(e, t);
-  e.prototype.begin = function () {
-    this._isAppeared = !1;
-    this._context.playAnimIdleEx();
-  };
-  e.prototype.update = function () {
-    var t = this;
-    if (
-      this._context.isTrigger &&
-      !this._isAppeared &&
-      this._context.waitTime <= 0
-    ) {
-      this._isAppeared = !0;
-      this._context.fadeOut(function () {
-        t._context.changeState($actorEnum.EActorStateType.IDLE);
-        t._context.appear();
-      });
-    }
-  };
-  return e;
-})($state.State);
+};
+e.prototype.begin = function () {
+  this._isAppeared = !1;
+  this._context.playAnimIdleEx();
+};
+function e(e) {
+  const n = t.call(this, e) || this;
+  n._isAppeared = !1;
+  n._stateType = $actorEnum.EActorStateType.EXTEND_1;
+  return n;
+}
+const s = e;
 exports.Boss_321_IdleEx = s;

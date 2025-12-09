@@ -1,20 +1,20 @@
-var i;
-var $randomUtil = require("./RandomUtil");
-var $nodeUtil = require("./NodeUtil");
-var $battleMgr = require("./BattleMgr");
-var $simplyCollisionDetector = require("./SimplyCollisionDetector");
-var $actorEnum = require("./ActorEnum");
-var $attrEnum = require("./AttrEnum");
-var $battleEnum = require("./BattleEnum");
-var $actorMgr = require("./ActorMgr");
-var $enemyItemBase = require("./EnemyItemBase");
-var m = cc._decorator;
-var y = m.ccclass;
-var _ =
+import $randomUtil from './RandomUtil';
+import $nodeUtil from './NodeUtil';
+import $battleMgr from './BattleMgr';
+import $simplyCollisionDetector from './SimplyCollisionDetector';
+import $actorEnum from './ActorEnum';
+import $attrEnum from './AttrEnum';
+import $battleEnum from './BattleEnum';
+import $actorMgr from './ActorMgr';
+import $enemyItemBase from './EnemyItemBase';
+let i;
+const m = cc._decorator;
+const y = m.ccclass;
+const _ =
   (m.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._nShootIcon = null;
       e._nFlyIcon = null;
       e._nBody = null;
@@ -23,7 +23,6 @@ var _ =
       e._atkCollisionIds = [];
       return e;
     }
-    __extends(e, t);
     e.prototype.onEnable = function () {
       this.node.opacity = 0;
     };
@@ -46,7 +45,7 @@ var _ =
         .setFixBase(this._initParam.maxHp);
     };
     e.prototype.playShowAnim = function () {
-      var t = this;
+      const t = this;
       this._nBody.angle = this._initParam.initAngle;
       return new Promise(function (e) {
         t.fadeIn(0.3, function () {
@@ -59,15 +58,15 @@ var _ =
       t.prototype.onInit.call(this);
     };
     e.prototype.shoot = function () {
-      var t = this;
+      const t = this;
       this._isWaitReady = !1;
       this._hurtCollider.node.width = this._nShootIcon.width;
       this._hurtCollider.node.height = this._nShootIcon.height;
       this._hurtCollider.node.angle = this._nBody.angle;
-      var e = this.node.getPosition();
-      var n = (this._nBody.angle * Math.PI) / 180;
-      var i = cc.v2(Math.cos(n), Math.sin(n)).mul(-1);
-      var o = e.add(i.mul(100));
+      const e = this.node.getPosition();
+      const n = (this._nBody.angle * Math.PI) / 180;
+      const i = cc.v2(Math.cos(n), Math.sin(n)).mul(-1);
+      const o = e.add(i.mul(100));
       cc.tween(this.node)
         .to(
           0.3,
@@ -80,15 +79,15 @@ var _ =
           },
         )
         .call(function () {
-          var n = $battleMgr.default.instance.getCurScene();
+          const n = $battleMgr.default.instance.getCurScene();
           e = $nodeUtil.default.nodeParentChangeLocalPos(
             t.node,
             n.bulletParent,
           );
           t.node.parent = n.bulletParent;
           t.node.setPosition(e);
-          var i = $actorMgr.default.instance.getActor(n.playerId);
-          var o = i.node.getPosition();
+          const i = $actorMgr.default.instance.getActor(n.playerId);
+          const o = i.node.getPosition();
           if (i.moveDir) {
             o.addSelf(
               i.moveDir.mul(
@@ -96,12 +95,12 @@ var _ =
               ),
             );
           }
-          var r = o.sub(e);
-          var a = r.normalize();
-          var l = (180 * Math.atan2(a.y, a.x)) / Math.PI;
+          const r = o.sub(e);
+          const a = r.normalize();
+          const l = (180 * Math.atan2(a.y, a.x)) / Math.PI;
           t._nBody.angle = l;
           t._hurtCollider.node.angle = l;
-          var u = e.add(a.mul(r.len() + 300));
+          const u = e.add(a.mul(r.len() + 300));
           cc.tween(t.node)
             .to(
               0.5,
@@ -126,7 +125,7 @@ var _ =
         .start();
     };
     e.prototype.fly = function () {
-      var t = this;
+      const t = this;
       this._isShooted = !0;
       this._nBody.angle = 0;
       this._hurtCollider.node.angle = 0;
@@ -134,7 +133,7 @@ var _ =
       this._nFlyIcon.active = !0;
       this._hurtCollider.node.width = this._nFlyIcon.width;
       this._hurtCollider.node.height = this._nFlyIcon.height;
-      var e = $randomUtil.RandomUtil.randomInt(30, 50);
+      const e = $randomUtil.RandomUtil.randomInt(30, 50);
       cc.tween(this.node)
         .by(0.3, {
           x: e,
@@ -151,7 +150,7 @@ var _ =
         .union()
         .repeatForever()
         .start();
-      var n = $randomUtil.RandomUtil.randomInt(300, 500);
+      const n = $randomUtil.RandomUtil.randomInt(300, 500);
       cc.tween(this.node)
         .by(
           2,
@@ -171,15 +170,15 @@ var _ =
     e.prototype.onUpdate = function (e) {
       t.prototype.onUpdate.call(this, e);
       if (this._isWaitReady) {
-        var n = $battleMgr.default.instance.getCurScene();
-        var i = $actorMgr.default.instance
+        const n = $battleMgr.default.instance.getCurScene();
+        const i = $actorMgr.default.instance
           .getActor(n.playerId)
           .node.getPosition();
-        var o = $nodeUtil.default.nodeParentChangeLocalPos(
+        const o = $nodeUtil.default.nodeParentChangeLocalPos(
           this.node,
           n.bulletParent,
         );
-        var r = i.sub(o).normalize();
+        const r = i.sub(o).normalize();
         this._nBody.angle = (180 * Math.atan2(r.y, r.x)) / Math.PI;
       } else {
         if ($battleMgr.default.instance.isSceneOut(this.node.getPosition())) {
@@ -192,14 +191,14 @@ var _ =
       }
     };
     e.prototype.checkHurt = function () {
-      var t = this;
+      const t = this;
       if (this.isDead()) {
         //
       } else {
         $actorMgr.default.instance
           .queryActorByCamp($actorEnum.ETeamType.PLAYER)
           .forEach(function (e) {
-            var n = t._atkCollisionIds.indexOf(e.unitId);
+            const n = t._atkCollisionIds.indexOf(e.unitId);
             if (e.isDead()) {
               if (-1 != n) {
                 t._atkCollisionIds.splice(n, 1);
@@ -221,8 +220,8 @@ var _ =
       }
     };
     e.prototype.getHurt = function () {
-      var t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
-      var e =
+      const t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
+      const e =
         Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
       if (e) {
         t *= this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).value;
@@ -240,6 +239,5 @@ var _ =
     e.prototype.canBeHurt = function () {
       return this._isShooted && t.prototype.canBeHurt.call(this);
     };
-    return __decorate([y], e);
   })($enemyItemBase.default));
 exports.default = _;

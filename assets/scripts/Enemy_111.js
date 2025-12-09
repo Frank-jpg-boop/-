@@ -1,31 +1,30 @@
-var i;
-var $randomUtil = require("./RandomUtil");
-var $battleMgr = require("./BattleMgr");
-var $stateMachine = require("./StateMachine");
-var $effectMgr = require("./EffectMgr");
-var $spAnimEffect = require("./SpAnimEffect");
-var $actorEnum = require("./ActorEnum");
-var $actorMgr = require("./ActorMgr");
-var $enemyBase = require("./EnemyBase");
-var $enemy_111_Atk = require("./Enemy_111_Atk");
-var $enemy_111_Die = require("./Enemy_111_Die");
-var $enemy_111_Idle = require("./Enemy_111_Idle");
-var $enemy_111_Summon = require("./Enemy_111_Summon");
-var $enemy_111_Walk = require("./Enemy_111_Walk");
-var $enemyStopState = require("./EnemyStopState");
-var b = cc._decorator;
-var E = b.ccclass;
-var S =
+import $randomUtil from './RandomUtil';
+import $battleMgr from './BattleMgr';
+import $stateMachine from './StateMachine';
+import $effectMgr from './EffectMgr';
+import $spAnimEffect from './SpAnimEffect';
+import $actorEnum from './ActorEnum';
+import $actorMgr from './ActorMgr';
+import $enemyBase from './EnemyBase';
+import $enemy_111_Atk from './Enemy_111_Atk';
+import $enemy_111_Die from './Enemy_111_Die';
+import $enemy_111_Idle from './Enemy_111_Idle';
+import $enemy_111_Summon from './Enemy_111_Summon';
+import $enemy_111_Walk from './Enemy_111_Walk';
+import $enemyStopState from './EnemyStopState';
+let i;
+const b = cc._decorator;
+const E = b.ccclass;
+const S =
   (b.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._rangeRect = null;
       e._summonCD = 0;
       e._moveCD = 0;
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "rangeRect", {
       get: function () {
         return this._rangeRect;
@@ -59,16 +58,16 @@ var S =
       );
     };
     e.prototype.initPos = function () {
-      var t = this._initParam.roomId;
+      const t = this._initParam.roomId;
       if (t) {
-        var e = $battleMgr.default.instance.getCurScene().level.getRoomById(t);
+        const e = $battleMgr.default.instance.getCurScene().level.getRoomById(t);
         this._rangeRect = new cc.Rect(
           e.node.x + 200,
           e.node.y + 100,
           e.node.width - 200,
           e.node.height - 200,
         );
-        var n = cc.v2(
+        const n = cc.v2(
           $randomUtil.RandomUtil.randomInt(
             this._rangeRect.xMin,
             this._rangeRect.xMax,
@@ -100,16 +99,16 @@ var S =
       return this._summonCD <= 0;
     };
     e.prototype.summon = function () {
-      var t = this;
+      const t = this;
       this._summonCD = Number(this._cfg.val1);
-      var e = Number(this._cfg.val2);
-      var n = 0;
-      var i = $battleMgr.default.instance.getCurScene();
+      const e = Number(this._cfg.val2);
+      const n = 0;
+      const i = $battleMgr.default.instance.getCurScene();
       if (i) {
         for (; n < e; ) {
           n++;
           this.scheduleOnce(function () {
-            var e = t.shootPos;
+            const e = t.shootPos;
             $actorMgr.default.instance.createActor({
               id: i.getCreateActorId(),
               cfgId: 102,
@@ -126,8 +125,8 @@ var S =
                 rewardMap: new Map(),
                 lv: t._initParam.lv,
                 showAnim: function (n, o) {
-                  var r = i.level.getRoomById(t._roomId).getGroundY();
-                  var s = e.x + $randomUtil.RandomUtil.randomInt(-50, 50);
+                  const r = i.level.getRoomById(t._roomId).getGroundY();
+                  const s = e.x + $randomUtil.RandomUtil.randomInt(-50, 50);
                   cc.tween(n.node)
                     .to(
                       0.2,
@@ -153,7 +152,7 @@ var S =
       }
     };
     e.prototype.playAnimSummom = function (t, e) {
-      var n = this;
+      const n = this;
       this._spCtrl.playAnim(
         this._atkAnimName,
         1,
@@ -173,7 +172,7 @@ var S =
     e.prototype.attackHit = function (t) {
       if (t && t.isValid) {
         this.shootCommonBullet(t, 3, function (t) {
-          var e = $battleMgr.default.instance.getCurScene();
+          const e = $battleMgr.default.instance.getCurScene();
           $effectMgr.default.instance.createEffect({
             parent: e.effectParent,
             prefabName: "EEnemyHit_1",
@@ -205,14 +204,14 @@ var S =
       );
     };
     e.prototype.searchTarget = function () {
-      var t = $actorMgr.default.instance.queryActorByCamp(
+      const t = $actorMgr.default.instance.queryActorByCamp(
         $actorEnum.ETeamType.PLAYER,
       );
       if (0 == t.length) {
         return null;
       }
-      for (var e = 0; e < t.length; e++) {
-        var n = t[e];
+      for (const e = 0; e < t.length; e++) {
+        const n = t[e];
         if (!n.isDead() && n.canBeSearch() && n.roomId == this._roomId) {
           return n;
         }
@@ -221,14 +220,13 @@ var S =
     };
     e.prototype.onDie = function () {
       t.prototype.onDie.call(this);
-      var e = this._initParam.roomId;
+      const e = this._initParam.roomId;
       if (e) {
-        var n = $battleMgr.default.instance.getCurScene().level.getRoomById(e);
+        const n = $battleMgr.default.instance.getCurScene().level.getRoomById(e);
         if (n) {
           n.destroyCobweb();
         }
       }
     };
-    return __decorate([E], e);
   })($enemyBase.default));
 exports.default = S;

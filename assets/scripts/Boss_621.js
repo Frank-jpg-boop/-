@@ -1,29 +1,29 @@
-var i;
-var $cfg = require("./Cfg");
-var $eventManager = require("./EventManager");
-var $resLoader = require("./ResLoader");
-var $randomUtil = require("./RandomUtil");
-var $frameEnum = require("./FrameEnum");
-var $animUtils = require("./AnimUtils");
-var $battleMgr = require("./BattleMgr");
-var $spAnimCtrl = require("./SpAnimCtrl");
-var $actorEnum = require("./ActorEnum");
-var $attrEnum = require("./AttrEnum");
-var $battleEnum = require("./BattleEnum");
-var $levelBattleData = require("./LevelBattleData");
-var $actorMgr = require("./ActorMgr");
-var $enemyBase = require("./EnemyBase");
-var $boss_621_Atk = require("./Boss_621_Atk");
-var $boss_621_Idle = require("./Boss_621_Idle");
-var $boss_621_Skin = require("./Boss_621_Skin");
-var $boss_621_Walk = require("./Boss_621_Walk");
-var A = cc._decorator;
-var w = A.ccclass;
-var C =
+import $cfg from './Cfg';
+import $eventManager from './EventManager';
+import $resLoader from './ResLoader';
+import $randomUtil from './RandomUtil';
+import $frameEnum from './FrameEnum';
+import $animUtils from './AnimUtils';
+import $battleMgr from './BattleMgr';
+import $spAnimCtrl from './SpAnimCtrl';
+import $actorEnum from './ActorEnum';
+import $attrEnum from './AttrEnum';
+import $battleEnum from './BattleEnum';
+import $levelBattleData from './LevelBattleData';
+import $actorMgr from './ActorMgr';
+import $enemyBase from './EnemyBase';
+import $boss_621_Atk from './Boss_621_Atk';
+import $boss_621_Idle from './Boss_621_Idle';
+import $boss_621_Skin from './Boss_621_Skin';
+import $boss_621_Walk from './Boss_621_Walk';
+let i;
+const A = cc._decorator;
+const w = A.ccclass;
+const C =
   (A.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._isTransfiguration = !1;
       e._isGiveing = !1;
       e._nWaitView = null;
@@ -40,7 +40,6 @@ var C =
       e._skin3ItemIds = [];
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "rangeAngles", {
       get: function () {
         return this._rangeAngles;
@@ -73,9 +72,9 @@ var C =
         .getComponent($spAnimCtrl.default);
     };
     e.prototype.initPos = function () {
-      var t = $battleMgr.default.instance.getCurScene().level.getRoomById(621);
+      const t = $battleMgr.default.instance.getCurScene().level.getRoomById(621);
       if (t) {
-        var e = cc.v2(t.node.x + t.node.width / 2, t.getGroundY());
+        const e = cc.v2(t.node.x + t.node.width / 2, t.getGroundY());
         e.x += $randomUtil.RandomUtil.randomInt(-200, 200);
         this.updateRoomId(621);
         this.node.setPosition(e);
@@ -129,10 +128,10 @@ var C =
       if (void 0 === e) {
         e = !1;
       }
-      var n = this._needItems[0];
-      var i = this._nWaitView.getChildByName("Bubble");
+      const n = this._needItems[0];
+      const i = this._nWaitView.getChildByName("Bubble");
       if (n) {
-        var o = $cfg.default.instance.dataReward.getById(n);
+        const o = $cfg.default.instance.dataReward.getById(n);
         $resLoader.ResLoader.setSpritFrame(
           cc.find("Item/View/Icon", i).getComponent(cc.Sprite),
           $frameEnum.Frame.EBundleName.RES,
@@ -187,9 +186,9 @@ var C =
       if (!t || t.isDead()) {
         return !1;
       }
-      var e = t.node.getPosition().sub(this.node.getPosition());
-      var n = e.magSqr();
-      var i =
+      const e = t.node.getPosition().sub(this.node.getPosition());
+      const n = e.magSqr();
+      const i =
         (180 * cc.Vec2.RIGHT_R.signAngle(e.normalize().mul(-1))) / Math.PI;
       return (
         i >= this._rangeAngles[0] &&
@@ -215,16 +214,16 @@ var C =
       });
     };
     e.prototype.playAnimAttack = function (t, e) {
-      var n = this;
+      const n = this;
       this._skin1ItemIds.forEach(function (t) {
-        var e = $actorMgr.default.instance.getActor(t);
+        const e = $actorMgr.default.instance.getActor(t);
         if (e && !e.isDead()) {
           e.changeState($actorEnum.EActorStateType.DEAD);
         }
       });
       this._skin1ItemIds = [];
       this._skin3ItemIds.forEach(function (t) {
-        var e = $actorMgr.default.instance.getActor(t);
+        const e = $actorMgr.default.instance.getActor(t);
         if (e && !e.isDead()) {
           e.changeState($actorEnum.EActorStateType.DEAD);
         }
@@ -270,11 +269,11 @@ var C =
       if (0 == this._needItems.length) {
         return !1;
       }
-      var t = $battleMgr.default.instance.getCurScene();
+      const t = $battleMgr.default.instance.getCurScene();
       if (!t) {
         return !1;
       }
-      var e = $actorMgr.default.instance.getActor(t.playerId);
+      const e = $actorMgr.default.instance.getActor(t.playerId);
       return !(
         !e ||
         e.isDead() ||
@@ -288,11 +287,11 @@ var C =
       );
     };
     e.prototype.giveItem = function () {
-      var t = this;
+      const t = this;
       this._isGiveing = !0;
-      var e = this._needItems.shift();
-      var n = this._nWaitView.getChildByName("Bubble");
-      var i = cc.find("Item/View/Icon", n);
+      const e = this._needItems.shift();
+      const n = this._nWaitView.getChildByName("Bubble");
+      const i = cc.find("Item/View/Icon", n);
       $eventManager.EventManager.instance.emit(
         $battleEnum.EBattleEvent.CONSUME_FLY_ITEM,
         e,
@@ -315,7 +314,7 @@ var C =
       );
     };
     e.prototype.transfiguration = function () {
-      var t = this;
+      const t = this;
       this._nWaitView.getChildByName("Bubble").active = !1;
       this._spAnimWaitCtrl.playAnim("change", 1, !1, function () {
         t._nWaitView.active = !1;
@@ -353,48 +352,48 @@ var C =
       }
     };
     e.prototype.releaseSkin1Item = function () {
-      var t = this;
-      var e = $battleMgr.default.instance.getCurScene();
-      var n = this.node.getPosition();
-      var i = this.getAttackCount();
-      var o = 120 / i;
-      var r = e.level.findLayerByPos(n);
+      const t = this;
+      const e = $battleMgr.default.instance.getCurScene();
+      const n = this.node.getPosition();
+      const i = this.getAttackCount();
+      const o = 120 / i;
+      const r = e.level.findLayerByPos(n);
       if (-1 != r) {
         for (
-          var a = n.clone(),
-            s = function (n) {
-              var i = ((210 + n * o) * Math.PI) / 180;
-              var s = cc.v2(Math.cos(i), Math.sin(i));
-              var u = $randomUtil.RandomUtil.randomInt(1, r + 1);
-              var p = e.level.getLayerPosY(u);
-              var h = cc.v2(0, p);
-              h.x = a.x + (s.x / s.y) * (h.y - a.y);
-              var f = e.getCreateActorId();
-              $actorMgr.default.instance.createActor({
-                id: f,
-                cfgId: -1,
-                camp: $actorEnum.ETeamType.ENEMY,
-                parent: e.effectParent,
-                prefabName: "BossItem_621_Skin1",
-                initPos: a,
-                actorClass: "BossItem_621_Skin1",
-                onCreated: function () {
-                  t._skin1ItemIds.push(f);
+          const a = n.clone(),
+                s = function (n) {
+                  const i = ((210 + n * o) * Math.PI) / 180;
+                  const s = cc.v2(Math.cos(i), Math.sin(i));
+                  const u = $randomUtil.RandomUtil.randomInt(1, r + 1);
+                  const p = e.level.getLayerPosY(u);
+                  const h = cc.v2(0, p);
+                  h.x = a.x + (s.x / s.y) * (h.y - a.y);
+                  const f = e.getCreateActorId();
+                  $actorMgr.default.instance.createActor({
+                    id: f,
+                    cfgId: -1,
+                    camp: $actorEnum.ETeamType.ENEMY,
+                    parent: e.effectParent,
+                    prefabName: "BossItem_621_Skin1",
+                    initPos: a,
+                    actorClass: "BossItem_621_Skin1",
+                    onCreated: function () {
+                      t._skin1ItemIds.push(f);
+                    },
+                    initParam: {
+                      rewardMap: new Map(),
+                      lv: c._initParam.lv,
+                      moveTargetPos: h,
+                      maxHp: Math.floor(
+                        c.getAttribute($attrEnum.E_AttrType.HP).value *
+                          Number(c._cfg.val4),
+                      ),
+                      atk: c.getAttribute($attrEnum.E_AttrType.ATK).value,
+                    },
+                  });
                 },
-                initParam: {
-                  rewardMap: new Map(),
-                  lv: c._initParam.lv,
-                  moveTargetPos: h,
-                  maxHp: Math.floor(
-                    c.getAttribute($attrEnum.E_AttrType.HP).value *
-                      Number(c._cfg.val4),
-                  ),
-                  atk: c.getAttribute($attrEnum.E_AttrType.ATK).value,
-                },
-              });
-            },
-            c = this,
-            u = 0;
+                c = this,
+                u = 0;
           u < i;
           u++
         ) {
@@ -404,47 +403,47 @@ var C =
     };
     e.prototype.readySkin2Item = function () {
       for (
-        var t = this,
-          e = this.node.getChildByName("Body").getPosition().add(cc.v2(0, -50)),
-          n = $battleMgr.default.instance.getCurScene(),
-          i = $actorMgr.default.instance
-            .getActor(n.playerId)
-            .node.getPosition(),
-          o = this.getAttackCount(),
-          r = 300 / o,
-          a = o >> 1,
-          s = function (o) {
-            var s = e.clone();
-            s.x += (o - a) * r;
-            var l = s.add(c.node.getPosition());
-            var u =
-              (180 * cc.Vec2.RIGHT_R.signAngle(i.sub(l).normalize())) / Math.PI;
-            var p = n.getCreateActorId();
-            $actorMgr.default.instance.createActor({
-              id: p,
-              cfgId: -1,
-              camp: $actorEnum.ETeamType.ENEMY,
-              parent: c.node,
-              prefabName: "BossItem_621_Skin2",
-              initPos: s,
-              actorClass: "BossItem_621_Skin2",
-              onCreated: function () {
-                t.skin2ItemIds.push(p);
+        const t = this,
+              e = this.node.getChildByName("Body").getPosition().add(cc.v2(0, -50)),
+              n = $battleMgr.default.instance.getCurScene(),
+              i = $actorMgr.default.instance
+                .getActor(n.playerId)
+                .node.getPosition(),
+              o = this.getAttackCount(),
+              r = 300 / o,
+              a = o >> 1,
+              s = function (o) {
+                const s = e.clone();
+                s.x += (o - a) * r;
+                const l = s.add(c.node.getPosition());
+                const u =
+                  (180 * cc.Vec2.RIGHT_R.signAngle(i.sub(l).normalize())) / Math.PI;
+                const p = n.getCreateActorId();
+                $actorMgr.default.instance.createActor({
+                  id: p,
+                  cfgId: -1,
+                  camp: $actorEnum.ETeamType.ENEMY,
+                  parent: c.node,
+                  prefabName: "BossItem_621_Skin2",
+                  initPos: s,
+                  actorClass: "BossItem_621_Skin2",
+                  onCreated: function () {
+                    t.skin2ItemIds.push(p);
+                  },
+                  initParam: {
+                    rewardMap: new Map(),
+                    lv: c._initParam.lv,
+                    initAngle: u,
+                    maxHp: Math.floor(
+                      c.getAttribute($attrEnum.E_AttrType.HP).value *
+                        Number(c._cfg.val4),
+                    ),
+                    atk: c.getAttribute($attrEnum.E_AttrType.ATK).value,
+                  },
+                });
               },
-              initParam: {
-                rewardMap: new Map(),
-                lv: c._initParam.lv,
-                initAngle: u,
-                maxHp: Math.floor(
-                  c.getAttribute($attrEnum.E_AttrType.HP).value *
-                    Number(c._cfg.val4),
-                ),
-                atk: c.getAttribute($attrEnum.E_AttrType.ATK).value,
-              },
-            });
-          },
-          c = this,
-          l = 0;
+              c = this,
+              l = 0;
         l < o;
         ++l
       ) {
@@ -452,9 +451,9 @@ var C =
       }
     };
     e.prototype.releaseSkin2Item = function () {
-      var t = this;
+      const t = this;
       this.skin2ItemIds.forEach(function (e, n) {
-        var i = $actorMgr.default.instance.getActor(e);
+        const i = $actorMgr.default.instance.getActor(e);
         if (i) {
           t.scheduleOnce(function () {
             i.shoot();
@@ -465,48 +464,47 @@ var C =
     };
     e.prototype.releaseSkin3Item = function () {
       for (
-        var t = this,
-          e = this.node.getPosition().add(cc.v2(0, 100)),
-          n = $battleMgr.default.instance.getCurScene(),
-          i = this.getAttackCount(),
-          o = 1e3 / i,
-          r = i >> 1,
-          a = function (i) {
-            var a = e.clone().add(cc.v2(0, -1e3));
-            a.x += (i - r) * o + $randomUtil.RandomUtil.randomInt(-50, 50);
-            var c = n.getCreateActorId();
-            $actorMgr.default.instance.createActor({
-              id: c,
-              cfgId: -1,
-              camp: $actorEnum.ETeamType.ENEMY,
-              parent: n.effectParent,
-              prefabName: "BossItem_621_Skin3",
-              initPos: e,
-              actorClass: "BossItem_621_Skin3",
-              onCreated: function (e) {
-                t._skin3ItemIds.push(c);
-                e.drop();
+        const t = this,
+              e = this.node.getPosition().add(cc.v2(0, 100)),
+              n = $battleMgr.default.instance.getCurScene(),
+              i = this.getAttackCount(),
+              o = 1e3 / i,
+              r = i >> 1,
+              a = function (i) {
+                const a = e.clone().add(cc.v2(0, -1e3));
+                a.x += (i - r) * o + $randomUtil.RandomUtil.randomInt(-50, 50);
+                const c = n.getCreateActorId();
+                $actorMgr.default.instance.createActor({
+                  id: c,
+                  cfgId: -1,
+                  camp: $actorEnum.ETeamType.ENEMY,
+                  parent: n.effectParent,
+                  prefabName: "BossItem_621_Skin3",
+                  initPos: e,
+                  actorClass: "BossItem_621_Skin3",
+                  onCreated: function (e) {
+                    t._skin3ItemIds.push(c);
+                    e.drop();
+                  },
+                  initParam: {
+                    rewardMap: new Map(),
+                    lv: s._initParam.lv,
+                    targetPos: a,
+                    maxHp: Math.floor(
+                      s.getAttribute($attrEnum.E_AttrType.HP).value *
+                        Number(s._cfg.val4),
+                    ),
+                    atk: s.getAttribute($attrEnum.E_AttrType.ATK).value,
+                  },
+                });
               },
-              initParam: {
-                rewardMap: new Map(),
-                lv: s._initParam.lv,
-                targetPos: a,
-                maxHp: Math.floor(
-                  s.getAttribute($attrEnum.E_AttrType.HP).value *
-                    Number(s._cfg.val4),
-                ),
-                atk: s.getAttribute($attrEnum.E_AttrType.ATK).value,
-              },
-            });
-          },
-          s = this,
-          c = 0;
+              s = this,
+              c = 0;
         c < i;
         ++c
       ) {
         a(c);
       }
     };
-    return __decorate([w], e);
   })($enemyBase.default));
 exports.default = C;

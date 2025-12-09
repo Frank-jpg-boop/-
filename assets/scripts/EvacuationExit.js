@@ -1,23 +1,23 @@
-var i;
-var $cfg = require("./Cfg");
-var $audioUtil = require("./AudioUtil");
-var $eventManager = require("./EventManager");
-var $sceneManager = require("./SceneManager");
-var $guideMgr = require("./GuideMgr");
-var $guideDataProxy = require("./GuideDataProxy");
-var $battleMgr = require("./BattleMgr");
-var $effectMgr = require("./EffectMgr");
-var $spAnimEffect = require("./SpAnimEffect");
-var $levelBattleData = require("./LevelBattleData");
-var $progressWaitItem = require("./ProgressWaitItem");
-var $levelObjectBase = require("./LevelObjectBase");
-var g = cc._decorator;
-var v = g.ccclass;
-var b =
+import $cfg from './Cfg';
+import $audioUtil from './AudioUtil';
+import $eventManager from './EventManager';
+import $sceneManager from './SceneManager';
+import $guideMgr from './GuideMgr';
+import $guideDataProxy from './GuideDataProxy';
+import $battleMgr from './BattleMgr';
+import $effectMgr from './EffectMgr';
+import $spAnimEffect from './SpAnimEffect';
+import $levelBattleData from './LevelBattleData';
+import $progressWaitItem from './ProgressWaitItem';
+import $levelObjectBase from './LevelObjectBase';
+let i;
+const g = cc._decorator;
+const v = g.ccclass;
+const b =
   (g.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._waitTime = 0;
       e._waitTimer = 1;
       e._progress = null;
@@ -25,9 +25,8 @@ var b =
       e._isEnterRescue = !1;
       return e;
     }
-    __extends(e, t);
     e.prototype.onInit = function () {
-      var t = this;
+      const t = this;
       this._isEnterRescue = !1;
       this._isTrigger = !1;
       this._waitTimer = Number($cfg.default.instance.dataCons.getById(128).val);
@@ -64,7 +63,7 @@ var b =
             $guideDataProxy.EGuideStepId.G_12,
           );
         }
-        var n = $battleMgr.default.instance.getCurScene();
+        const n = $battleMgr.default.instance.getCurScene();
         $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_Helicopter");
         $effectMgr.default.instance.createEffect({
           parent: n.lowEffectParent,
@@ -95,6 +94,5 @@ var b =
         }
       }
     };
-    return __decorate([v], e);
   })($levelObjectBase.default));
 exports.default = b;

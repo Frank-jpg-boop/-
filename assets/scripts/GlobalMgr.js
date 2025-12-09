@@ -1,19 +1,18 @@
-var i;
-var $globalEnum = require("./GlobalEnum");
-var $audioUtil = require("./AudioUtil");
-var $eventManager = require("./EventManager");
-var $appProxy = require("./AppProxy");
-var $guideMgr = require("./GuideMgr");
-var p = cc._decorator;
-var h = p.ccclass;
-var f =
+import $globalEnum from './GlobalEnum';
+import $audioUtil from './AudioUtil';
+import $eventManager from './EventManager';
+import $appProxy from './AppProxy';
+import $guideMgr from './GuideMgr';
+let i;
+const p = cc._decorator;
+const h = p.ccclass;
+const f =
   (p.property,
   (function (t) {
     function e() {
       return (null !== t && t.apply(this, arguments)) || this;
     }
-    var n;
-    __extends(e, t);
+    let n;
     n = e;
     Object.defineProperty(e, "instance", {
       get: function () {
@@ -70,6 +69,6 @@ var f =
       $guideMgr.GuideMgr.instance.updateGuide(t);
     };
     e._instance = null;
-    return (n = __decorate([h], e));
+    return;
   })(cc.Component));
 exports.default = f;

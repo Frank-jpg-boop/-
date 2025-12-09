@@ -1,24 +1,23 @@
-var i;
-var $mathUtil = require("./MathUtil");
-var $battleMgr = require("./BattleMgr");
-var $stateMachine = require("./StateMachine");
-var $actorEnum = require("./ActorEnum");
-var $actorBase = require("./ActorBase");
-var $summonAttackState = require("./SummonAttackState");
-var $summonDeadState = require("./SummonDeadState");
-var $summonIdleState = require("./SummonIdleState");
-var $summonWalkState = require("./SummonWalkState");
-var m = cc._decorator;
-var y = m.ccclass;
-var _ =
+import $mathUtil from './MathUtil';
+import $battleMgr from './BattleMgr';
+import $stateMachine from './StateMachine';
+import $actorEnum from './ActorEnum';
+import $actorBase from './ActorBase';
+import $summonAttackState from './SummonAttackState';
+import $summonDeadState from './SummonDeadState';
+import $summonIdleState from './SummonIdleState';
+import $summonWalkState from './SummonWalkState';
+let i;
+const m = cc._decorator;
+const y = m.ccclass;
+const _ =
   (m.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e.moveDir = null;
       return e;
     }
-    __extends(e, t);
     e.prototype.onInit = function () {
       this._pathPos = this.node.getPosition();
       t.prototype.onInit.call(this);
@@ -66,17 +65,16 @@ var _ =
     };
     e.prototype.updatePathData = function () {
       for (
-        var t = $mathUtil.MathUtil.vec2Fixed(this._pathPos),
-          e = $battleMgr.default.instance.getCurScene().level.path;
+        const t = $mathUtil.MathUtil.vec2Fixed(this._pathPos), e = $battleMgr.default.instance.getCurScene().level.path;
         ;
       ) {
-        var n = e.findPathPointByPos(t);
+        const n = e.findPathPointByPos(t);
         if ("" != n) {
           this._pathPointId = n;
           this._pathLineId = "";
           break;
         }
-        var i = e.findPathLineByPos(t);
+        const i = e.findPathLineByPos(t);
         if ("" != i) {
           this._pathLineId = i;
           this._pathPointId = "";
@@ -89,6 +87,5 @@ var _ =
       }
       this.updateRoomId();
     };
-    return __decorate([y], e);
   })($actorBase.default));
 exports.default = _;

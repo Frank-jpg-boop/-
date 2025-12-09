@@ -1,20 +1,20 @@
-var i;
-var $mathUtil = require("./MathUtil");
-var $battleMgr = require("./BattleMgr");
-var $simplyCircleCollider = require("./SimplyCircleCollider");
-var $simplyCollisionDetector = require("./SimplyCollisionDetector");
-var $actorEnum = require("./ActorEnum");
-var $attrEnum = require("./AttrEnum");
-var $battleEnum = require("./BattleEnum");
-var $actorMgr = require("./ActorMgr");
-var $enemyItemBase = require("./EnemyItemBase");
-var m = cc._decorator;
-var y = m.ccclass;
-var _ =
+import $mathUtil from './MathUtil';
+import $battleMgr from './BattleMgr';
+import $simplyCircleCollider from './SimplyCircleCollider';
+import $simplyCollisionDetector from './SimplyCollisionDetector';
+import $actorEnum from './ActorEnum';
+import $attrEnum from './AttrEnum';
+import $battleEnum from './BattleEnum';
+import $actorMgr from './ActorMgr';
+import $enemyItemBase from './EnemyItemBase';
+let i;
+const m = cc._decorator;
+const y = m.ccclass;
+const _ =
   (m.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._isBounce = !1;
       e._isDrop = !1;
       e._downSpeed = 200;
@@ -25,7 +25,6 @@ var _ =
       e._ballCollider = null;
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "isInScreen", {
       get: function () {
         return this._isInScreen;
@@ -60,15 +59,15 @@ var _ =
       this.node.opacity = 255;
     };
     e.prototype.drop = function () {
-      var t = this;
-      var e = this._initParam.targetPos;
-      var n = this.node.getPosition();
-      var i = cc.v2(n.x + 0.6 * (e.x - n.x), n.y + 400);
+      const t = this;
+      const e = this._initParam.targetPos;
+      const n = this.node.getPosition();
+      const i = cc.v2(n.x + 0.6 * (e.x - n.x), n.y + 400);
       this._isInScreen = !0;
       $mathUtil.MathUtil.bezierTo(this.node, 1.2, n, i, e, function (e) {
-        var n = e.x - t.node.x;
-        var i = e.y - t.node.y;
-        var o = cc.v2(n, i).normalizeSelf();
+        const n = e.x - t.node.x;
+        const i = e.y - t.node.y;
+        const o = cc.v2(n, i).normalizeSelf();
         if (0 == o.x && 0 == o.y) {
           //
         } else {
@@ -102,15 +101,15 @@ var _ =
     };
     e.prototype.onUpdate = function (e) {
       t.prototype.onUpdate.call(this, e);
-      var n = this.node.convertToWorldSpaceAR(cc.v2());
-      var i = $battleMgr.default.instance
+      const n = this.node.convertToWorldSpaceAR(cc.v2());
+      const i = $battleMgr.default.instance
         .getCurScene()
         .gameCamera.getWorldToScreenPoint(n);
-      var o = !1;
-      var r = !1;
-      var c = !1;
-      var l = !1;
-      var u = null;
+      const o = !1;
+      const r = !1;
+      const c = !1;
+      const l = !1;
+      const u = null;
       if (i.x < 35) {
         o = !0;
         u = cc.v2(-1, 0);
@@ -125,7 +124,7 @@ var _ =
           }
         }
       }
-      var p = !(r || o || l || c);
+      const p = !(r || o || l || c);
       if (this._isDrop) {
         if (this._isBounce) {
           if (this._isInScreen != p) {
@@ -138,7 +137,7 @@ var _ =
           }
         } else {
           this._downSpeed = $mathUtil.MathUtil.lerp(this._downSpeed, 600, 0.01);
-          var h = this._bounceMoveDir.mul(this._downSpeed * e);
+          const h = this._bounceMoveDir.mul(this._downSpeed * e);
           this.node.x += h.x;
           this.node.y += h.y;
           if (p) {
@@ -165,8 +164,8 @@ var _ =
       this.checkHurt();
     };
     e.prototype.getHurt = function () {
-      var t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
-      var e =
+      const t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
+      const e =
         Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
       if (e) {
         t *= this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).value;
@@ -179,14 +178,14 @@ var _ =
       };
     };
     e.prototype.checkHurt = function () {
-      var t = this;
+      const t = this;
       if (this.isDead()) {
         //
       } else {
         $actorMgr.default.instance
           .queryActorByCamp($actorEnum.ETeamType.PLAYER)
           .forEach(function (e) {
-            var n = t._atkCollisionIds.indexOf(e.unitId);
+            const n = t._atkCollisionIds.indexOf(e.unitId);
             if (e.isDead()) {
               if (-1 != n) {
                 t._atkCollisionIds.splice(n, 1);
@@ -207,6 +206,5 @@ var _ =
           });
       }
     };
-    return __decorate([y], e);
   })($enemyItemBase.default));
 exports.default = _;

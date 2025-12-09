@@ -1,26 +1,25 @@
-var i;
-var $audioUtil = require("./AudioUtil");
-var $eventManager = require("./EventManager");
-var $battleMgr = require("./BattleMgr");
-var $actorEnum = require("./ActorEnum");
-var $battleEnum = require("./BattleEnum");
-var $actorMgr = require("./ActorMgr");
-var $enemyBase = require("./EnemyBase");
-var $boss_122_Atk = require("./Boss_122_Atk");
-var $boss_122_Face = require("./Boss_122_Face");
-var $boss_122_Idle = require("./Boss_122_Idle");
-var $boss_122_Walk = require("./Boss_122_Walk");
-var _ = cc._decorator;
-var g = _.ccclass;
-var v =
+import $audioUtil from './AudioUtil';
+import $eventManager from './EventManager';
+import $battleMgr from './BattleMgr';
+import $actorEnum from './ActorEnum';
+import $battleEnum from './BattleEnum';
+import $actorMgr from './ActorMgr';
+import $enemyBase from './EnemyBase';
+import $boss_122_Atk from './Boss_122_Atk';
+import $boss_122_Face from './Boss_122_Face';
+import $boss_122_Idle from './Boss_122_Idle';
+import $boss_122_Walk from './Boss_122_Walk';
+let i;
+const _ = cc._decorator;
+const g = _.ccclass;
+const v =
   (_.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._isShowBossTag = !1;
       return e;
     }
-    __extends(e, t);
     e.prototype.onEnable = function () {
       this.node.opacity = 0;
     };
@@ -28,7 +27,7 @@ var v =
       this._actorType = $actorEnum.EActorType.BOSS;
     };
     e.prototype.playShowAnim = function () {
-      var t = this;
+      const t = this;
       return new Promise(function (e) {
         t.fadeIn(function () {
           e();
@@ -60,11 +59,11 @@ var v =
       }
     };
     e.prototype.isFace = function () {
-      var t = $battleMgr.default.instance.getCurScene();
+      const t = $battleMgr.default.instance.getCurScene();
       if (!t) {
         return !1;
       }
-      var e = $actorMgr.default.instance.getActor(t.playerId);
+      const e = $actorMgr.default.instance.getActor(t.playerId);
       return (
         !!e &&
         !$battleMgr.default.instance.isScreenOut(
@@ -86,7 +85,7 @@ var v =
     e.prototype.onUpdate = function (e) {
       t.prototype.onUpdate.call(this, e);
       if (!this._isShowBossTag && this._isTrigger) {
-        var n = this.node.convertToWorldSpaceAR(cc.v2());
+        const n = this.node.convertToWorldSpaceAR(cc.v2());
         if ($battleMgr.default.instance.isScreenOut(n, 60, 100)) {
           //
         } else {
@@ -99,7 +98,7 @@ var v =
       }
     };
     e.prototype.playAnimShowFace = function () {
-      var t = this;
+      const t = this;
       this._spCtrl.playAnim("hide_start", 1, !1, function () {
         t._spCtrl.playAnim("hide_stand", 1, !0);
       });
@@ -141,6 +140,5 @@ var v =
       $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_GhostEnters");
       t.prototype.onBossTrigger.call(this);
     };
-    return __decorate([g], e);
   })($enemyBase.default));
 exports.default = v;

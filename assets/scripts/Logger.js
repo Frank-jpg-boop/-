@@ -1,4 +1,4 @@
-var i;
+let i;
 exports.Logger = exports.LoggerLevel = void 0;
 (function (t) {
   t[(t.OFF = 0)] = "OFF";
@@ -9,11 +9,11 @@ exports.Logger = exports.LoggerLevel = void 0;
   t[(t.ALL = 5)] = "ALL";
 })((i = exports.LoggerLevel || (exports.LoggerLevel = {})));
 (function (t) {
-  var e = "[ZS]";
-  var n = 0;
+  const e = "[ZS]";
+  const n = 0;
 
   function r() {
-    for (var t = [], r = 0; r < arguments.length; r++) {
+    for (const t = [], r = 0; r < arguments.length; r++) {
       t[r] = arguments[r];
     }
     if (n === i.ALL) {
@@ -22,7 +22,7 @@ exports.Logger = exports.LoggerLevel = void 0;
   }
 
   function a() {
-    for (var t = [], r = 0; r < arguments.length; r++) {
+    for (const t = [], r = 0; r < arguments.length; r++) {
       t[r] = arguments[r];
     }
     if (n >= i.DEBUG) {
@@ -31,7 +31,7 @@ exports.Logger = exports.LoggerLevel = void 0;
   }
 
   function s() {
-    for (var t = [], r = 0; r < arguments.length; r++) {
+    for (const t = [], r = 0; r < arguments.length; r++) {
       t[r] = arguments[r];
     }
     if (n >= i.INFO) {
@@ -40,7 +40,7 @@ exports.Logger = exports.LoggerLevel = void 0;
   }
 
   function c() {
-    for (var t = [], r = 0; r < arguments.length; r++) {
+    for (const t = [], r = 0; r < arguments.length; r++) {
       t[r] = arguments[r];
     }
     if (n >= i.WARN) {
@@ -49,7 +49,7 @@ exports.Logger = exports.LoggerLevel = void 0;
   }
 
   function l() {
-    for (var t = [], r = 0; r < arguments.length; r++) {
+    for (const t = [], r = 0; r < arguments.length; r++) {
       t[r] = arguments[r];
     }
     if (n >= i.ERROR) {
@@ -65,31 +65,31 @@ exports.Logger = exports.LoggerLevel = void 0;
   t.warn = c;
   t.error = l;
   t.v = function () {
-    for (var t = [], e = 0; e < arguments.length; e++) {
+    for (const t = [], e = 0; e < arguments.length; e++) {
       t[e] = arguments[e];
     }
     r.apply(void 0, t);
   };
   t.d = function () {
-    for (var t = [], e = 0; e < arguments.length; e++) {
+    for (const t = [], e = 0; e < arguments.length; e++) {
       t[e] = arguments[e];
     }
     a.apply(void 0, t);
   };
   t.i = function () {
-    for (var t = [], e = 0; e < arguments.length; e++) {
+    for (const t = [], e = 0; e < arguments.length; e++) {
       t[e] = arguments[e];
     }
     s.apply(void 0, t);
   };
   t.w = function () {
-    for (var t = [], e = 0; e < arguments.length; e++) {
+    for (const t = [], e = 0; e < arguments.length; e++) {
       t[e] = arguments[e];
     }
     c.apply(void 0, t);
   };
   t.e = function () {
-    for (var t = [], e = 0; e < arguments.length; e++) {
+    for (const t = [], e = 0; e < arguments.length; e++) {
       t[e] = arguments[e];
     }
     l.apply(void 0, t);

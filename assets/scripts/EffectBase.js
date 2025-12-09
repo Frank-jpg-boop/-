@@ -1,20 +1,19 @@
-var i;
-var $componentBase = require("./ComponentBase");
-var $nodePoolManager = require("./NodePoolManager");
-var $util = require("./Util");
-var l = cc._decorator;
-var u = l.ccclass;
-var p =
+import $componentBase from './ComponentBase';
+import $nodePoolManager from './NodePoolManager';
+import $util from './Util';
+let i;
+const l = cc._decorator;
+const u = l.ccclass;
+const p =
   (l.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._onAnimComplete = null;
       e._isInit = !1;
       e._isRemove = !1;
       return e;
     }
-    __extends(e, t);
     e.prototype.init = function () {
       this.node.opacity = 255;
       this.node.scale = 1;
@@ -24,7 +23,7 @@ var p =
     };
     e.prototype.onInit = function () {};
     e.prototype.play = function () {
-      for (var t = [], e = 0; e < arguments.length; e++) {
+      for (const t = [], e = 0; e < arguments.length; e++) {
         t[e] = arguments[e];
       }
     };
@@ -32,7 +31,7 @@ var p =
       if (void 0 === t) {
         t = null;
       }
-      for (var e = [], n = 1; n < arguments.length; n++) {
+      for (const e = [], n = 1; n < arguments.length; n++) {
         e[n - 1] = arguments[n];
       }
     };
@@ -51,7 +50,7 @@ var p =
       }
     };
     e.prototype.onEffectAnimCompleteEvent = function () {
-      for (var t = [], e = 0; e < arguments.length; e++) {
+      for (const t = [], e = 0; e < arguments.length; e++) {
         t[e] = arguments[e];
       }
       if (this._onAnimComplete) {
@@ -60,7 +59,7 @@ var p =
       this.remove();
     };
     e.prototype.onRemove = function () {
-      var t = this;
+      const t = this;
       this.unscheduleAllCallbacks();
       cc.Tween.stopAllByTarget(this.node);
       this._onAnimComplete = null;
@@ -110,6 +109,5 @@ var p =
         })
         .start();
     };
-    return __decorate([u], e);
   })($componentBase.ComponentBase));
 exports.default = p;

@@ -1,19 +1,19 @@
-var i;
-var $cfg = require("./Cfg");
-var $eventManager = require("./EventManager");
-var $resLoader = require("./ResLoader");
-var $frameEnum = require("./FrameEnum");
-var $nodeUtil = require("./NodeUtil");
-var $bagConst = require("./BagConst");
-var $levelWinPopup = require("./LevelWinPopup");
-var $bagConversionItem = require("./BagConversionItem");
-var d = cc._decorator;
-var m = d.ccclass;
-var y =
+import $cfg from './Cfg';
+import $eventManager from './EventManager';
+import $resLoader from './ResLoader';
+import $frameEnum from './FrameEnum';
+import $nodeUtil from './NodeUtil';
+import $bagConst from './BagConst';
+import $levelWinPopup from './LevelWinPopup';
+import $bagConversionItem from './BagConversionItem';
+let i;
+const d = cc._decorator;
+const m = d.ccclass;
+const y =
   (d.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._cfgEquip = null;
       e._equipId = 0;
       e._rowCol = "";
@@ -24,7 +24,6 @@ var y =
       e._index = -1;
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "occupyRowCols", {
       get: function () {
         return this._occupyRowCols.slice();
@@ -45,17 +44,17 @@ var y =
         .getChildByName("Anchor");
     };
     e.prototype.init = function (t, e, n) {
-      var i = this;
+      const i = this;
       this._equipId = e;
       this._rowCol = n;
       this._index = t;
       this._cfgEquip = $cfg.default.instance.dataReward.getById(this._equipId);
       this._formGrids =
         $bagConst.BAG_EQUIP_FORM[this._cfgEquip.boxSet].grids.slice();
-      var o = this._rowCol.split("&").map(Number);
+      const o = this._rowCol.split("&").map(Number);
       this._occupyRowCols = [];
-      for (var r = 0; r < this._formGrids.length; r++) {
-        var s = this._formGrids[r];
+      for (const r = 0; r < this._formGrids.length; r++) {
+        const s = this._formGrids[r];
         this._occupyRowCols.push(o[0] + s[0] + "&" + (o[1] + s[1]));
       }
       this.node.getChildByName("Grids").children.forEach(function (t) {
@@ -76,7 +75,7 @@ var y =
         type: cc.Prefab,
       })
         .then(function (t) {
-          var e = cc.instantiate(t);
+          const e = cc.instantiate(t);
           i.node.addChild(e);
           i._bagConversionItem = e.getComponent($bagConversionItem.default);
           i._bagConversionItem.updateView(
@@ -108,7 +107,7 @@ var y =
         .start();
     };
     e.prototype.playSwitchRewardAnim = function (t, e, n) {
-      var i = this;
+      const i = this;
       cc.tween(this.node)
         .delay(t)
         .call(function () {
@@ -132,11 +131,11 @@ var y =
         .start();
     };
     e.prototype.setPosByGrid = function (t) {
-      var e = $nodeUtil.default.nodeParentChangeLocalPos(
+      const e = $nodeUtil.default.nodeParentChangeLocalPos(
         this._nAnchor,
         this.node,
       );
-      var n = t.sub(e);
+      const n = t.sub(e);
       this.node.setPosition(n);
     };
     e.prototype.showConversionItem = function () {
@@ -149,6 +148,5 @@ var y =
         this._bagConversionItem.hide();
       }
     };
-    return __decorate([m], e);
   })(cc.Component));
 exports.default = y;

@@ -1,17 +1,17 @@
-var i;
+import $mathUtil from './MathUtil';
+let i;
 exports.ArcProgressBar = void 0;
-var $mathUtil = require("./MathUtil");
-var s = cc._decorator;
-var c = s.ccclass;
-var l = s.property;
-var u = s.requireComponent;
-var p = s.executeInEditMode;
-var h =
+const s = cc._decorator;
+const c = s.ccclass;
+const l = s.property;
+const u = s.requireComponent;
+const p = s.executeInEditMode;
+const h =
   (s.help,
   s.menu,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e.graphics = null;
       e._radius = 100;
       e._clockwise = !0;
@@ -29,7 +29,6 @@ var h =
       e.curTweenRes = null;
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "radius", {
       get: function () {
         return this._radius;
@@ -143,9 +142,9 @@ var h =
       this.updateProperties();
     };
     e.prototype.show = function () {
-      var t = this;
+      const t = this;
       return new Promise(function (e) {
-        var n = t.graphics.node;
+        const n = t.graphics.node;
         n.opacity = 0;
         n.active = !0;
         cc.tween(n)
@@ -157,9 +156,9 @@ var h =
       });
     };
     e.prototype.hide = function () {
-      var t = this;
+      const t = this;
       return new Promise(function (e) {
-        var n = t.graphics.node;
+        const n = t.graphics.node;
         cc.tween(n)
           .to(0.1, {
             opacity: 0,
@@ -172,14 +171,14 @@ var h =
       });
     };
     e.prototype.updateProperties = function () {
-      var t = this.graphics;
+      const t = this.graphics;
       t.lineWidth = this._lineWidth;
       t.lineCap = this._lineCap;
       this.curStartAngle = this._startAngle + 90;
       this.curStartRadians = $mathUtil.MathUtil.angle2Radians(
         this.curStartAngle,
       );
-      var e =
+      const e =
         this.curStartAngle + (this._clockwise ? -this._range : this._range);
       this.curEndRadians = $mathUtil.MathUtil.angle2Radians(e);
       this.updateProgress(this._progress);
@@ -193,7 +192,7 @@ var h =
         }
       }
       this._progress = t;
-      var e = this.graphics;
+      const e = this.graphics;
       e.clear();
       e.strokeColor = this._backgroundColor;
       e.arc(
@@ -205,20 +204,20 @@ var h =
         !this._clockwise,
       );
       e.stroke();
-      var n = null;
+      const n = null;
       if (this._clockwise) {
         n = -this._range;
       } else {
         n = this._range;
       }
-      var i = this.curStartAngle + n * t;
-      var o = $mathUtil.MathUtil.angle2Radians(i);
+      const i = this.curStartAngle + n * t;
+      const o = $mathUtil.MathUtil.angle2Radians(i);
       e.strokeColor = this._progressColor;
       e.arc(0, 0, this._radius, this.curStartRadians, o, !this._clockwise);
       e.stroke();
     };
     e.prototype.to = function (t, e) {
-      var n = this;
+      const n = this;
       return new Promise(function (i) {
         n.stop();
         n.curTweenRes = i;
@@ -245,62 +244,5 @@ var h =
         this.curTweenRes = null;
       }
     };
-    __decorate([l(cc.Graphics)], e.prototype, "graphics", void 0);
-    __decorate([l()], e.prototype, "_radius", void 0);
-    __decorate([l({})], e.prototype, "radius", null);
-    __decorate([l()], e.prototype, "_clockwise", void 0);
-    __decorate([l({})], e.prototype, "clockwise", null);
-    __decorate([l()], e.prototype, "_startAngle", void 0);
-    __decorate([l({})], e.prototype, "startAngle", null);
-    __decorate([l()], e.prototype, "_range", void 0);
-    __decorate([l({})], e.prototype, "range", null);
-    __decorate([l()], e.prototype, "_lineWidth", void 0);
-    __decorate([l({})], e.prototype, "lineWidth", null);
-    __decorate([l()], e.prototype, "_progress", void 0);
-    __decorate(
-      [
-        l({
-          range: [0, 1],
-          step: 0.01,
-        }),
-      ],
-      e.prototype,
-      "progress",
-      null,
-    );
-    __decorate([l()], e.prototype, "_lineCap", void 0);
-    __decorate(
-      [
-        l({
-          type: cc.Graphics.LineCap,
-        }),
-      ],
-      e.prototype,
-      "lineCap",
-      null,
-    );
-    __decorate([l()], e.prototype, "_backgroundColor", void 0);
-    __decorate(
-      [
-        l({
-          type: cc.Color,
-        }),
-      ],
-      e.prototype,
-      "backgroundColor",
-      null,
-    );
-    __decorate([l()], e.prototype, "_progressColor", void 0);
-    __decorate(
-      [
-        l({
-          type: cc.Color,
-        }),
-      ],
-      e.prototype,
-      "progressColor",
-      null,
-    );
-    return __decorate([c, u(cc.Graphics), p], e);
   })(cc.Component));
 exports.ArcProgressBar = h;

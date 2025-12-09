@@ -1,15 +1,14 @@
-var i;
-var a = cc._decorator;
-var s = a.ccclass;
-var c =
+let i;
+const a = cc._decorator;
+const s = a.ccclass;
+const c =
   (a.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._isPlaying = !1;
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "isPlaying", {
       get: function () {
         return this._isPlaying;
@@ -18,7 +17,7 @@ var c =
       configurable: !0,
     });
     e.prototype.playUnlockAnim = function (t) {
-      var e = this;
+      const e = this;
       if (this._isPlaying) {
         //
       } else {
@@ -37,6 +36,5 @@ var c =
           .start();
       }
     };
-    return __decorate([s], e);
   })(cc.Component));
 exports.default = c;

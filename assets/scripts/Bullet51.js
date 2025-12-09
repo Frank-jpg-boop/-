@@ -1,33 +1,32 @@
-var i;
-var $battleHurtFormulaMgr = require("./BattleHurtFormulaMgr");
-var $battleMgr = require("./BattleMgr");
-var $gridAreaDivisionMgr = require("./GridAreaDivisionMgr");
-var $simplyCollisionDetector = require("./SimplyCollisionDetector");
-var $simplyVec2 = require("./SimplyVec2");
-var $effectMgr = require("./EffectMgr");
-var $spAnimEffect = require("./SpAnimEffect");
-var $attrEnum = require("./AttrEnum");
-var $buffEnum = require("./BuffEnum");
-var $enemyBase = require("./EnemyBase");
-var $bulletBase = require("./BulletBase");
-var _ = cc._decorator;
-var g = _.ccclass;
-var v =
+import $battleHurtFormulaMgr from './BattleHurtFormulaMgr';
+import $battleMgr from './BattleMgr';
+import $gridAreaDivisionMgr from './GridAreaDivisionMgr';
+import $simplyCollisionDetector from './SimplyCollisionDetector';
+import $simplyVec2 from './SimplyVec2';
+import $effectMgr from './EffectMgr';
+import $spAnimEffect from './SpAnimEffect';
+import $attrEnum from './AttrEnum';
+import $buffEnum from './BuffEnum';
+import $enemyBase from './EnemyBase';
+import $bulletBase from './BulletBase';
+let i;
+const _ = cc._decorator;
+const g = _.ccclass;
+const v =
   (_.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._ownerSkill = null;
       e._collisionIds = [];
       return e;
     }
-    __extends(e, t);
     e.prototype.onShoot = function (t, e) {
-      var n = this;
+      const n = this;
       this._ownerSkill = e;
       this._collisionIds = [];
-      var i = this.node.getPosition();
-      var o = t.sub(i).len() / 500;
+      const i = this.node.getPosition();
+      const o = t.sub(i).len() / 500;
       this.tweenTo(
         i,
         t,
@@ -49,18 +48,18 @@ var v =
     };
     e.prototype.checkCollision = function () {
       for (
-        var t = this.node.getPosition(),
-          e = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(t.x, t.y),
-          n = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
-            e.key,
-            $gridAreaDivisionMgr.E_AreaObjectType.ENEMY,
-          ),
-          i = this.node.convertToWorldSpaceAR(cc.v2()),
-          o = 0;
+        const t = this.node.getPosition(),
+              e = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(t.x, t.y),
+              n = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
+                e.key,
+                $gridAreaDivisionMgr.E_AreaObjectType.ENEMY,
+              ),
+              i = this.node.convertToWorldSpaceAR(cc.v2()),
+              o = 0;
         o < n.length;
         o++
       ) {
-        var r = n[o];
+        const r = n[o];
         if (
           r.canBeHurt() &&
           !r.isDead() &&
@@ -70,7 +69,7 @@ var v =
             r.hurtColliderRect,
           )
         ) {
-          var s = $battleHurtFormulaMgr.default.instance.skillHurt(
+          const s = $battleHurtFormulaMgr.default.instance.skillHurt(
             this._ownerSkill.getHurtOption(),
             r,
           );
@@ -98,9 +97,9 @@ var v =
       }
     };
     e.prototype.blast = function () {
-      var t = this;
-      var e = $battleMgr.default.instance.getCurScene();
-      var n = this.node.getPosition();
+      const t = this;
+      const e = $battleMgr.default.instance.getCurScene();
+      const n = this.node.getPosition();
       $effectMgr.default.instance.createEffect({
         parent: e.effectParent,
         prefabName: "Weapon51Boom",
@@ -116,15 +115,12 @@ var v =
     };
     e.prototype.checkBlastHurt = function (t, e) {
       for (
-        var n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(t, e),
-          i = [],
-          o = 0,
-          r = n;
+        const n = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(t, e), i = [], o = 0, r = n;
         o < r.length;
         o++
       ) {
-        var s = r[o];
-        var l = $gridAreaDivisionMgr.default.instance
+        const s = r[o];
+        const l = $gridAreaDivisionMgr.default.instance
           .getAreaObjectList(s, $gridAreaDivisionMgr.E_AreaObjectType.ENEMY)
           .filter(function (t) {
             return !i.includes(t);
@@ -133,13 +129,13 @@ var v =
           i.push.apply(i, l);
         }
       }
-      for (var u = 0, p = i; u < p.length; u++) {
-        var h = p[u];
+      for (const u = 0, p = i; u < p.length; u++) {
+        const h = p[u];
         if (
           !h.isDead() &&
           cc.Vec2.squaredDistance(t, h.node.getPosition()) <= e * e
         ) {
-          var f = $battleHurtFormulaMgr.default.instance.skillHurt(
+          const f = $battleHurtFormulaMgr.default.instance.skillHurt(
             this._ownerSkill.getHurtOption(),
             h,
           );
@@ -147,6 +143,5 @@ var v =
         }
       }
     };
-    return __decorate([g], e);
   })($bulletBase.default));
 exports.default = v;

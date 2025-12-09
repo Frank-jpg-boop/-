@@ -1,30 +1,30 @@
-var i;
-var $eventManager = require("./EventManager");
-var $nodePoolManager = require("./NodePoolManager");
-var $mathUtil = require("./MathUtil");
-var $randomUtil = require("./RandomUtil");
-var $battleMgr = require("./BattleMgr");
-var $actorBuff = require("./ActorBuff");
-var $gridAreaDivisionMgr = require("./GridAreaDivisionMgr");
-var $numericData = require("./NumericData");
-var $simplyRectCollider = require("./SimplyRectCollider");
-var $effectMgr = require("./EffectMgr");
-var $spAnimEffect = require("./SpAnimEffect");
-var $actorEnum = require("./ActorEnum");
-var $attrEnum = require("./AttrEnum");
-var $battleEnum = require("./BattleEnum");
-var $buffEnum = require("./BuffEnum");
-var $levelBattleData = require("./LevelBattleData");
-var $actorHead = require("./ActorHead");
-var $unitBase = require("./UnitBase");
-var $actorMgr = require("./ActorMgr");
-var I = cc._decorator;
-var R = I.ccclass;
-var D =
+import $eventManager from './EventManager';
+import $nodePoolManager from './NodePoolManager';
+import $mathUtil from './MathUtil';
+import $randomUtil from './RandomUtil';
+import $battleMgr from './BattleMgr';
+import $actorBuff from './ActorBuff';
+import $gridAreaDivisionMgr from './GridAreaDivisionMgr';
+import $numericData from './NumericData';
+import $simplyRectCollider from './SimplyRectCollider';
+import $effectMgr from './EffectMgr';
+import $spAnimEffect from './SpAnimEffect';
+import $actorEnum from './ActorEnum';
+import $attrEnum from './AttrEnum';
+import $battleEnum from './BattleEnum';
+import $buffEnum from './BuffEnum';
+import $levelBattleData from './LevelBattleData';
+import $actorHead from './ActorHead';
+import $unitBase from './UnitBase';
+import $actorMgr from './ActorMgr';
+let i;
+const I = cc._decorator;
+const R = I.ccclass;
+const D =
   (I.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._cfgId = 0;
       e._camp = $actorEnum.ETeamType.PLAYER;
       e._hp = 0;
@@ -45,7 +45,6 @@ var D =
       e.attackTarget = null;
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "camp", {
       get: function () {
         return this._camp;
@@ -143,7 +142,7 @@ var D =
     });
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
-      var e = this.node.getChildByName("HurtCollisider");
+      const e = this.node.getChildByName("HurtCollisider");
       if (e) {
         this._hurtCollider = e.getComponent($simplyRectCollider.default);
       }
@@ -153,65 +152,6 @@ var D =
       if (void 0 === r) {
         r = null;
       }
-      return __awaiter(this, void 0, Promise, function () {
-        var a = this;
-        return __generator(this, function (s) {
-          switch (s.label) {
-            case 0:
-              this._unitId = t;
-              this._cfgId = i;
-              this._camp = o;
-              this._hp = 0;
-              this.node.scale = 1;
-              this._initParam = r;
-              this._isRemove = !1;
-              this._isRepeling = !1;
-              this.initType();
-              this.initConfig();
-              this.initAttribute();
-              this._hp =
-                this._initParam && this._initParam.initHp
-                  ? this._initParam.initHp
-                  : this.getAttribute($attrEnum.E_AttrType.HP).value;
-              if (this._initParam && this._initParam.initHpRate) {
-                this._hp *= this._initParam.initHpRate;
-                this._hp = Math.floor(this._hp);
-              }
-              this.initAreaObject(e, n);
-              return [4, this.initAnim()];
-            case 1:
-              s.sent();
-              this.registerState();
-              this.registerEvent();
-              this.initHead();
-              this.initBuff();
-              this.initSkill();
-              this.initPos();
-              this.changeState($actorEnum.EActorStateType.IDLE);
-              return [4, this.playShowAnim()];
-            case 2:
-              s.sent();
-              this.updateUnifyPos();
-              this._pathPos = this.node.getPosition();
-              $eventManager.EventManager.instance.emit(
-                $actorEnum.EActorEvent.HP_CHANGE + this._unitId,
-              );
-              return [
-                2,
-                new Promise(function (t) {
-                  a.updatePathData();
-                  if (a._initParam && a._initParam.roomId) {
-                    a.updateRoomId(a._initParam.roomId);
-                  }
-                  a.updateAreaKey();
-                  a._isInit = !0;
-                  a.onInit();
-                  t();
-                }),
-              ];
-          }
-        });
-      });
     };
     e.prototype.initType = function () {};
     e.prototype.initConfig = function () {
@@ -220,21 +160,10 @@ var D =
     e.prototype.initAttribute = function () {
       this._actorAttribute = new $numericData.NumericData();
     };
-    e.prototype.initAnim = function () {
-      return __awaiter(this, void 0, Promise, function () {
-        return __generator(this, function () {
-          return [
-            2,
-            new Promise(function (t) {
-              t();
-            }),
-          ];
-        });
-      });
-    };
+    e.prototype.initAnim = function () {};
     e.prototype.registerState = function () {};
     e.prototype.initHead = function () {
-      var t = this;
+      const t = this;
       if (this.actorType != $actorEnum.EActorType.BOSS) {
         $battleMgr.default.instance.createOtherNode(
           this._actorType == $actorEnum.EActorType.PLAYER
@@ -259,7 +188,7 @@ var D =
       this._buff = new $actorBuff.default();
     };
     e.prototype.playShowAnim = function () {
-      var t = this;
+      const t = this;
       return new Promise(function (e) {
         if (t._initParam && t._initParam.showAnim) {
           t._initParam.showAnim(t, function () {
@@ -314,7 +243,7 @@ var D =
       }
     };
     e.prototype.setDirX = function (t) {
-      var e = this.node.getChildByName("Body");
+      const e = this.node.getChildByName("Body");
       e.scaleX = Math.abs(e.scaleX) * (t ? 1 : -1);
     };
     e.prototype.setHp = function (t) {
@@ -366,17 +295,17 @@ var D =
       if (this._hp < 0) {
         this._hp = 0;
       }
-      var e = this.getAttribute($attrEnum.E_AttrType.HP).value;
+      const e = this.getAttribute($attrEnum.E_AttrType.HP).value;
       if (this._head) {
         this._head.updateHP(this._hp, e);
       }
       if (0 == this._hp) {
         this.changeState($actorEnum.EActorStateType.DEAD);
       }
-      var n = this.node.getPosition();
+      const n = this.node.getPosition();
       n.y += this.rightHeight + $randomUtil.RandomUtil.randomInt(0, 30);
       n.x += $randomUtil.RandomUtil.randomInt(-20, 20);
-      var i = $battleEnum.EBattlePopupNumType.COMMON_HURT;
+      const i = $battleEnum.EBattlePopupNumType.COMMON_HURT;
       if (this._actorType == $actorEnum.EActorType.PLAYER) {
         n.y += 20;
         i = $battleEnum.EBattlePopupNumType.PLAYER_HURT;
@@ -415,14 +344,14 @@ var D =
     e.prototype.beRecover = function (t) {
       if (!this.isDead()) {
         t = Math.floor(t);
-        var e = this._actorAttribute.getNumeric($attrEnum.E_AttrType.HP).value;
+        const e = this._actorAttribute.getNumeric($attrEnum.E_AttrType.HP).value;
         if (!((t = Math.min(t, e - this._hp)) <= 0)) {
           this._hp += t;
           this._hp = Math.min(this._hp, e);
           if (this._head) {
             this._head.updateHP(this._hp, e);
           }
-          var n = this.node.getPosition();
+          const n = this.node.getPosition();
           n.y += this.rightHeight;
           $battleMgr.default.instance.popupNum(
             n,
@@ -451,16 +380,16 @@ var D =
       );
     };
     e.prototype.beRepel = function (t, e) {
-      var n = this;
+      const n = this;
       if (this.canBeRepel()) {
-        var i = $battleMgr.default.instance
+        const i = $battleMgr.default.instance
           .getCurScene()
           .level.path.getLine(this._pathLineId);
         if (i) {
           if (1 == Math.abs(i.dir.x)) {
-            var o = e;
+            const o = e;
             if (t.x > this.node.x) {
-              var r = null;
+              const r = null;
               if (i.endPos.x < i.startPos.x) {
                 r = i.endPos;
               } else {
@@ -496,7 +425,7 @@ var D =
               })
               .start();
           } else if (1 == Math.abs(i.dir.y)) {
-            var a = e;
+            const a = e;
             if (t.y > this.node.y) {
               if (i.endPos.y < i.startPos.y) {
                 r = i.endPos;
@@ -553,7 +482,7 @@ var D =
       return this._actorAttribute.getNumeric(t);
     };
     e.prototype.changeState = function (t) {
-      for (var e, n = [], i = 1; i < arguments.length; i++) {
+      for (let e, n = [], i = 1; i < arguments.length; i++) {
         n[i - 1] = arguments[i];
       }
       (e = this._sm).changeState.apply(e, __spreadArrays([t], n));
@@ -582,7 +511,7 @@ var D =
       }
     };
     e.prototype.onRemove = function () {
-      var t = this;
+      const t = this;
       this._isInit = !1;
       this._areaKeys.forEach(function (e) {
         $gridAreaDivisionMgr.default.instance.removeAreaObject(t, e);
@@ -617,7 +546,7 @@ var D =
       return null;
     };
     e.prototype.getBeHurtPos = function () {
-      var t = this.node.getChildByName("Body").height;
+      const t = this.node.getChildByName("Body").height;
       return this.node.getPosition().add(cc.v2(0, 0.5 * t));
     };
     e.prototype.pause = function () {
@@ -626,6 +555,5 @@ var D =
     e.prototype.resume = function () {
       this.node.resumeAllActions();
     };
-    return __decorate([R], e);
   })($unitBase.default));
 exports.default = D;

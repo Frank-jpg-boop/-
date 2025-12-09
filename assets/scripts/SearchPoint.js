@@ -1,27 +1,27 @@
-var i;
-var $cfg = require("./Cfg");
-var $audioUtil = require("./AudioUtil");
-var $eventManager = require("./EventManager");
-var $randomUtil = require("./RandomUtil");
-var $frameEnum = require("./FrameEnum");
-var $animUtils = require("./AnimUtils");
-var $guideMgr = require("./GuideMgr");
-var $guideDataProxy = require("./GuideDataProxy");
-var $itemDataProxy = require("./ItemDataProxy");
-var $battleMgr = require("./BattleMgr");
-var $gridAreaDivisionMgr = require("./GridAreaDivisionMgr");
-var $battleEnum = require("./BattleEnum");
-var $levelBattleData = require("./LevelBattleData");
-var $progressWaitItem = require("./ProgressWaitItem");
-var $unitMgr = require("./UnitMgr");
-var $levelObjectBase = require("./LevelObjectBase");
-var S = cc._decorator;
-var P = S.ccclass;
-var A =
+import $cfg from './Cfg';
+import $audioUtil from './AudioUtil';
+import $eventManager from './EventManager';
+import $randomUtil from './RandomUtil';
+import $frameEnum from './FrameEnum';
+import $animUtils from './AnimUtils';
+import $guideMgr from './GuideMgr';
+import $guideDataProxy from './GuideDataProxy';
+import $itemDataProxy from './ItemDataProxy';
+import $battleMgr from './BattleMgr';
+import $gridAreaDivisionMgr from './GridAreaDivisionMgr';
+import $battleEnum from './BattleEnum';
+import $levelBattleData from './LevelBattleData';
+import $progressWaitItem from './ProgressWaitItem';
+import $unitMgr from './UnitMgr';
+import $levelObjectBase from './LevelObjectBase';
+let i;
+const S = cc._decorator;
+const P = S.ccclass;
+const A =
   (S.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._waitTime = 0;
       e._waitTimer = 0;
       e._progress = null;
@@ -29,7 +29,6 @@ var A =
       e._worldPos = null;
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "rewardNum", {
       get: function () {
         return this._rewards.length;
@@ -45,7 +44,7 @@ var A =
       configurable: !0,
     });
     e.prototype.onInit = function () {
-      var t = this;
+      const t = this;
       this._worldPos = this.node.convertToWorldSpaceAR(cc.v2());
       $eventManager.EventManager.instance.on(
         $battleEnum.EBattleEvent.PLAYER_ROOM_ID_CHANGE_INFORM,
@@ -54,7 +53,7 @@ var A =
       );
       this.updateRoomId(this._initParam.roomId);
       this.initReward();
-      var e = this.node.getChildByName("Icon");
+      const e = this.node.getChildByName("Icon");
       e.y = 0;
       $animUtils.AnimUtil.floatAnim(e, 0.7, 10);
       $battleMgr.default.instance.createOtherNode(
@@ -72,14 +71,14 @@ var A =
       );
     };
     e.prototype.initReward = function () {
-      var t = this;
+      const t = this;
       this._rewards = [];
-      var e = [];
+      const e = [];
       if ("" != this._initParam.param) {
         this._initParam.param.split("|").forEach(function (t) {
-          var n = t.split("_").map(Number);
-          var i = n[0];
-          var o = n[1];
+          const n = t.split("_").map(Number);
+          const i = n[0];
+          const o = n[1];
           e.push({
             rewardId: i,
             prob: o,
@@ -108,7 +107,7 @@ var A =
       this.node.active = this._rewards.length > 0 && t === this.roomId;
     };
     e.prototype.addReward = function (t) {
-      var e = this;
+      const e = this;
       this._rewards.push(t);
       this._rewards.sort(function (t, n) {
         if (0 == $levelBattleData.levelBattleData.cfgStage.id) {
@@ -127,8 +126,8 @@ var A =
       });
     };
     e.prototype.updateRewardData = function () {
-      var t = this._rewards[0];
-      var e = $cfg.default.instance.dataReward.getById(t);
+      const t = this._rewards[0];
+      const e = $cfg.default.instance.dataReward.getById(t);
       this._waitTimer = e.checkTime;
       this._waitTime = 0;
       if (this._progress) {
@@ -136,9 +135,9 @@ var A =
       }
     };
     e.prototype.dropReward = function (t) {
-      var e = this._rewards[0];
+      const e = this._rewards[0];
       if (1 == e) {
-        for (var n = 0; n < this._rewards.length; n++) {
+        for (const n = 0; n < this._rewards.length; n++) {
           if (1 == this._rewards[n]) {
             this._rewards.splice(n, 1);
             n--;
@@ -158,10 +157,10 @@ var A =
       }
     };
     e.prototype.createReward = function (t, e) {
-      var n = this;
-      var i = $battleMgr.default.instance.getCurScene();
-      var o = this.node.getPosition();
-      var r = $randomUtil.RandomUtil.randomInt(-200, 200);
+      const n = this;
+      const i = $battleMgr.default.instance.getCurScene();
+      const o = this.node.getPosition();
+      const r = $randomUtil.RandomUtil.randomInt(-200, 200);
       $unitMgr.UnitMgr.instance.createUnit({
         areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.GOOD,
         areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
@@ -213,7 +212,7 @@ var A =
         if (this._progress) {
           this._progress.hide();
         }
-        var n = $battleMgr.default.instance
+        const n = $battleMgr.default.instance
           .getCurScene()
           .level.getRoomById(this.roomId);
         this.dropReward(n.getGroundY());
@@ -228,7 +227,7 @@ var A =
       }
     };
     e.prototype.onRemove = function () {
-      var e = this.node.getChildByName("Icon");
+      const e = this.node.getChildByName("Icon");
       cc.Tween.stopAllByTarget(e);
       $audioUtil.AudioUtil.stopEffect("lmtw_yx_Search");
       e.y = 0;
@@ -253,6 +252,5 @@ var A =
       }
       t.prototype.onRemove.call(this);
     };
-    return __decorate([P], e);
   })($levelObjectBase.default));
 exports.default = A;

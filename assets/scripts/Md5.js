@@ -1,14 +1,14 @@
 exports.md5 = void 0;
 exports.md5 = function (t) {
-  var e = function (t, e) {
+  const e = function (t, e) {
     return (t << e) | (t >>> (32 - e));
   };
-  var n = function (t, e) {
-    var n;
-    var i;
-    var o;
-    var r;
-    var a;
+  const n = function (t, e) {
+    let n;
+    let i;
+    let o;
+    let r;
+    let a;
     o = 2147483648 & t;
     r = 2147483648 & e;
     a = (1073741823 & t) + (1073741823 & e);
@@ -20,7 +20,7 @@ exports.md5 = function (t) {
           : 1073741824 ^ a ^ o ^ r
         : a ^ o ^ r;
   };
-  var i = function (t, i, o, r, a, s, c) {
+  const i = function (t, i, o, r, a, s, c) {
     t = n(
       t,
       n(
@@ -35,7 +35,7 @@ exports.md5 = function (t) {
     );
     return n(e(t, s), i);
   };
-  var o = function (t, i, o, r, a, s, c) {
+  const o = function (t, i, o, r, a, s, c) {
     t = n(
       t,
       n(
@@ -50,7 +50,7 @@ exports.md5 = function (t) {
     );
     return n(e(t, s), i);
   };
-  var r = function (t, i, o, r, a, s, c) {
+  const r = function (t, i, o, r, a, s, c) {
     t = n(
       t,
       n(
@@ -65,7 +65,7 @@ exports.md5 = function (t) {
     );
     return n(e(t, s), i);
   };
-  var a = function (t, i, o, r, a, s, c) {
+  const a = function (t, i, o, r, a, s, c) {
     t = n(
       t,
       n(
@@ -80,10 +80,10 @@ exports.md5 = function (t) {
     );
     return n(e(t, s), i);
   };
-  var s = function (t) {
-    var e;
-    var n = "";
-    var i = "";
+  const s = function (t) {
+    let e;
+    const n = "";
+    const i = "";
     for (e = 0; e <= 3; e++) {
       n += (i = "0" + ((t >>> (8 * e)) & 255).toString(16)).substr(
         i.length - 2,
@@ -93,20 +93,20 @@ exports.md5 = function (t) {
     return n;
   };
   return (function (t) {
-    var e;
-    var c;
-    var l;
-    var u;
-    var p;
-    var h;
-    var f;
-    var d;
-    var m;
-    var y = Array();
+    let e;
+    let c;
+    let l;
+    let u;
+    let p;
+    let h;
+    let f;
+    let d;
+    let m;
+    const y = Array();
     t = (function (t) {
       t = t.toString().replace(/\x0d\x0a/g, "\n");
-      for (var e = "", n = 0; n < t.length; n++) {
-        var i = t.charCodeAt(n);
+      for (const e = "", n = 0; n < t.length; n++) {
+        const i = t.charCodeAt(n);
         if (i < 128) {
           e += String.fromCharCode(i);
         } else {
@@ -124,13 +124,7 @@ exports.md5 = function (t) {
     })(t);
     y = (function (t) {
       for (
-        var e,
-          n = t.length,
-          i = n + 8,
-          o = 16 * ((i - (i % 64)) / 64 + 1),
-          r = Array(o - 1),
-          a = 0,
-          s = 0;
+        let e, n = t.length, i = n + 8, o = 16 * ((i - (i % 64)) / 64 + 1), r = Array(o - 1), a = 0, s = 0;
         s < n;
       )
         ((a = (s % 4) * 8),

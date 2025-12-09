@@ -1,31 +1,30 @@
-var i;
-var $eventManager = require("./EventManager");
-var $battleMgr = require("./BattleMgr");
-var $stateMachine = require("./StateMachine");
-var $actorEnum = require("./ActorEnum");
-var $battleEnum = require("./BattleEnum");
-var $actorMgr = require("./ActorMgr");
-var $enemyBase = require("./EnemyBase");
-var $boss_521_Atk = require("./Boss_521_Atk");
-var $boss_521_Awake = require("./Boss_521_Awake");
-var $boss_521_Idle = require("./Boss_521_Idle");
-var $enemyDeadState = require("./EnemyDeadState");
-var _ = cc._decorator;
-var g = _.ccclass;
-var v =
+import $eventManager from './EventManager';
+import $battleMgr from './BattleMgr';
+import $stateMachine from './StateMachine';
+import $actorEnum from './ActorEnum';
+import $battleEnum from './BattleEnum';
+import $actorMgr from './ActorMgr';
+import $enemyBase from './EnemyBase';
+import $boss_521_Atk from './Boss_521_Atk';
+import $boss_521_Awake from './Boss_521_Awake';
+import $boss_521_Idle from './Boss_521_Idle';
+import $enemyDeadState from './EnemyDeadState';
+let i;
+const _ = cc._decorator;
+const g = _.ccclass;
+const v =
   (_.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._isShowBossTag = !1;
       return e;
     }
-    __extends(e, t);
     e.prototype.initPos = function () {
       this.dropMinOffsetX = 0;
       this._initParam.roomId = 501;
-      var t = $battleMgr.default.instance.getCurScene().level.getRoomById(501);
-      var e = cc.v2(t.node.x + 150, t.getGroundY());
+      const t = $battleMgr.default.instance.getCurScene().level.getRoomById(501);
+      const e = cc.v2(t.node.x + 150, t.getGroundY());
       this.node.setPosition(e);
     };
     e.prototype.initType = function () {
@@ -79,8 +78,8 @@ var v =
     };
     e.prototype.canBeSearch = function () {
       if (t.prototype.canBeSearch.call(this)) {
-        var e = $battleMgr.default.instance.getCurScene();
-        var n = $actorMgr.default.instance.getActor(e.playerId);
+        const e = $battleMgr.default.instance.getCurScene();
+        const n = $actorMgr.default.instance.getActor(e.playerId);
         return (
           !!n &&
           e.level.getRoomById(this.roomId).layer ==
@@ -90,8 +89,8 @@ var v =
       return !1;
     };
     e.prototype.onBossTrigger = function () {
-      var e = this;
-      var n = $battleMgr.default.instance
+      const e = this;
+      const n = $battleMgr.default.instance
         .getCurScene()
         .level.getRoomById(this.roomId);
       n.unlock();
@@ -106,25 +105,25 @@ var v =
       });
     };
     e.prototype.searchTarget = function () {
-      var t = $battleMgr.default.instance.getCurScene();
-      var e = $actorMgr.default.instance.queryActorByCamp(
+      const t = $battleMgr.default.instance.getCurScene();
+      const e = $actorMgr.default.instance.queryActorByCamp(
         $actorEnum.ETeamType.PLAYER,
       );
-      var n = this.node.getPosition();
-      var i = t.level.getRoomById(this.roomId);
+      const n = this.node.getPosition();
+      const i = t.level.getRoomById(this.roomId);
       if (!i) {
         return null;
       }
       for (
-        var o = i.layer, r = Number.MAX_VALUE, a = null, c = 0;
+        const o = i.layer, r = Number.MAX_VALUE, a = null, c = 0;
         c < e.length;
         c++
       ) {
-        var u = e[c];
+        const u = e[c];
         if (!u.isDead() && u.canBeSearch()) {
-          var h = t.level.getRoomById(u.roomId);
+          const h = t.level.getRoomById(u.roomId);
           if (h && o == h.layer) {
-            var f = cc.Vec2.squaredDistance(u.node.getPosition(), n);
+            const f = cc.Vec2.squaredDistance(u.node.getPosition(), n);
             if (null == a || f < r) {
               r = f;
               a = u;
@@ -134,6 +133,5 @@ var v =
       }
       return a;
     };
-    return __decorate([g], e);
   })($enemyBase.default));
 exports.default = v;

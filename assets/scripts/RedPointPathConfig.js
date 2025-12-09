@@ -1,5 +1,5 @@
-var i;
-var o;
+let i;
+let o;
 exports.redPointConf = exports.ERedPointPathName = void 0;
 (function (t) {
   t[(t.GAME = 0)] = "GAME";

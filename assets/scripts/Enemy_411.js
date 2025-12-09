@@ -1,24 +1,23 @@
-var i;
-var $battleMgr = require("./BattleMgr");
-var $gridAreaDivisionMgr = require("./GridAreaDivisionMgr");
-var $actorEnum = require("./ActorEnum");
-var $attrEnum = require("./AttrEnum");
-var $door = require("./Door");
-var $unitMgr = require("./UnitMgr");
-var $actorBase = require("./ActorBase");
-var $enemyBase = require("./EnemyBase");
-var $enemy_411_Atk = require("./Enemy_411_Atk");
-var m = cc._decorator;
-var y = m.ccclass;
-var _ =
+import $battleMgr from './BattleMgr';
+import $gridAreaDivisionMgr from './GridAreaDivisionMgr';
+import $actorEnum from './ActorEnum';
+import $attrEnum from './AttrEnum';
+import $door from './Door';
+import $unitMgr from './UnitMgr';
+import $actorBase from './ActorBase';
+import $enemyBase from './EnemyBase';
+import $enemy_411_Atk from './Enemy_411_Atk';
+let i;
+const m = cc._decorator;
+const y = m.ccclass;
+const _ =
   (m.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e.skillMovePos = null;
       return e;
     }
-    __extends(e, t);
     e.prototype.registerState = function () {
       t.prototype.registerState.call(this);
       this._sm.addState(
@@ -27,17 +26,17 @@ var _ =
       );
     };
     e.prototype.canSkill = function (t) {
-      var e = Math.random() < Number(this._cfg.val1);
-      var n = t.getComponent($actorBase.default);
+      const e = Math.random() < Number(this._cfg.val1);
+      const n = t.getComponent($actorBase.default);
       if (e && n && !n.isDead()) {
-        var i = $battleMgr.default.instance.getCurScene();
+        const i = $battleMgr.default.instance.getCurScene();
         this.updatePathData();
         if (n.pathPos.x == this.pathPos.x) {
           return !1;
         }
         if (n.pathPos.y == this.pathPos.y) {
-          var o = cc.v2(n.pathPos.x > this.pathPos.x ? 1 : -1, 0);
-          var r = null;
+          const o = cc.v2(n.pathPos.x > this.pathPos.x ? 1 : -1, 0);
+          const r = null;
           if ("" != this._pathPointId) {
             r = i.level.path.getPoint(this._pathPointId).getDirLine(o);
           } else {
@@ -48,7 +47,7 @@ var _ =
           if (!r) {
             return !1;
           }
-          var s = i.level.path.getLine(r);
+          const s = i.level.path.getLine(r);
           if (s.dir.equals(o)) {
             //
           } else {
@@ -58,7 +57,7 @@ var _ =
             return !1;
           }
           for (
-            var c = s.dir, l = this.pathPos.add(c.mul(200)), u = l.clone();
+            const c = s.dir, l = this.pathPos.add(c.mul(200)), u = l.clone();
             s && !s.isPosInLineSegment(l);
           ) {
             if (null == (r = s.endPoint.getDirLine(c))) {
@@ -67,7 +66,7 @@ var _ =
             }
             s = i.level.path.getLine(r);
           }
-          var p = this.findMoveDoor(this.pathPos.x, u.x, this.pathPos.y, c.x);
+          const p = this.findMoveDoor(this.pathPos.x, u.x, this.pathPos.y, c.x);
           if (p) {
             u.x = p.node.x;
           }
@@ -79,7 +78,7 @@ var _ =
       return !1;
     };
     e.prototype.playAnimSkill = function (t, e, n) {
-      var i = this;
+      const i = this;
       this._spCtrl.playAnim("salute_start", 1, !1, function () {
         i._spCtrl.playAnim("salute_stand", 1, !0);
         cc.tween(i.node)
@@ -131,13 +130,13 @@ var _ =
         e = !1;
       }
       if (t && t.isValid) {
-        var n = t.getComponent($door.default);
+        const n = t.getComponent($door.default);
         if (n && n.state != $door.EDoorState.DESTROY) {
           n.beHurt(this.getAttribute($attrEnum.E_AttrType.ATK).value);
         } else {
-          var i = t.getComponent($actorBase.default);
+          const i = t.getComponent($actorBase.default);
           if (i) {
-            var o = this.getHurt();
+            const o = this.getHurt();
             if (e) {
               o.damage *= Number(this._cfg.val2);
             }
@@ -148,14 +147,14 @@ var _ =
     };
     e.prototype.findMoveDoor = function (t, e, n, i) {
       for (
-        var o = 0,
-          r = $unitMgr.UnitMgr.instance.queryUnit(
-            $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
-          );
+        const o = 0,
+              r = $unitMgr.UnitMgr.instance.queryUnit(
+                $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
+              );
         o < r.length;
         o++
       ) {
-        var a = r[o];
+        const a = r[o];
         if (a.state == $door.EDoorState.CLOSE && Math.abs(a.node.y - n) < 20) {
           if (i > 0 && a.node.x >= t && a.node.x <= e) {
             return a;
@@ -167,6 +166,5 @@ var _ =
       }
       return null;
     };
-    return __decorate([y], e);
   })($enemyBase.default));
 exports.default = _;

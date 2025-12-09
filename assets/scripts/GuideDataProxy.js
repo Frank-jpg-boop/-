@@ -1,17 +1,17 @@
-var i;
+import $cfg from './Cfg';
+import $itemEnum from './ItemEnum';
+import $proxyBase from './ProxyBase';
+import $proxyDataBase from './ProxyDataBase';
+import $itemDataProxy from './ItemDataProxy';
+import $localDataProxy from './LocalDataProxy';
+import $stageDataProxy from './StageDataProxy';
+let i;
 exports.guideDataProxy =
   exports.GuideDataProxy =
   exports.GuideData =
   exports.EGuideStepId =
     void 0;
-var r;
-var $cfg = require("./Cfg");
-var $itemEnum = require("./ItemEnum");
-var $proxyBase = require("./ProxyBase");
-var $proxyDataBase = require("./ProxyDataBase");
-var $itemDataProxy = require("./ItemDataProxy");
-var $localDataProxy = require("./LocalDataProxy");
-var $stageDataProxy = require("./StageDataProxy");
+let r;
 !(function (t) {
   t[(t.NONE = -1)] = "NONE";
   t[(t.G_1 = 1)] = "G_1";
@@ -36,89 +36,83 @@ var $stageDataProxy = require("./StageDataProxy");
   t[(t.G_27 = 27)] = "G_27";
   t[(t.G_41 = 41)] = "G_41";
 })((r = exports.EGuideStepId || (exports.EGuideStepId = {})));
-var f = (function (t) {
-  function e() {
-    return (null !== t && t.apply(this, arguments)) || this;
-  }
-  __extends(e, t);
-  e.prototype.createInitData = function () {
-    return {
-      guideIds: [],
-      curGuideId: 2,
-    };
+e.prototype.createInitData = function () {
+  return {
+    guideIds: [],
+    curGuideId: 2,
   };
-  return e;
-})($proxyDataBase.ProxyDataBase);
+};
+function e() {
+  return (null !== t && t.apply(this, arguments)) || this;
+}
+const f = e;
 exports.GuideData = f;
-var d = (function (t) {
-  function e() {
-    return (null !== t && t.apply(this, arguments)) || this;
+e.prototype.pushGuide = function (t) {
+  const e = $cfg.default.instance.dataGuide.getById(t);
+  if (e && 1 == e.memory) {
+    if (this._data.localData.guideIds.includes(t)) {
+      //
+    } else {
+      this._data.localData.guideIds.push(t);
+    }
+    const n = this._data.localData.curGuideId;
+    const i = $cfg.default.instance.dataGuide.sheet();
+    i.sort(function (t, e) {
+      return t.id - e.id;
+    });
+    for (const o = 0; o < i.length; o++) {
+      const r = i[o];
+      if (r.id > t) {
+        this._data.localData.curGuideId = r.id;
+        break;
+      }
+    }
+    if (n == this._data.localData.curGuideId) {
+      this._data.localData.curGuideId = -1;
+    }
+    $localDataProxy.localDataProxy.saveData();
   }
-  __extends(e, t);
-  Object.defineProperty(e.prototype, "isComplete", {
-    get: function () {
-      return -1 == this._data.localData.curGuideId;
-    },
-    enumerable: !1,
-    configurable: !0,
-  });
-  Object.defineProperty(e.prototype, "curGuideId", {
-    get: function () {
-      return this._data.localData.curGuideId;
-    },
-    enumerable: !1,
-    configurable: !0,
-  });
-  e.prototype.initData = function () {
-    if (this._data.localData.guideIds.includes(r.G_41)) {
-      this._data.localData.curGuideId = -1;
-    }
-    if ($stageDataProxy.stageDataProxy.passStageId > 0) {
-      this._data.localData.curGuideId = -1;
-    }
-    if (
-      this._data.localData.curGuideId == r.G_23 &&
-      $itemDataProxy.itemDataProxy.getItemValue(101) <= 0
-    ) {
-      $itemDataProxy.itemDataProxy.updateItemValue(
-        $itemEnum.E_ItemId.E_101,
-        10,
-      );
-    }
-  };
-  e.prototype.isCompleteFirstBattleGuide = function () {
-    return (
-      -1 == this._data.localData.curGuideId ||
-      this._data.localData.guideIds.includes(r.G_14)
+};
+e.prototype.isCompleteFirstBattleGuide = function () {
+  return (
+    -1 == this._data.localData.curGuideId ||
+    this._data.localData.guideIds.includes(r.G_14)
+  );
+};
+e.prototype.initData = function () {
+  if (this._data.localData.guideIds.includes(r.G_41)) {
+    this._data.localData.curGuideId = -1;
+  }
+  if ($stageDataProxy.stageDataProxy.passStageId > 0) {
+    this._data.localData.curGuideId = -1;
+  }
+  if (
+    this._data.localData.curGuideId == r.G_23 &&
+    $itemDataProxy.itemDataProxy.getItemValue(101) <= 0
+  ) {
+    $itemDataProxy.itemDataProxy.updateItemValue(
+      $itemEnum.E_ItemId.E_101,
+      10,
     );
-  };
-  e.prototype.pushGuide = function (t) {
-    var e = $cfg.default.instance.dataGuide.getById(t);
-    if (e && 1 == e.memory) {
-      if (this._data.localData.guideIds.includes(t)) {
-        //
-      } else {
-        this._data.localData.guideIds.push(t);
-      }
-      var n = this._data.localData.curGuideId;
-      var i = $cfg.default.instance.dataGuide.sheet();
-      i.sort(function (t, e) {
-        return t.id - e.id;
-      });
-      for (var o = 0; o < i.length; o++) {
-        var r = i[o];
-        if (r.id > t) {
-          this._data.localData.curGuideId = r.id;
-          break;
-        }
-      }
-      if (n == this._data.localData.curGuideId) {
-        this._data.localData.curGuideId = -1;
-      }
-      $localDataProxy.localDataProxy.saveData();
-    }
-  };
-  return e;
-})($proxyBase.ProxyBase);
+  }
+};
+Object.defineProperty(e.prototype, "curGuideId", {
+  get: function () {
+    return this._data.localData.curGuideId;
+  },
+  enumerable: !1,
+  configurable: !0,
+});
+Object.defineProperty(e.prototype, "isComplete", {
+  get: function () {
+    return -1 == this._data.localData.curGuideId;
+  },
+  enumerable: !1,
+  configurable: !0,
+});
+function e() {
+  return (null !== t && t.apply(this, arguments)) || this;
+}
+const d = e;
 exports.GuideDataProxy = d;
 exports.guideDataProxy = new d(f);

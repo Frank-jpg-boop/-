@@ -1,25 +1,24 @@
-var i;
-var $battleMgr = require("./BattleMgr");
-var $simplyCircleCollider = require("./SimplyCircleCollider");
-var $actorEnum = require("./ActorEnum");
-var $actorMgr = require("./ActorMgr");
-var $enemyBase = require("./EnemyBase");
-var $enemy_413_Atk = require("./Enemy_413_Atk");
-var $enemy_413_Idle = require("./Enemy_413_Idle");
-var $enemy_413_Skill = require("./Enemy_413_Skill");
-var $enemy_413_Walk = require("./Enemy_413_Walk");
-var m = cc._decorator;
-var y = m.ccclass;
-var _ =
+import $battleMgr from './BattleMgr';
+import $simplyCircleCollider from './SimplyCircleCollider';
+import $actorEnum from './ActorEnum';
+import $actorMgr from './ActorMgr';
+import $enemyBase from './EnemyBase';
+import $enemy_413_Atk from './Enemy_413_Atk';
+import $enemy_413_Idle from './Enemy_413_Idle';
+import $enemy_413_Skill from './Enemy_413_Skill';
+import $enemy_413_Walk from './Enemy_413_Walk';
+let i;
+const m = cc._decorator;
+const y = m.ccclass;
+const _ =
   (m.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._roomCentrePos = null;
       e._skillHurtCollider = null;
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "roomCentrePos", {
       get: function () {
         return this._roomCentrePos;
@@ -69,7 +68,7 @@ var _ =
     e.prototype.onInit = function () {
       t.prototype.onInit.call(this);
       this.node.getChildByName("Body").getChildByName("Shade").active = !0;
-      var e = $battleMgr.default.instance
+      const e = $battleMgr.default.instance
         .getCurScene()
         .level.getRoomById(this.roomId);
       this._roomCentrePos = cc.v2(e.node.x + e.node.width / 2, e.getGroundY());
@@ -79,19 +78,19 @@ var _ =
     };
     e.prototype.searchTarget = function () {
       for (
-        var t = $actorMgr.default.instance.queryActorByCamp(
-            $actorEnum.ETeamType.PLAYER,
-          ),
-          e = this.node.getPosition(),
-          n = ($battleMgr.default.instance.getCurScene(), Number.MAX_VALUE),
-          i = null,
-          o = 0;
+        const t = $actorMgr.default.instance.queryActorByCamp(
+                  $actorEnum.ETeamType.PLAYER,
+                ),
+              e = this.node.getPosition(),
+              n = ($battleMgr.default.instance.getCurScene(), Number.MAX_VALUE),
+              i = null,
+              o = 0;
         o < t.length;
         o++
       ) {
-        var r = t[o];
+        const r = t[o];
         if (!r.isDead() && r.canBeSearch() && r.roomId == this.roomId) {
-          var s = cc.Vec2.squaredDistance(r.node.getPosition(), e);
+          const s = cc.Vec2.squaredDistance(r.node.getPosition(), e);
           if (null == i || s < n) {
             n = s;
             i = r;
@@ -104,6 +103,5 @@ var _ =
       this.updateUnifyPos();
       this.updateAreaKey();
     };
-    return __decorate([y], e);
   })($enemyBase.default));
 exports.default = _;

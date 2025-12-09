@@ -1,16 +1,15 @@
-var i;
+let i;
 exports.ResKeeper = void 0;
-var a = cc._decorator;
-var s = a.ccclass;
-var c =
+const a = cc._decorator;
+const s = a.ccclass;
+const c =
   (a.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._resCacheMap = new Set();
       return e;
     }
-    __extends(e, t);
     e.prototype.cacheAsset = function (t) {
       if (this._resCacheMap.has(t)) {
         //
@@ -28,6 +27,5 @@ var c =
     e.prototype.onDestroy = function () {
       this.releaseAssets();
     };
-    return __decorate([s], e);
   })(cc.Component));
 exports.ResKeeper = c;

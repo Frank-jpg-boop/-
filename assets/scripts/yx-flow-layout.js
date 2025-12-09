@@ -1,13 +1,13 @@
-var i;
+import $yx_collection_view from './yx-collection-view';
+let i;
 exports.YXFlowLayout = void 0;
-var $yx_collection_view = require("./yx-collection-view");
-var a = cc._decorator;
-var s =
+const a = cc._decorator;
+const s =
   (a.ccclass,
   a.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e.pagingEnabled = !1;
       e.extraVisibleCount = 0;
       e.itemSize = new cc.Size(100, 100);
@@ -16,7 +16,6 @@ var s =
       e.sectionInset = $yx_collection_view.YXEdgeInsets.ZERO;
       return e;
     }
-    __extends(e, t);
     e.prototype.getItemSize = function () {
       if (this.itemSize instanceof Function == 0) {
         return this.itemSize;
@@ -87,14 +86,14 @@ var s =
       if (0 == this.pagingEnabled) {
         return null;
       }
-      var i = t.scrollView.getScrollOffset();
+      const i = t.scrollView.getScrollOffset();
       i.x = -i.x;
       if (
         t.scrollDirection ==
         $yx_collection_view.YXCollectionView.ScrollDirection.HORIZONTAL
       ) {
-        var o = Math.round(i.x / t.scrollView.node.width);
-        var a = e.x / t.scrollView.node.width;
+        const o = Math.round(i.x / t.scrollView.node.width);
+        const a = e.x / t.scrollView.node.width;
         if (n && Math.abs(a) >= 0.2) {
           o = Math.round(n.x / t.scrollView.node.width) + (a > 0 ? -1 : 1);
         }
@@ -121,12 +120,12 @@ var s =
         return t.prototype.layoutAttributesForElementsInRect.call(this, e, n);
       }
       for (
-        var i = -1, o = 0, r = this.attributes.length - 1;
+        const i = -1, o = 0, r = this.attributes.length - 1;
         o <= r && r >= 0;
       ) {
-        var a = o + (r - o) / 2;
+        const a = o + (r - o) / 2;
         a = Math.floor(a);
-        var s = this.attributes[a];
+        const s = this.attributes[a];
         if (e.intersects(s.frame)) {
           i = a;
           break;
@@ -140,10 +139,10 @@ var s =
       if (i < 0) {
         return t.prototype.layoutAttributesForElementsInRect.call(this, e, n);
       }
-      var c = [];
+      const c = [];
       c.push(this.attributes[i]);
-      for (var l = i; l > 0; ) {
-        var u = l - 1;
+      for (const l = i; l > 0; ) {
+        const u = l - 1;
         s = this.attributes[u];
         if (0 == e.intersects(s.frame)) {
           break;
@@ -151,14 +150,14 @@ var s =
         c.push(s);
         l = u;
       }
-      for (var p = this.extraVisibleCount; p > 0 && !((u = l - 1) < 0); ) {
+      for (const p = this.extraVisibleCount; p > 0 && !((u = l - 1) < 0); ) {
         s = this.attributes[u];
         e.intersects(s.frame) && c.push(s);
         l = u;
         p--;
       }
       for (
-        var h = i;
+        const h = i;
         h < this.attributes.length - 1 &&
         ((u = h + 1), (s = this.attributes[u]), 0 != e.intersects(s.frame));
       ) {
@@ -166,7 +165,7 @@ var s =
         h = u;
       }
       for (
-        var f = this.extraVisibleCount;
+        const f = this.extraVisibleCount;
         f > 0 && !((u = h + 1) >= this.attributes.length);
       ) {
         s = this.attributes[u];
@@ -177,10 +176,10 @@ var s =
       return c;
     };
     e.prototype.layoutAttributesForItemAtIndexPath = function (e, n) {
-      for (var i = 0, o = this.attributes.length - 1; i <= o && o >= 0; ) {
-        var r = i + (o - i) / 2;
+      for (const i = 0, o = this.attributes.length - 1; i <= o && o >= 0; ) {
+        const r = i + (o - i) / 2;
         r = Math.floor(r);
-        var a = this.attributes[r];
+        const a = this.attributes[r];
         if (a.indexPath.equals(e)) {
           return a;
         }
@@ -199,43 +198,43 @@ var s =
       t.scrollView.horizontal = !0;
       t.scrollView.vertical = !1;
       for (
-        var e = t.node.getContentSize().clone(),
-          n = [],
-          i =
-            t.numberOfSections instanceof Function
-              ? t.numberOfSections(t)
-              : t.numberOfSections,
-          o = 0,
-          a = 0;
+        const e = t.node.getContentSize().clone(),
+              n = [],
+              i =
+                t.numberOfSections instanceof Function
+                  ? t.numberOfSections(t)
+                  : t.numberOfSections,
+              o = 0,
+              a = 0;
         a < i;
         a++
       ) {
-        var s = null;
+        const s = null;
         if (t.numberOfItems instanceof Function) {
           s = t.numberOfItems(a, t);
         } else {
           s = t.numberOfItems;
         }
-        var l = null;
+        const l = null;
         if (this.verticalSpacing instanceof Function) {
           l = this.verticalSpacing(a, this, t);
         } else {
           l = this.verticalSpacing;
         }
-        var u = null;
+        const u = null;
         if (this.horizontalSpacing instanceof Function) {
           u = this.horizontalSpacing(a, this, t);
         } else {
           u = this.horizontalSpacing;
         }
-        var p = null;
+        const p = null;
         if (this.sectionInset instanceof Function) {
           p = this.sectionInset(a, this, t);
         } else {
           p = this.sectionInset;
         }
         o += p.left;
-        var h = new c();
+        const h = new c();
         h.verticalSpacing = l;
         h.horizontalSpacing = u;
         h.sectionInset = p;
@@ -243,15 +242,15 @@ var s =
         h.attrs = [];
         h.containerWidth = 0;
         h.containerHeight = e.height;
-        for (var f = 0; f < s; f++) {
-          var d = new $yx_collection_view.YXIndexPath(a, f);
-          var m = null;
+        for (const f = 0; f < s; f++) {
+          const d = new $yx_collection_view.YXIndexPath(a, f);
+          const m = null;
           if (this.itemSize instanceof Function) {
             m = this.itemSize(d, this, t);
           } else {
             m = this.itemSize;
           }
-          var y = h.layout_horizontal_item(d, m);
+          const y = h.layout_horizontal_item(d, m);
           if (null == y) {
             h.offset = h.offset + h.containerWidth + u;
             h.containerWidth = 0;
@@ -273,43 +272,43 @@ var s =
       t.scrollView.horizontal = !1;
       t.scrollView.vertical = !0;
       for (
-        var e = t.node.getContentSize().clone(),
-          n = [],
-          i =
-            t.numberOfSections instanceof Function
-              ? t.numberOfSections(t)
-              : t.numberOfSections,
-          o = 0,
-          a = 0;
+        const e = t.node.getContentSize().clone(),
+              n = [],
+              i =
+                t.numberOfSections instanceof Function
+                  ? t.numberOfSections(t)
+                  : t.numberOfSections,
+              o = 0,
+              a = 0;
         a < i;
         a++
       ) {
-        var s = null;
+        const s = null;
         if (t.numberOfItems instanceof Function) {
           s = t.numberOfItems(a, t);
         } else {
           s = t.numberOfItems;
         }
-        var l = null;
+        const l = null;
         if (this.verticalSpacing instanceof Function) {
           l = this.verticalSpacing(a, this, t);
         } else {
           l = this.verticalSpacing;
         }
-        var u = null;
+        const u = null;
         if (this.horizontalSpacing instanceof Function) {
           u = this.horizontalSpacing(a, this, t);
         } else {
           u = this.horizontalSpacing;
         }
-        var p = null;
+        const p = null;
         if (this.sectionInset instanceof Function) {
           p = this.sectionInset(a, this, t);
         } else {
           p = this.sectionInset;
         }
         o += p.top;
-        var h = new c();
+        const h = new c();
         h.verticalSpacing = l;
         h.horizontalSpacing = u;
         h.sectionInset = p;
@@ -317,15 +316,15 @@ var s =
         h.attrs = [];
         h.containerWidth = e.width;
         h.containerHeight = 0;
-        for (var f = 0; f < s; f++) {
-          var d = new $yx_collection_view.YXIndexPath(a, f);
-          var m = null;
+        for (const f = 0; f < s; f++) {
+          const d = new $yx_collection_view.YXIndexPath(a, f);
+          const m = null;
           if (this.itemSize instanceof Function) {
             m = this.itemSize(d, this, t);
           } else {
             m = this.itemSize;
           }
-          var y = h.layout_vertical_item(d, m);
+          const y = h.layout_vertical_item(d, m);
           if (null == y) {
             h.offset = h.offset + h.containerHeight + l;
             h.containerHeight = 0;
@@ -346,122 +345,120 @@ var s =
     return e;
   })($yx_collection_view.YXLayout));
 exports.YXFlowLayout = s;
-var c = (function () {
-  function t() {
-    this.attrs = [];
+t.prototype.layout_horizontal_item = function (t, e) {
+  if (this.attrs.length <= 0) {
+    (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
+    a.frame = new cc.Rect(
+      this.offset,
+      this.sectionInset.top,
+      e.width,
+      e.height,
+    );
+    this.attrs.push(a);
+    this.containerWidth = Math.max(this.containerWidth, a.frame.width);
+    return a;
   }
-  t.prototype.intersects = function (t) {
-    for (var e = 0; e < this.attrs.length; e++) {
-      var n = this.attrs[e];
-      var i = new cc.Rect();
-      n.frame.intersection(i, t);
-      if (i.width * i.height > 0) {
-        return !0;
-      }
-    }
-    return !1;
-  };
-  t.prototype.layout_vertical_item = function (t, e) {
-    if (this.attrs.length <= 0) {
+  const n = new cc.Rect();
+  n.size = e;
+  for (const i = 0; i < this.attrs.length; i++) {
+    const o = this.attrs[i];
+    n.x = o.frame.x;
+    n.y = o.frame.yMax + this.verticalSpacing;
+    if (
+      n.yMax <= this.containerHeight - this.sectionInset.bottom &&
+      0 == this.intersects(n)
+    ) {
       (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
-      a.frame = new cc.Rect(
-        this.sectionInset.left,
-        this.offset,
-        e.width,
-        e.height,
-      );
+      a.frame = n;
       this.attrs.push(a);
-      this.containerHeight = Math.max(this.containerHeight, a.frame.height);
+      this.containerWidth = Math.max(
+        this.containerWidth,
+        a.frame.xMax - this.offset,
+      );
       return a;
     }
-    var n = new cc.Rect();
-    n.size = e;
-    for (var i = 0; i < this.attrs.length; i++) {
-      var o = this.attrs[i];
-      n.x = o.frame.xMax + this.horizontalSpacing;
-      n.y = o.frame.y;
-      if (
-        n.xMax <= this.containerWidth - this.sectionInset.right &&
-        0 == this.intersects(n)
-      ) {
-        (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
-        a.frame = n;
-        this.attrs.push(a);
-        this.containerHeight = Math.max(
-          this.containerHeight,
-          a.frame.yMax - this.offset,
-        );
-        return a;
-      }
-    }
-    for (i = 0; i < this.attrs.length; i++) {
-      var a;
-      o = this.attrs[i];
-      n.x = o.frame.x;
-      n.y = o.frame.yMax + this.verticalSpacing;
-      if (
-        n.yMax <= this.offset + this.containerHeight &&
-        0 == this.intersects(n)
-      ) {
-        (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
-        a.frame = n;
-        this.attrs.push(a);
-        this.containerHeight = Math.max(this.containerHeight, a.frame.height);
-        return a;
-      }
-    }
-    return null;
-  };
-  t.prototype.layout_horizontal_item = function (t, e) {
-    if (this.attrs.length <= 0) {
+  }
+  for (i = 0; i < this.attrs.length; i++) {
+    let a;
+    o = this.attrs[i];
+    n.x = o.frame.xMax + this.horizontalSpacing;
+    n.y = o.frame.y;
+    if (
+      n.xMax <= this.offset + this.containerWidth &&
+      0 == this.intersects(n)
+    ) {
       (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
-      a.frame = new cc.Rect(
-        this.offset,
-        this.sectionInset.top,
-        e.width,
-        e.height,
-      );
+      a.frame = n;
       this.attrs.push(a);
       this.containerWidth = Math.max(this.containerWidth, a.frame.width);
       return a;
     }
-    var n = new cc.Rect();
-    n.size = e;
-    for (var i = 0; i < this.attrs.length; i++) {
-      var o = this.attrs[i];
-      n.x = o.frame.x;
-      n.y = o.frame.yMax + this.verticalSpacing;
-      if (
-        n.yMax <= this.containerHeight - this.sectionInset.bottom &&
-        0 == this.intersects(n)
-      ) {
-        (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
-        a.frame = n;
-        this.attrs.push(a);
-        this.containerWidth = Math.max(
-          this.containerWidth,
-          a.frame.xMax - this.offset,
-        );
-        return a;
-      }
+  }
+  return null;
+};
+t.prototype.layout_vertical_item = function (t, e) {
+  if (this.attrs.length <= 0) {
+    (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
+    a.frame = new cc.Rect(
+      this.sectionInset.left,
+      this.offset,
+      e.width,
+      e.height,
+    );
+    this.attrs.push(a);
+    this.containerHeight = Math.max(this.containerHeight, a.frame.height);
+    return a;
+  }
+  const n = new cc.Rect();
+  n.size = e;
+  for (const i = 0; i < this.attrs.length; i++) {
+    const o = this.attrs[i];
+    n.x = o.frame.xMax + this.horizontalSpacing;
+    n.y = o.frame.y;
+    if (
+      n.xMax <= this.containerWidth - this.sectionInset.right &&
+      0 == this.intersects(n)
+    ) {
+      (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
+      a.frame = n;
+      this.attrs.push(a);
+      this.containerHeight = Math.max(
+        this.containerHeight,
+        a.frame.yMax - this.offset,
+      );
+      return a;
     }
-    for (i = 0; i < this.attrs.length; i++) {
-      var a;
-      o = this.attrs[i];
-      n.x = o.frame.xMax + this.horizontalSpacing;
-      n.y = o.frame.y;
-      if (
-        n.xMax <= this.offset + this.containerWidth &&
-        0 == this.intersects(n)
-      ) {
-        (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
-        a.frame = n;
-        this.attrs.push(a);
-        this.containerWidth = Math.max(this.containerWidth, a.frame.width);
-        return a;
-      }
+  }
+  for (i = 0; i < this.attrs.length; i++) {
+    let a;
+    o = this.attrs[i];
+    n.x = o.frame.x;
+    n.y = o.frame.yMax + this.verticalSpacing;
+    if (
+      n.yMax <= this.offset + this.containerHeight &&
+      0 == this.intersects(n)
+    ) {
+      (a = new $yx_collection_view.YXLayoutAttributes()).indexPath = t;
+      a.frame = n;
+      this.attrs.push(a);
+      this.containerHeight = Math.max(this.containerHeight, a.frame.height);
+      return a;
     }
-    return null;
-  };
-  return t;
-})();
+  }
+  return null;
+};
+t.prototype.intersects = function (t) {
+  for (const e = 0; e < this.attrs.length; e++) {
+    const n = this.attrs[e];
+    const i = new cc.Rect();
+    n.frame.intersection(i, t);
+    if (i.width * i.height > 0) {
+      return !0;
+    }
+  }
+  return !1;
+};
+function t() {
+  this.attrs = [];
+}
+const c = t;

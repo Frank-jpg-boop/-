@@ -1,6 +1,6 @@
 exports.RandomUtil = void 0;
 (function (t) {
-  var e = [
+  const e = [
     "0",
     "1",
     "2",
@@ -85,7 +85,7 @@ exports.RandomUtil = void 0;
     if (void 0 === n) {
       n = !1;
     }
-    for (var o = "", r = 0; r < t; r++) {
+    for (const o = "", r = 0; r < t; r++) {
       if (n && 0 === r) {
         o += e[10 + i(e.length - 10)];
       } else {
@@ -95,11 +95,11 @@ exports.RandomUtil = void 0;
     return o;
   };
   t.randomArray = function (t) {
-    for (var e = 0, i = 0; i < t.length; i++) {
+    for (const e = 0, i = 0; i < t.length; i++) {
       e += t[i];
     }
-    var o = n(e);
-    var r = 0;
+    const o = n(e);
+    const r = 0;
     for (i = 0; i < t.length; i++) {
       if (o < (r += t[i])) {
         return i;

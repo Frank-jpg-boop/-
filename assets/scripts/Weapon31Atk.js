@@ -1,16 +1,15 @@
-var i;
-var $spAnimEffect = require("./SpAnimEffect");
-var s = cc._decorator;
-var c = s.ccclass;
-var l =
+import $spAnimEffect from './SpAnimEffect';
+let i;
+const s = cc._decorator;
+const c = s.ccclass;
+const l =
   (s.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._onEvent = null;
       return e;
     }
-    __extends(e, t);
     e.prototype.onInit = function () {
       t.prototype.onInit.call(this);
     };
@@ -27,6 +26,5 @@ var l =
         this._onEvent();
       }
     };
-    return __decorate([c], e);
   })($spAnimEffect.default));
 exports.default = l;

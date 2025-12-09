@@ -1,7 +1,7 @@
 (function (t, i) {
   (function (t, i) {
-    var o;
-    var r;
+    let o;
+    let r;
     if ("object" == typeof exports && void 0 !== module) {
       module.exports = i();
     } else {
@@ -26,33 +26,33 @@
           ? t
           : void 0,
     function () {
-      var t;
-      var e = "function" == typeof i;
-      var n = null;
+      let t;
+      const e = "function" == typeof i;
+      const n = null;
       if ("function" == typeof TextDecoder) {
         n = new TextDecoder();
       } else {
         n = void 0;
       }
-      var o = null;
+      const o = null;
       if ("function" == typeof TextEncoder) {
         o = new TextEncoder();
       } else {
         o = void 0;
       }
-      var r = Array.prototype.slice.call(
+      const r = Array.prototype.slice.call(
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
       );
-      var a =
+      const a =
         ((t = {}),
         r.forEach(function (e, n) {
           return (t[e] = n);
         }),
         t);
-      var s =
+      const s =
         /^(?:[A-Za-z\d+\/]{4})*?(?:[A-Za-z\d+\/]{2}(?:==)?|[A-Za-z\d+\/]{3}=?)?$/;
-      var c = String.fromCharCode.bind(String);
-      var l = null;
+      const c = String.fromCharCode.bind(String);
+      const l = null;
       if ("function" == typeof Uint8Array.from) {
         l = Uint8Array.from.bind(Uint8Array);
       } else {
@@ -60,7 +60,7 @@
           return new Uint8Array(Array.prototype.slice.call(t, 0));
         };
       }
-      var u = function (t) {
+      const u = function (t) {
         return t.replace(/=/g, "").replace(/[+\/]/g, function (t) {
           if ("+" == t) {
             return "-";
@@ -69,11 +69,11 @@
           }
         });
       };
-      var p = function (t) {
+      const p = function (t) {
         return t.replace(/[^A-Za-z0-9\+\/]/g, "");
       };
-      var h = function (t) {
-        for (var e, n, i, o, a = "", s = t.length % 3, c = 0; c < t.length; ) {
+      const h = function (t) {
+        for (let e, n, i, o, a = "", s = t.length % 3, c = 0; c < t.length; ) {
           if (
             (n = t.charCodeAt(c++)) > 255 ||
             (i = t.charCodeAt(c++)) > 255 ||
@@ -93,7 +93,7 @@
           return a;
         }
       };
-      var f = null;
+      const f = null;
       if ("function" == typeof btoa) {
         f = function (t) {
           return btoa(t);
@@ -107,26 +107,26 @@
           f = h;
         }
       }
-      var d = null;
+      const d = null;
       if (e) {
         d = function (t) {
           return i.from(t).toString("base64");
         };
       } else {
         d = function (t) {
-          for (var e = [], n = 0, i = t.length; n < i; n += 4096) {
+          for (const e = [], n = 0, i = t.length; n < i; n += 4096) {
             e.push(c.apply(null, t.subarray(n, n + 4096)));
           }
           return f(e.join(""));
         };
       }
-      var m = function (t, e) {
+      const m = function (t, e) {
         if (void 0 === e) {
           e = !1;
         }
         return e ? u(d(t)) : d(t);
       };
-      var y = function (t) {
+      const y = function (t) {
         if (t.length < 2) {
           if ((e = t.charCodeAt(0)) < 128) {
             return t;
@@ -142,7 +142,7 @@
             }
           }
         }
-        var e =
+        const e =
           65536 + 1024 * (t.charCodeAt(0) - 55296) + (t.charCodeAt(1) - 56320);
         return (
           c(240 | ((e >>> 18) & 7)) +
@@ -151,11 +151,11 @@
           c(128 | (63 & e))
         );
       };
-      var _ = /[\uD800-\uDBFF][\uDC00-\uDFFFF]|[^\x00-\x7F]/g;
-      var g = function (t) {
+      const _ = /[\uD800-\uDBFF][\uDC00-\uDFFFF]|[^\x00-\x7F]/g;
+      const g = function (t) {
         return t.replace(_, y);
       };
-      var v = null;
+      const v = null;
       if (e) {
         v = function (t) {
           return i.from(t, "utf8").toString("base64");
@@ -171,21 +171,21 @@
           };
         }
       }
-      var b = function (t, e) {
+      const b = function (t, e) {
         if (void 0 === e) {
           e = !1;
         }
         return e ? u(v(t)) : v(t);
       };
-      var E = function (t) {
+      const E = function (t) {
         return b(t, !0);
       };
-      var S =
+      const S =
         /[\xC0-\xDF][\x80-\xBF]|[\xE0-\xEF][\x80-\xBF]{2}|[\xF0-\xF7][\x80-\xBF]{3}/g;
-      var P = function (t) {
+      const P = function (t) {
         switch (t.length) {
           case 4:
-            var e =
+            const e =
               (((7 & t.charCodeAt(0)) << 18) |
                 ((63 & t.charCodeAt(1)) << 12) |
                 ((63 & t.charCodeAt(2)) << 6) |
@@ -202,16 +202,16 @@
             return c(((31 & t.charCodeAt(0)) << 6) | (63 & t.charCodeAt(1)));
         }
       };
-      var A = function (t) {
+      const A = function (t) {
         return t.replace(S, P);
       };
-      var w = function (t) {
+      const w = function (t) {
         t = t.replace(/\s+/g, "");
         if (!s.test(t)) {
           throw new TypeError("malformed base64.");
         }
         t += "==".slice(2 - (3 & t.length));
-        for (var e, n, i, o = "", r = 0; r < t.length; ) {
+        for (let e, n, i, o = "", r = 0; r < t.length; ) {
           e =
             (a[t.charAt(r++)] << 18) |
             (a[t.charAt(r++)] << 12) |
@@ -229,7 +229,7 @@
         }
         return o;
       };
-      var C = null;
+      const C = null;
       if ("function" == typeof atob) {
         C = function (t) {
           return atob(p(t));
@@ -243,7 +243,7 @@
           C = w;
         }
       }
-      var M = null;
+      const M = null;
       if (e) {
         M = function (t) {
           return l(i.from(t, "base64"));
@@ -259,10 +259,10 @@
           );
         };
       }
-      var I = function (t) {
+      const I = function (t) {
         return M(D(t));
       };
-      var R = null;
+      const R = null;
       if (e) {
         R = function (t) {
           return i.from(t, "base64").toString("utf8");
@@ -278,7 +278,7 @@
           };
         }
       }
-      var D = function (t) {
+      const D = function (t) {
         return p(
           t.replace(/[-_]/g, function (t) {
             if ("-" == t) {
@@ -289,10 +289,10 @@
           }),
         );
       };
-      var T = function (t) {
+      const T = function (t) {
         return R(D(t));
       };
-      var B = function (t) {
+      const B = function (t) {
         return {
           value: t,
           enumerable: !1,
@@ -300,8 +300,8 @@
           configurable: !0,
         };
       };
-      var O = function () {
-        var t = function (t, e) {
+      const O = function () {
+        const t = function (t, e) {
           return Object.defineProperty(String.prototype, t, B(e));
         };
         t("fromBase64", function () {
@@ -320,8 +320,8 @@
           return I(this);
         });
       };
-      var x = function () {
-        var t = function (t, e) {
+      const x = function () {
+        const t = function (t, e) {
           return Object.defineProperty(Uint8Array.prototype, t, B(e));
         };
         t("toBase64", function (t) {
@@ -334,7 +334,7 @@
           return m(this, !0);
         });
       };
-      var k = {
+      const k = {
         version: "3.7.7",
         VERSION: "3.7.7",
         atob: C,
@@ -353,7 +353,7 @@
           if ("string" != typeof t) {
             return !1;
           }
-          var e = t.replace(/\s+/g, "").replace(/={0,2}$/, "");
+          const e = t.replace(/\s+/g, "").replace(/={0,2}$/, "");
           return !/[^\s0-9a-zA-Z\+/]/.test(e) || !/[^\s0-9a-zA-Z\-_]/.test(e);
         },
         fromUint8Array: m,

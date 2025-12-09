@@ -10,8 +10,8 @@ exports.headImgExt = ".head";
   }
 
   function i(t, e, n, i) {
-    var o = null;
-    var r = null;
+    const o = null;
+    const r = null;
     try {
       (o = new cc.Texture2D())._uuid = t;
       o._nativeUrl = t;
@@ -25,7 +25,7 @@ exports.headImgExt = ".head";
   }
 
   function o(t, e, n) {
-    var i = new Image();
+    const i = new Image();
 
     function o() {
       i.removeEventListener("load", o);

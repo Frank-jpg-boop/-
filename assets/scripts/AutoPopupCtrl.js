@@ -1,22 +1,21 @@
-var i;
-var $frameEnum = require("./FrameEnum");
-var $popupManager = require("./PopupManager");
-var $queue = require("./Queue");
-var l = cc._decorator;
-var u = l.ccclass;
-var p =
+import $frameEnum from './FrameEnum';
+import $popupManager from './PopupManager';
+import $queue from './Queue';
+let i;
+const l = cc._decorator;
+const u = l.ccclass;
+const p =
   (l.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e.popupQueue = new $queue.default();
       e.curPopupName = "";
       e.curPopupOption = null;
       e.isOpening = !1;
       return e;
     }
-    var n;
-    __extends(e, t);
+    let n;
     n = e;
     e.prototype.onLoad = function () {
       this.init();
@@ -61,7 +60,7 @@ var p =
           this.curPopupOption = null;
         }
       } else if (this.popupQueue.size() > 0) {
-        var t = this.popupQueue.dequeue();
+        const t = this.popupQueue.dequeue();
         this.curPopupName = t.name;
         this.curPopupOption = t;
         this.isOpening = !0;
@@ -76,6 +75,6 @@ var p =
       }
     };
     e.keys = [];
-    return (n = __decorate([u], e));
+    return;
   })(cc.Component));
 exports.default = p;

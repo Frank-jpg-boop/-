@@ -1,21 +1,20 @@
-var i;
-var $battleMgr = require("./BattleMgr");
-var $actorEnum = require("./ActorEnum");
-var $attrEnum = require("./AttrEnum");
-var $door = require("./Door");
-var $actorBase = require("./ActorBase");
-var $actorMgr = require("./ActorMgr");
-var $enemyBase = require("./EnemyBase");
-var $enemy_611_Atk = require("./Enemy_611_Atk");
-var d = cc._decorator;
-var m = d.ccclass;
-var y =
+import $battleMgr from './BattleMgr';
+import $actorEnum from './ActorEnum';
+import $attrEnum from './AttrEnum';
+import $door from './Door';
+import $actorBase from './ActorBase';
+import $actorMgr from './ActorMgr';
+import $enemyBase from './EnemyBase';
+import $enemy_611_Atk from './Enemy_611_Atk';
+let i;
+const d = cc._decorator;
+const m = d.ccclass;
+const y =
   (d.property,
   (function (t) {
     function e() {
       return (null !== t && t.apply(this, arguments)) || this;
     }
-    __extends(e, t);
     e.prototype.registerState = function () {
       t.prototype.registerState.call(this);
       this._sm.addState(
@@ -27,7 +26,7 @@ var y =
       this.node.opacity = 0;
     };
     e.prototype.playShowAnim = function () {
-      var t = this;
+      const t = this;
       return new Promise(function (e) {
         cc.tween(t.node)
           .to(0.3, {
@@ -41,13 +40,13 @@ var y =
     };
     e.prototype.attackHit = function (t) {
       if (t && t.isValid) {
-        var e = t.getComponent($door.default);
+        const e = t.getComponent($door.default);
         if (e && e.state != $door.EDoorState.DESTROY) {
           e.beHurt(this.getAttribute($attrEnum.E_AttrType.ATK).value);
         } else {
-          var n = t.getComponent($actorBase.default);
+          const n = t.getComponent($actorBase.default);
           if (n) {
-            var i =
+            const i =
               cc.Vec2.squaredDistance(
                 n.node.getPosition(),
                 this.node.getPosition(),
@@ -65,7 +64,7 @@ var y =
       }
     };
     e.prototype.summon = function (t) {
-      var e = $battleMgr.default.instance.getCurScene();
+      const e = $battleMgr.default.instance.getCurScene();
       if (
         e &&
         (!this._initParam || !this._initParam.isSummon) &&
@@ -76,11 +75,11 @@ var y =
           Number(this._cfg.val1) / 100
         )
       ) {
-        var n = this.pathPos;
-        var i = n.clone();
+        const n = this.pathPos;
+        const i = n.clone();
         this.updatePathData();
         if ("" == this._pathPointId) {
-          var o = e.level.path.getLine(this._pathLineId);
+          const o = e.level.path.getLine(this._pathLineId);
           if (o) {
             if (0 != o.dir.x) {
               i.x += this.dirX * Math.abs(n.x - t.x) * 2;
@@ -117,6 +116,5 @@ var y =
         }
       }
     };
-    return __decorate([m], e);
   })($enemyBase.default));
 exports.default = y;

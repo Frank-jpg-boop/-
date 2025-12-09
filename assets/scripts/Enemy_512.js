@@ -1,23 +1,23 @@
-var i;
-var $randomUtil = require("./RandomUtil");
-var $animUtils = require("./AnimUtils");
-var $globalPopupMgr = require("./GlobalPopupMgr");
-var $battleMgr = require("./BattleMgr");
-var $gridAreaDivisionMgr = require("./GridAreaDivisionMgr");
-var $actorEnum = require("./ActorEnum");
-var $levelBattleData = require("./LevelBattleData");
-var $unitMgr = require("./UnitMgr");
-var $enemyBase = require("./EnemyBase");
-var $enemy_512_Idle = require("./Enemy_512_Idle");
-var $enemy_512_Trans = require("./Enemy_512_Trans");
-var $enemy_512_Walk = require("./Enemy_512_Walk");
-var g = cc._decorator;
-var v = g.ccclass;
-var b =
+import $randomUtil from './RandomUtil';
+import $animUtils from './AnimUtils';
+import $globalPopupMgr from './GlobalPopupMgr';
+import $battleMgr from './BattleMgr';
+import $gridAreaDivisionMgr from './GridAreaDivisionMgr';
+import $actorEnum from './ActorEnum';
+import $levelBattleData from './LevelBattleData';
+import $unitMgr from './UnitMgr';
+import $enemyBase from './EnemyBase';
+import $enemy_512_Idle from './Enemy_512_Idle';
+import $enemy_512_Trans from './Enemy_512_Trans';
+import $enemy_512_Walk from './Enemy_512_Walk';
+let i;
+const g = cc._decorator;
+const v = g.ccclass;
+const b =
   (g.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._nItem = null;
       e._itemKeys = [];
       e._isNullItem = !1;
@@ -29,7 +29,6 @@ var b =
       e._isLockConsume = !1;
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "isNullItem", {
       get: function () {
         return this._isNullItem;
@@ -127,7 +126,7 @@ var b =
         }
         this.updateItemView();
         if (this._consumeGold <= 0) {
-          var n = $battleMgr.default.instance
+          const n = $battleMgr.default.instance
             .getCurScene()
             .level.getRoomById(this.roomId);
           this.dropReward(n.getGroundY());
@@ -139,7 +138,7 @@ var b =
       this._isShowTips = !1;
     };
     e.prototype.showItemBubble = function (t, e) {
-      var n = this;
+      const n = this;
       if (void 0 === t) {
         t = null;
       }
@@ -189,8 +188,8 @@ var b =
         .start();
     };
     e.prototype.dropReward = function (t) {
-      var e = this;
-      var n = this._itemKeys[0].split("_").map(Number)[1];
+      const e = this;
+      const n = this._itemKeys[0].split("_").map(Number)[1];
       this.createReward(t, n);
       this._itemKeys.shift();
       if (0 == this._itemKeys.length) {
@@ -210,10 +209,10 @@ var b =
       }
     };
     e.prototype.createReward = function (t, e) {
-      var n = this;
-      var i = $battleMgr.default.instance.getCurScene();
-      var o = this.node.getPosition();
-      var r = $randomUtil.RandomUtil.randomInt(-100, 100);
+      const n = this;
+      const i = $battleMgr.default.instance.getCurScene();
+      const o = this.node.getPosition();
+      const r = $randomUtil.RandomUtil.randomInt(-100, 100);
       $unitMgr.UnitMgr.instance.createUnit({
         areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.GOOD,
         areaColliderType: $gridAreaDivisionMgr.E_AreaColliderType.RECT,
@@ -245,11 +244,11 @@ var b =
       t.prototype.onBeHurt.call(this, e);
       if (this._isNullItem) {
         for (
-          var n = $battleMgr.default.instance
-              .getCurScene()
-              .level.findLayerByPos(this.node.getPosition()),
-            i = $battleMgr.default.instance.getCurScene().level.getLayerPosY(n),
-            o = 0;
+          const n = $battleMgr.default.instance
+                    .getCurScene()
+                    .level.findLayerByPos(this.node.getPosition()),
+                i = $battleMgr.default.instance.getCurScene().level.getLayerPosY(n),
+                o = 0;
           o < Number(this._cfg.val3);
           o++
         ) {
@@ -258,7 +257,7 @@ var b =
       }
     };
     e.prototype.playAnimTrans = function (t) {
-      var e = this;
+      const e = this;
       this._spCtrl.playAnim("transform", 1, !1, function () {
         e._isNullItem = !0;
         if (t) {
@@ -266,6 +265,5 @@ var b =
         }
       });
     };
-    return __decorate([v], e);
   })($enemyBase.default));
 exports.default = b;

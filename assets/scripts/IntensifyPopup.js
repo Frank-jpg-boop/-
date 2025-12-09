@@ -1,16 +1,15 @@
-var i;
-var $eventManager = require("./EventManager");
-var $popupBase = require("./PopupBase");
-var $homeEnum = require("./HomeEnum");
-var l = cc._decorator;
-var u = l.ccclass;
-var p =
+import $eventManager from './EventManager';
+import $popupBase from './PopupBase';
+import $homeEnum from './HomeEnum';
+let i;
+const l = cc._decorator;
+const u = l.ccclass;
+const p =
   (l.property,
   (function (t) {
     function e() {
       return (null !== t && t.apply(this, arguments)) || this;
     }
-    __extends(e, t);
     e.prototype.onClickBtnGotoBuild = function () {
       this.removeUI();
       $eventManager.EventManager.instance.emit(
@@ -35,6 +34,5 @@ var p =
     e.prototype.onClickBtnClose = function () {
       this.removeUI();
     };
-    return __decorate([u], e);
   })($popupBase.PopupBase));
 exports.default = p;

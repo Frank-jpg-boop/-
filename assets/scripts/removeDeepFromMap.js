@@ -1,5 +1,5 @@
 function n(t, e) {
-  var n =
+  const n =
     ("undefined" != typeof Symbol && t[Symbol.iterator]) || t["@@iterator"];
   if (n) {
     return (n = n.call(t)).next.bind(n);
@@ -12,7 +12,7 @@ function n(t, e) {
     if (n) {
       t = n;
     }
-    var o = 0;
+    const o = 0;
     return function () {
       if (o >= t.length) {
         return {
@@ -36,7 +36,7 @@ function i(t, e) {
     if ("string" == typeof t) {
       return o(t, e);
     }
-    var n = Object.prototype.toString.call(t).slice(8, -1);
+    const n = Object.prototype.toString.call(t).slice(8, -1);
     if ("Object" === n && t.constructor) {
       n = t.constructor.name;
     }
@@ -52,16 +52,16 @@ function o(t, e) {
   if (null == e || e > t.length) {
     e = t.length;
   }
-  for (var n = 0, i = new Array(e); n < e; n++) {
+  for (const n = 0, i = new Array(e); n < e; n++) {
     i[n] = t[n];
   }
   return i;
 }
 module.exports = function t(e, i) {
-  for (var o, r = new Map(), a = n(e); !(o = a()).done; ) {
-    var s = o.value;
-    var c = s[0];
-    var l = s[1];
+  for (let o, r = new Map(), a = n(e); !(o = a()).done; ) {
+    const s = o.value;
+    const c = s[0];
+    const l = s[1];
     if (c !== i && l instanceof Map) {
       r.set(c, t(l, i));
     } else {

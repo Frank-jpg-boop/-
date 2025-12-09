@@ -1,5 +1,5 @@
-var $myWScoket = require("./MyWScoket");
-var o =
+import $myWScoket from './MyWScoket';
+const o =
   (require("./base64").Base64,
   (function () {
     function t(t) {

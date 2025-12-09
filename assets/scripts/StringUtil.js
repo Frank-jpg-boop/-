@@ -5,13 +5,13 @@ exports.StringBuffer = exports.StringUtil = void 0;
   }
 
   function n() {
-    for (var t = [], n = 0; n < arguments.length; n++) {
+    for (const t = [], n = 0; n < arguments.length; n++) {
       t[n] = arguments[n];
     }
     if (null == t || 0 == t.length) {
       return !0;
     }
-    for (var i in t)
+    for (let i in t)
       if (e(i)) {
         return !0;
       }
@@ -22,14 +22,14 @@ exports.StringBuffer = exports.StringUtil = void 0;
       i = /\[(.*?)\]/g;
     }
     return t.replace(i, function (t, i) {
-      var o = !1;
-      var r = i;
+      const o = !1;
+      const r = i;
       if (i.includes("%")) {
         o = !0;
         r = i.slice(0, i.length - 1);
       }
       if (e.hasOwnProperty(r)) {
-        var a = e[r];
+        const a = e[r];
         if (o) {
           return (
             "string" == typeof a && (a = a.split("|").map(Number)[n - 1]),
@@ -66,13 +66,13 @@ exports.StringBuffer = exports.StringUtil = void 0;
   };
   t.isAnyEmpty = n;
   t.isNoneEmpty = function () {
-    for (var t = [], e = 0; e < arguments.length; e++) {
+    for (const t = [], e = 0; e < arguments.length; e++) {
       t[e] = arguments[e];
     }
     return !n.apply(void 0, t);
   };
   t.versionCompare = function (t, e) {
-    for (var n = t.split("."), i = e.split("."), o = 0; o < n.length; o++) {
+    for (const n = t.split("."), i = e.split("."), o = 0; o < n.length; o++) {
       if (null == i[o]) {
         return 1;
       }
@@ -83,8 +83,8 @@ exports.StringBuffer = exports.StringUtil = void 0;
     return 0;
   };
   t.copyObj = function t(e) {
-    var n;
-    for (var i in ((n =
+    let n;
+    for (let i in ((n =
       "[object Array]" === Object.prototype.toString.call(e) ? [] : {}),
     e))
       null == e[i]
@@ -101,7 +101,7 @@ exports.StringBuffer = exports.StringUtil = void 0;
     if (void 0 === n) {
       n = "...";
     }
-    var i = t;
+    const i = t;
     if (t.length > e) {
       i = t.substring(0, e);
       i += n;
@@ -109,16 +109,14 @@ exports.StringBuffer = exports.StringUtil = void 0;
     return i;
   };
 })(exports.StringUtil || (exports.StringUtil = {}));
-var i = (function () {
-  function t() {
-    this._strings = new Array();
-  }
-  t.prototype.append = function (t) {
-    this._strings.push(t);
-  };
-  t.prototype.toString = function () {
-    return this._strings.join("");
-  };
-  return t;
-})();
+t.prototype.toString = function () {
+  return this._strings.join("");
+};
+t.prototype.append = function (t) {
+  this._strings.push(t);
+};
+function t() {
+  this._strings = new Array();
+}
+const i = t;
 exports.StringBuffer = i;

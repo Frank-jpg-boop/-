@@ -1,42 +1,42 @@
-var i;
-var $cfg = require("./Cfg");
-var $audioUtil = require("./AudioUtil");
-var $eventManager = require("./EventManager");
-var $mathUtil = require("./MathUtil");
-var $randomUtil = require("./RandomUtil");
-var $attrMgr = require("./AttrMgr");
-var $globalPopupMgr = require("./GlobalPopupMgr");
-var $guideMgr = require("./GuideMgr");
-var $guideDataProxy = require("./GuideDataProxy");
-var $playerDataProxy = require("./PlayerDataProxy");
-var $userSetDataProxy = require("./UserSetDataProxy");
-var $battleMgr = require("./BattleMgr");
-var $stateMachine = require("./StateMachine");
-var $gridAreaDivisionMgr = require("./GridAreaDivisionMgr");
-var $joystick = require("./Joystick");
-var $spAnimCtrl = require("./SpAnimCtrl");
-var $actorEnum = require("./ActorEnum");
-var $attrEnum = require("./AttrEnum");
-var $battleEnum = require("./BattleEnum");
-var $levelBattleData = require("./LevelBattleData");
-var $skillMgr = require("./SkillMgr");
-var $levelObjectBase = require("./LevelObjectBase");
-var $unitMgr = require("./UnitMgr");
-var $actorBase = require("./ActorBase");
-var $actorMgr = require("./ActorMgr");
-var $enemyBase = require("./EnemyBase");
-var $playerAttackState = require("./PlayerAttackState");
-var $playerBeDragState = require("./PlayerBeDragState");
-var $playerDeadState = require("./PlayerDeadState");
-var $playerIdleState = require("./PlayerIdleState");
-var $playerWalkState = require("./PlayerWalkState");
-var L = cc._decorator;
-var j = L.ccclass;
-var U =
+import $cfg from './Cfg';
+import $audioUtil from './AudioUtil';
+import $eventManager from './EventManager';
+import $mathUtil from './MathUtil';
+import $randomUtil from './RandomUtil';
+import $attrMgr from './AttrMgr';
+import $globalPopupMgr from './GlobalPopupMgr';
+import $guideMgr from './GuideMgr';
+import $guideDataProxy from './GuideDataProxy';
+import $playerDataProxy from './PlayerDataProxy';
+import $userSetDataProxy from './UserSetDataProxy';
+import $battleMgr from './BattleMgr';
+import $stateMachine from './StateMachine';
+import $gridAreaDivisionMgr from './GridAreaDivisionMgr';
+import $joystick from './Joystick';
+import $spAnimCtrl from './SpAnimCtrl';
+import $actorEnum from './ActorEnum';
+import $attrEnum from './AttrEnum';
+import $battleEnum from './BattleEnum';
+import $levelBattleData from './LevelBattleData';
+import $skillMgr from './SkillMgr';
+import $levelObjectBase from './LevelObjectBase';
+import $unitMgr from './UnitMgr';
+import $actorBase from './ActorBase';
+import $actorMgr from './ActorMgr';
+import $enemyBase from './EnemyBase';
+import $playerAttackState from './PlayerAttackState';
+import $playerBeDragState from './PlayerBeDragState';
+import $playerDeadState from './PlayerDeadState';
+import $playerIdleState from './PlayerIdleState';
+import $playerWalkState from './PlayerWalkState';
+let i;
+const L = cc._decorator;
+const j = L.ccclass;
+const U =
   (L.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._isSlide = !1;
       e._spAnimCtrl = null;
       e._moveTargetPointId = "";
@@ -61,7 +61,6 @@ var U =
       e._isShowGuideTips = !1;
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "spAnimCtrl", {
       get: function () {
         return this._spAnimCtrl;
@@ -100,33 +99,33 @@ var U =
     e.prototype.initAttribute = function () {
       t.prototype.initAttribute.call(this);
       this._actorAttribute.init($attrEnum.E_AttrType);
-      var e = $attrMgr.AttrMgr.instance.getPlayerAttrMap();
-      var n = function (t) {
+      const e = $attrMgr.AttrMgr.instance.getPlayerAttrMap();
+      const n = function (t) {
         if (e.has(t)) {
           return e.get(t);
         } else {
           return 0;
         }
       };
-      var i = Math.floor(
+      const i = Math.floor(
         n($attrEnum.E_AttrType.ATK) * n($attrEnum.E_AttrType.ATK_RATE),
       );
       this.getAttribute($attrEnum.E_AttrType.ATK).setFixBase(i);
-      var o = n($attrEnum.E_AttrType.SKILL_CD);
+      const o = n($attrEnum.E_AttrType.SKILL_CD);
       this.getAttribute($attrEnum.E_AttrType.SKILL_CD).setFixBase(o);
-      var r = Math.floor(
+      const r = Math.floor(
         n($attrEnum.E_AttrType.HP) * n($attrEnum.E_AttrType.HP_RATE),
       );
       this.getAttribute($attrEnum.E_AttrType.HP).setFixBase(r);
-      var a = n($attrEnum.E_AttrType.CRIT_RATE);
+      const a = n($attrEnum.E_AttrType.CRIT_RATE);
       this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).setFixBase(a);
-      var s = n($attrEnum.E_AttrType.CRIT_HURT);
+      const s = n($attrEnum.E_AttrType.CRIT_HURT);
       this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).setFixBase(s);
-      var c = n($attrEnum.E_AttrType.SPEED);
+      const c = n($attrEnum.E_AttrType.SPEED);
       this.getAttribute($attrEnum.E_AttrType.SPEED).setFixBase(c);
     };
     e.prototype.initAnim = function () {
-      var e = $cfg.default.instance.dataSkin.getById(
+      const e = $cfg.default.instance.dataSkin.getById(
         $playerDataProxy.playerDataProxy.skinId,
       );
       this.spAnimCtrl.init({
@@ -194,10 +193,10 @@ var U =
       t.prototype.registerEvent.call(this);
     };
     e.prototype.initSkill = function () {
-      var t = this;
+      const t = this;
       this._skills = [];
       $levelBattleData.levelBattleData.skillIds.forEach(function (e) {
-        var n = $skillMgr.SkillMgr.instance.createSkill(e, t);
+        const n = $skillMgr.SkillMgr.instance.createSkill(e, t);
         $eventManager.EventManager.instance.emit(
           $actorEnum.EPlayerEvent.PLAYER_CREATE_SKILL,
           e,
@@ -208,12 +207,12 @@ var U =
         t._skills.push(n);
       });
       $levelBattleData.levelBattleData.skillExMap.forEach(function (e, n) {
-        var i = $cfg.default.instance.dataChoose.getById(n);
-        var o = t._skills.find(function (t) {
+        const i = $cfg.default.instance.dataChoose.getById(n);
+        const o = t._skills.find(function (t) {
           return t.cfg.id == i.withSkill;
         });
         if (o) {
-          for (var r = e.count; r > 0; ) {
+          for (const r = e.count; r > 0; ) {
             o.addSkillEx(e.id);
             r--;
           }
@@ -221,7 +220,7 @@ var U =
       });
     };
     e.prototype.onInit = function () {
-      var t = this;
+      const t = this;
       this._prevMoveDir = cc.v2(1, 0);
       this._tempCollisionIdsMap = new Map();
       this.needCheckCollisionType.forEach(function (e) {
@@ -259,10 +258,10 @@ var U =
       ) {
         this.moveDir = null;
         if ("" != this._moveTargetPointId) {
-          var t = $battleMgr.default.instance
+          const t = $battleMgr.default.instance
             .getCurScene()
             .level.path.getPoint(this._moveTargetPointId);
-          var e =
+          const e =
             (1 * this.getAttribute($attrEnum.E_AttrType.SPEED).value) / 60 -
             0.1;
           if (t.isInPoint(this.node.getPosition(), e)) {
@@ -286,12 +285,12 @@ var U =
       }
     };
     e.prototype.moveInPoint = function (t, e) {
-      var n = this;
-      var i = $battleMgr.default.instance.getCurScene();
-      var o = i.level.path;
-      var r = o.getPoint(this._pathPointId);
-      var a = this.node.getPosition();
-      var s = o.findPointValidMinLine(t, r, i.isWaitRescue);
+      const n = this;
+      const i = $battleMgr.default.instance.getCurScene();
+      const o = i.level.path;
+      const r = o.getPoint(this._pathPointId);
+      const a = this.node.getPosition();
+      const s = o.findPointValidMinLine(t, r, i.isWaitRescue);
       if (
         0 == $levelBattleData.levelBattleData.cfgStage.id &&
         $guideMgr.GuideMgr.instance.cfgGuideStepId ==
@@ -363,11 +362,11 @@ var U =
           !this._isSlide
         ) {
           this._isSlide = !0;
-          var c = r.pos.add(s.dir.mul(50));
-          var u =
+          const c = r.pos.add(s.dir.mul(50));
+          const u =
             this.getAttribute($attrEnum.E_AttrType.SPEED).value /
             this.getAttribute($attrEnum.E_AttrType.SPEED).baseValue;
-          var p = Math.max(0.05, 0.2 / u);
+          const p = Math.max(0.05, 0.2 / u);
           cc.tween(this.node)
             .to(p, {
               x: c.x,
@@ -396,7 +395,7 @@ var U =
         this.updateRoomId();
         this.changeState($actorEnum.EActorStateType.WALK);
       } else if ("" != this._moveTargetPointId) {
-        var m = o.getPoint(this._moveTargetPointId);
+        const m = o.getPoint(this._moveTargetPointId);
         if (
           m.isInPoint(
             this.node.getPosition(),
@@ -419,7 +418,7 @@ var U =
         $guideMgr.GuideMgr.instance.cfgGuideStepId >=
           $guideDataProxy.EGuideStepId.G_8
       ) {
-        var n = Array.from(
+        const n = Array.from(
           this._tempCollisionIdsMap
             .get($gridAreaDivisionMgr.E_AreaObjectType.DOOR)
             .values(),
@@ -440,10 +439,10 @@ var U =
         this._moveTargetPointId = "";
         return void this.changeState($actorEnum.EActorStateType.IDLE);
       }
-      var i = $battleMgr.default.instance.getCurScene().level.path;
-      var o = this.getAttribute($attrEnum.E_AttrType.SPEED).value * e + 20;
-      var r = i.getLine(this._pathLineId);
-      var a = this.node.getPosition();
+      const i = $battleMgr.default.instance.getCurScene().level.path;
+      const o = this.getAttribute($attrEnum.E_AttrType.SPEED).value * e + 20;
+      const r = i.getLine(this._pathLineId);
+      const a = this.node.getPosition();
       if (r.startPoint.isInPoint(a, o)) {
         this._pathLineId = "";
         this._pathPointId = r.startPoint.pointId;
@@ -453,13 +452,13 @@ var U =
         this._pathPointId = r.endPoint.pointId;
         this.moveInPoint(t, e);
       } else {
-        var s = (180 * t.angle(r.dir)) / Math.PI;
+        const s = (180 * t.angle(r.dir)) / Math.PI;
         if (s < 90) {
           this.moveDir = $mathUtil.MathUtil.vec2Fixed(r.dir);
           this._prevMoveDir = this.moveDir.clone();
           this._moveTargetPointId = r.endPoint.pointId;
         } else if (s > 90) {
-          var c = i.getLine(r.reverseLineId);
+          const c = i.getLine(r.reverseLineId);
           if (c) {
             this.moveDir = $mathUtil.MathUtil.vec2Fixed(c.dir);
             this._prevMoveDir = this.moveDir.clone();
@@ -525,8 +524,8 @@ var U =
           this.exitInvincible();
         }
       }
-      var n = this.node.convertToWorldSpaceAR(cc.Vec2.ZERO);
-      var i = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(
+      const n = this.node.convertToWorldSpaceAR(cc.Vec2.ZERO);
+      const i = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(
         this.node.x,
         this.node.y,
       );
@@ -537,26 +536,26 @@ var U =
       }
     };
     e.prototype.checkLevelObjectCollision = function (t, e, n) {
-      var i = this;
+      const i = this;
       this.needCheckCollisionType.forEach(function (o) {
-        var r =
+        const r =
           0 != $levelBattleData.levelBattleData.cfgStage.id &&
           o != $gridAreaDivisionMgr.E_AreaObjectType.DOOR &&
           o != $gridAreaDivisionMgr.E_AreaObjectType.GOOD &&
           o != $gridAreaDivisionMgr.E_AreaObjectType.ROOM_UNLOCK_AREA;
-        var a = i._tempCollisionIdsMap.get(o);
+        const a = i._tempCollisionIdsMap.get(o);
         if (r && i.curState == $actorEnum.EActorStateType.WALK) {
           a.forEach(function (t, e) {
-            var n = $unitMgr.UnitMgr.instance.getUnit(t);
+            const n = $unitMgr.UnitMgr.instance.getUnit(t);
             if (n) {
               n.playerCollisionExit(i);
               a.delete(e);
             }
           });
         } else {
-          var s = $gridAreaDivisionMgr.default.instance.getAreaObjectList(t, o);
+          const s = $gridAreaDivisionMgr.default.instance.getAreaObjectList(t, o);
           a.forEach(function (t, e) {
-            var n = $unitMgr.UnitMgr.instance.getUnit(t);
+            const n = $unitMgr.UnitMgr.instance.getUnit(t);
             if (n && s.includes(n)) {
               //
             } else {
@@ -567,7 +566,7 @@ var U =
             }
           });
           s.forEach(function (t) {
-            var o = t.getComponent($levelObjectBase.default);
+            const o = t.getComponent($levelObjectBase.default);
             if (o) {
               if (o.isCollisionByPlayer(i, e)) {
                 if (a.has(o.unitId)) {
@@ -585,10 +584,10 @@ var U =
       });
     };
     e.prototype.checkEnemyCollision = function (t, e, n) {
-      var i = this;
-      var o = this._tempCollisionEnemyIds;
+      const i = this;
+      const o = this._tempCollisionEnemyIds;
       if (this.curState != $actorEnum.EActorStateType.WALK) {
-        var r = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
+        const r = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
           t,
           $gridAreaDivisionMgr.E_AreaObjectType.ENEMY,
         );
@@ -607,7 +606,7 @@ var U =
           }
         }
         r.forEach(function (t) {
-          var r = t.getComponent($enemyBase.default);
+          const r = t.getComponent($enemyBase.default);
           if (r) {
             if (r.checkPlayerCollision(i, e)) {
               if (o.includes(r.unitId)) {
@@ -617,7 +616,7 @@ var U =
                 r.playerCollisionEnter(i);
               }
             } else {
-              var a = o.indexOf(r.unitId);
+              const a = o.indexOf(r.unitId);
               if (-1 != a) {
                 o.splice(a, 1);
                 r.playerCollisionExit(i);
@@ -626,8 +625,8 @@ var U =
           }
         });
       } else {
-        for (var a = 0; a < o.length; a++) {
-          var s;
+        for (const a = 0; a < o.length; a++) {
+          let s;
           if ((s = $actorMgr.default.instance.getActor(o[a]))) {
             s.playerCollisionExit(this);
             o.splice(a, 1);
@@ -645,7 +644,7 @@ var U =
     };
     e.prototype.onBeHurt = function (e) {
       t.prototype.onBeHurt.call(this, e);
-      var n = this.node.getChildByName("Body").getChildByName("SpAnim");
+      const n = this.node.getChildByName("Body").getChildByName("SpAnim");
       n.color = cc.Color.RED;
       cc.Tween.stopAllByTarget(n);
       cc.tween(n)
@@ -653,7 +652,7 @@ var U =
           color: cc.Color.WHITE,
         })
         .start();
-      var i = this.node.getChildByName("Body").getComponent(cc.Animation);
+      const i = this.node.getChildByName("Body").getComponent(cc.Animation);
       if (i) {
         i.play("PlayerHurt", 0);
       }
@@ -671,10 +670,10 @@ var U =
       $audioUtil.AudioUtil.playEffect("sounds/lmtw_yx_PlayerHit");
     };
     e.prototype.updateRoomId = function (e) {
-      var n = this.roomId;
+      const n = this.roomId;
       t.prototype.updateRoomId.call(this, e);
       if (n != this.roomId) {
-        var i = $battleMgr.default.instance
+        const i = $battleMgr.default.instance
           .getCurScene()
           .level.getRoomById(this.roomId);
         if (i) {
@@ -698,10 +697,10 @@ var U =
       ).contains(t);
     };
     e.prototype.onRemove = function () {
-      var e = this;
+      const e = this;
       this._tempCollisionIdsMap.forEach(function (t) {
         t.forEach(function (t) {
-          var n = $unitMgr.UnitMgr.instance.getUnit(t);
+          const n = $unitMgr.UnitMgr.instance.getUnit(t);
           if (n) {
             n.playerCollisionExit(e);
           }
@@ -715,11 +714,11 @@ var U =
       t.prototype.onRemove.call(this);
     };
     e.prototype.revive = function (t) {
-      var e = this;
+      const e = this;
       if (void 0 === t) {
         t = !1;
       }
-      var n = this.getAttribute($attrEnum.E_AttrType.HP).value;
+      const n = this.getAttribute($attrEnum.E_AttrType.HP).value;
       this._hp = n;
       this._head.updateHP(this._hp, n);
       this.changeState($actorEnum.EActorStateType.IDLE);
@@ -728,26 +727,26 @@ var U =
           $cfg.default.instance.dataCons.getById(132).val,
         );
         this.enterInvincible();
-        var i = $battleMgr.default.instance.getCurScene();
+        const i = $battleMgr.default.instance.getCurScene();
         if (!i.isResult) {
-          for (var o = this.node.getPosition(), r = 0; ; ) {
+          for (const o = this.node.getPosition(), r = 0; ; ) {
             if (this.isGroundMove) {
-              var s = i.level.getRoomById(this.roomId);
+              const s = i.level.getRoomById(this.roomId);
               if (s) {
                 r = s.getGroundY();
                 break;
               }
             }
-            var c = i.level.findLayerByPos(o);
+            const c = i.level.findLayerByPos(o);
             if (-1 != c) {
               r = i.level.getLayerPosY(c);
               break;
             }
             if ("" != this._pathLineId) {
-              var l = i.level.path.getLine(this._pathLineId);
+              const l = i.level.path.getLine(this._pathLineId);
               r = l.startPos.y;
             } else if ("" != this._pathPointId) {
-              var p = i.level.path.getPoint(this._pathPointId);
+              const p = i.level.path.getPoint(this._pathPointId);
               r = p.pos.y;
             }
             break;
@@ -803,7 +802,7 @@ var U =
       this.node.opacity = 255;
     };
     e.prototype.onEventAddSkill = function (t) {
-      var e = $skillMgr.SkillMgr.instance.createSkill(t, this);
+      const e = $skillMgr.SkillMgr.instance.createSkill(t, this);
       $eventManager.EventManager.instance.emit(
         $actorEnum.EPlayerEvent.PLAYER_CREATE_SKILL,
         t,
@@ -814,7 +813,7 @@ var U =
       this._skills.push(e);
     };
     e.prototype.onEventRemoveSkill = function (t) {
-      var e = this._skills.findIndex(function (e) {
+      const e = this._skills.findIndex(function (e) {
         return e.cfg.id == t;
       });
       if (-1 != e) {
@@ -837,6 +836,5 @@ var U =
       this.changeState($actorEnum.EActorStateType.IDLE);
     };
     e.prototype.onGuideChange = function () {};
-    return __decorate([j], e);
   })($actorBase.default));
 exports.default = U;

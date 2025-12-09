@@ -1,15 +1,15 @@
-var n;
-var i;
-var o =
+let n;
+let i;
+const o =
   o ||
   (function (t) {
-    var e = {};
-    var n = (e.lib = {});
-    var i = function () {};
-    var o = (n.Base = {
+    const e = {};
+    const n = (e.lib = {});
+    const i = function () {};
+    const o = (n.Base = {
       extend: function (t) {
         i.prototype = this;
-        var e = new i();
+        const e = new i();
         if (t) {
           e.mixIn(t);
         }
@@ -25,13 +25,13 @@ var o =
         return e;
       },
       create: function () {
-        var t = this.extend();
+        const t = this.extend();
         t.init.apply(t, arguments);
         return t;
       },
       init: function () {},
       mixIn: function (t) {
-        for (var e in t)
+        for (let e in t)
           if (t.hasOwnProperty(e)) {
             this[e] = t[e];
           }
@@ -43,7 +43,7 @@ var o =
         return this.init.prototype.extend(this);
       },
     });
-    var r = (n.WordArray = o.extend({
+    const r = (n.WordArray = o.extend({
       init: function (t, e) {
         t = this.words = t || [];
         if (null != e) {
@@ -56,13 +56,13 @@ var o =
         return (t || s).stringify(this);
       },
       concat: function (t) {
-        var e = this.words;
-        var n = t.words;
-        var i = this.sigBytes;
+        const e = this.words;
+        const n = t.words;
+        const i = this.sigBytes;
         t = t.sigBytes;
         this.clamp();
         if (i % 4) {
-          for (var o = 0; o < t; o++) {
+          for (const o = 0; o < t; o++) {
             e[(i + o) >>> 2] |=
               ((n[o >>> 2] >>> (24 - (o % 4) * 8)) & 255) <<
               (24 - ((i + o) % 4) * 8);
@@ -78,47 +78,47 @@ var o =
         return this;
       },
       clamp: function () {
-        var e = this.words;
-        var n = this.sigBytes;
+        const e = this.words;
+        const n = this.sigBytes;
         e[n >>> 2] &= 4294967295 << (32 - (n % 4) * 8);
         e.length = t.ceil(n / 4);
       },
       clone: function () {
-        var t = o.clone.call(this);
+        const t = o.clone.call(this);
         t.words = this.words.slice(0);
         return t;
       },
       random: function (e) {
-        for (var n = [], i = 0; i < e; i += 4) {
+        for (const n = [], i = 0; i < e; i += 4) {
           n.push((4294967296 * t.random()) | 0);
         }
         return new r.init(n, e);
       },
     }));
-    var a = (e.enc = {});
-    var s = (a.Hex = {
+    const a = (e.enc = {});
+    const s = (a.Hex = {
       stringify: function (t) {
-        var e = t.words;
+        const e = t.words;
         t = t.sigBytes;
-        for (var n = [], i = 0; i < t; i++) {
-          var o = (e[i >>> 2] >>> (24 - (i % 4) * 8)) & 255;
+        for (const n = [], i = 0; i < t; i++) {
+          const o = (e[i >>> 2] >>> (24 - (i % 4) * 8)) & 255;
           n.push((o >>> 4).toString(16));
           n.push((15 & o).toString(16));
         }
         return n.join("");
       },
       parse: function (t) {
-        for (var e = t.length, n = [], i = 0; i < e; i += 2) {
+        for (const e = t.length, n = [], i = 0; i < e; i += 2) {
           n[i >>> 3] |= parseInt(t.substr(i, 2), 16) << (24 - (i % 8) * 4);
         }
         return new r.init(n, e / 2);
       },
     });
-    var c = (a.Latin1 = {
+    const c = (a.Latin1 = {
       stringify: function (t) {
-        var e = t.words;
+        const e = t.words;
         t = t.sigBytes;
-        for (var n = [], i = 0; i < t; i++) {
+        for (const n = [], i = 0; i < t; i++) {
           n.push(
             String.fromCharCode((e[i >>> 2] >>> (24 - (i % 4) * 8)) & 255),
           );
@@ -126,13 +126,13 @@ var o =
         return n.join("");
       },
       parse: function (t) {
-        for (var e = t.length, n = [], i = 0; i < e; i++) {
+        for (const e = t.length, n = [], i = 0; i < e; i++) {
           n[i >>> 2] |= (255 & t.charCodeAt(i)) << (24 - (i % 4) * 8);
         }
         return new r.init(n, e);
       },
     });
-    var l = (a.Utf8 = {
+    const l = (a.Utf8 = {
       stringify: function (t) {
         try {
           return decodeURIComponent(escape(c.stringify(t)));
@@ -144,7 +144,7 @@ var o =
         return c.parse(unescape(encodeURIComponent(t)));
       },
     });
-    var u = (n.BufferedBlockAlgorithm = o.extend({
+    const u = (n.BufferedBlockAlgorithm = o.extend({
       reset: function () {
         this._data = new r.init();
         this._nDataBytes = 0;
@@ -157,15 +157,15 @@ var o =
         this._nDataBytes += t.sigBytes;
       },
       _process: function (e) {
-        var n = this._data;
-        var i = n.words;
-        var o = n.sigBytes;
-        var a = this.blockSize;
-        var s = o / (4 * a);
+        const n = this._data;
+        const i = n.words;
+        const o = n.sigBytes;
+        const a = this.blockSize;
+        const s = o / (4 * a);
         e = (s = e ? t.ceil(s) : t.max((0 | s) - this._minBufferSize, 0)) * a;
         o = t.min(4 * e, o);
         if (e) {
-          for (var c = 0; c < e; c += a) {
+          for (const c = 0; c < e; c += a) {
             this._doProcessBlock(i, c);
           }
           c = i.splice(0, e);
@@ -174,7 +174,7 @@ var o =
         return new r.init(c, o);
       },
       clone: function () {
-        var t = o.clone.call(this);
+        const t = o.clone.call(this);
         t._data = this._data.clone();
         return t;
       },
@@ -213,24 +213,24 @@ var o =
         };
       },
     });
-    var p = (e.algo = {});
+    const p = (e.algo = {});
     return e;
   })(Math);
 i = (n = o).lib.WordArray;
 n.enc.Base64 = {
   stringify: function (t) {
-    var e = t.words;
-    var n = t.sigBytes;
-    var i = this._map;
+    const e = t.words;
+    const n = t.sigBytes;
+    const i = this._map;
     t.clamp();
     t = [];
-    for (var o = 0; o < n; o += 3) {
+    for (const o = 0; o < n; o += 3) {
       for (
-        var r =
-            (((e[o >>> 2] >>> (24 - (o % 4) * 8)) & 255) << 16) |
-            (((e[(o + 1) >>> 2] >>> (24 - ((o + 1) % 4) * 8)) & 255) << 8) |
-            ((e[(o + 2) >>> 2] >>> (24 - ((o + 2) % 4) * 8)) & 255),
-          a = 0;
+        const r =
+                  (((e[o >>> 2] >>> (24 - (o % 4) * 8)) & 255) << 16) |
+                  (((e[(o + 1) >>> 2] >>> (24 - ((o + 1) % 4) * 8)) & 255) << 8) |
+                  ((e[(o + 2) >>> 2] >>> (24 - ((o + 2) % 4) * 8)) & 255),
+              a = 0;
         4 > a && o + 0.75 * a < n;
         a++
       ) {
@@ -245,15 +245,15 @@ n.enc.Base64 = {
     return t.join("");
   },
   parse: function (t) {
-    var e = t.length;
-    var n = this._map;
+    const e = t.length;
+    const n = this._map;
     if ((o = n.charAt(64)) && -1 != (o = t.indexOf(o))) {
       e = o;
     }
-    for (var o = [], r = 0, a = 0; a < e; a++) {
+    for (const o = [], r = 0, a = 0; a < e; a++) {
       if (a % 4) {
-        var s = n.indexOf(t.charAt(a - 1)) << ((a % 4) * 2);
-        var c = n.indexOf(t.charAt(a)) >>> (6 - (a % 4) * 2);
+        const s = n.indexOf(t.charAt(a - 1)) << ((a % 4) * 2);
+        const c = n.indexOf(t.charAt(a)) >>> (6 - (a % 4) * 2);
         o[r >>> 2] |= (s | c) << (24 - (r % 4) * 8);
         r++;
       }
@@ -283,12 +283,7 @@ n.enc.Base64 = {
     return (((t = t + (n ^ (e | ~i)) + o + a) << r) | (t >>> (32 - r))) + e;
   }
   for (
-    var a = o,
-      s = (l = a.lib).WordArray,
-      c = l.Hasher,
-      l = a.algo,
-      u = [],
-      p = 0;
+    const a = o, s = (l = a.lib).WordArray, c = l.Hasher, l = a.algo, u = [], p = 0;
     64 > p;
     p++
   ) {
@@ -299,32 +294,32 @@ n.enc.Base64 = {
       this._hash = new s.init([1732584193, 4023233417, 2562383102, 271733878]);
     },
     _doProcessBlock: function (t, o) {
-      for (var a = 0; 16 > a; a++) {
-        var s = t[(c = o + a)];
+      for (const a = 0; 16 > a; a++) {
+        const s = t[(c = o + a)];
         t[c] =
           (16711935 & ((s << 8) | (s >>> 24))) |
           (4278255360 & ((s << 24) | (s >>> 8)));
       }
       a = this._hash.words;
-      var c = t[o + 0];
-      var l = ((s = t[o + 1]), t[o + 2]);
-      var p = t[o + 3];
-      var h = t[o + 4];
-      var f = t[o + 5];
-      var d = t[o + 6];
-      var m = t[o + 7];
-      var y = t[o + 8];
-      var _ = t[o + 9];
-      var g = t[o + 10];
-      var v = t[o + 11];
-      var b = t[o + 12];
-      var E = t[o + 13];
-      var S = t[o + 14];
-      var P = t[o + 15];
-      var A = e((A = a[0]), (M = a[1]), (C = a[2]), (w = a[3]), c, 7, u[0]);
-      var w = e(w, A, M, C, s, 12, u[1]);
-      var C = e(C, w, A, M, l, 17, u[2]);
-      var M = e(M, C, w, A, p, 22, u[3]);
+      const c = t[o + 0];
+      const l = ((s = t[o + 1]), t[o + 2]);
+      const p = t[o + 3];
+      const h = t[o + 4];
+      const f = t[o + 5];
+      const d = t[o + 6];
+      const m = t[o + 7];
+      const y = t[o + 8];
+      const _ = t[o + 9];
+      const g = t[o + 10];
+      const v = t[o + 11];
+      const b = t[o + 12];
+      const E = t[o + 13];
+      const S = t[o + 14];
+      const P = t[o + 15];
+      const A = e((A = a[0]), (M = a[1]), (C = a[2]), (w = a[3]), c, 7, u[0]);
+      const w = e(w, A, M, C, s, 12, u[1]);
+      const C = e(C, w, A, M, l, 17, u[2]);
+      const M = e(M, C, w, A, p, 22, u[3]);
       A = e(A, M, C, w, h, 7, u[4]);
       w = e(w, A, M, C, f, 12, u[5]);
       C = e(C, w, A, M, d, 17, u[6]);
@@ -388,12 +383,12 @@ n.enc.Base64 = {
       a[3] = (a[3] + w) | 0;
     },
     _doFinalize: function () {
-      var e = this._data;
-      var n = e.words;
-      var i = 8 * this._nDataBytes;
-      var o = 8 * e.sigBytes;
+      const e = this._data;
+      const n = e.words;
+      const i = 8 * this._nDataBytes;
+      const o = 8 * e.sigBytes;
       n[o >>> 5] |= 128 << (24 - (o % 32));
-      var r = t.floor(i / 4294967296);
+      const r = t.floor(i / 4294967296);
       n[15 + (((o + 64) >>> 9) << 4)] =
         (16711935 & ((r << 8) | (r >>> 24))) |
         (4278255360 & ((r << 24) | (r >>> 8)));
@@ -412,7 +407,7 @@ n.enc.Base64 = {
       return e;
     },
     clone: function () {
-      var t = c.clone.call(this);
+      const t = c.clone.call(this);
       t._hash = this._hash.clone();
       return t;
     },
@@ -421,11 +416,11 @@ n.enc.Base64 = {
   a.HmacMD5 = c._createHmacHelper(l);
 })(Math);
 (function () {
-  var t;
-  var e = o;
-  var n = (t = e.lib).Base;
-  var i = t.WordArray;
-  var r = ((t = e.algo).EvpKDF = n.extend({
+  let t;
+  const e = o;
+  const n = (t = e.lib).Base;
+  const i = t.WordArray;
+  const r = ((t = e.algo).EvpKDF = n.extend({
     cfg: n.extend({
       keySize: 4,
       hasher: t.MD5,
@@ -436,19 +431,15 @@ n.enc.Base64 = {
     },
     compute: function (t, e) {
       for (
-        var n = (s = this.cfg).hasher.create(),
-          o = i.create(),
-          r = o.words,
-          a = s.keySize,
-          s = s.iterations;
+        const n = (s = this.cfg).hasher.create(), o = i.create(), r = o.words, a = s.keySize, s = s.iterations;
         r.length < a;
       ) {
         if (c) {
           n.update(c);
         }
-        var c = n.update(t).finalize(e);
+        const c = n.update(t).finalize(e);
         n.reset();
-        for (var l = 1; l < s; l++) {
+        for (const l = 1; l < s; l++) {
           c = n.finalize(c);
           n.reset();
         }
@@ -466,13 +457,13 @@ if (o.lib.Cipher) {
   //
 } else {
   (function () {
-    var t = (f = o).lib;
-    var e = t.Base;
-    var n = t.WordArray;
-    var i = t.BufferedBlockAlgorithm;
-    var r = f.enc.Base64;
-    var a = f.algo.EvpKDF;
-    var s = (t.Cipher = i.extend({
+    const t = (f = o).lib;
+    const e = t.Base;
+    const n = t.WordArray;
+    const i = t.BufferedBlockAlgorithm;
+    const r = f.enc.Base64;
+    const a = f.algo.EvpKDF;
+    const s = (t.Cipher = i.extend({
       cfg: e.extend(),
       createEncryptor: function (t, e) {
         return this.create(this._ENC_XFORM_MODE, t, e);
@@ -521,19 +512,19 @@ if (o.lib.Cipher) {
       },
       blockSize: 1,
     });
-    var c = (f.mode = {});
-    var l = function (t, e, n) {
-      var i = this._iv;
+    const c = (f.mode = {});
+    const l = function (t, e, n) {
+      const i = this._iv;
       if (i) {
         this._iv = void 0;
       } else {
         i = this._prevBlock;
       }
-      for (var o = 0; o < n; o++) {
+      for (const o = 0; o < n; o++) {
         t[e + o] ^= i[o];
       }
     };
-    var u = (t.BlockCipherMode = e.extend({
+    const u = (t.BlockCipherMode = e.extend({
       createEncryptor: function (t, e) {
         return this.Encryptor.create(t, e);
       },
@@ -547,8 +538,8 @@ if (o.lib.Cipher) {
     })).extend();
     u.Encryptor = u.extend({
       processBlock: function (t, e) {
-        var n = this._cipher;
-        var i = n.blockSize;
+        const n = this._cipher;
+        const i = n.blockSize;
         l.call(this, t, e, i);
         n.encryptBlock(t, e);
         this._prevBlock = t.slice(e, e + i);
@@ -556,9 +547,9 @@ if (o.lib.Cipher) {
     });
     u.Decryptor = u.extend({
       processBlock: function (t, e) {
-        var n = this._cipher;
-        var i = n.blockSize;
-        var o = t.slice(e, e + i);
+        const n = this._cipher;
+        const i = n.blockSize;
+        const o = t.slice(e, e + i);
         n.decryptBlock(t, e);
         l.call(this, t, e, i);
         this._prevBlock = o;
@@ -568,14 +559,14 @@ if (o.lib.Cipher) {
     u = (f.pad = {}).Pkcs7 = {
       pad: function (t, e) {
         for (
-          var i,
-            o =
-              ((i = (i = 4 * e) - (t.sigBytes % i)) << 24) |
-              (i << 16) |
-              (i << 8) |
-              i,
-            r = [],
-            a = 0;
+          let i,
+              o =
+                ((i = (i = 4 * e) - (t.sigBytes % i)) << 24) |
+                (i << 16) |
+                (i << 8) |
+                i,
+              r = [],
+              a = 0;
           a < i;
           a += 4
         ) {
@@ -595,10 +586,10 @@ if (o.lib.Cipher) {
       }),
       reset: function () {
         s.reset.call(this);
-        var t = (e = this.cfg).iv;
-        var e = e.mode;
+        const t = (e = this.cfg).iv;
+        const e = e.mode;
         if (this._xformMode == this._ENC_XFORM_MODE) {
-          var n = e.createEncryptor;
+          const n = e.createEncryptor;
         } else {
           n = e.createDecryptor;
           this._minBufferSize = 1;
@@ -609,10 +600,10 @@ if (o.lib.Cipher) {
         this._mode.processBlock(t, e);
       },
       _doFinalize: function () {
-        var t = this.cfg.padding;
+        const t = this.cfg.padding;
         if (this._xformMode == this._ENC_XFORM_MODE) {
           t.pad(this._data, this.blockSize);
-          var e = this._process(!0);
+          const e = this._process(!0);
         } else {
           e = this._process(!0);
           t.unpad(e);
@@ -621,7 +612,7 @@ if (o.lib.Cipher) {
       },
       blockSize: 4,
     });
-    var p = (t.CipherParams = e.extend({
+    const p = (t.CipherParams = e.extend({
       init: function (t) {
         this.mixIn(t);
       },
@@ -629,11 +620,11 @@ if (o.lib.Cipher) {
         return (t || this.formatter).stringify(this);
       },
     }));
-    var h =
+    const h =
       ((c = (f.format = {}).OpenSSL =
         {
           stringify: function (t) {
-            var e = t.ciphertext;
+            const e = t.ciphertext;
             return (
               (t = t.salt)
                 ? n.create([1398893684, 1701076831]).concat(t).concat(e)
@@ -641,9 +632,9 @@ if (o.lib.Cipher) {
             ).toString(r);
           },
           parse: function (t) {
-            var e = (t = r.parse(t)).words;
+            const e = (t = r.parse(t)).words;
             if (1398893684 == e[0] && 1701076831 == e[1]) {
-              var i = n.create(e.slice(2, 4));
+              const i = n.create(e.slice(2, 4));
               e.splice(0, 4);
               t.sigBytes -= 16;
             }
@@ -659,7 +650,7 @@ if (o.lib.Cipher) {
         }),
         encrypt: function (t, e, n, i) {
           i = this.cfg.extend(i);
-          var o = t.createEncryptor(n, i);
+          const o = t.createEncryptor(n, i);
           e = o.finalize(e);
           o = o.cfg;
           return p.create({
@@ -686,7 +677,7 @@ if (o.lib.Cipher) {
           }
         },
       })));
-    var f = ((f.kdf = {}).OpenSSL = {
+    const f = ((f.kdf = {}).OpenSSL = {
       execute: function (t, e, i, o) {
         if (o) {
           //
@@ -707,7 +698,7 @@ if (o.lib.Cipher) {
         });
       },
     });
-    var d = (t.PasswordBasedCipher = h.extend({
+    const d = (t.PasswordBasedCipher = h.extend({
       cfg: h.cfg.extend({
         kdf: f,
       }),
@@ -729,21 +720,7 @@ if (o.lib.Cipher) {
 }
 (function () {
   for (
-    var t = o,
-      e = t.lib.BlockCipher,
-      n = t.algo,
-      i = [],
-      r = [],
-      a = [],
-      s = [],
-      c = [],
-      l = [],
-      u = [],
-      p = [],
-      h = [],
-      f = [],
-      d = [],
-      m = 0;
+    const t = o, e = t.lib.BlockCipher, n = t.algo, i = [], r = [], a = [], s = [], c = [], l = [], u = [], p = [], h = [], f = [], d = [], m = 0;
     256 > m;
     m++
   ) {
@@ -753,19 +730,19 @@ if (o.lib.Cipher) {
       d[m] = (m << 1) ^ 283;
     }
   }
-  var y = 0;
-  var _ = 0;
+  const y = 0;
+  const _ = 0;
   for (m = 0; 256 > m; m++) {
-    var g =
+    const g =
       ((g = _ ^ (_ << 1) ^ (_ << 2) ^ (_ << 3) ^ (_ << 4)) >>> 8) ^
       (255 & g) ^
       99;
     i[y] = g;
     r[g] = y;
-    var v = d[y];
-    var b = d[v];
-    var E = d[b];
-    var S = (257 * d[g]) ^ (16843008 * g);
+    const v = d[y];
+    const b = d[v];
+    const E = d[b];
+    const S = (257 * d[g]) ^ (16843008 * g);
     a[y] = (S << 24) | (S >>> 8);
     s[y] = (S << 16) | (S >>> 16);
     c[y] = (S << 8) | (S >>> 24);
@@ -782,22 +759,18 @@ if (o.lib.Cipher) {
       y = _ = 1;
     }
   }
-  var P = [0, 1, 2, 4, 8, 16, 32, 64, 128, 27, 54];
+  const P = [0, 1, 2, 4, 8, 16, 32, 64, 128, 27, 54];
   n = n.AES = e.extend({
     _doReset: function () {
       for (
-        var t = (n = this._key).words,
-          e = n.sigBytes / 4,
-          n = 4 * ((this._nRounds = e + 6) + 1),
-          o = (this._keySchedule = []),
-          r = 0;
+        const t = (n = this._key).words, e = n.sigBytes / 4, n = 4 * ((this._nRounds = e + 6) + 1), o = (this._keySchedule = []), r = 0;
         r < n;
         r++
       ) {
         if (r < e) {
           o[r] = t[r];
         } else {
-          var a = o[r - 1];
+          const a = o[r - 1];
           if (r % e) {
             if (6 < e && 4 == r % e) {
               a =
@@ -840,7 +813,7 @@ if (o.lib.Cipher) {
       this._doCryptBlock(t, e, this._keySchedule, a, s, c, l, i);
     },
     decryptBlock: function (t, e) {
-      var n = t[e + 1];
+      const n = t[e + 1];
       t[e + 1] = t[e + 3];
       t[e + 3] = n;
       this._doCryptBlock(t, e, this._invKeySchedule, u, p, h, f, r);
@@ -850,29 +823,23 @@ if (o.lib.Cipher) {
     },
     _doCryptBlock: function (t, e, n, i, o, r, a, s) {
       for (
-        var c = this._nRounds,
-          l = t[e] ^ n[0],
-          u = t[e + 1] ^ n[1],
-          p = t[e + 2] ^ n[2],
-          h = t[e + 3] ^ n[3],
-          f = 4,
-          d = 1;
+        const c = this._nRounds, l = t[e] ^ n[0], u = t[e + 1] ^ n[1], p = t[e + 2] ^ n[2], h = t[e + 3] ^ n[3], f = 4, d = 1;
         d < c;
         d++
       ) {
-        var m =
+        const m =
           i[l >>> 24] ^
           o[(u >>> 16) & 255] ^
           r[(p >>> 8) & 255] ^
           a[255 & h] ^
           n[f++];
-        var y =
+        const y =
           i[u >>> 24] ^
           o[(p >>> 16) & 255] ^
           r[(h >>> 8) & 255] ^
           a[255 & l] ^
           n[f++];
-        var _ =
+        const _ =
           i[p >>> 24] ^
           o[(h >>> 16) & 255] ^
           r[(l >>> 8) & 255] ^
@@ -923,7 +890,7 @@ if (o.lib.Cipher) {
 })();
 o.pad.Iso10126 = {
   pad: function (t, e) {
-    var n = (n = 4 * e) - (t.sigBytes % n);
+    const n = (n = 4 * e) - (t.sigBytes % n);
     t.concat(o.lib.WordArray.random(n - 1)).concat(
       o.lib.WordArray.create([n << 24], 1),
     );

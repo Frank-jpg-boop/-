@@ -1,23 +1,23 @@
-var i;
-var $audioUtil = require("./AudioUtil");
-var $componentBase = require("./ComponentBase");
-var $eventManager = require("./EventManager");
-var $nodePoolManager = require("./NodePoolManager");
-var $resLoader = require("./ResLoader");
-var $battleMgr = require("./BattleMgr");
-var $bulletBase = require("./BulletBase");
-var $actorEnum = require("./ActorEnum");
-var $battleEnum = require("./BattleEnum");
-var $enemyRefreshMgr = require("./EnemyRefreshMgr");
-var $actorMgr = require("./ActorMgr");
-var $levelBattleData = require("./LevelBattleData");
-var b = cc._decorator;
-var E = b.ccclass;
-var S =
+import $audioUtil from './AudioUtil';
+import $componentBase from './ComponentBase';
+import $eventManager from './EventManager';
+import $nodePoolManager from './NodePoolManager';
+import $resLoader from './ResLoader';
+import $battleMgr from './BattleMgr';
+import $bulletBase from './BulletBase';
+import $actorEnum from './ActorEnum';
+import $battleEnum from './BattleEnum';
+import $enemyRefreshMgr from './EnemyRefreshMgr';
+import $actorMgr from './ActorMgr';
+import $levelBattleData from './LevelBattleData';
+let i;
+const b = cc._decorator;
+const E = b.ccclass;
+const S =
   (b.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._isInit = !1;
       e._isPlay = !1;
       e._isResult = !1;
@@ -42,7 +42,6 @@ var S =
       e.uiNode = null;
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "isLock", {
       get: function () {
         return this._isLock;
@@ -203,39 +202,11 @@ var S =
         this,
       );
     };
-    e.prototype.init = function () {
-      return __awaiter(this, void 0, Promise, function () {
-        var t = this;
-        return __generator(this, function (e) {
-          switch (e.label) {
-            case 0:
-              this._secondTime = 0;
-              this._isResult = !1;
-              this._popHurtMap.clear();
-              this.initCfg();
-              return [4, this.initAssets()];
-            case 1:
-              e.sent();
-              this.initMap();
-              return [4, this.onInit()];
-            case 2:
-              e.sent();
-              this.registerState();
-              return [
-                2,
-                new Promise(function (e) {
-                  t._isInit = !0;
-                  e();
-                }),
-              ];
-          }
-        });
-      });
-    };
+    e.prototype.init = function () {};
     e.prototype.initCfg = function () {};
     e.prototype.initAssets = function () {
-      var t = this;
-      var e = [];
+      const t = this;
+      const e = [];
       e.push.apply(e, this.getLoadMapResOption());
       e.push.apply(e, this.getLoadPrefabResOption());
       return new Promise(function (n) {
@@ -261,25 +232,14 @@ var S =
       return [];
     };
     e.prototype.initMap = function () {};
-    e.prototype.onInit = function () {
-      return __awaiter(this, void 0, Promise, function () {
-        return __generator(this, function () {
-          return [
-            2,
-            new Promise(function (t) {
-              t();
-            }),
-          ];
-        });
-      });
-    };
+    e.prototype.onInit = function () {};
     e.prototype.registerState = function () {};
     e.prototype.resume = function () {
       if (this._isPlay) {
         //
       } else {
         this._bulletParent.children.forEach(function (t) {
-          var e;
+          let e;
           if (
             null === (e = t.getComponent($bulletBase.default)) ||
             void 0 === e
@@ -303,7 +263,7 @@ var S =
       }
       if (this._isPlay) {
         this._bulletParent.children.forEach(function (t) {
-          var e;
+          let e;
           if (
             null === (e = t.getComponent($bulletBase.default)) ||
             void 0 === e
@@ -372,7 +332,7 @@ var S =
         }
         $actorMgr.default.instance.queryActor().forEach(function (e) {
           if (0 == e.fixedZIndex) {
-            var n = 10 * -e.node.y + e.actorType;
+            const n = 10 * -e.node.y + e.actorType;
             n = Math.max(cc.macro.MIN_ZINDEX, n);
             n = Math.min(cc.macro.MAX_ZINDEX, n);
             e.node.zIndex = n;
@@ -387,7 +347,7 @@ var S =
     e.prototype.onUpdate = function () {};
     e.prototype.secondUpdate = function () {};
     e.prototype.win = function () {
-      for (var t = [], e = 0; e < arguments.length; e++) {
+      for (const t = [], e = 0; e < arguments.length; e++) {
         t[e] = arguments[e];
       }
       if (this._isResult) {
@@ -398,7 +358,7 @@ var S =
       }
     };
     e.prototype.onWin = function () {
-      for (var t = [], e = 0; e < arguments.length; e++) {
+      for (const t = [], e = 0; e < arguments.length; e++) {
         t[e] = arguments[e];
       }
     };
@@ -421,8 +381,8 @@ var S =
     };
     e.prototype.removePopHurt = function (t, e) {
       if (this._popHurtMap.has(t)) {
-        var n = this._popHurtMap.get(t);
-        var i = n.indexOf(e);
+        const n = this._popHurtMap.get(t);
+        const i = n.indexOf(e);
         if (-1 != i) {
           n.splice(i, 1);
         }
@@ -436,6 +396,5 @@ var S =
       }
     };
     e.prototype.onActorDeadRemove = function () {};
-    return __decorate([E], e);
   })($componentBase.ComponentBase));
 exports.default = S;

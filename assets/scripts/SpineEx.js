@@ -4,11 +4,11 @@ sp &&
     if (!t) {
       return null;
     }
-    var e = new sp.SkeletonData();
+    const e = new sp.SkeletonData();
     cc.js.mixin(e, t);
-    var n = Date.now();
+    const n = Date.now();
     e._uuid = t._uuid + "_" + n + "_copy";
-    for (var i = e.textureNames, o = [], r = 0; r < i.length; r++) {
+    for (const i = e.textureNames, o = [], r = 0; r < i.length; r++) {
       e.atlasText = e.atlasText.replace(i[r], "copy_" + i[r]);
       o.push("copy_" + i[r]);
     }
@@ -19,16 +19,16 @@ sp &&
     return e;
   }),
   (sp.Skeleton.prototype.updateRegion = function (t, e) {
-    var n = this.findSlot(t);
+    const n = this.findSlot(t);
     if (null != n) {
-      var i = n.getAttachment();
+      const i = n.getAttachment();
       if (null != i) {
-        var o = new sp.SkeletonTexture({
+        const o = new sp.SkeletonTexture({
           width: e.width,
           height: e.height,
         });
         o.setRealTexture(e);
-        var r = new sp.spine.TextureAtlasRegion();
+        const r = new sp.spine.TextureAtlasRegion();
         r.width = e.width;
         r.height = e.height;
         r.originalWidth = e.width;

@@ -1,18 +1,17 @@
-var i;
-var $stateMachine = require("./StateMachine");
-var $actorEnum = require("./ActorEnum");
-var $actorBase = require("./ActorBase");
-var $enemyItem_Dead = require("./EnemyItem_Dead");
-var $enemyItem_Idle = require("./EnemyItem_Idle");
-var p = cc._decorator;
-var h = p.ccclass;
-var f =
+import $stateMachine from './StateMachine';
+import $actorEnum from './ActorEnum';
+import $actorBase from './ActorBase';
+import $enemyItem_Dead from './EnemyItem_Dead';
+import $enemyItem_Idle from './EnemyItem_Idle';
+let i;
+const p = cc._decorator;
+const h = p.ccclass;
+const f =
   (p.property,
   (function (t) {
     function e() {
       return (null !== t && t.apply(this, arguments)) || this;
     }
-    __extends(e, t);
     e.prototype.initType = function () {
       this._actorType = $actorEnum.EActorType.ENEMY;
     };
@@ -59,6 +58,5 @@ var f =
         })
         .start();
     };
-    return __decorate([h], e);
   })($actorBase.default));
 exports.default = f;

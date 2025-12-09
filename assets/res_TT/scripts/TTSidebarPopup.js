@@ -1,27 +1,26 @@
-var n;
-var $cfg = require("../../scripts/Cfg");
-var $eventManager = require("../../scripts/EventManager");
-var $mathUtil = require("../../scripts/MathUtil");
-var $appProxy = require("../../scripts/AppProxy");
-var $popupBase = require("../../scripts/PopupBase");
-var $gameEnum = require("../../scripts/GameEnum");
-var $dataMgr = require("../../scripts/DataMgr");
-var $itemDataProxy = require("../../scripts/ItemDataProxy");
-var $localDataProxy = require("../../scripts/LocalDataProxy");
-var $tTSidebarItem = require("./TTSidebarItem");
-var v = cc._decorator;
-var E = v.ccclass;
-var _ = v.property;
-var T = (function (e) {
+import $cfg from '../../scripts/Cfg';
+import $eventManager from '../../scripts/EventManager';
+import $mathUtil from '../../scripts/MathUtil';
+import $appProxy from '../../scripts/AppProxy';
+import $popupBase from '../../scripts/PopupBase';
+import $gameEnum from '../../scripts/GameEnum';
+import $dataMgr from '../../scripts/DataMgr';
+import $itemDataProxy from '../../scripts/ItemDataProxy';
+import $localDataProxy from '../../scripts/LocalDataProxy';
+import $tTSidebarItem from './TTSidebarItem';
+let n;
+const v = cc._decorator;
+const E = v.ccclass;
+const _ = v.property;
+const T = (function (e) {
     function t() {
-        var t = (null !== e && e.apply(this, arguments)) || this;
+        const t = (null !== e && e.apply(this, arguments)) || this;
         t.nBtnReceive = null;
         t.nBtnTarget = null;
         t.nComplete = null;
         t.lName = null;
         return t;
     }
-    __extends(t, e);
     t.prototype.onDisable = function () {
         $eventManager.EventManager.instance.off($appProxy.AppEvent.GAME_SHOW, this.updateView, this);
     };
@@ -29,14 +28,14 @@ var T = (function (e) {
         this.lName.string = yzll.gameConfig.gameName;
         this.nBtnReceive.active = this.nBtnTarget.active = !1;
         $eventManager.EventManager.instance.on($appProxy.AppEvent.GAME_SHOW, this.updateView, this);
-        var e = $cfg.default.instance.dataCons.getById(18).val.split("_").map(Number);
-        var t = (e[0], e[1]);
+        const e = $cfg.default.instance.dataCons.getById(18).val.split("_").map(Number);
+        const t = (e[0], e[1]);
         this.node.getChildByName("quality").getChildByName("num").getComponent(cc.Label).string =
             "x" + $mathUtil.MathUtil.formatValue(t);
         this.updateView();
     };
     t.prototype.updateView = function () {
-        var e =
+        const e =
             $localDataProxy.localDataProxy.getDailyRefreshValue($gameEnum.Game.EDailyRefreshDataKey.TT_SIDEBAR_REWARD) >
             0;
         this.nBtnReceive.active = $dataMgr.DataMgr.isSidebarCardInGameForTT && !e;
@@ -56,8 +55,8 @@ var T = (function (e) {
                 1
             );
             $dataMgr.DataMgr.isSidebarCardInGameForTT = !1;
-            var e = $cfg.default.instance.dataCons.getById(18).val.split("_").map(Number);
-            var t = [
+            const e = $cfg.default.instance.dataCons.getById(18).val.split("_").map(Number);
+            const t = [
                 {
                     itemId: e[0],
                     itemNum: e[1]
@@ -72,7 +71,7 @@ var T = (function (e) {
         this.removeUI();
     };
     t.prototype.onClickBtnGoto = function () {
-        var e = this;
+        const e = this;
         if (cc.sys.platform == cc.sys.BYTEDANCE_GAME) {
             tt.navigateToScene({
                 scene: "sidebar",
@@ -94,10 +93,5 @@ var T = (function (e) {
             }
         }
     };
-    __decorate([_(cc.Node)], t.prototype, "nBtnReceive", void 0);
-    __decorate([_(cc.Node)], t.prototype, "nBtnTarget", void 0);
-    __decorate([_(cc.Node)], t.prototype, "nComplete", void 0);
-    __decorate([_(cc.Label)], t.prototype, "lName", void 0);
-    return __decorate([E], t);
 })($popupBase.PopupBase);
 exports.default = T;

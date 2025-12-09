@@ -1,49 +1,49 @@
-var i;
-var $cfg = require("./Cfg");
-var $animationCfgMgr = require("./AnimationCfgMgr");
-var $animationCtrl = require("./AnimationCtrl");
-var $mathUtil = require("./MathUtil");
-var $randomUtil = require("./RandomUtil");
-var $battleMgr = require("./BattleMgr");
-var $stateMachine = require("./StateMachine");
-var $gridAreaDivisionMgr = require("./GridAreaDivisionMgr");
-var $simplyCollisionDetector = require("./SimplyCollisionDetector");
-var $simplyVec2 = require("./SimplyVec2");
-var $actorEnum = require("./ActorEnum");
-var $attrEnum = require("./AttrEnum");
-var $battleEnum = require("./BattleEnum");
-var $shimmerWhite = require("./ShimmerWhite");
-var $door = require("./Door");
-var $unitMgr = require("./UnitMgr");
-var $actorBase = require("./ActorBase");
-var $actorMgr = require("./ActorMgr");
-var $enemyAttackState = require("./EnemyAttackState");
-var $enemyDeadState = require("./EnemyDeadState");
-var $enemyStopState = require("./EnemyStopState");
-var $enemyIdleState = require("./EnemyIdleState");
-var $enemyWalkState = require("./EnemyWalkState");
-var $spAnimCtrl = require("./SpAnimCtrl");
-var $frameEnum = require("./FrameEnum");
-var $enemySkillState = require("./EnemySkillState");
-var $bulletMgr = require("./BulletMgr");
-var $commonEnemyBullet = require("./CommonEnemyBullet");
-var $nodeUtil = require("./NodeUtil");
-var $effectMgr = require("./EffectMgr");
-var $spAnimEffect = require("./SpAnimEffect");
-var $itemDataProxy = require("./ItemDataProxy");
-var $eventManager = require("./EventManager");
-var $audioUtil = require("./AudioUtil");
-var $levelBattleData = require("./LevelBattleData");
-var $guideMgr = require("./GuideMgr");
-var $guideDataProxy = require("./GuideDataProxy");
-var $skillMgr = require("./SkillMgr");
-var W = cc._decorator;
-var q = W.ccclass;
-var z =
+import $cfg from './Cfg';
+import $animationCfgMgr from './AnimationCfgMgr';
+import $animationCtrl from './AnimationCtrl';
+import $mathUtil from './MathUtil';
+import $randomUtil from './RandomUtil';
+import $battleMgr from './BattleMgr';
+import $stateMachine from './StateMachine';
+import $gridAreaDivisionMgr from './GridAreaDivisionMgr';
+import $simplyCollisionDetector from './SimplyCollisionDetector';
+import $simplyVec2 from './SimplyVec2';
+import $actorEnum from './ActorEnum';
+import $attrEnum from './AttrEnum';
+import $battleEnum from './BattleEnum';
+import $shimmerWhite from './ShimmerWhite';
+import $door from './Door';
+import $unitMgr from './UnitMgr';
+import $actorBase from './ActorBase';
+import $actorMgr from './ActorMgr';
+import $enemyAttackState from './EnemyAttackState';
+import $enemyDeadState from './EnemyDeadState';
+import $enemyStopState from './EnemyStopState';
+import $enemyIdleState from './EnemyIdleState';
+import $enemyWalkState from './EnemyWalkState';
+import $spAnimCtrl from './SpAnimCtrl';
+import $frameEnum from './FrameEnum';
+import $enemySkillState from './EnemySkillState';
+import $bulletMgr from './BulletMgr';
+import $commonEnemyBullet from './CommonEnemyBullet';
+import $nodeUtil from './NodeUtil';
+import $effectMgr from './EffectMgr';
+import $spAnimEffect from './SpAnimEffect';
+import $itemDataProxy from './ItemDataProxy';
+import $eventManager from './EventManager';
+import $audioUtil from './AudioUtil';
+import $levelBattleData from './LevelBattleData';
+import $guideMgr from './GuideMgr';
+import $guideDataProxy from './GuideDataProxy';
+import $skillMgr from './SkillMgr';
+let i;
+const W = cc._decorator;
+const q = W.ccclass;
+const z =
   (W.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._animCtrl = null;
       e._spCtrl = null;
       e._cfg = null;
@@ -65,7 +65,6 @@ var z =
       e.tempCollisionDoorIds = [];
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "cfg", {
       get: function () {
         return this._cfg;
@@ -144,28 +143,28 @@ var z =
       this._actorType = $actorEnum.EActorType.ENEMY;
     };
     e.prototype.initPos = function () {
-      var t = this.searchTarget();
+      const t = this.searchTarget();
       if (t) {
         this.setDirX(t.node.x > this.node.x);
       }
     };
     e.prototype.initAttribute = function () {
-      var e = this;
+      const e = this;
       t.prototype.initAttribute.call(this);
       this._actorAttribute.init($attrEnum.E_AttrType);
-      var n = null;
+      const n = null;
       if (this._initParam && this._initParam.lv) {
         n = this._initParam.lv;
       } else {
         n = 0;
       }
       n = Math.ceil(n * $levelBattleData.levelBattleData.enemyLevelRate);
-      var i = Math.floor(
+      const i = Math.floor(
         (this._cfg.ark + this._cfg.arkP * n) *
           $levelBattleData.levelBattleData.stageEnemyAtkScale,
       );
       this.getAttribute($attrEnum.E_AttrType.ATK).setFixBase(i);
-      var o = Math.floor(
+      const o = Math.floor(
         this._cfg.hp +
           this._cfg.hpP *
             n *
@@ -177,17 +176,17 @@ var z =
       this.getAttribute($attrEnum.E_AttrType.HP).setFixBase(o);
       this.getAttribute($attrEnum.E_AttrType.SPEED).setBaseGetValueFunc(
         function () {
-          var t = e._cfg.spe;
+          const t = e._cfg.spe;
           if (1 != e._cfg.moveType) {
             return t;
           }
-          var n = $battleMgr.default.instance.getCurScene();
-          var i = $actorMgr.default.instance.getActor(n.playerId);
+          const n = $battleMgr.default.instance.getCurScene();
+          const i = $actorMgr.default.instance.getActor(n.playerId);
           if (i) {
-            var o = n.level.getRoomById(e.roomId);
-            var r = n.level.getRoomById(i.roomId);
+            const o = n.level.getRoomById(e.roomId);
+            const r = n.level.getRoomById(i.roomId);
             if (o && r) {
-              var a = Math.abs(o.layer - r.layer);
+              const a = Math.abs(o.layer - r.layer);
               t *= Math.pow(1.4, a);
             }
           }
@@ -198,13 +197,13 @@ var z =
           }
         },
       );
-      var r = $cfg.default.instance.dataAtt.getById(
+      const r = $cfg.default.instance.dataAtt.getById(
         $attrEnum.E_AttrType.CRIT_HURT,
       ).val;
       this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).setFixBase(r);
     };
     e.prototype.onInit = function () {
-      var e = this;
+      const e = this;
       this._isTrigger = this._actorType != $actorEnum.EActorType.BOSS;
       if (this._actorType == $actorEnum.EActorType.BOSS) {
         $eventManager.EventManager.instance.on(
@@ -219,9 +218,9 @@ var z =
       this._rewardMap = this._initParam.rewardMap;
       if ("" != this._cfg.dropAll) {
         this._cfg.dropAll.split("|").forEach(function (t) {
-          var n = t.split("_").map(Number);
-          var i = n[0];
-          var o = n[1];
+          const n = t.split("_").map(Number);
+          const i = n[0];
+          const o = n[1];
           if ($itemDataProxy.itemDataProxy.checkCanDropReward(i)) {
             if (e._rewardMap.has(i)) {
               e._rewardMap.set(i, e._rewardMap.get(i) + o);
@@ -233,9 +232,9 @@ var z =
       }
       if ("" != this._cfg.dropPro) {
         this._cfg.dropPro.split("|").forEach(function (t) {
-          var n = t.split("_").map(Number);
-          var i = n[0];
-          var o = n[1];
+          const n = t.split("_").map(Number);
+          const i = n[0];
+          const o = n[1];
           if (
             $itemDataProxy.itemDataProxy.checkCanDropReward(i) &&
             Math.random() < o
@@ -266,8 +265,8 @@ var z =
       t.prototype.onInit.call(this);
     };
     e.prototype.initAnim = function () {
-      var t = this;
-      var e = this.node.getChildByName("Body").getChildByName("Anim");
+      const t = this;
+      const e = this.node.getChildByName("Body").getChildByName("Anim");
       if (0 == this._cfg.isBoss) {
         this._animCtrl = e.getComponent($animationCtrl.default);
       } else {
@@ -321,7 +320,7 @@ var z =
       });
     };
     e.prototype.playShowAnim = function () {
-      var t = this;
+      const t = this;
       return new Promise(function (e) {
         cc.tween(t.node)
           .to(0.2, {
@@ -391,7 +390,7 @@ var z =
       }
     };
     e.prototype.playAnimAttack = function (t, e) {
-      var n = this;
+      const n = this;
       if (this.isDead()) {
         //
       } else {
@@ -449,7 +448,7 @@ var z =
       }
     };
     e.prototype.playAnimSkill = function (t) {
-      for (var e = [], n = 1; n < arguments.length; n++) {
+      for (const e = [], n = 1; n < arguments.length; n++) {
         e[n - 1] = arguments[n];
       }
       if (t) {
@@ -486,7 +485,7 @@ var z =
       return t.prototype.canAttack.call(this) && this._attackCD <= 0;
     };
     e.prototype.canBeSearch = function () {
-      var e = $battleMgr.default.instance.getCurScene();
+      const e = $battleMgr.default.instance.getCurScene();
       return (
         !!e &&
         !(this._isFixCreate && !e.level.getRoomById(this._roomId).isArriveed) &&
@@ -498,7 +497,7 @@ var z =
       return t.prototype.canBeRepel.call(this) && 0 == this._cfg.isHard;
     };
     e.prototype.canBeHurt = function () {
-      var e = $battleMgr.default.instance.getCurScene();
+      const e = $battleMgr.default.instance.getCurScene();
       return (
         !!e &&
         !(
@@ -518,8 +517,8 @@ var z =
           this._attackCD = 0;
         }
       }
-      var n = this.node.convertToWorldSpaceAR(cc.Vec2.ZERO);
-      var i = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(
+      const n = this.node.convertToWorldSpaceAR(cc.Vec2.ZERO);
+      const i = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(
         this.node.x,
         this.node.y,
       );
@@ -527,16 +526,16 @@ var z =
     };
     e.prototype.checkDoor = function (t, e, n) {
       for (
-        var i = this,
-          o = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
-            t,
-            $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
-          ),
-          r = 0;
+        const i = this,
+              o = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
+                t,
+                $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
+              ),
+              r = 0;
         r < this.tempCollisionDoorIds.length;
         r++
       ) {
-        var a = $unitMgr.UnitMgr.instance.getUnit(this.tempCollisionDoorIds[r]);
+        const a = $unitMgr.UnitMgr.instance.getUnit(this.tempCollisionDoorIds[r]);
         if (a) {
           if (o.includes(a)) {
             //
@@ -551,8 +550,8 @@ var z =
         }
       }
       o.forEach(function (t) {
-        var o = t.getComponent($door.default);
-        var r = o.selfCollider;
+        const o = t.getComponent($door.default);
+        const r = o.selfCollider;
         if (o && r) {
           if (
             $simplyCollisionDetector.default.isCollisionPointToRect(
@@ -567,7 +566,7 @@ var z =
               o.onEnemyEnter(i);
             }
           } else {
-            var a = i.tempCollisionDoorIds.indexOf(o.unitId);
+            const a = i.tempCollisionDoorIds.indexOf(o.unitId);
             if (-1 != a) {
               i.tempCollisionDoorIds.splice(a, 1);
               o.onEnemyExit(i);
@@ -577,15 +576,15 @@ var z =
       });
     };
     e.prototype.attackHit = function (t) {
-      for (var e = [], n = 1; n < arguments.length; n++) {
+      for (const e = [], n = 1; n < arguments.length; n++) {
         e[n - 1] = arguments[n];
       }
       if (t && t.isValid) {
-        var i = t.getComponent($door.default);
+        const i = t.getComponent($door.default);
         if (i && i.state != $door.EDoorState.DESTROY) {
           i.beHurt(this.getAttribute($attrEnum.E_AttrType.ATK).value);
         } else if (2 != this._cfg.enemyType && 3 != this._cfg.enemyType) {
-          var o = t.getComponent($actorBase.default);
+          const o = t.getComponent($actorBase.default);
           if (
             o &&
             cc.Vec2.squaredDistance(
@@ -596,9 +595,9 @@ var z =
             o.beHurt(this.getHurt());
           }
         } else {
-          var r = this._cfg.hitAni;
+          const r = this._cfg.hitAni;
           this.shootCommonBullet(t, this._cfg.enemyType, function (t) {
-            var e = $battleMgr.default.instance.getCurScene();
+            const e = $battleMgr.default.instance.getCurScene();
             $effectMgr.default.instance.createEffect({
               parent: e.effectParent,
               prefabName: r,
@@ -613,21 +612,21 @@ var z =
       }
     };
     e.prototype.shootCommonBullet = function (t, e, n) {
-      var i = this;
+      const i = this;
       if (void 0 === n) {
         n = null;
       }
-      var o = t.getComponent($actorBase.default);
-      var r = void 0;
+      const o = t.getComponent($actorBase.default);
+      const r = void 0;
       if (o) {
-        var s = o.getBeHurtPos();
+        const s = o.getBeHurtPos();
         if (2 == e) {
-          var c = s.sub(this.shootPos).normalize();
-          var l = Number($cfg.default.instance.dataCons.getById(171).val);
+          const c = s.sub(this.shootPos).normalize();
+          const l = Number($cfg.default.instance.dataCons.getById(171).val);
           s = this.shootPos.add(c.mul(this._attackRange * l));
         }
         if (3 == e) {
-          var h = $battleMgr.default.instance.getCurScene();
+          const h = $battleMgr.default.instance.getCurScene();
           r = h.level.getLayerPosY(h.level.findLayerByPos(s));
         }
         $bulletMgr.default.instance.createBullet({
@@ -649,8 +648,8 @@ var z =
       }
     };
     e.prototype.getHurt = function () {
-      var t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
-      var e =
+      const t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
+      const e =
         Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
       if (e) {
         t *= this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).value;
@@ -674,18 +673,16 @@ var z =
     };
     e.prototype.updatePathData = function () {
       for (
-        var t = $mathUtil.MathUtil.vec2Fixed(this._pathPos),
-          e = $battleMgr.default.instance.getCurScene().level.path,
-          n = (1 * this.getAttribute($attrEnum.E_AttrType.SPEED).value) / 60;
+        const t = $mathUtil.MathUtil.vec2Fixed(this._pathPos), e = $battleMgr.default.instance.getCurScene().level.path, n = (1 * this.getAttribute($attrEnum.E_AttrType.SPEED).value) / 60;
         ;
       ) {
-        var i = e.findPathPointByPos(t, n - 0.5);
+        const i = e.findPathPointByPos(t, n - 0.5);
         if ("" != i) {
           this._pathPointId = i;
           this._pathLineId = "";
           break;
         }
-        var o = e.findPathLineByPos(t);
+        const o = e.findPathLineByPos(t);
         if ("" != o) {
           this._pathLineId = o;
           this._pathPointId = "";
@@ -695,9 +692,9 @@ var z =
       this.updateRoomId();
     };
     e.prototype.onBeHurt = function (e) {
-      var n = this;
+      const n = this;
       t.prototype.onBeHurt.call(this, e);
-      var i = this.node.getChildByName("Body").getComponent(cc.Animation);
+      const i = this.node.getChildByName("Body").getComponent(cc.Animation);
       if (i) {
         this.fixedZIndex = cc.macro.MAX_ZINDEX;
         i.once(
@@ -720,7 +717,7 @@ var z =
         }
         i.play("EnemyHurt", 0);
       }
-      var o = this.node
+      const o = this.node
         .getChildByName("Body")
         .getChildByName("Anim")
         .getComponent($shimmerWhite.default);
@@ -730,19 +727,19 @@ var z =
     };
     e.prototype.searchTarget = function () {
       for (
-        var t = $actorMgr.default.instance.queryActorByCamp(
-            $actorEnum.ETeamType.PLAYER,
-          ),
-          e = this.node.getPosition(),
-          n = Number.MAX_VALUE,
-          i = null,
-          o = 0;
+        const t = $actorMgr.default.instance.queryActorByCamp(
+                  $actorEnum.ETeamType.PLAYER,
+                ),
+              e = this.node.getPosition(),
+              n = Number.MAX_VALUE,
+              i = null,
+              o = 0;
         o < t.length;
         o++
       ) {
-        var r = t[o];
+        const r = t[o];
         if (!r.isDead() && r.canBeSearch()) {
-          var a = cc.Vec2.squaredDistance(r.node.getPosition(), e);
+          const a = cc.Vec2.squaredDistance(r.node.getPosition(), e);
           if (null == i || a < n) {
             n = a;
             i = r;
@@ -765,26 +762,26 @@ var z =
       t.prototype.onRemove.call(this);
     };
     e.prototype.onDie = function () {
-      var e = this;
+      const e = this;
       this.tempCollisionDoorIds.forEach(function (t) {
-        var n = $unitMgr.UnitMgr.instance.getUnit(t);
+        const n = $unitMgr.UnitMgr.instance.getUnit(t);
         if (n) {
           n.onEnemyExit(e);
         }
       });
       this.tempCollisionDoorIds = [];
-      var n = $battleMgr.default.instance.getCurScene();
-      var i = 0;
+      const n = $battleMgr.default.instance.getCurScene();
+      const i = 0;
       if (!n.isResult && !this.isNotReward) {
-        for (var o = this.node.getPosition(), r = 0; ; ) {
+        for (const o = this.node.getPosition(), r = 0; ; ) {
           if (this.isGroundMove && (c = n.level.getRoomById(this.roomId))) {
             i = this.roomId;
             r = c.getGroundY();
             break;
           }
-          var s = n.level.findLayerByPos(o);
+          const s = n.level.findLayerByPos(o);
           if (-1 != s) {
-            var c;
+            let c;
             r = n.level.getLayerPosY(s);
             if ((c = n.level.getRoomByPos(s, this.node.getPosition()))) {
               i = c.cfg.id;
@@ -792,50 +789,50 @@ var z =
             break;
           }
           if ("" != this._pathLineId) {
-            var l = n.level.path.getLine(this._pathLineId);
+            const l = n.level.path.getLine(this._pathLineId);
             r = l.startPos.y;
             i = l.roomId;
           } else if ("" != this._pathPointId) {
-            var h = n.level.path.getPoint(this._pathPointId);
+            const h = n.level.path.getPoint(this._pathPointId);
             r = h.pos.y;
             i = h.roomId;
           }
           break;
         }
         o.y += 0.5 * this.rightHeight;
-        var d = 0;
+        const d = 0;
         this._rewardMap.forEach(function (t, s) {
           if ($itemDataProxy.itemDataProxy.checkCanDropReward(s)) {
             $cfg.default.instance.dataReward.getById(s);
             for (
-              var c = t,
-                l = function () {
-                  var t =
-                    (25 * Math.min(Math.floor(d / 2) + 1, 5) +
-                      $randomUtil.RandomUtil.randomInt(-10, 10)) *
-                    (d % 2 == 0 ? 1 : -1);
-                  t = Math.max(t, e.dropMinOffsetX);
-                  t = Math.min(t, e.dropMaxOffsetX);
-                  $unitMgr.UnitMgr.instance.createUnit({
-                    areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.GOOD,
-                    areaColliderType:
-                      $gridAreaDivisionMgr.E_AreaColliderType.RECT,
-                    parent: n.unitParent,
-                    prefabName: "SceneGood",
-                    unitClass: "SceneGood",
-                    initPos: o,
-                    initParam: {
-                      rewardId: s,
-                      rewardNum: 1,
-                    },
-                    onCreated: function (e) {
-                      e.updateRoomId(i);
-                      e.drop(r, t, 0.5, 40, 0.2);
-                    },
-                  });
-                  --c;
-                  d++;
-                };
+              const c = t,
+                    l = function () {
+                      const t =
+                        (25 * Math.min(Math.floor(d / 2) + 1, 5) +
+                          $randomUtil.RandomUtil.randomInt(-10, 10)) *
+                        (d % 2 == 0 ? 1 : -1);
+                      t = Math.max(t, e.dropMinOffsetX);
+                      t = Math.min(t, e.dropMaxOffsetX);
+                      $unitMgr.UnitMgr.instance.createUnit({
+                        areaObjType: $gridAreaDivisionMgr.E_AreaObjectType.GOOD,
+                        areaColliderType:
+                          $gridAreaDivisionMgr.E_AreaColliderType.RECT,
+                        parent: n.unitParent,
+                        prefabName: "SceneGood",
+                        unitClass: "SceneGood",
+                        initPos: o,
+                        initParam: {
+                          rewardId: s,
+                          rewardNum: 1,
+                        },
+                        onCreated: function (e) {
+                          e.updateRoomId(i);
+                          e.drop(r, t, 0.5, 40, 0.2);
+                        },
+                      });
+                      --c;
+                      d++;
+                    };
               c > 0;
             ) {
               l();
@@ -883,6 +880,5 @@ var z =
           $guideDataProxy.EGuideStepId.G_7
       );
     };
-    return __decorate([q], e);
   })($actorBase.default));
 exports.default = z;

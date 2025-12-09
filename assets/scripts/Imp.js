@@ -1,31 +1,31 @@
-var i;
-var $eventManager = require("./EventManager");
-var $randomUtil = require("./RandomUtil");
-var $battleHurtFormulaMgr = require("./BattleHurtFormulaMgr");
-var $stateMachine = require("./StateMachine");
-var $gridAreaDivisionMgr = require("./GridAreaDivisionMgr");
-var $simplyCollisionDetector = require("./SimplyCollisionDetector");
-var $simplyVec2 = require("./SimplyVec2");
-var $spAnimCtrl = require("./SpAnimCtrl");
-var $actorEnum = require("./ActorEnum");
-var $attrEnum = require("./AttrEnum");
-var $battleEnum = require("./BattleEnum");
-var $door = require("./Door");
-var $unitMgr = require("./UnitMgr");
-var $actorBase = require("./ActorBase");
-var $actorMgr = require("./ActorMgr");
-var $impIdleState = require("./ImpIdleState");
-var $impWalkState = require("./ImpWalkState");
-var $summonAttackState = require("./SummonAttackState");
-var $summonDeadState = require("./SummonDeadState");
-var $summonBase = require("./SummonBase");
-var C = cc._decorator;
-var M = C.ccclass;
-var I =
+import $eventManager from './EventManager';
+import $randomUtil from './RandomUtil';
+import $battleHurtFormulaMgr from './BattleHurtFormulaMgr';
+import $stateMachine from './StateMachine';
+import $gridAreaDivisionMgr from './GridAreaDivisionMgr';
+import $simplyCollisionDetector from './SimplyCollisionDetector';
+import $simplyVec2 from './SimplyVec2';
+import $spAnimCtrl from './SpAnimCtrl';
+import $actorEnum from './ActorEnum';
+import $attrEnum from './AttrEnum';
+import $battleEnum from './BattleEnum';
+import $door from './Door';
+import $unitMgr from './UnitMgr';
+import $actorBase from './ActorBase';
+import $actorMgr from './ActorMgr';
+import $impIdleState from './ImpIdleState';
+import $impWalkState from './ImpWalkState';
+import $summonAttackState from './SummonAttackState';
+import $summonDeadState from './SummonDeadState';
+import $summonBase from './SummonBase';
+let i;
+const C = cc._decorator;
+const M = C.ccclass;
+const I =
   (C.property,
   (function (t) {
     function e() {
-      var e = t.call(this) || this;
+      const e = t.call(this) || this;
       e._animCtrl = null;
       e._attackRange = 0;
       e._duration = 0;
@@ -35,7 +35,6 @@ var I =
       e.ownerRange = $randomUtil.RandomUtil.randomInt(50, 100);
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "ownerSkill", {
       get: function () {
         return this._initParam.ownerSkill;
@@ -68,20 +67,20 @@ var I =
     e.prototype.initAttribute = function () {
       t.prototype.initAttribute.call(this);
       this._actorAttribute.init($attrEnum.E_AttrType);
-      var e = this.ownerSkill.owner;
-      var n = Math.floor(
+      const e = this.ownerSkill.owner;
+      const n = Math.floor(
         e.getAttribute($attrEnum.E_AttrType.ATK).value *
           this.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.CORE_ATTR_RATE)
             .value,
       );
       this.getAttribute($attrEnum.E_AttrType.ATK).setFixBase(n);
-      var i = Math.floor(
+      const i = Math.floor(
         e.getAttribute($attrEnum.E_AttrType.HP).value *
           this.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_2)
             .value,
       );
       this.getAttribute($attrEnum.E_AttrType.HP).setFixBase(i);
-      var o =
+      const o =
         this.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_4)
           .value + $randomUtil.RandomUtil.randomInt(0, 30);
       this.getAttribute($attrEnum.E_AttrType.SPEED).setFixBase(o);
@@ -112,7 +111,7 @@ var I =
       );
     };
     e.prototype.playShowAnim = function () {
-      var t = this;
+      const t = this;
       this.node.opacity = 0;
       return new Promise(function (e) {
         cc.tween(t.node)
@@ -132,7 +131,7 @@ var I =
       this._animCtrl.playAnim("move", 1, !0);
     };
     e.prototype.playAnimAttack = function (t, e) {
-      var n = this;
+      const n = this;
       this._animCtrl.playAnim("atk", 1, !1, function () {
         n._attackCd = n.ownerSkill.getAttribute(
           $attrEnum.E_SkillAttrType.EXTRA_ATTR_5,
@@ -146,8 +145,8 @@ var I =
       });
     };
     e.prototype.playAnimDie = function (t) {
-      var e = this;
-      var n =
+      const e = this;
+      const n =
         this.ownerSkill.getAttribute($attrEnum.E_SkillAttrType.EXTRA_ATTR_6)
           .value > 0;
       if (n) {
@@ -165,18 +164,15 @@ var I =
       });
     };
     e.prototype.skillBlast = function () {
-      var t = this.node.getPosition();
+      const t = this.node.getPosition();
       t.y += 50;
       for (
-        var e = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(t, 70),
-          n = [],
-          i = 0,
-          o = e;
+        const e = $gridAreaDivisionMgr.default.instance.getCiclerAreaKeys(t, 70), n = [], i = 0, o = e;
         i < o.length;
         i++
       ) {
-        var r = o[i];
-        var s = $gridAreaDivisionMgr.default.instance
+        const r = o[i];
+        const s = $gridAreaDivisionMgr.default.instance
           .getAreaObjectList(r, $gridAreaDivisionMgr.E_AreaObjectType.ENEMY)
           .filter(function (t) {
             return !n.includes(t);
@@ -185,13 +181,13 @@ var I =
           n.push.apply(n, s);
         }
       }
-      for (var l = 0, p = n; l < p.length; l++) {
-        var h = p[l];
+      for (const l = 0, p = n; l < p.length; l++) {
+        const h = p[l];
         if (
           !h.isDead() &&
           cc.Vec2.squaredDistance(h.node.getPosition(), t) <= 4900
         ) {
-          var f = $battleHurtFormulaMgr.default.instance.skillHurt(
+          const f = $battleHurtFormulaMgr.default.instance.skillHurt(
             this.getSkillHurtOption(),
             h,
           );
@@ -233,7 +229,7 @@ var I =
       );
     };
     e.prototype.onAttackHit = function (t) {
-      var e = t.getComponent($actorBase.default);
+      const e = t.getComponent($actorBase.default);
       e.beHurt(this.getHurt());
       if (e.isDead()) {
         $eventManager.EventManager.instance.emit(
@@ -243,8 +239,8 @@ var I =
       }
     };
     e.prototype.getHurt = function () {
-      var t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
-      var e =
+      const t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
+      const e =
         Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
       if (e) {
         t *= this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).value;
@@ -258,23 +254,23 @@ var I =
     };
     e.prototype.searchTarget = function () {
       for (
-        var t = $actorMgr.default.instance.queryActorByCamp(
-            $actorEnum.ETeamType.ENEMY,
-          ),
-          e = this.ownerSkill.owner.node.getPosition(),
-          n = this.node.getPosition(),
-          i = this.ownerSkill.cfg.edge,
-          o = Number.MAX_VALUE,
-          r = null,
-          a = 0;
+        const t = $actorMgr.default.instance.queryActorByCamp(
+                  $actorEnum.ETeamType.ENEMY,
+                ),
+              e = this.ownerSkill.owner.node.getPosition(),
+              n = this.node.getPosition(),
+              i = this.ownerSkill.cfg.edge,
+              o = Number.MAX_VALUE,
+              r = null,
+              a = 0;
         a < t.length;
         a++
       ) {
-        var s = t[a];
+        const s = t[a];
         if (!s.isDead() && s.canBeSearch() && s.isGroundMove) {
-          var c = s.node.getPosition();
+          const c = s.node.getPosition();
           if (!(cc.Vec2.squaredDistance(c, e) > i * i)) {
-            var l = cc.Vec2.squaredDistance(c, n);
+            const l = cc.Vec2.squaredDistance(c, n);
             if (null == r || l < o) {
               o = l;
               r = s;
@@ -296,8 +292,8 @@ var I =
         if (this._duration <= 0) {
           this.changeState($actorEnum.EActorStateType.DEAD);
         } else {
-          var e = this.node.convertToWorldSpaceAR(cc.Vec2.ZERO);
-          var n = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(
+          const e = this.node.convertToWorldSpaceAR(cc.Vec2.ZERO);
+          const n = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(
             this.node.x,
             this.node.y,
           );
@@ -307,17 +303,17 @@ var I =
     };
     e.prototype.checkDoor = function (t, e) {
       for (
-        var n = this,
-          i = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
-            t,
-            $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
-          ),
-          o = this._tempCollisionDoorIds,
-          r = 0;
+        const n = this,
+              i = $gridAreaDivisionMgr.default.instance.getAreaObjectList(
+                t,
+                $gridAreaDivisionMgr.E_AreaObjectType.DOOR,
+              ),
+              o = this._tempCollisionDoorIds,
+              r = 0;
         r < o.length;
         r++
       ) {
-        var a = $unitMgr.UnitMgr.instance.getUnit(o[r]);
+        const a = $unitMgr.UnitMgr.instance.getUnit(o[r]);
         if (a && i.includes(a)) {
           //
         } else {
@@ -329,7 +325,7 @@ var I =
         }
       }
       i.forEach(function (t) {
-        var i = t.getComponent($door.default);
+        const i = t.getComponent($door.default);
         if (i) {
           if (
             $simplyCollisionDetector.default.isCollisionPointToRect(
@@ -344,7 +340,7 @@ var I =
               i.onImpEnter(n);
             }
           } else {
-            var r = o.indexOf(i.unitId);
+            const r = o.indexOf(i.unitId);
             if (-1 != r) {
               o.splice(r, 1);
               i.onImpExit(n);
@@ -354,9 +350,9 @@ var I =
       });
     };
     e.prototype.onRemove = function () {
-      var e = this;
+      const e = this;
       this._tempCollisionDoorIds.forEach(function (t) {
-        var n = $unitMgr.UnitMgr.instance.getUnit(t);
+        const n = $unitMgr.UnitMgr.instance.getUnit(t);
         if (n) {
           n.onImpExit(e);
         }
@@ -364,6 +360,5 @@ var I =
       this._tempCollisionDoorIds = [];
       t.prototype.onRemove.call(this);
     };
-    return __decorate([M], e);
   })($summonBase.default));
 exports.default = I;

@@ -1,27 +1,26 @@
-var i;
-var $battleMgr = require("./BattleMgr");
-var $simplyCircleCollider = require("./SimplyCircleCollider");
-var $simplyCollisionDetector = require("./SimplyCollisionDetector");
-var $spAnimCtrl = require("./SpAnimCtrl");
-var $actorEnum = require("./ActorEnum");
-var $attrEnum = require("./AttrEnum");
-var $battleEnum = require("./BattleEnum");
-var $actorMgr = require("./ActorMgr");
-var $enemyItemBase = require("./EnemyItemBase");
-var m = cc._decorator;
-var y = m.ccclass;
-var _ =
+import $battleMgr from './BattleMgr';
+import $simplyCircleCollider from './SimplyCircleCollider';
+import $simplyCollisionDetector from './SimplyCollisionDetector';
+import $spAnimCtrl from './SpAnimCtrl';
+import $actorEnum from './ActorEnum';
+import $attrEnum from './AttrEnum';
+import $battleEnum from './BattleEnum';
+import $actorMgr from './ActorMgr';
+import $enemyItemBase from './EnemyItemBase';
+let i;
+const m = cc._decorator;
+const y = m.ccclass;
+const _ =
   (m.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._nIcon = null;
       e._spAnimCtrl = null;
       e._atkCollider = null;
       e._atkCollisionIds = [];
       return e;
     }
-    __extends(e, t);
     e.prototype.onLoad = function () {
       t.prototype.onLoad.call(this);
       this._nIcon = this.node.getChildByName("Body").getChildByName("Icon");
@@ -40,15 +39,15 @@ var _ =
       this._spAnimCtrl.node.active = !1;
     };
     e.prototype.playShowAnim = function () {
-      var t = this;
+      const t = this;
       this.node.opacity = 255;
-      var e = this._initParam.moveTargetPos;
-      var n = this.node.getPosition();
-      var i = e.sub(n);
-      var o = i.normalize();
-      var r = (180 * cc.Vec2.RIGHT_R.signAngle(o)) / Math.PI;
+      const e = this._initParam.moveTargetPos;
+      const n = this.node.getPosition();
+      const i = e.sub(n);
+      const o = i.normalize();
+      const r = (180 * cc.Vec2.RIGHT_R.signAngle(o)) / Math.PI;
       this.node.getChildByName("Body").angle = r + 90;
-      var a = i.magSqr() / 64e4;
+      const a = i.magSqr() / 64e4;
       return new Promise(function (n) {
         cc.tween(t.node)
           .to(a, {
@@ -79,8 +78,8 @@ var _ =
         .setFixBase(this._initParam.maxHp);
     };
     e.prototype.getHurt = function () {
-      var t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
-      var e =
+      const t = this.getAttribute($attrEnum.E_AttrType.ATK).value;
+      const e =
         Math.random() < this.getAttribute($attrEnum.E_AttrType.CRIT_RATE).value;
       if (e) {
         t *= this.getAttribute($attrEnum.E_AttrType.CRIT_HURT).value;
@@ -101,14 +100,14 @@ var _ =
       }
     };
     e.prototype.checkHurt = function () {
-      var t = this;
+      const t = this;
       if (this.isDead()) {
         //
       } else {
         $actorMgr.default.instance
           .queryActorByCamp($actorEnum.ETeamType.PLAYER)
           .forEach(function (e) {
-            var n = t._atkCollisionIds.indexOf(e.unitId);
+            const n = t._atkCollisionIds.indexOf(e.unitId);
             if (e.isDead()) {
               if (-1 != n) {
                 t._atkCollisionIds.splice(n, 1);
@@ -129,6 +128,5 @@ var _ =
           });
       }
     };
-    return __decorate([y], e);
   })($enemyItemBase.default));
 exports.default = _;

@@ -1,13 +1,13 @@
-var i;
-var $mathUtil = require("./MathUtil");
-var $gridAreaDivisionMgr = require("./GridAreaDivisionMgr");
-var c = cc._decorator;
-var l = c.ccclass;
-var u =
+import $mathUtil from './MathUtil';
+import $gridAreaDivisionMgr from './GridAreaDivisionMgr';
+let i;
+const c = cc._decorator;
+const l = c.ccclass;
+const u =
   (c.property,
   (function (t) {
     function e() {
-      var e = (null !== t && t.apply(this, arguments)) || this;
+      const e = (null !== t && t.apply(this, arguments)) || this;
       e._areaKeys = [];
       e._areaType = $gridAreaDivisionMgr.E_AreaObjectType.DEFAULT;
       e._colliderType = $gridAreaDivisionMgr.E_AreaColliderType.POINT;
@@ -17,7 +17,6 @@ var u =
       e._unifyNode = null;
       return e;
     }
-    __extends(e, t);
     Object.defineProperty(e.prototype, "areaType", {
       get: function () {
         return this._areaType;
@@ -56,7 +55,7 @@ var u =
           this._colliderNode = n;
           break;
         case $gridAreaDivisionMgr.E_AreaColliderType.RECT:
-          var n;
+          let n;
           if (!(n = this.node.getChildByName("AreaColliderRect"))) {
             return void cc.error("AreaColliderRect not found");
           }
@@ -82,20 +81,20 @@ var u =
       this.updateUnifyPos();
     };
     e.prototype.updateUnifyPos = function () {
-      var t = this.node.parent.convertToWorldSpaceAR(this.node.getPosition());
-      var e = this._unifyNode.convertToNodeSpaceAR(t);
+      const t = this.node.parent.convertToWorldSpaceAR(this.node.getPosition());
+      const e = this._unifyNode.convertToNodeSpaceAR(t);
       $mathUtil.MathUtil.vec2Fixed(e);
       this._unifyPos = e;
     };
     e.prototype.updateAreakeyPoint = function () {
-      var t = this;
+      const t = this;
       if (this._isInitAreaObject) {
         this._areaKeys.forEach(function (e) {
           $gridAreaDivisionMgr.default.instance.removeAreaObject(t, e);
         });
         this._areaKeys = [];
-        var e = this.unifyPos.add(this._colliderNode.getPosition());
-        var n = $gridAreaDivisionMgr.default.instance.insertAreaObject(
+        const e = this.unifyPos.add(this._colliderNode.getPosition());
+        const n = $gridAreaDivisionMgr.default.instance.insertAreaObject(
           this,
           "",
           e,
@@ -104,16 +103,14 @@ var u =
       }
     };
     e.prototype.updateAreakeyRect = function () {
-      var t = this;
+      const t = this;
       if (this._isInitAreaObject) {
         this._areaKeys.forEach(function (e) {
           $gridAreaDivisionMgr.default.instance.removeAreaObject(t, e);
         });
         this._areaKeys = [];
         for (
-          var e = this.unifyPos.add(this._colliderNode.getPosition()),
-            n = e.x - this._colliderNode.width * this._colliderNode.anchorX,
-            i = n + this._colliderNode.width;
+          const e = this.unifyPos.add(this._colliderNode.getPosition()), n = e.x - this._colliderNode.width * this._colliderNode.anchorX, i = n + this._colliderNode.width;
           ;
           n += $gridAreaDivisionMgr.default.instance.gridSize
         ) {
@@ -121,21 +118,21 @@ var u =
             n = i;
           }
           for (
-            var o =
-                e.y - this._colliderNode.height * this._colliderNode.anchorY,
-              r = o + this._colliderNode.height;
+            const o =
+                      e.y - this._colliderNode.height * this._colliderNode.anchorY,
+                  r = o + this._colliderNode.height;
             ;
             o += $gridAreaDivisionMgr.default.instance.gridSize
           ) {
             if (o > r) {
               o = r;
             }
-            var a = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(
+            const a = $gridAreaDivisionMgr.default.instance.getAreaKeyInfo(
               n,
               o,
             ).key;
             if (!this._areaKeys.includes(a)) {
-              var c = $gridAreaDivisionMgr.default.instance.insertAreaObject(
+              const c = $gridAreaDivisionMgr.default.instance.insertAreaObject(
                 this,
                 "",
                 cc.v2(n, o),
@@ -153,7 +150,7 @@ var u =
       }
     };
     e.prototype.removeAllAreaKey = function () {
-      var t = this;
+      const t = this;
       if (this._isInitAreaObject) {
         this._areaKeys.forEach(function (e) {
           $gridAreaDivisionMgr.default.instance.removeAreaObject(t, e);
@@ -161,6 +158,5 @@ var u =
         this._areaKeys = [];
       }
     };
-    return __decorate([l], e);
   })(cc.Component));
 exports.default = u;

@@ -1,13 +1,13 @@
 module.exports = function t(e) {
-  var n = new Map();
+  const n = new Map();
   Object.keys(e).forEach(function (i) {
-    var o = e[i];
+    const o = e[i];
     if (null !== o && "object" == typeof o && !Array.isArray(o)) {
       return n.set(i, t(o));
     }
     if (
       !(function (t) {
-        var e = Number(t);
+        const e = Number(t);
         return !(isNaN(e) || e <= 0);
       })(o)
     ) {
